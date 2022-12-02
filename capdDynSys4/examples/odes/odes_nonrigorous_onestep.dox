@@ -1,0 +1,66 @@
+/*! \page odes_taylor One-step Taylor method
+
+This method is <b>not recommended</b> in general but it gives an introduction to methods with automatic step control that are described in section \ref odes_timemap. 
+
+In order to integrate a system of ODEs one has to 
+\li define an instance of class DMap or LDMap (see \ref maps ) that describes the vector field, like
+\code 
+DMap pendulum("time:t;par:omega;var:x,dx;fun:dx,sin(omega*t)-sin(x);");
+pendulum.setParameter("omega",1.);
+\endcode 
+\li define an instance of ODE solver (class DOdeSolver or LDOdeSolver) 
+\code
+int order = 20;
+double timeStep = 0.125;
+DOdeSolver solver(pendulum,order);
+solver.setStep(timeStep);
+\endcode
+
+\attention An instance of \b DOdeSolver can be use to integrate many initial conditions. It is <b>strongly not recommended</b> to create an instance of \b DOdeSolver for each IVP we want to solve.  
+
+\li specify the initial condition
+\code
+  DVector u(2);
+  u[0] = 1.; 
+  u[1] = 2.;
+  double t = 4;
+\endcode
+\li and then integrate
+\code DVector y = solver(t,u); \endcode
+
+After the above call
+\li \f$ y\approx \phi(t+timeStep,u) \f$, where \f$\phi\f$ is local flow induced by our (nonautonomous) ODE
+\li value of <tt>t</tt> is updated to <tt>t = t+timeStep</tt>
+
+Repeating the last line like
+\code
+for(int i=0;i<numberOfSteps;++i){
+  u = solver(t,u);
+  cout << "t=" << t << ", u=" << u << endl;
+}  
+\endcode
+one can obtain selected points on the trajectory of the point <tt>u</tt>. 
+
+\note if the system is autonomous one can skip argument <tt>t</tt> and write 
+\code
+DVector y = solver(u);
+\endcode
+<p></p>
+\note Step control is built-in the solver and is turned on by default. In order to obtain a point on the trajectory after user specified time we must turn off step control. This can be achieved by call to 
+\code
+solver.setStep(timeStep);
+\endcode
+The above approach does not profit from the automatic step control strategies.
+There are three additional functions 
+\code
+solver.turnOffStepControl();
+solver.turnOnStepControl();
+solver.onOffStepControl(booleanArgument);
+\endcode
+that manage step control. See \ref odes_nonrig_step_control for more details on step control strategies and parameters.
+
+
+<b>Complete example (from examples/odes/DSolverExample.cpp):</b>
+\include DSolverExample.cpp
+
+*/

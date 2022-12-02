@@ -1,0 +1,155 @@
+/*! \page odesvar_nonrigorous ODEs - variational equations
+\tableofcontents
+
+In this section we will give an overview on simultaneous integration of ODEs and associated first order variational equations.
+
+\section odes_taylor_first_variational One step Taylor method
+
+Class <b>[L]DOdeSolver</b> can also integrate first order variational equations of ODEs. Creating an instance of solver is exactly the same as in the case of computing the trajectory only (see section \ref odes_taylor). 
+
+In order to compute derivatives with respect to initial conditions one has to
+\li specify initial conditions for the trajectory and for variational equations 
+\code 
+double t = ...;
+DVector initPoint(...);
+DMatrix initMatrix(...) 
+\endcode  
+\li define matrix that will store solution to variational equations (monodromy matrix)
+\code DMatrix D(...); \endcode
+\li call operator that simultaneously computes solution to IVP for ODE and first order variational equations
+\code DVector y = solver(t,initPoint,initMatrix,D); \endcode
+
+After the last instruction the vector <b>y</b> will contain approximate solution after specified time step and the matrix <b>D</b> will contain solution to the variational equations at the same time. 
+
+\note Two arguments <b>initMatrix</b> and <b>D</b> can be the same object instance. This is used to obtain monodromy matrix after many steps of integration.
+\code
+int dimension = ...;
+DMatrix D = DMatrix::Identity(dimension);
+
+for(int i=0;i<numberOfSteps;++i)
+  u = solver(t,u,D,D);
+  cout << "t=" << t << ", u=" << u << endl;
+  cout << "Monodromy matrix: " << D << endl;
+}  
+\endcode
+
+<b>Complete example (from examples/odes/DSolverVariationalEquationsExample.cpp):</b>
+\include DSolverVariationalEquationsExample.cpp
+
+
+
+
+
+\section odesvar_timemap First order variational equations
+The class <b>[L]DTimeMap</b> (see \ref odes_timemap) provides interface for long-time integration of ODEs with associated variational equations (i.e. derivatives of solution with respect to initial condition). One has to specify initial conditions for both main equations and for variational equations 
+\code
+int dimension = ...;
+double initTime = ...;
+DVector x(...);
+DMatrix initMatrix(...);
+\endcode  
+and call suitable operator
+\code
+double finalTime = ...;
+DMatrix monodromyMatrix(dimension,dimension);
+
+DVector y = timeMap(finalTime,x,initMatrix,monodromyMatrix,initTime);
+\endcode
+
+\note When solving IVPs with variational equations the built in step control mechanism predicts time steps to fix requested error tolerances both for main equations and for variational equations. 
+<p></p>
+\note The argument <b>initMatrix</b> can be skipped. Then the initial condition for variational equations is set to identity.
+\code
+DVector y = timeMap(finalTime,x,monodromyMatrix,initTime);
+\endcode
+<p></p>
+\note The last argument <b>initTime</b> can be skipped. Then it is set to zero by default.    
+\code
+DVector y = timeMap(finalTime,x,monodromyMatrix);
+\endcode
+<p></p>
+
+<b>Complete example (from examples/odes/DTimeMapVariationalEquationsExample.cpp):</b>
+\include DTimeMapVariationalEquationsExample.cpp
+
+
+\section odeshess_timemap Second order variational equations
+The class <b>[L]DC2TimeMap</b> (see \ref odes_timemap) provides interface for long-time integration of ODEs with associated first and second order variational equations. One has to specify initial conditions for main ODE and for first and second order variational equations.  
+\code
+int dimension = ...;
+double initTime = ...;
+DVector x(...);
+DMatrix initMatrix(...);
+DHessian initHessian(...);
+\endcode  
+and call suitable operator
+\code
+double finalTime = ...;
+DMatrix D(dimension,dimension);
+DHessian H(dimension,dimension);
+
+DVector y = timeMap(finalTime,x,initMatrix,initHessian,D,H,initTime);
+\endcode
+
+\note When solving IVPs with variational equations the built in step control mechanism predicts time steps to fix requested error tolerances both for main equations and for first and second order variational equations. 
+<p></p>
+\note The arguments <b>initMatrix</b> and <b>initHessian</b> can be skipped. Then the initial condition for first order variational equations is set to identity and for the second order variational equations is set to zero.
+\code
+DVector y = timeMap(finalTime,x,D,H,initTime);
+\endcode
+<p></p>
+\note The last argument <b>initTime</b> can be skipped. Then it is set to zero by default.    
+\code
+DVector y = timeMap(finalTime,x,D,H);
+\endcode
+<p></p>
+
+<b>Complete example (from examples/odes/DTimeMapHessianExample.cpp):</b>
+\include DTimeMapHessianExample.cpp
+
+
+
+\section odesjet_timemap Higher order variational equations
+The class <b>[L]DCnTimeMap</b> (see \ref odes_timemap) provides interface for long-time integration of ODEs with associated first, second and higher order variational equations. 
+One has to specify initial conditions for main ODE and for all variational equations.  
+\code
+int dimension = ...;
+double initTime = ...;
+DVector x(...);
+DJet initJet(...);
+\endcode  
+and call one of overloaded operators
+\code
+double finalTime = ...;
+DJet J(dimension,degree);
+
+DVector y1 = timeMap(finalTime,x,J,initTime);
+// or
+DVector y2 = timeMap(finalTime,initJet,J,initTime);
+\endcode
+
+\note When solving IVPs with variational equations the built in step control mechanism predicts time steps to fix requested error tolerances both for main equations and for all variational equations up to requested degree. 
+<p></p>
+\note After call to the first version of operator 
+\code
+DVector y1 = timeMap(finalTime,x,J,initTime);
+\endcode
+the initial condition for first order variational equations is set to identity. Higher order varational equations have initial conditions set to zero. 
+<p></p>
+\note After call to the second version of operator 
+\code
+DVector y1 = timeMap(finalTime,initJet,J,initTime);
+\endcode
+the initial condition for the main equations and all variational equations are copied from the object <b>initJet</b>. 
+<p></p>
+\note In both cases the last argument <b>initTime</b> can be skipped. Then it is set to zero by default.    
+\code
+DVector y1 = timeMap(finalTime,x,J);
+DVector y2 = timeMap(finalTime,initJet,J);
+\endcode
+<p></p>
+
+<b>Complete example (from examples/odes/DTimeMapJetExample.cpp):</b>
+\include DTimeMapJetExample.cpp
+
+*/ 

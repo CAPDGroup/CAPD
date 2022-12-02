@@ -1,0 +1,11 @@
+prefix=@top_capd@
+exec_prefix=@exec_prefix@
+libdir=@abs_top_builddir@/src/mpcapd/autodiff
+includedir=@abs_top_srcdir@/include
+
+Name: mpcapdautodiff
+Description: mpcapdautodiff module
+Requires:
+Version: @PACKAGE_VERSION@
+Libs:  ${libdir}/libmpcapdautodiff.la @mpcapdautodiff_LIBS@
+Cflags: @mpcapdautodiff_CFLAGS@  -I${includedir}

@@ -1,0 +1,109 @@
+/*! \page odes_timemap Long-time integration
+\tableofcontents
+
+The best way to compute long pieces of trajectory is to use two classes together: <b>DOdeSolver</b> with <b>DTimeMap</b> or <b>LDOdeSolver</b> with <b>LDTimeMap</b>. 
+The class <b>[L]DTimeMap</b> provides interface for computing trajectories over time range and/or variational equations hiding all technical details. Using this approach one can  
+\li manage parameters of step control methods (like relative and absolute tolerances)
+\li compute intermediate points that appeared during integration (we will call this <b>dense output</b>) 
+\li compute solutions to IVPs as functional objects
+
+\section odes_timemap_fixed_time Computing solution after fixed time
+
+This is the simplest and perhaps most often used feature of class TimeMap. In order to compute a solution to ODE after a specified time <tt>T</tt> one should
+\li create an instance of ODE solver as described in section \ref odes_taylor 
+\code DOdeSolver solver(...); \endcode
+\li create an instance of DTimeMap
+\code DTimeMap timeMap(solver); \endcode
+\li specify initial condition and integrate over the given time
+\code
+double initialTime = ....;
+double finalTime = ...;
+DVector u(...);
+
+DVector y = timeMap(finalTime,u,initialTime);
+\endcode
+
+After the last call we obtain \f$y\approx \phi(finalTime,u)\f$ where \f$\phi\f$ is local flow induced by our ODE. 
+Complete example will be given in section \ref odes_nonrig_step_control
+
+\note After integration <tt>initialTime</tt> will be updated to <tt>finalTime</tt>
+ 
+\attention This is integration over time <tt>finalTime-initialTIme</tt> and <b>not</b> over <tt>finalTime</tt>.   
+
+\note For autonomous systems the last argument (<tt>initialTime</tt>) can be skipped.
+\code 
+DVector y = timeMap(finalTime,u);
+\endcode
+
+
+
+
+
+\section odes_timemap_dense_output Computing intermediate points on the trajectory
+
+One can stop long-time integration after each performed time step. This can be obtained by the following request <b>before</b> starting integration
+\code
+timeMap.stopAfterStep(true);
+\endcode 
+Then we can use the following loop to integrate over a given time
+\code
+
+double initialTime = ....;
+double finalTime = ...;
+DVector u(...);
+
+do{
+  DVector y = timeMap(finalTime,u,initialTime);
+  cout << "current time=" << timeMap.getCurrentTime() <<  ", y=" << y << endl; 
+}while(!timeMap.completed());
+\endcode
+<b>Complete example (from examples/odes/DTimeMapExample.cpp):</b>
+\include DTimeMapExample.cpp
+
+
+
+
+\section odes_nonrig_step_control Error tolerance and step control
+Let \f$ \varepsilon(t,x) = \|\phi(t,x) - \Phi(t,x)\|_1 \f$ be the error of numerical method \f$ \Phi \f$ that approximates exact solution \f$ \phi \f$.
+The class <b>[L]DOdeSolver</b> makes a prediction of time step subject to fix constrains on local errors per unit step. These constraints are standard
+\li absolute tolerance \f$ tol_{abs} \f$ - we require that \f$ \varepsilon(t,x) \f$ is smaller than this quantity (usually we require that the max norm of the Lagrange remainder in the Taylor series is less than absolute tolerance).   
+\li relative tolerance \f$ tol_{rel} \f$ - we require that \f$ \varepsilon(t,x)/max(\|\Phi(t,x)\|_1,\|\phi(t,x)\|_1) < tol_{rel}\f$. This condition is technically difficult to check in the prediction of the time step.  
+Therefore we assume that the denominator is evaluated for t=0 only, and compute time step subject to constrain \f$ \varepsilon(t,x) < tol_{rel} \|x\|_1\f$
+
+Eventually, the time step is computed subject to 
+
+\f[
+  \varepsilon(t,x) < \max\ (\ tol_{rel} \|x\|_1,\quad tol_{abs}\ )
+\f]
+
+The user can change default values of tolerances or even turn off step control by means of the following methods
+\code
+  DMap vectorField(...);  
+  int order = ...;
+  
+  // by default step control is turned on
+  DOdeSolver solver(vectorFiels,order);
+  DTimeMap timeMap(solver);
+  
+  // turning off step control results in integration with fixed time step timeStep
+  double timeStep = ...;
+  solver.setStep(timeStep);
+  
+  // one can turn on step control at any moment
+  solver.turnOnStepControl();
+  
+  // one can change tolerances at any moment. 
+  // For low orders of the Taylor method we recommend to change default values. 
+  double absoluteTolerance = ...;
+  double relativeTolerance = ...;
+  solver.setAbsoluteTolerance(absoluteTolerance); 
+  solver.setRelativeTolerance(relativeTolerance);
+\endcode
+
+
+\attention Using low orders of the Taylor method with very small tolerances usually forces very small time steps and thus integration might be slow.
+
+<b>Complete example (from examples/odes/DTimeMapStepControlExample.cpp):</b>
+\include DTimeMapStepControlExample.cpp
+
+*/

@@ -1,0 +1,129 @@
+/*! \page odes_rigorous ODEs - interval-based methods
+
+\tableofcontents
+
+\section odesrig_types Defined types and data structures 
+
+The main header file 
+\code
+#include "capd/capdlib.h"
+\endcode
+defines the following types for computation in (<b>I</b>) interval arithmetics.  
+- <b>IOdeSolver</b> - ODE solver, it can integrate first order variational equations
+- <b>IC2OdeSolver</b> - ODE solver, it can integrate first and second order variational equations
+- <b>ICnOdeSolver</b> - ODE solver, it can integrate higher order variational equations
+- <b>C0Rect2Set, C0HORect2Set</b> - doubleton representation of a subset of \f$ R^n \f$ (see \ref odesrig_representation)
+- <b>C0TripletonSet, C0HOTripletonSet</b> - tripleton representation of a subset of \f$ R^n \f$ (see \ref odesrig_representation)
+- <b>ITimeMap</b> - integrates ODE over a time interval. It can integrate first and second order variational equations.
+- <b>IC2TimeMap</b> - integrates ODE over a time interval. It can integrate first and second order variational equations.
+- <b>ICnTimeMap</b> - integrates ODE over a time interval. It can integrate higher order variational equations.
+
+Moreover, every class <b>[Prefix]TimeMap</b> defines public type <b>SolutionCurve</b> that is a functional object representing solution to IVP over time range. For example,
+\code {.cpp}
+  ITimeMap::SolutionCurve
+  IC2TimeMap::SolutionCurve
+  ICnTimeMap::SolutionCurve
+\endcode  
+
+The CAPD library implements three strategies for solving IVP for ODEs. One can choose from 
+\li one-step numerical scheme based on high-order Taylor method or explicit-implicit Hermite-Obreshkov method
+\li a method for computation of the solution after a given time. This approach combines one-step scheme with automatic step control.
+\li a method for computation of a solution curve (as a functional object) over a time range.
+
+Before we describe these strategies in details we need to explain how subsets of phase space are represented in the memory of a computer.
+
+\section odesrig_representation Representation of initial condition 
+
+The CAPD library provides various methods for rigorous enclosures of trajectories. There are two main groups of rigorous solvers
+\li based on Taylor method
+\li based on Hermite-Obreshkov (explicit-implicit) method 
+
+In each group we implemented several algorithms with performance depending on dynamical properties of the system in consideration. 
+In this section we will present four main algorithms that proved to be most efficient in typical cases.
+
+The rigorous solver <b>IOdeSolver</b> requires that the initial condition is given in one of the acceptable representation. 
+Among others four of them are proved to be most efficient and thus we omit other in this introduction. These are defined in classes 
+\li <b>C0Rect2Set, C0TripletonSet</b>
+\li <b>C0HORect2Set, C0HOTripletonSet</b>
+
+Two classes <b>C0Rect2Set</b> and <b>C0HORect2Set</b> represent a subset of \f$ R^n \f$ in the form of doubleton \f$ x + C*r0 + Q*q \f$ where 
+\li \f$ x,q,r0\f$ are interval vectors, where \f$ x \f$ is a point interval vector
+\li \f$ C,Q\f$ are interval matrices, with \f$ Q\f$ close to orthogonal   
+
+Two classes <b>C0TripletonSet</b> and <b>C0HOTripletonSet</b> represent a subset of \f$ R^n \f$ in the form of tripleton \f$ x + C*r0 + \mathrm{intersection}(B*r,Q*q) \f$ where 
+\li \f$ x,q,r,r0\f$ are interval vectors, where \f$ x \f$  is a point interval vector
+\li \f$ C,B,Q\f$ are interval matrices, with \f$ Q\f$ close to orthogonal   
+
+They differ by the numerical method used to integrate an ODE:
+\li <b>C0Rect2Set</b> and <b>C0TripletonSet</b> use high order <b>Taylor</b> method
+\li <b>C0HORect2Set</b> and <b>C0HOTripletonSet</b> use high order Taylor method as a predictor and then <b>Hermite-Obreshkov</b> implicit method as a corrector step
+
+One can define an instance of these classes by simple contructor call
+\code
+IVector initialCondition(...);
+C0Rect2Set set1(initialCondition);
+C0HORect2Set set2(initialCondition);
+C0TripletonSet set3(initialCondition);
+C0HOTripletonSet set4(initialCondition);
+\endcode
+
+If the initial condition is not an interval vector but an affine set 
+\f[
+  x + C*r_0
+\f]
+we <b>strongly</b> recommend to use one of the following overloaded constructors
+\code 
+IVector x(...);
+IMatrix C(...);
+IVector r0(...);
+
+C0Rect2Set set1(x,C,r0);
+C0HORect2Set set2(x,C,r0);
+C0TripletonSet set3(x,C,r0);
+C0HOTripletonSet set4(x,C,r0);
+\endcode  
+
+All above classes provide conversion to interval vector:
+\code
+  IVector u = (IVector)set;
+\endcode
+
+
+
+
+\section odesrig_taylor One-step method
+
+Given an initial condition \b set (which is an instance of either \b C0Rect2Set or \b C0HORect2Set or \b C0TripletonSet or \b C0HOTripletonSet) one can compute image of this set after one step of numerical method. 
+One has to 
+\li create an instance of IOdeSolver
+\code
+IMap vectorField(...);
+int order = ...;
+IOdeSolver solver(vectorField,order);
+\endcode
+\li propagate the set by the solver
+\code
+  set.move(solver);
+\endcode  
+The solver makes automatic time step prediction (provided it has not been turned off by the user) and computes rigorous bound of this set after one time step. Internally, the set holds doubleton or tripleton representation of a subset of \f$ R^n\f$ that is ready to perform the next time step. 
+
+As in the case of nonrigorous computation the user can fix time step by the call to 
+\code
+interval timeStep = ...; // must be positive
+solver.setStep(timeStep);
+\endcode
+\note After fixing time step the solver tries to validate the existence of solutions over this time and for the set of initial conditions represented by <tt>set</tt>.
+\code
+  set.move(solver);
+\endcode  
+An exception is thrown if the solver cannot validate the existence of solution over time range <tt>[0,timeStep]</tt>. 
+ 
+One-step method, although possible, is not recommended in general. Sometimes it performs better for very wide initial conditions with relatively low order of the method (3-5). 
+For long-time integration we recommend to use class \b ITimeMap that combines ISolver with automatic step control strategies.
+
+
+
+- \subpage odesrig_timemap
+- \subpage odesvar_rigorous
+
+ */

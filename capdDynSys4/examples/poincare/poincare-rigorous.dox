@@ -1,0 +1,63 @@
+/*! \page poincare_rigorous Poincare maps - interval-based methods
+
+\section poincare_interval Poincare map and return time - interval version
+
+Computing rigorous bounds for Poincare map is quite similar to nonrigorous version - see \ref poincare_nonrigorous. We have to specify initial condition as doubleton set (see \ref odesrig_representation)
+\code
+  C0Rect2Set set(...);
+  // or C0HORect2Set set(...);
+\endcode 
+and call operator of class IPoincareMap
+\code
+  IPoincareMap pm(solver,section);
+  interval returnTime; // this time does not need to be initialized because initial time is hidden in the set
+  IVector Px = pm(set,returnTime);
+\endcode
+The following example is a complete proof of the existence of Lyapunov orbit L1 in the Planar Restricted Circular Three Body Problem for a fixed Jacobi constant.
+
+<b>Complete example (from examples/poincare/IPoincareMapExample.cpp):</b>
+\include IPoincareMapExample.cpp
+
+
+
+\section poincare_ver_interval Derivative of Poincare map.
+The class IPoincareMap provides an overloaded operator for computation of Poincare map and its derivative. First, an initial condition for the main equation and for the variational equation must be specified - see \ref odesvarrig_representation.  
+\code
+C1Rect2Set set(...);
+// or C1HORect2Set set(...);
+\endcode
+We have to define an interval matrix that will store bound for set of <b>monodromy matrices</b> \f$ \phi(t,x) \f$ where \f$ x\in set \f$ and \f$ t \in t(set) \f$ is a bound for the return time.      
+\code
+  IMatrix monodromyMatrix(...);
+\endcode
+Eventually we have to call an operator
+\code
+  IPoincareMap pm(...);
+  interval returnTime;
+  IVector P = pm(set,monodromyMatrix,returnTime);
+\endcode
+\note The last argument <tt>returnTime</tt> is optional and can be skipped for autonomous systems
+<p></p>
+After successful integration we have
+\li <tt>P</tt> bound for the Poincare map at the set of initial conditions <tt>set</tt>
+\li bound for the monodromy matrix
+
+Given monodromy matrix we can recompute it to derivative of Poincare map by
+\code
+  IMatrix DP = pm.computeDP(P,monodromyMatrix,returnTime);
+\endcode 
+\note for nonautonomous systems the argument <tt>returnTime</tt> can be skipped
+<p></p>
+\note we split computation of derivative of Poincare map into computation of monodromy matrix and solving implicit equation. 
+This is because the user can provide own and optimized routine for recomputation of monodromy matrix to derivative of Poincare map. 
+For user convenience we provide a general routine <tt>computeDP</tt>. 
+<p></p>
+\note The matrix <tt>DP</tt> returned by <tt>computeDP</tt> is in full dimension. One can take a submatrix of <tt>DP</tt> that correspond to variables on the section. 
+
+Below we give an easy example of computing derivative of Poincare map. See also more advanced examples
+\li proof of the existence od 3 different periodic orbits for the Rossler system \ref examples_RosslerPeriodicOrbit
+\li proof of the existence of 116 periodic orbits for the Lorenz system \ref examples_LorenzPeriodicOrbit
+
+<b>Complete example (from examples/poincare/IPoincareMapDerivativeExample.cpp):</b>
+\include IPoincareMapDerivativeExample.cpp
+*/

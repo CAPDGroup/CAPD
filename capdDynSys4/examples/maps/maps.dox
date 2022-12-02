@@ -1,0 +1,219 @@
+/*! \page maps Maps and their derivatives
+\tableofcontents
+
+For detailed description see capd::map::Function and capd::map::Map
+
+These classes provide methods for computing:
+- values of functions/maps
+- normalized derivatives (Taylor coefficients) of maps
+- jet propagation through the map (in fact computation of a jet of composition of two maps)
+
+\section maps_types Defined types and data structures 
+
+The main header file 
+\code
+#include "capd/capdlib.h"
+\endcode
+defines the following types for computation in double (<b>D</b>), long double (<b>LD</b>) precision and interval (<b>I</b>) arithmetics.  
+- <b>DFunction, LDFunction, IFunction</b> - scalar valued functions \f$ R^n\to R\f$
+- <b>DMap, LDMap, IMap</b> - vector valued maps \f$ R^n\to R^m \f$ 
+- <b>DHessian, LDHessian, IHessian</b> - data structure to store second order normalized derivatives (Taylor coefficients) of maps
+- <b>DJet, LDJet, IJet</b> - data structure to store multivariate polynomials, i.e. truncated Taylor series of maps
+- <b>Multiindex, Multipointer</b> - data structures used to index jets.
+ 
+\section maps_definition Defining functions and maps
+
+Maps can be parsed from a human readable string and/or C-routine. Performance of further computations does not depend on the way you define an object. 
+This is for user convenience only - short functions can be defined as a string while large expressions are easier to encode as routines.
+
+<b>Parsing from a string</b>. Syntax of the formula:
+\code "[par:a,b,c...;][time:t;]var:x1,x2,...;fun:expression1,expression2,....;" \endcode
+
+\li \b var - names of subsequent arguments
+\li \b fun - expressions that define a map. You can use most elementary
+       - functions: sin, cos, exp, log, sqrt, sqr (square)
+       - operators: +,-,*,/,^ (power, integer or not. Exponent cannot depend on variables - we assume gradient of exponent is zero).
+       - constants: (0,1,2,-5,2.5,-0.25, etc)- we recommend usage of representable numbers only.
+                  If a constant is an interval or a floating point represented with high precision, one should use a parameter instead.
+\li \b par - parameters of the map. Derivatives of them with respect to main variables are assumed to be zero.
+\li \b time - a distinguished parameter with derivative dt/dt=1. Used to define time-dependent maps that stand for vector fields of nonautonomous ODEs.
+
+\attention The parser does not accept numerical constants in scientific notation. Use parameters, instead.
+
+\note Sections <b>par</b> and <b>time</b> are optional.
+
+\b Example:
+\code
+#include "capd/capdlib.h"
+
+capd::IMap lorenz("par:s,r,q;var:x,y,z;fun:s*(y-x),x*(r-z)-y,x*y-q*z;");
+lorenz.setParameter("s",10.);
+lorenz.setParameter("r",28.);
+lorenz.setParameter("q",interval(8.)/interval(3.));
+\endcode
+
+<b>Parsing from a C-routine</b>. One has to write a global function (or a functor, lambda expression, can be class member function) that defines the map and then send it to the constructor of class %Map.
+
+The function that defines a map must have the following signature:
+\code
+#include "capd/capdlib.h"
+void vf(capd::autodiff::Node t,
+        capd::autodiff::Node in[], int dimIn,
+        capd::autodiff::Node out[], int dimOut,
+        capd::autodiff::Node params[], int noParam
+       );
+\endcode
+
+Here:
+\li \b t - is a distinguished time variable
+\li \b in - is a C-array of input (independent) variables
+\li \b dimIn - is number of input variables
+\li \b out - is a C-array of output (dependent) variables
+\li \b dimOut - is number of output variables
+\li \b params - is a C-array of parameters
+\li \b noParam - is number of parameters
+
+See section \ref maps_eval for a complete example. 
+
+
+
+
+
+
+\section maps_eval Computing values and derivatives of maps
+
+Class \b Map provides methods for computation of values and derivatives. This is simply done by call to overloaded operator \c() and/or method \c derivative.  
+\code
+  DMap f = ...;
+  DVector x = ...;
+  
+  DVector y  = f(x);            // value of map f at x
+  DMatrix Df = f.derivative(x); // derivative of f at x
+  
+  // much faster simultaneous computation of value and derivative
+  y = f(x,Df);  
+\endcode
+
+<b>Complete example (from examples/maps/mapExample.cpp):</b>
+\include mapExample.cpp
+\attention For rigorous computation you \b must use in the expression <b>representable numbers only</b> (both in the string parsed and routine parsed cases). 
+If you want to use constants, like 1/3 then you can
+- either set them as parameters of the system (strongly recommended) - do not forget to set the parameter value after creating an instance of Map.
+- or wrap them into Node type (slower): \code Node(1)/Node(3) \endcode
+String parser wraps automatically expressions like 1/3 to division of nodes.
+
+
+
+
+
+
+\section maps_hessians Hessians of maps
+Class Map provides algorithms for computation of <b>normalized hessians</b> of maps. One has to 
+- set maximal order of derivative to at least 2, when creating an instance of Map
+\code DMap f(globalFunction,dimIn,dimOut,noParams,maxDerivative /*at least 2*/);\endcode
+- define objects that will store computed derivative and hessian 
+\code 
+DVector x = ...;
+DMatrix Df(dimOut,dimIn);
+DHessian Hf(dimOut,dimIn);
+\endcode
+- call operator <tt>()</tt>
+\code DVector fx = f(x,Df,Hf); \endcode
+
+Now <tt>Hf</tt> stores second order normalized derivatives. They can be accessed by 
+\code 
+int fi =..., dxj = ..., dxk = ...;
+double dfi_dxj_dxk = Hf(fi,dxj,dxk); 
+\endcode
+\note Indexing of functions (<tt>fi</tt>) and derivatives (<tt>dxj,dxk</tt>) starts from \b zero.
+
+ 
+<b>Complete example (from examples/maps/hessianExample.cpp):</b>
+\include hessianExample.cpp
+
+
+
+
+
+
+\section maps_jets Higher order Taylor coefficients of maps
+
+Class \b Map provides algorithms for computation of <b>normalized higher order derivatives</b> of maps. One has to 
+- set maximal order of derivative to desired value, when creating an instance of Map
+\code DMap f(globalFunction,dimIn,dimOut,maxRequestedDerivative /*default is 1*/);\endcode
+- define objects that will store jets of maps. Class <b>[L]DJet</b> (and interval version \b IJet) represents truncated Taylor series of a map.
+\code 
+DVector x = ...;
+DJet fJet(dimOut,dimIn,truncationDegreeInclusive /*should be less or equal to maxRequestedDerivative*/);
+\endcode
+- call operator <tt>()</tt>
+\code f(x,fJet); \endcode
+
+Now <tt>fJet</tt> stores value of <tt>f(x)</tt> and all normalized derivatives of <tt>f</tt> at <tt>x</tt> up to order <tt>truncationDegreeInclusive</tt>. 
+For partial derivatives of order less or equal than three we provide direct access to coefficients by simple operator call
+\code 
+int fi =..., dxj = ..., dxk = ..., dxc = ...;
+
+DVector fx = fJet();                           // value of f(x)
+double dfi_dxj = fJet(fi,dxj);                 // first order derivative
+double dfi_dxj_dxk = fJet(fi,dxj,dxk);         // second order derivative 
+double dfi_dxj_dxk_dxc = fJet(fi,dxj,dxk,dxc); // third order derivative
+\endcode
+\note Indexing of functions (<tt>fi</tt>) and derivatives (<tt>dxj,dxk</tt>) starts from \b zero.
+<p></p>
+\attention For performance reasons indices in <tt>fJet(fi,dxj,dxk,dxc)</tt> must form a <b>nondecreasing sequence</b>! Otherwise behaviour is undefined.
+
+
+<b>Complete example (from examples/maps/jetExample.cpp):</b>
+\include jetExample.cpp
+
+
+
+\section maps_multiindex Indexing of higher order derivatives
+Fourth and higher order derivatives are indexed by <b>multipointers</b> and <b>multiindices</b>. 
+
+<b>Multiindex:</b> is an element of \f$ N^n \f$ (sequence of integers) of the same length as the dimension of the domain of function, i.e. \f$ R^n \f$. 
+
+i-th coefficient of a multiindex indicates the order of partial derivative with respect to i-th variable. For instance, 
+\code
+int data[] = {2,1,0,2};
+Multiindex m(4,data);
+\endcode  
+corresponds to normalized derivative \f$ dx_0^2dx_1dx_3^2 \f$
+
+<b>Multipointer:</b> is a <b>nondecreasing</b> sequence of integers of the length <b>d</b>, where <b>d</b> is the total order of partial derivative. 
+Every element of multipointer is an index of variable with respect to which we take partial derivative. 
+For instance, the following Multipointer 
+\code
+int data[] = {0,0,1,3,3};
+Multipointer m(5,data); 
+\endcode  
+is equivalent to Multiindex {2,1,0,2} and it corresponds to normalized derivative \f$ dx_0^2dx_1dx_3^2 \f$
+
+Given multipointer or multiindex one can access corresponding coefficient in the data structure <b>%Jet</b>. One can also easily convert between multipointers and multiindices by constructor calls.
+
+<b>Complete example (from examples/maps/jetIndexingExample.cpp):</b>
+\include jetIndexingExample.cpp
+
+
+
+\section maps_jet_transport Jet transport - computing composition of jets
+
+Class <b>Map</b> defines an operator for computating jet of a composition of the map and other jet sent as an argument. Given map \b f 
+\code
+DMap f = ...;
+\endcode
+and jet \b g at a point \b x
+\code
+DJet g(...);
+g(i,j,k) = ...; // fill the jet by data
+\endcode
+one can compute jet of  <b>f(g(x))</b> by simply call
+\code
+DJet f_of_g_at_x = f(g);
+\endcode
+  
+<b>Complete example (from examples/maps/jetTransportExample.cpp):</b>
+\include jetTransportExample.cpp
+
+*/

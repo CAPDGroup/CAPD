@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@abs_top_builddir@/src/mpcapd/geomset
+includedir=@includedir@
+
+Name: mpcapdgeomset
+Description: mpcapdgeomset module
+Requires:
+Version: @PACKAGE_VERSION@
+Libs:  ${libdir}/libmpcapdgeomset.la @mpcapdgeomset_LIBS@
+Cflags: @mpcapdgeomset_CFLAGS@  -I${includedir}

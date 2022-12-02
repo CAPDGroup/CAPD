@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@abs_top_builddir@/src/capd/poincare
+includedir=@includedir@
+
+Name: capdpoincare
+Description: capdpoincare module
+Requires:
+Version: @PACKAGE_VERSION@
+Libs:   ${libdir}/libcapdpoincare.la @capdpoincare_LIBS@
+Cflags: @capdpoincare_CFLAGS@  -I${includedir}

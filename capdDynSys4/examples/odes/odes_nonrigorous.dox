@@ -1,0 +1,44 @@
+/*! \page odes_nonrigorous ODEs - nonrigorous methods
+\tableofcontents
+
+Before reading this section be sure that you already familiar with sections \ref linear_algebra and \ref maps_definition.
+
+In this section we will give an overview on solving IVP for ODEs using the CAPD library.
+
+\section odes_types Defined types and data structures 
+
+The main header file 
+\code
+#include "capd/capdlib.h"
+\endcode
+defines the following types for computation in double (<b>D</b>) and long double (<b>LD</b>) precision.  
+- <b>DOdeSolver, LDOdeSolver</b> - ODE solvers, they can integrate first order variational equations
+- <b>DC2OdeSolver, LDC2OdeSolver</b> - ODE solvers, they can integrate first and second order variational equations
+- <b>DCnOdeSolver, LDCnOdeSolver</b> - ODE solvers, they can integrate higher order variational equations
+- <b>DTimeMap, LDTimeMap</b> - integrate ODE over a time interval. They can integrate first order variational equations.
+- <b>DC2TimeMap, LDC2TimeMap</b> - integrate ODE over a time interval. They can integrate first and second order variational equations.
+- <b>DCnTimeMap, LDCnTimeMap</b> - integrate ODE over a time interval. They can integrate higher order variational equations.
+
+Moreover, every class [Prefix]TimeMap defines public type <b>SolutionCurve</b> that is a functional object representing solution to IVP over time range. For example,
+\code {.cpp}
+  DTimeMap::SolutionCurve
+  LDTimeMap::SolutionCurve
+  DC2TimeMap::SolutionCurve
+  LDC2TimeMap::SolutionCurve
+  DCnTimeMap::SolutionCurve
+  LDCnTimeMap::SolutionCurve
+\endcode  
+
+In the CAPD we offer for you three strategies of solving IVP for ODEs. You can choose from 
+\li one-step numerical scheme based on high-order Taylor method
+\li a method for computation of the solution after a given time. This approach combines one-step scheme with automatic step control.
+\li a method for computation of a solution curve (as a functional object) over a time range.
+
+More detailed explanation is given in the following sections.
+
+- \subpage odes_taylor
+- \subpage odes_timemap
+- \subpage odesvar_nonrigorous
+- \subpage odes_nonrig_curves
+
+*/

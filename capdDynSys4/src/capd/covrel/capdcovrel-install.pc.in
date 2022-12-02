@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@abs_top_builddir@/src/capd/covrel
+includedir=@includedir@
+
+Name: capdcovrel
+Description: capdcovrel module
+Requires:
+Version: @PACKAGE_VERSION@
+Libs:   ${libdir}/libcapdcovrel.la @capdcovrel_LIBS@
+Cflags: @capdcovrel_CFLAGS@  -I${includedir}

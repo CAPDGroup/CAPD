@@ -1,0 +1,91 @@
+/*! \page odes_nonrig_curves ODEs - functional approach
+\tableofcontents
+
+\section odes_timemap_curves Solutions to IVPs as functions
+
+Class <b>[L]DTimeMap</b> provides methods for computing solutions to IVPs that behave like regular functions.
+This mechanism is written in the spirit of functional programming.
+Using this method you will get a function, say <tt>solution</tt>, that represents solution to IVP and you will be able to evaluate this function at any intermediate time 
+\code 
+DVector u = solution(t);
+\endcode
+without additional integration of ODE.
+
+This method is recommended if you
+- do not know exact time <tt>t</tt> at which you will need the solution or
+- you need solution values for many intermediate times <tt>t</tt>
+ 
+In order to obtain solution curve you have to
+
+\li define an instance of <b>SolutionCurve</b> - this is type defined in class <b>[L]DTimeMap</b>
+\code 
+double initialTime = ....;
+DTimeMap::SolutionCurve solution(initialTime); 
+\endcode
+\li specify initial condition and call your timeMap integrator 
+\code
+double finalTime = ...;
+DVector u(...);
+
+timeMap(finalTime,u,solution);
+\endcode
+After the last line the object <b>solution</b> becomes a function that you can evaluate at given time. We will describe details in the sequel.
+
+The type <tt>DTimeMap::SolutionCurve</tt> provides (in particular) methods for 
+\li obtaining the domain at which this curve is defined  - this should be interval [initialTime,finalTime] 
+\code
+double L = solution.getLeftDomain();
+double R = solution.getRightDomain();
+\endcode
+\li evaluating the function. For \f$ t\in[L,R]\f$ you can compute
+\code DVector u = solution(t); \endcode
+which is an approximate solution to IVP at time <tt>t</tt>.
+\note An exception is thrown when the argument <tt>t</tt> in call to <tt>solution(t)</tt> is out of the domain  
+<p></p>
+
+<b>Complete example (from examples/odes/DTimeMapSolutionCurveExample.cpp):</b>
+\include DTimeMapSolutionCurveExample.cpp
+
+
+
+\section odesvar_timemap_curves First order variational equations - functional approach
+As in the case of solving IVPs (see \ref odes_timemap_curves) one can obtain solution to variational equation as a functional object that can be evaluated at any intermediate time.
+In principle there are two differences:
+\li We can specify initial condition for variational equations. This argument (<b>initMatrix</b> in the example below) is optional. If it is skipped then the Identity matrix will be chosen as an initial condition for variational equations.
+\li We have to send an additional argument to operator that receives monodromy matrix at the end of trajectory and indicates that we intend to integrate variational equations.   
+<p></p>
+
+
+<b>Complete example (from examples/odes/DTimeMapMonodromyMatrixCurveExample.cpp):</b>
+\include DTimeMapMonodromyMatrixCurveExample.cpp
+
+
+
+\section odeshess_timemap_curves Second order variational equations - functional approach
+As in the case of solving IVPs (see \ref odes_timemap_curves) one can obtain solution to first and second order variational equation as a functional object that can be evaluated at any intermediate time.
+In principle there are two differences:
+\li We can specify initial condition for first and second order variational equations. These arguments (<b>initMatrix</b> and <b>initHessian</b> in the example below)
+ are optional. If both of them are skipped then the Identity matrix will be chosen for first order variational equations and zero for the second order variational equations.
+\li We have to send two additional arguments to the operator that computes trajectory. These arguments receive monodromy matrix and normalized hassian at the end of trajectory, respectively. Moreover, they indicate that we intend to integrate second order variational equations.
+<p></p>
+
+
+<b>Complete example (from examples/odes/DTimeMapHessianCurveExample.cpp):</b>
+\include DTimeMapHessianCurveExample.cpp
+
+
+
+
+\section odesjet_timemap_curves Higher order variational equations - functional approach
+The class [L]DCnTimeMap can compute solutions to higher order variational equations as a functional objects that can be evaluated at any intermediate time.
+In principle there are two differences:
+\li We can specify initial condition for all variational equations. This argument (<b>initJet</b> in the example below) is optional. 
+  If it is skipped then the Identity matrix will be chosen for first order variational equations and zero for higher order variational equations.
+\li We have to send one additional arguments to the operator that computes trajectory. This argument receives jet of solution and indicates that we intend to integrate higher order variational equations.
+<p></p>
+
+
+<b>Complete example (from examples/odes/DTimeMapJetCurveExample.cpp):</b>
+\include DTimeMapJetCurveExample.cpp
+
+*/

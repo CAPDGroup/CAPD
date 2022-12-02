@@ -1,0 +1,11 @@
+prefix=@top_capd@
+exec_prefix=@exec_prefix@
+libdir=@abs_top_builddir@/src/capd/pdes
+includedir=@abs_top_srcdir@/include
+
+Name: capdpdes
+Description: capdpdes module
+Requires:
+Version: @PACKAGE_VERSION@
+Libs:   ${libdir}/libcapdpdes.la @capdpdes_LIBS@
+Cflags: @capdpdes_CFLAGS@  -I${includedir}

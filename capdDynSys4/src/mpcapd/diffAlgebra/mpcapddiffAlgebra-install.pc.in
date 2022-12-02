@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@abs_top_builddir@/src/mpcapd/diffAlgebra
+includedir=@includedir@
+
+Name: mpcapddiffAlgebra
+Description: mpcapddiffAlgebra module
+Requires:
+Version: @PACKAGE_VERSION@
+Libs:  ${libdir}/libmpcapddiffAlgebra.la @mpcapddiffAlgebra_LIBS@
+Cflags: @mpcapddiffAlgebra_CFLAGS@  -I${includedir}

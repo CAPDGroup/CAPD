@@ -1,0 +1,81 @@
+/*! \page odesvar_rigorous ODEs - variational equations
+\tableofcontents
+
+\section odesvarrig_representation Representation of initial condition 
+
+The rigorous solver requires that the initial condition for variational equations is given in one of the acceptable representation. 
+We have implemented several algorithms and representations but \b C1Rect2Set and \b C1HORect2Set proved to be most efficient in most typical applications. 
+
+These classes represent a subset of \f$ R^n \f$ in the form of doubleton \f$ x + C*r0 + B*r \f$ where 
+\li \f$ x,r,r0\f$ are interval vectors, \f$ r,r_0\f$ contain zero
+\li \f$ C,B\f$ are interval matrices, with \f$ B\f$ close to orthogonal   
+
+They represent monodromy matrix also in the form of doubleton \f$ D + Cjac*R0 + Bjac*R \f$ where
+\li \f$ X,R,R0 \f$ are interval matrices, \f$ R,R_0\f$ contain zero
+\li \f$ Cjac,Bjac\f$ are interval matrices, with \f$ Bjac\f$ close to orthogonal   
+
+One can define an instance of \b C1Rect2Set or \b C1HORect2Set by constructor call
+\code
+IVector initialCondition(...);
+interval initialTime = ...;
+C1Rect2Set set(initialCondition,initialTime);
+// or C1HORect2Set set(initialCondition,initialTime);
+\endcode
+\note initialTime can be skipped and then it is set to zero 
+<p></p>
+\note the above constructor sets Identity as the initial condition for variational equations 
+
+If the initial condition is not an interval vector but an affine set 
+\f[
+  x + C*r_0
+\f]
+we recommend to use one of the following overloaded constructors
+\code 
+IVector x(...);
+IMatrix C(...);
+IVector r0(...);
+interval initialTime = ...;
+
+C1Rect2Set set(x,C,r0,initialTime);
+// or
+C1Rect2Set set(x,r0,initialTime);
+\endcode  
+
+
+
+\section odesvarrig_timemap Long-time integration of variational equations
+The class TimeMap (see \ref odes_timemap) provides interface for long-time integration of ODEs with associated variational equations. One has to specify initial condition 
+\code
+C1Rect2Set set(...);
+\endcode  
+and call suitable operator
+\code
+interval finalTime = ...;
+IMatrix monodromyMatrix(dimension,dimension);
+
+IVector y = timeMap(finalTime,set);
+\endcode
+After successful integration one can extract monodromy matrix from the object <tt>set</tt>
+\code
+IMatrix monodromyMatrix = (IMatrix)set;
+\endcode
+
+\note When solving ODEs with variational equations step control mechanism predicts time steps to fix requested error tolerances both for main equations and for variational equations. 
+
+Below is an example of integration of the forced pendulum equation. 
+
+See also an example of integration of the Rossler system with variational equations:  \ref integrate_variational 
+
+<b>Complete example (from examples/odes/ITimeMapVariationalEquationsExample.cpp):</b>
+\include ITimeMapVariationalEquationsExample.cpp
+
+
+
+\section odesvarrig_timemap_curves Variational equations - functional approach
+As in the case of computing trajectories (see \ref odesrig_timemap_curves) one can obtain solution to variational equation as a functional object that can be evaluated at any intermediate time.
+
+
+<b>Complete example (from examples/odesrig/ITimeMapMonodromyMatrixCurveExample.cpp):</b>
+\include ITimeMapMonodromyMatrixCurveExample.cpp
+
+*/ 

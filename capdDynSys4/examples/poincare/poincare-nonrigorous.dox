@@ -1,0 +1,65 @@
+/*! \page poincare_nonrigorous Poincare maps - nonrigorous methods
+
+\section poincare_vector Poincare map and return time - nonrigorous version
+Given an instance of class PoincareMap one can compute image of a vector under Poincare map by call to overloaded operator
+\code
+  DPoincareMap pm(...);
+  DVector x(...);
+  double returnTime = 0; // must be initialized!
+  cout << "P(x)=" << pm(x,returnTime) << endl;
+  cout << "return time = " << returnTime << endl; 
+\endcode
+
+\attention The second argument <tt>returnTime</tt> must be initialized as it is used both as input and output parameter. 
+\li For autonomous systems it is usually initialized with zero. Then on output it will contain return time.
+\li For nonautonomous systems its initial value specifies initial time for integration. On output it will contain the time at which intersection with Poincare section occurred.  
+
+\note The second argument <tt>initialTime</tt> of the operator can be skipped - then the initial time for integration is set to zero by default.
+\code
+  DPoincareMap pm(...);
+  DVector x(...);
+  cout << "P(x)=" << pm(x) << endl;
+\endcode
+<p></p>
+
+<b>Complete example (from examples/poincare/DPoincareMapExample.cpp):</b>
+\include DPoincareMapExample.cpp
+
+\section poincare_var_vector Derivatives of Poincare maps
+
+The class \b DPoincareMap provides an overloaded operator for computation of Poincare map and its derivative. In order to compute Poincare map and its derivative we have to  
+\li specify initial condition for the main equation  
+\code 
+double t = ...;
+DVector initPoint(...);
+\endcode  
+\li define matrix that will store <b>monodromy matrix</b> - this is derivative of the flow \f$ \phi(t,x) \f$ with respect to \f$ x \f$ and evaluated at \f$t=t(x)\f$ equal to return time
+\code DMatrix monodromyMatrix(...); \endcode
+\li call operator that computes simultaneously Poincare map and monodromy matrix
+\code
+  DPoincareMap pm(...);
+  double returnTime = 0.; // must be initialized
+  DVector P = pm(initPoint,monodromyMatrix,returnTime);
+\endcode
+\note The last argument <tt>returnTime</tt> is optional and can be skipped for autonomous systems
+<p></p>
+After successful integration we have
+\li <tt>P</tt> is an aproximate value of Poincare map at <tt>initPoint</tt>
+\li approximate monodromy matrix <tt>monodromyMatrix</tt>
+
+Given monodromy matrix we can recompute it to derivative of Poincare map by
+\code
+  DMatrix DP = pm.computeDP(P,monodromyMatrix,returnTime);
+\endcode 
+\note for nonautonomous systems the argument <tt>returnTime</tt> can be skipped
+<p></p>
+\note we split computation of derivative of Poincare map into computation of monodromy matrix and solving implicit equation. 
+This is because the user can provide own and optimized routine for recomputation of monodromy matrix to derivative of Poincare map. 
+For user convenience we provide a general routine <tt>computeDP</tt>. 
+<p></p>
+\note The matrix <tt>DP</tt> returned by <tt>computeDP</tt> is in full dimension. One can take a submatrix of <tt>DP</tt> that correspond to variables on the section. 
+
+<b>Complete example (from examples/poincare/DPoincareMapDerivativeExample.cpp):</b>
+\include DPoincareMapDerivativeExample.cpp
+
+*/

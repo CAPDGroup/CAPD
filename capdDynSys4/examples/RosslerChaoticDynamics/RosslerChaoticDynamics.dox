@@ -1,0 +1,51 @@
+/*! \page examples_RosslerChaoticDynamics Chaos in the Rossler system
+
+Consider the Rossler system
+\f[
+x' =  -(y+z), \qquad
+y' =  x + by,\qquad
+z' =  b + z*(x-a)
+\f]
+
+This example is a complete proof of
+\li the existence of an attractor \b A for the Rossler system with parameter values a=5.7, b=0.2.
+\li the existence of an uniformly hyperbolic invariant set \b H inside this attractor on which the dynamics is chaotic.
+ 
+Let us fix Poincare section \f$ \Pi = \{(x,y,z) : x=0 \wedge x'>0\} \f$ and let \f$ P \f$ be the associated Poincare map - see picture below.
+ 
+\image html RosslerChaoticDynamics/attractor.png
+
+The first assertion is proved by showing the existence of a trapping region for \f$ P \f$. Namely, we show that the set
+\f[ 
+  T = [-10.7,-2.3]\times[0.028,0.034]
+\f] 
+is mapped into itself by the Poincare map \f$ P \f$, i.e. \f$ P(T)\subset \mathrm{int} T \f$.
+
+The existence of chaotic dynamics has been proved for the first time by Piotr Zgliczyński
+\verbatim P. Zgliczyński,
+Computer assisted proof of chaos in the Henon map and in the Rossler equations, 
+Nonlinearity, 1997, Vol. 10, No. 1, 243--252
+\endverbatim    
+He introduced a new topological tool for proving the existence of periodic orbits and symbolic dynamics, named \b covering \b relations. 
+These geometric conditions simply mean that the edges of a rectangle must be mapped by the function in a proper side of the other rectangle as presented on the picture below.
+
+\image html RosslerChaoticDynamics/horseshoe.png
+
+Uniform hyperbolicity is verified by means of the cone conditions criterion introduced in 
+\verbatim H. Kokubu, D. Wilczak, P. Zgliczyński,
+Rigorous verification of cocoon bifurcations in the Michelson system, 
+Nonlinearity 20 (2007) 2147-2174.
+\endverbatim    
+
+
+The source of the program can be found in the <tt>capd/capdDynSys4/examples/RosslerChaoticDynamics</tt> directory of the CAPD library. 
+The program runs within less than \b five \b seconds on a laptop-type computer. Most of the time is taken by the verification of the cone conditions.
+ 
+\attention This program requires C++11 compiler support, for instance gcc-4.8 or newer with -std=c++11 flag.
+
+ \dontinclude RosslerChaoticDynamics.cpp
+ \skip include
+ \until END
+ 
+ 
+*/

@@ -1,0 +1,32 @@
+/** \page examples_RosslerPeriodicOrbit Periodic orbits for the Rossler system
+ This example is a complete proof of the existence of 3 different periodic solution for the Rossler system 
+\f[
+x' =  -(y+z), \qquad
+y' =  x + by,\qquad
+z' =  b + z*(x-a)
+\f]
+with chaotic parameter values a=5.7, b=0.2.
+
+\image html RosslerPeriodicOrbit/Rossler-3per-orbits.png
+
+Let us fix Poincare section \f$ \Pi = \{(x,y,z) : x=0 \wedge x'>0\} \f$ and let \f$ P \f$ be the associated Poincare map - see picture below.
+ 
+\image html RosslerChaoticDynamics/attractor.png
+
+Using the Interval Newton Operator 
+  
+\f$ N(f,x_0,X) = x_0 - [Df(x)]_I^{-1} f(x_0) \f$
+
+applied to the map \f$ f = P^n - Id\f$ we validate that \f$ f \f$ has zero for n=1,2,3. Although we do not check this in the program, these orbits are significantly different and of principal period n=1,2,3, respectively.
+
+The source of this example can be found in the <tt>examples/RosslerPeriodicOrbit</tt> directory of the CAPD package.
+
+\attention This program requires C++11 compiler support, for instance gcc-4.8 or newer with -std=c++11 flag.
+
+
+ \dontinclude RosslerPeriodicOrbit.cpp
+ \skip include
+ \until END
+
+
+*/

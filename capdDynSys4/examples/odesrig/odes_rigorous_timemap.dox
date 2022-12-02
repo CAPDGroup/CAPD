@@ -1,0 +1,115 @@
+/*! \page odesrig_timemap Long-time integration
+
+\section odes_rig_taylor_traj Computing solution after a fixed time
+For long-time integration we recommend to use  \b ITimeMap. It has almost the same interface as its nonrigorous version \b DTimeMap - see \ref  odes_timemap.     
+
+In order to compute trajectory after a given time we have to
+\li define an instance of ODE solver
+\code 
+IMap vectorField(...);
+int order = ...;
+IOdeSolver solver(vectorField,order);
+\endcode
+\li define an instance of ITimeMap
+\code
+ITimeMap timeMap(solver);
+\endcode
+\li specify initial condition
+\code
+interval initTime = ...; // needed for nonautonomous systems only
+IVector initialCondition(...);
+C0Rect2Set set(initialCondition,initTime);
+// or C0HORect2Set set(initialCondition,initTime);
+// or C0TripletonSet set(initialCondition,initTime);
+// or C0HOTripletonSet set(initialCondition,initTime);
+\endcode
+\li and integrate
+\code
+interval finalTime = ...;
+IVector y = timeMap(finalTime,set);
+\endcode
+
+Below is an example of integration of the Planar Restricted Circular Three Body Problem. 
+
+See also an example of integration of the Rossler system:  \ref integrate_ODE
+ 
+
+<b>Complete example (from examples/odesrig/ITimeMapExample.cpp):</b>
+\include ITimeMapExample.cpp
+
+
+
+
+
+
+
+\section odesrig_dense_output Enclosure of trajectory between time steps.
+Long time integration can be stopped after each step made and then resumed. It is enough to set flag 
+\code
+  timeMap.stopAfterStep(true);
+\endcode
+and integrate an ODE in a while loop
+\code
+  do{
+    timeMap(finalTime,set);
+    // do something with intermediate result 
+  }while(!timeMap.completed());  
+\endcode
+After each step one can extract from the solver what time step has been made and get enclosure of trajectory for this time range.
+ 
+Details are shown in the example bellow (see also another example \ref encloseTrajectory_encloseTrajectoryBetweenTimeSteps).
+<p></p>
+<b>Complete example (from examples/odesrig/ITimeMapEncloseTrajectoryExample.cpp):</b>
+\include ITimeMapEncloseTrajectoryExample.cpp
+
+
+
+
+
+\section odesrig_timemap_curves Solutions to IVPs as functions
+
+Class \b ITimeMap provides methods for computing solutions to IVPs that behave like regular functions.
+This mechanism is written in the spirit of functional programming.
+Using this method you will get a function \b solution that represents solution to IVP and you will be able to evaluate this function at any intermediate time 
+\code 
+IVector u = solution(t);
+\endcode
+without additional integration of ODE.
+
+This method is recommended if you
+- do not know exact time \b t at which you will need the solution
+- you need solution values for many intermediate times \b t \b
+
+In order to obtain solution curve you have to
+
+\li define an instance of \b SolutionCurve - this is type defined in class \b ITimeMap
+\code 
+interval initialTime = ....;
+ITimeMap::SolutionCurve solution(initialTime); 
+\endcode
+\li specify initial condition and call your timeMap integrator 
+\code
+interval finalTime = ...;
+C0Rect2Set set(...);
+
+timeMap(finalTime,set,solution);
+\endcode
+After the last line the object \b solution becomes a function that you can evaluate at given time. We will describe details in the sequel.
+
+The type <b>ITimeMap::SolutionCurve</b> provides (in particular) methods for 
+\li obtaining the domain at which this curve is defined  - this should be interval [initialTime,finalTime] 
+\code
+double L = solution.getLeftDomain();
+double R = solution.getRightDomain();
+\endcode
+\li evaluating the function. For \f$ t\in[L,R]\f$ one can compute
+\code IVector u = solution(t); \endcode
+which is guaranteed bound for the solution to the IVP at time \b t (it can be interval).
+\note An exception is thrown when the argument \b t in call to <tt>solution(t)</tt> is out of the domain  
+<p></p>
+
+
+<b>Complete example (from examples/odesrig/ITimeMapSolutionCurveExample.cpp):</b>
+\include ITimeMapSolutionCurveExample.cpp
+
+*/

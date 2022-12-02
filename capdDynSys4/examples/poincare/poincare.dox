@@ -1,0 +1,91 @@
+/*! \page poincare Poincare maps and their derivatives
+
+The CAPD library provides mechanisms for easy computation of Poincare maps their derivatives. In general the Poincare map is defined by specifying
+\li an ODE solver (instance of \b DOdeSolver, \b LDOdeSolver or \b IOdeSolver)
+\li a function \f$\alpha:R^n\to R \f$ that defines Poincare section. It is assumed that the function \f$ \alpha\in C^1 \f$ is smooth and the Poincare section is given as 
+\f[\Pi = \{x\in R^n : \alpha(x) =0 \} \f]       
+
+In the CAPD a Poincare map is seen as a function
+\f[
+  P: R^n\to \Pi \subset R^n
+\f]
+rather than a mapping from section to section. Initial point does not need to be on Poincare section \f$ \Pi\f$. We can compute intersection point of any trajectory with Poincare section. 
+
+We will give an overview on Poincare maps for both cases of rigorous and nonrigorous computations as they differ in details. 
+
+Poincare section is an object of class that implements interface defined in class \b %AbstractSection. For user convenience we defined three classes that implement interface \b %AbstractSection. Clearly the user can implement own class if necessary.
+\li \b CoordinateSection - the section is given as \f$ \alpha(x)=x_i-c \f$ for some index \f$ i=1,...,n \f$ and \f$c\in R\f$.
+\li \b AffineSection - the section is an affine hyperplane defined by normal vector and translation \f$ \alpha(x)=\langle n;x-c\rangle \f$. We <b>strongly recommend</b> usage of affine sections that are locally orthogonal to the vector field.
+\li \b NonlinearSection - the section is defined as arbitrary (possible nonlinear) map \f$ \alpha:R^n\to R \f$. Constructors of this class have exactly the same arguments as of the class \b %Function. In fact class NonlinearSection is derived from class %Function.  
+
+For user convenience we defined the following types for computation in double <b>D</b>, long double <b>LD</b>, multiple precision <b>Mp</b> and in interval arithmetics <b>I</b>, <b>MpI</b>
+\li <b>DCoordinateSection, LDCoordinateSection, MpCoordinateSection, ICoordinateSection, MpICoordinateSection</b>  
+\li <b>DAffineSection, LDAffineSection, MpAffineSection, IAffineSection, MpIAffineSection</b>  
+\li <b>DNonlinearSection, LDNonlinearSection, MpNonlinearSection, INonlinearSection, MpINonlinearSection</b>  
+  
+In the examples below we will show how to use each of these types of Poincare sections. Thus, we will use type NonlinearSection even if the section will be linear - just to demonstrate how to define it.   
+  
+\section poincare_define Defining Poincare maps
+Given an ODE solver (see section \ref odes_nonrigorous) 
+\code
+int order = ...;
+DMap vectorField(...);
+DOdeSolver solver (vectorField,order);
+\endcode   
+and Poincare section
+\code
+DCoordinateSection section(...);
+// or DNonlinearSection section(...);
+// or DAffineSection section(...);
+\endcode
+we define an instance of Poincare map by constructor call
+\code
+DPoincareMap pm(solver,section,crossingDirection);
+\endcode 
+The last argument specifies crossing direction of Poincare section. This is an enumeration type with three possible values
+\li capd::poincare::MinusPlus - the function \f$ \alpha \f$ changes sign from minus to plus along trajectory
+\li capd::poincare::PlusMinus - the function \f$ \alpha \f$ changes sign from plus to minus along trajectory
+\li capd::poincare::Both - both directions are acceptable
+<p></p>
+\note The argument <tt>crossingDirection</tt> of the constructor can be skipped. Its default value is <tt>capd::poincare::Both</tt>.
+
+In similar way one can define an instance of IPoincareMap for rigorous computation of Poincare maps.
+\code
+  IMap vectorField("var:x,y;fun:-y,x;");
+  IOdeSolver solver(vectorField,20);
+  INonlinearSection section("var:x,y;fun:x;");
+  IPoincareMap pm (solver,section);
+\endcode
+
+\attention The objects <tt>vectorField, solver, section</tt> must exists during usage of object <tt>pm</tt> as <tt>pm</tt> holds references to them. In particular this code is incorrect
+\code
+  // do not use this in your code! 
+  // Using object returned by this function can cause segmentation fault error.
+  DPoincareMap& createPoincareMap(){
+    DMap vectorField("var:x,y;fun:-y,x;");
+    DOdeSolver solver(vectorField,20);
+    DFunction section("var:x,y;fun:x;");
+    return *(new DPoincareMap(solver,section));
+  }
+\endcode  
+Instead one can define a little class for storing all objects (\b recommended)
+\code
+struct MyPoincareMap{
+  MyPoincareMap(int order)
+    : vectorField(...),
+      solver(vectorField,order),
+      section(...),
+      pm(solver,section)
+  {}
+
+  DMap vectorField;
+  DOdeSolver solver;
+  DAffineSection section;
+  DPoincareMap pm;
+};
+\endcode
+
+- \subpage poincare_nonrigorous 
+- \subpage poincare_rigorous 
+
+*/

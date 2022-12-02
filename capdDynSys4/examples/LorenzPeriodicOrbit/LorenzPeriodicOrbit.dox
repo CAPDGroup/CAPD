@@ -1,0 +1,57 @@
+/** \page examples_LorenzPeriodicOrbit Multiple periodic solutions for the Lorenz system
+ *
+ * This example is a complete proof of the existence of 116 periodic orbits for the Lorenz system with chaotic parameter values s=10, r=28., q=8/3.
+ * Initial conditions for periodic orbits are taken from the paper 
+
+	Z. Galias, W. Tucker, 
+	Validated study of the existence of short cycles for chaotic systems using symbolic dynamics and interval tools.
+	Int. J. Bifurcation and Chaos, 21(2):551-563, 2011. 
+
+ * This example shows also how to speed up computations by means of static memory allocation.
+ *
+ * Allocating objects on storage (malloc or new) is time consuming.
+ * If the dimension of the phase space is fixed and known at compile time
+ * you can use static memory allocation like 
+ \code
+ type data[dimension];
+ \endcode 
+ * which is much faster than malloc or new. The CAPD library provides a header file
+ *    capd/fdcapdlib.h
+ * that defines most important types for the dimension specified by the user. 
+ *
+ * \note Before including this file you MUST define two macros
+ * \li CAPD_USER_NAMESPACE - is the namespace in which most important types (like vectors, matrices, solvers, Poincare maps) will be defined for you.
+ * \li CAPD_DEFAULT_DIMENSION - is a nonnegative number that stands for the dimension.
+ *
+ 
+ * \note if you need few different dimensions in the same program you can undefine these macros and define them again.
+ *       For example:
+ \code {.cpp}
+ #define CAPD_USER_NAMESPACE capd3
+ #define CAPD_DEFAULT_DIMENSION 3
+	 #include "capd/fdcapdlib.h"
+ #undef CAPD_USER_NAMESPACE
+ #undef CAPD_DEFAULT_DIMENSION
+
+ #define CAPD_USER_NAMESPACE capd5
+ #define CAPD_DEFAULT_DIMENSION 5
+ 	#include "capd/fdcapdlib.h"
+ #undef CAPD_USER_NAMESPACE
+ #undef CAPD_DEFAULT_DIMENSION
+ \endcode
+ * Now capd3::IVector and capd5::IVector are 3 and 5 dimensional vectors, respectively.
+ * In these namespaces are defined matrices, ODE solvers, Poincare maps, etc.
+ *
+ * In this example we will use 3-dimensional objects for integration of the Lorenz system
+ * and variable size vectors and matrices when computing Interval Newton Operator
+ * (this is not time-critical operation in this example).
+ *
+ * The source of this program can be found in <tt>capd/capdDynSys4/examples/LorenzPeriodicOrbit</tt> directory of the CAPD library.
+ *
+ * \attention This program requires C++11 compiler support, for instance gcc-4.8 or newer with -std=c++11 flag.
+ *
+ * \dontinclude LorenzPeriodicOrbit.cpp
+ * \skip #include <iostream>
+ * \until END
+ *
+ */
