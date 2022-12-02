@@ -1,0 +1,6 @@
+capd (5.0) stable; urgency=high
+
+  * New structure for shared libraries in capdRedHom.
+  * Distribute only apiRedHom headers
+  
+ -- Mateusz Juda <mateusz.juda@uj.edu.pl>  Tue, 02 Feb 2017 8:00:00 +0200

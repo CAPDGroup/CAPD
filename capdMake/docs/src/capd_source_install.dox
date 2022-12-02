@@ -1,0 +1,9 @@
+/*! \page capd_source_install Sources
+
+Source code of the \b CAPD library can be [<b>download</b>](https://sourceforge.net/projects/capd/files/newest/src) from SourceForge (latest stable version) or \ref capd_repositories (development version).
+
+Please read:
+- \ref capd_requirements "Requirements"
+- \ref capd_compilation
+
+*/

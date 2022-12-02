@@ -1,0 +1,26 @@
+#!/usr/bin/awk -f
+
+# Convert the "svn log" output into a one liner format, which is easier to grep
+# or use in scripts. Pipe "svn log" into this script
+
+# When we get a line that starts with a revision number, put the data in variables
+/^r[0-9]+/ {
+rev=$1
+user=$3
+date=$5
+time=$6
+lines=13
+}
+
+# Anything that isn't a revision line, a separator line or an empty line
+# will be part of the commit message. Concatenate these into the comment variable
+! (/^r[0-9+]/ || /^-+$/ || /^$/) {
+comment = comment $0
+}
+
+# With every separator line, output what we stored before and reset the comment variable
+# To skip the first line we also check if we've already stored a revision
+/^-+$/ && rev {
+print date "_" time " | " rev " | " user " | " comment
+comment = ""
+}

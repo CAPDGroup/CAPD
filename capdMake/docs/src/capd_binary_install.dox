@@ -1,0 +1,27 @@
+/*! \page capd_binary_install Binaries
+
+\section capd_binary_install_download Download
+
+Binary version of the \b CAPD library can be [<b>download</b>](https://sourceforge.net/projects/capd/files/newest/bin)  from SourceForge.
+Alternatively you can use our Docker image with installed CAPD in <code>/usr/local</code>:
+  - [<b>capd/capd-ubuntu_x86</b>](https://hub.docker.com/r/capd/capd-ubuntu_x86/) - image based on Ubuntu, example usage.
+
+Be aware that the binary version requires additional libraries in run-time. Please check \ref capd_requirements or \ref capd_build_environment . If there is no version for your system then you can try "similar" distribution or you need to compile the source code (see \ref capd_source_install). Let us know if you would like to see binaries for your system!
+
+To use our shared libraries or bindings (e.g. Mathematica, Python etc.) you need to be sure that the libraries are visible in the system and all dependencies are satisfied. If your installation directory is not standard (standard location for Linux/macOS is \e /usr and \e /usr/local) you need to set LD_LIBRARY_PATH (DYLD_LIBRARY_PATH on macOS).
+You can read more deatils in your system manual.
+
+To check if all run-time dependencies are satisfied you can load a shared library in Python using following snippet:
+\code
+python -c "import sys; from ctypes import *; lib = cdll.LoadLibrary(sys.argv[1]);" PATH_TO_LIBRARY
+\endcode
+In case of error your system will show you a message.
+
+\section capd_build_environment Build environment
+Bellow you can find informations about our build environment. You can use similar setup to build the software yourself or to use binaries provided by us.
+
+\subsection capd_build_environment_dockerfiles Dockerfiles
+We build for Linux using [<b>Docker</b>](https://www.docker.com/). You can find our images in the [<b>Docker Hub</b>](https://hub.docker.com/u/capd/):
+ - [<b>capd/capd-builder-ubuntu_x86</b>](https://hub.docker.com/r/capd/capd-builder-ubuntu_x86/) - image based on Ubuntu
+ 
+*/

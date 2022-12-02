@@ -1,0 +1,26 @@
+AC_ARG_WITH([matlab],
+    [AS_HELP_STRING([--with-matlab], [set path to Matlab installation directory, e.g. /usr/local/lib/MATLAB/R2014b )])],
+    [],
+    [with_matlab=auto])
+
+matlab_path="$PATH"
+
+AS_IF([test "$with_matlab" == "auto"],[
+ matlab_path="${matlab_path}:/usr/local/lib/MATLAB/R2014b/bin"
+], [
+ matlab_path="${with_matlab}"
+])
+
+
+AC_PATH_PROG([MEX_CMD], [mex], [],
+             [$matlab_path])
+AC_PATH_PROG([MATLAB_CMD], [matlab], [],
+             [$matlab_path])
+
+AS_IF([ test -n "$MEX_CMD" && test -n "$MATLAB_CMD" ],
+  [
+       HAVE_MATLAB=true
+       AC_DEFINE([HAVE_MATLAB], [1], [Have MATLAB])
+  ])
+
+AM_CONDITIONAL([HAVE_MATLAB], [test x$HAVE_MATLAB = xtrue])

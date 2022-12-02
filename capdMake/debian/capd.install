@@ -1,0 +1,4 @@
+usr/share/*
+usr/bin/*
+usr/lib/*.so
+usr/lib/*.so.*

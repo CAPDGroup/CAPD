@@ -1,0 +1,14 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+# replace by *-config scripts
+capd_prefix=@prefix@
+
+Name: mpcapd-gui
+Description: mpcapd library with gui.
+Requires:
+Version: @PACKAGE_VERSION@
+Libs: -L${capd_prefix}/lib -L${libdir} -lmpcapd-gui @mpcapd_gui_LIBS_FLAGS_ONLY@
+Cflags: -I${capd_prefix}/include @mpcapd_gui_CFLAGS@

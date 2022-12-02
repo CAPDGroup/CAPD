@@ -1,0 +1,55 @@
+AC_ARG_WITH([mathematica],
+    [AS_HELP_STRING([--with-mathematica], [set path to Mathematica \$InstallationDirectory directory)])],
+    [],
+    [with_mathematica=auto])
+
+AS_IF([test "$with_mathematica" == "auto"],[
+ AC_PATH_PROG([MATHEMATICA_SCRIPT], [MathematicaScript], [],
+             [$PATH:/Applications/Mathematica.app/Contents/MacOS/:/usr/local/lib/Wolfram/Mathematica/10.4/Contents/Linux])
+ AS_IF([test -n "$MATHEMATICA_SCRIPT"],[
+
+  rm -f conftest.$ac_ext
+  echo 'Print[[$InstallationDirectory]]' > conftest.$ac_ext
+  cat conftest.$ac_ext # for debug, somehow MathematicaScript hangs
+
+  mathematica_install_dir=`$MATHEMATICA_SCRIPT -script conftest.$ac_ext`
+  AS_IF([test -e "$mathematica_install_dir"],[
+    AC_MSG_NOTICE([Mathematica found in $mathematica_install_dir])
+    mathematica_path="$mathematica_install_dir"
+
+    echo 'Print[[$SystemID]]' > conftest.$ac_ext
+    cat conftest.$ac_ext # for debug, somehow MathematicaScript hangs
+
+    mathematica_system_id=`$MATHEMATICA_SCRIPT -script conftest.$ac_ext`
+    AC_SUBST(mathematica_system_id)
+   ], [
+    AC_MSG_WARN([MathematicaScript found, but we cannot get its installation directory using: Print[\$InstallationDirectory]])
+    with_mathematica="no"
+    mathematica_path="no"
+  ])
+
+ ], [
+   AC_MSG_WARN([Cannot find Mathematica])
+   mathematica_path="no"
+ ])
+
+], [mathematica_path="$with_mathematica"])
+
+
+AS_IF([test "$mathematica_path" != "no"],[
+
+   MATHEMATICA_FILE="$mathematica_path/SystemFiles/IncludeFiles/C/WolframLibrary.h"
+   AS_IF([ test -e $MATHEMATICA_FILE ],
+     [
+       HAVE_MATHEMATICA=true
+       AC_DEFINE([HAVE_MATHEMATICA], [1], [Have MATHEMATICA library])
+       mathematica_CFLAGS="-I$mathematica_path/SystemFiles/IncludeFiles/C/"
+       AC_SUBST(mathematica_CFLAGS)
+     ],
+     [
+       AC_MSG_ERROR([You provided Mathematica path, but we cannot find its file $MATHEMATICA_FILE !])
+     ]
+   )
+])
+
+AM_CONDITIONAL([HAVE_MATHEMATICA], [test x$HAVE_MATHEMATICA = xtrue])

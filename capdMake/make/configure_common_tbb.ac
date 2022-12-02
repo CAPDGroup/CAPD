@@ -1,0 +1,19 @@
+
+dnl --- downloaded from https://raw.githubusercontent.com/CNGLdlab/LORG-Release/master/m4/ax_tbb.m4
+
+AX_TBB([
+        HAVE_TBB=yes
+        CAPD_CPPFLAGS_TBB="${TBB_CPPFLAGS}"
+        CAPD_LDFLAGS_TBB="${TBB_LDFLAGS}"
+        CAPD_LIBS_TBB="${TBB_LIBS}"
+        AC_SUBST([CAPD_CPPFLAGS_TBB])
+        AC_SUBST([CAPD_LDFLAGS_TBB])
+        AC_SUBST([CAPD_LIBS_TBB])
+        # fro dfines
+        AC_SUBST([CAPD_HAVE_TBB],[1])
+        ], [
+        HAVE_TBB=no
+        AC_SUBST([CAPD_HAVE_TBB],[0])
+        ])
+
+AM_CONDITIONAL([HAVE_TBB], [ test "$HAVE_TBB" = "yes" ])

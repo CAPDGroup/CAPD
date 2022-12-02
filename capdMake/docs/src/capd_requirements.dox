@@ -1,0 +1,197 @@
+/*! \page capd_requirements CAPD requirements
+
+\section capd_requirements_linux Linux
+
+For CAPD users:
+- \b gcc, \b g++.
+- \b make.
+- \b pkg-config.
+- To enable <b>graphical environment \e krak </b>:
+  - We recommend \b wxWidgets  with \b gtk library (it works only with <tt>libwxgtk2.8-dev</tt> package).
+  - It is possible to use older \b X11 library (require <tt>libX11-dev</tt> package).
+  - In both cases you should install packages for developers (usually with postfix \e dev).
+- To enable <b>multiple precision</b> support in the CAPD the libraries \b gmp and \b mpfr are required.<br/>
+  One should install packages <tt>libgmp, libgmp-dev, libgmpxx, libmpfr, libmpfr-dev</tt>.
+- To enable advanced logging please install log4cxx (package <tt>liblog4cxx10-dev</tt>).
+- We recommend to install <a href="http://www.boost.org/">Boost</a> library (header files and compiled libraries, recomended version: 1.53.0, it is not mandatory, e.g. package <tt>libboost1.53-all-dev</tt> or <tt>libboost-all-dev</tt>).
+
+
+To use CAPD developer version one require also
+- \e autoreconf (along with autoconf, automake, aclocal)
+- \e libtool
+
+The CAPD package was tested on Linux distributions: Debian, Ubuntu.
+Please check \ref capd_build_environment_dockerfiles to see our setup.
+
+\section capd_requirements_osx OSX
+
+1) Install C++ compiler from Command Line Tools (it is also shipped with XCode) by doing one of the following:
+- Install \b Xcode from App Store (it is quite heavy).
+- It is enough to download and install <b>Command Line Tools</b> from
+  <a href="http://developer.apple.com/downloads/index.action">Apple Developers</a>
+ (search for "command line tools").
+
+2) If you have an \b M1 chip (filib interval library does not support it),
+   then do one of the following
+   -  Use Rosetta (it is an Intel processor emulation and can slow down performance)
+
+      - in Finder find Terminal (which should be in Applications/Utilities/),
+      right mouse click on it, and choose “Get Info”.
+      - Choose the “open using Rosetta” tickbox. Install Rosetta when prompted if you do not have one.
+      - Quit Terminal.
+
+      <i> You can choose to have two versions of Terminal.
+         One running with Rosetta and the other to run without it.
+         To do so simply duplicate the Terminal application,
+         and choose one of the terminal application to be under Rosetta and the other without it.
+         Use the Rosetta terminal for the below installation steps. </i>
+
+   - (EXPERIMENTAL) Use <tt>--without-filib</tt> switch when calling <tt>configure</tt> script.
+     It will use internal CAPD interval package instead of filib library.
+     It is not yet well tested. It is good for development.
+
+   If you have an Intel mac, ignore this step.
+
+3) Install \b Homebrew
+
+   <i>For OSX you can find a few package managers,
+   we recommend <a href="http://brew.sh/"><b>Homebrew</b></a>.<i>
+
+   - In Terminal paste and execute:
+     \code{.sh}
+     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”
+     \endcode
+     (see https://brew.sh for details.)
+
+   - Homebrew can check if the installation is correct:
+     \code{.sh}
+     brew doctor
+     \endcode
+
+4) Install \b GNU \b tools and libraries, that CAPD depends on.
+
+   -  In Terminal execute one by one the following commands:
+      \code{.sh}
+      brew install boost
+      brew install make
+      brew install autoconf
+      brew install pkg-config
+      \endcode
+
+   - To use multiple precision in CAPD
+     \code{.sh}
+     brew install gmp mpfr
+     \endcode
+
+   - For CAPD developers: install also
+     \code{.sh}
+     brew install automake libtool svn log4cxx python
+     \endcode
+     to generate documentation
+     \code{.sh}
+     brew install doxygen
+     \endcode
+
+   - <i>Optional</i> step - graphical library X11 support:
+     \verbinclude osx_install_x11.sh
+
+     Verify previous steps with pkg-config:
+     \code{.sh}
+     pkg-config x11 --libs --cflags
+     \endcode
+
+5) <i>Optional/Experimental</i> Recently OSX version of gcc/g++ switched to <b>clang</b> engine.
+We have not tested it for compatibility with our code.
+You can compile the code, but we are not sure about compatibility with roundings etc.
+You can experiment with original version of gcc/g++ which you can install using following commands:
+\code{.sh}
+brew install gcc
+\endcode
+
+\section capd_requirements_windows Windows
+
+The current version of CAPD uses automated compilation tools therefore it needs
+linux like shell console and selection of other tools.
+We recommend use of MinGW - Minimalist GNU for Windows.
+
+We do not recommend Windows platform for development: shell scripts execution in MSYS is <b>very slow(!)</b> because of <i>fork()</i> emulation.
+
+Nowadays we use cross-compilation technique to build binaries for Windows. We use [MXE](http://mxe.cc/) with Docker, see our \ref capd_build_environment_dockerfiles . However, long time ago we were able to prepare MinGW enviroment on Windows for CAPD compilation using the following:
+
+<b>NOT supported!!!</b>
+
+1) Download and install <a href="http://sourceforge.net/projects/mingw/files/">mingw-get-setup.exe</a>.
+Set location or use default C:\\MinGW. Select <i>'Basic Setup'</i> on the left panel. Then mark: <b>mingw-32-base</b>, <b>msys-base</b>. You may see a few errors related to dependencies - just ignore them.
+
+2) Click 'Start' and to 'Run' prompt past (change C:\\MinGW if you use different settings):
+\code{.sh}
+C:\\MinGW\\msys\\1.0\\postinstall\\pi.bat
+\endcode
+
+Answer two times y.
+
+MinGW is installed! To verify: open
+\code{.sh}
+C:\\MinGW\\msys\\1.0\\msys.bat
+\endcode
+and run
+\code{.sh}
+gcc -v
+\endcode
+
+Please make sure that
+\code{.sh}
+cat /etc/fstab
+\endcode
+returns something like:
+\code{.sh}
+c:/MinGW  /mingw
+\endcode
+if not, then close MSYS shell and execute once again:
+\code{.sh}
+C:\MinGW\msys\1.0\postinstall\pi.bat
+\endcode
+
+
+3) Now we need to install a few packages. In the <b>MSYS shell (msys.bat)</b> execute following commands:
+\code{.sh}
+
+mingw-get install msys-wget
+mingw-get install msys-unzip
+mingw-get install mingw32-gcc-g++
+mingw-get install mingw32-autotools
+
+mingw-get install mingw32-binutils
+
+mingw-get install mingw32-mpfr
+mingw-get install mpc
+mingw-get install mingw32-w32api
+mingw-get install mingw32-mingwrt
+
+wget "http://ftp.gnome.org/pub/gnome/binaries/win32/gtk+/2.24/gtk+-bundle_2.24.10-20120208_win32.zip" -O /tmp/gtk.zip
+
+unzip -o -d /mingw/ /tmp/gtk.zip
+
+\endcode
+
+The CAPD \ref capd_compilation "compilation" should be performed from msys shell.
+
+<b>(Optional)</b>Please download Boost library from <a href="http://www.boost.org/users/download/">here</a>. <b>ATTENTION</b> For Windows download <b>ZIP</b> archive.
+On the Boost webpage you can find details about the installation process. You need to do it from native windows command line shell (Start -> Run -> cmd.exe). For us enough is to execute:
+
+\code{.sh}
+set PATH=C:\MinGW\bin;%PATH%
+bootstrap.bat mingw
+b2 --toolset=gcc
+\endcode
+
+You may see a lot of warnings, do not care about them - just keep waiting and be patient. UNLESS you see an error - then let us know.
+
+Next, form the MSys shell (replace [path_to_boost] with MSys path to the Windows folder with boost, in our case /c/boost_1_55_0/ ):
+\code{.sh}
+cp -fr [path_to_boost]/boost /mingw/include/
+cp -fr [path_to_boost]/stage/lib/libboost* /mingw/lib/
+\endcode
+
+
+*/

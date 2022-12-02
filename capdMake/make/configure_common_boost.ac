@@ -1,0 +1,55 @@
+AS_IF([test x"$with_boost" != xno],[
+  AS_IF([test x"$capd_boost_version" = x],
+        [capd_boost_version="1.42"]) # debian 6 compatibility
+
+  AM_CONDITIONAL([HAVE_BOOST], [true])
+  AC_SUBST([BOOST_DETECTED], [true])
+
+   BOOST_REQUIRE([$capd_boost_version],[
+   AS_IF([test x"$boost_optional" = xyes],[
+           AC_MSG_WARN([Cannot find boost $capd_boost_version])
+           AM_CONDITIONAL([HAVE_BOOST], [false])
+	        AC_SUBST([BOOST_DETECTED], [false])
+	      ],
+	      [
+          AC_MSG_ERROR([
+Cannot find boost $capd_boost_version.
+If you have boost installed, plese use --with-boost=<PATH>.
+If you do not want to use new functionalities, you do not need boost. Please say it explicitly: ./configure --with-boost=no
+               ])
+         ])
+  ])
+
+] , [
+    AM_CONDITIONAL([HAVE_BOOST], [false])
+    AC_SUBST([BOOST_DETECTED], [false])
+])
+
+
+
+
+dnl BOOST_DEFUN([Timer],
+dnl [AC_REQUIRE([BOOST_SYSTEM])dnl
+dnl boost_timer_save_LIBS=$LIBS
+dnl boost_timer_save_LDFLAGS=$LDFLAGS
+dnl m4_pattern_allow([^BOOST_((FILE)?SYSTEM|DATE_TIME|THREAD)_(LIBS|LDFLAGS)$])dnl
+dnl LIBS="$LIBS $BOOST_SYSTEM_LIBS"
+dnl LDFLAGS="$LDFLAGS $BOOST_SYSTEM_LDFLAGS"
+dnl BOOST_FIND_LIB([timer], [$1],
+dnl                 [boost/timer/timer.hpp],
+dnl                 [boost::timer::auto_cpu_timer t;])
+dnl LIBS=$boost_timer_save_LIBS
+dnl LDFLAGS=$boost_timer_save_LDFLAGS
+dnl ])# BOOST_TIMER
+
+#BOOST_SYSTEM()
+#BOOST_TIMER()
+#BOOST_THREADS()
+#BOOST_SERIALIZATION()
+#BOOST_PROGRAM_OPTIONS()
+#BOOST_FILESYSTEM()
+#BOOST_TEST()
+#BOOST_PYTHON()
+#BOOST_IOSTREAMS()
+
+#AX_PYTHON_DEVEL()

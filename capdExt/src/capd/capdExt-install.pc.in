@@ -1,0 +1,9 @@
+prefix=@prefix@
+abs_top_builddir=@abs_top_builddir@
+
+Name: capdExt
+Description: @PACKAGE_NAME@  library.
+Requires: capdalglib
+Version: @PACKAGE_VERSION@
+Libs: @filib_LIBS@
+Cflags: @filib_CFLAGS_INSTALL@

@@ -1,0 +1,11 @@
+prefix=@top_capd@
+exec_prefix=@exec_prefix@
+libdir=@abs_top_builddir@/src/capd/rings
+includedir=@abs_top_srcdir@/include
+
+Name: capdrings
+Description: capdrings module
+Requires:
+Version: @PACKAGE_VERSION@
+Libs:   ${libdir}/libcapdrings.la @capdrings_LIBS@
+Cflags: @capdrings_CFLAGS@  -I${includedir}

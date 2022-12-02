@@ -1,0 +1,47 @@
+CXXFLAGS_before_cxx_14=${CXXFLAGS}
+
+
+AC_DEFUN([CAPD_CXX_FLAG_CHECK],
+[dnl
+  AC_MSG_CHECKING([if $CXX supports $1])
+  AC_LANG_PUSH([C++])
+  ac_saved_cxxflags="$CXXFLAGS"
+  CXXFLAGS="-Werror $1"
+  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([])],
+    [
+    AC_MSG_RESULT([yes])
+    CXX_FLAG_$2="$1"
+    AC_SUBST([CXX_FLAG_$2])
+    ],
+    [
+    CXX_FLAG_$2=""
+    AC_MSG_WARN([no])
+    ]
+  )
+  CXXFLAGS="$ac_saved_cxxflags"
+  AC_LANG_POP([C++])
+  AM_CONDITIONAL([CXX_FLAG_$2], [ test "x${CXX_FLAG_$2}"!=x ])
+])
+
+# Do not use the macro bellow. It test the compiler, however Debian:8 and Ubuntu:16.04 do not support all the test cases
+# AX_CXX_COMPILE_STDCXX_14([noext],[optional])
+# instead use simple check for flag
+CAPD_CXX_FLAG_CHECK([-std=c++14], [CAPD_HAVE_CXX14])
+
+
+AM_COND_IF([CXX_FLAG_CAPD_HAVE_CXX14],
+   [HAVE_CXX14=1],
+   [HAVE_CXX14=0])
+
+if [test "$HAVE_CXX14" = "1"]; then
+        HAVE_CXX14="yes"
+        # force -std=c++14 because the macro sets CXX variable which we can modify later
+        CAPD_CXXFLAGS_CXX14="${CXXFLAGS} -std=c++14"
+        AC_SUBST([CAPD_CXXFLAGS_CXX14])
+else
+        HAVE_CXX14="no"
+fi
+
+AM_CONDITIONAL([HAVE_CXX14], [ test "$HAVE_CXX14" = "yes" ])
+
+CXXFLAGS=${CXXFLAGS_before_cxx_14}

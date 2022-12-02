@@ -1,0 +1,14 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+# replace by *-config scripts
+capd_prefix=@prefix@
+
+Name: capd
+Description: capd library.
+Requires:
+Version: @PACKAGE_VERSION@
+Libs: -L${capd_prefix}/lib -L${libdir} -lcapd @capd_LIBS_FLAGS_ONLY@
+Cflags: -I${capd_prefix}/include @capd_CFLAGS@

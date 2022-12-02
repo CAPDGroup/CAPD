@@ -1,0 +1,23 @@
+// TODO:
+
+/* \page capd_changelog  CAPD ChangeLog
+
+## Version [5.2.0] 2022-04-29
+### Added
+- A
+- B
+### Changed
+- A
+- B
+
+## Version [5.0.0] - 2020-MM-DD
+### Added
+### Changed
+- There is a new \ref capd_compilation "compilation system" of the CAPD library.
+- It is easier to \ref user_programs "build your own programs" with capd-config-* scripts or general makefile.
+- You can choose what \ref directory_structure "part of the CAPD library" you would like to build when configuring the library,
+- FILIB interval library is included as one of the CAPD packages and it is the default option in configure script.
+- The CAPD native intervals are not supported anymore because g++ compilation with -O2 flag is reordering some rounding operations.
+
+
+ */

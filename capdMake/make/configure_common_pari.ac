@@ -1,0 +1,22 @@
+AC_CHECK_HEADER([pari/pari.h],
+   [
+     AC_SEARCH_LIBS([pari_init], [pari] ,
+                    [
+                      HAVE_PARI="yes"
+                    ],
+                    [
+                      AC_MSG_WARN("Cannot find libpari")
+                      HAVE_PARI="no"
+                    ])
+   ],
+   [
+   AC_MSG_WARN("Cannot find PARI headers")
+   HAVE_PARI=false
+   ])
+
+AM_CONDITIONAL([HAVE_PARI], [test "$HAVE_PARI" == "yes"])
+
+AS_IF([test "x$HAVE_PARI" = "xyes"],
+[
+  AC_DEFINE([HAVE_PARI], [1], [PARI library])
+])

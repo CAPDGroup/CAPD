@@ -1,0 +1,4 @@
+SUFFIXES=.cpp .c .C .cxx .h .hpp .hxx
+
+all-install-local: lib
+	$(MAKE) $(AM_MAKEFLAGS) prefix=${top_capd} install
