@@ -3,5 +3,5 @@ Experimental repository for CAPD library
 
 ## Original source code repositories:
 
-svn co https://svn.capdnet.ii.uj.edu.pl/capd/  
-svn co https://svn.capdnet.ii.uj.edu.pl/capdDynSys4
+https://svn.capdnet.ii.uj.edu.pl/capd/  
+https://svn.capdnet.ii.uj.edu.pl/capdDynSys4
