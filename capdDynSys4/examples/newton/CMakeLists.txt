@@ -1,0 +1,11 @@
+set(EXAMPLE_EXECUTABLE_NAME newtonSimple)
+add_executable(${EXAMPLE_EXECUTABLE_NAME})
+target_link_directories(${EXAMPLE_EXECUTABLE_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
+target_link_libraries(${EXAMPLE_EXECUTABLE_NAME} capd_experimental)
+target_sources(${EXAMPLE_EXECUTABLE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/newtonSimple.cpp)
+
+set(EXAMPLE_EXECUTABLE_NAME newtontst)
+add_executable(${EXAMPLE_EXECUTABLE_NAME})
+target_link_directories(${EXAMPLE_EXECUTABLE_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
+target_link_libraries(${EXAMPLE_EXECUTABLE_NAME} capd_experimental)
+target_sources(${EXAMPLE_EXECUTABLE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/newtontst.cpp)

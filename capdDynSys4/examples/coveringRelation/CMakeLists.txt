@@ -1,0 +1,17 @@
+set(EXAMPLE_EXECUTABLE_NAME coveringRelations2D_a)
+add_executable(${EXAMPLE_EXECUTABLE_NAME})
+target_link_directories(${EXAMPLE_EXECUTABLE_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
+target_link_libraries(${EXAMPLE_EXECUTABLE_NAME} capd_experimental)
+target_sources(${EXAMPLE_EXECUTABLE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/coveringRelations2D_a.cpp)
+
+set(EXAMPLE_EXECUTABLE_NAME coveringRelations2D_b)
+add_executable(${EXAMPLE_EXECUTABLE_NAME})
+target_link_directories(${EXAMPLE_EXECUTABLE_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
+target_link_libraries(${EXAMPLE_EXECUTABLE_NAME} capd_experimental)
+target_sources(${EXAMPLE_EXECUTABLE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/coveringRelations2D_b.cpp)
+
+set(EXAMPLE_EXECUTABLE_NAME coveringRelations2D_c)
+add_executable(${EXAMPLE_EXECUTABLE_NAME})
+target_link_directories(${EXAMPLE_EXECUTABLE_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
+target_link_libraries(${EXAMPLE_EXECUTABLE_NAME} capd_experimental)
+target_sources(${EXAMPLE_EXECUTABLE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/coveringRelations2D_c.cpp)
