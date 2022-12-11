@@ -1,11 +1,2 @@
-# set(EXAMPLE_EXECUTABLE_NAME BuildInfoMain)
-# add_executable(${EXAMPLE_EXECUTABLE_NAME})
-# target_link_directories(${EXAMPLE_EXECUTABLE_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
-# target_link_libraries(${EXAMPLE_EXECUTABLE_NAME} capd_experimental)
-# target_sources(${EXAMPLE_EXECUTABLE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/BuildInfoMain.cpp)
-
-set(EXAMPLE_EXECUTABLE_NAME argdemo)
-add_executable(${EXAMPLE_EXECUTABLE_NAME})
-target_link_directories(${EXAMPLE_EXECUTABLE_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
-target_link_libraries(${EXAMPLE_EXECUTABLE_NAME} capd_experimental)
-target_sources(${EXAMPLE_EXECUTABLE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/argdemo.cpp)
+# build_example_executable(BuildInfoMain)
+build_example_executable(argdemo)

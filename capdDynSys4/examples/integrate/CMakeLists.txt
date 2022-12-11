@@ -1,11 +1,2 @@
-set(EXAMPLE_EXECUTABLE_NAME integrateVariationalEquation)
-add_executable(${EXAMPLE_EXECUTABLE_NAME})
-target_link_directories(${EXAMPLE_EXECUTABLE_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
-target_link_libraries(${EXAMPLE_EXECUTABLE_NAME} capd_experimental)
-target_sources(${EXAMPLE_EXECUTABLE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/integrateVariationalEquation.cpp)
-
-set(EXAMPLE_EXECUTABLE_NAME integrate)
-add_executable(${EXAMPLE_EXECUTABLE_NAME})
-target_link_directories(${EXAMPLE_EXECUTABLE_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
-target_link_libraries(${EXAMPLE_EXECUTABLE_NAME} capd_experimental)
-target_sources(${EXAMPLE_EXECUTABLE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/integrate.cpp)
+build_example_executable(integrateVariationalEquation)
+build_example_executable(integrate)

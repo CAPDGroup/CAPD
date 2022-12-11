@@ -1,11 +1,2 @@
-set(EXAMPLE_EXECUTABLE_NAME TexWriterExample2)
-add_executable(${EXAMPLE_EXECUTABLE_NAME})
-target_link_directories(${EXAMPLE_EXECUTABLE_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
-target_link_libraries(${EXAMPLE_EXECUTABLE_NAME} capd_experimental)
-target_sources(${EXAMPLE_EXECUTABLE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/TexWriterExample2.cpp)
-
-set(EXAMPLE_EXECUTABLE_NAME TexWriterExample)
-add_executable(${EXAMPLE_EXECUTABLE_NAME})
-target_link_directories(${EXAMPLE_EXECUTABLE_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
-target_link_libraries(${EXAMPLE_EXECUTABLE_NAME} capd_experimental)
-target_sources(${EXAMPLE_EXECUTABLE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/TexWriterExample.cpp)
+build_example_executable(TexWriterExample)
+build_example_executable(TexWriterExample2)
