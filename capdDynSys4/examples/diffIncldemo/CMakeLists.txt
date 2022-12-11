@@ -1,1 +1,1 @@
-build_example_executable(diffInclExample)
+build_example_executable_monofile(diffInclExample)

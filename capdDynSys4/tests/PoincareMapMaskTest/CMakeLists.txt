@@ -1,1 +1,1 @@
-build_boost_test_executable(DPoincareMapMaskTest.cpp)
+build_boost_test_executable_monofile(DPoincareMapMaskTest.cpp)

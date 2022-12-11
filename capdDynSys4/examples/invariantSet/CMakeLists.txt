@@ -1,1 +1,1 @@
-build_example_executable(invSet)
+build_example_executable_monofile(invSet)

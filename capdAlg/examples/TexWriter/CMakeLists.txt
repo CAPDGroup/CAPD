@@ -1,2 +1,2 @@
-build_example_executable(TexWriterExample)
-build_example_executable(TexWriterExample2)
+build_example_executable_monofile(TexWriterExample)
+build_example_executable_monofile(TexWriterExample2)

@@ -1,1 +1,1 @@
-build_example_executable(RosslerChaoticDynamics)
+build_example_executable_monofile(RosslerChaoticDynamics)

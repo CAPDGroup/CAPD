@@ -1,1 +1,1 @@
-build_example_executable(logger)
+build_example_executable_monofile(logger)

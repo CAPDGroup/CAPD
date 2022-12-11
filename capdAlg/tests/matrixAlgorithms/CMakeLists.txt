@@ -1,9 +1,11 @@
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/matrixAlgorithmsTestMain.cpp)
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/LinearEquationFixtures.cpp)
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/intMatrixAlgorithmsTest.cpp)
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/intMatrixAlgorithmsTest_legacy.cpp)
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/QuotientBaseMatrixFixtures.cpp)
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/SmithFixtures.cpp)
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/PARIInterfaceTest.cpp)
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/floatMatrixAlgorithmsTest.cpp)
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/SmithFormFactoryTest.cpp)
+build_test_executable_monofile(floatMatrixAlgorithmsTest)
+# build_test_executable_multifile(intMatrixAlgorithmsTest intMatrixAlgorithmsTest_legacy.cpp)
+
+# build_boost_test_executable_multifile(matrixAlgorithmsTest 
+#     matrixAlgorithmsTestMain.cpp
+#     intMatrixAlgorithmsTest.cpp
+#     SmithFixtures.cpp
+#     LinearEquationFixtures.cpp
+#     QuotientBaseMatrixFixtures.cpp
+#     SmithFormFactoryTest.cpp
+#     )

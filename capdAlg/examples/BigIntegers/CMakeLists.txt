@@ -1,1 +1,1 @@
-build_example_executable(MpIntExample)
+build_example_executable_monofile(MpIntExample)

@@ -1,1 +1,1 @@
-build_example_executable(alglibdemo)
+build_example_executable_monofile(alglibdemo)

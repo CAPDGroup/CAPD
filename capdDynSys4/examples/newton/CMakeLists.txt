@@ -1,2 +1,2 @@
-build_example_executable(newtonSimple)
-build_example_executable(newtontst)
+build_example_executable_monofile(newtonSimple)
+build_example_executable_monofile(newtontst)

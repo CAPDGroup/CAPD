@@ -1,2 +1,2 @@
-build_example_executable(integrateVariationalEquation)
-build_example_executable(integrate)
+build_example_executable_monofile(integrateVariationalEquation)
+build_example_executable_monofile(integrate)

@@ -1,2 +1,2 @@
-build_example_executable(configFileReader)
-build_example_executable(configFileReader2)
+build_example_executable_monofile(configFileReader)
+build_example_executable_monofile(configFileReader2)

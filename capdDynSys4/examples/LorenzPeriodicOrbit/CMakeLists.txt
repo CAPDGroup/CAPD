@@ -1,1 +1,1 @@
-build_example_executable(LorenzPeriodicOrbit)
+build_example_executable_monofile(LorenzPeriodicOrbit)

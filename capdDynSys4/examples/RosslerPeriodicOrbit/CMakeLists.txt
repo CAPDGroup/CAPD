@@ -1,1 +1,1 @@
-build_example_executable(RosslerPeriodicOrbit)
+build_example_executable_monofile(RosslerPeriodicOrbit)

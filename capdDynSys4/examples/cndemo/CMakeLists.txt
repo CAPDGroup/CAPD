@@ -1,3 +1,3 @@
-build_example_executable(cndemo1)
-build_example_executable(cndemo2)
-build_example_executable(cndemo3)
+build_example_executable_monofile(cndemo1)
+build_example_executable_monofile(cndemo2)
+build_example_executable_monofile(cndemo3)

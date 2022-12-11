@@ -1,1 +1,1 @@
-build_example_executable(krakdemo)
+build_example_executable_monofile(krakdemo)

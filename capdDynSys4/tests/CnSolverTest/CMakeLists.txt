@@ -1,2 +1,2 @@
-build_boost_test_executable(HighOrderTest)
-build_boost_test_executable(runTests)
+build_boost_test_executable_monofile(HighOrderTest)
+build_boost_test_executable_monofile(runTests)

@@ -1,1 +1,1 @@
-build_test_executable(intervalTest)
+build_test_executable_monofile(intervalTest)

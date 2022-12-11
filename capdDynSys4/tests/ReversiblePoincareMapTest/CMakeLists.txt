@@ -1,1 +1,1 @@
-build_boost_test_executable(ReversiblePoincareMapTest)
+build_boost_test_executable_monofile(ReversiblePoincareMapTest)

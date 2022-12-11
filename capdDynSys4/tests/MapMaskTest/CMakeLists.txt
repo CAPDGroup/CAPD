@@ -1,4 +1,4 @@
-build_boost_test_executable(AddMaskTest)
-build_boost_test_executable(MapMaskTest)
-build_boost_test_executable(SetMaskTest)
-build_boost_test_executable(EmptyMaskTest)
+build_boost_test_executable_monofile(AddMaskTest)
+build_boost_test_executable_monofile(MapMaskTest)
+build_boost_test_executable_monofile(SetMaskTest)
+build_boost_test_executable_monofile(EmptyMaskTest)

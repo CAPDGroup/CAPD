@@ -1,1 +1,1 @@
-build_example_executable(graphicalSetTest)
+build_example_executable_monofile(graphicalSetTest)

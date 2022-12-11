@@ -1,1 +1,1 @@
-build_example_executable(floatMatrixAlgExample)
+build_example_executable_monofile(floatMatrixAlgExample)

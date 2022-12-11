@@ -1,3 +1,3 @@
-build_example_executable(normExample)
-build_example_executable(matrixExample)
-build_example_executable(vectorExample)
+build_example_executable_monofile(normExample)
+build_example_executable_monofile(matrixExample)
+build_example_executable_monofile(vectorExample)

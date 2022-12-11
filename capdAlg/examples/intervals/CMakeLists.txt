@@ -1,1 +1,1 @@
-build_example_executable(intervalExample)
+build_example_executable_monofile(intervalExample)

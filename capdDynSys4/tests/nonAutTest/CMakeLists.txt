@@ -1,1 +1,1 @@
-build_test_executable(nonAutTest)
+build_test_executable_monofile(nonAutTest)

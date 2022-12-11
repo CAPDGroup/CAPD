@@ -1,2 +1,2 @@
-build_boost_test_executable(IComplexTests)
-build_boost_test_executable(DComplexTests)
+build_boost_test_executable_monofile(IComplexTests)
+build_boost_test_executable_monofile(DComplexTests)

@@ -1,1 +1,1 @@
-build_example_executable(tayltst)
+build_example_executable_monofile(tayltst)

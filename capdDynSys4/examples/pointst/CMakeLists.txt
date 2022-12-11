@@ -1,1 +1,1 @@
-build_example_executable(pointst)
+build_example_executable_monofile(pointst)
