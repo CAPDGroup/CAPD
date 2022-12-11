@@ -11,12 +11,14 @@ add_subdirectory(src/mpcapd/intervals)
 add_subdirectory(src/mpcapd/matrixAlgorithms)
 add_subdirectory(src/mpcapd/vectalg)
 
-add_subdirectory(tests)
+if ( ${BUILD_TEST_EXECUTABLES} )
 
-# -----------------------------------------------------------------------------------------------------------------------------
-# Build example executables
-# -----------------------------------------------------------------------------------------------------------------------------
-if (true)
+    add_subdirectory(tests)
+    # add_subdirectory(unitTests/intervals)            # disabled due to build failures
+
+endif()
+
+if ( ${BUILD_EXAMPLE_EXECUTABLES} )
 
     add_subdirectory(examples/alglibdemo)
     # add_subdirectory(examples/BigIntegers)           # disabled due to mprecision dependency

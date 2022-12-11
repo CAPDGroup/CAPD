@@ -20,19 +20,13 @@ add_subdirectory(src/capd/poincare)
 # add_subdirectory(src/mpcapd/map)
 # add_subdirectory(src/mpcapd/poincare)
 
-# -----------------------------------------------------------------------------------------------------------------------------
-# Build test executable
-# -----------------------------------------------------------------------------------------------------------------------------
-if (true)
+if ( ${BUILD_TEST_EXECUTABLES} )
 
     add_subdirectory(tests)
 
 endif()
 
-# -----------------------------------------------------------------------------------------------------------------------------
-# Build example executables
-# -----------------------------------------------------------------------------------------------------------------------------
-if (true)
+if ( ${BUILD_EXAMPLE_EXECUTABLES} )
 
     add_subdirectory(examples/cndemo)
     add_subdirectory(examples/coveringRelation)

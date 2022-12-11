@@ -1,2 +1,2 @@
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/mpsintest.cpp)
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/MpIntervalTest.cpp)
+build_test_executable_monofile(mpsintest)
+build_test_executable_monofile(MpIntervalTest)
