@@ -1,4 +1,4 @@
-target_sources(${TEST_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/AddMaskTest.cpp)
-target_sources(${TEST_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/MapMaskTest.cpp)
-target_sources(${TEST_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/SetMaskTest.cpp)
-target_sources(${TEST_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/EmptyMaskTest.cpp)
+build_boost_test_executable(AddMaskTest)
+build_boost_test_executable(MapMaskTest)
+build_boost_test_executable(SetMaskTest)
+build_boost_test_executable(EmptyMaskTest)

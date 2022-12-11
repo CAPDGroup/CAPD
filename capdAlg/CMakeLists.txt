@@ -11,6 +11,8 @@ add_subdirectory(src/mpcapd/intervals)
 add_subdirectory(src/mpcapd/matrixAlgorithms)
 add_subdirectory(src/mpcapd/vectalg)
 
+add_subdirectory(tests)
+
 # -----------------------------------------------------------------------------------------------------------------------------
 # Build example executables
 # -----------------------------------------------------------------------------------------------------------------------------

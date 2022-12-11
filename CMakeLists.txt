@@ -17,6 +17,32 @@ function(build_example_executable SOURCE_FILE)
 
 endfunction()
 
+function(build_test_executable SOURCE_FILE)
+
+    set(TEST_PROJECT_NAME ${SOURCE_FILE})
+    add_executable(${TEST_PROJECT_NAME})
+    target_link_directories(${TEST_PROJECT_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
+    target_link_libraries(${TEST_PROJECT_NAME} capd_experimental)
+    target_sources(${TEST_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCE_FILE}.cpp)
+
+    add_test(NAME ${TEST_PROJECT_NAME} COMMAND ${TEST_PROJECT_NAME})
+
+endfunction()
+
+function(build_boost_test_executable SOURCE_FILE)
+
+    set(TEST_PROJECT_NAME ${SOURCE_FILE})
+    add_executable(${TEST_PROJECT_NAME})
+    target_link_directories(${TEST_PROJECT_NAME} PRIVATE /media/avert/Pergamon/whiteeye/CAPD_Experimental/build)
+    target_link_libraries(${TEST_PROJECT_NAME} capd_experimental)
+    find_package (Boost REQUIRED COMPONENTS unit_test_framework)
+    target_link_libraries (${TEST_PROJECT_NAME} Boost::unit_test_framework)
+    target_sources(${TEST_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCE_FILE}.cpp)
+    
+    add_test(NAME ${TEST_PROJECT_NAME} COMMAND ${TEST_PROJECT_NAME})
+
+endfunction()
+
 add_subdirectory(capdExt)
 add_subdirectory(capdAux)
 add_subdirectory(capdAlg)

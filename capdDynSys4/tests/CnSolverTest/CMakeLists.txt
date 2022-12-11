@@ -1,2 +1,2 @@
-target_sources(${TEST_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/HighOrderTest.cpp)
-target_sources(${TEST_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/runTests.cpp)
+build_boost_test_executable(HighOrderTest)
+build_boost_test_executable(runTests)

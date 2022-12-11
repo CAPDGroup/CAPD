@@ -1,2 +1,2 @@
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/IComplexTests.cpp)
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/DComplexTests.cpp)
+build_boost_test_executable(IComplexTests)
+build_boost_test_executable(DComplexTests)

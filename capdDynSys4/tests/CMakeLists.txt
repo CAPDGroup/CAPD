@@ -1,8 +1,14 @@
-# -----------------------------------------------------------------------------------------------------------------------------
-# Standalone test executables
-# -----------------------------------------------------------------------------------------------------------------------------
 add_subdirectory(nonAutTest)
 add_subdirectory(BasicCnTaylorTest)
 add_subdirectory(diffIncl)
 
 add_subdirectory(BasicCurveMaskTest)
+add_subdirectory(BasicSolverMaskTest)
+# add_subdirectory(map)
+add_subdirectory(dynset)
+# add_subdirectory(SolverGetStepTest)
+# add_subdirectory(ReversibleSolverTest)
+# add_subdirectory(ReversiblePoincareMapTest)
+# add_subdirectory(CnSolverTest)
+# add_subdirectory(MapMaskTest)
+# add_subdirectory(PoincareMapMaskTest)

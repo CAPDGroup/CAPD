@@ -1,1 +1,1 @@
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/TexWriterTest.cpp)
+build_boost_test_executable(TexWriterTest)

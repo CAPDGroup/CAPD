@@ -1,1 +1,1 @@
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/intervalTest.cpp)
+build_test_executable(intervalTest)

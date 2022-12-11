@@ -1,3 +1,3 @@
-target_sources(${TEST_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/C1MaskTest.cpp)
-target_sources(${TEST_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/CnMaskTest.cpp)
-target_sources(${TEST_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/C2MaskTest.cpp)
+build_boost_test_executable(C1MaskTest)
+build_boost_test_executable(CnMaskTest)
+build_boost_test_executable(C2MaskTest)
