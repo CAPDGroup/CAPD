@@ -70,8 +70,17 @@ function(build_boost_test_executable TEST_PROJECT_NAME)
 
 endfunction()
 
-set(BUILD_TEST_EXECUTABLES true)
-set(BUILD_EXAMPLE_EXECUTABLES true)
+function(install_headers)
+
+    foreach(HEADER_FILE IN LISTS ARGN)
+        string(REGEX MATCH "(.*\/)" DIR ${HEADER_FILE})
+        install(FILES ${HEADER_FILE} DESTINATION "include/${DIR}")
+    endforeach()
+
+endfunction()
+
+set(BUILD_TEST_EXECUTABLES false)
+set(BUILD_EXAMPLE_EXECUTABLES false)
 
 add_subdirectory(capdExt)
 add_subdirectory(capdAux)
