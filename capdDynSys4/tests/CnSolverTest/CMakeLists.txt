@@ -1,2 +1,3 @@
-build_boost_test_executable_monofile(HighOrderTest)
-build_boost_test_executable_monofile(runTests)
+build_boost_test_executable(CnSolverTest
+    HighOrderTest.cpp
+    runTests.cpp)
