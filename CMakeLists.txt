@@ -3,6 +3,8 @@ project(cape)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
+add_compile_options( -Wall -Wextra -ffloat-store -frounding-math -D__USE_FILIB__)
+
 add_library(${CMAKE_PROJECT_NAME})
 
 enable_testing()
@@ -78,9 +80,6 @@ function(install_headers)
     endforeach()
 
 endfunction()
-
-set(BUILD_TEST_EXECUTABLES false)
-set(BUILD_EXAMPLE_EXECUTABLES false)
 
 add_subdirectory(capdExt)
 add_subdirectory(capdAux)
