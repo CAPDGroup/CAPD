@@ -3,7 +3,7 @@ project(cape)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
-add_compile_options( -Wall -Wextra -ffloat-store -frounding-math -D__USE_FILIB__)
+add_compile_options( -Wall -Wextra -ffloat-store -frounding-math )#-D__USE_FILIB__)
 
 add_library(${CMAKE_PROJECT_NAME})
 
