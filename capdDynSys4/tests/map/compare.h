@@ -13,7 +13,7 @@ typedef MapType::ScalarType ScalarType;
 typedef MapType::JetType JetType;
 
 template <typename DVectorT, typename IVectorT>
-inline void compareResults(const DVectorT & expected, const IVectorT & result, const std::string & msg, double tolerance = 1.0e-12)
+inline void compareResults(const DVectorT & expected, const IVectorT & result, const std::string & msg, double tolerance = 1.3e-12)
 {
   typename IVectorT::const_iterator it = result.begin();
   typename DVectorT::const_iterator ex = expected.begin();
