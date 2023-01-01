@@ -29,44 +29,51 @@ install_headers(
     capd/auxil/skipCommentsIstream.h
     capd/auxil/stringOstream.h
     capd/auxil/timeused.h
-    capd/krak/IFrame.h
-    capd/krak/appl-mac.h
-    capd/krak/atom.h
-    capd/krak/chain.h
-    capd/krak/color.h
-    capd/krak/coord3d.h
-    capd/krak/debug.h
-    capd/krak/defines.h
-    capd/krak/dos16.h
-    capd/krak/frame.h
-    capd/krak/frstring.h
-    capd/krak/hardware.h
-    capd/krak/item.h
-    capd/krak/job.h
-    capd/krak/kernel.h
-    capd/krak/keys.h
-    capd/krak/krak-lib.h
-    capd/krak/krak-library.h
-    capd/krak/krak.h
-    capd/krak/krakSetting.h
-    capd/krak/linux.h
-    capd/krak/manip.h
-    capd/krak/ms-dos.h
-    capd/krak/ms-win31.h
-    capd/krak/ms-win95.h
-    capd/krak/noframe.h
-    capd/krak/pattern.h
-    capd/krak/primitiv.h
-    capd/krak/sun-ch.h
-    capd/krak/sun-os.h
-    capd/krak/sun.h
-    capd/krak/system.h
-    capd/krak/unix-ch.h
-    capd/krak/unix.h
-    capd/krak/usermove.h
-    capd/krak/virt-mon.h
-    capd/krak/wxWin.h
     capd/settings/archSetting.h
     capd/settings/compilerSetting.h
     capd/settings/operatingSystemSetting.h
     )
+
+if ( ${BUILD_KRAK} )
+
+    install_headers(
+        capd/krak/IFrame.h
+        capd/krak/appl-mac.h
+        capd/krak/atom.h
+        capd/krak/chain.h
+        capd/krak/color.h
+        capd/krak/coord3d.h
+        capd/krak/debug.h
+        capd/krak/defines.h
+        capd/krak/dos16.h
+        capd/krak/frame.h
+        capd/krak/frstring.h
+        capd/krak/hardware.h
+        capd/krak/item.h
+        capd/krak/job.h
+        capd/krak/kernel.h
+        capd/krak/keys.h
+        capd/krak/krak-lib.h
+        capd/krak/krak-library.h
+        capd/krak/krak.h
+        capd/krak/krakSetting.h
+        capd/krak/linux.h
+        capd/krak/manip.h
+        capd/krak/ms-dos.h
+        capd/krak/ms-win31.h
+        capd/krak/ms-win95.h
+        capd/krak/noframe.h
+        capd/krak/pattern.h
+        capd/krak/primitiv.h
+        capd/krak/sun-ch.h
+        capd/krak/sun-os.h
+        capd/krak/sun.h
+        capd/krak/system.h
+        capd/krak/unix-ch.h
+        capd/krak/unix.h
+        capd/krak/usermove.h
+        capd/krak/virt-mon.h
+        capd/krak/wxWin.h
+        )
+
+endif()
