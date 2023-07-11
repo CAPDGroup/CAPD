@@ -5,7 +5,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 add_compile_options( -Wall -Wextra -ffloat-store -frounding-math )#-D__USE_FILIB__)
 
-add_library(${CMAKE_PROJECT_NAME})
+add_library(${PROJECT_NAME})
 
 enable_testing()
 
@@ -94,4 +94,4 @@ add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys4)
 
-install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION "lib")
+install(TARGETS ${PROJECT_NAME} DESTINATION "lib")
