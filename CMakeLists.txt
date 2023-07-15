@@ -94,4 +94,7 @@ add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys4)
 
+target_link_libraries(${PROJECT_NAME} PUBLIC -lmpfr)
+target_link_libraries(${PROJECT_NAME} PUBLIC -lgmp)
+
 install(TARGETS ${PROJECT_NAME} DESTINATION "lib")
