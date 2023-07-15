@@ -1,0 +1,1 @@
+build_boost_test_executable_monofile(TexWriterTest)

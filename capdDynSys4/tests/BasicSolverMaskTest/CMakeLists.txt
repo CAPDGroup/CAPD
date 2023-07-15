@@ -1,0 +1,3 @@
+build_boost_test_executable_monofile(C1MaskTest)
+build_boost_test_executable_monofile(CnMaskTest)
+build_boost_test_executable_monofile(C2MaskTest)

@@ -1,0 +1,7 @@
+build_example_executable_monofile(mpExample1)
+build_example_executable_monofile(mpExample2)
+build_example_executable_monofile(mpExample3)
+build_example_executable_monofile(mpExample4)
+build_example_executable_monofile(mpExample5)
+build_example_executable_monofile(mpExample6)
+build_example_executable_monofile(multiprecExample)

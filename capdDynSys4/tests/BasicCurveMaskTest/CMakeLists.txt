@@ -1,0 +1,3 @@
+build_boost_test_executable_monofile(C2CurveMaskTest)
+build_boost_test_executable_monofile(C1CurveMaskTest)
+build_boost_test_executable_monofile(CnCurveMaskTest)
