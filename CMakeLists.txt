@@ -3,9 +3,9 @@ project(cape)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
-add_compile_options( -Wall -Wextra -ffloat-store -frounding-math )#-D__USE_FILIB__)
-
 add_library(${PROJECT_NAME})
+
+target_compile_options(${PROJECT_NAME} PUBLIC -Wall -Wextra -O1 -fno-fast-math -frounding-math -D__HAVE_MPFR__)
 
 enable_testing()
 
