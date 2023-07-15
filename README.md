@@ -10,7 +10,7 @@ https://svn.capdnet.ii.uj.edu.pl/capdDynSys4
 
 Clone the repository:
 
-    git clone https://github.com/AleksanderPasiut/CAPE cape
+    git clone https://github.com/AleksanderPasiut/cape
     
 Enter the repository, create the build folder, configure the repository and then build:
 
