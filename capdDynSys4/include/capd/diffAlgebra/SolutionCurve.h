@@ -58,11 +58,29 @@ class BaseSolutionCurve : public ParametricCurve<typename CurveT::MatrixType>
   {
     domain.push_back(leftDomain);
   }
-  ~BaseSolutionCurve(){
-    for(typename CurveContainer::size_type i=0;i<pieces.size();++i)
-      delete pieces[i];
+
+  BaseSolutionCurve(const BaseSolutionCurve<CurveT>& solution_curve)
+    : ParametricCurve<typename CurveT::MatrixType>(solution_curve)
+  {
+    this->domain = solution_curve.domain;
+    cloneCurveContainer(solution_curve.pieces);
   }
-  Real getLeftDomain() const{
+
+  BaseSolutionCurve& operator= (const BaseSolutionCurve<CurveT>& solution_curve)
+  {
+    clearCurveContainer();
+    this->domain = solution_curve.domain;
+    cloneCurveContainer(solution_curve.pieces);
+    return *this;
+  }
+
+  ~BaseSolutionCurve()
+  {
+    clearCurveContainer();  
+  }
+
+  Real getLeftDomain() const
+  {
     return rightBound(domain[0]);
   }
 
@@ -83,6 +101,25 @@ protected:
 
   Domain domain;
   CurveContainer pieces;
+
+private:
+  void clearCurveContainer()
+  {
+    for(typename CurveContainer::size_type i = 0; i < pieces.size(); ++i)
+    {
+      delete pieces[i];
+      pieces[i] = 0;
+    }
+  }
+
+  void cloneCurveContainer(const CurveContainer& pieces)
+  {
+    this->pieces.reserve(pieces.size());
+    for(typename CurveContainer::size_type i = 0; i < pieces.size(); ++i)
+    {
+      this->pieces.push_back( new BaseCurve( *(pieces[i]) ) );
+    }
+  }
 };
 
 // ############################################################################
@@ -232,6 +269,10 @@ public:
       intervalHull(result,(this->pieces[leftI]->*p)(t),result);
     }
     return result;
+  }
+
+  VectorType timeDerivative(const ScalarType& h) const{
+    return this->eval<VectorType>(h,&BaseCurve::timeDerivative);
   }
 
   VectorType operator()(const ScalarType& h) const{
