@@ -1,4 +1,4 @@
-# CAPE
+# CAPD2
 Experimental repository for CAPD library
 
 ## Original source code repositories:
