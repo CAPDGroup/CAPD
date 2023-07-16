@@ -5,7 +5,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 add_library(${PROJECT_NAME})
 
-target_compile_options(${PROJECT_NAME} PUBLIC -Wall -Wextra -O1 -fno-fast-math -frounding-math -D__HAVE_MPFR__)
+target_compile_options(${PROJECT_NAME} PUBLIC -O1 -fno-fast-math -frounding-math -D__HAVE_MPFR__)
 
 enable_testing()
 
