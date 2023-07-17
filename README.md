@@ -14,7 +14,7 @@ Clone the repository:
     
 Enter the repository, create the build folder, configure the repository and then build:
 
-    cd capd
+    cd capd2
     mkdir build
     cd build
     cmake ..
@@ -28,7 +28,7 @@ In order to install the library simply call
 
     make install
 
-when in `capd/build` folder. You can specify the directory where the library should be installed with option `CMAKE_INSTALL_PREFIX` that must be set when calling `cmake` command. For Linux users: it might be necessary to use `sudo make install` instead of `make install` if you specify the installation directory that requires super user access rights.
+when in `capd2/build` folder. You can specify the directory where the library should be installed with option `CMAKE_INSTALL_PREFIX` that must be set when calling `cmake` command. For Linux users: it might be necessary to use `sudo make install` instead of `make install` if you specify the installation directory that requires super user access rights.
 
 ## Building and executing tests
 
@@ -37,4 +37,4 @@ In order to build and execute tests, it necessary to run `cmake` command with op
     make
     make tests
    
-when in `capd/build` directory.
+when in `capd2/build` directory.
