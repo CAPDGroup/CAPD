@@ -5,7 +5,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 add_library(${PROJECT_NAME})
 
-target_compile_options(${PROJECT_NAME} PUBLIC -O1 -fno-fast-math -frounding-math -D__HAVE_MPFR__)
+target_compile_options(${PROJECT_NAME} PUBLIC -O1 -fno-fast-math -frounding-math)
 
 enable_testing()
 
@@ -94,7 +94,11 @@ add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys4)
 
-target_link_libraries(${PROJECT_NAME} PUBLIC -lmpfr)
-target_link_libraries(${PROJECT_NAME} PUBLIC -lgmp)
+if (${ENABLE_MULTIPRECISION})
+    target_link_libraries(${PROJECT_NAME} PUBLIC -lmpfr)
+    target_link_libraries(${PROJECT_NAME} PUBLIC -lgmp)
+
+    target_compile_options(${PROJECT_NAME} PUBLIC -D__HAVE_MPFR__)
+endif()
 
 install(TARGETS ${PROJECT_NAME} DESTINATION "lib")
