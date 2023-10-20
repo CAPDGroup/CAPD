@@ -37,7 +37,7 @@ namespace pdes{
 template <class BaseSetT>
 class C0HODoubletonSetGeometricTail : public capd::dynset::C0HOSet<BaseSetT>{
 public:
-  typedef capd::pdes::GeometricBound VectorType;
+  typedef capd::pdes::GeometricBound<capd::interval> VectorType;
   typedef typename BaseSetT::MatrixType MatrixType;
   typedef typename MatrixType::RowVectorType FiniteVectorType;
   typedef typename MatrixType::ScalarType ScalarType;
