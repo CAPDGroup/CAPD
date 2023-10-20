@@ -34,11 +34,8 @@ Container<Scalar,0>::Container(Container && a_container) noexcept
 
 template<typename Scalar>
 Container<Scalar,0>& Container<Scalar,0>::operator=(Container&& a_c) noexcept{
-//  Self assigment check removed: it is rare.
-//  if(&a_c != this) {
-    std::swap(capacity, a_c.capacity);
-    std::swap(data, a_c.data);
-//  }
+  std::swap(capacity, a_c.capacity);
+  std::swap(data, a_c.data);
   return *this;
 }
 
@@ -86,6 +83,7 @@ Container<Scalar,0>::Container(size_type a_capacity) : capacity(a_capacity)
 {
   data = new ScalarType[capacity];
   clear();
+  capacity = a_capacity;
 }
 
 

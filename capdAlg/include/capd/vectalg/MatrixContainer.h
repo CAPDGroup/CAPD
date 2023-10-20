@@ -48,12 +48,12 @@ public:
   static const size_type ROWS = rows;
   static const size_type COLS = cols;
 
-  inline MatrixContainer() : Container<Scalar,rows*cols>() {}
-  inline MatrixContainer(size_type _rows, size_type _cols) : Container<Scalar,rows*cols>(_rows*_cols){}
-  inline MatrixContainer(const MatrixContainer& mc) : Container<Scalar,rows*cols>(mc) {}
-  inline MatrixContainer(size_type _rows, size_type _cols,bool) : Container<Scalar,rows*cols>(_rows*_cols,true){}
-  inline MatrixContainer(const Dimension&) : Container<Scalar,rows*cols>(1){}
-  inline MatrixContainer(const Dimension&,bool) : Container<Scalar,rows*cols>(1,true){}
+  inline MatrixContainer() : BaseContainerType() {}
+  inline MatrixContainer(size_type _rows, size_type _cols) : BaseContainerType(_rows*_cols){}
+  inline MatrixContainer(const MatrixContainer& mc) : BaseContainerType(mc) {}
+  inline MatrixContainer(size_type _rows, size_type _cols,bool) : BaseContainerType(_rows*_cols,true){}
+  inline MatrixContainer(const Dimension&) : BaseContainerType(1){}
+  inline MatrixContainer(const Dimension&,bool) : BaseContainerType(1,true){}
   //  MatrixContainer(MatrixContainer&& v) : ContainerType(std::forward<ContainerType>(v)) {}
 //  MatrixContainer & operator=(MatrixContainer && v) {
 //     ContainerType::operator= ( std::forward<ContainerType>(v));
@@ -66,13 +66,13 @@ public:
 
   inline MatrixContainer& operator=(const MatrixContainer& a)
   {
-    Container<Scalar,rows*cols>::operator=(a);
+    BaseContainerType::operator=(a);
     return *this;
   }
 
-  using Container<Scalar,rows*cols>::begin;
-  using Container<Scalar,rows*cols>::end;
-  using Container<Scalar,rows*cols>::size;
+  using BaseContainerType::begin;
+  using BaseContainerType::end;
+  using BaseContainerType::size;
   static Dimension dimension() { return Dimension(rows,cols); }
   inline void resize(size_type r, size_type c)
   {
@@ -81,7 +81,7 @@ public:
   }
 protected:
 
-  using Container<Scalar,rows*cols>::data;
+  using BaseContainerType::data;
 };
 
 // ---------------------------------------------------------------------
@@ -104,23 +104,22 @@ public:
   static const size_type COLS = 0;
 
   inline MatrixContainer()
-    : Container<Scalar,0>(0),
-      m_rows(0), m_cols(0)
+    : BaseContainerType(1u), m_rows(1), m_cols(1)
   {}
   inline MatrixContainer(size_type _rows, size_type _cols)
-    : Container<Scalar,0>(_rows*_cols), m_rows(_rows), m_cols(_cols)
+    : BaseContainerType(_rows*_cols), m_rows(_rows), m_cols(_cols)
   {}
   inline MatrixContainer(const MatrixContainer& mc)
-    : Container<Scalar,0>(mc), m_rows(mc.m_rows), m_cols(mc.m_cols)
+    : BaseContainerType(mc), m_rows(mc.m_rows), m_cols(mc.m_cols)
   {}
   inline MatrixContainer(size_type _rows, size_type _cols,bool)
-    : Container<Scalar,0>(_rows*_cols,true), m_rows(_rows), m_cols(_cols)
+    : BaseContainerType(_rows*_cols,true), m_rows(_rows), m_cols(_cols)
   {}
   inline MatrixContainer(const Dimension& d,bool)
-    : Container<Scalar,0>(d.first*d.second,true), m_rows(d.first), m_cols(d.second)
+    : BaseContainerType(d.first*d.second,true), m_rows(d.first), m_cols(d.second)
   {}
   inline MatrixContainer(const Dimension& d)
-    : Container<Scalar,0>(d.first*d.second), m_rows(d.first), m_cols(d.second)
+    : BaseContainerType(d.first*d.second), m_rows(d.first), m_cols(d.second)
   {}
 
 
@@ -138,7 +137,7 @@ public:
 
   friend void swap(MatrixContainer<Scalar,0,0>& A_m1, MatrixContainer<Scalar,0,0>& A_m2)
   {
-    std::swap(*static_cast<Container<Scalar,0>*>(&A_m1),*static_cast<Container<Scalar,0>*>(&A_m2));
+    std::swap(*static_cast<BaseContainerType*>(&A_m1),*static_cast<BaseContainerType*>(&A_m2));
     std::swap(A_m1.m_rows,A_m2.m_rows);
     std::swap(A_m1.m_cols,A_m2.m_cols);
   }
@@ -148,15 +147,15 @@ public:
 
   MatrixContainer& operator=(const MatrixContainer& a)
   {
-    Container<Scalar,0>::operator=(a);
+    BaseContainerType::operator=(a);
     m_rows = a.m_rows;
     m_cols = a.m_cols;
     return *this;
   }
 
-  using Container<Scalar,0>::begin;
-  using Container<Scalar,0>::end;
-  using Container<Scalar,0>::size;
+  using BaseContainerType::begin;
+  using BaseContainerType::end;
+  size_type size() const { return BaseContainerType::size(); }
   inline Dimension dimension() const {return Dimension(m_rows,m_cols);}
   inline void resize(size_type r, size_type c)
    {
@@ -170,8 +169,8 @@ public:
 protected:
   size_type m_rows,m_cols;
 
-  using Container<Scalar,0>::resize;
-  using Container<Scalar,0>::data;
+  using BaseContainerType::resize;
+  using BaseContainerType::data;
 };
 
 }} // namespace capd::vectalg

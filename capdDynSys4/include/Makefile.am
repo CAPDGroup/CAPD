@@ -242,6 +242,7 @@ capd/pdes/C0HODoubletonSetGeometricTail.h \
 capd/pdes/C1DoubletonSetGeometricTail.h \
 capd/pdes/DissipativeVectorField.h \
 capd/pdes/GeometricBound.h \
+capd/pdes/GeometricBound.hpp \
 capd/pdes/OneDimKSSineVectorField.h \
 capd/pdes/PdeAbstractSection.h \
 capd/pdes/PdeAffineSection.h \
