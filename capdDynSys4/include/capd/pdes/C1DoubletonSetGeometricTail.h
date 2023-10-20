@@ -24,16 +24,16 @@ namespace pdes{
 /// @{
 
 template<typename Policies>
-class C1DoubletonSetGeometricTail : public C0DoubletonSetGeometricTail< capd::dynset::C1DoubletonSet<GeometricBound::MatrixType,Policies> >{
+class C1DoubletonSetGeometricTail : public C0DoubletonSetGeometricTail< capd::dynset::C1DoubletonSet<GeometricBound<capd::interval>::MatrixType,Policies> >{
 public:
-  typedef capd::pdes::GeometricBound VectorType;
+  typedef capd::pdes::GeometricBound<capd::interval> VectorType;
   typedef VectorType::MatrixType MatrixType;
   typedef typename MatrixType::RowVectorType FiniteVectorType;
   typedef typename MatrixType::ScalarType ScalarType;
   typedef typename MatrixType::size_type size_type;
   typedef capd::vectalg::MaxNorm<FiniteVectorType,MatrixType> NormType;
-  typedef capd::dynset::C1DoubletonSet<GeometricBound::MatrixType,Policies> FiniteDimensionalBaseSet;
-  typedef C0DoubletonSetGeometricTail< capd::dynset::C1DoubletonSet<GeometricBound::MatrixType,Policies> > BaseSet;
+  typedef capd::dynset::C1DoubletonSet<MatrixType,Policies> FiniteDimensionalBaseSet;
+  typedef C0DoubletonSetGeometricTail< capd::dynset::C1DoubletonSet<MatrixType,Policies> > BaseSet;
   typedef typename capd::dynset::C1Set<MatrixType>::SetType SetType;
   typedef capd::pdes::PdeSolver<VectorType> DynSysType;
   typedef capd::dynset::DoubletonData<MatrixType> Data;
@@ -65,6 +65,12 @@ public:
     initC1();
   }
 
+  C1DoubletonSetGeometricTail(const VectorType& x, const FiniteDimensionalBaseSet& set)
+    : BaseSet(x,set), m_dyxId(x.dimension(),VectorType(x.dimension())), m_dyx(x.dimension(),VectorType(x.dimension()))
+  {
+    initC1();
+  }
+
   /// computes image of the set after one step/iterate of the dynamical system
   void move(DynSysType & dynsys) { move(dynsys,*this); }
   /// computes image of the set after one step/iterate of the dynamical system and stores it in result
@@ -79,7 +85,7 @@ public:
     this->Dy = FiniteVectorType(m_x.dimension()+1);
     this->Dy[m_x.dimension()] = 1;
     this->encDy =this->Dy;
-    this->m_lastMatrixEnclosure.setToIdentity();
+    this->m_lastMatrixEnclosure = (MatrixType)(*this);
     this->encDxx = this->m_lastMatrixEnclosure;
     counter = 0;
   }
@@ -139,7 +145,7 @@ public:
   MatrixType encDxx;
 
   bool printLog = false;
-  int maxBlockSize = 250;
+  int maxBlockSize = 500;
   int counter;
 };
 
@@ -229,11 +235,13 @@ void C1DoubletonSetGeometricTail<Policies>::move(DynSysType & dynsys, C1Doubleto
   if(result.printLog and result.counter++ > result.maxBlockSize)
   {
     result.counter = 0;
-    std::cout << "time=" << result.m_currentTime << ", " << result.m_currentSet[0] << std::endl;
-    std::cout << "maxWidth(Dxx)=" << maxWidth(result.m_currentMatrix) << std::endl;
-    std::cout << "Dxx=" << norm(result.m_currentMatrix) << std::endl;
-    std::cout << "Dy=" << result.Dy  << std::endl;
-    std::cout << "Dyx=" << result.Dyx  << std::endl << std::endl;
+    std::ostringstream out;
+    out.precision(17);
+    out << "time=" << result.m_currentTime << ", " << result.m_currentSet[0] << std::endl;
+    out << "maxWidth(Dxx)=" << maxWidth(result.m_currentMatrix) << std::endl;
+    out << "Dy=" << result.Dy  << std::endl;
+    out << "Dyx=" << result.Dyx  << std::endl << std::endl;
+    std::cout << out.str();
   }
 
   res = result;
