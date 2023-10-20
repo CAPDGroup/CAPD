@@ -16,7 +16,7 @@
 #include "capd/dynset/C0DoubletonSet.hpp"
 #include "capd/dynset/C0TripletonSet.hpp"
 #include "capd/dynset/lib.h"
-#include "capd/pdes/GeometricBound.h"
+#include "capd/pdes/GeometricBound.hpp"
 #include "capd/pdes/PdeSolver.h"
 
 namespace capd{
@@ -24,10 +24,10 @@ namespace pdes{
 /// @addtogroup pdes 
 /// @{
 
-template<typename BaseT = capd::dynset::C0DoubletonSet<GeometricBound::MatrixType,capd::C0Rect2Policies> >
+template<typename BaseT = capd::dynset::C0DoubletonSet<GeometricBound<capd::interval>::MatrixType,capd::C0Rect2Policies> >
 class C0DoubletonSetGeometricTail : public BaseT{
 public:
-  typedef capd::pdes::GeometricBound VectorType;
+  typedef capd::pdes::GeometricBound<capd::interval> VectorType;
   typedef VectorType::MatrixType MatrixType;
   typedef typename MatrixType::RowVectorType FiniteVectorType;
   typedef typename MatrixType::ScalarType ScalarType;
@@ -50,16 +50,20 @@ public:
   }
 
   C0DoubletonSetGeometricTail(const VectorType& x, const MatrixType& C, const FiniteVectorType& r0, ScalarType t = TypeTraits<ScalarType>::zero())
-  : FiniteDimensionalBaseSet(x.projection(r0.dimension()),C,r0,t), m_currentSeries(x), m_tmp(x)
+    : FiniteDimensionalBaseSet(x.projection(r0.dimension()),C,r0,t), m_currentSeries(x), m_tmp(x)
   {
     m_currentSeries.projection(r0.dimension()) += C*r0;
   }
 
   C0DoubletonSetGeometricTail(const VectorType& x, const MatrixType& C, const FiniteVectorType& r0, const MatrixType& B, const FiniteVectorType& r, ScalarType t = TypeTraits<ScalarType>::zero())
-  : FiniteDimensionalBaseSet(x.projection(r0.dimension()),C,r0,B,r,t), m_currentSeries(x), m_tmp(x)
+    : FiniteDimensionalBaseSet(x.projection(r0.dimension()),C,r0,B,r,t), m_currentSeries(x), m_tmp(x)
   {
     m_currentSeries.projection(r0.dimension()) += C*r0 + B*r;
   }
+
+  C0DoubletonSetGeometricTail(const VectorType& x, const FiniteDimensionalBaseSet& set)
+    : FiniteDimensionalBaseSet(set), m_currentSeries(x), m_tmp(x)
+  {}
 
   void initMove(C0DoubletonSetGeometricTail& result) const;
   void finalizeMove(C0DoubletonSetGeometricTail& result) const;
@@ -89,6 +93,17 @@ public:
     return result;
   }
 
+  ScalarType evalAffineFunctional(const VectorType& gradient, const VectorType& x0) const{
+    size_type d = FiniteDimensionalBaseSet::dimension();
+    ScalarType r = FiniteDimensionalBaseSet::evalAffineFunctional(
+      FiniteVectorType(d,gradient.getExplicitCoefficients().begin()),
+      FiniteVectorType(d,x0.getExplicitCoefficients().begin())
+    );    
+    for(size_type i=d;i<x0.dimension();++i)
+      r += gradient[i]*(this->m_currentSeries[i]-x0[i]);
+    return r;
+  }
+  
   operator VectorType() const { return m_currentSeries; }
   using FiniteDimensionalBaseSet::operator FiniteVectorType;
 
