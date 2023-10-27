@@ -20,7 +20,12 @@ Enter the repository, create the build folder, configure the repository and then
     cmake ..
     make
 
-Above commands will build the library only without tests or examples. Krak component also will not be built. In order to build krak, it is necessary to append `-DBUILD_KRAK=true` option when calling `cmake` command. In order to build examples, it is necessary to append `-DBUILD_EXAMPLE_EXECUTABLES=true` option when calling `cmake` command. In order to build and launch tests, look into section "Building and executing tests".
+Above commands will build the library only (without tests or examples). Krak module also will not be built. 
+
+Options:
+ 
+* `-DBUILD_KRAK=true` - builds `krak` graphical user interface  module. 
+* `-DBUILD_EXAMPLE_EXECUTABLES=true` - include tests and example programs into build. In order to build and launch tests, look into section "Building and executing tests".
 
 ## Installing the library
 
