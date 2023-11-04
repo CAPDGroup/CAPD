@@ -34,7 +34,7 @@ namespace capd
       bool usePARI();
 
     private:
-      std::auto_ptr<ConfigFileReader> _configFileReader;
+      std::unique_ptr<ConfigFileReader> _configFileReader;
     };
   }
 
