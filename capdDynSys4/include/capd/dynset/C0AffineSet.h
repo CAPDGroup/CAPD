@@ -33,14 +33,14 @@ namespace dynset{
 template<typename MatrixT, typename Policies>
 class C0AffineSet : public Policies, public C0Set<MatrixT>, public capd::geomset::CenteredAffineSet<MatrixT> {
 public:
-  typedef MatrixT MatrixType;
-  typedef typename MatrixType::RowVectorType VectorType;
-  typedef typename MatrixType::ScalarType ScalarType;
-  typedef typename MatrixType::size_type size_type;
-  typedef capd::vectalg::Norm<VectorType,MatrixType> NormType;
-  typedef capd::geomset::CenteredAffineSet<MatrixT> BaseSet;
-  typedef typename C0Set<MatrixT>::SetType SetType;
-  typedef typename C0Set<MatrixT>::DynSysType DynSysType;
+  using MatrixType = MatrixT;
+  using VectorType = typename MatrixType::RowVectorType;
+  using ScalarType = typename MatrixType::ScalarType;
+  using size_type = typename MatrixType::size_type;
+  using NormType = capd::vectalg::Norm<VectorType, MatrixType>;
+  using BaseSet = capd::geomset::CenteredAffineSet<MatrixT>;
+  using SetType = typename C0Set<MatrixT>::SetType;
+  using DynSysType = typename C0Set<MatrixT>::DynSysType;
 
   C0AffineSet(const VectorType& x, ScalarType t = TypeTraits<ScalarType>::zero());
   C0AffineSet(const VectorType& x, const VectorType& r, ScalarType t = TypeTraits<ScalarType>::zero());
