@@ -33,7 +33,7 @@ if ( ${BUILD_EXAMPLE_EXECUTABLES} )
 
     if ( ${ENABLE_MULTIPRECISION} )
     
-        add_subdirectory(examples/BigIntegers)
+        # add_subdirectory(examples/BigIntegers)              # disabled due to build failures
 
     endif()
 
