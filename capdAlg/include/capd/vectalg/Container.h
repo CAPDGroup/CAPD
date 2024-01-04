@@ -138,20 +138,20 @@ public:
      std::swap(A_c1.capacity,A_c2.capacity);
   }
 
-  size_type size() const {return capacity;}
+  size_type size() const { return capacity; }
   bool empty() const { return capacity == 0; }
 
   void clear();
 
 protected:
-  ScalarType *data;
-  size_type capacity;
+  ScalarType *data = nullptr;
+  size_type capacity=0u;
 };
 
 // ---- inline definitions for Containers ----------------- //
 
 template<typename Scalar>
-inline Container<Scalar,0>::Container() : data(0), capacity(0)
+inline Container<Scalar,0>::Container() : data(0), capacity(0u)
 {
 }
 // --------------- iterator selection --------------------- //

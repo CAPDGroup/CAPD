@@ -53,6 +53,7 @@ template void subtractObjects<>(const Matrix<MpFloat,CAPD_DEFAULT_DIMENSION,CAPD
 template void addObjects<>(const Matrix<MpFloat,CAPD_DEFAULT_DIMENSION,CAPD_DEFAULT_DIMENSION>& v1,const Matrix<MpFloat,CAPD_DEFAULT_DIMENSION,CAPD_DEFAULT_DIMENSION>& v2, Matrix<MpFloat,CAPD_DEFAULT_DIMENSION,CAPD_DEFAULT_DIMENSION>& result);
 template Vector<MpFloat,CAPD_DEFAULT_DIMENSION>& addAssignMatrixByVector<>(Vector<MpFloat,CAPD_DEFAULT_DIMENSION>& u,const Matrix<MpFloat,CAPD_DEFAULT_DIMENSION,CAPD_DEFAULT_DIMENSION>& A, const Vector<MpFloat,CAPD_DEFAULT_DIMENSION>& v);
 template Vector<MpFloat,CAPD_DEFAULT_DIMENSION>& subtractAssignMatrixByVector<>(Vector<MpFloat,CAPD_DEFAULT_DIMENSION>& u,const Matrix<MpFloat,CAPD_DEFAULT_DIMENSION,CAPD_DEFAULT_DIMENSION>& A, const Vector<MpFloat,CAPD_DEFAULT_DIMENSION>& v);
+template Matrix<MpFloat,CAPD_DEFAULT_DIMENSION,CAPD_DEFAULT_DIMENSION>& addAssignObjectObject<> (Matrix<MpFloat,CAPD_DEFAULT_DIMENSION,CAPD_DEFAULT_DIMENSION>&, const Matrix<MpFloat,CAPD_DEFAULT_DIMENSION,CAPD_DEFAULT_DIMENSION>&);
 
 
 // RowVector

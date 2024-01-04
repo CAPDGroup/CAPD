@@ -41,10 +41,10 @@ namespace pdes {
  * - automatic differentiation for d/dt^i, i-natural number
  * - automatic differentiation for d/da_k dt^i - -natural number k-bounded
 */
-class OneDimKSSineVectorField: public DissipativeVectorField<capd::pdes::GeometricBound>{
+class OneDimKSSineVectorField: public DissipativeVectorField<capd::pdes::GeometricBound<capd::interval> >{
 public:
   typedef capd::interval ScalarType;
-  typedef capd::pdes::GeometricBound VectorType;
+  typedef capd::pdes::GeometricBound<capd::interval> VectorType;
   typedef capd::IMatrix MatrixType;
 
   typedef capd::IVector::size_type size_type;
@@ -77,17 +77,6 @@ public:
     MatrixType A(this->dimension(),this->dimension());
     this->operator()(h,v,A);
     return A;
-  }
-
-  /// This method computed bounds on the derivative of vector field.
-  /// The finite-dimensional block is computed explicitely,
-  /// Operator norm of three infinite-dimensional blocks is bounded and returned.
-  void derivative(ScalarType h, const VectorType& v, MatrixType& A, ScalarType& Dxy, ScalarType& Dyx, ScalarType& Dyy){
-    VectorArray a(2);
-    MatrixArray J(A.numberOfColumns(),VectorArray(2,VectorType(this->dimension())));
-    this->blockDerivative(v,a,J,A);
-
-    /// now we have to estimate three norms
   }
 
   /// computes Taylor coefficients for C^0 part
@@ -125,6 +114,28 @@ public:
     return result;
   }
 
+  void setParameter(ScalarType nu) {
+    this->nu = nu;
+    for(size_type i=0;i<lambda.size();++i){
+      size_type k2 = i*i;
+      lambda[i] = (k2*(1.-nu*k2));
+    }
+  }
+
+  std::tuple<ScalarType,ScalarType,ScalarType> computeD1D2DI(const VectorType& a){
+    VectorArray tmp;
+    tmp.push_back(a);
+    return {computeD1(tmp,0),computeD2(tmp,0),computeConstantForInfinitePart(tmp,0)};
+  }
+
+  ScalarType getLambda(size_type k){
+    for(size_type i=lambda.size();i<=k;++i){
+      size_type k2 = i*i;
+      lambda.push_back(k2*(1.-nu*k2));
+    }
+    return lambda[k];
+  }
+
 private:
   /// This function computes logarithmic norm on the diagonal and norm out of diagonal of Dxx(m \times m) block of the derivative of the vector field at a=(x,y).
   void dxxNorm(const VectorType& a, MatrixType& result) const;
@@ -147,7 +158,7 @@ private:
         J[j][0].setGeometricDecay(v.getGeometricDecay());
         J[j][0].setConstant(0.);
       }
-      DissipativeVectorField<capd::pdes::GeometricBound>::computeODECoefficients(a,J,1,A.numberOfColumns());
+      DissipativeVectorField<VectorType>::computeODECoefficients(a,J,1,A.numberOfColumns());
       for(size_type j=0;j<A.numberOfColumns();++j){
         for(size_type c=1;c<=this->dimension();++c)
           A(j+1,c) = J[j][1].getCoefficient(c);
@@ -186,14 +197,7 @@ private:
 
   void computeNextTail(VectorArray& a, size_type i, ScalarType DI);
   void updateTail(VectorType& x, const ScalarArray& nPart, const VectorArray& enc, ScalarType h) const;
-public:
-  ScalarType getLambda(size_type k){
-    for(size_type i=lambda.size();i<=k;++i){
-      size_type k2 = i*i;
-      lambda.push_back(k2*(1.-nu*k2));
-    }
-    return lambda[k];
-  }
+
   // members
   ScalarType nu;
   size_type m_dimension, m_firstDissipativeVariable;
@@ -444,7 +448,7 @@ void OneDimKSSineVectorField::computeNextTail(VectorArray& a, size_type i, Scala
   int M3 = M2*M1;
   ScalarType C = (nu-ScalarType(1.)/M2)*a[i].getConstant() + DI/M3 + D/M2;
 
-  double t = 1.75;
+  double t = 3;
   ScalarType delta = (t-1+q)/t;
   ScalarType l = log(delta);
   ScalarType L = (this->m_dimension>4/l) ? power(M1,4)/power(delta,M1)
@@ -461,9 +465,10 @@ void OneDimKSSineVectorField::computeODECoefficients(VectorArray& a, size_type p
   for(size_type i=0;i<p;++i){
     ScalarType DI = computeConstantForInfinitePart(a,i);
     ScalarType q = a[i].getGeometricDecay();
-    ScalarType D = ScalarType(-2.,2.)*DI/q;
+    ScalarType D = ScalarType(-2.,2.)*DI;
+
     for(size_type k=1; k<=this->m_dimension; ++k){
-      ScalarType c = lambda[k]*a[i].getCoefficient(k) + k*(computeExplicitCoefficient(a,i,k) + D);
+      ScalarType c = lambda[k]*a[i].getCoefficient(k) + k*(computeExplicitCoefficient(a,i,k) + D/q);
       a[i+1].setCoefficient(k,c/(i+1));
       q *= a[i].getGeometricDecay();
     }
@@ -477,9 +482,10 @@ void OneDimKSSineVectorField::computeODECoefficients(const VectorArray& a, Vecto
   for(size_type i=0;i<p;++i){
     ScalarType DI = computeConstantForInfinitePart(a,J,i);
     ScalarType q = J[i].getGeometricDecay();
-    ScalarType D = ScalarType(-2.,2.)*DI/q;
-    for(size_type k=1; k<=this->m_dimension; ++k){
-      ScalarType c = lambda[k]*J[i].getCoefficient(k) + k*(computeExplicitCoefficient(a,J,i,k) + D);
+    ScalarType D = ScalarType(-2.,2.)*DI;
+
+	  for(size_type k=1; k<=this->m_dimension; ++k){
+      ScalarType c = lambda[k]*J[i].getCoefficient(k) + k*(computeExplicitCoefficient(a,J,i,k) + D/q);
       J[i+1].setCoefficient(k,c/(i+1));
       q *= J[i].getGeometricDecay();
     }
@@ -491,10 +497,46 @@ void OneDimKSSineVectorField::computeODECoefficients(const VectorArray& a, Vecto
 
 void OneDimKSSineVectorField::updateTail(VectorType& x, const ScalarArray& nPart, const VectorArray& enc, ScalarType h) const {
   ScalarType E = enc[0].getConstant();
+
+  for(size_type k=1;k<this->m_firstDissipativeVariable;++k){
+    bool uppBoundOK = lambda[k]*getCoeff(enc,k).rightBound()+nPart[k]<0.;
+    bool lowBoundOK = lambda[k]*getCoeff(enc,k).leftBound()+nPart[k]>0.;
+    
+    if(uppBoundOK and lowBoundOK) {
+      ScalarType e = exp(lambda[k]*h);
+      ScalarType N = -nPart[k]/lambda[k];
+      ScalarType u = (enc[0].getCoefficient(k)-N)*e + N;
+      if(! intersection(x.getCoefficient(k),u,u) )
+        throw std::runtime_error("OneDimKSSineVectorField::updateTail Both - Intersection error\n");
+      x.setCoefficient(k,u);
+      continue;
+    }
+    if(uppBoundOK) {
+      ScalarType e = exp(lambda[k]*h);
+      ScalarType N = -nPart[k]/lambda[k];
+      ScalarType u = (enc[0].getCoefficient(k).rightBound()-N)*e + N;
+      if( ! (u.rightBound()>=x.getCoefficient(k).leftBound()) )
+        throw std::runtime_error("OneDimKSSineVectorField::updateTail UP - Intersection error\n");
+      u.setRightBound(capd::min(u.rightBound(),x.getCoefficient(k).rightBound()));
+      x.setCoefficient(k,u);
+      continue;
+    }
+    if(lowBoundOK) {
+      ScalarType e = exp(lambda[k]*h);
+      ScalarType N = -nPart[k]/lambda[k];
+      ScalarType u = (enc[0].getCoefficient(k).leftBound()-N)*e + N;
+      if( ! (u.leftBound()<=x.getCoefficient(k).rightBound()) )
+        throw std::runtime_error("OneDimKSSineVectorField::updateTail UP - Intersection error\n");
+      u.setLeftBound(capd::max(u.leftBound(),x.getCoefficient(k).leftBound()));
+      x.setCoefficient(k,u);
+      continue;
+    }
+  }
+
   for(size_type k=this->m_firstDissipativeVariable;k<=this->m_dimension;++k){
     ScalarType e = exp(lambda[k]*h);
     ScalarType N = -nPart[k]/lambda[k];
-    ScalarType u = ScalarType(-1,1)*((enc[0].getCoefficient(k)-N)*e + N);
+    ScalarType u = (enc[0].getCoefficient(k)-N)*e + N;
     if(! intersection(x.getCoefficient(k),u,u) )
       throw std::runtime_error("OneDimKSSineVectorField::updateTail - Intersection error\n");
     x.setCoefficient(k,u);
@@ -562,9 +604,9 @@ void OneDimKSSineVectorField::dyxNorm(const VectorType& a, MatrixType& result) c
 OneDimKSSineVectorField::ScalarType OneDimKSSineVectorField::dyyLogarithmicNorm(const VectorType& a, const size_type m) const{
   // Assume l_\infty norm in the domain, so that we have to compute max of l_1 norms of infinite number of rows, for k>m and c>m.
   // The coefficients in the matrix in this block are given by
-  // A_{k,c} = 2*k*(a_{k+c}+a_{c-k})   if c>k
-  // A_{k,c} = 2*k*(a_{k+c}-a_{k-c}})  if c<k
-  // A_{k,k) = L_k + 2*k*a_{2k}
+  // A_{k,c} = 2*k*(a_{k+c}+a_{c-k})  if c>k
+  // A_{k,c} = 2*k*(a_{k+c}-a_{k-c})  if c<k
+  // A_{k,k} = L_k + 2*k*a_{2k}
 
   // MAX VALUE ON THE DIAGONAL:
   // Set N = L1Norm(a).
