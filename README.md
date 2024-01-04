@@ -43,7 +43,6 @@ In order to build and execute tests, it necessary to run `cmake` command with op
 cmake .. -DBUILD_TEST_EXECUTABLES=true
 make
 make test
-ctest
 ```
    
 when in `CAPD/build` directory.
