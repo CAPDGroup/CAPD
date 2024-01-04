@@ -12,14 +12,18 @@ add_subdirectory(src/capd/map)
 add_subdirectory(src/capd/pdes)
 add_subdirectory(src/capd/poincare)
 
-# add_subdirectory(src/mpcapd/autodiff)
-# add_subdirectory(src/mpcapd/diffAlgebra)
-# add_subdirectory(src/mpcapd/diffIncl)
-# add_subdirectory(src/mpcapd/dynset)
-# add_subdirectory(src/mpcapd/dynsys)
-# add_subdirectory(src/mpcapd/geomset)
-# add_subdirectory(src/mpcapd/map)
-# add_subdirectory(src/mpcapd/poincare)
+if ( ${ENABLE_MULTIPRECISION} )
+
+    add_subdirectory(src/mpcapd/autodiff)
+    add_subdirectory(src/mpcapd/diffAlgebra)
+    add_subdirectory(src/mpcapd/diffIncl)
+    add_subdirectory(src/mpcapd/dynset)
+    add_subdirectory(src/mpcapd/dynsys)
+    add_subdirectory(src/mpcapd/geomset)
+    add_subdirectory(src/mpcapd/map)
+    add_subdirectory(src/mpcapd/poincare)
+
+endif()
 
 if ( ${BUILD_TEST_EXECUTABLES} )
 
@@ -38,7 +42,6 @@ if ( ${BUILD_EXAMPLE_EXECUTABLES} )
     # add_subdirectory(examples/invariantSet)          # disabled due to krak dependency
     add_subdirectory(examples/LorenzPeriodicOrbit)
     add_subdirectory(examples/maps)
-    # add_subdirectory(examples/multiPrecision)        # disabled due to mprecision dependency
     add_subdirectory(examples/newton)
     add_subdirectory(examples/odes)
     add_subdirectory(examples/odesrig)
@@ -47,5 +50,11 @@ if ( ${BUILD_EXAMPLE_EXECUTABLES} )
     add_subdirectory(examples/RosslerChaoticDynamics)
     add_subdirectory(examples/RosslerPeriodicOrbit)
     # add_subdirectory(examples/taylor)                # disabled due to krak dependency
+
+    if ( ${ENABLE_MULTIPRECISION} )
+
+        add_subdirectory(examples/multiPrecision)
     
+    endif()
+
 endif()
