@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
 project(capd)
 
+option(BUILD_TEST_EXECUTABLES "Build test executables" OFF)
+option(BUILD_EXAMPLE_EXECUTABLES "Build example executables" OFF)
+option(BUILD_KRAK "Build krak component" OFF)
+option(ENABLE_MULTIPRECISION "Enable multiprecision (requires mpfr and gmp)" OFF)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 add_library(${PROJECT_NAME})
