@@ -5,7 +5,7 @@ add_subdirectory(intvtst)
 add_subdirectory(matrixAlgorithms)
 add_subdirectory(vecttst)
 
-if ( ${ENABLE_MULTIPRECISION} )
+if ( ${CAPD_ENABLE_MULTIPRECISION} )
 
     add_subdirectory(mptests)
 

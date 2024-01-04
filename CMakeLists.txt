@@ -21,7 +21,7 @@ add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys4)
 
-if (${ENABLE_MULTIPRECISION})
+if (${CAPD_ENABLE_MULTIPRECISION})
 
     target_link_libraries(${PROJECT_NAME} PUBLIC -lmpfr)
     target_link_libraries(${PROJECT_NAME} PUBLIC -lgmp)

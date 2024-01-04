@@ -25,7 +25,7 @@ Above commands will build the library only (without tests or examples). Krak mod
 Options:
  
 * `-DBUILD_KRAK=true` - builds `krak` graphical user interface  module. 
-* `-DBUILD_EXAMPLE_EXECUTABLES=true` - include tests and example programs into build. In order to build and launch tests, look into section "Building and executing tests".
+* `-DCAPD_BUILD_EXAMPLES=true` - include tests and example programs into build. In order to build and launch tests, look into section "Building and executing tests".
 
 ## Installing the library
 
@@ -37,10 +37,10 @@ when in `CAPD/build` folder. You can specify the directory where the library sho
 
 ## Building and executing tests
 
-In order to build and execute tests, it necessary to run `cmake` command with option `-DBUILD_TEST_EXECUTABLES=true`, then build the tests and execute them with commands:
+In order to build and execute tests, it necessary to run `cmake` command with option `-DCAPD_BUILD_TESTS=true`, then build the tests and execute them with commands:
 
 ```bash
-cmake .. -DBUILD_TEST_EXECUTABLES=true
+cmake .. -DCAPD_BUILD_TESTS=true
 make
 make test
 ```
