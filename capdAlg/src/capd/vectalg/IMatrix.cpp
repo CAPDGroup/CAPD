@@ -65,8 +65,6 @@ template void split<IMatrix,DMatrix>(const IMatrix&, DMatrix&, IMatrix&);
 template IMatrix midMatrix<IMatrix>(const IMatrix&);
 template bool intersection<IMatrix,IMatrix,IMatrix>(const IMatrix&,const IMatrix&, IMatrix&);
 
-template IMatrix & addAssignObjectObject<>( IMatrix &, const IMatrix & );
-
 template IMatrix intervalHull<IMatrix>(const IMatrix &A, const IMatrix &B);
 //template IMatrix leftMatrix<IMatrix>(const IMatrix& v);
 //template IMatrix rightMatrix<IMatrix>(const IMatrix& v);
