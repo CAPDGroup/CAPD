@@ -8,9 +8,13 @@ add_subdirectory(src/capd/rings)
 add_subdirectory(src/capd/rounding)
 add_subdirectory(src/capd/vectalg)
 
-add_subdirectory(src/mpcapd/intervals)
-add_subdirectory(src/mpcapd/matrixAlgorithms)
-add_subdirectory(src/mpcapd/vectalg)
+if ( ${ENABLE_MULTIPRECISION} )
+
+    add_subdirectory(src/mpcapd/intervals)
+    add_subdirectory(src/mpcapd/matrixAlgorithms)
+    add_subdirectory(src/mpcapd/vectalg)
+
+endif()
 
 if ( ${BUILD_TEST_EXECUTABLES} )
 
@@ -22,10 +26,15 @@ endif()
 if ( ${BUILD_EXAMPLE_EXECUTABLES} )
 
     add_subdirectory(examples/alglibdemo)
-    # add_subdirectory(examples/BigIntegers)           # disabled due to mprecision dependency
     add_subdirectory(examples/intervals)
     add_subdirectory(examples/matrixAlgorithms)
     add_subdirectory(examples/TexWriter)
     add_subdirectory(examples/vectalg)
+
+    if ( ${ENABLE_MULTIPRECISION} )
+    
+        add_subdirectory(examples/BigIntegers)
+
+    endif()
 
 endif()
