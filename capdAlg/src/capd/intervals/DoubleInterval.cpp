@@ -71,6 +71,16 @@ template DoubleInterval solveAffineInclusion<double, DoubleRounding>(const Doubl
 //         Arithmetic operators
 //////////////////////////////////////////////////////////////////////////
 #ifndef __INTERVAL_SPEED_OPTIMIZED__
+template DoubleInterval intervalHull<double, DoubleRounding>(const DoubleInterval & A_iv1,
+                                                                        const DoubleInterval & A_iv2);
+template void split<double, DoubleRounding>( DoubleInterval & A_iv, DoubleInterval & A_rMid,
+                                                              double & A_diam);
+template DoubleInterval power<double, DoubleRounding> (const DoubleInterval & x, int n);
+template DoubleInterval power <double, DoubleRounding>(const DoubleInterval & a,
+                                                                  const DoubleInterval & b);
+template DoubleInterval sqrt <double, DoubleRounding>(const DoubleInterval &x);
+template DoubleInterval sin <double, DoubleRounding>(const DoubleInterval& x);
+template DoubleInterval cos <double, DoubleRou
 
 template DoubleInterval operator +<double, DoubleRounding>(const DoubleInterval & A_iv1, const DoubleInterval & A_iv2);
 template  DoubleInterval operator -<double, DoubleRounding>(const DoubleInterval & A_iv1, const DoubleInterval & A_iv2);
