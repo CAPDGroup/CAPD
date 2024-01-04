@@ -14,6 +14,7 @@
 #ifndef _CAPD_DYNSET_C0BALLSET_H_
 #define _CAPD_DYNSET_C0BALLSET_H_
 
+#include <memory>
 #include "capd/dynset/C0Set.h"
 #include "capd/vectalg/Norm.h"
 
@@ -41,14 +42,16 @@ public:
 protected:
   VectorType x;
   ScalarType r;
-  NormType *n;
+  std::unique_ptr<NormType> n;
 
 public:
   C0BallSet(const C0BallSet&);
+  C0BallSet(C0BallSet&&) noexcept = default;
   C0BallSet(const VectorType& x, NormType& n, ScalarType t = TypeTraits<ScalarType>::zero());
   C0BallSet(const VectorType& x, const ScalarType& r, NormType& n, ScalarType t = TypeTraits<ScalarType>::zero());
-  ~C0BallSet();
-  const C0BallSet& operator=(const C0BallSet&);
+  ~C0BallSet() = default;
+  C0BallSet& operator=(const C0BallSet&);
+  C0BallSet& operator=(C0BallSet&&) noexcept = default;
 
   virtual void move(capd::dynsys::DynSys<MatrixType>& dynsys);
   virtual void move(capd::dynsys::DynSys<MatrixType>& dynsys, C0BallSet& result) const;

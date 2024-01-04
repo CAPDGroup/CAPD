@@ -73,7 +73,7 @@ public:
   const ScalarType& operator[](size_type) const;
   ScalarType& operator()(size_type);
   const ScalarType& operator()(size_type) const;
-  friend void swap(Container<Scalar,capacity>& A_c1, Container<Scalar,capacity>& A_c2)
+  friend void swap(Container<Scalar,capacity>& A_c1, Container<Scalar,capacity>& A_c2) noexcept
   {
     iterator b=A_c1.begin(), e=A_c1.end();
     iterator i = A_c2.begin();
@@ -132,7 +132,7 @@ public:
   const ScalarType& operator[](size_type) const;
   ScalarType& operator()(size_type);
   const ScalarType& operator()(size_type) const;
-  friend void swap(Container<Scalar,0>& A_c1, Container<Scalar,0>& A_c2)
+  friend void swap(Container<Scalar,0>& A_c1, Container<Scalar,0>& A_c2) noexcept
   {
      std::swap(A_c1.data,A_c2.data);
      std::swap(A_c1.capacity,A_c2.capacity);

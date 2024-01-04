@@ -51,7 +51,9 @@ void C0AffineSet<MatrixType, Policies>::move(DynSysType & dynsys, C0AffineSet& r
   // important: here we assume that both m_r and m_r0 contains zero
   // this is assured by each constructor and each step of this algorithm
 
-  VectorType y(m_x.dimension()), rem(m_x.dimension()), enc(m_x.dimension());
+  VectorType y(m_x.dimension());
+  VectorType rem(m_x.dimension());
+  VectorType enc(m_x.dimension());
   MatrixType A(m_x.dimension(), m_x.dimension());
 
   VectorType xx = VectorType(*this);

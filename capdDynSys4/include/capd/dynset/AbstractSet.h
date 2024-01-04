@@ -23,8 +23,8 @@ template<typename VectorT>
 class AbstractSet
 {
 public:
-  typedef VectorT VectorType;
-  typedef typename VectorType::ScalarType ScalarType;
+  using VectorType = VectorT;
+  using ScalarType = typename VectorType::ScalarType;
 
   /// This method computes value of functor f at interval vector represented by this set.
   template<class Functional>
@@ -35,7 +35,7 @@ public:
   virtual operator VectorType() const = 0;
 
   /// destructor
-  virtual ~AbstractSet (void) {}
+  virtual ~AbstractSet (void) = default;
   /// returns a set detailed information
   virtual std::string show() const = 0;
 };

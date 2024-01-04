@@ -39,20 +39,13 @@ C0BallSet<MatrixType>::C0BallSet(const C0BallSet& a_set)
 {}
 
 template<typename MatrixType>
-const C0BallSet<MatrixType>& C0BallSet<MatrixType>::operator=(const C0BallSet& a_set)
+C0BallSet<MatrixType>& C0BallSet<MatrixType>::operator=(const C0BallSet& a_set)
 {
   C0Set<MatrixType>::operator=(a_set);
   x = a_set.x;
   r = a_set.r;
-  delete n;
-  n = a_set.n->clone();
+  n.reset(a_set.n->clone());
   return *this;
-}
-
-template<typename MatrixType>
-C0BallSet<MatrixType>::~C0BallSet()
-{
-  delete n;
 }
 
 template<typename MatrixType>
@@ -64,7 +57,8 @@ void C0BallSet<MatrixType>::move(capd::dynsys::DynSys<MatrixType> &dynsys)
 template<typename MatrixType>
 void C0BallSet<MatrixType>::move(capd::dynsys::DynSys<MatrixType> &dynsys, C0BallSet &result) const
 {
-  VectorType y(x.dimension()),s(x.dimension());
+  VectorType y(x.dimension());
+  VectorType s(x.dimension());
 
 /*   
   Radius is multipled by the Lipschitz constant of the generator of DynSys
