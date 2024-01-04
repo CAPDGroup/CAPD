@@ -24,7 +24,7 @@ Above commands will build the library only (without tests or examples).
 
 Options:
 
-* `-DCAPD_ENABLE_MULTIPRECISION=true` - enable multiprecision support (requires mpfr and gmp libraries),
+* `-DCAPD_ENABLE_MULTIPRECISION=false` - disable multiprecision support,
 * `-DCAPD_BUILD_ALL=true` - include tests and example programs into build, 
 * `-DCAPD_BUILD_EXAMPLES=true` - include example programs into build. In order to build and launch tests, look into section "Building and executing tests".
 
