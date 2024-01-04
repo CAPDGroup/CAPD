@@ -25,8 +25,6 @@ install_headers(
     capd/autodiff/eval.hpp
     capd/capdlib.h
     capd/covrel/ConesConditions.h
-    capd/covrel/GraphicsHSet3D.h
-    capd/covrel/GraphicsTripleSet.h
     capd/covrel/GridSet.h
     capd/covrel/GridSets.h
     capd/covrel/HSet.h

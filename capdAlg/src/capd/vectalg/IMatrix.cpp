@@ -54,6 +54,7 @@ template void addObjects<>(const Matrix<capd::DInterval,CAPD_DEFAULT_DIMENSION,C
 template Vector<capd::DInterval,CAPD_DEFAULT_DIMENSION>& addAssignMatrixByVector<>(Vector<capd::DInterval,CAPD_DEFAULT_DIMENSION>& u,const Matrix<capd::DInterval,CAPD_DEFAULT_DIMENSION,CAPD_DEFAULT_DIMENSION>& A, const Vector<capd::DInterval,CAPD_DEFAULT_DIMENSION>& v);
 template Vector<capd::DInterval,CAPD_DEFAULT_DIMENSION>& subtractAssignMatrixByVector<>(Vector<capd::DInterval,CAPD_DEFAULT_DIMENSION>& u,const Matrix<capd::DInterval,CAPD_DEFAULT_DIMENSION,CAPD_DEFAULT_DIMENSION>& A, const Vector<capd::DInterval,CAPD_DEFAULT_DIMENSION>& v);
 
+
 // intervalMatrix
 
 typedef Matrix<capd::DInterval,CAPD_DEFAULT_DIMENSION,CAPD_DEFAULT_DIMENSION> IMatrix;
@@ -63,6 +64,7 @@ template void split<IMatrix,DMatrix>(const IMatrix&, DMatrix&, IMatrix&);
 template IMatrix midMatrix<IMatrix>(const IMatrix&);
 template bool intersection<IMatrix,IMatrix,IMatrix>(const IMatrix&,const IMatrix&, IMatrix&);
 
+template IMatrix & addAssignObjectObject<>( IMatrix &, const IMatrix & );
 
 template IMatrix intervalHull<IMatrix>(const IMatrix &A, const IMatrix &B);
 //template IMatrix leftMatrix<IMatrix>(const IMatrix& v);

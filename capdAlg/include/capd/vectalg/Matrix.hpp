@@ -31,7 +31,7 @@
 
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.hpp"
 #include "capd/matrixAlgorithms/intMatrixAlgorithms.hpp"
-
+#include "capd/vectalg/algebraicOperations.hpp"
 
 namespace capd{
 namespace vectalg{

@@ -56,7 +56,7 @@ template<class MatrixT>
 class AbstractSection
 {
 public:
-  virtual ~AbstractSection(){}
+  virtual ~AbstractSection() = default;
   typedef MatrixT MatrixType;
   typedef typename MatrixType::RowVectorType VectorType;
   typedef typename MatrixType::ScalarType ScalarType;

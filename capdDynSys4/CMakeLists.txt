@@ -1,4 +1,5 @@
 target_include_directories(${PROJECT_NAME} PUBLIC include)
+
 add_subdirectory(include)
 
 add_subdirectory(src/capd/autodiff)
@@ -12,7 +13,7 @@ add_subdirectory(src/capd/map)
 add_subdirectory(src/capd/pdes)
 add_subdirectory(src/capd/poincare)
 
-if ( ${ENABLE_MULTIPRECISION} )
+if ( ${CAPD_ENABLE_MULTIPRECISION} )
 
     add_subdirectory(src/mpcapd/autodiff)
     add_subdirectory(src/mpcapd/diffAlgebra)
@@ -25,13 +26,13 @@ if ( ${ENABLE_MULTIPRECISION} )
 
 endif()
 
-if ( ${BUILD_TEST_EXECUTABLES} )
+if ( ${CAPD_BUILD_TESTS} )
 
     add_subdirectory(tests)
 
 endif()
 
-if ( ${BUILD_EXAMPLE_EXECUTABLES} )
+if ( ${CAPD_BUILD_EXAMPLES} )
 
     add_subdirectory(examples/cndemo)
     add_subdirectory(examples/coveringRelation)
@@ -51,7 +52,7 @@ if ( ${BUILD_EXAMPLE_EXECUTABLES} )
     add_subdirectory(examples/RosslerPeriodicOrbit)
     # add_subdirectory(examples/taylor)                # disabled due to krak dependency
 
-    if ( ${ENABLE_MULTIPRECISION} )
+    if ( ${CAPD_ENABLE_MULTIPRECISION} )
 
         add_subdirectory(examples/multiPrecision)
     
