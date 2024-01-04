@@ -41,14 +41,15 @@ namespace pdes {
  * - algebraic operations (addition, subtraction, multiplication)
  * - automatic differentiation with respect to time variable
 */
+template<class ScalarT = capd::interval> // ScalarT can be complex interval
 class GeometricBound {
 public:
-  typedef capd::interval ScalarType;
+  typedef ScalarT ScalarType;
   typedef capd::IVector::size_type size_type;
-  typedef capd::IMatrix MatrixType;
+  typedef capd::vectalg::Matrix<ScalarT,0,0> MatrixType;
   typedef GeometricBound VectorType;
-  typedef capd::IVector FiniteVectorType;
-  typedef MatrixType::RefRowVectorType RefVectorType;
+  typedef capd::vectalg::Vector<ScalarT,0> FiniteVectorType;
+  typedef typename MatrixType::RefRowVectorType RefVectorType;
 
   GeometricBound(){}
 
@@ -57,22 +58,21 @@ public:
 
   /// Constructs a Geometric series with given bound on tail C/(q^i).
   /// The coefficients 1,...,dim will be stored explicitly.
-  GeometricBound(size_type dim, ScalarType C, ScalarType q);
+  GeometricBound(size_type dim, capd::interval C, capd::interval q);
 
   /// Constructs a Geometric series with given bound on tail C/(q^i).
   /// The coefficients 1,...,dim will be stored explicitly and initialized from an array coeff.
-  GeometricBound(size_type dim, ScalarType C, ScalarType q, const ScalarType* coeff);
+  GeometricBound(size_type dim, capd::interval C, capd::interval q, const ScalarType* coeff);
 
   /// Constructs a Geometric series with given bound on tail C/(q^i).
   /// The coefficients 1,...,dim will be stored explicitly and initialized from an array coeff.
-  GeometricBound(ScalarType C, ScalarType q, const FiniteVectorType& x);
+  GeometricBound(capd::interval C, capd::interval q, const FiniteVectorType& x);
 
   GeometricBound& operator+=(const GeometricBound& x);
   GeometricBound& operator-=(const GeometricBound& x);
   GeometricBound& operator*=(const ScalarType& x);
 
   GeometricBound partialDerivative() const;
-  friend std::ostream& operator << (std::ostream& s, const GeometricBound& x);
 
   /// Returns i-th coordinate of a GeometricBound. The argument is an arbitrary natural number
   ScalarType getCoefficient(size_type i) const;
@@ -82,23 +82,24 @@ public:
   void setCoefficient(size_type i, const ScalarType& s);
 
   /// Returns constant used in the bound of the infinite dimensional tail.
-  ScalarType getConstant() const { return m_C; }
+  capd::interval getConstant() const { return m_C; }
 
   /// Sets new value of constant used in the bound of the infinite dimensional tail.
   /// It must be positive number. Otherwise an exception is thrown.
-  void setConstant(ScalarType C){
+
+  void setConstant(capd::interval C){
     if( C>=0 )
-      m_C = C.rightBound();
+      m_C = C;
     else
       throw std::runtime_error("SetConstant error - negative argument");
   }
 
   /// Returns the constant q used in the bound of the infinite dimensional tail: C/(decay^i).
-  ScalarType getGeometricDecay() const { return m_decay; };
+  capd::interval getGeometricDecay() const { return m_decay; };
 
   /// Sets new value of q used in the bound of the infinite dimensional tail: C/(q^i).
   /// If q is out of (0,1) an exception is thrown.
-  void setGeometricDecay(ScalarType decay){
+  void setGeometricDecay(capd::interval decay){
     if( decay>1 )
       m_decay = decay.rightBound();
     else
@@ -128,11 +129,13 @@ public:
   }
 
   const static size_type csDim = capd::IVector::csDim;
+
 private:
+
   void check();
   FiniteVectorType m_x;
-  ScalarType m_C;
-  ScalarType m_decay;
+  capd::interval m_C;
+  capd::interval m_decay;
 }; // end of class GeometricBound
 
 //*****************************************************************************/
@@ -154,7 +157,8 @@ private:
  * @param[in]  y      object of class GeometricBound
  * @returns    sum of x and y
 */
-GeometricBound operator+(const GeometricBound& x, const GeometricBound& y);
+template<class ScalarT>
+GeometricBound<ScalarT> operator+(const GeometricBound<ScalarT>& x, const GeometricBound<ScalarT>& y);
 
 
 /*****************************************************************************/
@@ -176,7 +180,8 @@ GeometricBound operator+(const GeometricBound& x, const GeometricBound& y);
  * @param[in]  y      object of class GeometricBound
  * @returns    subtraction of x and y
 */
-GeometricBound operator-(const GeometricBound& x, const GeometricBound& y);
+template<class ScalarT>
+GeometricBound<ScalarT> operator-(const GeometricBound<ScalarT>& x, const GeometricBound<ScalarT>& y);
 
 
 //*****************************************************************************/
@@ -193,7 +198,8 @@ GeometricBound operator-(const GeometricBound& x, const GeometricBound& y);
   *
   * @returns    GeometricBound p multiplied by s
 */
-GeometricBound operator*(const interval& s, const GeometricBound& x);
+template<class ScalarT>
+GeometricBound<ScalarT> operator*(const ScalarT& s, const GeometricBound<ScalarT>& x);
 
 
 
@@ -211,7 +217,8 @@ GeometricBound operator*(const interval& s, const GeometricBound& x);
   *
   * @returns    GeometricBound x multiplied by s
 */
-GeometricBound operator*(const GeometricBound& x, const interval& s);
+template<class ScalarT>
+GeometricBound<ScalarT> operator*(const GeometricBound<ScalarT>& x, const ScalarT& s);
 
 
 
@@ -233,7 +240,9 @@ GeometricBound operator*(const GeometricBound& x, const interval& s);
   * @note The dimension m of the matrix A must be less or equal than number of exactly represented coefficients in x.
   *       Exception is thrown if this requirement is violated.
 */
-GeometricBound operator*(const IMatrix& A, const GeometricBound& x);
+
+template<class ScalarT>
+GeometricBound<ScalarT> operator*(const capd::vectalg::Matrix<ScalarT,0,0>& A, const GeometricBound<ScalarT>& x);
 
 
 //*****************************************************************************/
@@ -249,39 +258,46 @@ GeometricBound operator*(const IMatrix& A, const GeometricBound& x);
   *
   * @returns  a reference to stream out
 */
-std::ostream& operator << (std::ostream& s, const GeometricBound& x);
-GeometricBound intersection(const GeometricBound& x, const GeometricBound& y);
-void split(const GeometricBound& X, GeometricBound& x, GeometricBound& dx);
+template<class ScalarT>
+std::ostream& operator << (std::ostream& s, const GeometricBound<ScalarT>& x);
+
+template<class ScalarT>
+GeometricBound<ScalarT> intersection(const GeometricBound<ScalarT>& x, const GeometricBound<ScalarT>& y);
+
+template<class ScalarT>
+void split(const GeometricBound<ScalarT>& X, GeometricBound<ScalarT>& x, GeometricBound<ScalarT>& dx);
 
 // --------------------- inline definitions -----------------------------------
 
-inline
-GeometricBound::ScalarType GeometricBound::getCoefficient(size_type i) const {
+template<class ScalarT>
+inline ScalarT GeometricBound<ScalarT>::getCoefficient(size_type i) const {
   if(i <= this->m_x.dimension())
     return m_x[i-1];
   return m_C*ScalarType(-1,1) / power(ScalarType(m_decay),i);
 }
 
-inline void GeometricBound::setCoefficient(size_type i, const ScalarType& s) {
+template<class ScalarT>
+inline void GeometricBound<ScalarT>::setCoefficient(size_type i, const ScalarType& s) {
   if(i <= this->m_x.dimension())
     m_x[i-1] = s;
   else
     throw std::runtime_error("GeometricBound::setCoefficient - index out of bound");
 }
 
-inline
-GeometricBound midVector(const GeometricBound& x){
-  const GeometricBound::FiniteVectorType& r = x.getExplicitCoefficients();
-  return GeometricBound(0., x.getGeometricDecay(), capd::vectalg::midVector(r));
+template<class ScalarT>
+inline GeometricBound<ScalarT> midVector(const GeometricBound<ScalarT>& x){
+  const auto& r = x.getExplicitCoefficients();
+  return GeometricBound<ScalarT>(0., x.getGeometricDecay(), capd::vectalg::midVector(r));
 }
 
-inline void swap(GeometricBound& a, GeometricBound& b){
+template<class ScalarT>
+inline void swap(GeometricBound<ScalarT>& a, GeometricBound<ScalarT>& b){
   swap(a.getExplicitCoefficients(),b.getExplicitCoefficients());
-  GeometricBound::ScalarType q = a.getGeometricDecay();
+  auto q = a.getGeometricDecay();
   a.setGeometricDecay(b.getGeometricDecay());
   b.setGeometricDecay(q);
 
-  GeometricBound::ScalarType C = a.getConstant();
+  auto C = a.getConstant();
   a.setConstant(b.getConstant());
   b.setConstant(C);
 }

@@ -27,13 +27,13 @@ namespace pdes {
 /**
  * The class is class represents a subset of a countable infinite dimensional space.
  * The representation splits into two parts.
- * 1. A finite dimensional interval vector holds finite number of coefficients 1,1,2,...,M called the main variables.
- * 2. The remaining coefficients x_i, x>M are bounded uniformly by a geometric series
- *    	|x_i| < = q^{-i}(c0 + c1*i + c2*i^2 + ... + cn*i^n)
+ * 1. A finite dimensional interval vector stores finite number of coefficients 0,1,2,...,M called the main variables.
+ * 2. The remaining coefficients x_i, x>M are bounded uniformly by a polylog series
+ *    	|x_i| < = C*q^{-i}i^{-d}
  *    where
  *    - C is a positive constant
  *    - q is a constant satisfying q>1
- *    - n is a natural number
+ *    - d is a natural number
  *
  * The condition q>1 guarantees that the function \f$ x(t) = \sum_{i=0}^\infty x_i*t^i \f$ is analytic near t=0.
  *
@@ -49,24 +49,23 @@ public:
   typedef PolyLogBound VectorType;
   typedef capd::IVector FiniteVectorType;
   typedef MatrixType::RefRowVectorType RefVectorType;
-  typedef capd:DVector Polynomial;
 
   PolyLogBound(){}
 
-  /// constructs a Geometric series with C=0, q=1 and s=0 and given number of explicitly stored coefficients.
+  /// constructs a Geometric series with C=0, q=2 and d=0 and given number of explicitly stored coefficients.
   PolyLogBound(size_type dim);
 
   /// Constructs a Geometric series with given bound on tail C/(q^i).
   /// The coefficients 1,...,dim will be stored explicitly.
-  PolyLogBound(size_type dim, ScalarType C, ScalarType q);
+  PolyLogBound(size_type dim, ScalarType C, ScalarType q, size_type d);
 
   /// Constructs a Geometric series with given bound on tail C/(q^i).
   /// The coefficients 1,...,dim will be stored explicitly and initialized from an array coeff.
-  PolyLogBound(size_type dim, ScalarType C, ScalarType q, const ScalarType* coeff);
+  PolyLogBound(size_type dim, ScalarType C, ScalarType q, size_type d, const ScalarType* coeff);
 
   /// Constructs a Geometric series with given bound on tail C/(q^i).
   /// The coefficients 1,...,dim will be stored explicitly and initialized from an array coeff.
-  PolyLogBound(ScalarType C, ScalarType q, const FiniteVectorType& x);
+  PolyLogBound(ScalarType C, ScalarType q, size_type d, const FiniteVectorType& x);
 
   PolyLogBound& operator+=(const PolyLogBound& x);
   PolyLogBound& operator-=(const PolyLogBound& x);
@@ -83,17 +82,21 @@ public:
   void setCoefficient(size_type i, const ScalarType& s);
 
   /// Returns constant used in the bound of the infinite dimensional tail.
-  ScalarType getConstant(size_type i) const { return m_poly[i]; }
+  ScalarType getConstant() const { return m_C; }
 
   /// Sets new value of constant used in the bound of the infinite dimensional tail.
   /// It must be positive number. Otherwise an exception is thrown.
-  void setConstant(size_type i, ScalarType C){
+  void setConstant(ScalarType C){
     if( C>=0 )
-      m_poly[i] = C.rightBound();
-    else
-      throw std::runtime_error("SetConstant error - negative argument");
+      m_C = C;
+    else{
+      std::ostringstream out;
+      out << "PolyLogBound: setConstant error - negative argument" << C << "\n";
+      throw std::runtime_error(out.str());
+    }
   }
-  void setPolynomialDegree(size_type d) { m_poly.resize(d+1); }
+  void setDegree(size_type d) { m_degree = d; }
+  size_type getDegree() const { return m_degree; }
 
   /// Returns the constant q used in the bound of the infinite dimensional tail: C/(decay^i).
   ScalarType getGeometricDecay() const { return m_decay; };
@@ -126,7 +129,7 @@ public:
 
   void clear(){
     m_x.clear();
-    m_poly = Polynomial(1);
+    m_C = 0.;
   }
 
   const static size_type csDim = capd::IVector::csDim;
@@ -134,7 +137,8 @@ private:
   void check();
   FiniteVectorType m_x;
   ScalarType m_decay;
-  Polynomial m_poly;
+  size_type m_degree;
+  ScalarType m_C;
 }; // end of class PolyLogBound
 
 //*****************************************************************************/
@@ -261,7 +265,7 @@ inline
 PolyLogBound::ScalarType PolyLogBound::getCoefficient(size_type i) const {
   if(i <= this->m_x.dimension())
     return m_x[i-1];
-  return m_C*ScalarType(-1,1) / power(ScalarType(m_decay),i);
+  return m_C*ScalarType(-1,1) / (std::pow(i,m_degree)*power(ScalarType(m_decay),i));
 }
 
 inline void PolyLogBound::setCoefficient(size_type i, const ScalarType& s) {
@@ -273,13 +277,13 @@ inline void PolyLogBound::setCoefficient(size_type i, const ScalarType& s) {
 
 inline
 PolyLogBound midVector(const PolyLogBound& x){
-  return PolyLogBound(0., x.getGeometricDecay(), midVector(x.getExplicitCoefficients()));
+  return PolyLogBound(0., x.getGeometricDecay(), 0, midVector(x.getExplicitCoefficients()));
 }
 
 }} // namespace capd::pdes
 
 
-#endif // _CAPD_PDES_POLYLOGSERIES_H_
+#endif // _CAPD_PDES_POLYLOGBOUND_H_
 
 
 /// @}
