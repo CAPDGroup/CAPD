@@ -37,7 +37,7 @@ In order to build and execute tests, it necessary to run `cmake` command with op
 ```bash
 cmake .. -DBUILD_TEST_EXECUTABLES=true
 make
-make tests
+make test
 ctest
 ```
    
