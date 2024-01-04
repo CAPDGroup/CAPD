@@ -1,13 +1,6 @@
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 add_subdirectory(include)
-
 add_subdirectory(src/capd/auxil)
-
-if ( ${BUILD_KRAK} )
-
-    add_subdirectory(src/capd/krak)
-
-endif()
 
 if ( ${BUILD_TEST_EXECUTABLES} )
 

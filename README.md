@@ -39,7 +39,11 @@ when in `CAPD/build` folder. You can specify the directory where the library sho
 
 In order to build and execute tests, it necessary to run `cmake` command with option `-DBUILD_TEST_EXECUTABLES=true`, then build the tests and execute them with commands:
 
-    make
-    make tests
+```bash
+cmake .. -DBUILD_TEST_EXECUTABLES=true
+make
+make tests
+ctest
+```
    
 when in `CAPD/build` directory.
