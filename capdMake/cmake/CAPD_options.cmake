@@ -1,5 +1,5 @@
 option(CAPD_BUILD_ALL "CAPD test and examples " OFF)
-message(STATUS "Build all CAPD      : ${CAPD_BUILD_ALL}")
+# message(STATUS "Build all CAPD      : ${CAPD_BUILD_ALL}")
 option(CAPD_BUILD_TESTS "Activate/deactivate CAPD tests compilation" OFF)
 option(CAPD_BUILD_EXAMPLES "Activate/deactivate CAPD examples compilation" OFF)
 
