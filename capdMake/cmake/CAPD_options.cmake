@@ -4,7 +4,6 @@ option(CAPD_BUILD_TESTS "Activate/deactivate CAPD tests compilation" OFF)
 option(CAPD_BUILD_EXAMPLES "Activate/deactivate CAPD examples compilation" OFF)
 
 if( ${CAPD_BUILD_ALL} )
-  message(STATUS "TAK")
   set(CAPD_BUILD_TESTS ON)
   set(CAPD_BUILD_EXAMPLES ON)
 endif()
