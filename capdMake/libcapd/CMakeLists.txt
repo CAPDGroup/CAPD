@@ -1,1 +1,21 @@
-target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/main_entry.cpp)
+get_target_property(CAPD_CFLAGS ${PROJECT_NAME} COMPILE_OPTIONS)
+get_target_property(CAPD_LIBS ${PROJECT_NAME} INTERFACE_LINK_LIBRARIES)
+
+string(REPLACE ";" " " CAPD_CFLAGS "${CAPD_CFLAGS}")
+string(REPLACE ";" " " CAPD_LIBS "${CAPD_LIBS}")
+
+set(PKG_CONFIG_PATH ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/capd-config.in
+    ${CMAKE_CURRENT_BINARY_DIR}/bin/capd-config
+    @ONLY)
+
+install(
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/bin/capd-config
+    PERMISSIONS OWNER_EXECUTE OWNER_READ
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/capd.pc.in
+    ${PKG_CONFIG_PATH}/capd.pc
+    @ONLY)
