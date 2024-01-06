@@ -281,7 +281,7 @@ namespace filib
 	float const primitive::one_fsucc   = primitive::composef(0,127,1);
 
 	template <>
-	double constructFromBitSet<double>(std::istream & in) /* throw(interval_io_exception) */
+	double constructFromBitSet<double>(std::istream & in) throw(interval_io_exception)
 	{
 		unsigned char signBit[1];
 		unsigned char expBits[11];
@@ -321,7 +321,7 @@ namespace filib
 	}
 
 	template <>
-	float constructFromBitSet<float>(std::istream & in) /* throw(interval_io_exception) */
+	float constructFromBitSet<float>(std::istream & in) throw(interval_io_exception)
 	{
 		unsigned char signBit[1];
 		unsigned char expBits[8];
@@ -354,7 +354,7 @@ namespace filib
 	}
 
 	template <>
-	double constructFromHexSet<double>(std::istream & in) /* throw(interval_io_exception) */
+	double constructFromHexSet<double>(std::istream & in) throw(interval_io_exception)
 	{
 		unsigned char signHex[1];
 		unsigned char expHex[3];
@@ -400,7 +400,7 @@ namespace filib
 	}
 
 	template <>
-	float constructFromHexSet<float>(std::istream & in) /* throw(interval_io_exception) */
+	float constructFromHexSet<float>(std::istream & in) throw(interval_io_exception)
 	{
 		unsigned char signHex[1];
 		unsigned char expHex[2];
@@ -445,7 +445,7 @@ namespace filib
 	}
 
 	static double checkedToDouble(std::string const & s)
-	/* throw(interval_io_exception) */
+	throw(interval_io_exception)
 	{
 		char * endptr = 0;
 		char const * nptr = s.c_str();
@@ -458,20 +458,20 @@ namespace filib
 	}
 	template <>
 	double inferFromString<double,false>(std::string const & s)
-	/* throw(interval_io_exception) */
+	throw(interval_io_exception)
 	{
 		return primitive::basic_pred(checkedToDouble(s)) ;
 	}
 	template <>
 	double inferFromString<double,true>(std::string const & s)
-	/* throw(interval_io_exception) */
+	throw(interval_io_exception)
 	{
 		return primitive::basic_succ(checkedToDouble(s)) ;
 
 	}
 	template <>
 	float inferFromString<float,false>(std::string const & s)
-	/* throw(interval_io_exception) */
+	throw(interval_io_exception)
 	{
 		float tval = static_cast<float>(checkedToDouble(s));
 		
@@ -484,7 +484,7 @@ namespace filib
 	}
 	template <>
 	float inferFromString<float,true>(std::string const & s)
-	/* throw(interval_io_exception) */
+	throw(interval_io_exception)
 	{
 		float tval = static_cast<float>(checkedToDouble(s));
 		
@@ -499,7 +499,7 @@ namespace filib
 	void readBitSet(
 		std::istream & in, 
 		unsigned int n0,
-		unsigned char * s) /* throw(interval_io_exception) */
+		unsigned char * s) throw(interval_io_exception)
 	{
 		size_t pos = 0;
 		size_t n = n0;
@@ -529,7 +529,7 @@ namespace filib
 	void readHexSet(
 		std::istream & in, 
 		unsigned int n0,
-		unsigned char * s) /* throw(interval_io_exception) */
+		unsigned char * s) throw(interval_io_exception)
 	{
 		size_t pos = 0;
 		size_t n = n0;
@@ -589,7 +589,7 @@ namespace filib
 		}
 	}
 
-	void readChar(std::istream& in, char c0) /* throw(interval_io_exception) */
+	void readChar(std::istream& in, char c0) throw(interval_io_exception)
 	{
 		char c = in.get();
 		
@@ -602,7 +602,7 @@ namespace filib
 	}
 
 	template <>
-	float constructFromBitSet<float>(std::string & in) /* throw(interval_io_exception) */
+	float constructFromBitSet<float>(std::string & in) throw(interval_io_exception)
 	{
 		#if defined(__GNUC__) && __GNUC__ < 3
 		std::istrstream istr(in.c_str());
@@ -612,7 +612,7 @@ namespace filib
 		return constructFromBitSet<float>(istr);
 	}
 	template <>
-	double constructFromBitSet<double>(std::string & in) /* throw(interval_io_exception) */
+	double constructFromBitSet<double>(std::string & in) throw(interval_io_exception)
 	{
 		#if defined(__GNUC__) && __GNUC__ < 3
 		std::istrstream istr(in.c_str());
@@ -623,7 +623,7 @@ namespace filib
 	}
 
 	template <>
-	float constructFromBitSet<float>(char const * in) /* throw(interval_io_exception) */
+	float constructFromBitSet<float>(char const * in) throw(interval_io_exception)
 	{
 		#if defined(__GNUC__) && __GNUC__ < 3
 		std::istrstream istr(in);
@@ -633,7 +633,7 @@ namespace filib
 		return constructFromBitSet<float>(istr);
 	}
 	template <>
-	double constructFromBitSet<double>(char const * in) /* throw(interval_io_exception) */
+	double constructFromBitSet<double>(char const * in) throw(interval_io_exception)
 	{
 		#if defined(__GNUC__) && __GNUC__ < 3
 		std::istrstream istr(in);
@@ -644,7 +644,7 @@ namespace filib
 	}
 
 	template <>
-	float constructFromHexSet<float>(std::string & in) /* throw(interval_io_exception) */
+	float constructFromHexSet<float>(std::string & in) throw(interval_io_exception)
 	{
 		#if defined(__GNUC__) && __GNUC__ < 3
 		std::istrstream istr(in.c_str());
@@ -654,7 +654,7 @@ namespace filib
 		return constructFromHexSet<float>(istr);
 	}
 	template <>
-	double constructFromHexSet<double>(std::string & in) /* throw(interval_io_exception) */
+	double constructFromHexSet<double>(std::string & in) throw(interval_io_exception)
 	{
 		#if defined(__GNUC__) && __GNUC__ < 3
 		std::istrstream istr(in.c_str());
@@ -665,7 +665,7 @@ namespace filib
 	}
 
 	template <>
-	float constructFromHexSet<float>(char const * in) /* throw(interval_io_exception) */
+	float constructFromHexSet<float>(char const * in) throw(interval_io_exception)
 	{
 		#if defined(__GNUC__) && __GNUC__ < 3
 		std::istrstream istr(in);
@@ -675,7 +675,7 @@ namespace filib
 		return constructFromHexSet<float>(istr);
 	}
 	template <>
-	double constructFromHexSet<double>(char const * in) /* throw(interval_io_exception) */
+	double constructFromHexSet<double>(char const * in) throw(interval_io_exception)
 	{
 		#if defined(__GNUC__) && __GNUC__ < 3
 		std::istrstream istr(in);

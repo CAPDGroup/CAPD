@@ -286,8 +286,8 @@ void checkRep(filib::interval<double,filib::native_switched,filib::i_mode_extend
 {
 	#if defined(FILIB_EXTENDED)
 	if (
-		(filib::fp_traits<double,filib::native_switched>::IsNaN(z.inf()) && !filib::fp_traits<double,filib::native_switched>::IsNaN(z.sup())) ||
-		(!filib::fp_traits<double,filib::native_switched>::IsNaN(z.inf()) && filib::fp_traits<double,filib::native_switched>::IsNaN(z.sup())) )
+		filib::fp_traits<double,filib::native_switched>::IsNaN(z.inf()) && !filib::fp_traits<double,filib::native_switched>::IsNaN(z.sup()) ||
+		!filib::fp_traits<double,filib::native_switched>::IsNaN(z.inf()) && filib::fp_traits<double,filib::native_switched>::IsNaN(z.sup())) 
 	{
 		std::cout <<  std::endl << "***" << std::endl
 			<< "Consistency problem: only one bound is NaN with z:" << std::endl;

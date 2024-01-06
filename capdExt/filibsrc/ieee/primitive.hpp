@@ -1,15 +1,15 @@
-/*
-**  fi_lib++  --- A fast interval library (Version 2.0)
-**
-**  Copyright (C) 2001:
-**
-**  Werner Hofschuster, Walter Kraemer
-**  Wissenschaftliches Rechnen/Softwaretechnologie (WRSWT)
-**  Universitaet Wuppertal, Germany
-**  Michael Lerch, German Tischler, Juergen Wolff von Gudenberg
-**  Institut fuer Informatik
-**  Universitaet Wuerzburg, Germany
-**
+/*                                                                           
+**  fi_lib++  --- A fast interval library (Version 2.0)                     
+**                                                                  
+**  Copyright (C) 2001:                                                        
+**                                                     
+**  Werner Hofschuster, Walter Kraemer                               
+**  Wissenschaftliches Rechnen/Softwaretechnologie (WRSWT)  
+**  Universitaet Wuppertal, Germany                                           
+**  Michael Lerch, German Tischler, Juergen Wolff von Gudenberg       
+**  Institut fuer Informatik                                         
+**  Universitaet Wuerzburg, Germany                                           
+** 
 **  This library is free software; you can redistribute it and/or
 **  modify it under the terms of the GNU Library General Public
 **  License as published by the Free Software Foundation; either
@@ -47,7 +47,7 @@ namespace filib
 	{
 		private:
 		std::string desc;
-
+		
 		public:
 		interval_io_exception(std::string const & rdesc) throw()
 		: desc(rdesc) {}
@@ -56,11 +56,11 @@ namespace filib
 		{ return desc.c_str(); }
 	};
 
-	typedef union
+	typedef union 
 	{
 		double f;
 
-		struct
+		struct 
 		{
 			#if defined(__sparc)
 				#if defined(BYTE_ORDER)
@@ -81,7 +81,7 @@ namespace filib
 			#define BYTE_ORDER LITTLE_ENDIAN
 			#endif
 
-			#if !defined(BYTE_ORDER) && (defined(WIN32) || defined(__MINGW32__))
+			#if !defined(BYTE_ORDER) && defined(WIN32)
 			#define BYTE_ORDER LITTLE_ENDIAN
 			#endif
 
@@ -107,11 +107,11 @@ namespace filib
 		} ieee;
 	} a_diee;
 
-	typedef union
+	typedef union 
 	{
 		float f;
 
-		struct
+		struct 
 		{
 			#if (BYTE_ORDER == LITTLE_ENDIAN)
 				unsigned int mant  :23;
@@ -138,33 +138,33 @@ namespace filib
 	primitive
 	{
 		public:
-
+		
 		static inline double const & MIN()
 		{
 			return min;
 		}
-
-		static inline double const & MIN_NORM()
+  
+		static inline double const & MIN_NORM() 
 		{
 			return minNorm;
 		}
-
+  
 		static inline double const & MAX()
 		{
 			return max;
 		}
 
-		static inline double const & POS_INFTY()
+		static inline double const & POS_INFTY() 
 		{
 			return posInf;
 		}
-
-		static inline double const & NEG_INFTY()
+  
+		static inline double const & NEG_INFTY() 
 		{
 			return negInf;
 		}
 
-		static inline double const & QUIET_NAN()
+		static inline double const & QUIET_NAN() 
 		{
 			return qNaN;
 		}
@@ -174,23 +174,23 @@ namespace filib
 		static void basicHexImage(double const & d, std::ostream &os);
 		static void basicHexImage(float const & d, std::ostream &os);
 
-		static inline bool isInfinite(double const & x)
+		static inline bool isInfinite(double const & x) 
 		{
 			a_diee const * y = reinterpret_cast<a_diee const *>(&x);
-			return
+			return 
 				y->ieee.expo	== 0x7FF	&&
-				y->ieee.mant0	== 0		&&
+				y->ieee.mant0	== 0		&& 
 				y->ieee.mant1	== 0;
 		}
-
-		static inline bool isNaN(double const & x)
+  
+		static inline bool isNaN(double const & x) 
 		{
 			#if defined(__KCC)
-				// workaround for optimization bug in KCC 3.4;
+				// workaround for optimization bug in KCC 3.4; 
 				// x != x will be optimized away !
 				a_diee const * y = reinterpret_cast<a_diee const *>(&x);
-				return
-					y->ieee.expo == 0x7FF &&
+				return 
+					y->ieee.expo == 0x7FF && 
 					(
 						y->ieee.mant0 != 0 ||
 						y->ieee.mant1 != 0
@@ -200,18 +200,18 @@ namespace filib
 			#endif
 		}
 
-		static inline bool isRegular(double const & x)
+		static inline bool isRegular(double const & x) 
 		{
 			return !(isInfinite(x) || isNaN(x));
 		}
-
-		static inline bool sign(double const & x)
+  
+		static inline bool sign(double const & x) 
 		{
 			a_diee const * y = reinterpret_cast<a_diee const *>(&x);
 			return y->ieee.sign;
 		}
-
-		static inline double abs(double const & x)
+  
+		static inline double abs(double const & x) 
 		{
 			a_diee y;
 			y.f = x;
@@ -219,21 +219,21 @@ namespace filib
 			return y.f;
 		}
 
-		static inline bool isdenorm(double const & x)
+		static inline bool isdenorm(double const & x) 
 		{
 			a_diee y;
 			y.f = x;
-			return (y.ieee.expo == 0) && (y.ieee.mant0 || y.ieee.mant1);
+			return (y.ieee.expo == 0) && (y.ieee.mant0 || y.ieee.mant1); 
 		}
 
-		static inline bool isdenormorzero(double const & x)
+		static inline bool isdenormorzero(double const & x) 
 		{
 			a_diee y;
 			y.f = x;
 			return (y.ieee.expo == 0);
 		}
 
-		static inline bool isdenormorzerof(float const & x)
+		static inline bool isdenormorzerof(float const & x) 
 		{
 			a_fiee y;
 			y.f = x;
@@ -312,7 +312,7 @@ namespace filib
 				a_diee ulpx;
 				ulpx.f = x;
 				ulpx.ieee.sign = 0;
-
+      
 				/**
 				 * x is zero or denormalized
 				 **/
@@ -339,7 +339,7 @@ namespace filib
 				{
 					unsigned int n = 52-ulpx.ieee.expo;
 					ulpx.ieee.expo = 0;
-					if (n < 20)
+					if (n < 20) 
 					{
 						ulpx.ieee.mant0 = (0x80000 >> n);
 						ulpx.ieee.mant1 = 0;
@@ -356,7 +356,7 @@ namespace filib
 
 		static void print(double const & x, std::ostream &os);
 		static void bitImage(double const & x, std::ostream &os);
-
+  
 		/**
 		 * predecessor and successor of a number
 		 **/
@@ -364,37 +364,35 @@ namespace filib
 		/**
 		 * modified version of pred from original fi_lib
 		 **/
-		static inline double basic_pred(double const & y)
-		{
+		static inline double basic_pred(double const & y) 
+		{  
 			a_diee su;
 			su.f=y;
-
+			
 			/**
 			 * y < 0.0
 			 **/
 			if (su.ieee.sign==1)
 			{
 				if (su.ieee.expo != 2047)
-                               {
 					if (su.ieee.mant1==0xffffffff)
-					{
-						su.ieee.mant1=0;
+					{ 
+						su.ieee.mant1=0; 
 
 						if (su.ieee.mant0==0xfffff)
-						{
-							su.ieee.mant0=0;
+						{ 
+							su.ieee.mant0=0; 
 							su.ieee.expo++;
 						}
 						else
-						{
+						{ 
 							su.ieee.mant0++;
 						}
 					}
 					else
-					{
+					{ 
 						su.ieee.mant1++;
 					}
-                               }
 			}
 			/**
 			 * y >= 0.0
@@ -407,25 +405,25 @@ namespace filib
 					{
 						su.ieee.sign=1;
 						su.ieee.mant1=1;
-					}
+					} 
 					else
 					{
 						if (su.ieee.mant1==0)
-						{
-							su.ieee.mant1=0xffffffff;
+						{ 
+							su.ieee.mant1=0xffffffff; 
 
 							if (su.ieee.mant0==0)
 							{
-								su.ieee.mant0=0xfffff;
+								su.ieee.mant0=0xfffff; 
 								su.ieee.expo--;
 							}
 							else
-							{
+							{ 
 								su.ieee.mant0--;
 							}
 						}
 						else
-						{
+						{ 
 							su.ieee.mant1--;
 						}
 					}
@@ -443,7 +441,7 @@ namespace filib
 
 			return su.f;
 		}
-
+  
 		/**
 		 * modified version of succ from original fi_lib
 		 **/
@@ -451,7 +449,7 @@ namespace filib
 		{
 			a_diee su;
 			su.f=y;
-
+			
 			/**
 			 * y >= 0.0
 			 **/
@@ -460,21 +458,21 @@ namespace filib
 				if (su.ieee.expo!=2047)
 				{
 					if (su.ieee.mant1==0xffffffff)
-					{
-						su.ieee.mant1=0;
+					{ 
+						su.ieee.mant1=0; 
 
 						if (su.ieee.mant0==1048575)
-						{
-							su.ieee.mant0=0;
+						{ 
+							su.ieee.mant0=0; 
 							su.ieee.expo++;
 						}
 						else
-						{
+						{ 
 							su.ieee.mant0++;
 						}
 					}
 					else
-					{
+					{ 
 						su.ieee.mant1++;
 					}
 				}
@@ -486,7 +484,7 @@ namespace filib
 			{
 				if (su.ieee.expo!=2047)
 				{
-					if (su.ieee.sign==1 && su.ieee.expo==0 && su.ieee.mant0==0 && su.ieee.mant1==0)
+					if (su.ieee.sign==1 && su.ieee.expo==0 && su.ieee.mant0==0 && su.ieee.mant1==0) 
 					{
 						su.ieee.sign=0;
 						su.ieee.mant1=1;
@@ -494,21 +492,21 @@ namespace filib
 					else
 					{
 						if (su.ieee.mant1==0)
-						{
-							su.ieee.mant1=0xffffffff;
+						{ 
+							su.ieee.mant1=0xffffffff; 
 
 							if (su.ieee.mant0==0)
-							{
-								su.ieee.mant0=1048575;
+							{ 
+								su.ieee.mant0=1048575; 
 								su.ieee.expo--;
 							}
 							else
-							{
+							{ 
 								su.ieee.mant0--;
 							}
 						}
 						else
-						{
+						{ 
 							su.ieee.mant1--;
 						}
 					}
@@ -516,7 +514,7 @@ namespace filib
 				/**
 				 * y == -inf
 				 **/
-				else if (su.ieee.mant0 == 0 && su.ieee.mant1 == 0)
+				else if (su.ieee.mant0 == 0 && su.ieee.mant1 == 0) 
 				{
 					su.ieee.expo = 2046;
 					su.ieee.mant0 = 0xfffff;
@@ -528,13 +526,13 @@ namespace filib
 		}
 		#if defined(FILIB_PRED_SUCC_TABLES)
 		static inline double pred(double const & x)
-		{
+		{ 
 			a_diee f;
 			f.f = x;
 
 			unsigned int index = f.ieee.expo;
 
-			if (f.ieee.sign == 0)
+			if (f.ieee.sign == 0) 
 			{
 				if (f.ieee.mant1 == 0 && f.ieee.mant0 == 0)
 				{
@@ -558,11 +556,11 @@ namespace filib
 				f.ieee.mant0 == 0xFFFFF &&
 				f.ieee.mant1 == 0xFFFFFFFF)
 				return NEG_INFTY();
-
+    
 			return x-psTable.ULP[index];
 		}
 		static inline double succ(double const & x)
-		{
+		{ 
 			a_diee f;
 			f.f = x;
 
@@ -596,17 +594,17 @@ namespace filib
 			return x+psTable.ULP[index];
 		}
 		#else /** ! FILIB_PRED_SUCC_TABLES **/
-		static inline double pred(double const & x)
+		static inline double pred(double const & x) 
 		{
 			return basic_pred(x);
 		}
 
-		static inline double succ(double const & x)
+		static inline double succ(double const & x) 
 		{
 			return basic_succ(x);
 		}
 		#endif /** FILIB_PRED_SUCC_TABLES **/
-
+  
 		private:
 
 		static double min;
@@ -627,7 +625,7 @@ namespace filib
 		/**
 		 * for table version of pred and succ
 		 **/
-		class PredSuccTable
+		class PredSuccTable 
 		{
 			public:
 				PredSuccTable();
@@ -635,7 +633,7 @@ namespace filib
 
 				double *ULP;
 		};
-
+  
 		static PredSuccTable psTable;
 		#endif
 
@@ -660,50 +658,50 @@ namespace filib
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
 #endif
-	void readBitSet(std::istream & in, unsigned int n0, unsigned char * a) /* throw(interval_io_exception) */;
+	void readBitSet(std::istream & in, unsigned int n0, unsigned char * a) throw(interval_io_exception);
 
 #if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
 #endif
-	void readHexSet(std::istream & in, unsigned int n0, unsigned char * a) /* throw(interval_io_exception) */;
+	void readHexSet(std::istream & in, unsigned int n0, unsigned char * a) throw(interval_io_exception);
 
 #if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
 #endif
-	void readChar(std::istream& in, char c0) /* throw(interval_io_exception) */;
+	void readChar(std::istream& in, char c0) throw(interval_io_exception);
 
 	template <typename N>
-	N constructFromBitSet(std::istream & /*in*/) /* throw(interval_io_exception) */
+	N constructFromBitSet(std::istream & in) throw(interval_io_exception)
 	{
 		throw interval_io_exception("constructFromBitSet() called for unsupported type");
 	}
 	template <typename N>
-	N constructFromBitSet(std::string & /*in*/) /* throw(interval_io_exception) */
+	N constructFromBitSet(std::string & in) throw(interval_io_exception)
 	{
 		throw interval_io_exception("constructFromBitSet() called for unsupported type");
 	}
 	template <typename N>
-	N constructFromBitSet(char const * /*in*/) /* throw(interval_io_exception) */
+	N constructFromBitSet(char const * in) throw(interval_io_exception)
 	{
 		throw interval_io_exception("constructFromBitSet() called for unsupported type");
 	}
 
 	template <typename N>
-	N constructFromHexSet(std::istream & /*in*/) /* throw(interval_io_exception) */
+	N constructFromHexSet(std::istream & in) throw(interval_io_exception)
 	{
 		throw interval_io_exception("constructFromHexSet() called for unsupported type");
 	}
 	template <typename N>
-	N constructFromHexSet(std::string & /*in*/) /* throw(interval_io_exception) */
+	N constructFromHexSet(std::string & in) throw(interval_io_exception)
 	{
 		throw interval_io_exception("constructFromHexSet() called for unsupported type");
 	}
 	template <typename N>
-	N constructFromHexSet(char const * /*in*/) /* throw(interval_io_exception) */
+	N constructFromHexSet(char const * in) throw(interval_io_exception)
 	{
 		throw interval_io_exception("constructFromHexSet() called for unsupported type");
 	}
@@ -720,7 +718,7 @@ namespace filib
 	}
 
 	template<typename T>
-	struct
+	struct 
 #if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
@@ -737,61 +735,61 @@ namespace filib
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
 #endif
-	double constructFromBitSet<double>(std::istream & in) /* throw(interval_io_exception) */;
+	double constructFromBitSet<double>(std::istream & in) throw(interval_io_exception);
 	template <>
 #if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
 #endif
-	float constructFromBitSet<float>(std::istream & in) /* throw(interval_io_exception) */;
+	float constructFromBitSet<float>(std::istream & in) throw(interval_io_exception);
 	template <>
 #if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
 #endif
-	float constructFromBitSet<float>(std::string & in) /* throw(interval_io_exception) */;
+	float constructFromBitSet<float>(std::string & in) throw(interval_io_exception);
 	template <>
 #if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
 #endif
-	double constructFromBitSet<double>(std::string & in) /* throw(interval_io_exception) */;
+	double constructFromBitSet<double>(std::string & in) throw(interval_io_exception);
 	template <>
 #if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
 #endif
-	float constructFromBitSet<float>(char const * in) /* throw(interval_io_exception) */;
+	float constructFromBitSet<float>(char const * in) throw(interval_io_exception);
 	template <>
 #if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
 #endif
-	double constructFromBitSet<double>(char const * in) /* throw(interval_io_exception) */;
+	double constructFromBitSet<double>(char const * in) throw(interval_io_exception);
 
 	template <>
-	double constructFromHexSet<double>(std::istream & in) /* throw(interval_io_exception) */;
+	double constructFromHexSet<double>(std::istream & in) throw(interval_io_exception);
 	template <>
-	float constructFromHexSet<float>(std::istream & in) /* throw(interval_io_exception) */;
+	float constructFromHexSet<float>(std::istream & in) throw(interval_io_exception);
 	template <>
-	float constructFromHexSet<float>(std::string & in) /* throw(interval_io_exception) */;
+	float constructFromHexSet<float>(std::string & in) throw(interval_io_exception);
 	template <>
-	double constructFromHexSet<double>(std::string & in) /* throw(interval_io_exception) */;
+	double constructFromHexSet<double>(std::string & in) throw(interval_io_exception);
 	template <>
-	float constructFromHexSet<float>(char const * in) /* throw(interval_io_exception) */;
+	float constructFromHexSet<float>(char const * in) throw(interval_io_exception);
 	template <>
-	double constructFromHexSet<double>(char const * in) /* throw(interval_io_exception) */;
+	double constructFromHexSet<double>(char const * in) throw(interval_io_exception);
 
 	template<>
 	int whitespace<char>::isSpace(int arg);
 
 	template <typename N, bool upDo>
-	N inferFromString(std::string const &) /* throw(interval_io_exception) */
+	N inferFromString(std::string const &) throw(interval_io_exception)
 	{
 		throw interval_io_exception("inferFromString() called for unsupported type");
 	}
@@ -800,33 +798,33 @@ namespace filib
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
-#endif
+#endif	
 	double inferFromString<double,false>(std::string const & )
-	/* throw(interval_io_exception) */;
+	throw(interval_io_exception);
 	template <>
 #if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
-#endif
+#endif	
 	double inferFromString<double,true>(std::string const & )
-	/* throw(interval_io_exception) */;
+	throw(interval_io_exception);
 	template <>
 #if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
-#endif
+#endif	
 	float inferFromString<float,false>(std::string const & )
-	/* throw(interval_io_exception) */;
+	throw(interval_io_exception);
 	template <>
 #if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
 	__declspec(dllexport)
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
-#endif
+#endif	
 	float inferFromString<float,true>(std::string const & )
-	/* throw(interval_io_exception) */;
+	throw(interval_io_exception);
 } // namespace filib
 
 #endif // PRIMITIVE

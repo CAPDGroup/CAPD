@@ -28,7 +28,7 @@
 LDADD = ../libprim/libprim.la
 AM_CPPFLAGS = -I..
 
-check_PROGRAMS = \
+bin_PROGRAMS = \
 	aribench_double_0f  \
 	aribench_double_0f_ext  \
 	aribench_double_0t  \

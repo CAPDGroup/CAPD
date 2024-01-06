@@ -1,25 +1,15 @@
-AC_INIT([filib],[3.0.2])
-AC_CONFIG_HEADERS(config.h)
-AM_INIT_AUTOMAKE
+AC_INIT
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(filib,3.0.2)
 AC_PROG_CC
-CXXFLAGS_SAVE=" -I${PWD}/${srcdir} ${CXXFLAGS}"
+CXXFLAGS_SAVE=${CXXFLAGS}
 CXXFLAGS=
 AC_PROG_CXX
 CXXFLAGS=${CXXFLAGS_SAVE}
 AC_PROG_RANLIB
-#AM_DISABLE_SHARED
-#AC_PROG_LIBTOOL
-LT_INIT
+AM_DISABLE_SHARED
+AC_PROG_LIBTOOL
 AC_HEADER_STDC
-#m4_warn([obsolete],
-#[The preprocessor macro `STDC_HEADERS' is obsolete.
-#  Except in unusual embedded environments, you can safely include all
-#  ISO C90 headers unconditionally.])dnl
-# Autoupdate added the next two lines to ensure that your configure
-# script's behavior did not change.  They are probably safe to remove.
-#AC_CHECK_INCLUDES_DEFAULT
-AC_PROG_EGREP
-
 AC_CHECK_HEADERS([sys/types.h])
 
 AC_DEFINE(FILIB_EXTENDED, [], [FILIB_EXTENDED])
@@ -29,7 +19,7 @@ fparchitecture=
 
 AC_ARG_WITH(
 	[force-arch],
-	[  --with-force-arch=[[no]]
+	[  --with-force-arch=[[no]]  
                           override automatic floating point architecture selection [[default=no]]
                           available options are x87,SSE],
         [if [[ ! -z "${withval}" ]] ; then fparchitecture=${withval} ; fi ]
@@ -101,7 +91,7 @@ if [[ "$GXX" = "yes" ]] ; then
         CXXFLAGS_SAVE="${CXXFLAGS}"
 	CXXFLAGS="${CXXFLAGS} -frounding-math"
 	AC_MSG_CHECKING([whether gcc accepts -frounding-math])
-	AC_LINK_IFELSE([AC_LANG_SOURCE([int main() {}])],
+	AC_LINK_IFELSE([int main() {}],
 	have_frounding_math=yes,
 	have_frounding_math=no
 	)
@@ -111,7 +101,7 @@ if [[ "$GXX" = "yes" ]] ; then
         CXXFLAGS_SAVE="${CXXFLAGS}"
 	CXXFLAGS="${CXXFLAGS} -ffloat-store"
 	AC_MSG_CHECKING([whether gcc accepts -ffloat-store])
-	AC_LINK_IFELSE([AC_LANG_SOURCE([int main() {}])],
+	AC_LINK_IFELSE([int main() {}],
 	have_float_store=yes,
 	have_float_store=no
 	)
@@ -126,10 +116,10 @@ AC_SUBST([define_have_x87])
 
 AC_LANG_PUSH([C++])
 AC_MSG_CHECKING([whether the boost random library is installed])
-  AC_LINK_IFELSE([AC_LANG_SOURCE([#include <boost/random.hpp>
+  AC_LINK_IFELSE([#include <boost/random.hpp>
 int main() {
 
-}])],
+}],
     have_boost=yes,
     have_boost=no
   )
@@ -145,9 +135,7 @@ fi
 
 AC_SUBST([benchmark_subdir])
 
-AC_CONFIG_FILES([Makefile libprim/Makefile rounding_control/rounding_control_config.hpp])
-AC_OUTPUT
-# examples/Makefile test/Makefile benchmark/Makefile
+AC_OUTPUT(Makefile libprim/Makefile examples/Makefile test/Makefile benchmark/Makefile rounding_control/rounding_control_config.hpp)
 
 echo
 echo "Note on using the library:"

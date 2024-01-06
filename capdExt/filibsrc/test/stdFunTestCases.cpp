@@ -24,8 +24,8 @@
 **  License along with this library; if not, write to the Free
 **  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 */
-const char* in_no[27][61];
-const char* out_no[27][61];
+char* in_no[27][61];
+char* out_no[27][61];
 
 void initStdFunTestCases() 
 {
@@ -194,10 +194,11 @@ in_no[3][42] = "DAAA0BD399ECD9EB";
 in_no[3][43] = "CA8D70EE09D32965";
 in_no[3][44] = "BC99975F82891DDE";
 in_no[3][45] = "BBE44F68AAA2B029";
-in_no[3][46] = "AA94AD560048C7B2";     
+in_no[3][46] = "AA94AD560048C7B2";
 in_no[3][47] = "C0BD68A6BA7E617F";
 in_no[3][48] = "B158DAD9877389A2";
-   in_no[3][50] = "A1FEB0E1AB78F314";
+in_no[3][49] = "C8398EF0C6A8BD66";
+in_no[3][50] = "A1FEB0E1AB78F314";
 in_no[3][51] = "CDBC08152CC09416";
 in_no[3][52] = "B41D33C64C4C7E99";
 in_no[3][53] = "B75BDC3836934AE8";

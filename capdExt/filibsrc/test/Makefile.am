@@ -1,10 +1,7 @@
 abs_top_builddir = @abs_top_builddir@
 noinst_bindir = $(abs_top_builddir)/test/.bin/
 noinst_bin_PROGRAMS = makeTestCases
-check_PROGRAMS =  check_0f check_0t check_1f check_2f check_4f check_5f
-
-# TESTS=${check_PROGRAMS}
-
+bin_PROGRAMS = check_0f check_0t check_1f check_2f check_4f check_5f
 LDADD = ../libprim/libprim.la
 AM_CPPFLAGS = -I..
 

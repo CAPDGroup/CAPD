@@ -1,8 +1,6 @@
-AUTOMAKE_OPTIONS = subdir-objects
-EXTRA_DIST = configure
+EXTRA_DIST = reconf configure
 AM_CPPFLAGS = -DFILIB_EXTENDED
-SUBDIRS = libprim
-# examples test @benchmark_subdir@
+SUBDIRS = libprim examples test @benchmark_subdir@
 
 nobase_include_HEADERS = \
 		fp_traits/fp_traits.hpp                                    fp_traits/fp_traits_double_x87_no_rounding.icc \

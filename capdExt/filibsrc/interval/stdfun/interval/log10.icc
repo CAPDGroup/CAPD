@@ -87,25 +87,25 @@ namespace filib
 			else
 				rinf*=filib_consts<double>::q_l10p;
 
-                        if (E && ( x.sup() == fp_traits<double,K>::infinity() ) )
-                                rsup = fp_traits<double,K>::infinity();
-                        else
-                        {
-                                rsup=q_lg10<K,E>(x.sup());
+				if (E && ( x.sup() == fp_traits<double,K>::infinity() ) )
+					rsup = fp_traits<double,K>::infinity();
+				else
+				{
+					rsup=q_lg10<K,E>(x.sup());
 
-                                if (rsup>=0)
-                                        rsup*=filib_consts<double>::q_l10p;
-                                else
-                                        rsup*=filib_consts<double>::q_l10m;
-                        }
-
-                        if ( E )
-                        {
-                                if (fp_traits<double,K>::IsNaN(rinf))
-                                        rinf = fp_traits<double,K>::ninfinity();
-                                if (fp_traits<double,K>::IsNaN(rsup))
-                                        rsup = fp_traits<double,K>::infinity();
-                        }
+					if (rsup>=0)
+						rsup*=filib_consts<double>::q_l10p;
+					else
+						rsup*=filib_consts<double>::q_l10m;
+				}
+    
+				if ( E )
+				{
+					if (fp_traits<double,K>::IsNaN(rinf))
+						rinf = fp_traits<double,K>::ninfinity();
+					if (fp_traits<double,K>::IsNaN(rsup))
+						rsup = fp_traits<double,K>::infinity();
+				}
 		}   
 
 		return interval<double,K,E>(rinf,rsup);

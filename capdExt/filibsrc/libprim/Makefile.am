@@ -1,10 +1,7 @@
-AUTOMAKE_OPTIONS = subdir-objects
+EXTRA_DIST = reconf configure
+SUBDIRS = 
 
-EXTRA_DIST = 
-SUBDIRS =
-
-noinst_LTLIBRARIES = libprim.la
-libprim_la_LDFLAGS=-Wl,-Bstatic
+lib_LTLIBRARIES = libprim.la
 
 libprim_la_SOURCES = \
 	../ieee/primitive.cpp \

@@ -214,8 +214,8 @@
 				else
 				{
 					if (
-						(isInfinite()   && ! a.isEmpty()) ||
-						(a.isInfinite() && !   isEmpty())
+						isInfinite()   && ! a.isEmpty() ||
+						a.isInfinite() && !   isEmpty()
 					)
 					{
 						*this = ENTIRE();
@@ -758,8 +758,8 @@
 				else 
 				{
 					if (
-						(a.isInfinite() && !b.isEmpty()) || 
-						(b.isInfinite() && !a.isEmpty())
+						a.isInfinite() && !b.isEmpty() || 
+						b.isInfinite() && !a.isEmpty()
 					)
 						return interval<N,K,E>::ENTIRE();
 					else 

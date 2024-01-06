@@ -28,7 +28,7 @@
 LDADD = ../libprim/libprim.la
 AM_CPPFLAGS = -I..
 
-check_PROGRAMS = testGauss  bisection comp_exp comp_sin horner testNewton simple_example1 example_template
+bin_PROGRAMS = testGauss  bisection comp_exp comp_sin horner testNewton simple_example1 example_template
 
 testGauss_SOURCES = testGauss.cc
 bisection_SOURCES = bisection.cc
