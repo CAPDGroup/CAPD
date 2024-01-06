@@ -49,8 +49,10 @@ BOOST_AUTO_TEST_SUITE(C1TestSuite)
 
 BOOST_AUTO_TEST_CASE(xC1Test)
 {
-  // 1. very basic test for nodes: NODE_MUL, UNARY_MINUS, NODE_ADD
+  // 0. very basic test for nodes: NODE_MUL, UNARY_MINUS, NODE_ADD
   doTest("var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(x*x+y*y)*z;");
+  // 1. Add/subtract const
+  doTest("var:x,y,z;fun:5-(y*(x*x+y*y)+5),x*(x*x+y*y),(x*x+y*y)*z;");
   // 2. time added
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(x*x+y*y)*z;");
   // 3. TIME_PLUS_VAR, VAR_MINUS_TIME
@@ -67,7 +69,7 @@ BOOST_AUTO_TEST_CASE(xC1Test)
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),(2*0.5)*x*(x*x+y*y),(x*x+y*y)*z;");
   // 9. NODE_MUL_CONST_BY_VAR
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),2*x*(x*x+y*y)*0.5,(x*x+y*y)*z;");
-/*
+
   // ------------------------- DIV ----------------------------------------------
   // 10. DIV
   doTest("time:t;var:x,y,z;fun:-y*(1/y)*y*(x*x+y*y),x*(x*x+y*y)*((x*x+y*y+1)/(x*x+y*y+10))*((x*x+y*y+10)/(x*x+y*y+1)),(x*x+y*y)*z;");
@@ -88,7 +90,7 @@ BOOST_AUTO_TEST_CASE(xC1Test)
   // 18. DIV_CONST_BY_CONST
   doTest("time:t;var:x,y,z;fun:-(7/5)*y*(x*x+y*y)*(5/7),x*(x*x+y*y),(x*x+y*y)*z;");
 
-    // ------------------------- EXP-LOG ----------------------------------------------
+   // ------------------------- EXP-LOG ----------------------------------------------
   // 21. EXP
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(x*x+y*y)*z+exp(x+y)-exp(x)*exp(y);");
   // 22. EXP_CONST
@@ -98,19 +100,19 @@ BOOST_AUTO_TEST_CASE(xC1Test)
   // 24. EXP_FUNTIME
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(x*x+y*y)*z+exp(t*t-t)-exp(t^2)/exp(t);");
   // 25. LOG
-  doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(x*x+y*y)*z+log((x*x+y*y)*(x*x+z*z))-log(x*x+y*y)-log(x*x+z*z);");
+  doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),log((x*x+y*y)*(x*x+z*z))+(x*x+y*y)*z-log(x*x+y*y)-log(x*x+z*z);");
   // 26. LOG_CONST
-  doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(x*x+y*y)*z+log(10)-log(2)-log(5);");
+  doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),log(10)+(x*x+y*y)*z-log(2)-log(5);");
   // 27. LOG_TIME
-  doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),sqr(log(t))*(x*x+y*y)*z/log(t)/log(t);");
+  doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),sqr(log(t+1))*(x*x+y*y)*z/log(t+1)/log(t+1);");
   // 28. LOG_FUNTIME
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(x*x+y*y)*z+log((t+1)^2)-2*log(t+1);");
-*/
+
   // ------------------------- SQR ----------------------------------------------
   // 31. SQR
   doTest("var:x,y,z;fun:-y*(x^2+y^2),x*(x^2+y^2),(x^2+y^2)*z;");
   // 32. SQR_CONST
-  doTest("var:x,y,z;fun:3^2-y*(x^2+y^2)-9,x*(x^2+y^2),(x^2+y^2)*z;");
+  doTest("var:x,y,z;fun:sqr(3)-y*(x^2+y^2)-9,x*(x^2+y^2),(x^2+y^2)*z;");
   // 33. SQR_TIME
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(t^2-t*t)+(x*x+y*y)*z;");
   // 34. SQR_FUNTIME
@@ -135,7 +137,7 @@ BOOST_AUTO_TEST_CASE(xC1Test)
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(x*x+y*y)*z+sqr(sqr(t^.25))-t;");
   // 44. POW_FUNTIME
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),t+1-(t*t*t*t+4*t*t*t+6*t*t+4*t+1)^0.25+x*(x*x+y*y),(x*x+y*y)*z;");
-/*
+
   // ------------------------- SIN-COS ----------------------------------------------
   // 51. SIN/COS
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(x*x+y*y)*z+sin(x+y)-sin(x)*cos(y)-sin(y)*cos(x);");
@@ -177,7 +179,6 @@ BOOST_AUTO_TEST_CASE(xC1Test)
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(x*x+y*y)*z+acos(t-1)-2*atan(sqrt(1-(t-1)^2)/t);");
   // 72. ACOS_FUNTIME
   doTest("time:t;var:x,y,z;fun:-y*(x*x+y*y),x*(x*x+y*y),(x*x+y*y)*z+atan(t)-acos(1/sqrt(1+t^2));");
-*/
 }
 
 BOOST_AUTO_TEST_SUITE_END()
