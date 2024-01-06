@@ -380,7 +380,7 @@ namespace filib
 	std::istream & operator >>(
 		std::istream & out,
 		interval<N,K,E> & a)
-	throw(interval_io_exception)
+	/* throw(interval_io_exception) */
 	;
 
 	/**
@@ -628,7 +628,7 @@ namespace filib
 
 			inline interval(
 				std::string const & infs, std::string const & sups)
-			throw(interval_io_exception);
+			/* throw(interval_io_exception) */;
 
 			/**
 			 check for infinity (?)
@@ -1211,9 +1211,9 @@ namespace filib
 			inline N amax() const;
 
 			static interval<N,K,E> readBitImage(std::istream &) 
-				throw(interval_io_exception);
+				/* throw(interval_io_exception) */;
 			static interval<N,K,E> readHexImage(std::istream &) 
-				throw(interval_io_exception);
+				/* throw(interval_io_exception) */;
 	};
 
 	template <typename N, rounding_strategy K, interval_mode E>
