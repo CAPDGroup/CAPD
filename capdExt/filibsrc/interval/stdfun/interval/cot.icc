@@ -64,10 +64,12 @@ namespace filib
 			{
 				// this may still be the case for |x| < filib_consts<double>::q_minr !
 				if (fp_traits<double,K>::IsNaN(rinf))
+                                {
 						if (x.inf() < 0.0)
 						return interval<double,K,E>::NEG_INFTY();
 					else
 						return interval<double,K,E>::POS_INFTY();
+                                }
 			}
      
 			if (rinf<0)

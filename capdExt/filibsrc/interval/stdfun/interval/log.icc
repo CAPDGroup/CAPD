@@ -85,17 +85,17 @@ namespace filib
 			else
 				rinf*=filib_consts<double>::q_logp;
 
-				if (E && ( x.sup() == fp_traits<double,K>::infinity() ) )
-					rsup = fp_traits<double,K>::infinity();
-				else
-				{
-					rsup=q_log<K,E>(x.sup());
+                        if (E && ( x.sup() == fp_traits<double,K>::infinity() ) )
+                                rsup = fp_traits<double,K>::infinity();
+                        else
+                        {
+                                rsup=q_log<K,E>(x.sup());
 
-					if (rsup>=0)
-						rsup*=filib_consts<double>::q_logp;
-					else
-						rsup*=filib_consts<double>::q_logm;
-				}
+                                if (rsup>=0)
+                                        rsup*=filib_consts<double>::q_logp;
+                                else
+                                        rsup*=filib_consts<double>::q_logm;
+                        }
 	
 			if ( E )
 			{

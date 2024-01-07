@@ -1,15 +1,15 @@
-/*                                                                           
-**  fi_lib++  --- A fast interval library (Version 2.0)                     
-**                                                                  
-**  Copyright (C) 2001:                                                        
-**                                                     
-**  Werner Hofschuster, Walter Kraemer                               
-**  Wissenschaftliches Rechnen/Softwaretechnologie (WRSWT)  
-**  Universitaet Wuppertal, Germany                                           
-**  Michael Lerch, German Tischler, Juergen Wolff von Gudenberg       
-**  Institut fuer Informatik                                         
-**  Universitaet Wuerzburg, Germany                                           
-** 
+/*
+**  fi_lib++  --- A fast interval library (Version 2.0)
+**
+**  Copyright (C) 2001:
+**
+**  Werner Hofschuster, Walter Kraemer
+**  Wissenschaftliches Rechnen/Softwaretechnologie (WRSWT)
+**  Universitaet Wuppertal, Germany
+**  Michael Lerch, German Tischler, Juergen Wolff von Gudenberg
+**  Institut fuer Informatik
+**  Universitaet Wuerzburg, Germany
+**
 **  This library is free software; you can redistribute it and/or
 **  modify it under the terms of the GNU Library General Public
 **  License as published by the Free Software Foundation; either
@@ -36,18 +36,28 @@ namespace filib
 #elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
 	__declspec(dllimport)
 #endif
-	filib_consts
+	filib_consts{};
+
+	template <>
+	struct
+#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
+	__declspec(dllexport)
+#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
+	__declspec(dllimport)
+#endif
+	filib_consts<double>
 	{
+    typedef double N;
 		/* for |x|<=q_atnt approx. x=arctan(x)     */
 		/* used in q_atan, q_atn1, j_atan, q_asin, */
-		/* j_asin, ...                             */ 
+		/* j_asin, ...                             */
 		static N const q_atnt;
 		static N const q_atna[7];
 		static N const q_atnb[8];
 		static N const q_atnc[7];
 		static N const q_atnd[6];
 
-		/* worst case relative error bound for q_acos */   
+		/* worst case relative error bound for q_acos */
 		/* eps(q_acos) = 2.148489042525242E-015;                  */
 		/*     q_ccsm  = 1 - eps(q_acos) = 9.999999999999974E-001 */
 		static N const q_ccsm;
@@ -56,173 +66,173 @@ namespace filib
 
 		/*        q_pi     = pi   ( rounding towards -infinity )                 */
 		static N const q_pi;
-		/*        q_piha   = pi/2                                                */ 
+		/*        q_piha   = pi/2                                                */
 		static N const q_piha;
 
 		/* worst case relative error bound for q_exp */
 
-		/* eps(q_exp)  = 2.357962555295842e-16;                   */ 
+		/* eps(q_exp)  = 2.357962555295842e-16;                   */
 		/*     q_exem  = 1 - eps(q_exp) = 9.999999999999993E-001  */
 		static N const q_exem;
 		/*     q_exep  = 1 + eps(q_exp) = 1.000000000000001E+000  */
 		static N const q_exep;
-	
+
 		/* worst case relative error bound for q_expm */
-	
+
 		/* eps(q_expm) = 2.592561649228397E-016;                  */
 		/*     q_exmm  = 1 - eps(q_expm) = 9.999999999999993E-001 */
 		static N const q_exmm;
 		/*     q_exmp  = 1 + eps(q_expm) = 1.000000000000001E+000 */
 		static N const q_exmp;
-	
-		/* worst case relative error bound for q_log */ 
-   	
+
+		/* worst case relative error bound for q_log */
+
 		/* eps(q_log)  = 2.9398E-016;                             */
 		/*     q_logm  = 1 - eps(q_log)                           */
 		static N const q_logm;
 		/*     q_logp  = 1 + eps(q_log)                           */
 		static N const q_logp;
-	
+
 		/* worst case relative error bound for q_lg1p */
-   	
+
 		/* eps(q_lg1p) = 2.5082E-016;                             */
 		/*     q_lgpm  = 1 - eps(q_lg1p)                          */
 		static N const q_lgpm;
 		/*     q_lgpp  = 1 + eps(q_lg1p)                          */
 		static N const q_lgpp;
-	
-		/* worst case relative error bound for sqrt */    
-   	
+
+		/* worst case relative error bound for sqrt */
+
 		/* eps(sqrt)   = 2.220447e-16;                            */
 		/*     q_sqtm  = 1 - eps(sqrt)                            */
 		static N const q_sqtm;
 		/*     q_sqtp  = 1 + eps(sqrt)                            */
 		static N const q_sqtp;
-	
+
 		/* worst case relative error bound for q_sinh */
-   	
+
 		/* eps(q_sinh) = 7.093289735801012E-016;                  */
 		/*     q_snhm  = 1 - eps(q_sinh) = 9.999999999999989E-001 */
 		static N const q_snhm;
 		/*     q_snhp  = 1 + eps(q_sinh) = 1.000000000000002E+000 */
 		static N const q_snhp;
-	
+
 		/* worst case relative error bound for q_cosh */
-   	
+
 		/* eps(q_cosh) = 4.581660384746620E-016;                  */
 		/*     q_cshm  = 1 - eps(q_cosh) = 9.999999999999991E-001 */
 		static N const q_cshm;
 		/*     q_cshp  = 1 + eps(q_cosh) = 1.000000000000001E+000 */
 		static N const q_cshp;
- 	
+
 		/* worst case relative error bound for q_coth */
-   	
+
 		/* eps(q_coth) = 8.325226430245611E-016;                  */
 		/*     q_cthm  = 1 - eps(q_coth) = 9.999999999999988E-001 */
 		static N const q_cthm;
 		/*     q_cthp  = 1 + eps(q_coth) = 1.000000000000002E+000 */
 		static N const q_cthp;
- 	
+
 		/* worst case relative error bound for q_tanh */
-   	
+
 		/* eps(q_tanh) = 1.054585718561371E-015;                  */
 		/*     q_tnhm  = 1 - eps(q_tanh) = 9.999999999999986E-001 */
 		static N const q_tnhm;
 		/*     q_tnhp  = 1 + eps(q_tnhp) = 1.000000000000002E+000 */
 		static N const q_tnhp;
-	
-		/* worst case relative error bound for q_asnh */         
-   	
+
+		/* worst case relative error bound for q_asnh */
+
 		/* eps(q_asnh) = 7.2075e-16;                              */
 		static N const q_asnm;
 		static N const q_asnp;
-	
-		/* worst case relative error bound for q_acnh */          
-   	
+
+		/* worst case relative error bound for q_acnh */
+
 		/* eps(q_acnh) = 1.6180e-15;                              */
 		static N const q_acsm;
 		static N const q_acsp;
-	
+
 		/* worst case relative error bound for q_acth */
-   	
+
 		/* eps(q_acth) = 1.147880588000001E-015;                  */
 		static N const q_actm;
 		static N const q_actp;
-	
+
 		/* worst case relative error bound for q_atnh */
-   	
+
 		/* eps(q_atnh) = 1.264618646263405E-015;                  */
 		static N const q_atnm;
 		static N const q_atnp;
-	
+
 		/* worst case relative error bound for q_asin */
-   	
+
 		/* eps(q_asin) = 2.148875977690793E-015;                  */
 		/*     q_csnm  = 1 - eps(q_asin) = 9.999999999999974E-001 */
 		static N const q_csnm;
 		/*     q_csnp  = 1 + eps(q_asin) = 1.000000000000003E+000 */
 		static N const q_csnp;
-	
+
 		/* worst case relative error bound for q_acot */
-   	
+
 		/* eps(q_acot) = 1.802884893838539E-015;                  */
 		/*     q_cctm  = 1 - eps(q_acot) = 9.999999999999978E-001 */
 		static N const q_cctm;
 		/*     q_cctp  = 1 + eps(q_acot) = 1.000000000000003E+000 */
 		static N const q_cctp;
-	
-		/* worst case relative error bound for q_atan */  
-   	
+
+		/* worst case relative error bound for q_atan */
+
 		/* eps(q_atan) = 1.358774060669230E-015;                  */
 		/*     q_ctnm  = 1 - eps(q_atan) = 9.999999999999982E-001 */
 		static N const q_ctnm;
 		/*     q_ctnp  = 1 + eps(q_atan) = 1.000000000000002E+000 */
 		static N const q_ctnp;
-	
-		/* worst case relative error bound for q_sin */          
-   	
+
+		/* worst case relative error bound for q_sin */
+
 		/* eps(q_sin)  = 1.071713978232866e-15;                   */
 		static N const q_sinm;
 		static N const q_sinp;
-	
-		/* worst case relative error bound for q_cos */         
-   	
+
+		/* worst case relative error bound for q_cos */
+
 		/* eps(q_cos)  = 1.071713978232866e-15;                   */
 		static N const q_cosm;
 		static N const q_cosp;
-	
-		/* worst case relative error bound for q_cot */         
-   	
+
+		/* worst case relative error bound for q_cot */
+
 		/* eps(q_cot)  = 2.97768e-15;                             */
 		static N const q_cotm;
 		static N const q_cotp;
-	
-		/* worst case relative error bound for q_tan */         
-   	
+
+		/* worst case relative error bound for q_tan */
+
 		/* eps(q_tan) = 2.97768e-15;                              */
 		static N const q_tanm;
 		static N const q_tanp;
-  	
+
 		/* worst case relative error bound for q_lg2 */
-   	
+
 		/* eps(q_lg2)  = 2.7754e-15;                              */
 		static N const q_lg2m;
 		static N const q_lg2p;
-	
+
 		/* worst case relative error bound for q_lg10 */
-   	
+
 		/* eps(q_lg10) = 2.7754e-15;                              */
 		static N const q_l10m;
 		static N const q_l10p;
-	
-		/* worst case relative error bound for q_exp2 */ 
-   	
+
+		/* worst case relative error bound for q_exp2 */
+
 		/* eps(q_exp2) = 2.350296792932261e-16                    */
 		static N const q_e2em;
 		static N const q_e2ep;
-	
-		/* worst case relative error bound for q_ex10 */ 
-   	
+
+		/* worst case relative error bound for q_ex10 */
+
 		/* eps(q_ex10) = 2.418059815583812e-16;                   */
 		static N const q_e10m;
 		static N const q_e10p;
@@ -238,13 +248,13 @@ namespace filib
 
 		/*        q_ln2h   = ln( 2.0 ) / 2 = 0.346573590279972654708616          */
 		static N const q_ln2h;
-		/*        q_l10i   =  1 / ln( 10 ) = 4.342944819032518E-001              */ 
+		/*        q_l10i   =  1 / ln( 10 ) = 4.342944819032518E-001              */
 		static N const q_l10i;
-		/*        q_l2i    =  1 / ln( 2 )  = 1.442695040888963E+000              */ 
+		/*        q_l2i    =  1 / ln( 2 )  = 1.442695040888963E+000              */
 		static N const q_l2i;
-		/*        q_l10    = ln( 10 ) = 2.302585092994046E+000                   */ 
+		/*        q_l10    = ln( 10 ) = 2.302585092994046E+000                   */
 		static N const q_l10;
-		/*        q_l2     = ln( 2 ) = 6.931471805599453E-001                    */ 
+		/*        q_l2     = ln( 2 ) = 6.931471805599453E-001                    */
 		static N const q_l2;
 
 		/*        q_p2h    = 2^(100)                                             */
@@ -311,7 +321,7 @@ namespace filib
 		/* q_exa[2] = 4.166666666638950E-002                                     */
 		/* q_exa[3] = 8.333362425159880E-003                                     */
 		/* q_exa[4] = 1.388893979532449E-003                                     */
-		
+
 		static N const q_exb[9];
 		/* q_exb[0] = 1.666666666666666E-001                                     */
 		/* q_exb[1] = 4.166666666666610E-002                                     */
@@ -332,7 +342,7 @@ namespace filib
 		/* q_exc[4] = 1.333355814632986E-003                                     */
 		/* q_exc[5] = 1.540358685612716E-004                                     */
 		/* q_exc[6] = 1.525278971414304E-005                                     */
-				
+
 		/* approximation for function q_ex10                                     */
 		static N const q_exd[7];
 		/* q_exd[0] = 1.302585092994046E+000                                     */
@@ -342,7 +352,7 @@ namespace filib
 		/* q_exd[4] = 5.393829291915935E-001                                     */
 		/* q_exd[5] = 2.069966074549993E-001                                     */
 		/* q_exd[6] = 6.808961466129955E-002                                     */
-		
+
 		static N const q_exld[32];
 		/* qExpLead [ 0]:= 1.000000000000000E+000 */
 		/* qExpLead [ 1]:= 1.021897148654105E+000 */
@@ -410,7 +420,7 @@ namespace filib
 		/* qExpTrail[29]:= 6.822155118545929E-015 */
 		/* qExpTrail[30]:= 5.666960267488855E-015 */
 		/* qExpTrail[31]:= 8.960767791036668E-017 */
-		
+
 		/* --------------------------------------------------------------------- */
 		/* ---- global constants and table values for  q_lg1p and q_log -------- */
 		/* --------------------------------------------------------------------- */
@@ -697,21 +707,21 @@ namespace filib
 		/* qLogTrail [126]= 6.383161517064652E-013 = 3D667570D6095FD2 */
 		/* qLogTrail [127]= 2.514423072837607E-013 = 3D51B194F912B417 */
 		/* qLogTrail [128]=-1.723944452561483E-013 = BD48432A1B0E2634 */
- 
+
 		/* --------------------------------------------------------------------- */
 		/* ---- global constants for q_sin and q_cos --------------------------- */
 		/* --------------------------------------------------------------------- */
 		static N const q_sinc[6];
 		static N const q_sins[6];
 		static N const q_sint[5];
-		/* 2.580900000000000E-008 */ 
-		/* 1.825000000000000E-008 */ 
-		/* q_sint[2]= 3.373259425345106E+009 */ 
+		/* 2.580900000000000E-008 */
+		/* 1.825000000000000E-008 */
+		/* q_sint[2]= 3.373259425345106E+009 */
 
 		/* --------------------------------------------------------------------- */
 		/* ---- global constants for q_atnh ------------------------------------ */
 		/* --------------------------------------------------------------------- */
- 
+
 		/*     q_at3i = 3.333333333333333E-001                               */
 		static N const q_at3i;
 	};

@@ -723,7 +723,7 @@ namespace filib
 	bool interval<N,K,E>::interior(interval<N,K,E> const & a) const
 	{
 		if ( E )
-			return a.INF < INF && SUP < a.SUP  || isEmpty();
+			return (a.INF < INF && SUP < a.SUP)  || isEmpty();
 		else
 			return a.INF < INF && SUP < a.SUP;
 	}
@@ -754,7 +754,7 @@ namespace filib
 	bool interval<N,K,E>::subset(interval<N,K,E> const & a) const
 	{
 		if ( E )
-			return a.INF <= INF && SUP <= a.SUP || isEmpty();
+			return (a.INF <= INF && SUP <= a.SUP) || isEmpty();
 		else
 			return a.INF <= INF && SUP <= a.SUP;
 	}
@@ -791,7 +791,7 @@ namespace filib
 	bool interval<N,K,E>::superset(interval<N,K,E> const & a) const
 	{
 		if ( E )
-			return INF <= a.INF && a.SUP <= SUP || a.isEmpty();
+			return (INF <= a.INF && a.SUP <= SUP) || a.isEmpty();
 		else
 			return INF <= a.INF && a.SUP <= SUP;
 	}
@@ -812,7 +812,7 @@ namespace filib
 	bool interval<N,K,E>::seq(interval<N,K,E> const & a) const
 	{
 		if ( E )
-			return INF == a.INF && SUP == a.SUP || isEmpty() && a.isEmpty();
+			return (INF == a.INF && SUP == a.SUP) || (isEmpty() && a.isEmpty());
 		else
 			return INF == a.INF && SUP == a.SUP;
 	}
@@ -851,7 +851,7 @@ namespace filib
 	bool interval<N,K,E>::sge(interval<N,K,E> const & a) const
 	{
 		if ( E )
-			return INF >= a.INF && SUP >= a.SUP || isEmpty() && a.isEmpty();
+			return (INF >= a.INF && SUP >= a.SUP) || (isEmpty() && a.isEmpty());
 		else
 			return INF >= a.INF && SUP >= a.SUP;
 	}
@@ -878,7 +878,7 @@ namespace filib
 	bool interval<N,K,E>::sle(interval<N,K,E> const & a) const
 	{
 		if ( E )
-			return INF <= a.INF && SUP <= a.SUP || isEmpty() && a.isEmpty();
+			return (INF <= a.INF && SUP <= a.SUP) || (isEmpty() && a.isEmpty());
 		else
 			return INF <= a.INF && SUP <= a.SUP;
 	}

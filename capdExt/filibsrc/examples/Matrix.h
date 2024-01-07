@@ -57,7 +57,7 @@ public:
     n = A.n;
     unsigned int size = m*n;
     assert (data = new T[size]);
-    for (int i=0; i<size; i++)
+    for (unsigned  i=0; i<size; i++)
       data[i] = A.data[i];
   }
 

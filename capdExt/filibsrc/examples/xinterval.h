@@ -55,7 +55,7 @@ public:
   double    inf, sup;
 
   Xinterval()
-    : inf(0.0), sup(0.0), kind(xiFinite) 
+    : kind(xiFinite), inf(0.0), sup(0.0)
   {
   }
   
