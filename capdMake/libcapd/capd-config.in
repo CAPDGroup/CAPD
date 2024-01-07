@@ -21,4 +21,5 @@ else
 fi
 
 export PKG_CONFIG_PATH
-pkg-config --define-variable=capd_cxx="${CAPD_CXX}" --define-variable=capd_prefix=${capd_prefix} $* capd
+# pkg-config --define-variable=capd_cxx="${CAPD_CXX}" --define-variable=capd_prefix=${capd_prefix} $* capd
+pkg-config $* capd
