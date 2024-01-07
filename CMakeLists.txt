@@ -6,15 +6,16 @@ include(CAPDVersion.txt)
 include(CAPD_options)
 include(CAPD_functions)
 
-add_library(${PROJECT_NAME})
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
+
+add_library(${PROJECT_NAME})
+add_dependencies(${PROJECT_NAME} filib)
+target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
 
 target_compile_options(${PROJECT_NAME} PUBLIC -O2 -fno-fast-math -frounding-math)
 
 enable_testing()
-
 
 add_subdirectory(capdExt)
 add_subdirectory(capdAux)

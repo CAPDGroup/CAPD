@@ -22,7 +22,6 @@
 
 #include <cmath>
 #include "capd/basicalg/doubleFun.h"
-#define __USE_FILIB__
 
 //#define __USE_CXSC__
 
