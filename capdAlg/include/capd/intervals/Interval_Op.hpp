@@ -59,9 +59,9 @@ __INLINE__ Interval<T_Bound, T_Rnd> & Interval<T_Bound, T_Rnd>::operator +=
                                       (const Interval<T_Bound, T_Rnd>& A_iv)
 {
   T_Rnd::roundDown();
-  m_left  += A_iv.m_left;
+  m_left  = m_left + A_iv.m_left;
   T_Rnd::roundUp();
-  m_right += A_iv.m_right;
+  m_right = m_right + A_iv.m_right;
   checkInterval(" Operator += ", m_left, m_right);
   return *this;
 }
@@ -76,7 +76,7 @@ __INLINE__ Interval<T_Bound, T_Rnd>& Interval<T_Bound, T_Rnd>::operator -=
   T_Bound temp = m_left - A_iv.m_right;   // in case this == &A_iv
   T_Rnd::roundUp();
   //m_right = m_right - A_iv.m_left;
-  m_right -= A_iv.m_left;
+  m_right = m_right - A_iv.m_left;
   m_left = temp;
   //std::cout << "\n  result :" << *this << "   diam " << diam(*this);
   //std::cout << "  " << (A_iv.m_left == -m_right) << "   " << (A_iv.m_right == m_left);
@@ -113,9 +113,9 @@ __INLINE__  Interval<T_Bound, T_Rnd>& Interval<T_Bound, T_Rnd>::operator *=
     if(A_iv.m_left >= 0)  // (--)(++)
     {
       T_Rnd::roundDown();
-      m_left*=A_iv.m_right;
+      m_left = m_left * A_iv.m_right;
       T_Rnd::roundUp();
-      m_right*=A_iv.m_left;
+      m_right = m_right * A_iv.m_left;
     }
     else                      // (--)(-+)
     {
@@ -141,16 +141,16 @@ __INLINE__  Interval<T_Bound, T_Rnd>& Interval<T_Bound, T_Rnd>::operator *=
     if(A_iv.m_left >= 0)   // (++)(++)
     {
       T_Rnd::roundDown();
-      m_left *= A_iv.m_left;
+      m_left = m_left * A_iv.m_left;
       T_Rnd::roundUp();
-      m_right *= A_iv.m_right;
+      m_right = m_right * A_iv.m_right;
     }
     else                       // (++)(-+)
     {
       T_Rnd::roundDown();
       m_left = m_right * A_iv.m_left;
       T_Rnd::roundUp();
-      m_right *= A_iv.m_right;
+      m_right = m_right * A_iv.m_right;
     }
   }
   else //  m_left<=0 && m_right>=0 (-+)
@@ -167,9 +167,9 @@ __INLINE__  Interval<T_Bound, T_Rnd>& Interval<T_Bound, T_Rnd>::operator *=
     if(A_iv.m_left >= 0 )    // (-+)(++)
     {
       T_Rnd::roundDown();
-      m_left*=A_iv.m_right;
+      m_left = m_left * A_iv.m_right;
       T_Rnd::roundUp();
-      m_right*=A_iv.m_right;
+      m_right = m_right * A_iv.m_right;
     }
     else                        // (-+)(-+)
     {
@@ -229,9 +229,9 @@ __INLINE__ Interval<T_Bound, T_Rnd>& Interval<T_Bound, T_Rnd>::operator /=
     if(m_right <= 0)           // (--)(++)
     {
       T_Rnd::roundDown();
-      m_left /= A_iv.m_left;
+      m_left = m_left / A_iv.m_left;
       T_Rnd::roundUp();
-      m_right /= A_iv.m_right;
+      m_right = m_right / A_iv.m_right;
     }
     else
     if(m_left >= 0)            // (++)(++)
@@ -239,16 +239,16 @@ __INLINE__ Interval<T_Bound, T_Rnd>& Interval<T_Bound, T_Rnd>::operator /=
       T_Rnd::roundDown();
       T_Bound temp = m_left / A_iv.m_right;
       T_Rnd::roundUp();
-      m_right /= A_iv.m_left;
+      m_right = m_right / A_iv.m_left;
       m_left = temp;
 
     }
     else                      // (-+)(++)
     {
       T_Rnd::roundDown();
-      m_left /= A_iv.m_left;
+      m_left = m_left / A_iv.m_left;
       T_Rnd::roundUp();
-      m_right /= A_iv.m_left;
+      m_right = m_right / A_iv.m_left;
     }
   }
   else   /// (A_iv.m_left<=0 && A_iv.m_right>=0)
