@@ -72,10 +72,7 @@ namespace ConstMinusVar
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
-    if(coeffNo)
-      result[coeffNo] = -right[coeffNo];
-    else
-      *result = *left - *right;
+    result[coeffNo] = (coeffNo!=0) ? -right[coeffNo] : *left - *right;
   }
 
   template<class T, class R>
@@ -121,10 +118,7 @@ namespace ConstMinusFunTime
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
-    if(coeffNo)
-      result[coeffNo] = -right[coeffNo];
-    else
-      *result = *left - *right;
+    ConstMinusVar::evalC0(left,right,result,coeffNo);
   }
 
   template<class T, class R>
@@ -182,9 +176,7 @@ namespace ConstMinusConst
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
-    if(coeffNo)
-    {}
-    else
+    if(coeffNo==0)
       *result = *left - *right;
   }
 
