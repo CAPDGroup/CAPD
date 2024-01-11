@@ -17,5 +17,10 @@ install(
 
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/capd.pc.in
-    ${PKG_CONFIG_PATH}/capd.pc
+    ${CMAKE_CURRENT_BINARY_DIR}/capd.pc
     @ONLY)
+
+install(
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/bin/capd.pc
+  PERMISSIONS OWNER_EXECUTE OWNER_READ
+  DESTINATION ${PKG_CONFIG_PATH}/capd.pc)

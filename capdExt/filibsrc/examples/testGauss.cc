@@ -36,8 +36,8 @@ typedef filib::interval<double> interval;
 template <class Matrix>
 void genTestMatrix(Matrix &A)
 {
-   unsigned int i,j;
-   unsigned int n = A.rows();
+   int i,j;
+   int n = A.rows();
 
    for(i=0;i<n;++i)
    {
