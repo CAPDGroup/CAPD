@@ -3,7 +3,7 @@ AUTOMAKE_OPTIONS = subdir-objects
 EXTRA_DIST = 
 SUBDIRS =
 
-noinst_LTLIBRARIES = libprim.la
+lib_LTLIBRARIES = libprim.la
 libprim_la_LDFLAGS=-Wl,-Bstatic
 
 libprim_la_SOURCES = \
