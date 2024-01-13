@@ -18,6 +18,7 @@ ExternalProject_Add(
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/filibsrc-install/include)
+target_link_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/filibsrc-install/lib)
 
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/filibsrc-install/include DESTINATION ${CMAKE_INSTALL_PREFIX})
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/filibsrc-install/lib DESTINATION ${CMAKE_INSTALL_PREFIX})
