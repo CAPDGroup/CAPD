@@ -154,9 +154,9 @@ namespace NaturalPowFunTime
   }
 
   template<class T, class R>
-  void eval(const unsigned /*degree*/, const T* left, const T* right, R result, DagIndexer<T>* /*dag*/, const unsigned coeffNo)
+  inline void eval(const unsigned /*degree*/, const T* left, const T* right, R result, DagIndexer<T>* /*dag*/, const unsigned coeffNo)
   {
-    NaturalPow::evalC0(left,right,result,coeffNo);
+    NaturalPowFunTime::evalC0(left,right,result,coeffNo);
   }
 
   template<class T, class R>
@@ -171,7 +171,20 @@ namespace NaturalPowTime
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
-    NaturalPow::evalC0(left,right,result,coeffNo);
+    if(!isSingular(*left)){
+      NegIntPowTime::evalC0(left,right,result,coeffNo);
+    } else {
+      int c = toInt(leftBound(*right));
+      if(coeffNo<=c){
+        result[coeffNo] = power(*left,c-coeffNo);
+        for(int i=0;i<coeffNo;++i){
+          result[coeffNo] *= typename capd::TypeTraits<T>::Real(c-i);
+          result[coeffNo] /= typename capd::TypeTraits<T>::Real(i+1);
+        }
+      } else {
+        result[coeffNo] = capd::TypeTraits<T>::zero();
+      }
+    }
   }
 
   template<class T, class R>
@@ -183,7 +196,7 @@ namespace NaturalPowTime
   template<class T, class R>
   void eval(const unsigned /*degree*/, const T* left, const T* right, R result, DagIndexer<T>* /*dag*/, const unsigned coeffNo)
   {
-    NaturalPow::evalC0(left,right,result,coeffNo);
+    NaturalPowTime::evalC0(left,right,result,coeffNo);
   }
 
   template<class T, class R>
@@ -209,9 +222,9 @@ namespace NaturalPowConst
   }
 
   template<class T, class R>
-  void eval(const unsigned /*degree*/, const T* left, const T* right, R result, DagIndexer<T>* /*dag*/, const unsigned coeffNo)
+  inline void eval(const unsigned /*degree*/, const T* left, const T* right, R result, DagIndexer<T>* /*dag*/, const unsigned coeffNo)
   {
-    NaturalPow::evalC0(left,right,result,coeffNo);
+    NaturalPowConst::evalC0(left,right,result,coeffNo);
   }
 
 

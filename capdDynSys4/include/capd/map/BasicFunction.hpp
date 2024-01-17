@@ -106,8 +106,7 @@ void BasicFunction<Scalar>::createEvalPath()
         this->m_fullGraph[i].op!=capd::autodiff::NODE_CONST and
         this->m_fullGraph[i].op!=capd::autodiff::NODE_TIME and
         this->m_fullGraph[i].op!=capd::autodiff::NODE_COS and
-        this->m_fullGraph[i].op!=capd::autodiff::NODE_VAR and 
-        this->m_fullGraph[i].op!=capd::autodiff::NODE_NAT_POW_HELPER
+        this->m_fullGraph[i].op!=capd::autodiff::NODE_VAR 
      ) this->m_evalPath.push_back(capd::autodiff::MyNode(this->m_fullGraph[i]));
   capd::autodiff::Int4ToAbstractNode(this->m_evalPath,this->m_nodes,this->m_dag);
 }
