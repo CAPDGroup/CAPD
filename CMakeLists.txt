@@ -15,7 +15,6 @@ target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
 
 target_compile_options(${PROJECT_NAME} PUBLIC -O2 -fno-fast-math -frounding-math)
 
-target_link_directories(${PROJECT_NAME} PUBLIC ${CMAKE_INSTALL_PREFIX}/lib)
 target_link_libraries(${PROJECT_NAME} PUBLIC -lprim)
 
 enable_testing()

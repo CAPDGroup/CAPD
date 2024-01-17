@@ -12,13 +12,13 @@ ExternalProject_Add(
     SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/filibsrc
     BUILD_IN_SOURCE TRUE
     PATCH_COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/filibsrc ${CMAKE_CURRENT_BINARY_DIR}
-    CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/filibsrc/configure --prefix=${CMAKE_CURRENT_BINARY_DIR}/filibsrc-install
+    CONFIGURE_COMMAND autoreconf -i && ${CMAKE_CURRENT_BINARY_DIR}/filibsrc/configure --prefix=${CMAKE_CURRENT_BINARY_DIR}/filibsrc-install
     BUILD_COMMAND make
     INSTALL_COMMAND make install
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/filibsrc-install/include)
+target_link_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/filibsrc-install/lib)
 
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/filibsrc-install/include DESTINATION ${CMAKE_INSTALL_PREFIX})
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/filibsrc-install/lib DESTINATION ${CMAKE_INSTALL_PREFIX})
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/filibsrc-install/bin DESTINATION ${CMAKE_INSTALL_PREFIX})

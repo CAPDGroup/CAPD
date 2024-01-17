@@ -98,7 +98,7 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-LTLIBRARIES = $(noinst_LTLIBRARIES)
+LTLIBRARIES = $(lib_LTLIBRARIES)
 libprim_la_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
 am_libprim_la_OBJECTS = ../ieee/primitive.lo \
@@ -357,7 +357,7 @@ top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = subdir-objects
 EXTRA_DIST = 
 SUBDIRS = 
-noinst_LTLIBRARIES = libprim.la
+lib_LTLIBRARIES = libprim.la
 libprim_la_LDFLAGS = -Wl,-Bstatic
 libprim_la_SOURCES = \
 	../ieee/primitive.cpp \
@@ -404,8 +404,8 @@ $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 $(am__aclocal_m4_deps):
 
 clean-noinstLTLIBRARIES:
-	-test -z "$(noinst_LTLIBRARIES)" || rm -f $(noinst_LTLIBRARIES)
-	@list='$(noinst_LTLIBRARIES)'; \
+	-test -z "$(lib_LTLIBRARIES)" || rm -f $(lib_LTLIBRARIES)
+	@list='$(lib_LTLIBRARIES)'; \
 	locs=`for p in $$list; do echo $$p; done | \
 	      sed 's|^[^/]*$$|.|; s|/[^/]*$$||; s|$$|/so_locations|' | \
 	      sort -u`; \
