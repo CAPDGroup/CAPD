@@ -141,6 +141,7 @@ enum NodeType {
     NODE_QUARTIC_CONST            =91,
     NODE_QUARTIC_TIME             =92,
     NODE_QUARTIC_FUNTIME          =93,
+    NODE_NAT_POW_HELPER,
 //  -------------------- EXP LOG ----------------------------
     NODE_EXP                    =100,
     NODE_EXP_CONST              =101,

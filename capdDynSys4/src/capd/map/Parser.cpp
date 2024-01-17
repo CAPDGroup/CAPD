@@ -859,8 +859,8 @@ namespace capd{
           // Here we allocate an extra node to store x^2
           capd::autodiff::Node node(capd::autodiff::NODE_NULL,capd::autodiff::NODE_NULL,dag.size(),capd::autodiff::NODE_CONST);
           node.val = 0.;
-          node.isConst = true;
-          node.isTimeDependentOnly = true;
+          node.isConst = false;
+          node.isTimeDependentOnly = false;
           dag.push_back(node);
 
           dag[i].op = NODE_CUBE;
@@ -872,8 +872,8 @@ namespace capd{
           // Here we allocate an extra node to store x^2
           capd::autodiff::Node node(capd::autodiff::NODE_NULL,capd::autodiff::NODE_NULL,dag.size(),capd::autodiff::NODE_CONST);
           node.val = 0.;
-          node.isConst = true;
-          node.isTimeDependentOnly = true;
+          node.isConst = false;
+          node.isTimeDependentOnly = false;
           dag.push_back(node);
 
           dag[i].op = NODE_QUARTIC;
@@ -882,6 +882,8 @@ namespace capd{
         }
         else if((unsigned)dag[right].val == dag[right].val){
           dag[i].op = NODE_NATURAL_POW;
+          unsigned d = (unsigned)dag[right].val;
+          
           optimizeUnivariateFunction(dag,left,i,NODE_NATURAL_POW,NODE_NATURAL_POW_CONST,NODE_NATURAL_POW_TIME,NODE_NATURAL_POW_FUNTIME);
         }
         else if((int)dag[right].val == dag[right].val){
