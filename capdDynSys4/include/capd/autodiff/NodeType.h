@@ -57,7 +57,7 @@ inline bool getMask(T*, unsigned) { return true; }
 // ANY change in NodeType MUST be synchronized with an array of functions file eval.hpp
 enum NodeType {
 // ------------------ ADD -------------------------------
-    NODE_ADD                    =0, // f(x,y,..)*g(x,y,..)
+    NODE_ADD                    =0, // f(x,y,..)+g(x,y,..)
     NODE_CONST_PLUS_VAR         =1, // const + f(x,y,..)
     NODE_CONST_PLUS_CONST       =2, // const1 + const2
     NODE_CONST_PLUS_TIME        =3, // const + time

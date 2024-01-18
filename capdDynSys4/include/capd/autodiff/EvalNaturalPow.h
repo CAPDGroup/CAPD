@@ -70,7 +70,7 @@ namespace NaturalPow
   }
 
   template<class T, class R>
-  inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
+  inline void evalC0(const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
     const int c = toInt(leftBound(*right));
     if(!(isSingular(*left)) or coeffNo==0)
@@ -82,7 +82,7 @@ namespace NaturalPow
   }
 
   template<class T, class R>
-  inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
+  inline void evalC0HomogenousPolynomial(const T* left, const T* right, DagIndexer<T>* dag, R result)
   {
     *result = power(*left, toInt(leftBound(*right)));
   }
@@ -142,21 +142,21 @@ namespace NaturalPow
 namespace NaturalPowFunTime
 {
   template<class T, class R>
-  inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
+  inline void evalC0(const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
-    NaturalPow::evalC0(left,right,result,coeffNo);
+    NaturalPow::evalC0(left,right,result,dag,coeffNo);
   }
 
   template<class T, class R>
-  inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
+  inline void evalC0HomogenousPolynomial(const T* left, const T* right, DagIndexer<T>* dag, R result)
   {
     *result = power(*left, toInt(leftBound(*right)));
   }
 
   template<class T, class R>
-  inline void eval(const unsigned /*degree*/, const T* left, const T* right, R result, DagIndexer<T>* /*dag*/, const unsigned coeffNo)
+  inline void eval(const unsigned /*degree*/, const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
-    NaturalPowFunTime::evalC0(left,right,result,coeffNo);
+    NaturalPow::evalC0(left,right,result,dag,coeffNo);
   }
 
   template<class T, class R>
@@ -233,10 +233,42 @@ namespace NaturalPowConst
   {}
 }
 
-CAPD_MAKE_DAG_NODE(NaturalPow);
 CAPD_MAKE_DAG_NODE(NaturalPowConst);
 CAPD_MAKE_DAG_NODE(NaturalPowTime);
-CAPD_MAKE_DAG_NODE(NaturalPowFunTime);
+// because of hand-optimized code for x^c, 0\in x we cannot use general macro to generate classes. In method evalC0 an extra argument dag is required
+//CAPD_MAKE_DAG_NODE(NaturalPow);
+//CAPD_MAKE_DAG_NODE(NaturalPowFunTime);
+
+#define CAPD_MAKE_NAT_POW_NODE(ClassName)\
+  template<class T>\
+  class ClassName##Node : public AbstractNode<T>\
+  { \
+    public:\
+    void evalC0(const int coeffNo) {\
+      ClassName::evalC0(this->left,this->right,this->result,this->dag,coeffNo);\
+    }\
+    void eval(const int degree, const int coeffNo) {\
+      ClassName::eval(degree,this->left,this->right,this->result,this->dag,coeffNo);\
+    }\
+    void eval(const int degree, const int coeffNo, const bool* mask) {\
+      ClassName::eval(degree,this->left,this->right,MaskIterator<T>(this->result,mask),this->dag,coeffNo);\
+    }\
+    void evalC0HomogenousPolynomial() {\
+      ClassName::evalC0HomogenousPolynomial(this->left,this->right,this->dag,this->result);\
+    }\
+    void evalHomogenousPolynomial(const int degree, const int coeffNo) {\
+      ClassName::evalHomogenousPolynomial(degree,this->left,this->right,this->result,this->dag,coeffNo);\
+    }\
+    void evalHomogenousPolynomial(const int degree, const int coeffNo, const bool* mask) {\
+      ClassName::evalHomogenousPolynomial(degree,this->left,this->right,MaskIterator<T>(this->result,mask),this->dag,coeffNo);\
+    }\
+    const char* name() const {\
+      return #ClassName;\
+    }\
+  }
+
+CAPD_MAKE_NAT_POW_NODE(NaturalPow);
+CAPD_MAKE_NAT_POW_NODE(NaturalPowFunTime);
 
 /// @}
 }} // namespace capd::autodiff

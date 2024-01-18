@@ -859,8 +859,8 @@ namespace capd{
           // Here we allocate an extra node to store x^2
           capd::autodiff::Node node(capd::autodiff::NODE_NULL,capd::autodiff::NODE_NULL,dag.size(),capd::autodiff::NODE_CONST);
           node.val = 0.;
-          node.isConst = false;
-          node.isTimeDependentOnly = false;
+          node.isConst = true;
+          node.isTimeDependentOnly = true;
           dag.push_back(node);
 
           dag[i].op = NODE_CUBE;
@@ -872,8 +872,8 @@ namespace capd{
           // Here we allocate an extra node to store x^2
           capd::autodiff::Node node(capd::autodiff::NODE_NULL,capd::autodiff::NODE_NULL,dag.size(),capd::autodiff::NODE_CONST);
           node.val = 0.;
-          node.isConst = false;
-          node.isTimeDependentOnly = false;
+          node.isConst = true;
+          node.isTimeDependentOnly = true;
           dag.push_back(node);
 
           dag[i].op = NODE_QUARTIC;
@@ -881,10 +881,38 @@ namespace capd{
           optimizeUnivariateFunction(dag,left,i,NODE_QUARTIC,NODE_QUARTIC_CONST,NODE_QUARTIC_TIME,NODE_QUARTIC_FUNTIME);
         }
         else if((unsigned)dag[right].val == dag[right].val){
-          dag[i].op = NODE_NATURAL_POW;
+          if(dag[left].isConst){
+            dag[i].op = NODE_NATURAL_POW_CONST;
+            return;
+          }
+          if(dag[left].isTimeDependentOnly && dag[left].op == capd::autodiff::NODE_TIME)
+          {
+            dag[i].op = NODE_NATURAL_POW_TIME;
+            return;
+          }
+          // otherwise, we have to allocate extra memory for intermediate results in a rare case 0\in x, x^c 
           unsigned d = (unsigned)dag[right].val;
-          
-          optimizeUnivariateFunction(dag,left,i,NODE_NATURAL_POW,NODE_NATURAL_POW_CONST,NODE_NATURAL_POW_TIME,NODE_NATURAL_POW_FUNTIME);
+          int numberOfNewNodes = 0;
+
+          while(d>1){
+            numberOfNewNodes += 1 + d&1; // 2 for odd and 1 for even
+            d >>=1;
+          }
+          unsigned last = dag.size();
+          for(int i=0;i<numberOfNewNodes;++i){
+            capd::autodiff::Node node(capd::autodiff::NODE_NULL,capd::autodiff::NODE_NULL,dag.size(),capd::autodiff::NODE_CONST);
+            node.val = 0.;
+            node.isConst = true;
+            node.isTimeDependentOnly = true;
+            dag.push_back(node);
+          }
+          dag[last].val = dag[right].val; // copy exponent 
+          dag[i].right = last;
+          // decide
+          if(dag[left].isTimeDependentOnly)
+            dag[i].op = NODE_NATURAL_POW_FUNTIME;
+          else
+            dag[i].op = NODE_NATURAL_POW;
         }
         else if((int)dag[right].val == dag[right].val){
           dag[i].op = NODE_NEG_INT_POW;
