@@ -97,12 +97,8 @@ void BasicFunction<Scalar>::createDefault()
 // -----------------------------------------------------------------------------
 
 template<typename Scalar>
-void BasicFunction<Scalar>::createFromText(std::string s)
+void BasicFunction<Scalar>::createEvalPath()
 {
-  this->clean();
-  capd::map::removeWhiteSpaces(s);
-  this->m_indexOfFirstParam = capd::map::parseVariables(s,this->m_var);
-  parseMap(this->m_indexOfFirstParam,s,this->m_var,this->m_fullGraph,this->m_pos);
   this->m_evalPath.clear();
   for(unsigned i=0;i<this->m_fullGraph.size();++i)
     if( this->m_fullGraph[i].op!=capd::autodiff::NODE_NULL and
@@ -110,9 +106,20 @@ void BasicFunction<Scalar>::createFromText(std::string s)
         this->m_fullGraph[i].op!=capd::autodiff::NODE_CONST and
         this->m_fullGraph[i].op!=capd::autodiff::NODE_TIME and
         this->m_fullGraph[i].op!=capd::autodiff::NODE_COS and
-        this->m_fullGraph[i].op!=capd::autodiff::NODE_VAR
+        this->m_fullGraph[i].op!=capd::autodiff::NODE_VAR 
      ) this->m_evalPath.push_back(capd::autodiff::MyNode(this->m_fullGraph[i]));
   capd::autodiff::Int4ToAbstractNode(this->m_evalPath,this->m_nodes,this->m_dag);
+}
+
+// -----------------------------------------------------------------------------
+
+template<typename Scalar>
+void BasicFunction<Scalar>::createFromText(std::string s)
+{
+  capd::map::removeWhiteSpaces(s);
+  this->m_indexOfFirstParam = capd::map::parseVariables(s,this->m_var);
+  capd::map::parseMap(this->m_indexOfFirstParam,s,this->m_var,this->m_fullGraph,this->m_pos);
+  this->createEvalPath();
 }
 
 // -----------------------------------------------------------------------------

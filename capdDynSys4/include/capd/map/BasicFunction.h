@@ -143,7 +143,8 @@ protected:
   void copyObject(const BasicFunction& f);  ///< an auxiliary function used in copying constructor and assignment operator
   void clean();                             ///< resets all allocated data
   void realloc(size_type degree);           ///< reallocates memory for computation of derivatives up to order 'degree'
-
+  void createEvalPath();                    ///< creates an evaluation path for the expression. Nodes that do not need evaluation (constants, vars) are removed from DAG of expression. Moreover, evaluation is optimized.
+                                              
   template<class V>
   void setArgument(const V& v) const;
   void applyC1Mask() const;
@@ -232,16 +233,7 @@ void BasicFunction<Scalar>::reset(Function f, int dimIn, int dimOut, int noParam
     this->m_pos.push_back(out[i].result);
 
   optimizeDAG(this->m_fullGraph,this->m_pos);
-
-  for(i=0;i<(int)this->m_fullGraph.size();++i)
-    if( this->m_fullGraph[i].op!=NODE_NULL and
-        this->m_fullGraph[i].op!=NODE_PARAM and
-        this->m_fullGraph[i].op!=NODE_CONST and
-        this->m_fullGraph[i].op!=NODE_TIME and
-        this->m_fullGraph[i].op!=NODE_COS and
-        this->m_fullGraph[i].op!=NODE_VAR
-     ) this->m_evalPath.push_back(MyNode(this->m_fullGraph[i]));
-  Int4ToAbstractNode(this->m_evalPath,this->m_nodes,this->m_dag);
+  this->createEvalPath();
 
   delete[] var;
   delete[] out;
