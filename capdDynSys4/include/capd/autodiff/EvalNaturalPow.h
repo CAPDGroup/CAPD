@@ -31,109 +31,196 @@ namespace autodiff{
  * This file implements automatic differentiation for c>4, provided x\neq 0.
  * Special case of C^0-C^1 jet propagation is implemented also in the case x=0.
  */
-namespace NaturalPow
-{
-  /**
-   * Auxiliary function.
-   * Computes d^i x^c where c is integer, i>0 and x can be zero
-   * @param x - array of coefficients
-   */
-
-  template<class T>
-  inline
-  T* evalC0SingularNaturalPow(const unsigned coeffNo, const T* x, T* temp1, T* temp2, const unsigned c)
-  {
-    for(unsigned i=1;i<c;++i)
-    {
-      for(unsigned p=0;p<=coeffNo;++p)
-      {
-        temp2[p] = TypeTraits<T>::zero();
-        for(unsigned j=0;j<=p;++j)
-          temp2[p] += x[j]*temp1[p-j];
-      }
-      std::swap(temp1,temp2);
-    }
-    return temp1;
-  }
-
-  template<class T, class R>
-  void evalC0SingularNaturalPow(const T* left, T* r, const int c, R result, const unsigned coeffNo){
-    T* t = new T[2*(coeffNo+1)];
-    std::copy(left,left+coeffNo+1,t);
-    T* p = evalC0SingularNaturalPow(coeffNo,left,t,t+coeffNo+1,c-1);
-    std::copy(p,p+coeffNo+1,r);
-    delete[]t;
-
-    result[coeffNo] = left[0]*r[coeffNo];
-    for(unsigned i=1;i<=coeffNo;++i)
-      result[coeffNo] += left[i]*r[coeffNo-i];
-  }
-
+ 
+namespace SingularNaturalPow{
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
-    const int c = toInt(leftBound(*right));
-    if(!(isSingular(*left)) or coeffNo==0)
-      NegIntPow::evalC0IntPow(left,c,result,coeffNo);
-    else {
-      T* r = const_cast<T*>(right);
-      evalC0SingularNaturalPow(left,r+1,c,result,coeffNo);
-    }
-  }
-
-  template<class T, class R>
-  inline void evalC0HomogenousPolynomial(const T* left, const T* right, DagIndexer<T>* dag, R result)
-  {
-    *result = power(*left, toInt(leftBound(*right)));
-  }
-
-  template<class T, class R>
-  inline void evalC1SingularNaturalPow(const T* left, const T* right, R result, const unsigned dim, const unsigned order, const unsigned coeffNo)
-  {
-    const T* leftDer = left + order;
-    R resultDer = result + order;
-
-    for(unsigned derNo=0;derNo<dim;++derNo,leftDer+=order,resultDer+=order)
-    {
-      if(getMask(resultDer)){
-        resultDer[coeffNo] = capd::TypeTraits<T>::zero();
-        for(unsigned j=0;j<=coeffNo;++j)
-          resultDer[coeffNo] += right[j+1] * leftDer[coeffNo-j];
-        resultDer[coeffNo] *= leftBound(*right);
+    int c = toInt(leftBound(*right));
+    unsigned int jetSize = dag->timeJetSize();
+    const T* y = nullptr;
+    const T* x = left;
+    T* p = const_cast<T*>(right);
+    
+    while(c>3 or (c>1 and y!=nullptr)){
+      if((c&1)==1){
+        if(y==nullptr){
+          y = x;
+        } else {
+          p += jetSize;
+          Mul::evalC0(x,y,p,coeffNo);
+          y = p;
+        }
       }
+      p += jetSize;
+      Sqr::evalC0(x,static_cast<const T*>(nullptr),p,coeffNo);
+      x = p;
+      c >>= 1;
     }
+    if(y==nullptr){
+      if(c==2){
+        Sqr::evalC0(x,static_cast<const T*>(nullptr),result,coeffNo);
+      } else {
+        p += jetSize;
+        Sqr::evalC0(x,static_cast<const T*>(nullptr),p,coeffNo);
+        Mul::evalC0(x,p,result,coeffNo);
+      }
+    } else {
+      Mul::evalC0(x,y,result,coeffNo);
+    }    
+  }
+
+  template<class T, class R>
+  inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result, DagIndexer<T>* dag)
+  {
+    int c = toInt(leftBound(*right));
+    unsigned int jetSize = dag->timeJetSize();
+    const T* y = nullptr;
+    const T* x = left;
+    T* p = const_cast<T*>(right);
+    
+    while(c>3 or (c>1 and y!=nullptr)){
+      if((c&1)==1){
+        if(y==nullptr){
+          y = x;
+        } else {
+          p += jetSize;
+          Mul::evalC0HomogenousPolynomial(x,y,p);
+          y = p;
+        }
+      }
+      p += jetSize;
+      Sqr::evalC0HomogenousPolynomial(x,static_cast<const T*>(nullptr),p);
+      x = p;
+      c >>= 1;
+    }
+    if(y==nullptr){
+      if(c==2){
+        Sqr::evalC0HomogenousPolynomial(x,static_cast<const T*>(nullptr),result);
+      } else {
+        p += jetSize;
+        Sqr::evalC0HomogenousPolynomial(x,static_cast<const T*>(nullptr),p);
+        Mul::evalC0HomogenousPolynomial(x,p,result);
+      }
+    } else {
+      Mul::evalC0HomogenousPolynomial(x,y,result);
+    }    
   }
 
   template<class T, class R>
   void eval(const unsigned degree, const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
-    const int c = toInt(leftBound(*right));
-    if(!(isSingular(*left))){
-      NegIntPow::evalC0IntPow(left,c,result,coeffNo);
-      if(degree)
-        Pow::evalJetWithoutC0(degree,left,*right,result,dag,coeffNo);
+    int c = toInt(leftBound(*right));
+    unsigned int jetSize = dag->timeJetSize();
+    const T* y = nullptr;
+    const T* x = left;
+    T* p = const_cast<T*>(right);
+    
+    while(c>3 or (c>1 and y!=nullptr)){
+      if((c&1)==1){
+        if(y==nullptr){
+          y = x;
+        } else {
+          p += jetSize;
+          Mul::eval(degree,x,y,p,dag,coeffNo);
+          y = p;
+        }
+      }
+      p += jetSize;
+      Sqr::eval(degree,x,static_cast<const T*>(nullptr),p,dag,coeffNo);
+      x = p;
+      c >>= 1;
+    }
+    if(y==nullptr){
+      if(c==2){
+        Sqr::eval(degree,x,static_cast<const T*>(nullptr),result,dag,coeffNo);
+      } else {
+        p += jetSize;
+        Sqr::eval(degree,x,static_cast<const T*>(nullptr),p,dag,coeffNo);
+        Mul::eval(degree,x,p,result,dag,coeffNo);
+      }
     } else {
-        T* r = const_cast<T*>(right);
-        evalC0SingularNaturalPow(left,r+1,c,result,coeffNo);
-
-        if(degree<=1)
-          evalC1SingularNaturalPow(left,right,result,dag->domainDimension(),dag->getOrder()+1,coeffNo);
-        else
-         throw std::logic_error("Jet propagation of natural power x^c is not implemented if x and singular or c>4 and requested derivative order is biegger than >1");
+      Mul::eval(degree,x,y,result,dag,coeffNo);
     }
   }
 
   template<class T, class R>
   void evalHomogenousPolynomial(const unsigned degree, const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
-    if(!(isSingular(*left))){
-      Pow::evalHomogenousPolynomial(degree,left,right,result,dag,coeffNo);
-    } else {
-        if(degree<=1)
-          evalC1SingularNaturalPow(left,right,result,dag->domainDimension(),dag->getOrder()+1,coeffNo);
-        else
-         throw std::logic_error("Jet propagation of natural power x^c is not implemented if x and singular or c>4 and requested derivative order is biegger than >1");
+    int c = toInt(leftBound(*right));
+    unsigned int jetSize = dag->timeJetSize();
+    const T* y = nullptr;
+    const T* x = left;
+    T* p = const_cast<T*>(right);
+    
+    while(c>3 or (c>1 and y!=nullptr)){
+      if((c&1)==1){
+        if(y==nullptr){
+          y = x;
+        } else {
+          p += jetSize;
+          Mul::evalHomogenousPolynomial(degree,x,y,p,dag,coeffNo);
+          y = p;
+        }
+      }
+      p += jetSize;
+      Sqr::evalHomogenousPolynomial(degree,x,static_cast<const T*>(nullptr),p,dag,coeffNo);
+      x = p;
+      c >>= 1;
     }
+    if(y==nullptr){
+      if(c==2){
+        Sqr::evalHomogenousPolynomial(degree,x,static_cast<const T*>(nullptr),result,dag,coeffNo);
+      } else {
+        p += jetSize;
+        Sqr::evalHomogenousPolynomial(degree,x,static_cast<const T*>(nullptr),p,dag,coeffNo);
+        Mul::evalHomogenousPolynomial(degree,x,p,result,dag,coeffNo);
+      }
+    } else {
+      Mul::evalHomogenousPolynomial(degree,x,y,result,dag,coeffNo);
+    }     
+  }
+}
+ 
+namespace NaturalPow
+{
+  template<class T, class R>
+  inline void evalC0(const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
+  {
+    if(!(isSingular(*left)))
+      NegIntPow::evalC0IntPow(left,toInt(leftBound(*right)),result,coeffNo);
+    else 
+      SingularNaturalPow::evalC0(left,right,result,dag,coeffNo);
+  }
+
+  template<class T, class R>
+  inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result, DagIndexer<T>* dag)
+  {
+    if(!(isSingular(*left)))
+      *result = power(*left, toInt(leftBound(*right)));
+    else
+      SingularNaturalPow::evalC0HomogenousPolynomial(left,right,result,dag);
+  }
+
+  template<class T, class R>
+  void eval(const unsigned degree, const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
+  {
+    if(!(isSingular(*left))){
+      NegIntPow::evalC0IntPow(left,toInt(leftBound(*right)),result,coeffNo);
+      if(degree)
+        Pow::evalJetWithoutC0(degree,left,*right,result,dag,coeffNo);
+    } else {
+      SingularNaturalPow::eval(degree,left,right,result,dag,coeffNo);
+    }
+  }
+
+  template<class T, class R>
+  void evalHomogenousPolynomial(const unsigned degree, const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
+  {
+    if(!(isSingular(*left)))
+      Pow::evalHomogenousPolynomial(degree,left,right,result,dag,coeffNo);
+    else
+      SingularNaturalPow::evalHomogenousPolynomial(degree,left,right,result,dag,coeffNo);
   }
 }
 
@@ -148,9 +235,9 @@ namespace NaturalPowFunTime
   }
 
   template<class T, class R>
-  inline void evalC0HomogenousPolynomial(const T* left, const T* right, DagIndexer<T>* dag, R result)
+  inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result, DagIndexer<T>* dag)
   {
-    *result = power(*left, toInt(leftBound(*right)));
+    NaturalPow::evalC0HomogenousPolynomial(left,right,result,dag);
   }
 
   template<class T, class R>
@@ -254,7 +341,7 @@ CAPD_MAKE_DAG_NODE(NaturalPowTime);
       ClassName::eval(degree,this->left,this->right,MaskIterator<T>(this->result,mask),this->dag,coeffNo);\
     }\
     void evalC0HomogenousPolynomial() {\
-      ClassName::evalC0HomogenousPolynomial(this->left,this->right,this->dag,this->result);\
+      ClassName::evalC0HomogenousPolynomial(this->left,this->right,this->result,this->dag);\
     }\
     void evalHomogenousPolynomial(const int degree, const int coeffNo) {\
       ClassName::evalHomogenousPolynomial(degree,this->left,this->right,this->result,this->dag,coeffNo);\

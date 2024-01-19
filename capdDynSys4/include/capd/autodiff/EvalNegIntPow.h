@@ -40,8 +40,7 @@ namespace NegIntPow
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
-    const int c = toInt(leftBound(*right));
-    evalC0IntPow(left,c,result,coeffNo);
+    evalC0IntPow(left,toInt(leftBound(*right)),result,coeffNo);
   }
 
   template<class T, class R>

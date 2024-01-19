@@ -895,7 +895,7 @@ namespace capd{
           int numberOfNewNodes = 0;
 
           while(d>1){
-            numberOfNewNodes += 1 + d&1; // 2 for odd and 1 for even
+            numberOfNewNodes += 1 + (d&1); // 2 for odd and 1 for even
             d >>=1;
           }
           unsigned last = dag.size();
