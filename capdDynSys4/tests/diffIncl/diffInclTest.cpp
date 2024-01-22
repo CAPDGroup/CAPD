@@ -81,11 +81,8 @@ BOOST_AUTO_TEST_CASE(xdiffInclTest)
   x1[0] = 1.0;    x1[1] = 0.0;   
 
   // We prepare sets that know how to propagate themselves with differential inclusions
-  InclRect2Set setLN(x1),
-               setCW(x1);
-  
+  InclRect2Set setLN(x1), setCW(x1);  
   C0Rect2Set selSet(x1);
-
   
   for(int i = 0; i < numberOfSteps; ++i) {
     setLN.move(diffInclLN);
