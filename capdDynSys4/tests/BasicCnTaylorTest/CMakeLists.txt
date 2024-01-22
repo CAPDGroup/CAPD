@@ -1,1 +1,1 @@
-build_test_executable_monofile(BasicCnTaylorTest)
+build_boost_test_executable_monofile(BasicCnTaylorTest)
