@@ -1,20 +1,24 @@
 /**
- *  @file diffInclExample.cpp
+ *  @file diffInclTest.cpp
  *
  *  Created on: 2009-11-13
  *      Author: kapela
  */
 
-// it provides IVector, IMatrix, IMap
-#include "capd/capdlib.h"
+#define BOOST_TEST_MODULE DiffInclTest
+#define BOOST_TEST_DYN_LINK
 
+#include <iostream>
+#include <boost/test/unit_test.hpp>
+#include "capd/capdlib.h"
 #include "capd/diffIncl/DiffInclusionLN.hpp"
 #include "capd/diffIncl/DiffInclusionCW.hpp"
 #include "capd/diffIncl/InclRect2Set.hpp"
 #include "capd/diffIncl/MultiMap.h"
 #include "capd/vectalg/Norm.hpp"
 #include "capd/poincare/PoincareMap.hpp"
-#include <iostream>
+using namespace capd;
+
 
 using namespace capd;
 
@@ -23,6 +27,8 @@ typedef capd::diffIncl::MultiMap<IMap> IMultiMap;
 typedef capd::diffIncl::DiffInclusionCW<IMultiMap> DiffInclusionCW;
 typedef capd::diffIncl::DiffInclusionLN<IMultiMap> DiffInclusionLN;
 typedef capd::poincare::PoincareMap<DiffInclusionCW> DiffPoincare;
+
+BOOST_AUTO_TEST_SUITE(TestSuite)
 
 /**
  *  In this test we integrate differential inclusion based on harmonic oscillator
@@ -37,7 +43,9 @@ typedef capd::poincare::PoincareMap<DiffInclusionCW> DiffPoincare;
  *  y' = -x + eps sin(t) 
  *   
  */
-void harmonicOscillatorTest() {
+
+BOOST_AUTO_TEST_CASE(xdiffInclTest)
+{
 
   // f is an unperturbed vector field
   IMap f("var:x,y;fun:y,-x;");
@@ -73,43 +81,22 @@ void harmonicOscillatorTest() {
   x1[0] = 1.0;    x1[1] = 0.0;   
 
   // We prepare sets that know how to propagate themselves with differential inclusions
-  InclRect2Set setLN(x1),
-               setCW(x1);
-  
+  InclRect2Set setLN(x1), setCW(x1);  
   C0Rect2Set selSet(x1);
-
   
   for(int i = 0; i < numberOfSteps; ++i) {
     setLN.move(diffInclLN);
     setCW.move(diffInclCW);
     selSet.move(selectionSolver);
-  //}
 
   // We compute interval vector that covers given set.
     IVector resultLN = IVector(setLN),
             resultCW = IVector(setCW);
     IVector selResult = IVector(selSet);
-//    std::cerr
-//              <<  "\n selection  : " << selResult
-//              <<  "\n diffInclCW : " << resultCW
-//              <<  "\n diffInclLN : " << resultLN << "\n---------\n";
-    if(!(subset(selResult, resultLN)) or !(subset(selResult, resultCW) )){
-      
-      std::cerr<< "Possible error in DiffIncl: "
-              <<  "\n selection  : " << selResult
-              <<  "\n diffInclCW : " << resultCW
-              <<  "\n diffInclLN : " << resultLN << "\n";
-      IVector intersect = intersection(intersection(selResult, resultLN), resultCW);  
-    
-    }
-  
-  
+    BOOST_CHECK_EQUAL(subset(selResult, resultLN),true);
+    BOOST_CHECK_EQUAL(subset(selResult, resultCW),true);     
+    BOOST_CHECK_NO_THROW(intersection(intersection(selResult, resultLN), resultCW));  
   }
 }
 
-int main() {
-  std::cerr.precision(16);
-  std::cout.precision(16);
-  harmonicOscillatorTest();
-  return 0;
-} // END
+BOOST_AUTO_TEST_SUITE_END()
