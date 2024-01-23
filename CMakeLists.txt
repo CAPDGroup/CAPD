@@ -24,6 +24,7 @@ add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys4)
 add_subdirectory(capdMake/libcapd)
+add_subdirectory(capdMake/bin)
 
 if (${CAPD_ENABLE_MULTIPRECISION})
 
