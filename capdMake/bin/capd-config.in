@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}
+pkg-config $* capd
