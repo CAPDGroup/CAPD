@@ -19,12 +19,6 @@ target_link_libraries(${PROJECT_NAME} PUBLIC -lprim)
 
 enable_testing()
 
-add_subdirectory(capdExt)
-add_subdirectory(capdAux)
-add_subdirectory(capdAlg)
-add_subdirectory(capdDynSys4)
-add_subdirectory(capdMake/libcapd)
-
 if (${CAPD_ENABLE_MULTIPRECISION})
 
     target_link_libraries(${PROJECT_NAME} PUBLIC -lmpfr)
@@ -32,5 +26,12 @@ if (${CAPD_ENABLE_MULTIPRECISION})
 
     target_compile_options(${PROJECT_NAME} PUBLIC -D__HAVE_MPFR__)
 endif()
+
+add_subdirectory(capdExt)
+add_subdirectory(capdAux)
+add_subdirectory(capdAlg)
+add_subdirectory(capdDynSys4)
+add_subdirectory(capdMake/libcapd)
+add_subdirectory(capdMake/bin)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION "lib")
