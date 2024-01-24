@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export PKG_CONFIG_PATH=@CMAKE_BINARY_DIR@/bin@PATH_SEPARATOR@@PKG_CONFIG_PATH@
+pkg-config $* capd
