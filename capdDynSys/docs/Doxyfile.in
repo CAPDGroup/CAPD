@@ -171,9 +171,9 @@ STRIP_FROM_PATH        = ../include \
                          ../../capdAux/include \
                          ../../capdAux/src \
                          ../../capdAux/ \
-                         ../../capdDynSys4/include \
-                         ../../capdDynSys4/src \
-                         ../../capdDynSys4/
+                         ../../capdDynSys/include \
+                         ../../capdDynSys/src \
+                         ../../capdDynSys/
 
 # The STRIP_FROM_INC_PATH tag can be used to strip a user-defined part of the
 # path mentioned in the documentation of a class, which tells the reader which
@@ -185,7 +185,7 @@ STRIP_FROM_PATH        = ../include \
 STRIP_FROM_INC_PATH    = ../include \
                          ../../capdAlg/include \
                          ../../capdAux/include \
-                          ../../capdDynSys4/include
+                          ../../capdDynSys/include
 
 # If the SHORT_NAMES tag is set to YES, doxygen will generate much shorter (but
 # less readable) file names. This can be useful is your file systems doesn't
@@ -1009,7 +1009,7 @@ EXCLUDE_SYMBOLS        =
 # that contain example code fragments that are included (see the \include
 # command).
 
-EXAMPLE_PATH           = ../../capdDynSys4/examples \
+EXAMPLE_PATH           = ../../capdDynSys/examples \
                          ../../capdAlg/examples \
                          ../../capdAux/examples \
                          ../../capdMake/utils
