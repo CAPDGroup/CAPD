@@ -5,12 +5,12 @@ PROGS = MyProgram
 OTHERS = utils output
 
 # directory where capd scripts are (e.g. capd-config)
-CAPDBINDIR =../../../bin/
+CAPDBINDIR =../../../build/bin/
 
 # setting compiler and linker flags
 CAPDFLAGS = `${CAPDBINDIR}capd-config --cflags`
 CAPDLIBS = `${CAPDBINDIR}capd-config --libs`
-CXXFLAGS += ${CAPDFLAGS} -O2 -std=c++14 
+CXXFLAGS += ${CAPDFLAGS} 
 
 # directory where object and dependancy files will be created
 OBJDIR = .obj/
@@ -38,4 +38,4 @@ ${OBJ_FILES}: ${OBJDIR}%.o : %.cpp
 # rule to clean all object files, dependencies and executables
 .PHONY: clean
 clean:
-	rm -f ${OBJDIR}*.o ${OBJDIR}*.o.d ${PROGS}cd
+	rm -f ${OBJDIR}*.o ${OBJDIR}*.o.d ${PROGS}
