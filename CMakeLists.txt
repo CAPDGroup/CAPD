@@ -30,7 +30,7 @@ endif()
 add_subdirectory(capdExt)
 add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
-add_subdirectory(capdDynSys4)
+add_subdirectory(capdDynSys)
 add_subdirectory(capdMake/libcapd)
 add_subdirectory(capdMake/bin)
 
