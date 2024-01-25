@@ -169,10 +169,8 @@ STRIP_FROM_PATH        = ../../capdAlg/include \
                          ../../capdAux/src \
                          ../../capdExt/include \
                          ../../capdExt/src \
-                         ../../capdDynSys4/include \
-                         ../../capdDynSys4/src \
-                         ../../capdRedHom/include \
-                         ../../capdRedHom/src \
+                         ../../capdDynSys/include \
+                         ../../capdDynSys/src \
                          ../../capdAux/
 
 # The STRIP_FROM_INC_PATH tag can be used to strip a user-defined part of the
@@ -184,8 +182,7 @@ STRIP_FROM_PATH        = ../../capdAlg/include \
 
 STRIP_FROM_INC_PATH    = ../../capdAlg/include \
                          ../../capdExt/include \
-                         ../../capdDynSys4/include \
-                         ../../capdRedHom/include \
+                         ../../capdDynSys/include \
                          ../../capdAux/include
 
 # If the SHORT_NAMES tag is set to YES, doxygen will generate much shorter (but
@@ -893,14 +890,10 @@ INPUT                  = ../../capdAux/include/ \
                          ../../capdAlg/src/ \
                          ../../capdAlg/examples/ \
                          ../../capdAlg/docs/src/ \
-                         ../../capdDynSys4/include/ \
-                         ../../capdDynSys4/src/ \
-                         ../../capdDynSys4/examples/ \
-                         ../../capdDynSys4/docs/src/ \
-                         ../../capdRedHom/include/ \
-                         ../../capdRedHom/src/ \
-                         ../../capdRedHom/examples/ \
-                         ../../capdRedHom/docs/src/ \
+                         ../../capdDynSys/include/ \
+                         ../../capdDynSys/src/ \
+                         ../../capdDynSys/examples/ \
+                         ../../capdDynSys/docs/src/ \
                          ../../capdMake/docs/src \
                          ../../capdMake/docs/main.dox
 
@@ -1009,7 +1002,7 @@ EXCLUDE_SYMBOLS        =
 # that contain example code fragments that are included (see the \include
 # command).
 
-EXAMPLE_PATH           = ../../capdDynSys4/examples \
+EXAMPLE_PATH           = ../../capdDynSys/examples \
                          ../../capdAlg/examples \
                          ../../capdAux/examples \
                          ../../capdMake/utils
