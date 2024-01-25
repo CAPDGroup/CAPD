@@ -124,7 +124,7 @@ public:
 
 
   MatrixContainer(MatrixContainer&& v) noexcept
-    : BaseContainerType(std::move(v)){
+    : BaseContainerType(std::move(v)), m_rows(0), m_cols(0){
     std::swap(m_rows, v.m_rows);
     std::swap(m_cols, v.m_cols);
   }
