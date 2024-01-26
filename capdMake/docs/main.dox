@@ -17,7 +17,7 @@
 /*!
 \mainpage
 
-CAPD is an acronym for **Computer Assisted Proofs in Dynamics**. The library was initiated in early 1990's by Marian Mrozek as the tool for the computer assisted proof of <a href="https://www.ams.org/journals/bull/1995-32-01/S0273-0979-1995-00558-6/">chaotic dynamics in the Lorenz system</a> recognized by Encyclopædia Britannica as one of the four most important achievements in mathematics in 1995. The present version of the CAPD::DynSys library is a collection of flexible C++ modules which are mainly designed for nonrigorous and validated numerics for dynamical systems. The library proved to be an efficient tool in rigorous numerical study of various phenomena in dynamical systems, just to mention
+CAPD is an acronym for **Computer Assisted Proofs in Dynamics**. The library was initiated in early 1990's by [**Marian Mrozek**](http://www.ii.uj.edu.pl/~mrozek) as the tool for the computer assisted proof of [**chaotic dynamics in the Lorenz system**](https://www.ams.org/journals/bull/1995-32-01/S0273-0979-1995-00558-6) recognized by Encyclopædia Britannica as one of the four most important achievements in mathematics in 1995. The present version of the CAPD::DynSys library is a collection of flexible C++ modules which are mainly designed for nonrigorous and validated numerics for dynamical systems. The library proved to be an efficient tool in rigorous numerical study of various phenomena in dynamical systems, just to mention
 - existence and stability of periodic trajectories
 - the existence of chaotic dynamics in various ODEs and PDEs.
 - the existence of conencting orbits to equlibria and periodic prbits
@@ -40,7 +40,7 @@ and many others. The basic interface of the library is presented in the article 
 T. Kapela, M. Mrozek, D. Wilczak, P. Zgliczynski,<br/>
 CAPD::DynSys: a flexible C++ toolbox for rigorous numerical analysis of dynamical systems,<br/>
 Communications in Nonlinear Science and Numerical Simulation, Volume 101, October 2021, 105578.<br/> 
-https://doi.org/10.1016/j.cnsns.2020.105578
+[**doi.org/10.1016/j.cnsns.2020.105578**](https://doi.org/10.1016/j.cnsns.2020.105578)
 
 We also recommend to look at 
 - \subpage getting_started <br/>
@@ -51,7 +51,8 @@ We also recommend to look at
 \subsubsection capd_download Download and use the CAPD::DynSys library
 
 - \subpage capd_requirements "CAPD Requirements"
-- \subpage capd_compilation "Compilation of the library:
+- \subpage capd_getit "Download the library"
+- \subpage capd_compilation "Compilation of the library"
 - \subpage user_programs 
 
 

@@ -1,57 +1,32 @@
 /*! \page capd_getit Get CAPD
 
-We recommend downloading CAPD sources from [**SourceForge**](https://sourceforge.net/projects/capd/files/newest/src) as it contains latest stable version.
-The latest version can be obtained from our SVN repositories.
+The source code of the CAPD::DynSys library is distributed under **GNU GPL license** and hosted as a public [**github.com/CAPDgroup/CAPD**](https://github.com/CAPDGroup/CAPD) repository. 
 
-\section capd_getit_sourceforge Download sources from SourceForge
 
-The source code of the \b CAPD library can be [<b>downloaded from SourceForge</b>](https://sourceforge.net/projects/capd/files/newest/src) (latest stable version).
-You can find there also previous releases.
+\section capd_getit_source Download source code of the library
 
-There are two versions available:
-- <b>capd-capdDynSys-*</b>  - CAPD-DynSys library (**recomended**)
-- <b>capd-*</b>   - includes CAPD-DynSys and CAPD-RedHom (for homology computations) libraries
+The most recent **developed master branch** can be cloned from the repository
 
-Download and unpack one of the archives and proceed to \ref capd_compilation. We recommend to build CAPD outside a source directory.
-
-See also page on \subpage capd_source_install.
-
-For a typical build and installation invoke in the terminal (we assume that we are just outside the directory with unpacked sources (say capd-X.Y.Z)).
 \code
-mkdir build
-
-cd build
-
-../capd-X.Y.Z/configure
-
-make -j lib
-
-sudo make install
+git clone https://github.com/CAPDGroup/CAPD
 \endcode
 
-\section capd_getit_repositories Get CAPD sources from svn repositories
+and then chekced for any updates by 
 
-The latest version of the CAPD library can be downloaded using [Subversion](https://subversion.apache.org/) from CAPD repositories.
-This development version of the CAPD library will contain the newest features and bug fixes but can also contain
-a part of the code that is not fully implemented or tested yet.
-
-Simply invoke the following command in your terminal
 \code
-svn co https://svn.capdnet.ii.uj.edu.pl/capd/  capd
-svn co https://svn.capdnet.ii.uj.edu.pl/capdDynSys4  capd/capdDynSys4
+git pull origin master
 \endcode
 
-One needs to call <code>./bootstap.sh</code> (or <code>autoreconf -i</code>) in the capd source directory before performing a build
-\code
-cd capd
-./boostrap.sh
-\endcode
 
-To stay with the newest capd version you can check for updates using a script <code>svn_update.sh</code>  placed in the capd source directory.
+The latest **stable relase** can be downloaded from 
 
-For more information see \ref capd_repositories and \ref capd_compilation sections.
+[**github.com/CAPDGroup/CAPD/releases**](https://github.com/CAPDGroup/CAPD/releases)
+
+Download and unpack one of the archives and follow the instructions in \ref capd_compilation "Compilation CAPD::DynSys of the library". We recommend to build CAPD outside the source directory.
 
 \section capd_getit_binaries Get binary version of the CAPD
+
+\todo revise get Binary version of CAPD
 
 For selected Linux based systems one can [download binary](https://sourceforge.net/projects/capd/files/newest/bin) (already compiled) version of the CAPD library.
 Be aware that the binary version requires additional libraries in run-time and at this moment it is quite outdated.
@@ -60,9 +35,12 @@ More information contains a page on \subpage capd_binary_install.
 
 \section capd_getit_docker Docker image with installed CAPD
 
+\todo revise get docker images
+
 You can use our Docker image with installed CAPD in <code>/usr/local</code>:
   - [<b>capd/capd-ubuntu_x86</b>](https://hub.docker.com/r/capd/capd-ubuntu_x86/) - image is based on Ubuntu.
 
+\todo add singulrity images
 
 
 

@@ -1,6 +1,9 @@
 /*! \page capd_compilation Compilation
 
-- \ref capd_requirements "Requirements"
+This section describes how to compile the \b CAPD library from sources. 
+
+Before compile the library, please check if all \ref capd_requirements "System Requirements" are fulfilled.
+
 
 \section  capd_compilation_1 Preparing configure script
 This step is needed if you have a fresh version from the SVN repositories or if you changed one of the \e configure.in files.

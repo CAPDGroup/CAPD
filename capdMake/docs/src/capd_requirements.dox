@@ -2,18 +2,22 @@
 
 \section capd_requirements_linux Linux
 
-For CAPD users:
+The CAPD::DynSys uses very standard tools and libraries, only.
 - \b gcc, \b g++.
-- \b make, \b cmake.
-- \b pkg-config.
-- To enable <b>multiple precision</b> support in the CAPD the libraries \b gmp and \b mpfr are required.<br/>
+- \b make, \b cmake \todo specify the lowest cmake version.
+
+- \b pkg-config
+- \b git or \b unzip (depending if you preffer to clone CAPD git repository or unzip an arvchive with stable CAPD release)
+- To enable <b>multiple precision</b> support in the CAPD the libraries the libraries \b gmp and \b mpfr are required.<br/>
   One should install packages <tt>libgmp, libgmp-dev, libgmpxx, libmpfr, libmpfr-dev</tt>.
-- We recommend to install <a href="http://www.boost.org/">Boost</a> library (header files and compiled libraries, recomended version: 1.53.0, it is not mandatory, e.g. package <tt>libboost1.53-all-dev</tt> or <tt>libboost-all-dev</tt>).
+- We recommend to install <a href="http://www.boost.org/">Boost</a> library (header files and compiled libraries, e.g. package <tt>libboost1.53-all-dev</tt> or <tt>libboost-all-dev</tt>).
+
 
 The CAPD package was tested on Linux distributions: Debian, Ubuntu.
 Please check \ref capd_build_environment_dockerfiles to see our setup.
 
 \section capd_requirements_osx OSX
+\todo Review OSX requirements
 
 1) Install C++ compiler from Command Line Tools (it is also shipped with XCode) by doing one of the following:
 - Install \b Xcode from App Store (it is quite heavy).

@@ -2,6 +2,9 @@
 
 \section capd_binary_install_download Download
 
+\todo Revise docker links and add singularity containers
+
+
 Binary version of the \b CAPD library can be [<b>download</b>](https://sourceforge.net/projects/capd/files/newest/bin)  from SourceForge.
 Alternatively you can use our Docker image with installed CAPD in <code>/usr/local</code>:
   - [<b>capd/capd-ubuntu_x86</b>](https://hub.docker.com/r/capd/capd-ubuntu_x86/) - image based on Ubuntu, example usage.
