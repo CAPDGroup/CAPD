@@ -17,15 +17,16 @@
 /*!
 \mainpage
 
-CAPD is an acronym for **Computer Assisted Proofs in Dynamics**. The library was initiated in early 1990's by Marian Mrozek as the tool for the computer assisted proof of <a href="https://www.ams.org/journals/bull/1995-32-01/S0273-0979-1995-00558-6/">chaotic dynamics in the Lorenz system</a> recognized by Encyclopædia Britannica as one of the four most important achievements in mathematics in 1995. The present version of the CAPD::DynSys library is a collection of flexible C++ modules which are mainly designed for nonrigorous and validated numerics for dynamical systems. The library proved to be an efficient tool in rigorous numerical study of dynamical systems, just to mention
+CAPD is an acronym for **Computer Assisted Proofs in Dynamics**. The library was initiated in early 1990's by Marian Mrozek as the tool for the computer assisted proof of <a href="https://www.ams.org/journals/bull/1995-32-01/S0273-0979-1995-00558-6/">chaotic dynamics in the Lorenz system</a> recognized by Encyclopædia Britannica as one of the four most important achievements in mathematics in 1995. The present version of the CAPD::DynSys library is a collection of flexible C++ modules which are mainly designed for nonrigorous and validated numerics for dynamical systems. The library proved to be an efficient tool in rigorous numerical study of various phenomena in dynamical systems, just to mention
 - existence and stability of periodic trajectories
 - the existence of chaotic dynamics in various ODEs and PDEs.
-- the existence of periodic, homoclinic, heteroclinic orbits
-- local and global bifurcations (Shilnikov orbits, Bykov cycles, homoclinic tangencies)
+- the existence of conencting orbits to equlibria and periodic prbits
+- local and global bifurcations (Shilnikov orbits, Bykov cycles, homoclinic tangencies, attractor templates)
 - study of invariant tori for maps and flows
 - existence and hyperbolicity of attractors for ODEs
 - Arnold diffusion
 
+\subsubsection capd_modules Modules of the CAPD::DynSys library
 
 The present version of the CAPD::DynSys library implements algorithms for computation of guaranteed bounds for 
 - higher order derivatives of multivariate maps
@@ -34,24 +35,29 @@ The present version of the CAPD::DynSys library implements algorithms for comput
 - Poincaré maps and their derivatives
 - solutions to come class of dissipative PDEs
 
-and many others. The basic interface of the library is presented in the article
+and many others. The basic interface of the library is presented in the article (**main reference to the library**)
 
 T. Kapela, M. Mrozek, D. Wilczak, P. Zgliczynski,<br/>
 CAPD::DynSys: a flexible C++ toolbox for rigorous numerical analysis of dynamical systems,<br/>
 Communications in Nonlinear Science and Numerical Simulation, Volume 101, October 2021, 105578.<br/> 
 https://doi.org/10.1016/j.cnsns.2020.105578
 
-We also recommend to look at \subpage getting_started section where the interface of the library is introduced step by step and supported by numerous examples.
+We also recommend to look at 
+- \subpage getting_started <br/>
+  where the interface of the library is introduced step by step and supported by numerous examples.
+- \subpage capd_examples<br/> 
+  for more detailed desciption, advanced examples and a few complete computer-assisted proofs of various dynamical phenomena.
 
-- \subpage capd_requirements "Requirements"
-- \subpage capd_compilation
+\subsubsection capd_download Download and use the CAPD::DynSys library
+
+- \subpage capd_requirements "CAPD Requirements"
+- \subpage capd_compilation "Compilation of the library:
 - \subpage user_programs 
 
-- \subpage capd_useful_info
 
-For developers
-- \subpage capd_repositories
+<!--For developers
+- \subpage capd_useful_info
 - \subpage devel_new_files
-- \subpage devel_documentation
+- \subpage devel_documentation-->
 */
 
