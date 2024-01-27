@@ -22,7 +22,7 @@ The latest **stable relase** can be downloaded from
 
 [**github.com/CAPDGroup/CAPD/releases**](https://github.com/CAPDGroup/CAPD/releases)
 
-Download and unpack one of the archives and follow the instructions in \ref capd_compilation "Compilation CAPD::DynSys of the library". We recommend to build CAPD outside the source directory.
+Download and unpack one of the archives and follow the instructions from \ref capd_compilation "Compilation CAPD::DynSys of the library". We recommend to build CAPD outside the source directory.
 
 \section capd_getit_binaries Get binary version of the CAPD
 

@@ -7,10 +7,10 @@ The CAPD::DynSys uses very standard tools and libraries, only.
 - \b make, \b cmake \todo specify the lowest cmake version.
 
 - \b pkg-config
-- \b git or \b unzip (depending if you preffer to clone CAPD git repository or unzip an arvchive with stable CAPD release)
-- To enable <b>multiple precision</b> support in the CAPD the libraries the libraries \b gmp and \b mpfr are required.<br/>
+- \b git or \b unzip (depending if you prefer to clone CAPD git repository or unzip an arvchive with stable CAPD release)
+- To enable <b>multiple precision</b> support in the CAPD, the libraries \b gmp and \b mpfr are required.<br/>
   One should install packages <tt>libgmp, libgmp-dev, libgmpxx, libmpfr, libmpfr-dev</tt>.
-- We recommend to install [**Boost**](http://www.boost.org) library (header files and compiled libraries, e.g. package <tt>libboost1.53-all-dev</tt> or <tt>libboost-all-dev</tt>).
+- We recommend to install [**Boost**](http://www.boost.org) library (header files and binaries, e.g. package <tt>libboost1.53-all-dev</tt> or <tt>libboost-all-dev</tt>).
 
 
 The CAPD package was tested on Linux distributions: Debian, Ubuntu.

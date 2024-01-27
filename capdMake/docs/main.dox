@@ -17,10 +17,12 @@
 /*!
 \mainpage
 
-CAPD is an acronym for **Computer Assisted Proofs in Dynamics**. The library was initiated in early 1990's by [**Marian Mrozek**](http://www.ii.uj.edu.pl/~mrozek) as the tool for the computer assisted proof of [**chaotic dynamics in the Lorenz system**](https://www.ams.org/journals/bull/1995-32-01/S0273-0979-1995-00558-6) recognized by Encyclopædia Britannica as one of the four most important achievements in mathematics in 1995. The present version of the CAPD::DynSys library is a collection of flexible C++ modules which are mainly designed for nonrigorous and validated numerics for dynamical systems. The library proved to be an efficient tool in rigorous numerical study of various phenomena in dynamical systems, just to mention
+CAPD is an acronym for **Computer Assisted Proofs in Dynamics**. The library was initiated in early 1990s by [**Marian Mrozek**](http://www.ii.uj.edu.pl/~mrozek) as the tool for the computer assisted proof of [**chaotic dynamics in the Lorenz system**](https://www.ams.org/journals/bull/1995-32-01/S0273-0979-1995-00558-6) recognized by Encyclopædia Britannica as one of the four most important achievements in mathematics in 1995. Over three decades we have developed and implemented new algorithms for rigorous numerical analysis of dynamical systems which constitute the core of the present version of the CAPD::DynSys library.
+
+It is a collection of flexible C++ modules which are mainly designed for nonrigorous and validated numerics for dynamical systems. The library proved to be an efficient tool in rigorous numerical study of various phenomena in dynamical systems, just to mention
 - existence and stability of periodic trajectories
 - the existence of chaotic dynamics in various ODEs and PDEs.
-- the existence of conencting orbits to equlibria and periodic prbits
+- the existence of connecting orbits to equlibria and periodic orbits
 - local and global bifurcations (Shilnikov orbits, Bykov cycles, homoclinic tangencies, attractor templates)
 - study of invariant tori for maps and flows
 - existence and hyperbolicity of attractors for ODEs
@@ -46,7 +48,7 @@ We also recommend to look at
 - \subpage getting_started <br/>
   where the interface of the library is introduced step by step and supported by numerous examples.
 - \subpage capd_examples<br/> 
-  for more detailed desciption, advanced examples and a few complete computer-assisted proofs of various dynamical phenomena.
+  for more detailed description, advanced examples and a few complete computer-assisted proofs of various dynamical phenomena.
 
 \subsubsection capd_download Download and use the CAPD::DynSys library
 
