@@ -28,16 +28,20 @@ It is a collection of flexible C++ modules which are mainly designed for nonrigo
 - existence and hyperbolicity of attractors for ODEs
 - Arnold diffusion
 
-\subsubsection capd_modules Modules of the CAPD::DynSys library
+<h2>Most important features of the CAPD::DynSys library</h2>
 
-The present version of the CAPD::DynSys library implements algorithms for computation of guaranteed bounds for 
+The present version of the CAPD::DynSys library implements in particular algorithms for computation of guaranteed bounds for 
 - higher order derivatives of multivariate maps
 - solutions to ODEs and associated variational equations 
 - solutions to differential inclusions
 - Poincaré maps and their derivatives
 - solutions to come class of dissipative PDEs
 
-and many others. The basic interface of the library is presented in the article (**main reference to the library**)
+and many others.
+
+
+<h2>Reference</h2>
+The basic interface of the library is presented in the article 
 
 T. Kapela, M. Mrozek, D. Wilczak, P. Zgliczynski,<br/>
 CAPD::DynSys: a flexible C++ toolbox for rigorous numerical analysis of dynamical systems,<br/>
@@ -50,7 +54,7 @@ We also recommend to look at
 - \subpage capd_examples<br/> 
   for more detailed description, advanced examples and a few complete computer-assisted proofs of various dynamical phenomena.
 
-\subsubsection capd_download Download and use the CAPD::DynSys library
+<h2>Download and use the CAPD::DynSys library</h2>
 
 - \subpage capd_requirements "CAPD Requirements"
 - \subpage capd_getit "Download the library"

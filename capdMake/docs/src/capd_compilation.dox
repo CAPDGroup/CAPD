@@ -44,7 +44,7 @@ cmake <path_to_CAPD_source_directory> [options]
 make -j
 \endcode
 
-\subsection  capd_compilation_options List of cmake options
+\section  capd_compilation_options List of cmake options
 
 Available CAPD-specific options are:
 -#  \b multiprecision
@@ -71,7 +71,7 @@ Usefull cmake general options:
 -# \b compiler  
    - <code>--DCMAKE_CXX_COMPILER=compiler</code> - specifies, which C++ compiler (e.g. \b g++, \b clang++) will be used to build the library.
 
-\subsection  capd_compilation_installation Installation of the library
+\section  capd_compilation_installation Installation of the library
 
 This step is optional. After successful build of the library one can call
 

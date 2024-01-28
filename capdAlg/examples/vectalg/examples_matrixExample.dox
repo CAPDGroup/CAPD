@@ -63,11 +63,11 @@ If one wishes to initialize the matrix when creating an object, he or she can de
 
 When one needs to create an array of matrices which have undefined size at compilation time, the following solution is available.
 \code
-   DMatrix *tab = new (2,4) DMatrix[10];
+   DMatrix *tab = DMatrix::makeArray(10,2,4);
 \endcode
 which means that tab contains an adress of a table of 10 matrices, each of size 2x4. When the same method is applied to the matrices of fixed dimensions, there will be no effect
 \code
-   DMatrix4D *tab2 = new (5,6) DMatrix4D[10];
+   DMatrix4D *tab2 = DMatrix4D::makeArray(10,2,4);
 \endcode
 The pointer tab2 contains the address of a table of 10 matrices each of size 4x4 (the parameters 5,6 are ingorred because type DMatrix4D has fixed size).
 

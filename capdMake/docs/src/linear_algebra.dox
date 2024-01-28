@@ -1,17 +1,20 @@
-/*! \page linear_algebra Linear algebra  
+/*! \page linear_algebra Linear algebra
+
 \tableofcontents
 
 For detailed description on intervals, vectors and matrices see sections
-- \ref example_intervals
-- \ref examples_vectorExample 
-- \ref examples_matrixExample 
+- \subpage example_intervals
+- \subpage examples_vectorExample 
+- \subpage examples_matrixExample 
 
 \section linear_algebra_types Defined types and data structures 
 
 The main header file 
+
 \code
 #include "capd/capdlib.h"
 \endcode
+
 defines the following types for computation in double (<b>D</b>), long double (<b>LD</b>) precision and interval (<b>I</b>) arithmetics.  
 - <b>DVector, LDVector, IVector</b> - elements of \f$ R^n \f$ in double and long double precision, and interval vectors
 - <b>DMatrix, LDMatrx, IMatrix</b> - matrices, elements and/or subsets of \f$ R^{n\times m} \f$ 
@@ -20,7 +23,7 @@ defines the following types for computation in double (<b>D</b>), long double (<
 - <b>DSumNorm, LDSumNorm, ISumNorm</b> - classes that compute \f$ L_1 \f$ norm of vectors and matrices (operator norm)
 
 
-\section linear_algebra_constructors Vectors and matrices
+\subsection linear_algebra_constructors Vectors and matrices
 Vectors and matrices are defined by a simple constructor calls
 \code
 DVector v(4);  // four dimensional vector filled with zeroes
@@ -48,7 +51,7 @@ Initialization of vectors and matrices:
 \endcode 
 \note Contructors of vectors and matrices assume that arrays of coefficients contain enough elements
  
-\section linear_algebra_indexing Indexing of vectors and matrices
+\subsection linear_algebra_indexing Indexing of vectors and matrices
 
 Vectors and matrices are indexed from zero by means of overloaded operator[].
 \code
@@ -64,7 +67,7 @@ Vectors and matrices are indexed from zero by means of overloaded operator[].
 \endcode
 \note Indexing of vectors and matrices starts from \b zero.
 
-\section linear_algebra_arrays Arrays of vectors and matrices
+\subsection linear_algebra_arrays Arrays of vectors and matrices
 
 When constructing arrays of matrices one has to provide two informations:
 - what is the length of array
@@ -87,20 +90,8 @@ delete []t;
 delete []p;
 delete []m;
 \endcode
-\attention The above operations <b>are not thread safe</b>. For thread safe arrays of vectors (or matrices) use
-\code
-  int dimension = 6;
-  int rows = 2, columns = 5;
-  int length = 3;
-  DVector* t = new DVector[length];
-  IMatrix* m = new IMatrix[length];
-  for(int i=0;i<length;++i){
-    t[i].resize(dimension);
-    m[i].resize(rows,columns); 
-  }
-\endcode 
  
-\section linear_algebra_basic_operations Basic operations on vectors and matrices
+\subsection linear_algebra_basic_operations Basic operations on vectors and matrices
 
 Mathematical operators are overloaded wherever it is intuitive, like multiplications, additions, subtractions
 \code
@@ -117,7 +108,7 @@ Mathematical operators are overloaded wherever it is intuitive, like multiplicat
   // ... etc 
 \endcode 
 
-\section linear_algebra_functions Basic algorithms of linear algebra.
+\subsection linear_algebra_functions Basic algorithms of linear algebra.
 
 Among others we provide algorithms for
 - transposition of matrices
@@ -152,7 +143,7 @@ but this is much slower.
 \note The above functions throw an exception (object of type std::runtime_error) when they cannot finish operation. 
 
 
-\section linear_algebra_eigenvectors Eigenvectors and eigenvalues of matrices
+\subsection linear_algebra_eigenvectors Eigenvectors and eigenvalues of matrices
 
 These functions are implemented for <b>non-interval matrices only!</b>. More information on this topic is given in section \ref examples_alglibdemo.
   
