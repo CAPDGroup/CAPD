@@ -10,12 +10,10 @@ string(REPLACE "-lprim" "${CMAKE_BINARY_DIR}/capdExt/filibsrc/libprim/.libs/libp
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/capd-config.in
     ${CMAKE_BINARY_DIR}/bin/capd-config
-    FILE_PERMISSIONS OWNER_EXECUTE OWNER_READ
     )
 
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/capd.pc.in
     ${CMAKE_BINARY_DIR}/bin/capd.pc
-    FILE_PERMISSIONS OWNER_READ
     )
 
