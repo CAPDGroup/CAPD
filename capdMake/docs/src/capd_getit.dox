@@ -1,0 +1,47 @@
+/*! \page capd_getit Get CAPD
+
+The source code of the CAPD::DynSys library is distributed under **GNU GPL license** and hosted as a public [**github.com/CAPDgroup/CAPD**](https://github.com/CAPDGroup/CAPD) repository. 
+
+
+\section capd_getit_source Download source code of the library
+
+The most recent **developed master branch** can be cloned from the repository
+
+\code
+git clone https://github.com/CAPDGroup/CAPD
+\endcode
+
+and then chekced for any updates by 
+
+\code
+git pull origin master
+\endcode
+
+
+The latest **stable relase** can be downloaded from 
+
+[**github.com/CAPDGroup/CAPD/releases**](https://github.com/CAPDGroup/CAPD/releases)
+
+Download and unpack one of the archives and follow the instructions from \ref capd_compilation "Compilation CAPD::DynSys of the library". We recommend to build CAPD outside the source directory.
+
+\section capd_getit_binaries Get binary version of the CAPD
+
+\todo revise get Binary version of CAPD
+
+For selected Linux based systems one can [download binary](https://sourceforge.net/projects/capd/files/newest/bin) (already compiled) version of the CAPD library.
+Be aware that the binary version requires additional libraries in run-time and at this moment it is quite outdated.
+
+More information contains a page on \subpage capd_binary_install.
+
+\section capd_getit_docker Docker image with installed CAPD
+
+\todo revise get docker images
+
+You can use our Docker image with installed CAPD in <code>/usr/local</code>:
+  - [<b>capd/capd-ubuntu_x86</b>](https://hub.docker.com/r/capd/capd-ubuntu_x86/) - image is based on Ubuntu.
+
+\todo add singulrity images
+
+
+
+*/

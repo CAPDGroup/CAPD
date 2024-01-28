@@ -1,6 +1,6 @@
-/*! \page capdDynSys_package  The capdDynSys package
+/*! \page capdDynSys_package  The capd::DynSys library
 
-The \b capdDynSys package contains modules that was originally intended for rigorous computations in dynamical systems 
+The \b capd::DynSys library contains modules that was originally intended for rigorous computations in dynamical systems 
 but currently they are go far beyond this. It consist of the following modules:
 - \ref capd::map "map"  - computation of values and derivatives of maps. It is also the core for the solvers in dynsys module,
 - \ref capd::dynsys "dynsys" - various nonrigorous and rigorous solvers to ODEs, 

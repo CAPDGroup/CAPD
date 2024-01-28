@@ -1,5 +1,5 @@
 # CAPD
-Experimental repository for CAPD library
+Repository for CAPD::DynSys library
 
 ## Original source code repositories:
 
