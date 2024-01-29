@@ -1,12 +1,21 @@
 # CAPD
-Repository for CAPD::DynSys library
+Official repository for CAPD::DynSys library
 
-## Original source code repositories:
+http://capd.ii.uj.edu.pl
 
-https://svn.capdnet.ii.uj.edu.pl/capd/  
-https://svn.capdnet.ii.uj.edu.pl/capdDynSys4
+See also CAPD documentation 
 
-## Building the library
+http://capd.ii.uj.edu.pl/html/
+
+## Older stable releases (5.3.0 an earlier) can be found 
+
+https://sourceforge.net/projects/capd/files/
+
+## Quick guide on how to build the library
+
+For detailed description see
+
+http://capd.ii.uj.edu.pl/html/capd_compilation.html
 
 Clone the repository:
 

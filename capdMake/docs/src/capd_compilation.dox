@@ -27,11 +27,8 @@ First download the sources of CAPD (see \ref capd_getit for more details):
 git clone https://github.com/CAPDGroup/CAPD
 \endcode
 
-- or download and unzip the latest stable version
-\code
-wget ...
-unzip ...
-\endcode
+- or download and unzip the latest stable version from
+[**github.com/CAPDGroup/CAPD/releases**](https://github.com/CAPDGroup/CAPD/releases)
 
 \todo Provide link and name
 
@@ -59,7 +56,7 @@ Available CAPD-specific options are:
 \note Most of the tests are written using Boost test suite. Hence, in order to compile them boost unit test library should be installed in the system -- see \ref capd_requirements "System Requirements".
 
 -#  \b all
-   - <code>--DCAPD_BUILD_ALL=<true|false></code> - turns on/off building both examples and tests. Default value is \b false.
+   - <code>--DCAPD_BUILD_ALL=<true|false></code> - turns on/off building both examples and tests. Default value is \b false, that is building examples and tests depends on setting <code>CAPD_BUILD_EXAMPLES</code> and <code>CAPD_BUILD_TESTS</code>, respectively.
 
 Usefull cmake general options:
 
