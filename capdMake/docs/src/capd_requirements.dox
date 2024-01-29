@@ -4,8 +4,7 @@
 
 The CAPD::DynSys uses very standard tools and libraries, only.
 - \b gcc, \b g++ (must support at least C++17 standard).
-- \b make, \b cmake \todo specify the lowest cmake version.
-
+- \b make, \b cmake (version 3.13.0 or newer)
 - \b pkg-config
 - \b git or \b unzip (depending if you prefer to clone CAPD git repository or unzip an arvchive with stable CAPD release)
 - To enable <b>multiple precision</b> support in the CAPD, the libraries \b gmp and \b mpfr are required.<br/>
