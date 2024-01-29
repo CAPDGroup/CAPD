@@ -25,7 +25,6 @@ We recommend to use **Windows Subsystem for Linux**
 and within Linux console for Windows install all tools required for the Linux system.
 
 \section capd_requirements_osx OSX
-\todo Review OSX requirements
 
 1) Install C++ compiler from Command Line Tools (it is also shipped with XCode) by doing one of the following:
 - Install \b Xcode from App Store (it is quite heavy).
@@ -33,31 +32,20 @@ and within Linux console for Windows install all tools required for the Linux sy
   <a href="http://developer.apple.com/downloads/index.action">Apple Developers</a>
  (search for "command line tools").
 
-2) If you have an \b M1 chip (filib interval library does not support it),
-   then do one of the following
-   -  Use Rosetta (it is an Intel processor emulation and can slow down performance)
-
-      - in Finder find Terminal (which should be in Applications/Utilities/),
+2) If you have an \b M1, \b M2, \b M3, ... chip, to use the filib interval library one needs Rosetta (Intel processor emulator).<br/>
+   If you have an Intel mac, ignore this step.
+    - in Finder find Terminal (which should be in Applications/Utilities/),
       right mouse click on it, and choose “Get Info”.
-      - Choose the “open using Rosetta” tickbox. Install Rosetta when prompted if you do not have one.
-      - Quit Terminal.
+      Choose the “open using Rosetta” tickbox. Install Rosetta when prompted if you do not have one.
+    - Quit Terminal.
 
-      <i> You can choose to have two versions of Terminal.
-         One running with Rosetta and the other to run without it.
+        <i> You can choose to have two versions of Terminal.
+        One running with Rosetta and the other to run without it.
          To do so simply duplicate the Terminal application,
          and choose one of the terminal application to be under Rosetta and the other without it.
          Use the Rosetta terminal for the below installation steps. </i>
 
-   - (EXPERIMENTAL) Use <tt>--without-filib</tt> switch when calling <tt>configure</tt> script.
-     It will use internal CAPD interval package instead of filib library.
-     It is not yet well tested. It is good for development.
-
-   If you have an Intel mac, ignore this step.
-
-3) Install \b Homebrew
-
-   <i>For OSX you can find a few package managers,
-   we recommend <a href="http://brew.sh/"><b>Homebrew</b></a>.</i>
+3) Install \b Homebrew  (if you already do not have one)
 
    - In Terminal paste and execute:
      \code{.sh}
@@ -65,44 +53,24 @@ and within Linux console for Windows install all tools required for the Linux sy
      \endcode
      (see https://brew.sh for details.)
 
-   - Homebrew can check if the installation is correct:
-     \code{.sh}
-     brew doctor
-     \endcode
-
 4) Install \b GNU \b tools and libraries, that CAPD depends on.
 
-   -  In Terminal execute one by one the following commands:
+   -  In Terminal execute the following commands:
       \code{.sh}
-      brew install boost
-      brew install make
-      brew install autoconf
-      brew install pkg-config
+      brew install pkg-config make autoconf cmake boost git
       \endcode
 
-   - To use multiple precision in CAPD
+   - To use multiple precision in CAPD execute
      \code{.sh}
      brew install gmp mpfr
      \endcode
 
-   - For CAPD developers: install also
-     \code{.sh}
-     brew install automake libtool svn log4cxx python
-     \endcode
-     to generate documentation
+   - To generate documentation one needs
      \code{.sh}
      brew install doxygen
      \endcode
 
-   - <i>Optional</i> step - graphical library X11 support:
-     \verbinclude osx_install_x11.sh
-
-     Verify previous steps with pkg-config:
-     \code{.sh}
-     pkg-config x11 --libs --cflags
-     \endcode
-
-5) <i>Optional/Experimental</i> Recently OSX version of gcc/g++ switched to <b>clang</b> engine.
+5) <i>Optional/Experimental</i> OSX is using <b>clang</b> compiler (gcc and g++ are just symbolic links).
 We have not tested it for compatibility with our code.
 You can compile the code, but we are not sure about compatibility with roundings etc.
 You can experiment with original version of gcc/g++ which you can install using following commands:

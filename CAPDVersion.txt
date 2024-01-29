@@ -1,4 +1,4 @@
-# Must be conform to pep440 - https://www.python.org/dev/peps/pep-0440/#pre-releases
+# Must conform to pep440 - https://www.python.org/dev/peps/pep-0440/#pre-releases
 set (CAPD_MAJOR_VERSION 6)
 set (CAPD_MINOR_VERSION 0)
 # CAPD_PATCH_VERSION can be 'ZaN' for Alpha release, 'ZbN' for Beta release, 'ZrcN' for release candidate or 'Z' for a final release.

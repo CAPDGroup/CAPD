@@ -86,8 +86,8 @@ namespace capd{
 
     size_t searchForFunction(const std::string &fun, const std::string &e)
 /**
-   returns position of arguments of function <fun> , or
-   0 if <fun> does not appear or is an argument for some other function
+   returns position of arguments of function \b fun , or
+   0 if \b fun does not appear or is an argument for some other function
 */
     {
       size_t pos = e.find(fun);

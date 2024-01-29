@@ -10,6 +10,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 add_library(${PROJECT_NAME})
+#add_library(${PROJECT_NAME} SHARED)
 add_dependencies(${PROJECT_NAME} filib)
 target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
 
@@ -35,3 +36,6 @@ add_subdirectory(capdMake/libcapd)
 add_subdirectory(capdMake/bin)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION "lib")
+
+#add_custom_target(docs
+#    COMMAND (cd capdMake/docs) && (doxygen) )

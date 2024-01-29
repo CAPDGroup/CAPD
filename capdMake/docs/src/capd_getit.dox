@@ -24,24 +24,18 @@ The latest **stable relase** can be downloaded from
 
 Download and unpack one of the archives and follow the instructions from \ref capd_compilation "Compilation CAPD::DynSys of the library". We recommend to build CAPD outside the source directory.
 
-\section capd_getit_binaries Get binary version of the CAPD
 
-\todo revise get Binary version of CAPD
+\section capd_getit_singularity Singularity image with CAPD installed
 
-For selected Linux based systems one can [download binary](https://sourceforge.net/projects/capd/files/newest/bin) (already compiled) version of the CAPD library.
-Be aware that the binary version requires additional libraries in run-time and at this moment it is quite outdated.
+[Singularity](https://sylabs.io/) is a virtualization software based on containers.
+Follow [Quick Start](https://docs.sylabs.io/guides/3.11/user-guide/quick_start.html) for install and basic use instructions.
 
-More information contains a page on \subpage capd_binary_install.
+Project [capd-singularity-img](https://github.com/tomasz-kapela/capd-singularity-img) contains scripts that create Singularity image with [CAPD library](http://capd.ii.uj.edu.pl/)
+installed in `/usr/local` directory. The image is available through oficial Singularity library or can be created locally from scripts.
 
-\section capd_getit_docker Docker image with installed CAPD
-
-\todo revise get docker images
-
-You can use our Docker image with installed CAPD in <code>/usr/local</code>:
-  - [<b>capd/capd-ubuntu_x86</b>](https://hub.docker.com/r/capd/capd-ubuntu_x86/) - image is based on Ubuntu.
-
-\todo add singulrity images
-
-
+You can simply run CAPD singularity image by invoking
+    \code{.sh}
+    singularity shell library://capdnet/capd/capd
+    \endcode
 
 */
