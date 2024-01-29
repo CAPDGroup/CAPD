@@ -1,4 +1,3 @@
-#include "config.h"
 #include "tsPredSucc.cpp"
 #include "tsBounds.cpp"
 #include "tsInfo.cpp"

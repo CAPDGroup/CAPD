@@ -27,7 +27,6 @@
 #include <fstream>
 #include <iomanip>
 #include <string>
-#include "config.h"
 
 extern char* in_no[27][61];
 extern char* out_no[27][61];

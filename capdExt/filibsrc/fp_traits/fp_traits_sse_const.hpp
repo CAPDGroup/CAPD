@@ -1,8 +1,6 @@
 #if ! defined(FP_TRAITS_SSE_CONST_HPP)
 #define FP_TRAITS_SSE_CONST_HPP
 
-#include <rounding_control/rounding_control_config.hpp>
-
 #if  defined(HAVE_SSE)
 #include "sys/types.h"
 
