@@ -30,8 +30,6 @@ git clone https://github.com/CAPDGroup/CAPD
 - or download and unzip the latest stable version from
 [**github.com/CAPDGroup/CAPD/releases**](https://github.com/CAPDGroup/CAPD/releases)
 
-\todo Provide link and name
-
 
 We are using the \b cmake tool to configure the CAPD library. First, you need to create an empty directory in which the library will be built. For example, 
 \code
