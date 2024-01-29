@@ -7,11 +7,15 @@ See also CAPD documentation
 
 http://capd.ii.uj.edu.pl/html/
 
-## Older stable releases (5.3.0 an earlier) can be found 
+## Older stable releases (5.3.0 an earlier)
 
 https://sourceforge.net/projects/capd/files/
 
 ## Quick guide on how to build the library
+
+Check system requirements
+
+http://capd.ii.uj.edu.pl/html/capd_requirements.html
 
 For detailed description see
 
