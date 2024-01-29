@@ -13,9 +13,8 @@ git clone https://github.com/CAPDGroup/CAPD
 cd CAPD
 mkdir build
 cd build
-cmake .. -DCAPD_BUILD_ALL=true -DCAPD_ENABLE_MULTIPRECISION=true
+cmake .. 
 make -j
-make test
 \endcode
 
 \section  capd_compilation_configuration Configuration
@@ -42,29 +41,28 @@ make -j
 \section  capd_compilation_options List of cmake options
 
 Available CAPD-specific options are:
--#  \b multiprecision
-   - <code>--DCAPD_ENABLE_MULTIPRECISION=<true|false></code> - turns on/off support for computation in multiprecision. If \b true, cmake checks if \b gmp and \b mpfr libraries are installed. Default value is \b true.
+-#  <code>--DCAPD_ENABLE_MULTIPRECISION=<true|false></code> - turns on/off support for computation in multiprecision. If \b true, cmake checks if \b gmp and \b mpfr libraries are installed. Default value is \b true.
 \note to enable multiprecision \b gmp and \b mpfr libraries must be installed in the system along with their header files.
 
--#  \b examples
-   - <code>--DCAPD_BUILD_EXAMPLES=<true|false></code> - specifies wheter example programs should be built or not. Default value is \b false.
+-#  <code>--DCAPD_BUILD_EXAMPLES=<true|false></code> - specifies wheter example programs should be built or not. Default value is \b false.
 
--#  \b tests
-   - <code>--DCAPD_BUILD_TESTS=<true|false></code> - specifies whether test programs should be built or not. Default value is \b false.
+-#  <code>--DCAPD_BUILD_TESTS=<true|false></code> - specifies whether test programs should be built or not. Default value is \b false.
 \note Most of the tests are written using Boost test suite. Hence, in order to compile them boost unit test library should be installed in the system -- see \ref capd_requirements "System Requirements".
 
--#  \b all
-   - <code>--DCAPD_BUILD_ALL=<true|false></code> - turns on/off building both examples and tests. Default value is \b false, that is building examples and tests depends on setting <code>CAPD_BUILD_EXAMPLES</code> and <code>CAPD_BUILD_TESTS</code>, respectively.
+-#  <code>--DCAPD_BUILD_ALL=<true|false></code> - turns on/off building both examples and tests. Default value is \b false, that is building examples and tests depends on setting <code>CAPD_BUILD_EXAMPLES</code> and <code>CAPD_BUILD_TESTS</code>, respectively.
 
 Usefull cmake general options:
 
--# \b CAPD installation directory (prefix)
-   - <code>--DCMAKE_INSTALL_PREFIX=<path></code> - specifies the directory, where the CAPD library will be installed after call to <code>make install</code>.
+-# <code>--DCMAKE_INSTALL_PREFIX=<path></code> - specifies the directory, where the CAPD library will be installed after call to <code>make install</code>.
    By default it is equal to <code>/usr/local/</code>.
    \note Installation of the library is optional. One can still build his own programs, having only locally compiled CAPD library -- see \ref user_programs for more details.
  
--# \b compiler  
-   - <code>--DCMAKE_CXX_COMPILER=compiler</code> - specifies, which C++ compiler (e.g. \b g++, \b clang++) will be used to build the library.
+-# <code>--DCMAKE_CXX_COMPILER=compiler</code> - specifies, which C++ compiler (e.g. \b g++, \b clang++) will be used to build the library.
+
+Example:
+\code
+cmake .. -DCAPD_BUILD_ALL=true -DCAPD_ENABLE_MULTIPRECISION=true -DCMAKE_CXX_COMPILER=clang++
+\endcode
 
 \section  capd_compilation_installation Installation of the library
 
