@@ -1,4 +1,4 @@
 #!/bin/bash
 
 export PKG_CONFIG_PATH=@CMAKE_BINARY_DIR@/bin@PATH_SEPARATOR@@PKG_CONFIG_PATH@
-pkg-config $* capd
+pkg-config --define-variable=capd_cxx=@CMAKE_CXX_COMPILER@ $* capd
