@@ -33,7 +33,7 @@ namespace filib
 {
 	/** unary function object **/
 	template <typename ResT, typename ArgT>
-	struct unary_virtual_fo : public std::unary_function<ResT,ArgT>
+	struct unary_virtual_fo
 	{
 		virtual ~unary_virtual_fo() {}
 		virtual ResT operator()(ArgT const &) const = 0;
@@ -41,7 +41,7 @@ namespace filib
 	
 	/** binary function object **/
 	template <typename ResT, typename ArgT1, typename ArgT2>
-	struct binary_virtual_fo : public std::binary_function<ResT,ArgT1,ArgT2>
+	struct binary_virtual_fo
 	{
 		virtual ~binary_virtual_fo() {}
 		virtual ResT operator()(ArgT1 const &, ArgT2 const &) const = 0;
