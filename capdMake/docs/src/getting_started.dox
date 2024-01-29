@@ -1,0 +1,13 @@
+/*! \page getting_started Getting started
+
+This is a brief introduction to the \b CAPD::DynSys (Computer Assisted Proofs in Dynamics) library. The library is written in C++ and provides an extensive selection of tools for rigorous-interval-enclosure based computations and for nonrigorous simulations. Here we present only some of its features. Our aim is to keep things as simple as possible. The below presented tools are more than enough though to perform highly nontrivial proofs in dynamical systems.
+
+
+- \subpage header_files  
+- \subpage linear_algebra  
+- \subpage maps  
+- \subpage odes_nonrigorous
+- \subpage odes_rigorous  
+- \subpage poincare
+
+*/ 

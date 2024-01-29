@@ -1,0 +1,75 @@
+/*! \page header_files Main header files
+
+The library consists of a large number of template functions and classes. For user convenience we provide two main header files 
+in which most important types are defined. All defined types are located in the \b capd namespace. 
+
+\code
+#include "capd/capdlib.h"
+\endcode
+
+\note File "capd/capdlib.h" provides classes for computation in <b>double</b> and <b>long double</b> precision and in <b>interval arithmetics</b> based on double type.
+
+\code
+#include "capd/mpcapdlib.h"
+\endcode
+
+\note File "capd/mpcapdlib.h" provides classes for computation in <b>multiple precision</b> floating numbers and in <b>interval arithmetics</b> of arbitrary precision. 
+
+\section capd_names Basic types and naming convention
+
+In addition to the standard <code>double</code> and <code>long double</code> types, the above header files provide the following arithmetic types 
+
+- <code>capd::interval</code> - interval aritghmetics based on standard double precision.
+- <code>capd::MpFloat</code> - arbitrary floating point arithmetics based of \b MPFR library
+- <code>capd::MpInterval</code> - interval arithmetics of arbitrary precission based on <code>MpFloat</code> type
+
+On top of these five basic arithmetic types the \b CAPD library builds data structures such as vectors, matrices, hessians, jets (truncated Taylor series) and algorithms for manipulating them. Other data structures represent functions, solutions to ODEs or Poincaré maps, etc. Most of defined types use the following naming convention pattern
+
+\code
+[Prefix]ClassName
+\endcode
+
+where <code>Prefix</code> is one of the following
+
+- <code>D</code> -- computation in floating points based on <code>double</code> standard type
+- <code>LD</code> -- computation in floating points based on <code>long double</code> standard type
+- <code>Mp</code> -- computation in floating points based on <code>MpFloat</code>
+- <code>I</code> -- computation in interval arithmetics based on <code>capd::interval</code> type
+- <code>MpI</code> -- computation in interval arithmetics based on <code>capd::MpInterval</code> type
+
+For example
+
+\code
+  DVector,   DMatrix,   DJet,   DMap,   DOdeSolver,   DPoincareMap, ...
+ LDVector,  LDMatrix,  LDJet,  LDMap,  LDOdeSolver,  LDPoincareMap, ...
+ MpVector,  MpMatrix,  MpJet,  MpMap,  MpOdeSolver,  MpPoincareMap, ...
+  IVector,   IMatrix,   IJet,   IMap,   IOdeSolver,   IPoincareMap, ...
+MpIVector, MpIMatrix, MpIJet, MpIMap, MpIOdeSolver, MpIPoincareMap, ...
+\endcode
+
+
+
+\section capd_types List of the most important types
+
+Here is (very incomplete) list of types provided for a user in "capd/capdlib.h" and "capd/mpcapdlib.h" header files.
+
+- <code>[Prefix]Vector</code> -- vector or interval vector in R<sup>n</sup>
+- <code>[Prefix]Matrix</code> -- matrix or interval matrix in  R<sup>n&times;m</sup> 
+- <code>[Prefix]Hessian</code> -- data structure to stores hessians of maps 
+- <code>[Prefix]Jet</code> - data structure to stores jets (truncated Taylor series) of maps 
+- <code>[Prefix]EuclNorm, [Prefix]SumNorm, [Prefix]MaxNorm</code> - various norms of vectors and matrices (operator norms).
+- <code>[Prefix]Function</code> - represents a multivariate, scalar valued function with vector arguments (can depend on parameters)
+- <code>[Prefix]Map</code> - represents a map \f$R^n \to R^m\f$. It can be used to define vector fields
+- <code>[Prefix]OdeSolver</code> - solver to ODEs based on the (high order) Taylor method or implict Hermite-Obreshkov method. The solver can integrate first order variational equations to ODEs.
+- <code>[Prefix]CnOdeSolver</code> - solver to ODEs based on the (high order) Taylor method. It can integrate higher order variational equations to ODEs.
+- <code>[Prefix]TimeMap</code> - computes solutions to ODEs over usually large time interval. It can integrate first order variational equations.
+- <code>[Prefix]CnTimeMap</code> - computes solutions to ODEs over the time interval. It can integrate higher order variational equations.
+- <code>[Prefix]PoincareMap</code> - computes Poincaré maps and their jacobians.
+- <code>[Prefix]CnPoincareMap</code> - computes Poincaré maps and their higher order derivatives.
+- <code>[Prefix]NonlinearSection</code> - most general Poincaré section of the form \f$ \{x\in  R^n : \alpha(x)=0\} \f$, where \f$ \alpha:R^n\to R\f$ is a smooth function
+- <code>[Prefix]AffineSection</code> - Poincaré section that is an affine hyperplane 
+- <code>[Prefix]CoordinateSection</code> - Poincaré section that is of the form \f$ \{(x_1,\ldots,x_n)\in  R^n : x_i = const\} \f$ 
+
+In the next chapters we will present basic usage of the above types.
+
+*/

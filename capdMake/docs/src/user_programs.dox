@@ -1,27 +1,16 @@
 /*! \page user_programs Building your own programs
 
 
-To build your own programs  we recommend use of attached scripts
-that are generated according to your system configuration.
-They provide compiler flags (parameter <tt>--cflags</tt> )
-or/and linker flags with all dependencies (parameter <tt>--libs</tt>).
-<table>
-<tr>
-  <th> script name </th> <th> version of CAPD library </th>
-</tr><tr>
-  <td> capd-config </td> <td> double precision without graphics, without \b CAPD::RedHom  </td>
-</tr><tr>
-  <td> capd-gui-config </td> <td> with \e krak graphical library </td>
-</tr><tr>
-  <td> mpcapd-config </td> <td> with multiple precision support </td>
-</tr><tr>
-  <td> mpcapd-gui-config </td> <td> with \e krak and multiple precision  </td>
-</tr>
-<tr>
-  <td> capdRedHom-config </td> <td> \b CAPD::RedHom library  </td>
-</tr>
-</table>
-Those scripts are installed into <code><prefix>/bin</code> directory.
+To build your own programs  we recommend use of attached script that are generated according to your system configuration.
+It provides compiler flags (parameter <tt>----cflags</tt> ) or/and linker flags with all necessary dependencies (parameter <tt>----libs</tt>).
+
+After successful building the library the script is located in <code>bin</code> sudirectory. 
+
+After call
+\code
+make install
+\endcode
+this script is installed into <code><prefix>/bin</code> directory.
 We assume that this location is on the search path of your system so that
 scripts can be called by its name (if not in the example below you need
 to provide full path to them).
@@ -32,10 +21,10 @@ Assume that you want to build your <code>MyProgram.cpp</code> that uses double v
 
 Then the instruction might be something like
 \code
-  g++ -O2 MyProgram.cpp -o MyProgram  `capd-config --cflags --libs`
+  g++ MyProgram.cpp -o MyProgram  `capd-config --cflags --libs`
 \endcode
 if  <tt>g++</tt> is your C++ compiler and you want configuration from \e capd-config.
-
+\note The CAPD library is built with <code>-std=c++17 -O2</code> options. Both flags are returned by <code>----cflags</code>
 
 \subsection user_programs_simple2 Compilation without scripts
 
@@ -53,11 +42,7 @@ Observe that without option <tt>-frounding-math</tt> compiler can optimize code 
 Option -D__USE_FILIB__ is an internal CAPD flag to use \e filib intervals. If you forgot to pass it to compiler
 then header files will differ from those used to compile CAPD library.
 
-Proper options for current configuration are returned by <tt>capd-config --cflags</tt>.
-
-The command line becomes more complicated if your program uses graphics and/or multiprecision
-(e.g. see output of <tt>mpcapd-gui-config --cflags</tt>).
-
+Proper options for current configuration are returned by <tt>capd-config ----cflags</tt>.
 
 
 \section user_programs_advanced Multifile project
