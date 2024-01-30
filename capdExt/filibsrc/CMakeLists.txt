@@ -37,8 +37,31 @@ target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/fp_traits/fp_
 enable_testing()
 add_subdirectory(test)
 
+###############################################################################################################################
+# INSTALLATION
+###############################################################################################################################
 
+set(HEADER_FILES)
+file(GLOB_RECURSE HEADER_FILES_HPP ${CMAKE_CURRENT_SOURCE_DIR}/ieee/*.hpp)
+list(APPEND HEADER_FILES ${HEADER_FILES_HPP})
 
+file(GLOB_RECURSE HEADER_FILES_HPP ${CMAKE_CURRENT_SOURCE_DIR}/interval/*.hpp)
+list(APPEND HEADER_FILES ${HEADER_FILES_HPP})
 
+file(GLOB_RECURSE HEADER_FILES_HPP ${CMAKE_CURRENT_SOURCE_DIR}/fp_traits/*.hpp)
+list(APPEND HEADER_FILES ${HEADER_FILES_HPP})
 
+file(GLOB_RECURSE HEADER_FILES_HPP ${CMAKE_CURRENT_SOURCE_DIR}/rounding_control/*.hpp)
+list(APPEND HEADER_FILES ${HEADER_FILES_HPP})
 
+file(GLOB_RECURSE HEADER_FILES_ICC ${CMAKE_CURRENT_SOURCE_DIR}/*.icc)
+list(APPEND HEADER_FILES ${HEADER_FILES_ICC})
+
+foreach(HEADER_FILE ${HEADER_FILES})
+    file(RELATIVE_PATH TARGET_DIR ${CMAKE_CURRENT_SOURCE_DIR} ${HEADER_FILE})
+    string(REGEX MATCH "(.*\/)" DIR ${TARGET_DIR})
+
+    install(FILES ${HEADER_FILE} DESTINATION "include/${DIR}")
+endforeach()
+
+install(TARGETS ${PROJECT_NAME} DESTINATION "lib")
