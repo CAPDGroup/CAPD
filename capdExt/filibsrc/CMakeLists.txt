@@ -9,7 +9,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 ###############################################################################################################################
 
 add_library(${PROJECT_NAME})
-target_compile_options(${PROJECT_NAME} PUBLIC -O0 -fno-fast-math -frounding-math)
+target_compile_options(${PROJECT_NAME} PUBLIC -O2 -fno-fast-math -frounding-math)
 target_compile_options(${PROJECT_NAME} PRIVATE -DFILIB_EXTENDED)
 
 if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
