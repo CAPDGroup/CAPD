@@ -1,5 +1,5 @@
 # CAPD
-Official website for CAPD::DynSys library
+Official repository for CAPD::DynSys library
 
 http://capd.ii.uj.edu.pl
 
