@@ -40,6 +40,18 @@ For detailed decription on how to build the library see
 
 http://capd.ii.uj.edu.pl/html/capd_compilation.html
 
+## Building user programs
+
+We recommend to use 
+```capd-config --cflags --libs```
+script, which is located in `build/bin` directory after successful build of the library. One-file user programs can be built by
+
+```g++ main.cpp `<path>capd-config --cflags --libs` -o main```
+
+where `<path>` is a path to `capd-config` script. For multifile projects we recommend to use template `makefile`. For details see
+
+http://capd.ii.uj.edu.pl/html/user_programs.html
+
 ## Building and executing tests
 
 In order to build and execute tests, it necessary to run `cmake` command with option `-DCAPD_BUILD_TESTS=true`, then build the tests and execute them with commands:
@@ -51,18 +63,6 @@ make test
 ```
    
 when in `CAPD/build` directory.
-
-## Building user programs
-
-We recommend to use 
-```capd-config --cflags --libs```
-script, which is located in `build/bin` directory after successful build of the library. One-file user programs can be built ju
-
-```g++ main.cpp `<path>capd-config --cflags --libs` -o main```
-
-where `<path>` is a path to `capd-config` script. For multifile projects we recommend to use template `makefile`. For details see
-
-http://capd.ii.uj.edu.pl/html/user_programs.html
 
 ## Installing the library
 
