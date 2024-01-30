@@ -1,6 +1,0 @@
-Name: mpcapdAlg
-Description: mpcapdAlg library.
-Requires: mpcapdintervals mpcapdmatrixAlgorithms mpcapdvectalg capdAlg capdExt
-Version: @PACKAGE_VERSION@
-Libs: @mpcapdAlg_LIBS@
-Cflags: @mpcapdAlg_CFLAGS@

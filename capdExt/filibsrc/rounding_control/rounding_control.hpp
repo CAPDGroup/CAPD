@@ -27,7 +27,6 @@
 #if ! defined(ROUNDING_CONTROL)
 #define ROUNDING_CONTROL
 
-#include <rounding_control/rounding_control_config.hpp>
 #include <iostream>
 
 /**

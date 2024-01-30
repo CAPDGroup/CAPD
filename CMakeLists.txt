@@ -10,13 +10,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 add_library(${PROJECT_NAME})
-#add_library(${PROJECT_NAME} SHARED)
 add_dependencies(${PROJECT_NAME} filib)
 target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
 
 target_compile_options(${PROJECT_NAME} PUBLIC -O2 -fno-fast-math -frounding-math)
-
-target_link_libraries(${PROJECT_NAME} PUBLIC -lprim)
+target_link_libraries(${PROJECT_NAME} PUBLIC filib)
 
 enable_testing()
 
