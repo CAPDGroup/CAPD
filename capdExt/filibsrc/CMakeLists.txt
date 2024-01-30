@@ -34,8 +34,12 @@ target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/fp_traits/fp_
 # BUILD TEST CASES
 ###############################################################################################################################
 
-enable_testing()
-add_subdirectory(test)
+if ( ${CAPD_BUILD_TESTS} )
+
+    enable_testing()
+    add_subdirectory(test)
+
+endif()
 
 ###############################################################################################################################
 # INSTALLATION

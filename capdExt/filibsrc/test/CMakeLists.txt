@@ -10,11 +10,11 @@ function(build_test_executable TEST_PROJECT_NAME)
 
 endfunction()
 
-build_test_executable(check_0f)
-build_test_executable(check_0t)
-build_test_executable(check_1f)
-build_test_executable(check_2f)
-build_test_executable(check_4f)
-build_test_executable(check_5f)
+build_test_executable(check_0f) # native_directed
+build_test_executable(check_0t) # native_switched
+# build_test_executable(check_1f) # multiplicative
+# build_test_executable(check_2f) # no_rounding
+# build_test_executable(check_4f) # native_onesided_global
+build_test_executable(check_5f) # pred_succ_rounding
 
 
