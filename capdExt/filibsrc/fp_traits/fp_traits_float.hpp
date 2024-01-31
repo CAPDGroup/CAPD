@@ -1149,13 +1149,13 @@ namespace filib
 #include <ieee/primitive.hpp>
 #include <fp_traits/fp_traits_base_float.icc>
 
-#if defined(HAVE_SSE)
+#if defined(FILIB_HAVE_SSE)
 #include <fp_traits/fp_traits_float_sse_native_switched.icc>
 #include <fp_traits/fp_traits_float_sse_native_directed.icc>
 #include <fp_traits/fp_traits_float_sse_native_onesided_global.icc>
 #include <fp_traits/fp_traits_float_sse_multiplicative.icc>
 #include <fp_traits/fp_traits_float_sse_no_rounding.icc>
-#elif defined(HAVE_X87)
+#elif defined(FILIB_HAVE_X87)
 #include <fp_traits/fp_traits_float_x87_native_switched.icc>
 #include <fp_traits/fp_traits_float_x87_native_directed.icc>
 #include <fp_traits/fp_traits_float_x87_native_onesided_global.icc>

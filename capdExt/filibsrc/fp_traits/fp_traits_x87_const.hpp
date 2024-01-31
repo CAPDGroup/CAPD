@@ -1,7 +1,7 @@
 #if ! defined(FP_TRAITS_X87_CONST_HPP)
 #define FP_TRAITS_X87_CONST_HPP
 
-#if  defined(HAVE_X87)
+#if  defined(FILIB_HAVE_X87)
 #include "sys/types.h"
 
 #if ! defined(u_int32_t)

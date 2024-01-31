@@ -1,7 +1,7 @@
 #if ! defined(FP_TRAITS_SSE_CONST_HPP)
 #define FP_TRAITS_SSE_CONST_HPP
 
-#if  defined(HAVE_SSE)
+#if  defined(FILIB_HAVE_SSE)
 #include "sys/types.h"
 
 #if ! defined(u_int32_t)
