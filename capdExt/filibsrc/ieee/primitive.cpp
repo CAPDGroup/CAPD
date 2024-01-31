@@ -27,11 +27,7 @@
 #include <ieee/primitive.hpp>
 #include <new>
 
-#if defined(__GNUC__) && __GNUC__ < 3
-#include <strstream>
-#else
 #include <sstream>
-#endif
 #include <cstdio>
 
 /** uses code from fi_lib. please read "licenses/filib.license". **/
@@ -445,7 +441,6 @@ namespace filib
 	}
 
 	static double checkedToDouble(std::string const & s)
-	/* throw(interval_io_exception) */
 	{
 		char * endptr = 0;
 		char const * nptr = s.c_str();
@@ -458,20 +453,17 @@ namespace filib
 	}
 	template <>
 	double inferFromString<double,false>(std::string const & s)
-	/* throw(interval_io_exception) */
 	{
 		return primitive::basic_pred(checkedToDouble(s)) ;
 	}
 	template <>
 	double inferFromString<double,true>(std::string const & s)
-	/* throw(interval_io_exception) */
 	{
 		return primitive::basic_succ(checkedToDouble(s)) ;
 
 	}
 	template <>
 	float inferFromString<float,false>(std::string const & s)
-	/* throw(interval_io_exception) */
 	{
 		float tval = static_cast<float>(checkedToDouble(s));
 		
@@ -484,7 +476,6 @@ namespace filib
 	}
 	template <>
 	float inferFromString<float,true>(std::string const & s)
-	/* throw(interval_io_exception) */
 	{
 		float tval = static_cast<float>(checkedToDouble(s));
 		
@@ -604,84 +595,52 @@ namespace filib
 	template <>
 	float constructFromBitSet<float>(std::string & in)
 	{
-		#if defined(__GNUC__) && __GNUC__ < 3
-		std::istrstream istr(in.c_str());
-		#else
 		std::istringstream istr(in);
-		#endif
 		return constructFromBitSet<float>(istr);
 	}
 	template <>
 	double constructFromBitSet<double>(std::string & in)
 	{
-		#if defined(__GNUC__) && __GNUC__ < 3
-		std::istrstream istr(in.c_str());
-		#else
 		std::istringstream istr(in);
-		#endif
 		return constructFromBitSet<double>(istr);
 	}
 
 	template <>
 	float constructFromBitSet<float>(char const * in)
 	{
-		#if defined(__GNUC__) && __GNUC__ < 3
-		std::istrstream istr(in);
-		#else
 		std::istringstream istr(in);
-		#endif
 		return constructFromBitSet<float>(istr);
 	}
 	template <>
 	double constructFromBitSet<double>(char const * in)
 	{
-		#if defined(__GNUC__) && __GNUC__ < 3
-		std::istrstream istr(in);
-		#else
 		std::istringstream istr(in);
-		#endif
 		return constructFromBitSet<double>(istr);
 	}
 
 	template <>
 	float constructFromHexSet<float>(std::string & in)
 	{
-		#if defined(__GNUC__) && __GNUC__ < 3
-		std::istrstream istr(in.c_str());
-		#else
 		std::istringstream istr(in);
-		#endif
 		return constructFromHexSet<float>(istr);
 	}
 	template <>
 	double constructFromHexSet<double>(std::string & in)
 	{
-		#if defined(__GNUC__) && __GNUC__ < 3
-		std::istrstream istr(in.c_str());
-		#else
 		std::istringstream istr(in);
-		#endif
 		return constructFromHexSet<double>(istr);
 	}
 
 	template <>
 	float constructFromHexSet<float>(char const * in)
 	{
-		#if defined(__GNUC__) && __GNUC__ < 3
-		std::istrstream istr(in);
-		#else
 		std::istringstream istr(in);
-		#endif
 		return constructFromHexSet<float>(istr);
 	}
 	template <>
 	double constructFromHexSet<double>(char const * in)
 	{
-		#if defined(__GNUC__) && __GNUC__ < 3
-		std::istrstream istr(in);
-		#else
 		std::istringstream istr(in);
-		#endif
 		return constructFromHexSet<double>(istr);
 	}
 } /** namespace filib **/

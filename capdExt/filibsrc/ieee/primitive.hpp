@@ -37,10 +37,6 @@
 
 #define FILIB_PRED_SUCC_TABLES
 
-#if defined(_MSC_VER)
-#pragma warning( disable : 4290 )
-#endif
-
 namespace filib
 {
 	struct interval_io_exception : public std::exception
@@ -746,7 +742,7 @@ namespace filib
 	float inferFromString<float,false>(std::string const & );
 	template <>
 	float inferFromString<float,true>(std::string const & );
-	
+
 } // namespace filib
 
 #endif // PRIMITIVE

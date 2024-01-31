@@ -76,10 +76,6 @@ namespace filib
 #elif defined(__STDC_IEC_559__)
 #include <rounding_control/rounding_control_double_iso9x.icc>
 
-// ms vc
-#elif defined(_MSC_VER) && (defined(__i386__) || defined(WIN32))
-#include <rounding_control/rounding_control_double_asmmsvci386.icc>
-
 // non native rounding
 #else
 #include <rounding_control/rounding_control_double_void.icc>

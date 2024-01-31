@@ -28,14 +28,6 @@
 #include <cmath>
 #include <fp_traits/fp_traits.hpp>
 
-#if defined(_MSC_VER)
-int filib::fp_traits<float,filib::native_switched>::precision_val = 3;
-int filib::fp_traits<float,filib::native_directed>::precision_val = 3;
-int filib::fp_traits<float,filib::native_onesided_global>::precision_val = 3;
-int filib::fp_traits<float,filib::multiplicative>::precision_val = 3;
-int filib::fp_traits<float,filib::no_rounding>::precision_val = 3;
-#else
-
 int filib::fp_traits<float,filib::native_switched>::precision_val = 3;
 
 int filib::fp_traits<float,filib::native_directed>::precision_val = 3;
@@ -45,4 +37,3 @@ int filib::fp_traits<float,filib::native_onesided_global>::precision_val = 3;
 int filib::fp_traits<float,filib::multiplicative>::precision_val = 3;
 
 int filib::fp_traits<float,filib::no_rounding>::precision_val = 3;
-#endif
