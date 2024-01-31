@@ -9,12 +9,12 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 ###############################################################################################################################
 
 add_library(${PROJECT_NAME})
-target_compile_options(${PROJECT_NAME} PUBLIC -O2 -fno-fast-math -frounding-math)
+target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
 target_compile_options(${PROJECT_NAME} PRIVATE -DFILIB_EXTENDED)
 
 if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
     message(STATUS "Processor arch: 64-bit x86 (SSE)")
-    target_compile_options(${PROJECT_NAME} PRIVATE -DHAVE_SSE)
+    target_compile_options(${PROJECT_NAME} PUBLIC -DHAVE_SSE)
 else()
     message(FATAL_ERROR "Unknown or unsupported processor architecture.")
 endif()
