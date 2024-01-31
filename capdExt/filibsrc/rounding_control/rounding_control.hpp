@@ -38,13 +38,7 @@ namespace filib
 	 rounding interface
 	 */
 	template <typename N, bool C>
-	class
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-	rounding_control
+	class rounding_control
 	{
 		public:
 		/**

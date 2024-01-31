@@ -33,13 +33,7 @@
 namespace filib
 {
 	template<>
-	class 
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-		fp_traits_base<float>
+	class fp_traits_base<float>
 	{
 		public:
 			/**
@@ -121,13 +115,7 @@ namespace filib
 	  rounding type 0, use down and up native
 	 */
 	template<>
-	class
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-		fp_traits<float,native_switched> 
+	class fp_traits<float,native_switched> 
 		: 
 		public rounding_control<float,true>,
 		public fp_traits_base<float>
@@ -325,13 +313,7 @@ namespace filib
 		// template wrappers end
 	};
 	template<>
-	class
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-		fp_traits<float,native_directed> 
+	class fp_traits<float,native_directed> 
 		: 
 		public rounding_control<float,false>,
 		public fp_traits_base<float>
@@ -534,13 +516,7 @@ namespace filib
 	 rounding type 1, multiplicative
 	 */
 	template<>
-	class 
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-		fp_traits<float,multiplicative> 
+	class fp_traits<float,multiplicative> 
 		: 
 		public rounding_control_stub,
 		public fp_traits_base<float>
@@ -749,13 +725,7 @@ namespace filib
 	 rounding type 2, no rounding at all
 	 */
 	template<>
-	class 
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif		
-	fp_traits<float,no_rounding> 
+	class fp_traits<float,no_rounding> 
 		: 
 		public rounding_control_stub,
 		public fp_traits_base<float>
@@ -947,13 +917,7 @@ namespace filib
 	 native onesided global rounding
 	 */
 	template<>
-	class 
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif		
-	fp_traits<float,native_onesided_global>
+	class fp_traits<float,native_onesided_global>
 		: 
 		public rounding_control<float,false>,
 		public fp_traits_base<float>

@@ -39,13 +39,7 @@
 namespace filib
 {
 	template<typename N>
-	class
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-	fp_traits_base
+	class fp_traits_base
 	{
 		public:
 		/**
@@ -119,13 +113,7 @@ namespace filib
 	  constants !
 	 */
 	template <typename N, rounding_strategy K = native_switched>
-	class
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-	fp_traits
+	class fp_traits
 	{
 		public:
 		/**

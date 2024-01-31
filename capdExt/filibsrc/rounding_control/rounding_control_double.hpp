@@ -36,13 +36,7 @@ namespace filib
 	 G++ doesn't seem to understand partial specialization...
 	 */
 	template <bool C>
-	class
-#if defined(_MSC_VER) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-	rounding_control<double,C>
+	class rounding_control<double,C>
 	{
 		public:
 		/**

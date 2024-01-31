@@ -30,22 +30,10 @@
 namespace filib
 {
 	template < typename N >
-	struct
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-	filib_consts{};
+	struct filib_consts{};
 
 	template <>
-	struct
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-	filib_consts<double>
+	struct filib_consts<double>
 	{
     typedef double N;
 		/* for |x|<=q_atnt approx. x=arctan(x)     */

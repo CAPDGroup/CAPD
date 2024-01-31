@@ -129,13 +129,7 @@ namespace filib
 		} ieee;
 	} a_fiee;
 
-	class
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-	primitive
+	class primitive
 	{
 		public:
 
@@ -655,25 +649,10 @@ namespace filib
 		static float const one_fsucc;
 	};
 
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	void readBitSet(std::istream & in, unsigned int n0, unsigned char * a) /* throw(interval_io_exception) */;
 
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	void readHexSet(std::istream & in, unsigned int n0, unsigned char * a) /* throw(interval_io_exception) */;
 
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	void readChar(std::istream& in, char c0) /* throw(interval_io_exception) */;
 
 	template <typename N>
@@ -720,58 +699,22 @@ namespace filib
 	}
 
 	template<typename T>
-	struct
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
-	whitespace
+	struct whitespace
 	{
 		static int isSpace(int);
 	};
 
 	template <>
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	double constructFromBitSet<double>(std::istream & in) /* throw(interval_io_exception) */;
 	template <>
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	float constructFromBitSet<float>(std::istream & in) /* throw(interval_io_exception) */;
 	template <>
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	float constructFromBitSet<float>(std::string & in) /* throw(interval_io_exception) */;
 	template <>
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	double constructFromBitSet<double>(std::string & in) /* throw(interval_io_exception) */;
 	template <>
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	float constructFromBitSet<float>(char const * in) /* throw(interval_io_exception) */;
 	template <>
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	double constructFromBitSet<double>(char const * in) /* throw(interval_io_exception) */;
 
 	template <>
@@ -796,35 +739,15 @@ namespace filib
 		throw interval_io_exception("inferFromString() called for unsupported type");
 	}
 	template <>
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	double inferFromString<double,false>(std::string const & )
 	/* throw(interval_io_exception) */;
 	template <>
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	double inferFromString<double,true>(std::string const & )
 	/* throw(interval_io_exception) */;
 	template <>
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	float inferFromString<float,false>(std::string const & )
 	/* throw(interval_io_exception) */;
 	template <>
-#if defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && defined(FILIB_DLL)
-	__declspec(dllexport)
-#elif defined(_MSC_VER) && defined(FILIB_BUILD_DLL) && ! defined(FILIB_DLL)
-	__declspec(dllimport)
-#endif
 	float inferFromString<float,true>(std::string const & )
 	/* throw(interval_io_exception) */;
 } // namespace filib
