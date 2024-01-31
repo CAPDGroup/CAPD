@@ -74,7 +74,7 @@ namespace filib
 	template <typename N,rounding_strategy K,interval_mode E>
 	inline interval<N,K,E>::interval(
 		std::string const & infs, std::string const & sups
-	) /* throw(interval_io_exception) */
+	)
 		: 
 		INF(inferFromString<N,false>(infs)),
 		SUP(inferFromString<N,true> (sups))
@@ -1157,7 +1157,6 @@ namespace filib
 
 	template<typename N, rounding_strategy K, interval_mode E>
 	interval<N,K,E> interval<N,K,E>::readBitImage(std::istream & in)
-		/* throw(interval_io_exception) */
 	{
 		eatWS< whitespace<char> >(in);
 
@@ -1176,7 +1175,6 @@ namespace filib
 
 	template<typename N, rounding_strategy K, interval_mode E>
 	interval<N,K,E> interval<N,K,E>::readHexImage(std::istream & in)
-		/* throw(interval_io_exception) */
 	{
 		eatWS< whitespace<char> >(in);
 
@@ -1195,7 +1193,6 @@ namespace filib
 
 	template <typename N, rounding_strategy K, interval_mode E>
 	std::istream &operator >>(std::istream &is, interval<N,K,E> &x)
-	/* throw(interval_io_exception) */
 	{
 		N inf, sup;
 		std::string s;

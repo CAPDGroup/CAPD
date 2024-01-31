@@ -379,9 +379,7 @@ namespace filib
 	template < typename N, rounding_strategy K, interval_mode E >
 	std::istream & operator >>(
 		std::istream & out,
-		interval<N,K,E> & a)
-	/* throw(interval_io_exception) */
-	;
+		interval<N,K,E> & a);
 
 	/**
 	 Returns an interval enclosure of the inverse cosine of the interval x.
@@ -627,8 +625,7 @@ namespace filib
 				N const & rl, N const & ru, char const &);
 
 			inline interval(
-				std::string const & infs, std::string const & sups)
-			/* throw(interval_io_exception) */;
+				std::string const & infs, std::string const & sups);
 
 			/**
 			 check for infinity (?)
@@ -1210,10 +1207,8 @@ namespace filib
 			 */
 			inline N amax() const;
 
-			static interval<N,K,E> readBitImage(std::istream &) 
-				/* throw(interval_io_exception) */;
-			static interval<N,K,E> readHexImage(std::istream &) 
-				/* throw(interval_io_exception) */;
+			static interval<N,K,E> readBitImage(std::istream &);
+			static interval<N,K,E> readHexImage(std::istream &);
 	};
 
 	template <typename N, rounding_strategy K, interval_mode E>

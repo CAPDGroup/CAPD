@@ -649,40 +649,40 @@ namespace filib
 		static float const one_fsucc;
 	};
 
-	void readBitSet(std::istream & in, unsigned int n0, unsigned char * a) /* throw(interval_io_exception) */;
+	void readBitSet(std::istream & in, unsigned int n0, unsigned char * a);
 
-	void readHexSet(std::istream & in, unsigned int n0, unsigned char * a) /* throw(interval_io_exception) */;
+	void readHexSet(std::istream & in, unsigned int n0, unsigned char * a);
 
-	void readChar(std::istream& in, char c0) /* throw(interval_io_exception) */;
+	void readChar(std::istream& in, char c0);
 
 	template <typename N>
-	N constructFromBitSet(std::istream & /*in*/) /* throw(interval_io_exception) */
+	N constructFromBitSet(std::istream & /*in*/)
 	{
 		throw interval_io_exception("constructFromBitSet() called for unsupported type");
 	}
 	template <typename N>
-	N constructFromBitSet(std::string & /*in*/) /* throw(interval_io_exception) */
+	N constructFromBitSet(std::string & /*in*/)
 	{
 		throw interval_io_exception("constructFromBitSet() called for unsupported type");
 	}
 	template <typename N>
-	N constructFromBitSet(char const * /*in*/) /* throw(interval_io_exception) */
+	N constructFromBitSet(char const * /*in*/)
 	{
 		throw interval_io_exception("constructFromBitSet() called for unsupported type");
 	}
 
 	template <typename N>
-	N constructFromHexSet(std::istream & /*in*/) /* throw(interval_io_exception) */
+	N constructFromHexSet(std::istream & /*in*/)
 	{
 		throw interval_io_exception("constructFromHexSet() called for unsupported type");
 	}
 	template <typename N>
-	N constructFromHexSet(std::string & /*in*/) /* throw(interval_io_exception) */
+	N constructFromHexSet(std::string & /*in*/)
 	{
 		throw interval_io_exception("constructFromHexSet() called for unsupported type");
 	}
 	template <typename N>
-	N constructFromHexSet(char const * /*in*/) /* throw(interval_io_exception) */
+	N constructFromHexSet(char const * /*in*/)
 	{
 		throw interval_io_exception("constructFromHexSet() called for unsupported type");
 	}
@@ -705,51 +705,48 @@ namespace filib
 	};
 
 	template <>
-	double constructFromBitSet<double>(std::istream & in) /* throw(interval_io_exception) */;
+	double constructFromBitSet<double>(std::istream & in);
 	template <>
-	float constructFromBitSet<float>(std::istream & in) /* throw(interval_io_exception) */;
+	float constructFromBitSet<float>(std::istream & in);
 	template <>
-	float constructFromBitSet<float>(std::string & in) /* throw(interval_io_exception) */;
+	float constructFromBitSet<float>(std::string & in);
 	template <>
-	double constructFromBitSet<double>(std::string & in) /* throw(interval_io_exception) */;
+	double constructFromBitSet<double>(std::string & in);
 	template <>
-	float constructFromBitSet<float>(char const * in) /* throw(interval_io_exception) */;
+	float constructFromBitSet<float>(char const * in);
 	template <>
-	double constructFromBitSet<double>(char const * in) /* throw(interval_io_exception) */;
+	double constructFromBitSet<double>(char const * in);
 
 	template <>
-	double constructFromHexSet<double>(std::istream & in) /* throw(interval_io_exception) */;
+	double constructFromHexSet<double>(std::istream & in);
 	template <>
-	float constructFromHexSet<float>(std::istream & in) /* throw(interval_io_exception) */;
+	float constructFromHexSet<float>(std::istream & in);
 	template <>
-	float constructFromHexSet<float>(std::string & in) /* throw(interval_io_exception) */;
+	float constructFromHexSet<float>(std::string & in);
 	template <>
-	double constructFromHexSet<double>(std::string & in) /* throw(interval_io_exception) */;
+	double constructFromHexSet<double>(std::string & in);
 	template <>
-	float constructFromHexSet<float>(char const * in) /* throw(interval_io_exception) */;
+	float constructFromHexSet<float>(char const * in);
 	template <>
-	double constructFromHexSet<double>(char const * in) /* throw(interval_io_exception) */;
+	double constructFromHexSet<double>(char const * in);
 
 	template<>
 	int whitespace<char>::isSpace(int arg);
 
 	template <typename N, bool upDo>
-	N inferFromString(std::string const &) /* throw(interval_io_exception) */
+	N inferFromString(std::string const &)
 	{
 		throw interval_io_exception("inferFromString() called for unsupported type");
 	}
 	template <>
-	double inferFromString<double,false>(std::string const & )
-	/* throw(interval_io_exception) */;
+	double inferFromString<double,false>(std::string const & );
 	template <>
-	double inferFromString<double,true>(std::string const & )
-	/* throw(interval_io_exception) */;
+	double inferFromString<double,true>(std::string const & );
 	template <>
-	float inferFromString<float,false>(std::string const & )
-	/* throw(interval_io_exception) */;
+	float inferFromString<float,false>(std::string const & );
 	template <>
-	float inferFromString<float,true>(std::string const & )
-	/* throw(interval_io_exception) */;
+	float inferFromString<float,true>(std::string const & );
+	
 } // namespace filib
 
 #endif // PRIMITIVE
