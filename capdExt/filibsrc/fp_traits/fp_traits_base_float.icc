@@ -24,23 +24,23 @@
 **  License along with this library; if not, write to the Free
 **  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 */
-	TEMPLATE_EMPTY
+	
 	inline bool filib::fp_traits_base<float>::sign(float const & n) 
 	{
 		filib::a_fiee const * t = reinterpret_cast<filib::a_fiee const *>(&n);
 		return t->ieee.sign;
 	}
-	TEMPLATE_EMPTY
+	
 	inline bool filib::fp_traits_base<float>::IsNaN(float const & n) 
 	{
 		return (n != n);
 	}
-	TEMPLATE_EMPTY
+	
 	inline bool filib::fp_traits_base<float>::IsInf(float const & n) 
 	{
 		return (n < -max_val) || (n > max_val);
 	}
-	TEMPLATE_EMPTY
+	
 	inline float filib::fp_traits_base<float>::abs(float const & n)
 	{
 		filib::a_fiee d; 
@@ -48,37 +48,37 @@
 		d.ieee.sign = false; 
 		return d.f;
 	}
-	TEMPLATE_EMPTY
+	
 	inline float const & filib::fp_traits_base<float>::infinity() 
 	{
 		return inf_val;
 	}
-	TEMPLATE_EMPTY
+	
 	inline float const & filib::fp_traits_base<float>::ninfinity() 
 	{
 		return ninf_val;
 	}
-	TEMPLATE_EMPTY
+	
 	inline float const & filib::fp_traits_base<float>::quiet_NaN() 
 	{
 		return nan_val;
 	}
-	TEMPLATE_EMPTY
+	
 	inline float const & filib::fp_traits_base<float>::min() 
 	{
 		return min_val;
 	}
-	TEMPLATE_EMPTY
+	
 	inline float const & filib::fp_traits_base<float>::max() 
 	{
 		return max_val;
 	}
-	TEMPLATE_EMPTY
+	
 	inline float const & filib::fp_traits_base<float>::l_pi() 
 	{
 		return l_pi_val;
 	}
-	TEMPLATE_EMPTY
+	
 	inline float const & filib::fp_traits_base<float>::u_pi() 
 	{
 		return u_pi_val;

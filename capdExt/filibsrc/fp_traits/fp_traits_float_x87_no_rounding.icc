@@ -24,11 +24,11 @@
 **  License along with this library; if not, write to the Free
 **  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 */
-	TEMPLATE_EMPTY
+	
 	inline filib::fp_traits<float,filib::no_rounding>::fp_traits()
 	{
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::upward_plus(
 			float const & op1,
 			float const & op2
@@ -36,7 +36,7 @@
 	{
 		return ::filib::x87::x87add(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::downward_plus(
 			float const & op1,
 			float const & op2
@@ -44,7 +44,7 @@
 	{
 		return ::filib::x87::x87add(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::tozero_plus(
 			float const & op1,
 			float const & op2
@@ -52,7 +52,7 @@
 	{
 		return ::filib::x87::x87add(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::tonearest_plus(
 			float const & op1,
 			float const & op2
@@ -60,7 +60,7 @@
 	{
 		return ::filib::x87::x87add(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::upward_minus(
 			float const & op1,
 			float const & op2
@@ -68,7 +68,7 @@
 	{
 		return ::filib::x87::x87sub(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::downward_minus(
 			float const & op1,
 			float const & op2
@@ -76,7 +76,7 @@
 	{
 		return ::filib::x87::x87sub(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::tozero_minus(
 			float const & op1,
 			float const & op2
@@ -84,7 +84,7 @@
 	{
 		return ::filib::x87::x87sub(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::tonearest_minus(
 			float const & op1,
 			float const & op2
@@ -92,7 +92,7 @@
 	{
 		return ::filib::x87::x87sub(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::upward_multiplies(
 			float const & op1,
 			float const & op2
@@ -100,7 +100,7 @@
 	{
 		return ::filib::x87::x87mul(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::downward_multiplies(
 			float const & op1,
 			float const & op2
@@ -108,7 +108,7 @@
 	{
 		return ::filib::x87::x87mul(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::tozero_multiplies(
 			float const & op1,
 			float const & op2
@@ -116,7 +116,7 @@
 	{
 		return ::filib::x87::x87mul(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::tonearest_multiplies(
 			float const & op1,
 			float const & op2
@@ -124,7 +124,7 @@
 	{
 		return ::filib::x87::x87mul(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::upward_divides(
 			float const & op1,
 			float const & op2
@@ -132,7 +132,7 @@
 	{
 		return ::filib::x87::x87div(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::downward_divides(
 			float const & op1,
 			float const & op2
@@ -140,7 +140,7 @@
 	{
 		return ::filib::x87::x87div(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::tozero_divides(
 			float const & op1,
 			float const & op2
@@ -148,7 +148,7 @@
 	{
 		return ::filib::x87::x87div(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float  filib::fp_traits<float,filib::no_rounding>::tonearest_divides(
 			float const & op1,
 			float const & op2

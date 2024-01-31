@@ -24,20 +24,20 @@
 **  License along with this library; if not, write to the Free
 **  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 */
-	TEMPLATE_EMPTY
+	
 	inline void filib::fp_traits<double,filib::no_rounding>::setup() {
 		rounding_control_stub::setup();
 	}
-	TEMPLATE_EMPTY
+	
 	inline void filib::fp_traits<double,filib::no_rounding>::reset() {
 		rounding_control_stub::reset();
 	}
 
-	TEMPLATE_EMPTY
+	
 	inline filib::fp_traits<double,filib::no_rounding>::fp_traits()
 	{
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::upward_plus(
 			double const & op1,
 			double const & op2
@@ -47,7 +47,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::downward_plus(
 			double const & op1,
 			double const & op2
@@ -57,7 +57,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::tozero_plus(
 			double const & op1,
 			double const & op2
@@ -67,7 +67,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::tonearest_plus(
 			double const & op1,
 			double const & op2
@@ -77,7 +77,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::upward_minus(
 			double const & op1,
 			double const & op2
@@ -87,7 +87,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::downward_minus(
 			double const & op1,
 			double const & op2
@@ -97,7 +97,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::tozero_minus(
 			double const & op1,
 			double const & op2
@@ -107,7 +107,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::tonearest_minus(
 			double const & op1,
 			double const & op2
@@ -117,7 +117,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::upward_multiplies(
 			double const & op1,
 			double const & op2
@@ -127,7 +127,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::downward_multiplies(
 			double const & op1,
 			double const & op2
@@ -137,7 +137,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::tozero_multiplies(
 			double const & op1,
 			double const & op2
@@ -147,7 +147,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::tonearest_multiplies(
 			double const & op1,
 			double const & op2
@@ -157,7 +157,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::upward_divides(
 			double const & op1,
 			double const & op2
@@ -167,7 +167,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::downward_divides(
 			double const & op1,
 			double const & op2
@@ -177,7 +177,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::tozero_divides(
 			double const & op1,
 			double const & op2
@@ -187,7 +187,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::no_rounding>::tonearest_divides(
 			double const & op1,
 			double const & op2

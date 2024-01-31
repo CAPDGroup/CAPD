@@ -24,21 +24,21 @@
 **  License along with this library; if not, write to the Free
 **  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 */
-	TEMPLATE_EMPTY
+	
 	inline void filib::fp_traits<double,filib::native_onesided_global>::setup() {
 		rounding_control<double,false>::setup();
 	}
-	TEMPLATE_EMPTY
+	
 	inline void filib::fp_traits<double,filib::native_onesided_global>::reset() {
 		rounding_control<double,false>::reset();
 	}
 
-	TEMPLATE_EMPTY
+	
 	inline filib::fp_traits<double,filib::native_onesided_global>::fp_traits()
 	{
 	}
 
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::upward_plus(
 			double const & op1,
 			double const & op2
@@ -49,7 +49,7 @@
 		if ( r ) reset();
 		return t2;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::downward_plus(
 			double const & op1,
 			double const & op2
@@ -59,7 +59,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::tozero_plus(
 			double const &,
 			double const &
@@ -70,7 +70,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::tonearest_plus(
 			double const &,
 			double const &
@@ -81,7 +81,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::upward_minus(
 			double const & op1,
 			double const & op2
@@ -92,7 +92,7 @@
 		if ( r ) reset();
 		return t2;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::downward_minus(
 			double const & op1,
 			double const & op2
@@ -102,7 +102,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::tozero_minus(
 			double const &,
 			double const &
@@ -113,7 +113,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::tonearest_minus(
 			double const &,
 			double const &
@@ -124,7 +124,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::upward_multiplies(
 			double const & op1,
 			double const & op2
@@ -135,7 +135,7 @@
 		if ( r ) reset();
 		return t2;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::downward_multiplies(
 			double const & op1,
 			double const & op2
@@ -145,7 +145,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::tozero_multiplies(
 			double const &,
 			double const &
@@ -156,7 +156,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::tonearest_multiplies(
 			double const &,
 			double const &
@@ -167,7 +167,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::upward_divides(
 			double const & op1,
 			double const & op2
@@ -178,7 +178,7 @@
 		if ( r ) reset();
 		return t2;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::downward_divides(
 			double const & op1,
 			double const & op2
@@ -188,7 +188,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::tozero_divides(
 			double const &,
 			double const &
@@ -199,7 +199,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::native_onesided_global>::tonearest_divides(
 			double const &,
 			double const &

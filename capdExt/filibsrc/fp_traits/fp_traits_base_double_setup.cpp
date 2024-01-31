@@ -52,31 +52,31 @@ double const filib::fp_traits_base<double>::u_pi_val  =
 	filib::constructFromBitSet<double>(
 	"0:10000000000:1001001000011111101101010100010001000010110100011001");
 #else
-TEMPLATE_EMPTY
+
 double const filib::fp_traits_base<double>::min_val = 
 	filib::primitive::compose(0,0x1,0,0);
 
-TEMPLATE_EMPTY
+
 double const filib::fp_traits_base<double>::max_val = 
 	filib::primitive::compose(0,0x7FE,(1 << 21)-1,0xffffffff);
 
-TEMPLATE_EMPTY
+
 double const filib::fp_traits_base<double>::nan_val = 
 	filib::primitive::compose(0,0x7FF,1 << 19,0);
 
-TEMPLATE_EMPTY
+
 double const filib::fp_traits_base<double>::inf_val  = 
 	filib::primitive::compose(0,0x7FF,0,0);
 
-TEMPLATE_EMPTY
+
 double const filib::fp_traits_base<double>::ninf_val =
 	filib::primitive::compose(1,0x7FF,0,0);
 
-TEMPLATE_EMPTY
+
 double const filib::fp_traits_base<double>::l_pi_val  = 
 	filib::constructFromBitSet<double>(
 	"0:10000000000:1001001000011111101101010100010001000010110100011000");
-TEMPLATE_EMPTY
+
 double const filib::fp_traits_base<double>::u_pi_val  = 
 	filib::constructFromBitSet<double>(
 	"0:10000000000:1001001000011111101101010100010001000010110100011001");

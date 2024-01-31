@@ -24,20 +24,20 @@
 **  License along with this library; if not, write to the Free
 **  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 */
-	TEMPLATE_EMPTY
+	
 	inline void filib::fp_traits<float,filib::multiplicative>::setup() {
 		rounding_control_stub::setup();
 	}
-	TEMPLATE_EMPTY
+	
 	inline void filib::fp_traits<float,filib::multiplicative>::reset() {
 		rounding_control_stub::reset();
 	}
 
-	TEMPLATE_EMPTY
+	
 	inline filib::fp_traits<float,filib::multiplicative>::fp_traits()
 	{
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::upward_plus(
 			float const & op1,
 			float const & op2
@@ -47,7 +47,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::downward_plus(
 			float const & op1,
 			float const & op2
@@ -57,7 +57,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::tozero_plus(
 			float const &,
 			float const &
@@ -69,7 +69,7 @@
 			  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::tonearest_plus(
 			float const &,
 			float const &
@@ -81,7 +81,7 @@
 			  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::upward_minus(
 			float const & op1,
 			float const & op2
@@ -91,7 +91,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::downward_minus(
 			float const & op1,
 			float const & op2
@@ -101,7 +101,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::tozero_minus(
 			float const &,
 			float const &
@@ -113,7 +113,7 @@
 			  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::tonearest_minus(
 			float const &,
 			float const &
@@ -125,7 +125,7 @@
 			  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::upward_multiplies(
 			float const & op1,
 			float const & op2
@@ -135,7 +135,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::downward_multiplies(
 			float const & op1,
 			float const & op2
@@ -145,7 +145,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::tozero_multiplies(
 			float const &,
 			float const &
@@ -157,7 +157,7 @@
 			  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::tonearest_multiplies(
 			float const &,
 			float const &
@@ -169,7 +169,7 @@
 			  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::upward_divides(
 			float const & op1,
 			float const & op2
@@ -179,7 +179,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::downward_divides(
 			float const & op1,
 			float const & op2
@@ -189,7 +189,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::tozero_divides(
 			float const &,
 			float const &
@@ -201,7 +201,7 @@
 			  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::multiplicative>::tonearest_divides(
 			float const &,
 			float const &
@@ -213,7 +213,7 @@
 			  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	inline float filib::fp_traits<float,filib::multiplicative>::low(
 			float const & v
 		)
@@ -230,7 +230,7 @@
 		else
 			return (v * primitive::one_fsucc);
 	}
-	TEMPLATE_EMPTY
+	
 	inline float filib::fp_traits<float,filib::multiplicative>::high(
 			float const & v
 		)

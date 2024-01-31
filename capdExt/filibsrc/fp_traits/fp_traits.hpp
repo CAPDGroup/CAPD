@@ -285,12 +285,6 @@ namespace filib
 #include "fp_traits_x87_const.hpp"
 #endif
 
-#if defined(__KCC)
-#define TEMPLATE_EMPTY
-#else
-#define TEMPLATE_EMPTY
-#endif
-
 #include <fp_traits/fp_traits_double.hpp>
 #include <fp_traits/fp_traits_float.hpp>
 

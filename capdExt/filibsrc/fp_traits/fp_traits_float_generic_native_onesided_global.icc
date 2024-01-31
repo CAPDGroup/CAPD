@@ -24,20 +24,20 @@
 **  License along with this library; if not, write to the Free
 **  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 */
-	TEMPLATE_EMPTY
+	
 	inline void filib::fp_traits<float,filib::native_onesided_global>::setup() {
 		rounding_control<float,false>::setup();
 	}
-	TEMPLATE_EMPTY
+	
 	inline void filib::fp_traits<float,filib::native_onesided_global>::reset() {
 		rounding_control<float,false>::reset();
 	}
 
-	TEMPLATE_EMPTY
+	
 	inline filib::fp_traits<float,filib::native_onesided_global>::fp_traits()
 	{
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::upward_plus(
 			float const & op1,
 			float const & op2
@@ -48,7 +48,7 @@
 		if ( r ) reset();
 		return t2;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::downward_plus(
 			float const & op1,
 			float const & op2
@@ -58,7 +58,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::tozero_plus(
 			float const &,
 			float const &
@@ -69,7 +69,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::tonearest_plus(
 			float const &,
 			float const &
@@ -80,7 +80,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::upward_minus(
 			float const & op1,
 			float const & op2
@@ -91,7 +91,7 @@
 		if ( r ) reset();
 		return t2;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::downward_minus(
 			float const & op1,
 			float const & op2
@@ -101,7 +101,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::tozero_minus(
 			float const &,
 			float const &
@@ -112,7 +112,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::tonearest_minus(
 			float const &,
 			float const &
@@ -123,7 +123,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::upward_multiplies(
 			float const & op1,
 			float const & op2
@@ -134,7 +134,7 @@
 		if ( r ) reset();
 		return t2;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::downward_multiplies(
 			float const & op1,
 			float const & op2
@@ -144,7 +144,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::tozero_multiplies(
 			float const &,
 			float const &
@@ -155,7 +155,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::tonearest_multiplies(
 			float const &,
 			float const &
@@ -166,7 +166,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::upward_divides(
 			float const & op1,
 			float const & op2
@@ -176,7 +176,7 @@
 		volatile float t2 = -t1;
 		return t2;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::downward_divides(
 			float const & op1,
 			float const & op2
@@ -186,7 +186,7 @@
 		if ( r ) reset();
 		return op3;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::tozero_divides(
 			float const &,
 			float const &
@@ -197,7 +197,7 @@
 			<< "is not supported." << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline float filib::fp_traits<float,filib::native_onesided_global>::tonearest_divides(
 			float const &,
 			float const &

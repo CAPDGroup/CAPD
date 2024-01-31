@@ -24,23 +24,23 @@
 **  License along with this library; if not, write to the Free
 **  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 */
-	TEMPLATE_EMPTY
+	
 	inline void filib::fp_traits<double,filib::pred_succ_rounding>::setup()
 	{
 		::filib::x87::x87doubleroundnear();
 	}
-	TEMPLATE_EMPTY
+	
 	inline void filib::fp_traits<double,filib::pred_succ_rounding>::reset()
 	{
 		::filib::x87::x87doubleroundnear();
 	}
 
-	TEMPLATE_EMPTY
+	
 	inline filib::fp_traits<double,filib::pred_succ_rounding>::fp_traits()
 	{
 	}
 
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::upward_plus(
 			double const & op1,
 			double const & op2
@@ -48,7 +48,7 @@
 	{
 		return op1 == -op2 ? 0.0 : primitive::succ(::filib::x87::x87add(op1,op2,false));
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::downward_plus(
 			double const & op1,
 			double const & op2
@@ -56,7 +56,7 @@
 	{
 		return op1 == -op2 ? 0.0 : primitive::pred(::filib::x87::x87add(op1,op2,false));
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::tozero_plus(
 			double const &,
 			double const &
@@ -66,7 +66,7 @@
 			  << "primitive (non-native) rounding."  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::tonearest_plus(
 			double const & op1,
 			double const & op2
@@ -74,7 +74,7 @@
 	{
 		return ::filib::x87::x87add(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::upward_minus(
 			double const & op1,
 			double const & op2
@@ -82,7 +82,7 @@
 	{
 		return op1 == op2 ? 0.0 : primitive::succ(::filib::x87::x87sub(op1,op2,false));
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::downward_minus(
 			double const & op1,
 			double const & op2
@@ -90,7 +90,7 @@
 	{
 		return op1 == op2 ? 0.0 : primitive::pred(::filib::x87::x87sub(op1,op2,false));
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::tozero_minus(
 			double const &,
 			double const &
@@ -100,7 +100,7 @@
 			  << "primitive (non-native) rounding."  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::tonearest_minus(
 			double const & op1,
 			double const & op2
@@ -108,7 +108,7 @@
 	{
 		return ::filib::x87::x87sub(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::upward_multiplies(
 			double const & op1,
 			double const & op2
@@ -116,7 +116,7 @@
 	{
 		return primitive::succ(::filib::x87::x87mul(op1,op2,false));
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::downward_multiplies(
 			double const & op1,
 			double const & op2
@@ -124,7 +124,7 @@
 	{
 		return primitive::pred(::filib::x87::x87mul(op1,op2,false));
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::tozero_multiplies(
 			double const &,
 			double const &
@@ -134,7 +134,7 @@
 			  << "primitive (non-native) rounding."  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::tonearest_multiplies(
 			double const & op1,
 			double const & op2
@@ -142,7 +142,7 @@
 	{
 		return ::filib::x87::x87mul(op1,op2,false);
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::upward_divides(
 			double const & op1,
 			double const & op2
@@ -150,7 +150,7 @@
 	{
 		return primitive::succ(::filib::x87::x87div(op1,op2,false));
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::downward_divides(
 			double const & op1,
 			double const & op2
@@ -158,7 +158,7 @@
 	{
 		return primitive::pred(::filib::x87::x87div(op1,op2,false));
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::tozero_divides(
 			double const &,
 			double const &
@@ -168,7 +168,7 @@
 			  << "primitive (non-native) rounding."  << std::endl;
 		std::terminate(); return 0.0;
 	}
-	TEMPLATE_EMPTY
+	
 	template<bool r> inline double filib::fp_traits<double,filib::pred_succ_rounding>::tonearest_divides(
 			double const & op1,
 			double const & op2
