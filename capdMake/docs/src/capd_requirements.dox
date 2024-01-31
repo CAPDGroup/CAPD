@@ -13,7 +13,6 @@ The CAPD::DynSys uses very standard tools and libraries, only.
 
 
 The CAPD package was tested on Linux distributions: Debian, Ubuntu.
-Please check \ref capd_build_environment_dockerfiles to see our setup.
 
 \section capd_requirements_windows Windows
 

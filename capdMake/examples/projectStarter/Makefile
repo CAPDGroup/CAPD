@@ -4,7 +4,7 @@ PROGS = MyProgram
 # a list of all your units to be linked with your programs
 OTHERS = utils output
 
-# directory where capd scripts are (e.g. capd-config)
+# path to directory, where script capd-config is located
 CAPDBINDIR =../../../build/bin/
 
 # setting compiler and linker flags

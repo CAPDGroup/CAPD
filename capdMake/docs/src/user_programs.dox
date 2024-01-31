@@ -34,7 +34,7 @@ But then command line strongly depends on your system configuration.
 Assume that the CAPD library was installed to <tt>/home/user/capd</tt>
 and it uses intervals from \e filib library then the instruction might be
 \code
-g++ -O2 -D__USE_FILIB__ -frounding-math -I/home/user/capd -L/home/user/capd  MyProgram.cpp -o MyProgram -lcapd -lprim
+g++ -O2 -D__USE_FILIB__ -std=c++17 -frounding-math -I/home/user/capd -L/home/user/capd  MyProgram.cpp -o MyProgram -lcapd -lfilib
 \endcode
 \note
 Observe that without option <tt>-frounding-math</tt> compiler can optimize code so that it is not rigorous anymore.
@@ -63,13 +63,14 @@ PROGS = MyProgram YourProgram
 # a list of all your units to be linked with your programs (space separated)
 OTHERS = utils output
 
-# directory where capd scripts are (e.g. capd-config)
-CAPDBINDIR =/home/user/capd/bin/
+# path to directory, where script capd-config is located
+CAPDBINDIR =/home/user/capd/build/bin/
 
 # setting compiler and linker flags
+CAPDCXX := $(shell $(CAPDBINDIR)capd-config --variable=capd_cxx)  
 CAPDFLAGS = `${CAPDBINDIR}capd-config --cflags`
 CAPDLIBS = `${CAPDBINDIR}capd-config --libs`
-CXXFLAGS += ${CAPDFLAGS} -O2 -Wall
+CXXFLAGS += ${CAPDFLAGS} 
 
 # directory where object and dependancy files will be created
 OBJDIR = .obj/
@@ -84,20 +85,20 @@ all: ${PROGS}
 
 # rule to link executables
 ${PROGS}: % : ${OBJDIR}%.o ${OTHERS_OBJ}
-  ${CXX} -o $@ $< ${OTHERS_OBJ} ${CAPDLIBS}
+	${CAPDCXX} -o $@ $< ${OTHERS_OBJ} ${CAPDLIBS}
 
 # include files with dependencies
 -include ${OBJ_FILES:%=%.d}
 
 #rule to compile .cpp files and generate corresponding files with dependencies
 ${OBJ_FILES}: ${OBJDIR}%.o : %.cpp
-  @mkdir -p ${OBJDIR}
-  $(CXX) ${CXXFLAGS} -MT $@ -MD -MP -MF ${@:%=%.d} -c -o $@ $<
+	@mkdir -p ${OBJDIR}
+	$(CAPDCXX) ${CXXFLAGS} -MT $@ -MD -MP -MF ${@:%=%.d} -c -o $@ $<
 
 # rule to clean all object files, dependencies and executables
 .PHONY: clean
 clean:
-  rm -f ${OBJDIR}*.o ${OBJDIR}*.o.d ${PROGS}
+	rm -f ${OBJDIR}*.o ${OBJDIR}*.o.d ${PROGS}
 \endverbatim
 
 Then by calling <tt>make</tt> you will compile all source files and link all programs defined by <tt>PROGS</tt> variable.
