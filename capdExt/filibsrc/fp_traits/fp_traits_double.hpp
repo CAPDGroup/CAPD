@@ -1398,13 +1398,15 @@ namespace filib
 #include <fp_traits/fp_traits_double_x87_pred_succ_rounding.icc>
 #include <fp_traits/fp_traits_double_x87_multiplicative.icc>
 #include <fp_traits/fp_traits_double_x87_no_rounding.icc> 
-#else
+#elif defined(FILIB_GENERIC)
 #include <fp_traits/fp_traits_double_generic_native_switched.icc>
 #include <fp_traits/fp_traits_double_generic_native_directed.icc>
 #include <fp_traits/fp_traits_double_generic_native_onesided_global.icc>
 #include <fp_traits/fp_traits_double_generic_pred_succ_rounding.icc>
 #include <fp_traits/fp_traits_double_generic_multiplicative.icc>
 #include <fp_traits/fp_traits_double_generic_no_rounding.icc>
+#else
+#error "Filib: no architecture specified!"
 #endif
 
 #endif

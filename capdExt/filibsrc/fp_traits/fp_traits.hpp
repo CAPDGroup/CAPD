@@ -295,6 +295,10 @@ namespace filib
 #include "fp_traits_sse_const.hpp"
 #elif defined(FILIB_HAVE_X87)
 #include "fp_traits_x87_const.hpp"
+#elif defined(FILIB_GENERIC)
+// nothing to do here
+#else
+#error "Filib: no architecture specified!"
 #endif
 
 #if defined(__KCC)
