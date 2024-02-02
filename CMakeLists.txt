@@ -33,7 +33,20 @@ add_subdirectory(capdDynSys)
 add_subdirectory(capdMake/libcapd)
 add_subdirectory(capdMake/bin)
 
-install(TARGETS ${PROJECT_NAME} DESTINATION "lib")
+install(TARGETS
+        ${PROJECT_NAME} filib
+    EXPORT CapdConfig
+    LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+    INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
+)
 
-#add_custom_target(docs
-#    COMMAND (cd capdMake/docs) && (doxygen) )
+export(TARGETS
+        ${PROJECT_NAME} filib
+    NAMESPACE Capd::
+    FILE "${CMAKE_CURRENT_BINARY_DIR}/CapdConfig.cmake"
+)
+install(EXPORT
+        CapdConfig
+    DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/Capd"
+    NAMESPACE Capd::
+)
