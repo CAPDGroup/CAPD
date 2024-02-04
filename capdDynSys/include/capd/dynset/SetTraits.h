@@ -30,7 +30,6 @@ struct SetTraits{
 	const static bool isC1Set=false;
 	const static bool isC2Set=false;
 	const static bool isCnSet=false;
-  typedef SetT DefaultSet;
 };
 
 /// @}
