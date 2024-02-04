@@ -48,6 +48,8 @@ typedef capd::dynset::C0TripletonSet<CAPD_USER_NAMESPACE::IMatrix,C0Rect2Policie
 typedef capd::dynset::C0HOSet<CAPD_USER_NAMESPACE::C0Rect2Set> C0HORect2Set;
 typedef capd::dynset::C0HOSet<CAPD_USER_NAMESPACE::C0TripletonSet> C0HOTripletonSet;
 
+template<class MatrixT> using DefaultC0Set = capd::dynset::C0TripletonSet<MatrixT,C0Rect2Policies>;
+
 typedef capd::dynset::C1Set<CAPD_USER_NAMESPACE::IMatrix> C1Set;
 typedef capd::dynset::C1AffineSet<CAPD_USER_NAMESPACE::IMatrix,C1RectPolicies> C1RectSet;
 typedef capd::dynset::C1AffineSet<CAPD_USER_NAMESPACE::IMatrix,C1PpedPolicies> C1PpedSet;
@@ -56,6 +58,7 @@ typedef capd::dynset::C1DoubletonSet<CAPD_USER_NAMESPACE::IMatrix,C1Pped2Policie
 typedef capd::dynset::C11Rect2Set<CAPD_USER_NAMESPACE::IMatrix> C11Rect2Set;
 typedef capd::dynset::C1HOSet<CAPD_USER_NAMESPACE::C1Rect2Set> C1HORect2Set;
 typedef capd::dynset::C1HOSet<CAPD_USER_NAMESPACE::C1Pped2Set> C1HOPped2Set;
+template<class MatrixT> using DefaultC1Set = capd::dynset::C1DoubletonSet<MatrixT,C1Rect2Policies>;
 
 typedef capd::dynset::C2Set<CAPD_USER_NAMESPACE::IMatrix> C2Set;
 typedef capd::dynset::C2DoubletonSet<CAPD_USER_NAMESPACE::IMatrix,C2Rect2Policies> C2Rect2Set;
