@@ -48,7 +48,7 @@ script, which is located in `build/bin` directory after successful build of the 
 
 ```g++ main.cpp `<path>capd-config --cflags --libs` -o main```
 
-where `<path>` is a path to `capd-config` script. For multifile projects we recommend to use `makefile` (in `capdMake/examples/projectStarter' one can find such makefile template). For details see
+where `<path>` is a path to `capd-config` script. For multifile projects we recommend to use `makefile` (in `capdMake/examples/projectStarter` one can find such makefile template). For details see
 
 http://capd.ii.uj.edu.pl/html/user_programs.html
 
