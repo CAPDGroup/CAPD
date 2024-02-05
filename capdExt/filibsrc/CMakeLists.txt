@@ -14,7 +14,7 @@ target_compile_options(${PROJECT_NAME} PRIVATE -DFILIB_EXTENDED)
 
 if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
     message(STATUS "Processor arch: 64-bit x86 (SSE)")
-    target_compile_options(${PROJECT_NAME} PUBLIC -DHAVE_SSE)
+    target_compile_options(${PROJECT_NAME} PUBLIC -DFILIB_HAVE_SSE)
 else()
     message(FATAL_ERROR "Unknown or unsupported processor architecture.")
 endif()

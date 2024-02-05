@@ -1,6 +1,6 @@
 #include "fp_traits_x87_const.hpp"
 
-#if defined(HAVE_X87)
+#if defined(FILIB_HAVE_X87)
 
 namespace filib {
   namespace x87 {

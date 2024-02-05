@@ -1,7 +1,7 @@
 #include <fp_traits/fp_traits_sse_const.hpp>
 #include <sys/types.h>
 
-#if defined(HAVE_SSE)
+#if defined(FILIB_HAVE_SSE)
 
 namespace filib {
 	namespace sse {

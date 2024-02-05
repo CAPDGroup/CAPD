@@ -291,10 +291,14 @@ namespace filib
 	};
 }
 
-#if defined(HAVE_SSE)
+#if defined(FILIB_HAVE_SSE)
 #include "fp_traits_sse_const.hpp"
-#elif defined(HAVE_X87)
+#elif defined(FILIB_HAVE_X87)
 #include "fp_traits_x87_const.hpp"
+#elif defined(FILIB_GENERIC)
+// nothing to do here
+#else
+#error "Filib: no architecture specified!"
 #endif
 
 #if defined(__KCC)
