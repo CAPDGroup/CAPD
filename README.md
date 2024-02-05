@@ -1,7 +1,7 @@
 # CAPD::DynSys
-Official repository for CAPD::DynSys library
+Official repository for CAPD::DynSys library.
 
-Main project page: http://capd.ii.uj.edu.pl
+CAPD main webpage: http://capd.ii.uj.edu.pl
 
 Full documentation: http://capd.ii.uj.edu.pl/html/
 
@@ -28,9 +28,9 @@ Enter the repository, create the build folder, configure the library and then bu
     cmake ..
     make
 
-The above commands will build the library, only (without tests or examples). 
+The above commands will build only the library (without tests or examples). 
 
-Options:
+Options that can be passed to cmake:
 
 * `-DCAPD_ENABLE_MULTIPRECISION=false` - disable multiprecision support,
 * `-DCAPD_BUILD_ALL=true` - include tests and example programs into build, 
@@ -48,7 +48,7 @@ script, which is located in `build/bin` directory after successful build of the 
 
 ```g++ main.cpp `<path>capd-config --cflags --libs` -o main```
 
-where `<path>` is a path to `capd-config` script. For multifile projects we recommend to use template `makefile`. For details see
+where `<path>` is a path to `capd-config` script. For multifile projects we recommend to use `makefile` (in `capdMake/examples/projectStarter' one can find such makefile template). For details see
 
 http://capd.ii.uj.edu.pl/html/user_programs.html
 
