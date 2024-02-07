@@ -35,18 +35,18 @@ add_subdirectory(capdMake/bin)
 
 install(TARGETS
         ${PROJECT_NAME} filib
-    EXPORT CapdConfig
+    EXPORT capd-config
     LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
     INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
 )
 
 export(TARGETS
         ${PROJECT_NAME} filib
-    NAMESPACE Capd::
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/CapdConfig.cmake"
+    NAMESPACE capd::
+    FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
 )
 install(EXPORT
-        CapdConfig
-    DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/Capd"
-    NAMESPACE Capd::
+        capd-config
+    DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
+    NAMESPACE capd::
 )
