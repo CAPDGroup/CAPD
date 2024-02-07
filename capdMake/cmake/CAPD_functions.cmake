@@ -68,7 +68,7 @@ function(install_headers)
 
   foreach(HEADER_FILE IN LISTS ARGN)
     string(REGEX MATCH "(.*\/)" DIR ${HEADER_FILE})
-    install(FILES ${HEADER_FILE} DESTINATION "include/${DIR}")
+    install(FILES ${HEADER_FILE} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/${DIR}")
   endforeach()
 
 endfunction()

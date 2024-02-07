@@ -19,7 +19,8 @@ else()
     message(FATAL_ERROR "Unknown or unsupported processor architecture.")
 endif()
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 
 target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/ieee/primitive.cpp )
 target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/interval/stdfun/filib_consts.cpp )
@@ -65,7 +66,5 @@ foreach(HEADER_FILE ${HEADER_FILES})
     file(RELATIVE_PATH TARGET_DIR ${CMAKE_CURRENT_SOURCE_DIR} ${HEADER_FILE})
     string(REGEX MATCH "(.*\/)" DIR ${TARGET_DIR})
 
-    install(FILES ${HEADER_FILE} DESTINATION "include/${DIR}")
+    install(FILES ${HEADER_FILE} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/${DIR}")
 endforeach()
-
-install(TARGETS ${PROJECT_NAME} DESTINATION "lib")
