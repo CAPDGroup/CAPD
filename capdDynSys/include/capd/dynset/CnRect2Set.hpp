@@ -195,6 +195,33 @@ CnRect2Set<MatrixType,Policies,DEGREE>::CnRect2Set(const JetType& x, ScalarType 
   m_invBjac.setToIdentity();
 }
 
+template<typename MatrixType, typename Policies, __size_type DEGREE>
+CnRect2Set<MatrixType,Policies,DEGREE>::CnRect2Set(JetType x, const MatrixType& C, const VectorType& r0, ScalarType t)
+  : SetType(x,t),
+    m_x(x),
+    m_r(x.dimension(),x.degree()),
+    m_r0(x.dimension(),x.degree()),
+    phi(x.dimension(),x.degree()),
+    rem(x.dimension(),x.degree()),
+    enc(x.dimension(),x.degree()),
+    m_B(x.dimension(),x.dimension()),
+    m_invB(x.dimension(),x.dimension()),
+    m_C(C),
+    m_Bjac(x.dimension(),x.dimension()),
+    m_invBjac(x.dimension(),x.dimension()),
+    m_Cjac(x.dimension(),x.dimension())
+{
+  x() += C*r0;
+  this->setLastJetEnclosure(x);
+  this->currentSet() = x;
+  m_r0() = r0;
+  m_B.setToIdentity();
+  m_invB.setToIdentity();
+  m_Cjac.setToIdentity();
+  m_Bjac.setToIdentity();
+  m_invBjac.setToIdentity();
+}
+
 // ----------------------------------------------------------------------------
 
 template<typename MatrixType, typename Policies, __size_type DEGREE>
