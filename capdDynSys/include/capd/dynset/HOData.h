@@ -48,23 +48,23 @@ struct HOData : public BaseData {
   {}
 
   void computeC0HORemainder(size_type p, size_type q){
-    int sign = q%2 ? -1 : 1;
-    if(p+q>33){
-      throw std::runtime_error("C0HOTripletonSet: the order of the method is to big! ");
+    double sign = q%2 ? -1.0 : 1.0;
+    if(p+q>60){
+      throw std::runtime_error("Hermite-Obreshkov remainder: the order of the method exceeds limit 60! ");
     }
 
-    const unsigned long r = binomial(p+q,q);
+    const ScalarType r = ScalarType(sign)/binomial(p+q,q);
     const size_type dimension = this->x.dimension();
     for(size_type i=0;i<dimension;++i)
-      this->rem[i] = this->psiPlus[i] - this->psiMinus[i] + sign*this->rem[i]/r;
+      this->rem[i] = this->psiPlus[i] - this->psiMinus[i] + r*this->rem[i];
   }
 
   void computeC1HORemainder(size_type p, size_type q, MatrixType& jacRem){
-    int sign = q%2 ? -1 : 1;
-
-    unsigned long long r = binomial(p+q,q);
-    for(typename MatrixType::iterator b = jacRem.begin();b!=jacRem.end();++b)
-      *b = sign*(*b)/r;
+    double sign = q%2 ? -1.0 : 1.0;
+    if(p+q>60){
+      throw std::runtime_error("Hermite-Obreshkov remainder: the order of the method exceeds limit 60! ");
+    }
+    jacRem *= ScalarType(sign)/binomial(p+q,q);
   }
 
   void computeC0HOCoefficients(){
