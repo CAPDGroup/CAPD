@@ -45,7 +45,7 @@ namespace autodiff{
 /// @addtogroup autodiff
 /// @{
 template<class T>
-void Int4ToAbstractNode(const std::vector<MyNode>& node, std::vector<AbstractNode<T>* >& out, capd::autodiff::DagIndexer<T>& dag)
+void Int4ToAbstractNode(const std::vector<Int4>& node, std::vector<AbstractNode<T>* >& out, capd::autodiff::DagIndexer<T>& dag)
 {
   const JetSize jetSize = dag.timeJetSize();
   T* data = dag.coefficients();

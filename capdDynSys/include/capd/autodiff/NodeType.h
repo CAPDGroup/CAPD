@@ -293,7 +293,6 @@ public:
     }\
   }
 
-typedef Int4 MyNode;
 /// @}
 }} // namespace capd::autodiff
 

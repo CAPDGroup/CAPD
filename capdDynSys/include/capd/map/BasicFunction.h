@@ -183,7 +183,7 @@ protected:
 
   std::vector<capd::autodiff::AbstractNode<ScalarType>*> m_nodes;
   std::vector<capd::autodiff::Node> m_fullGraph;  ///< graph representing the expression
-  std::vector<capd::autodiff::MyNode> m_evalPath; ///< reduced graph - only nodes with nontrivial evaluations are left
+  std::vector<capd::autodiff::Int4> m_evalPath; ///< reduced graph - only nodes with nontrivial evaluations are left
   std::vector<int> m_pos;                         ///< indices of roots of expressions for each component
   std::vector<std::string> m_var;                 ///< variables, time and parameters
   mutable DAG m_dag;                              ///< data structure that stores all the coefficients. Provides suitable indexing and evaluation of expression.
