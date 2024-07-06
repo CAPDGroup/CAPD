@@ -1,2 +1,0 @@
-# build_example_executable_monofile(BuildInfoMain)
-build_example_executable_monofile(argdemo)

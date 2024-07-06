@@ -1,3 +1,0 @@
-build_example_executable_monofile(coveringRelations2D_a)
-build_example_executable_monofile(coveringRelations2D_b)
-build_example_executable_monofile(coveringRelations2D_c)

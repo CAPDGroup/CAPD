@@ -1,2 +1,0 @@
-build_example_executable_monofile(configFileReader)
-build_example_executable_monofile(configFileReader2)

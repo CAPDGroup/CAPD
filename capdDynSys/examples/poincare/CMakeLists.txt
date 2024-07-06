@@ -1,4 +1,0 @@
-build_example_executable_monofile(IPoincareMapDerivativeExample)
-build_example_executable_monofile(DPoincareMapDerivativeExample)
-build_example_executable_monofile(IPoincareMapExample)
-build_example_executable_monofile(DPoincareMapExample)

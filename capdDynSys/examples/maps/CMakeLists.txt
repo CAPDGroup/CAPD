@@ -1,5 +1,0 @@
-build_example_executable_monofile(mapExample)
-build_example_executable_monofile(jetTransportExample)
-build_example_executable_monofile(hessianExample)
-build_example_executable_monofile(jetIndexingExample)
-build_example_executable_monofile(jetExample)

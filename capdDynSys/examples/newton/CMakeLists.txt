@@ -1,2 +1,0 @@
-build_example_executable_monofile(newtonSimple)
-build_example_executable_monofile(newtontst)
