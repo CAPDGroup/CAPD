@@ -12,26 +12,34 @@ class C3_Jet_Indices_Buffer
 public:
     static size_type constexpr compute_index(size_type dim, size_type j, size_type c, size_type k)
     {
-        if (dim > max_dimension)
+        if (c <= k)
         {
-            return compute_index_unoptimized(dim, j, c, k);
+            size_t ret = k - c;
+            if (dim > max_dimension)
+            {
+                ret +=  compute_internal(dim, j, c);
+            }
+            else
+            {
+                ret += g_buffer.impl[dim][j][c];
+            }
+            return ret;
         }
-
-        return g_buffer.impl[dim][j][c][k];
+        
+        throw std::logic_error("c must be less or equal k!");
     }
 
 private:
     struct Buffer
     {
-        size_type impl[max_dimension+1][max_dimension][max_dimension][max_dimension] {};
+        size_type impl[max_dimension+1][max_dimension][max_dimension] {};
     };
         
-    static size_type constexpr compute_index_unoptimized(size_type dim, size_type j, size_type c, size_type k)
+    static size_type constexpr compute_internal(size_type dim, size_type j, size_type c)
     {
-        // assume j<=c<=k
-        if (j <= c && c <= k)
+        if (j <= c)
         {
-            return k - c +
+            return 
                 (
                     (1+dim)*(2+dim) +
                     (j*(j-1)*(j-2))/3 +
@@ -40,8 +48,7 @@ private:
                 ) /2;
         }
 
-        throw std::logic_error("Unexpected args!");
-        // throw std::logic_error("capd::autodiff::index(size_type,size_type,size_type) - indices are not ordered");
+        throw std::logic_error("capd::autodiff::index(size_type,size_type,size_type) - indices are not ordered");
 
     }
 
@@ -54,12 +61,9 @@ private:
             {
                 for (size_type c = 0; c < max_dimension; ++c)
                 {
-                    for (size_type k = 0; k < max_dimension; ++k)
+                    if (j <= c)
                     {
-                        if (j <= c && c <= k)
-                        {
-                            ret.impl[dim][j][c][k] = compute_index_unoptimized(dim, j, c, k);
-                        }
+                        ret.impl[dim][j][c] = compute_internal(dim, j, c);
                     }
                 }
             }
