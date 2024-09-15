@@ -2,6 +2,7 @@ option(CAPD_BUILD_ALL "CAPD test and examples " OFF)
 # message(STATUS "Build all CAPD      : ${CAPD_BUILD_ALL}")
 option(CAPD_BUILD_TESTS "Activate/deactivate CAPD tests compilation" OFF)
 option(CAPD_BUILD_EXAMPLES "Activate/deactivate CAPD examples compilation" OFF)
+option(CAPD_TYPES_INSTANTIATION "Activate/deactivate types instantiation" ON)
 
 if( ${CAPD_BUILD_ALL} )
   set(CAPD_BUILD_TESTS ON)
@@ -13,3 +14,4 @@ option(CAPD_ENABLE_MULTIPRECISION "Activate/decactivate multiprecision support i
 message(STATUS "Build CAPD tests    : ${CAPD_BUILD_TESTS}")
 message(STATUS "Build CAPD examples : ${CAPD_BUILD_EXAMPLES}")
 message(STATUS "CAPD multiprecision : ${CAPD_ENABLE_MULTIPRECISION}")
+message(STATUS "Instantiate types   : ${CAPD_TYPES_INSTANTIATION}")
