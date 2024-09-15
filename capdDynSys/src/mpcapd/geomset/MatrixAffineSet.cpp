@@ -5,7 +5,7 @@
 #include "capd/vectalg/RowVector.hpp"
 #include "capd/vectalg/Matrix.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 namespace capd{
 namespace geomset{
   template class MatrixAffineSet<capd::MpIMatrix >;

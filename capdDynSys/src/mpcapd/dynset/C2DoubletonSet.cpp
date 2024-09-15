@@ -18,7 +18,7 @@
 #include "capd/dynset/C2DoubletonSet.hpp"
 
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
   template class capd::dynset::C2DoubletonSet<capd::MpIMatrix, capd::C2Rect2Policies  >;
 #endif
 

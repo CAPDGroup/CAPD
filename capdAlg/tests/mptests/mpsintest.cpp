@@ -17,7 +17,7 @@
 using namespace std;
 
 // symbol __HAVE_MPFR__ is defined if you compile with multiple-precision support (e.g. make target=X11-gmp)
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 // definition of an interval with multiple-precision end points
 #include "capd/intervals/MpInterval.h"

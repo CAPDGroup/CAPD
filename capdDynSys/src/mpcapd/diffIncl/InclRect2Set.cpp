@@ -15,7 +15,7 @@
 #include "capd/vectalg/Norm.hpp"
 #include "capd/diffIncl/InclRect2Set.hpp"
 
-#ifdef __HAVE_MPFR__  
+#if __HAVE_MPFR__  
 template class capd::diffIncl::InclRect2Set<capd::MpIMatrix>;
 #endif
 

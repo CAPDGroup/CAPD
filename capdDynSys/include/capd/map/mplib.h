@@ -22,7 +22,7 @@
 #include "capd/map/Function.h"
 #include "capd/map/Map.h"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 namespace capd{
   typedef capd::map::Function<MpIVector> MpIFunction;

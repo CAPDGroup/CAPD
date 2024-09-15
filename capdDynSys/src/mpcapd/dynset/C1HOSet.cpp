@@ -15,7 +15,7 @@
 #include "capd/dynset/mplib.h"
 #include "capd/dynset/C1HOSet.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 template class capd::dynset::C1HOSet< capd::MpC1Rect2Set >;
 template class capd::dynset::C1HOSet< capd::MpC1Pped2Set >;
 #endif

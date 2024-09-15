@@ -41,7 +41,7 @@
 #include "capd/dynset/CnDoubletonSet.h"
 #include "capd/dynset/CnRect2Set.h"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 namespace capd{
 

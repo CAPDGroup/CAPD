@@ -15,7 +15,7 @@
 #include "capd/map/Map.hpp"
 #include "capd/vectalg/Matrix.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
   template class capd::diffIncl::MultiMap<capd::MpIMap>;
 #endif
 

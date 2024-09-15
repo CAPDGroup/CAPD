@@ -17,7 +17,7 @@
 #include "capd/dynsys/C2OdeSolver.hpp"
 
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 template class capd::dynsys::C2OdeSolver<capd::MpIMap>;
 

@@ -19,7 +19,7 @@
 #include "capd/dynset/C1AffineSet.hpp"
 
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
   template class capd::dynset::C1AffineSet< capd::MpIMatrix , capd::C1PpedPolicies >;
   template class capd::dynset::C1AffineSet< capd::MpIMatrix , capd::C1RectPolicies >;
 #endif

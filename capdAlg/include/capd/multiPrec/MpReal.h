@@ -19,7 +19,7 @@
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
 // Protects against compilations in systems without mpfr and gmp package
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 #ifndef _CAPD_MULTIPREC_MPREAL_H_
 #define _CAPD_MULTIPREC_MPREAL_H_

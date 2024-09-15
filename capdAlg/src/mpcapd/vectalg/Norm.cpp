@@ -20,7 +20,7 @@ namespace capd{
 /// @addtogroup vectalg 
 /// @{
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
   template class capd::vectalg::Norm<MpIVector,MpIMatrix>;
   template class capd::vectalg::EuclNorm<MpIVector,MpIMatrix>;

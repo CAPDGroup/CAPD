@@ -28,9 +28,13 @@ int main ()
         std::cout << "Result seems to be OK\n";
     } else {
         std::cout << "Incorrect result in division (1.0,1.0)/3.0 for native CAPD intervals.\n";
-#ifndef __USE_FILIB__
+
+#if __USE_FILIB__ == 0
+
         return 1;
+        
 #else
+
         std::cout << "Therefore CAPD library is using filib intervals.\n\n";
 #endif
     }

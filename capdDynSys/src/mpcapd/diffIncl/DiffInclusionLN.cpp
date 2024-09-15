@@ -16,7 +16,7 @@
 #include "capd/map/Map.hpp"
 #include "capd/diffIncl/DiffInclusionLN.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
   typedef capd::diffIncl::MultiMap<capd::MpIMap> MpMultiMap;
   template class capd::diffIncl::DiffInclusionLN<MpMultiMap>;
 #endif

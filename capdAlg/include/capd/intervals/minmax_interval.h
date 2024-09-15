@@ -41,7 +41,7 @@ class Interval;
 //#endif // __USE_FILIB__
 
 
-#ifdef  __USE_FILIB__
+#if  __USE_FILIB__
 
 #include <interval/interval.hpp>
 

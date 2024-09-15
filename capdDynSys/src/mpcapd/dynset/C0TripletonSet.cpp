@@ -14,6 +14,6 @@
 #include "capd/dynset/C0TripletonSet.hpp"
 
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 template class capd::dynset::C0TripletonSet< capd::MpIMatrix, capd::C0Rect2Policies >;
 #endif

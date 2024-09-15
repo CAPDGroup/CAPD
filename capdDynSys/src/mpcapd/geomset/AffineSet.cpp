@@ -15,7 +15,7 @@
 #include "capd/geomset/AffineSet.hpp"
 #include "capd/geomset/CenteredAffineSet.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 namespace capd{
 namespace geomset{
   template class AffineSet<capd::MpIMatrix >;

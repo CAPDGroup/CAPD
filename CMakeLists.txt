@@ -12,6 +12,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 add_library(${PROJECT_NAME})
 add_dependencies(${PROJECT_NAME} filib)
 target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wundef)
 
 target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
 target_link_libraries(${PROJECT_NAME} PUBLIC filib)
@@ -24,6 +25,12 @@ if (${CAPD_ENABLE_MULTIPRECISION})
     target_link_libraries(${PROJECT_NAME} PUBLIC -lgmp)
 
     target_compile_options(${PROJECT_NAME} PUBLIC -D__HAVE_MPFR__)
+endif()
+
+if (${CAPD_TYPES_INSTANTIATION})
+
+    target_compile_options(${PROJECT_NAME} PUBLIC -D__INSTANTIATE_TYPES__)
+
 endif()
 
 add_subdirectory(capdExt)
@@ -45,6 +52,7 @@ export(TARGETS
     NAMESPACE capd::
     FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
 )
+
 install(EXPORT
         capd-config
     DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"

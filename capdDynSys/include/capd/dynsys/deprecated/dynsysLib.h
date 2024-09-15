@@ -107,7 +107,7 @@ typedef capd::dynsys::BasicCnSolver<LDCnMapMD> LDCnTaylorMD;
 
 
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
   typedef capd::dynsys::DynSys<MpIMatrix> MpDynSys;
   typedef capd::dynsys::Ode<MpIMatrix> MpOde;

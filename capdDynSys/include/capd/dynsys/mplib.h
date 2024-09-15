@@ -27,7 +27,7 @@
 #include "capd/vectalg/mplib.h"
 #include "capd/map/mplib.h"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 namespace capd{
   typedef capd::dynsys::DynSys<MpIMatrix> MpIDynSys;

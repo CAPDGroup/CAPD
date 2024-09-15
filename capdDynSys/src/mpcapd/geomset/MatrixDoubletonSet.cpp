@@ -19,6 +19,6 @@
 #include "capd/vectalg/Matrix.hpp"
 
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
   template class capd::geomset::MatrixDoubletonSet<capd::MpIMatrix >;
 #endif
