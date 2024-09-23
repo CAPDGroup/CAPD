@@ -114,4 +114,32 @@ BOOST_AUTO_TEST_CASE( functionsTest)
 {
 }
 
+
+  void test2(
+    double intervalSize = 0.1,
+    double stepSize =  0.1,
+    interval r = interval(1.1, 1.6),
+    double eps = 1.e-14
+  ) {
+    if(stepSize<=0) stepSize = intervalSize;
+    bool testPassed = true;
+    int count = 0;
+    for (interval x = -interval::pi() + eps + interval(0., intervalSize); x < interval::pi() + 0.3; x += stepSize) {
+
+      IComplex z(r * interval(cos(x)), r * interval(sin(x)));
+      auto a = arg(z);
+
+      BOOST_CHECK((a.contains(x)) or ((a + 2 * interval::pi()).contains(x)) or ((a - 2 * interval::pi()).contains(x)));
+    }
+  }
+
+  BOOST_AUTO_TEST_CASE(Atan2Test)
+  {
+    test2(0.1);
+    test2(0.1, 0.1, interval(0.000000001, 1.0));
+    test2(0.1, 0.1, interval(0.1, 6.0));
+    test2(0.1, 0.1, interval(1.0, 100000.0));
+    test2(0.2);
+  }
+
 BOOST_AUTO_TEST_SUITE_END()

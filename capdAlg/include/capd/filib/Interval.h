@@ -18,8 +18,10 @@
 #include <typeinfo>
 #include <interval/interval.hpp>
 #include "capd/intervals/IntervalError.h"
+#include "capd/intervals/intra/interval_atan2.h"
 #include "capd/basicalg/minmax.h"
 #include "capd/basicalg/TypeTraits.h"
+
 
 // #define __FILIB_DEPRECATED__
 
@@ -59,8 +61,7 @@ inline Interval<T, R, M> diam(const Interval<T, R, M> & ix);
 /// fast interval library
 namespace filib{
 
-//typedef ::filib::interval<double, ::filib::native_directed > T;
-// typedef filib::interval<double> T;
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //  capd::filib::Interval
@@ -625,6 +626,10 @@ friend inline Interval cot (const Interval& x){
 // atan x
 friend inline Interval atan (const Interval& x){
   return Interval(atan(x.m_interval));
+}
+
+friend inline Interval atan2( const Interval& x, const Interval& y){
+  return  capd::intervals::intra::atan2(x,y);
 }
 
 // asin x

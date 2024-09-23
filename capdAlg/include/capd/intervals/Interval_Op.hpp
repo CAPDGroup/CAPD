@@ -29,19 +29,6 @@ namespace intervals{
 
 
 //Operator=
-template < typename T_Bound, typename T_Rnd>
-__INLINE__ Interval<T_Bound, T_Rnd> & Interval<T_Bound, T_Rnd>::operator =
-                                     (const Interval<T_Bound, T_Rnd>& A_iv)
-{
-  if(this != &A_iv)
-  {
-    m_left  = A_iv.m_left;
-    m_right = A_iv.m_right;
-  }
-  return *this;
-}
-
-//Operator=
 template < typename T_Bound, typename T_Rnd >
 __INLINE__ Interval<T_Bound, T_Rnd> & Interval<T_Bound, T_Rnd>::operator =
                                                   (const BoundType & A_Val)

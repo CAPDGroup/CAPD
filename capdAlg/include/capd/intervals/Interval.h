@@ -93,22 +93,11 @@ class Interval {
 
   Interval();
 
-  /// copying constructor
-  Interval(const Interval &A_iv);
-
   /// constructor from any class that can be coverted to BoundType
-  // template < typename T_Scalar >
-  // Interval( const T_Scalar & A_scalar );
   Interval(const BoundType &A_scalar);
-  //Interval(BoundType A_scalar);
-
-  //Interval(const volatile BoundType & A_scalar);
 
   /// constructor from any class that can be coverted to BoundType
-  //template < typename T_Scalar1, typename T_Scalar2 >
-  //Interval( const T_Scalar1 & A_left, const T_Scalar2 & A_right );
   Interval(const BoundType &A_left, const BoundType &A_right);
-  //Interval( const volatile BoundType & A_left, const volatile BoundType & A_right );
 
   Interval(const char left[], const char right[]);
 
@@ -148,7 +137,6 @@ class Interval {
 
   //================ definitions in intervalOp.hpp ============================
 
-  Interval &operator=(const Interval &A_iv);
   Interval &operator=(const BoundType &A_x);
   Interval &operator+=(const Interval &A_iv);
   Interval &operator-=(const Interval &A_iv);
@@ -305,6 +293,10 @@ Interval<T_Bound, T_Rnd> cot(const Interval<T_Bound, T_Rnd> &x);
 template<typename T_Bound, typename T_Rnd>
 Interval<T_Bound, T_Rnd> atan(const Interval<T_Bound, T_Rnd> &x);
 
+/// atan2 (x,y) = alpha such that x = r * cos(alpha), y = r * sin(alpha) where alpha in [-pi, pi+eps], for some r
+template<typename T_Bound, typename T_Rnd>
+Interval<T_Bound, T_Rnd> atan2(const Interval<T_Bound, T_Rnd> &x, const Interval<T_Bound, T_Rnd> &y);
+
 // asin x
 template<typename T_Bound, typename T_Rnd>
 Interval<T_Bound, T_Rnd> asin(const Interval<T_Bound, T_Rnd> &x);
@@ -432,7 +424,7 @@ inline bool isinf(const Interval< T_Bound, T_Rnd >& r) {
 ///  returns true if any of endpoints is a NaN
 template < typename T_Bound, typename T_Rnd>
 inline bool isnan(const capd::intervals::Interval< T_Bound, T_Rnd >& r) {
-  return (isnan(r.leftBound()) or isnan(r.rightBound()));
+  return (isnan(r.leftBound()) || isnan(r.rightBound()));
 }
 /// returns interval containing copysign(a, b) for each a in x and b in y
 template < typename T_Bound, typename T_Rnd>
@@ -484,18 +476,18 @@ public:
   }
 
 /// an absolute value
-  static inline constexpr IntervalType abs (const IntervalType & ix) noexcept {
+  static constexpr IntervalType abs (const IntervalType & ix) noexcept {
 	return ::capd::intervals::iabs(ix);
   } // abs
 
 
 ///maximum
-  static inline constexpr IntervalType max ( const IntervalType & ix, const IntervalType & iy) noexcept {
+  static constexpr IntervalType max ( const IntervalType & ix, const IntervalType & iy) noexcept {
 	return ::capd::intervals::imax(ix, iy);
   }
 
 ///minimum
-  static inline constexpr IntervalType min ( const IntervalType& ix, const IntervalType& iy){
+  static constexpr IntervalType min ( const IntervalType& ix, const IntervalType& iy){
 	return ::capd::intervals::imin(ix, iy);
   }
 
