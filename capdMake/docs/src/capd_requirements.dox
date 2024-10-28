@@ -57,11 +57,11 @@ and within Linux console for Windows install all tools required for the Linux sy
      (see https://brew.sh for details.)
 
 4) Modify configuration file of your terminal shell (usually file <code>.zshrc</code> or <code>.bashrc</code>)
-   by adding
+   by adding (change the first line if homebrew is installed to other location)
     \code{.sh}
-    BREW_PREFIX="$(brew --prefix)"
-    export CPATH="$BREW_PREFIX/include"
-    export LIBRARY_PATH="$BREW_PREFIX/lib"
+     eval "$(/opt/homebrew/bin/brew shellenv)"
+     export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOMEBREW_PREFIX/include"
+     export LIBRARY_PATH="$LIBRARY_PATH:$HOMEBREW_PREFIX/lib"
     \endcode
 
    Remember to reopen terminal or reread configuration file by <code>source .zshrc</code>.
