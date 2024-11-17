@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.13)
 project(capd)
 
+message(STATUS "CMake version: ${CMAKE_VERSION}")
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/capdMake/cmake/")
 include(CAPDVersion.txt)
 include(CAPD_options)
