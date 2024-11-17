@@ -32,9 +32,9 @@ The above commands will build only the library (without tests or examples).
 
 Options that can be passed to cmake:
 
-* `-DCAPD_ENABLE_MULTIPRECISION=false` - disable multiprecision support,
-* `-DCAPD_BUILD_ALL=true` - include tests and example programs into build, 
-* `-DCAPD_BUILD_EXAMPLES=true` - include example programs into build. In order to build and launch tests, look into section "Building and executing tests".
+* `-DCAPD_ENABLE_MULTIPRECISION=ON` - enable multiprecision support,
+* `-DCAPD_BUILD_ALL=ON` - include tests and example programs into build, 
+* `-DCAPD_BUILD_EXAMPLES=ON` - include example programs into build. In order to build and launch tests, look into section "Building and executing tests".
 
 For detailed decription on how to build the library see
 
@@ -54,10 +54,10 @@ http://capd.ii.uj.edu.pl/html/user_programs.html
 
 ## Building and executing tests
 
-In order to build and execute tests, it necessary to run `cmake` command with option `-DCAPD_BUILD_TESTS=true`, then build the tests and execute them with commands:
+In order to build and execute tests, it necessary to run `cmake` command with option `-DCAPD_BUILD_TESTS=ON`, then build the tests and execute them with commands:
 
 ```bash
-cmake .. -DCAPD_BUILD_TESTS=true
+cmake .. -DCAPD_BUILD_TESTS=ON
 make
 make test
 ```

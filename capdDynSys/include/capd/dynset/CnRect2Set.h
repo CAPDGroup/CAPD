@@ -44,7 +44,9 @@ public:
   CnRect2Set(const VectorType& x, const MatrixType& C, const VectorType& r0, size_type degree, ScalarType t = TypeTraits<ScalarType>::zero());
   CnRect2Set(const VectorType& x, const MatrixType& C, const VectorType& r0, const VectorType& r, size_type degree, ScalarType t = TypeTraits<ScalarType>::zero());
   CnRect2Set(const VectorType& x, const MatrixType& C, const VectorType& r0, const MatrixType& B, const VectorType& r, size_type degree, ScalarType t = TypeTraits<ScalarType>::zero());
+
   CnRect2Set(const JetType& x, ScalarType t = TypeTraits<ScalarType>::zero());
+  CnRect2Set(JetType x, const MatrixType& C, const VectorType& r0, ScalarType t = TypeTraits<ScalarType>::zero());
 
   CnRect2Set& operator=(const VectorType&);
   template<class DynSysT>

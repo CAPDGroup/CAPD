@@ -202,8 +202,8 @@ class Complex<long double> : public std::complex<long double> {
     /// returns the phase angle
     template< class T >
     T arg( const Complex<T>& z ){
-        //TODO
-        throw std::runtime_error("arg(Complex) not implemented!");
+
+        return atan2(z.real(), z.imag());
     }
     /// returns the squared magnitude
     template< class T >

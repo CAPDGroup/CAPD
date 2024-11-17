@@ -14,7 +14,13 @@
 #include <string>
 #include <sstream>
 #include <fstream>
-#include "capd/auxil/Logger.h"
+// #include "capd/auxil/Logger.h"
+#undef  CAPD_WARN
+#undef  CAPD_TRACE
+#undef  CAPD_CLASS_LOGGER 
+#define CAPD_WARN(msg) std::cout << msg << std::endl;
+#define CAPD_TRACE(msg)
+#define CAPD_CLASS_LOGGER 
 
 namespace capd{
   namespace auxil{
@@ -258,4 +264,8 @@ inline std::ostream& operator <<(std::ostream& outs, const ConfigFileReader& d) 
 
 }} // end of namespace capd::auxil
 
+
+#undef  CAPD_WARN
+#undef  CAPD_TRACE
+#undef  CAPD_CLASS_LOGGER 
 #endif //_CAPD_AUXIL_CONFIG_FILE_READER_H_

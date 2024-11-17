@@ -60,7 +60,11 @@ typedef ::capd::filib::Interval<double, ::filib::native_directed, ::filib::i_mod
 namespace capd{
   typedef DInterval interval;
   typedef DInterval Interval;
+
 }
+
 #endif //__CAPD_DEFINE_INTERVAL__
+
+
 
 #endif // _CAPD_INTERVAL_LIB_H_

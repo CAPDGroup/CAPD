@@ -1,4 +1,6 @@
-build
+build*
 cmake-build*
 .idea
 .cache
+/capdMake/docs/warning.log
+/capdMake/docs/html/

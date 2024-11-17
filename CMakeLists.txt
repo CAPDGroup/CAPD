@@ -21,6 +21,21 @@ enable_testing()
 
 if (${CAPD_ENABLE_MULTIPRECISION})
 
+    find_library(MPFR_LIB_FOUND mpfr)
+    find_library(GMP_LIB_FOUND gmp)
+
+    if (MPFR_LIB_FOUND)
+        message(STATUS "Library `mpfr` found.")
+    else()
+        message(FATAL_ERROR "Library `mpfr` not found. Please install it or set CAPD_ENABLE_MULTIPRECISION to OFF.")
+    endif()
+
+    if (GMP_LIB_FOUND)
+        message(STATUS "Library `gmp` found.")
+    else()
+        message(FATAL_ERROR "Library `gmp` not found. Please install it or set CAPD_ENABLE_MULTIPRECISION to OFF.")
+    endif()
+
     target_link_libraries(${PROJECT_NAME} PUBLIC -lmpfr)
     target_link_libraries(${PROJECT_NAME} PUBLIC -lgmp)
 

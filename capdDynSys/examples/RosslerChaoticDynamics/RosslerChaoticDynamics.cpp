@@ -31,7 +31,7 @@ bool checkCondition(IPoincareMap& pm, double y1, double y2, int N, Condition c, 
   for (int i = 0; i < N; ++i) {
     IVector x = {interval(0.), y1 + interval(i,i+1) * p, interval(g_bottom, g_top)};
     C0HOTripletonSet s(x);
-    IVector y = pm(s, iteration);
+    IVector y = pm(x, iteration);
     result = result and c(y);
   }
   return result;

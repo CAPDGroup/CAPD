@@ -19,6 +19,7 @@
 #include <iostream>
 #include <cmath>
 #include <limits>
+#include "capd/intervals/intra/interval_atan2.h"
 
 using std::sqrt;
 using std::log;
@@ -573,6 +574,14 @@ Interval< T_Bound, T_Rnd> atan (const Interval< T_Bound, T_Rnd> &x)
   return (res);
 
 } // atan
+
+/// atan2(x,y) return an angle in polar coordinates of a point (x,y)
+/// angle is in [-pi, pi+ pi/2]  (special case for negative half line OX)
+template < typename T_Bound, typename T_Rnd>
+Interval< T_Bound, T_Rnd> atan2 (const Interval< T_Bound, T_Rnd> &x, const Interval< T_Bound, T_Rnd> &y){
+  return ::capd::intervals::intra::atan2(x, y);
+
+}// atan2
 
 //////////////////////////////////////////////////////////////////////////
 //   scaledAsin1

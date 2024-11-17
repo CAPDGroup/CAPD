@@ -31,11 +31,6 @@ inline Interval<T_Bound, T_Rnd>::Interval()
 #endif
 {}
 
-/// copying constructor
-template < typename T_Bound, typename T_Rnd>
-inline Interval < T_Bound, T_Rnd >::Interval( const Interval & A_iv )
-               : m_left( A_iv.m_left ), m_right( A_iv.m_right )
-{}
 
 /// constructor from any class that can be coverted to BoundType
 template < typename T_Bound, typename T_Rnd> 

@@ -56,7 +56,17 @@ and within Linux console for Windows install all tools required for the Linux sy
      \endcode
      (see https://brew.sh for details.)
 
-4) Install \b GNU \b tools and libraries, that CAPD depends on.
+4) Modify configuration file of your terminal shell (usually file <code>.zshrc</code> or <code>.bashrc</code>)
+   by adding (change the first line if homebrew is installed to other location)
+    \code{.sh}
+     eval "$(/opt/homebrew/bin/brew shellenv)"
+     export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOMEBREW_PREFIX/include"
+     export LIBRARY_PATH="$LIBRARY_PATH:$HOMEBREW_PREFIX/lib"
+    \endcode
+
+   Remember to reopen terminal or reread configuration file by <code>source .zshrc</code>.
+
+5) Install \b GNU \b tools and libraries, that CAPD depends on.
 
    -  In Terminal execute the following commands:
       \code{.sh}
@@ -73,7 +83,7 @@ and within Linux console for Windows install all tools required for the Linux sy
      brew install doxygen
      \endcode
 
-5) <i>Optional/Experimental</i> OSX is using <b>clang</b> compiler (gcc and g++ are just symbolic links).
+6) <i>Optional/Experimental</i> OSX is using <b>clang</b> compiler (gcc and g++ are just symbolic links).
 We have not tested it for compatibility with our code.
 You can compile the code, but we are not sure about compatibility with roundings etc.
 You can experiment with original version of gcc/g++ which you can install using following commands:

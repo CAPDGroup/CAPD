@@ -17,6 +17,7 @@
 #include <exception>
 #include "capd/poincare/PoincareMap.h"
 #include "capd/poincare/BasicPoincareMap.hpp"
+#include "capd/dynset/lib.h"
 
 namespace capd{
 namespace poincare{
@@ -42,6 +43,46 @@ PoincareMap<SolverT,SectionT>::PoincareMap(
   minCrossingTimeStep( capd::TypeTraits< ScalarType >::epsilon()*4),
   sectionCoordinateSystem(MatrixType::Identity(ds.dimension()))
 {}
+
+template <typename SolverT, typename SectionT>
+typename PoincareMap<SolverT,SectionT>::VectorType 
+PoincareMap<SolverT,SectionT>::operator()(VectorType x, int n)
+{ 
+  DefaultC0Set<MatrixType> s(x); 
+  return (*this)(s,n); 
+}
+
+template <typename SolverT, typename SectionT>
+typename PoincareMap<SolverT,SectionT>::VectorType 
+PoincareMap<SolverT,SectionT>::operator()(const VectorType& x, const VectorType& x0, const MatrixType& A, ScalarType& out_returnTime, int n)
+{ 
+  DefaultC0Set<MatrixType> s(x); 
+  return (*this)(s,x0,A,out_returnTime,n); 
+}
+
+template <typename SolverT, typename SectionT>
+typename PoincareMap<SolverT,SectionT>::VectorType 
+PoincareMap<SolverT,SectionT>::operator()(const VectorType& x, ScalarType& out_returnTime, int n)
+{ 
+  DefaultC0Set<MatrixType> s(x); 
+  return (*this)(s,out_returnTime,n); 
+}
+
+template <typename SolverT, typename SectionT>
+typename PoincareMap<SolverT,SectionT>::VectorType 
+PoincareMap<SolverT,SectionT>::operator()(const VectorType& x, MatrixType& D, int n)
+{ 
+  DefaultC1Set<MatrixType> s(x); 
+  return (*this)(s,D,n); 
+}
+
+template <typename SolverT, typename SectionT>
+typename PoincareMap<SolverT,SectionT>::VectorType 
+PoincareMap<SolverT,SectionT>::operator()(const VectorType& x, MatrixType& D, ScalarType& out_returnTime, int n)
+{ 
+  DefaultC1Set<MatrixType> s(x); 
+  return (*this)(s,D,out_returnTime,n); 
+}
 
 /// @}
 }} // namespace capd::poincare

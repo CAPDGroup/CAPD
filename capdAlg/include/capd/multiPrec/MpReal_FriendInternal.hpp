@@ -120,6 +120,11 @@ inline friend MpReal atan(const MpReal& r, MpReal::RoundingMode rnd= MpReal::get
   return res;
 }
 
+inline friend MpReal atan2(const MpReal& x, const MpReal& y, MpReal::RoundingMode rnd= MpReal::getDefaultRndMode()) {
+  MpReal res;
+  mpfr_atan2(res.mpfr_rep, x.mpfr_rep, y.mpfr_rep, rnd);
+  return res;
+}
 inline friend MpReal cosh(const MpReal& r, MpReal::RoundingMode rnd= MpReal::getDefaultRndMode()) {
   MpReal res;
   mpfr_cosh(res.mpfr_rep, r.mpfr_rep, rnd);
