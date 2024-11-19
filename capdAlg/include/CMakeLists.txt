@@ -18,7 +18,7 @@ install_headers(
     capd/filib/Interval.h
     capd/intervals/DoubleInterval.h
     capd/intervals/IComplex.h
-    capd/intervals/infra/interval_atan2.h
+    capd/intervals/intra/interval_atan2.h
     capd/intervals/Interval.h
     capd/intervals/Interval.hpp
     capd/intervals/IntervalError.h
