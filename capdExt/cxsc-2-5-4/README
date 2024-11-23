@@ -1,0 +1,172 @@
+
+                     Installing C-XSC (CToolbox included)
+                     ===================================
+
+Note: the formerly separated CToolbox routines are now part of C-XSC itself.
+Thus only one library libcxsc.a or libcxsc.so will be created by this 
+installation process.   
+  
+The C-XSC release 2.5.4 works on
+   - Linux with GNU C++ compiler gcc 4.4.x/4.5.x/4.6.x/4.7.x/4.8.x
+   - Linux with Intel C++ compiler Version 12.0
+   - x86_64 systems (AMD64 architectur, e.g. AMD Opteron) with
+     Linux and GNU C++ compiler (64 bit code)
+   - ia64 systems (e.g. Intel Itanium) with GNU C++-compiler
+     and Intel-Compiler (64 bit)
+   - ppc64 systems (PowerPC64) with GNU C++-compiler
+   - MS Windows with MS Visual Studio 2010 Compiler (Express Edition)
+     URL: http://www.microsoft.com/express/Downloads/
+     --> For convenience please use the pre-compiled special edition of 
+         C-XSC with an installer program from 
+         URL: http://www.math.uni-wuppertal.de/~xsc/
+   - MS Windows with Cygwin (32 bit)
+   - Mac OS/X systems ("Darwin") with G4 processor (64/32 bit)
+     (primary support for i386 architecture)
+     Mac OS 10.6 "Snow Leopard"
+   - IBM AIX 5.2 with Power4+ processor  (64 bit)
+   - SUN Solaris with SUN Forte Developer 7 C++ 5.4 /
+                      SUN ONE Studio8 C++ 5.5 /
+                      SUN Studio 9 C++ 5.6 /
+		      SUN Studio 10 C++ 5.7
+   - SUN Solaris with gcc 4.0.0
+     (probably not all configuration options are supported with your
+     solaris-system; if you have problems test "software emulation (soft)"
+     and "static library (static)" or use the SUN Compiler)
+
+
+ 
+Preparation for 'MacBook' / 'Mac OS/X' system:
+==============================================
+
+   Newer versions of XCode do not install command line tools by default, 
+   which are necessary for the installation of C-XSC. 
+   You can install them by selecting 
+   'Preferences -> Downloads -> Install Command Line Tools' in XCode
+
+ 
+Installation (classical version):
+=================================
+
+   1. Unpack the sources cxsc-2-5-4.tar.gz : 
+           gunzip cxsc-2-5-4.tar.gz
+           tar xvf cxsc-2-5-4.tar
+     
+      If you use cygwin do not unpack the sources in your home directory,
+      use another directory e.g. c:\tmp
+  
+      This creates a directory ./cxsc-2-5-4 with all the necessary files 
+      and subdirectories.
+
+            cxsc-2-5-4          (includes: README, install, changelog)
+              |
+              +-- docu          (documentation)
+              |
+              +-- examples      (some small examples)
+	      |
+	      +-- CToolbox      (C-XSC Toolbox Modules and Programs)
+	      |
+	      +-- benchmark     (a simple benchmark program)
+	      |
+	      +-- scripts       (some scripts, e.g. for RPM packages)
+              |
+              +-- win32         (some files for MS Visual C++ compiler)
+              |
+              +-- src           (C++ source code of C-XSC)
+                   |
+                   +-- fi_lib   (C source code, elementary functions)
+                   |
+                   +-- rts      (C source code, run time system)
+
+   2. Compile all sources:
+
+           cd ./cxsc-2-5-4
+           ./install_cxsc
+      
+      For configuration please answer the questions from the install
+      script. After that the script creates the library libcxsc.a or
+      libcxsc.so and all program examples from the toolbox library. 
+      Also a test program is compiled and executed.
+
+
+Installation using CMake (beta version)
+=======================================
+
+For installation with CMake on Linux and Mac (and other UNIX systems), 
+we suggest the following steps, which will use the most common installation 
+options for C-XSC:
+
+1) Unpack the C-XSC sources: tar xvzf cxsc-2-5-4.tar.gz
+   In the following we assume the sources lie in /home/user/cxsc-2-5-4
+
+2) Create a build directory and change into it: mkdir cxscbuild; cd cxscbuild
+
+3) Run cmake, set install directory to /home/user/cxsc:
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/user/cxsc home/user/cxsc-2-5-4
+
+4) Compile the sources: make
+
+5) Install the library: make install
+
+
+For Windows, a GUI version of CMake is available that should be mostly 
+self explanatory.
+
+Please note that CMake support in C-XSC 2.5.4 is experimental. 
+If you experience problems installing C-XSC using CMake, please
+contact us at xsc@math.uni-wuppertal.de
+  
+
+Using C-XSC (including CToolbox)
+================================
+
+When you compile and link code using C-XSC routines (or CToolbox routines), 
+you have to define the C-XSC include path and the C-XSC library path 
+and you have to link either the static library libcxsc.a:
+
+     g++ -I<include path> -L<library path> prog.cpp -lcxsc -o prog
+
+or the dynamic library libcxsc.so:
+
+     g++ -I<include path> -L<library path> -Wl,-R<library path> prog.cpp -lcxsc -o prog
+
+
+Depending on the actual choice of some parameters during the installation
+process further libraries have to be linked (e.g. -lm or -lblas). 
+
+Using a makefile is described in the file Makefile.example in the 
+examples subdirectory. Also some sample programs can be found in this 
+subdirectory.
+
+Since C-XSC Version 2.1 the C-XSC routines and the CToolbox routines
+are available in the common library libcxsc.a (or the corresponding
+dynamic link library libcxsc.so, respectively).
+ 
+
+Uninstalling C-XSC
+==================
+
+To uninstall C-XSC, simply type
+   cd ./cxsc-2-5-4        # $(PREFIX) is the installation prefix
+                          #   defined in the file Makefile
+   gmake uninstall      
+
+This undoes the effect of gmake install, which is implicitly executed
+by install_cxsc. Note that the source tree is not removed. 
+So all sources are still available. 
+
+
+Questions, Suggestions, Problems, Solutions are welcome
+=======================================================
+Please contact
+
+     Prof. Dr. Walter Kraemer & Dr. Werner Hofschuster
+     Scientific Computing/Software Engineering
+     Department of Mathematics and Computer Science
+     University of Wuppertal
+     Gaussstrasse 20
+     D-42097 Wuppertal (Germany)
+
+e-mail: xsc@math.uni-wuppertal.de
+
+C-XSC-Homepage: http://www.math.uni-wuppertal.de/~xsc/
+             or http://www.xsc.de/

@@ -1,0 +1,9 @@
+Evaluation of 1 / ( y^6 - 3*x*y^5 + 5*x^3*y^3 - 3*x^5*y - x^6 )
+
+Enter the arguments:
+   x =    y = 
+Desired accuracy:
+   Eps = 
+Floating-point evaluation:    3.165189248586599E-066
+Interval enclosure:         [ 1.000000000000000E+000, 1.000000000000000E+000]
+Defect corrections needed:    5

@@ -1,0 +1,18 @@
+Program: lss_ex
+Purpose: Sample program for the use of module linsys for linear systems of
+         equations
+
+File list:
+   lss_ex.txt    -  This file
+   lss_ex.cpp    -  Program source
+   lss_ex.in1    -  Sample input file
+   lss_ex.in2    -  Sample input file
+   toolbox.a     -  Toolbox library
+   real_ari.a    -  C-XSC real library
+
+Related object files:
+   i_util.o  
+   mv_util.o  
+   mvi_util.o  
+   matinv.o  
+   linsys.o  

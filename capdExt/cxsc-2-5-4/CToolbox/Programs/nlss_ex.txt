@@ -1,0 +1,19 @@
+Program: nlss_ex
+Purpose: Sample program for the use of module nlss for solving non-linear
+         systems of equations
+
+File list:
+   nlss_ex.txt   -  This file
+   nlss_ex.cpp   -  Program source
+   nlss_ex.in    -  Sample input file
+   toolbox.a     -  Toolbox library
+   real_ari.a    -  C-XSC real library
+
+Related object files:
+   i_util.o  
+   mv_util.o  
+   mvi_util.o  
+   xi_ari.o  
+   grad_ari.o  
+   matinv.o  
+   nlinsys.o  

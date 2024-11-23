@@ -1,0 +1,20 @@
+Program: cpz_ex
+Purpose: Sample program for the use of module cpzero for finding the roots
+         of a complex polynomial
+
+File list:
+   cpz_ex.txt    -  This file
+   cpz_ex.cpp    -  Program source
+   cpz_ex.in1    -  Sample input file
+   cpz_ex.in2    -  Sample input file
+   toolbox.a     -  Toolbox library
+   real_ari.a    -  C-XSC real library
+   comp_ari.a    -  C-XSC complex library
+
+Related object files:
+   r_util.o  
+   i_util.o  
+   ci_util.o  
+   cpoly.o  
+   cipoly.o  
+   cpzero.o  

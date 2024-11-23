@@ -1,0 +1,32 @@
+Computing all global minimizers of the Function of Branin
+Search interval      : Tolerance (relative) : 
+[ 9.424777960768414E+000, 9.424777960770346E+000]
+[ 2.474999999999732E+000, 2.475000000000267E+000]
+encloses a locally unique candidate for a global minimizer!
+
+[ 3.141592653589792E+000, 3.141592653589795E+000]
+[ 2.274999999999997E+000, 2.275000000000004E+000]
+encloses a locally unique candidate for a global minimizer!
+
+[-3.141592653589796E+000,-3.141592653589790E+000]
+[ 1.227499999999999E+001, 1.227500000000001E+001]
+encloses a locally unique candidate for a global minimizer!
+
+[ 3.978873577297381E-001, 3.978873577297418E-001]
+encloses the global minimum value!
+
+3 interval enclosure(s)
+
+
+Computing all global minimizers of the Function of Levy
+Search interval      : Tolerance (relative) : 
+[-1.306853009753609E+000,-1.306853009753535E+000]
+[-1.424845041560701E+000,-1.424845041560661E+000]
+encloses a locally unique candidate for a global minimizer!
+
+[-1.761375780026126E+002,-1.761375780016284E+002]
+encloses the global minimum value!
+
+1 interval enclosure(s)
+
+We have validated that there is a unique global optimizer!

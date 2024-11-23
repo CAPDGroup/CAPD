@@ -1,0 +1,12 @@
+Evaluation of the expression:
+   f(x,y) = (1682xy^4 + 3x^3 + 29xy^2 - 2x^5 + 832) / 107751
+at x = 192119201 and y = 35675640. Note, the exact result is
+   f(x,y) = 1783.
+
+Enter the arguments:
+   x =    y = 
+Desired accuracy:
+   Eps = 
+Floating-point evaluation:    7.180560037061026E+020
+Interval enclosure:         [ 1.783000000000000E+003, 1.783000000000000E+003]
+Defect corrections needed:    1

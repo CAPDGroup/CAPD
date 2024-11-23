@@ -1,0 +1,18 @@
+Computing all zeros of the function  EXP(-3x)-POWER(SIN(x),3)
+Search interval      : Tolerance (relative) : 
+[ 5.885327439797041E-001, 5.885327439840196E-001]
+encloses a locally unique zero!
+[ 3.096363932410612E+000, 3.096363932410676E+000]
+encloses a locally unique zero!
+[ 6.285049273382585E+000, 6.285049273382588E+000]
+encloses a locally unique zero!
+[ 9.424697254681708E+000, 9.424697254772081E+000]
+encloses a locally unique zero!
+[ 1.256637410168852E+001, 1.256637410169038E+001]
+encloses a locally unique zero!
+[ 1.570796311724486E+001, 1.570796311724936E+001]
+encloses a locally unique zero!
+[ 1.884955592762931E+001, 1.884955592835263E+001]
+encloses a locally unique zero!
+
+7 interval enclosure(s)

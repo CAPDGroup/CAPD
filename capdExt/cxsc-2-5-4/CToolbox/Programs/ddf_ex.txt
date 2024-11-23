@@ -1,0 +1,13 @@
+Program: ddf_ex
+Purpose: Sample program for the use of module ddf_ari for one-dimensional
+         differentiation arithmetic
+
+File list:
+   ddf_ex.txt    -  This file
+   ddf_ex.cpp    -  Program source
+   toolbox.a     -  Toolbox library
+   real_ari.a    -  C-XSC real library
+
+Related object files:
+   i_util.o  
+   ddf_ari.o  

@@ -1,0 +1,13 @@
+Evaluation of the second order difference quotient 
+   Df(x,h) = (f(x-h) - 2f(x) + f(x+h)) / h^2
+for the function
+   f(x) = 540(x^4 - 23x^3 + 159x^2 - 2x + 45) / (x^3 + 18x^2 + 501x + 20)
+Note: f''(1) = 36.
+
+Enter the arguments:
+   x =    h = 
+Desired accuracy:
+   Eps = 
+Floating-point evaluation:    2.842170943040400E+002
+Interval enclosure:         [ 3.600000000000000E+001, 3.600000000000002E+001]
+Defect corrections needed:    1

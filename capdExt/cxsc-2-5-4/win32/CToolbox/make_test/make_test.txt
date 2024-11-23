@@ -1,0 +1,38 @@
+(..\cpz_ex.exe < cpz_ex.in1) > cpz_ex.out1
+(..\cpz_ex.exe < cpz_ex.in2) > cpz_ex.out2
+(..\gop1_ex.exe < gop1_ex.in) > gop1_ex.out
+(..\gop_ex.exe < gop_ex.in) > gop_ex.out
+(..\hess_ex.exe < hess_ex.in) > hess_ex.out
+(..\jac_ex.exe < jac_ex.in) > jac_ex.out
+(..\lop_ex.exe < lop_ex.in1) > lop_ex.out1
+(..\lop_ex.exe < lop_ex.in2) > lop_ex.out2
+(..\lss_ex.exe < lss_ex.in1) > lss_ex.out1
+(..\lss_ex.exe < lss_ex.in2) > lss_ex.out2
+(..\nlfz_ex.exe < nlfz_ex.in) > nlfz_ex.out
+(..\nlss_ex.exe < nlss_ex.in1) > nlss_ex.out1
+(..\nlss_ex.exe < nlss_ex.in2) > nlss_ex.out2
+(..\rpe_ex.exe < rpe_ex.in1) > rpe_ex.out1
+(..\rpe_ex.exe < rpe_ex.in2) > rpe_ex.out2
+(..\xev_ex1.exe < xev_ex1.in) > xev_ex1.out
+(..\xev_ex2.exe < xev_ex2.in) > xev_ex2.out
+(..\xev_ex3.exe < xev_ex3.in) > xev_ex3.out
+del ergebnis.dat
+tester.exe cpz_ex.out1 cpz_ex.vgl1
+tester.exe cpz_ex.out2 cpz_ex.vgl2
+tester.exe gop1_ex.out gop1_ex.vgl
+tester.exe gop_ex.out gop_ex.vgl
+tester.exe hess_ex.out hess_ex.vgl
+tester.exe jac_ex.out jac_ex.vgl
+tester.exe lop_ex.out1 lop_ex.vgl1
+tester.exe lop_ex.out2 lop_ex.vgl2
+tester.exe lss_ex.out1 lss_ex.vgl1
+tester.exe lss_ex.out2 lss_ex.vgl2
+tester.exe nlfz_ex.out nlfz_ex.vgl
+tester.exe nlss_ex.out1 nlss_ex.vgl1
+tester.exe nlss_ex.out2 nlss_ex.vgl2
+tester.exe rpe_ex.out1 rpe_ex.vgl1
+tester.exe rpe_ex.out2 rpe_ex.vgl2
+tester.exe xev_ex1.out xev_ex1.vgl
+tester.exe xev_ex2.out xev_ex2.vgl
+tester.exe xev_ex3.out xev_ex3.vgl
+sumup.exe

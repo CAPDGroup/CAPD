@@ -1,0 +1,33 @@
+M=../CToolbox/Modules
+OBJ_CTOOLBOX=$(M)/rpoly.o \
+$(M)/rpeval.o   \
+$(M)/ddf_ari.o \
+$(M)/xi_ari.o \
+$(M)/nlfzero.o   \
+$(M)/expreval.o \
+$(M)/matinv.o \
+$(M)/linsys.o   \
+$(M)/lst1_ari.o \
+$(M)/gop1.o \
+$(M)/grad_ari.o \
+$(M)/hess_ari.o \
+$(M)/nlinsys.o \
+$(M)/lst_ari.o  \
+$(M)/gop.o \
+$(M)/rev_simp.o \
+$(M)/set_ari.o  \
+$(M)/lop_ari.o \
+$(M)/lop.o \
+$(M)/ci_util.o  \
+$(M)/cpoly.o \
+$(M)/cipoly.o \
+$(M)/cpzero.o \
+$(M)/fastlss.o
+
+UNINSTALL_OBJ=ci_util.hpp gop.hpp lop.hpp mvi_util.hpp rpoly.hpp \
+        cipoly.hpp gop1.hpp lop_ari.hpp nlfzero.hpp set_ari.hpp \
+        cpoly.hpp grad_ari.hpp lst1_ari.hpp nlinsys.hpp stacksz.hpp \
+        cpzero.hpp hess_ari.hpp lst_ari.hpp r_util.hpp xi_ari.hpp \
+        ddf_ari.hpp ddf_ari.inl i_util.hpp matinv.hpp rev_simp.hpp \
+        expreval.hpp linsys.hpp mv_util.hpp rpeval.hpp fastlss.hpp \
+	matinv_aprx.hpp
