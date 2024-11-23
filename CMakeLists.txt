@@ -24,6 +24,7 @@ elseif(${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
     target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_CXSC__)
 
     target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
+    target_link_libraries(${PROJECT_NAME} PUBLIC cxsc)
 
 else()
 
@@ -63,20 +64,25 @@ add_subdirectory(capdDynSys)
 add_subdirectory(capdMake/libcapd)
 add_subdirectory(capdMake/bin)
 
-install(TARGETS
-        ${PROJECT_NAME} filib
-    EXPORT capd-config
-    LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
-    INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
-)
+if (${FALSE})
 
-export(TARGETS
-        ${PROJECT_NAME} filib
-    NAMESPACE capd::
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
-)
-install(EXPORT
+    install(TARGETS
+            ${PROJECT_NAME} filib
+        EXPORT capd-config
+        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
+    )
+
+    export(TARGETS
+            ${PROJECT_NAME} filib
+        NAMESPACE capd::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
+    )
+
+    install(EXPORT
         capd-config
-    DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
-    NAMESPACE capd::
-)
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
+        NAMESPACE capd::
+    )
+
+endif()
