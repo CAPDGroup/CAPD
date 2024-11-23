@@ -1,10 +1,10 @@
 
-include_directories(${CMAKE_SOURCE_DIR}
-        ${CMAKE_SOURCE_DIR}/CToolbox/Modules
-		${CMAKE_SOURCE_DIR}/CToolbox/test
-        ${CMAKE_SOURCE_DIR}/src
-        ${CMAKE_SOURCE_DIR}/src/fi_lib
-        ${CMAKE_SOURCE_DIR}/src/rts)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/CToolbox/Modules
+		${CMAKE_CURRENT_SOURCE_DIR}/CToolbox/test
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/fi_lib
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rts)
 
 link_directories(
    ${CMAKE_INSTALL_PREFIX}/lib

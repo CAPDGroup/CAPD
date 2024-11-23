@@ -15,8 +15,8 @@ set(CPACK_PACKAGE_VENDOR "Universitaet Wuppertal, Germany")
 set(CPACK_PACKAGE_VERSION_MAJOR "${VER_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${VER_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${VER_PATCH}")
-set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README")
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/docu/COPYING")
+set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/docu/COPYING")
 include(CPack)
 
 
@@ -33,18 +33,6 @@ SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 # which point to directories outside the build tree to the install RPATH
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
-
-include_directories(
-  # where cxscconf.h is
-  ${CMAKE_CURRENT_BINARY_DIR}
-
-  # the C-XSC sources
-  ${CMAKE_SOURCE_DIR}/CToolbox/Modules
-  ${CMAKE_SOURCE_DIR}/src
-  ${CMAKE_SOURCE_DIR}/src/fi_lib
-  ${CMAKE_SOURCE_DIR}/src/rts
-  ${CMAKE_SOURCE_DIR}/src/asm
-)
 
 # Check for intel compiler
 if (${CMAKE_C_COMPILER} MATCHES "icc") 
@@ -169,30 +157,30 @@ configure_file(
 )
 
 # add the list of files to compile (excluding example and test programs)
-include(${CMAKE_SOURCE_DIR}/src/CMakeLists.txt)
-include(${CMAKE_SOURCE_DIR}/src/fi_lib/CMakeLists.txt)
-include(${CMAKE_SOURCE_DIR}/src/rts/CMakeLists.txt)
-include(${CMAKE_SOURCE_DIR}/CToolbox/Modules/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/fi_lib/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/rts/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/CToolbox/Modules/CMakeLists.txt)
 
 
 # set the variables for all header files
 file(GLOB cxsc_headers
-  "${CMAKE_SOURCE_DIR}/src/*.h"
-  "${CMAKE_SOURCE_DIR}/src/*.hpp"
-  "${CMAKE_SOURCE_DIR}/src/*.inl"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/*.hpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/*.inl"
 )
 file(GLOB rts_headers
-  "${CMAKE_SOURCE_DIR}/src/rts/*.h"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/rts/*.h"
 )
 file(GLOB fi_lib_headers
-  "${CMAKE_SOURCE_DIR}/src/fi_lib/*.hpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/fi_lib/*.hpp"
 )
 file(GLOB asm_headers
-   "${CMAKE_SOURCE_DIR}/src/asm/*.h"
+   "${CMAKE_CURRENT_SOURCE_DIR}/src/asm/*.h"
 )
 file(GLOB ctoolbox_headers
-  "${CMAKE_SOURCE_DIR}/CToolbox/Modules/*.hpp"
-  "${CMAKE_SOURCE_DIR}/CToolbox/Modules/*.inl"
+  "${CMAKE_CURRENT_SOURCE_DIR}/CToolbox/Modules/*.hpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/CToolbox/Modules/*.inl"
 )
 
 #Set special options depending on compiler (optimization, error free transformations)
@@ -308,8 +296,21 @@ source_group("Header Files\\CToolbox" FILES ${ctoolbox_headers})
 #CTests for Testing CXSC Library of correctness
 SET (CTOOLBOX_PROGRAMS_DIR ${CMAKE_CURRENT_BINARY_DIR}/CToolbox/test/test_programms) 
 
-SET (CTOOLBOX_INPUT_DIR ${CMAKE_SOURCE_DIR}/CToolbox/test/test_input) 
-SET (CTOOLBOX_VLG_EXP_DIR ${CMAKE_SOURCE_DIR}/CToolbox/test/test_vgl_exp) 
+SET (CTOOLBOX_INPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/CToolbox/test/test_input) 
+SET (CTOOLBOX_VLG_EXP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/CToolbox/test/test_vgl_exp) 
+
+target_include_directories(${PROJECT_NAME} PUBLIC
+
+  # where cxscconf.h is
+  ${CMAKE_CURRENT_BINARY_DIR}
+
+  # the C-XSC sources
+  ${CMAKE_CURRENT_SOURCE_DIR}/CToolbox/Modules
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/fi_lib
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/rts
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/asm
+)
 
 #make test, runs some test programms
 ENABLE_TESTING()

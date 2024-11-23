@@ -6,3 +6,4 @@ add_subdirectory(include)
 add_subdirectory(src/capd/alglib)
 add_subdirectory(filibsrc)
 
+add_subdirectory(cxsc-2-5-4)
