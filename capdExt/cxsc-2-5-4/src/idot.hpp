@@ -56,7 +56,7 @@ class idotprecision
       //! Constructor of class idotprecision
       idotprecision() : k(0) {}
       //! Constructor of class idotprecision
-      inline idotprecision(const dotprecision&, const dotprecision&) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      inline idotprecision(const dotprecision&, const dotprecision&);
       //! Constructor of class idotprecision
       inline idotprecision(const idotprecision&);
       
@@ -76,11 +76,11 @@ class idotprecision
       //! Constructor of class idotprecision
       explicit inline idotprecision(const dotprecision &r) : inf(r), sup(r), k(0)  { inf.set_k(0); sup.set_k(0);  }
       //! Constructor of class idotprecision
-      explicit        idotprecision(const l_real &) throw();     // In l_real.cpp
+      explicit        idotprecision(const l_real &);     // In l_real.cpp
       //! Constructor of class idotprecision
       explicit        idotprecision(const l_real &,const l_real &); // in l_real.cpp
       //! Constructor of class idotprecision
-      explicit        idotprecision(const l_interval &) throw(); // In l_interval.cpp
+      explicit        idotprecision(const l_interval &); // In l_interval.cpp
 
       //! Get currently set precision for computation of dot products
       inline int get_k() const { return k; }
@@ -104,7 +104,7 @@ class idotprecision
       //! Implementation of standard assigning operator
       inline idotprecision& operator= (const l_real & a)      { inf=sup=a; return *this; }
       //! Implementation of standard assigning operator
-             idotprecision& operator= (const l_interval &) throw(); // in l_interv.cpp
+             idotprecision& operator= (const l_interval &); // in l_interv.cpp
 
       // ---- Destruktor    ----
       // ~idotprecision() {} unnoetig
@@ -124,335 +124,335 @@ class idotprecision
       friend inline idotprecision _unchecked_idotprecision(const dotprecision&, const dotprecision&);
 
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend inline idotprecision _idotprecision(const l_real &a) throw() { return idotprecision(a); }
+      friend inline idotprecision _idotprecision(const l_real &a) { return idotprecision(a); }
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       friend inline idotprecision _idotprecision(const l_real &a,const l_real &b) { return idotprecision(a,b); }
 
 
       // ---- Ausgabefunkt. ---------------------------------------
       //! Implementation of standard input method
-      friend std::istream& operator >> (std::istream& s, idotprecision& a)       throw();
+      friend std::istream& operator >> (std::istream& s, idotprecision& a)      ;
       //! Implementation of standard output method
-      friend std::ostream& operator << (std::ostream& s, const idotprecision& a) throw();
+      friend std::ostream& operator << (std::ostream& s, const idotprecision& a);
       //! Implementation of standard input method
-      friend std::string&  operator >> (std::string&  s, idotprecision& a)       throw();
+      friend std::string&  operator >> (std::string&  s, idotprecision& a)      ;
       //! Implementation of standard output method
-      friend std::string&  operator << (std::string&  s, const idotprecision& a) throw();
+      friend std::string&  operator << (std::string&  s, const idotprecision& a);
       //! Implementation of standard input method
-      friend void          operator >> (const std::string &s,idotprecision& a)   throw();
+      friend void          operator >> (const std::string &s,idotprecision& a)  ;
       //! Implementation of standard input method
-      friend void          operator >> (const char *s       ,idotprecision& a)   throw();
+      friend void          operator >> (const char *s       ,idotprecision& a)  ;
 
       // ---- Standardfunkt ---- (arithmetische Operatoren)
       //! Implementation of standard algebraic negative sign operation
-      friend     inline idotprecision operator -(const idotprecision &) throw();
+      friend     inline idotprecision operator -(const idotprecision &);
       //! Implementation of standard algebraic positive sign operation
-      friend     inline idotprecision operator +(const idotprecision &) throw();
+      friend     inline idotprecision operator +(const idotprecision &);
 
       //! Implementation of standard algebraic addition operation
-      friend     inline idotprecision operator +(const idotprecision &,const idotprecision &) throw();
+      friend     inline idotprecision operator +(const idotprecision &,const idotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend     inline idotprecision operator -(const idotprecision &,const idotprecision &) throw();
+      friend     inline idotprecision operator -(const idotprecision &,const idotprecision &);
       //! Returns the convex hull of the arguments
-      friend     inline idotprecision operator |(const idotprecision &,const idotprecision &) throw();
+      friend     inline idotprecision operator |(const idotprecision &,const idotprecision &);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const idotprecision &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const idotprecision &,const idotprecision &);
 
       //! Implementation of standard algebraic addition operation
-      friend     inline idotprecision operator +(const idotprecision &,const dotprecision &) throw();
+      friend     inline idotprecision operator +(const idotprecision &,const dotprecision &);
       //! Implementation of standard algebraic addition operation
-      friend     inline idotprecision operator +(const dotprecision &,const idotprecision &) throw();
+      friend     inline idotprecision operator +(const dotprecision &,const idotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend     inline idotprecision operator -(const idotprecision &,const dotprecision &) throw();
+      friend     inline idotprecision operator -(const idotprecision &,const dotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend     inline idotprecision operator -(const dotprecision &,const idotprecision &) throw();
+      friend     inline idotprecision operator -(const dotprecision &,const idotprecision &);
       //! Returns the convex hull of the arguments
-      friend     inline idotprecision operator |(const dotprecision &,const idotprecision &) throw();
+      friend     inline idotprecision operator |(const dotprecision &,const idotprecision &);
       //! Returns the convex hull of the arguments
-      friend     inline idotprecision operator |(const idotprecision &,const dotprecision &) throw();
+      friend     inline idotprecision operator |(const idotprecision &,const dotprecision &);
       //! Returns the convex hull of the arguments
-      friend     inline idotprecision operator |(const dotprecision &,const dotprecision &)  throw();
+      friend     inline idotprecision operator |(const dotprecision &,const dotprecision &) ;
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const dotprecision &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const dotprecision &,const idotprecision &);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const idotprecision &,const dotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const idotprecision &,const dotprecision &);
 
       //! Implementation of standard algebraic addition operation
-      friend     inline idotprecision operator +(const idotprecision &,const long &) throw();
+      friend     inline idotprecision operator +(const idotprecision &,const long &);
       //! Implementation of standard algebraic addition operation
-      friend     inline idotprecision operator +(const long &,const idotprecision &) throw();
+      friend     inline idotprecision operator +(const long &,const idotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend     inline idotprecision operator -(const idotprecision &,const long &) throw();
+      friend     inline idotprecision operator -(const idotprecision &,const long &);
       //! Implementation of standard algebraic subtraction operation
-      friend     inline idotprecision operator -(const long &,const idotprecision &) throw();
+      friend     inline idotprecision operator -(const long &,const idotprecision &);
       //! Returns the convex hull of the arguments
-      friend     inline idotprecision operator |(const long &,const idotprecision &) throw();
+      friend     inline idotprecision operator |(const long &,const idotprecision &);
       //! Returns the convex hull of the arguments
-      friend     inline idotprecision operator |(const idotprecision &,const long &) throw();
+      friend     inline idotprecision operator |(const idotprecision &,const long &);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const long &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const long &,const idotprecision &);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const idotprecision &,const long &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const idotprecision &,const long &);
 
       //! Implementation of standard algebraic addition operation
-      friend     inline idotprecision operator +(const idotprecision &,const real &) throw();
+      friend     inline idotprecision operator +(const idotprecision &,const real &);
       //! Implementation of standard algebraic addition operation
-      friend     inline idotprecision operator +(const real &,const idotprecision &) throw();
+      friend     inline idotprecision operator +(const real &,const idotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend     inline idotprecision operator -(const idotprecision &,const real &) throw();
+      friend     inline idotprecision operator -(const idotprecision &,const real &);
       //! Implementation of standard algebraic subtraction operation
-      friend     inline idotprecision operator -(const real &,const idotprecision &) throw();
+      friend     inline idotprecision operator -(const real &,const idotprecision &);
       //! Returns the convex hull of the arguments
-      friend     inline idotprecision operator |(const real &,const idotprecision &) throw();
+      friend     inline idotprecision operator |(const real &,const idotprecision &);
       //! Returns the convex hull of the arguments
-      friend     inline idotprecision operator |(const idotprecision &,const real &) throw();
+      friend     inline idotprecision operator |(const idotprecision &,const real &);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const real &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const real &,const idotprecision &);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const idotprecision &,const real &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const idotprecision &,const real &);
       
       //! Implementation of standard algebraic addition operation
-      friend            idotprecision operator +(const idotprecision &,const l_real &) throw();
+      friend            idotprecision operator +(const idotprecision &,const l_real &);
       //! Implementation of standard algebraic addition operation
-      friend            idotprecision operator +(const l_real &,const idotprecision &) throw();
+      friend            idotprecision operator +(const l_real &,const idotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend            idotprecision operator -(const idotprecision &,const l_real &) throw();
+      friend            idotprecision operator -(const idotprecision &,const l_real &);
       //! Implementation of standard algebraic subtraction operation
-      friend            idotprecision operator -(const l_real &,const idotprecision &) throw();
+      friend            idotprecision operator -(const l_real &,const idotprecision &);
       //! Returns the convex hull of the arguments
-      friend            idotprecision operator |(const l_real &,const idotprecision &) throw();
+      friend            idotprecision operator |(const l_real &,const idotprecision &);
       //! Returns the convex hull of the arguments
-      friend            idotprecision operator |(const idotprecision &,const l_real &) throw();
+      friend            idotprecision operator |(const idotprecision &,const l_real &);
       //! Returns the intersection of the arguments
-      friend            idotprecision operator &(const l_real &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend            idotprecision operator &(const l_real &,const idotprecision &);
       //! Returns the intersection of the arguments
-      friend            idotprecision operator &(const idotprecision &,const l_real &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend            idotprecision operator &(const idotprecision &,const l_real &);
 
       //! Implementation of standard algebraic addition operation
-      friend     inline idotprecision operator +(const idotprecision &,const interval &) throw();
+      friend     inline idotprecision operator +(const idotprecision &,const interval &);
       //! Implementation of standard algebraic addition operation
-      friend     inline idotprecision operator +(const interval &,const idotprecision &) throw();
+      friend     inline idotprecision operator +(const interval &,const idotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend     inline idotprecision operator -(const idotprecision &,const interval &) throw();
+      friend     inline idotprecision operator -(const idotprecision &,const interval &);
       //! Implementation of standard algebraic subtraction operation
-      friend     inline idotprecision operator -(const interval &,const idotprecision &) throw();
+      friend     inline idotprecision operator -(const interval &,const idotprecision &);
       //! Returns the convex hull of the arguments
-      friend     inline idotprecision operator |(const interval &,const idotprecision &) throw();
+      friend     inline idotprecision operator |(const interval &,const idotprecision &);
       //! Returns the convex hull of the arguments
-      friend     inline idotprecision operator |(const idotprecision &,const interval &) throw();
+      friend     inline idotprecision operator |(const idotprecision &,const interval &);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const interval &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const interval &,const idotprecision &);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const idotprecision &,const interval &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const idotprecision &,const interval &);
 
       //! Implementation of standard algebraic addition and allocation operation
-      friend     inline idotprecision & operator +=(idotprecision &,const idotprecision &) throw();
+      friend     inline idotprecision & operator +=(idotprecision &,const idotprecision &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend     inline idotprecision & operator -=(idotprecision &,const idotprecision &) throw();
+      friend     inline idotprecision & operator -=(idotprecision &,const idotprecision &);
       //! Implementation of standard algebraic addition and allocation operation
-      friend     inline idotprecision & operator +=(idotprecision &,const interval &) throw();
+      friend     inline idotprecision & operator +=(idotprecision &,const interval &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend     inline idotprecision & operator -=(idotprecision &,const interval &) throw();
+      friend     inline idotprecision & operator -=(idotprecision &,const interval &);
       //! Implementation of standard algebraic addition and allocation operation
-      friend     inline idotprecision & operator +=(idotprecision &,const real &) throw();
+      friend     inline idotprecision & operator +=(idotprecision &,const real &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend     inline idotprecision & operator -=(idotprecision &,const real &) throw();
+      friend     inline idotprecision & operator -=(idotprecision &,const real &);
       //! Implementation of standard algebraic addition and allocation operation
-      friend            idotprecision & operator +=(idotprecision &,const l_real &) throw();
+      friend            idotprecision & operator +=(idotprecision &,const l_real &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend            idotprecision & operator -=(idotprecision &,const l_real &) throw();
+      friend            idotprecision & operator -=(idotprecision &,const l_real &);
       //! Implementation of standard algebraic addition and allocation operation
-      friend     inline idotprecision & operator +=(idotprecision &,const l_interval &) throw();
+      friend     inline idotprecision & operator +=(idotprecision &,const l_interval &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend     inline idotprecision & operator -=(idotprecision &,const l_interval &) throw();
+      friend     inline idotprecision & operator -=(idotprecision &,const l_interval &);
       
       //! Allocates the convex hull of the arguments to the first argument
-      friend     inline idotprecision & operator |=(idotprecision &,const idotprecision &) throw();
+      friend     inline idotprecision & operator |=(idotprecision &,const idotprecision &);
       //! Allocates the intersection of the arguments to the first argument
-      friend     inline idotprecision & operator &=(idotprecision &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision & operator &=(idotprecision &,const idotprecision &);
 
       //! Implementation of standard algebraic addition and allocation operation
-      friend     inline idotprecision & operator +=(idotprecision &,const dotprecision &) throw();
+      friend     inline idotprecision & operator +=(idotprecision &,const dotprecision &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend     inline idotprecision & operator -=(idotprecision &,const dotprecision &) throw();
+      friend     inline idotprecision & operator -=(idotprecision &,const dotprecision &);
 
       //! Allocates the convex hull of the arguments to the first argument
-      friend     inline idotprecision & operator |=(idotprecision &,const dotprecision &) throw();
+      friend     inline idotprecision & operator |=(idotprecision &,const dotprecision &);
       //! Allocates the intersection of the arguments to the first argument
-      friend     inline idotprecision & operator &=(idotprecision &,const dotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision & operator &=(idotprecision &,const dotprecision &);
 
-//      friend     inline idotprecision & operator |=(idotprecision & i,const long & l) throw() { return i|=_dotprecision(l); }
-//      friend     inline idotprecision & operator &=(idotprecision & i,const long & l) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) { return i&=_dotprecision(l); }
+//      friend     inline idotprecision & operator |=(idotprecision & i,const long & l) { return i|=_dotprecision(l); }
+//      friend     inline idotprecision & operator &=(idotprecision & i,const long & l) { return i&=_dotprecision(l); }
       //! Allocates the convex hull of the arguments to the first argument
-      friend     inline idotprecision & operator |=(idotprecision & i,const real & l) throw() { return i|=dotprecision(l); }
+      friend     inline idotprecision & operator |=(idotprecision & i,const real & l) { return i|=dotprecision(l); }
       //! Allocates the intersection of the arguments to the first argument
-      friend     inline idotprecision & operator &=(idotprecision & i,const real & l) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) { return i&=dotprecision(l); }
-
-      //! Allocates the convex hull of the arguments to the first argument
-      friend            idotprecision & operator |=(idotprecision & i,const l_real & l) throw(); // in l_real.cpp
-      //! Allocates the intersection of the arguments to the first argument
-      friend            idotprecision & operator &=(idotprecision & i,const l_real & l) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL); // in l_real.cpp
+      friend     inline idotprecision & operator &=(idotprecision & i,const real & l) { return i&=dotprecision(l); }
 
       //! Allocates the convex hull of the arguments to the first argument
-      friend     inline idotprecision & operator |=(idotprecision & i,const l_interval & l) throw(); // in l_interv.inl
+      friend            idotprecision & operator |=(idotprecision & i,const l_real & l); // in l_real.cpp
       //! Allocates the intersection of the arguments to the first argument
-      friend     inline idotprecision & operator &=(idotprecision & i,const l_interval & l) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL); // in l_interv.inl
+      friend            idotprecision & operator &=(idotprecision & i,const l_real & l); // in l_real.cpp
+
+      //! Allocates the convex hull of the arguments to the first argument
+      friend     inline idotprecision & operator |=(idotprecision & i,const l_interval & l); // in l_interv.inl
+      //! Allocates the intersection of the arguments to the first argument
+      friend     inline idotprecision & operator &=(idotprecision & i,const l_interval & l); // in l_interv.inl
 
       // ---- Vergleichsop. ----
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const idotprecision &,const idotprecision &) throw();
+      friend inline bool operator ==(const idotprecision &,const idotprecision &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const idotprecision &,const idotprecision &) throw();
+      friend inline bool operator !=(const idotprecision &,const idotprecision &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const dotprecision &,const idotprecision &) throw();
+      friend inline bool operator ==(const dotprecision &,const idotprecision &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const dotprecision &,const idotprecision &) throw();
+      friend inline bool operator !=(const dotprecision &,const idotprecision &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const idotprecision &,const dotprecision &) throw();
+      friend inline bool operator ==(const idotprecision &,const dotprecision &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const idotprecision &,const dotprecision &) throw();
+      friend inline bool operator !=(const idotprecision &,const dotprecision &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const real &,const idotprecision &) throw();
+      friend inline bool operator ==(const real &,const idotprecision &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const real &,const idotprecision &) throw();
+      friend inline bool operator !=(const real &,const idotprecision &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const idotprecision &,const real &) throw();
+      friend inline bool operator ==(const idotprecision &,const real &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const idotprecision &,const real &) throw();
+      friend inline bool operator !=(const idotprecision &,const real &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const interval &,const idotprecision &) throw();
+      friend inline bool operator ==(const interval &,const idotprecision &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const interval &,const idotprecision &) throw();
+      friend inline bool operator !=(const interval &,const idotprecision &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const idotprecision &,const interval &) throw();
+      friend inline bool operator ==(const idotprecision &,const interval &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const idotprecision &,const interval &) throw();
+      friend inline bool operator !=(const idotprecision &,const interval &);
 
       // ---- Mengenvergle. ----
 
       //! Implementation of standard less-than operation
-      friend inline bool operator  <(const idotprecision &,const idotprecision &) throw();
+      friend inline bool operator  <(const idotprecision &,const idotprecision &);
       //! Implementation of standard greater-than operation
-      friend inline bool operator  >(const idotprecision &,const idotprecision &) throw();
+      friend inline bool operator  >(const idotprecision &,const idotprecision &);
       //! Implementation of standard less-or-equal-than operation
-      friend inline bool operator <=(const idotprecision &,const idotprecision &) throw();
+      friend inline bool operator <=(const idotprecision &,const idotprecision &);
       //! Implementation of standard greater-or-equal-than operation
-      friend inline bool operator >=(const idotprecision &,const idotprecision &) throw();
+      friend inline bool operator >=(const idotprecision &,const idotprecision &);
 
       //! Implementation of standard less-than operation
-      friend inline bool operator  <(const dotprecision &,const idotprecision &) throw();
+      friend inline bool operator  <(const dotprecision &,const idotprecision &);
       //! Implementation of standard more-than operation
-      friend inline bool operator  >(const dotprecision &,const idotprecision &) throw() { return false; }
+      friend inline bool operator  >(const dotprecision &,const idotprecision &) { return false; }
       //! Implementation of standard less-or-equal-than operation
-      friend inline bool operator <=(const dotprecision &,const idotprecision &) throw();
+      friend inline bool operator <=(const dotprecision &,const idotprecision &);
       //! Implementation of standard greater-or-equal-than operation
-      friend inline bool operator >=(const dotprecision &,const idotprecision &) throw();
+      friend inline bool operator >=(const dotprecision &,const idotprecision &);
 
       //! Implementation of standard less-than operation
-      friend inline bool operator  <(const idotprecision &,const dotprecision &) throw() { return false; }
+      friend inline bool operator  <(const idotprecision &,const dotprecision &) { return false; }
       //! Implementation of standard more-than operation
-      friend inline bool operator  >(const idotprecision &,const dotprecision &) throw();
+      friend inline bool operator  >(const idotprecision &,const dotprecision &);
       //! Implementation of standard less-or-equal-than operation
-      friend inline bool operator <=(const idotprecision &,const dotprecision &) throw();
+      friend inline bool operator <=(const idotprecision &,const dotprecision &);
       //! Implementation of standard greater-or-equal-than operation
-      friend inline bool operator >=(const idotprecision &,const dotprecision &) throw();
+      friend inline bool operator >=(const idotprecision &,const dotprecision &);
 
       //! Implementation of standard less-than operation
-      friend inline bool operator  <(const real &,const idotprecision &) throw();
+      friend inline bool operator  <(const real &,const idotprecision &);
       //! Implementation of standard more-than operation
-      friend inline bool operator  >(const real &,const idotprecision &) throw() { return false; }
+      friend inline bool operator  >(const real &,const idotprecision &) { return false; }
       //! Implementation of standard less-or-equal-than operation
-      friend inline bool operator <=(const real &,const idotprecision &) throw();
+      friend inline bool operator <=(const real &,const idotprecision &);
       //! Implementation of standard greater-or-equal-than operation
-      friend inline bool operator >=(const real &,const idotprecision &) throw();
+      friend inline bool operator >=(const real &,const idotprecision &);
 
       //! Implementation of standard less-than operation
-      friend inline bool operator  <(const idotprecision &,const real &) throw() { return false; }
+      friend inline bool operator  <(const idotprecision &,const real &) { return false; }
       //! Implementation of standard more-than operation
-      friend inline bool operator  >(const idotprecision &,const real &) throw();
+      friend inline bool operator  >(const idotprecision &,const real &);
       //! Implementation of standard less-or-equal-than operation
-      friend inline bool operator <=(const idotprecision &,const real &) throw();
+      friend inline bool operator <=(const idotprecision &,const real &);
       //! Implementation of standard greater-or-equal-than operation
-      friend inline bool operator >=(const idotprecision &,const real &) throw();
+      friend inline bool operator >=(const idotprecision &,const real &);
 
       //! Implementation of standard less-than operation
-      friend inline bool operator  <(const interval &,const idotprecision &) throw();
+      friend inline bool operator  <(const interval &,const idotprecision &);
       //! Implementation of standard more-than operation
-      friend inline bool operator  >(const interval &,const idotprecision &) throw();
+      friend inline bool operator  >(const interval &,const idotprecision &);
       //! Implementation of standard less-or-equal-than operation
-      friend inline bool operator <=(const interval &,const idotprecision &) throw();
+      friend inline bool operator <=(const interval &,const idotprecision &);
       //! Implementation of standard greater-or-equal-than operation
-      friend inline bool operator >=(const interval &,const idotprecision &) throw();
+      friend inline bool operator >=(const interval &,const idotprecision &);
 
       //! Implementation of standard less-than operation
-      friend inline bool operator  <(const idotprecision &,const interval &) throw();
+      friend inline bool operator  <(const idotprecision &,const interval &);
       //! Implementation of standard more-than operation
-      friend inline bool operator  >(const idotprecision &,const interval &) throw();
+      friend inline bool operator  >(const idotprecision &,const interval &);
       //! Implementation of standard less-or-equal-than operation
-      friend inline bool operator <=(const idotprecision &,const interval &) throw();
+      friend inline bool operator <=(const idotprecision &,const interval &);
       //! Implementation of standard greater-or-equal-than operation
-      friend inline bool operator >=(const idotprecision &,const interval &) throw();
+      friend inline bool operator >=(const idotprecision &,const interval &);
 
       //! Implementation of standard negation operation
-      friend inline bool operator !(const idotprecision&) throw();
-//                         operator void *(void) throw() { return (void *)(!*this); }
+      friend inline bool operator !(const idotprecision&);
+//                         operator void *(void) { return (void *)(!*this); }
       
       // ---- Funktionen    ----
       
       //! Returns the infimum of a dotprecison interval
-      friend dotprecision & Inf(idotprecision& a)  throw() { return a.inf; }
+      friend dotprecision & Inf(idotprecision& a)  { return a.inf; }
       //! Returns the supremum of a dotprecison interval
-      friend dotprecision & Sup(idotprecision& a)  throw() { return a.sup; }
+      friend dotprecision & Sup(idotprecision& a)  { return a.sup; }
       //! Returns the infimum of a dotprecison interval
-      friend const dotprecision & Inf(const idotprecision& a)  throw() { return a.inf; }
+      friend const dotprecision & Inf(const idotprecision& a)  { return a.inf; }
       //! Returns the supremum of a dotprecison interval
-      friend const dotprecision & Sup(const idotprecision& a)  throw() { return a.sup; }
+      friend const dotprecision & Sup(const idotprecision& a)  { return a.sup; }
       
       //! Returns the dotprecison interval with the new given infimum value
-      friend inline idotprecision& SetInf (idotprecision &, const dotprecision &) throw();
+      friend inline idotprecision& SetInf (idotprecision &, const dotprecision &);
       //! Returns the dotprecison interval with the new given supremum value
-      friend inline idotprecision& SetSup (idotprecision &, const dotprecision &) throw();
+      friend inline idotprecision& SetSup (idotprecision &, const dotprecision &);
       //! Returns the dotprecison interval with the new given infimum value
-      friend inline idotprecision& SetInf (idotprecision &, const real &) throw();
+      friend inline idotprecision& SetInf (idotprecision &, const real &);
       //! Returns the dotprecison interval with the new given supremum value
-      friend inline idotprecision& SetSup (idotprecision &, const real &) throw();
+      friend inline idotprecision& SetSup (idotprecision &, const real &);
       //! Returns the dotprecison interval with the unchecked new given infimum value
-      friend inline idotprecision& UncheckedSetInf (idotprecision &, const dotprecision &) throw();
+      friend inline idotprecision& UncheckedSetInf (idotprecision &, const dotprecision &);
       //! Returns the dotprecison interval with the unchecked new given supremum value
-      friend inline idotprecision& UncheckedSetSup (idotprecision &, const dotprecision &) throw();
+      friend inline idotprecision& UncheckedSetSup (idotprecision &, const dotprecision &);
       //! Returns the dotprecison interval with the unchecked new given infimum value
-      friend inline idotprecision& UncheckedSetInf (idotprecision &, const real &) throw();
+      friend inline idotprecision& UncheckedSetInf (idotprecision &, const real &);
       //! Returns the dotprecison interval with the unchecked new given supremum value
-      friend inline idotprecision& UncheckedSetSup (idotprecision &, const real &) throw();
+      friend inline idotprecision& UncheckedSetSup (idotprecision &, const real &);
 
       //! Returns if the dotprecision interval is empty
-      friend inline bool IsEmpty (const idotprecision& a) throw();
+      friend inline bool IsEmpty (const idotprecision& a);
 
       //! Returns the absolute value of a dotprecision interval
-      friend inline idotprecision   abs  (const idotprecision& a) throw();
+      friend inline idotprecision   abs  (const idotprecision& a);
       //! Returns the middle of the dotprecision interval
-      friend inline dotprecision    mid  (const idotprecision& a) throw();
+      friend inline dotprecision    mid  (const idotprecision& a);
       //! Returns the rounded diameter of the dotprecision interval
-      friend inline dotprecision    diam (const idotprecision& a) throw();
+      friend inline dotprecision    diam (const idotprecision& a);
       
-      friend void rnd(const idotprecision &,interval &) throw();
-      friend interval rnd(const idotprecision &) throw();
+      friend void rnd(const idotprecision &,interval &);
+      friend interval rnd(const idotprecision &);
       
       //! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend        void accumulate  (idotprecision&, const interval&, const interval&) throw();
+      friend        void accumulate  (idotprecision&, const interval&, const interval&);
       //! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend inline void accumulate  (idotprecision&, const interval&, const real&) throw();
+      friend inline void accumulate  (idotprecision&, const interval&, const real&);
       //! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend inline void accumulate  (idotprecision&, const real&, const interval&) throw();
+      friend inline void accumulate  (idotprecision&, const real&, const interval&);
       //! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend inline void accumulate  (idotprecision&, const real&, const real&) throw();
+      friend inline void accumulate  (idotprecision&, const real&, const real&);
 };
 
 //----------------------------------------------------------------------

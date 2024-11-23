@@ -35,13 +35,13 @@ namespace cxsc {
 // --------------------------------------------------------------------------
 // --------------------------------------------------------------------------
 
-	inline void times2pown(lx_real &a, const real &n) throw()
+	inline void times2pown(lx_real &a, const real &n)
 {
 	a = lx_real(add_real(n,a.ex),a.lr);
 }
 
 inline std::string & operator << (std::string &s, const lx_real& a) 
-		throw()
+		
 // The value of a variable a of type lx_real is copied to a string s.
 // s has the form:  {2**(ex)*lr}
 {  
@@ -72,7 +72,7 @@ inline std::string & operator << (std::string &s, const lx_real& a)
 	else return 0;
 }
 
-    inline real add_real(const real &a, const real &b) throw()
+    inline real add_real(const real &a, const real &b)
 {
 	real res(a+b);
 	if (abs(res)>Max_Int_R)
@@ -81,7 +81,7 @@ inline std::string & operator << (std::string &s, const lx_real& a)
 	return res;
 }
 
-    inline real sub_real(const real &a, const real &b) throw()
+    inline real sub_real(const real &a, const real &b)
 {
 	real res(a-b);
 	if (abs(res)>Max_Int_R)
@@ -89,25 +89,25 @@ inline std::string & operator << (std::string &s, const lx_real& a)
 	return res;
 }
 
-    inline int StagPrec(const lx_real &a) throw() 
+    inline int StagPrec(const lx_real &a) 
 { return StagPrec(a.lr); }
 
-	 inline real expo(const lx_real &a) throw()
+	 inline real expo(const lx_real &a)
 	 { return (a.ex); }
 
-	 inline int sign(const lx_real &a) throw() 
+	 inline int sign(const lx_real &a) 
 	 { return sign(a.lr); }
 
-	 inline l_real lr_part(const lx_real &a) throw()
+	 inline l_real lr_part(const lx_real &a)
 	 { return (a.lr); }
 
-	 inline lx_real abs(const lx_real& a) throw()
+	 inline lx_real abs(const lx_real& a)
 	 { return lx_real(a.ex,abs(a.lr)); }
 	 
-	 inline lx_real adjust(const lx_real &a) throw()
+	 inline lx_real adjust(const lx_real &a)
 	 { return lx_real(a.ex,adjust(a.lr)); }
 	 
-	 inline void times2pown_neg(lx_real& a, const real& n) throw()
+	 inline void times2pown_neg(lx_real& a, const real& n)
 // Calculating an approximation of  a*2^n, n = 0,-1,-2,...,-9007199254740991.0;
 // n MUST be an integer and n MUST not be positive! 
 // These conditions are not tested in this function!
@@ -144,21 +144,21 @@ inline std::string & operator << (std::string &s, const lx_real& a)
 	 } // times2pown_neg(...)
 
 
-	 inline lx_real & lx_real::operator = (const lx_real &a) throw()
+	 inline lx_real & lx_real::operator = (const lx_real &a)
 	 {
 		 ex = a.ex;
 		 lr = a.lr;
 		 return *this;
 	 }
 
-	 inline lx_real & lx_real::operator = (const l_real &a) throw()
+	 inline lx_real & lx_real::operator = (const l_real &a)
 	 {
 		 ex = 0;
 		 lr = a;
 		 return *this;
 	 }
 
-	 inline lx_real & lx_real::operator = (const real &a) throw()
+	 inline lx_real & lx_real::operator = (const real &a)
 	 {
 		 ex = 0;
 		 lr = a;
@@ -167,189 +167,189 @@ inline std::string & operator << (std::string &s, const lx_real& a)
 
 // -----------------------------------------------------
 
-	 inline bool eq_zero(const lx_real &a) throw()
+	 inline bool eq_zero(const lx_real &a)
 	 {  return (a.lr == 0 );  }
 
-	 inline bool gr_zero(const lx_real &a) throw()
+	 inline bool gr_zero(const lx_real &a)
 	 {  return (a.lr > 0 );  }
 
-	 inline bool ge_zero(const lx_real &a) throw()
+	 inline bool ge_zero(const lx_real &a)
 	 {  return (a.lr >= 0);  }
 
-	 inline bool sm_zero(const lx_real &a) throw()
+	 inline bool sm_zero(const lx_real &a)
 	 {  return (a.lr < 0 );  }
 
-	 inline bool se_zero(const lx_real &a) throw()
+	 inline bool se_zero(const lx_real &a)
 	 {  return (a.lr <= 0);  }
 
 // -----------------------------------------------------
 
-	 inline lx_real operator -(const lx_real &a) throw()
+	 inline lx_real operator -(const lx_real &a)
 	 { return lx_real(a.ex,-a.lr); }
 
-	 inline lx_real operator +(const lx_real &a) throw()
+	 inline lx_real operator +(const lx_real &a)
 	 { return a; }
 
-	 inline lx_real operator + (const lx_real& a, const l_real& b) throw()
+	 inline lx_real operator + (const lx_real& a, const l_real& b)
 	 { return a + lx_real(b); }
-	 inline lx_real operator + (const l_real& a, const lx_real& b) throw()
+	 inline lx_real operator + (const l_real& a, const lx_real& b)
 	 { return lx_real(a) + b; }
-	 inline lx_real operator + (const lx_real& a, const real& b) throw()
+	 inline lx_real operator + (const lx_real& a, const real& b)
 	 { return a + lx_real(l_real(b)); }
-	 inline lx_real operator + (const real& a, const lx_real& b) throw()
+	 inline lx_real operator + (const real& a, const lx_real& b)
 	 { return lx_real(l_real(a)) + b; }
 
-	 inline lx_real & operator +=(lx_real& a, const lx_real& b) throw()
+	 inline lx_real & operator +=(lx_real& a, const lx_real& b)
 	 { return a = a+b; }
-	 inline lx_real & operator +=(lx_real& a, const l_real& b) throw()
+	 inline lx_real & operator +=(lx_real& a, const l_real& b)
 	 { return a = a+b; }
-	 inline lx_real & operator +=(lx_real& a, const real& b) throw()
+	 inline lx_real & operator +=(lx_real& a, const real& b)
 	 { return a = a+b; }
 
-	 inline lx_real operator - (const lx_real& a, const lx_real& b) throw()
+	 inline lx_real operator - (const lx_real& a, const lx_real& b)
 	 { return a + lx_real(-b); }
-	 inline lx_real operator - (const lx_real& a, const l_real& b) throw()
+	 inline lx_real operator - (const lx_real& a, const l_real& b)
 	 { return a + lx_real(-b); }
-	 inline lx_real operator - (const l_real& a, const lx_real& b) throw()
+	 inline lx_real operator - (const l_real& a, const lx_real& b)
 	 { return lx_real(a) + lx_real(-b); }
-	 inline lx_real operator - (const lx_real& a, const real& b) throw()
+	 inline lx_real operator - (const lx_real& a, const real& b)
 	 { return a + lx_real(-b); }
-	 inline lx_real operator - (const real& a, const lx_real& b) throw()
+	 inline lx_real operator - (const real& a, const lx_real& b)
 	 { return lx_real(a) + lx_real(-b); }
 
-	 inline lx_real & operator -=(lx_real& a, const lx_real& b) throw()
+	 inline lx_real & operator -=(lx_real& a, const lx_real& b)
 	 { return a = a-b; }
-	 inline lx_real & operator -=(lx_real& a, const l_real& b) throw()
+	 inline lx_real & operator -=(lx_real& a, const l_real& b)
 	 { return a = a-b; }
-	 inline lx_real & operator -=(lx_real& a, const real& b) throw()
+	 inline lx_real & operator -=(lx_real& a, const real& b)
 	 { return a = a-b; }
 
-	 inline lx_real operator * (const lx_real& a, const l_real& b) throw()
+	 inline lx_real operator * (const lx_real& a, const l_real& b)
 	 { return a * lx_real(b); }
-	 inline lx_real operator * (const l_real& a, const lx_real& b) throw()
+	 inline lx_real operator * (const l_real& a, const lx_real& b)
 	 { return lx_real(a) * b; }
-	 inline lx_real operator * (const lx_real& a, const real& b) throw()
+	 inline lx_real operator * (const lx_real& a, const real& b)
 	 { return a * lx_real(b); }
-	 inline lx_real operator * (const real& a, const lx_real& b) throw()
+	 inline lx_real operator * (const real& a, const lx_real& b)
 	 { return lx_real(a) * b; }
 
-	 inline lx_real & operator *=(lx_real& a, const lx_real& b) throw()
+	 inline lx_real & operator *=(lx_real& a, const lx_real& b)
 	 { return a = a*b; }
-	 inline lx_real & operator *=(lx_real& a, const l_real& b) throw()
+	 inline lx_real & operator *=(lx_real& a, const l_real& b)
 	 { return a = a*b; }
-	 inline lx_real & operator *=(lx_real& a, const real& b) throw()
+	 inline lx_real & operator *=(lx_real& a, const real& b)
 	 { return a = a*b; }
 
-	 inline lx_real operator / (const lx_real& a, const l_real& b) throw()
+	 inline lx_real operator / (const lx_real& a, const l_real& b)
 	 { return a / lx_real(b); }
-	 inline lx_real operator / (const l_real& a, const lx_real& b) throw()
+	 inline lx_real operator / (const l_real& a, const lx_real& b)
 	 { return lx_real(a) / b; }
-	 inline lx_real operator / (const lx_real& a, const real& b) throw()
+	 inline lx_real operator / (const lx_real& a, const real& b)
 	 { return a / lx_real(b); }
-	 inline lx_real operator / (const real& a, const lx_real& b) throw()
+	 inline lx_real operator / (const real& a, const lx_real& b)
 	 { return lx_real(a) / b; }
 
-	 inline lx_real & operator /=(lx_real& a, const lx_real& b) throw()
+	 inline lx_real & operator /=(lx_real& a, const lx_real& b)
 	 { return a = a/b; }
-	 inline lx_real & operator /=(lx_real& a, const l_real& b) throw()
+	 inline lx_real & operator /=(lx_real& a, const l_real& b)
 	 { return a = a/b; }
-	 inline lx_real & operator /=(lx_real& a, const real& b) throw()
+	 inline lx_real & operator /=(lx_real& a, const real& b)
 	 { return a = a/b; }
 
-	 inline bool operator ! (const lx_real& a) throw()
+	 inline bool operator ! (const lx_real& a)
 	 { return !a.lr; }
 
-	 inline bool operator == (const lx_real &a, const l_real &b) throw()
+	 inline bool operator == (const lx_real &a, const l_real &b)
 	 {  return (a==lx_real(b));  }
 
-	 inline bool operator == (const l_real &a, const lx_real &b) throw()
+	 inline bool operator == (const l_real &a, const lx_real &b)
 	 {  return (lx_real(a)==b);  }
 
-	 inline bool operator == (const lx_real &a, const real &b) throw()
+	 inline bool operator == (const lx_real &a, const real &b)
 	 {  return (a==lx_real(b));  }
 
-	 inline bool operator == (const real &a, const lx_real &b) throw()
+	 inline bool operator == (const real &a, const lx_real &b)
 	 {  return (lx_real(a)==b);  }
 
 
-	 inline bool operator != (const lx_real &a, const lx_real &b) throw()
+	 inline bool operator != (const lx_real &a, const lx_real &b)
 	 {  return !(a==b); }
 
-	 inline bool operator != (const lx_real &a, const l_real &b) throw()
+	 inline bool operator != (const lx_real &a, const l_real &b)
 	 {  return !(a==lx_real(b));  }
 
-	 inline bool operator != (const l_real &a, const lx_real &b) throw()
+	 inline bool operator != (const l_real &a, const lx_real &b)
 	 {  return !(lx_real(a)==b);  }
 
-	 inline bool operator != (const lx_real &a, const real &b) throw()
+	 inline bool operator != (const lx_real &a, const real &b)
 	 {  return !(a==lx_real(b));  }
 
-	 inline bool operator != (const real &a, const lx_real &b) throw()
+	 inline bool operator != (const real &a, const lx_real &b)
 	 {  return !(lx_real(a)==b);  }
 
-	 inline bool operator <= (const lx_real &a, const lx_real &b) throw()
+	 inline bool operator <= (const lx_real &a, const lx_real &b)
 	 { return !(a>b); }
 
-	 inline bool operator < (const lx_real &a, const lx_real &b) throw()
+	 inline bool operator < (const lx_real &a, const lx_real &b)
 	 {  return (b>a); }
 
-	 inline bool operator >= (const lx_real &a, const lx_real &b) throw()
+	 inline bool operator >= (const lx_real &a, const lx_real &b)
 	 { return !(a<b); }
 
 // ---------------------------------------------------------
 
-	 inline bool operator > (const real &a, const lx_real &b) throw()
+	 inline bool operator > (const real &a, const lx_real &b)
 	 { return lx_real(a)>b; }
 
-	 inline bool operator <= (const real &a, const lx_real &b) throw()
+	 inline bool operator <= (const real &a, const lx_real &b)
 	 { return !(a>b); }
 
-	 inline bool operator <  (const real &a, const lx_real &b) throw()
+	 inline bool operator <  (const real &a, const lx_real &b)
 	 {  return b>lx_real(a); }
 
-	 inline bool operator >= (const real &a, const lx_real &b) throw()
+	 inline bool operator >= (const real &a, const lx_real &b)
 	 { return !(a<b); }
 
 // ---------------------------------------------------------
 
-	 inline bool operator >  (const lx_real &a, const real &b) throw()
+	 inline bool operator >  (const lx_real &a, const real &b)
 	 { return a>lx_real(b); }
 
-	 inline bool operator <= (const lx_real &a, const real &b) throw()
+	 inline bool operator <= (const lx_real &a, const real &b)
 	 { return !(a>b); }
 
-	 inline bool operator <  (const lx_real &a, const real &b) throw()
+	 inline bool operator <  (const lx_real &a, const real &b)
 	 {  return b>a; }
 
-	 inline bool operator >= (const lx_real &a, const real &b) throw()
+	 inline bool operator >= (const lx_real &a, const real &b)
 	 { return !(a<b); }
 
 // ---------------------------------------------------------
 
-	 inline bool operator >  (const l_real &a, const lx_real &b) throw()
+	 inline bool operator >  (const l_real &a, const lx_real &b)
 	 { return lx_real(a)>b; }
 
-	 inline bool operator <= (const l_real &a, const lx_real &b) throw()
+	 inline bool operator <= (const l_real &a, const lx_real &b)
 	 { return !(a>b); }
 
-	 inline bool operator <  (const l_real &a, const lx_real &b) throw()
+	 inline bool operator <  (const l_real &a, const lx_real &b)
 	 {  return b>lx_real(a); }
 
-	 inline bool operator >= (const l_real &a, const lx_real &b) throw()
+	 inline bool operator >= (const l_real &a, const lx_real &b)
 	 { return !(a<b); }
 
 // ---------------------------------------------------------
 
-	 inline bool operator >  (const lx_real &a, const l_real &b) throw()
+	 inline bool operator >  (const lx_real &a, const l_real &b)
 	 { return a>lx_real(b); }
 
-	 inline bool operator <= (const lx_real &a, const l_real &b) throw()
+	 inline bool operator <= (const lx_real &a, const l_real &b)
 	 { return !(a>b); }
 
-	 inline bool operator <  (const lx_real &a, const l_real &b) throw()
+	 inline bool operator <  (const lx_real &a, const l_real &b)
 	 {  return b>a; }
 
-	 inline bool operator >= (const lx_real &a, const l_real &b) throw()
+	 inline bool operator >= (const lx_real &a, const l_real &b)
 	 { return !(a<b); }
 
 // -----------------------------------------------------
@@ -361,7 +361,7 @@ inline std::string & operator << (std::string &s, const lx_real& a)
 	 inline lx_real min(const lx_real& a, const lx_real& b)
 	 { return (b>a)? a : b; }
 
-	 inline real cutint(const real& x) throw()
+	 inline real cutint(const real& x)
 // y = cutint(x) delivers the truncated part y of x.
 // If y is not an integer value then 9007199254740992.0
 // is returned;      

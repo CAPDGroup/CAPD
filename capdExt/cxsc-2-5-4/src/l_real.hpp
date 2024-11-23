@@ -84,371 +84,371 @@ class l_real
    public:
       // ---- Constructors ----
       //! Constructor of class l_real
-      l_real(void) throw();
+      l_real(void);
       //! Constructor of class l_real
-      l_real(const l_real &) throw();
+      l_real(const l_real &);
       
 
       //! Implementation of standard assigning operator
-      l_real & operator =(const l_real &) throw();
+      l_real & operator =(const l_real &);
       //! Implementation of standard assigning operator
-      l_real & operator =(const real &) throw();
+      l_real & operator =(const real &);
       //! Implementation of standard assigning operator
-      l_real & operator =(const dotprecision &) throw();
+      l_real & operator =(const dotprecision &);
       //! Implementation of standard assigning operator
-      l_real & operator =(const lx_real &) throw(); // Blomquist, 12.11.2008;
+      l_real & operator =(const lx_real &); // Blomquist, 12.11.2008;
 
       // ---- Destructors    ----
-      ~l_real(void) throw();
+      ~l_real(void);
 
       // ---- Type casting ----
       //! Constructor of class l_real
-      explicit l_real(int)          throw();
+      explicit l_real(int)         ;
       //! Constructor of class l_real
-      explicit l_real(long)          throw();
+      explicit l_real(long)         ;
       //! Constructor of class l_real
-      explicit l_real(const real &) throw();
+      explicit l_real(const real &);
       //! Constructor of class l_real
-      explicit l_real(const dotprecision &) throw();
+      explicit l_real(const dotprecision &);
       //! Constructor of class l_real
-      explicit l_real(const double &) throw(); // Blomquist 10.09.02. {l_real.cpp}
+      explicit l_real(const double &); // Blomquist 10.09.02. {l_real.cpp}
       
-      friend real::real(const l_real &) throw();
-      friend dotprecision::dotprecision(const l_real &) throw();
-      friend dotprecision & dotprecision::operator =(const l_real &) throw();
+      friend real::real(const l_real &);
+      friend dotprecision::dotprecision(const l_real &);
+      friend dotprecision & dotprecision::operator =(const l_real &);
 
-//      friend real _real(const l_real & a) throw() { return real(a); }
-//      friend l_real _l_real(const real & a) throw()  { return l_real(a); }
-//      friend dotprecision _dotprecision(const l_real & a) throw()
+//      friend real _real(const l_real & a) { return real(a); }
+//      friend l_real _l_real(const real & a)  { return l_real(a); }
+//      friend dotprecision _dotprecision(const l_real & a)
 //                                               { return dotprecision(a); }
-//      friend l_real _l_real(const dotprecision & a) throw() 
+//      friend l_real _l_real(const dotprecision & a) 
 //                                               { return l_real(a); }
       friend l_interval _unchecked_l_interval(const l_real &, 
-                                              const l_real &) throw();
+                                              const l_real &);
 
       // The following are defined in the specific vector, matrix-files
 #if(CXSC_INDEX_CHECK) 
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rvector &)       throw (ERROR_LRVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LRVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE l_real(const l_rvector &)      ;
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rvector_slice &) throw (ERROR_LRVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LRVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE l_real(const l_rvector_slice &);
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rmatrix &)       throw (ERROR_LRMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LRMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE l_real(const l_rmatrix &)      ;
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rmatrix_slice &) throw (ERROR_LRMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LRMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE l_real(const l_rmatrix_slice &);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rvector &)
       */
-      friend INLINE real _l_real(const l_rvector &)       throw (ERROR_LRVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LRVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _l_real(const l_rvector &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rvector_slice &)
       */
-      friend INLINE real _l_real(const l_rvector_slice &) throw (ERROR_LRVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LRVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _l_real(const l_rvector_slice &);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rmatrix &)
       */
-      friend INLINE real _l_real(const l_rmatrix &)       throw (ERROR_LRMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LRMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _l_real(const l_rmatrix &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rmatrix_slice &)
       */
-      friend INLINE real _l_real(const l_rmatrix_slice &) throw (ERROR_LRMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LRMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _l_real(const l_rmatrix_slice &);
 #else
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rvector &)       throw ();
+      explicit INLINE l_real(const l_rvector &)      ;
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rvector_slice &) throw ();
+      explicit INLINE l_real(const l_rvector_slice &);
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rmatrix &)       throw ();
+      explicit INLINE l_real(const l_rmatrix &)      ;
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rmatrix_slice &) throw ();
+      explicit INLINE l_real(const l_rmatrix_slice &);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rvector &)
       */
-      friend INLINE real _l_real(const l_rvector &)       throw ();
+      friend INLINE real _l_real(const l_rvector &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rvector_slice &)
       */
-      friend INLINE real _l_real(const l_rvector_slice &) throw ();
+      friend INLINE real _l_real(const l_rvector_slice &);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rmatrix &)
       */
-      friend INLINE real _l_real(const l_rmatrix &)       throw ();
+      friend INLINE real _l_real(const l_rmatrix &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rmatrix_slice &)
       */
-      friend INLINE real _l_real(const l_rmatrix_slice &) throw ();
+      friend INLINE real _l_real(const l_rmatrix_slice &);
 #endif
 
 
       // ---- Output functions ----
       //! Implementation of standard output method
-      friend std::ostream & operator <<(std::ostream &,const l_real &) throw();
+      friend std::ostream & operator <<(std::ostream &,const l_real &);
       //! Implementation of standard input method
-      friend std::istream & operator >>(std::istream &,l_real &)       throw();
+      friend std::istream & operator >>(std::istream &,l_real &)      ;
       //! Implementation of standard output method
-      friend std::string & operator <<(std::string &,const l_real &)   throw();
+      friend std::string & operator <<(std::string &,const l_real &)  ;
       //! Implementation of standard input method
-      friend std::string & operator >>(std::string &,l_real &)         throw();
+      friend std::string & operator >>(std::string &,l_real &)        ;
       //! Implementation of standard input method
-      friend void          operator >>(const std::string &,l_real &)   throw();
+      friend void          operator >>(const std::string &,l_real &)  ;
       //! Implementation of standard input method
-      friend void          operator >>(const char *,l_real &)          throw();
+      friend void          operator >>(const char *,l_real &)         ;
 
       // ---- Standard functions ---- (arithmetic operators)
       //! Access to the single components used to store the long data type value
-      real&             operator[](int) const throw();
+      real&             operator[](int) const;
 
       //! Implementation of standard algebraic negative sign operation
-      friend     l_real operator -(const l_real& lr1) throw();
+      friend     l_real operator -(const l_real& lr1);
       //! Implementation of standard algebraic positive sign operation
-      friend     l_real operator +(const l_real& lr1) throw();
+      friend     l_real operator +(const l_real& lr1);
 
       //! Implementation of standard algebraic addition operation
-      friend     l_real operator +(const l_real &,const l_real &) throw();
+      friend     l_real operator +(const l_real &,const l_real &);
       //! Implementation of standard algebraic subtraction operation
-      friend     l_real operator -(const l_real &,const l_real &) throw();
+      friend     l_real operator -(const l_real &,const l_real &);
       //! Implementation of standard algebraic multiplication operation
-      friend     l_real operator *(const l_real &,const l_real &) throw();
+      friend     l_real operator *(const l_real &,const l_real &);
       //! Implementation of standard algebraic division operation
-      friend     l_real operator /(const l_real &,const l_real &) throw(DIV_BY_ZERO);
+      friend     l_real operator /(const l_real &,const l_real &);
       //! Returns the convex hull of the arguments
-      friend inline l_interval operator |(const l_real &,const l_real &) throw();
+      friend inline l_interval operator |(const l_real &,const l_real &);
 
       //! Implementation of standard algebraic addition operation
-      friend     l_real operator +(const l_real &,const real &) throw();
+      friend     l_real operator +(const l_real &,const real &);
       //! Implementation of standard algebraic addition operation
-      friend     l_real operator +(const real &,const l_real &) throw();
+      friend     l_real operator +(const real &,const l_real &);
       //! Implementation of standard algebraic subtraction operation
-      friend     l_real operator -(const l_real &,const real &) throw();
+      friend     l_real operator -(const l_real &,const real &);
       //! Implementation of standard algebraic subtraction operation
-      friend     l_real operator -(const real &,const l_real &) throw();
+      friend     l_real operator -(const real &,const l_real &);
       //! Implementation of standard algebraic multiplication operation
-      friend     l_real operator *(const l_real &,const real &) throw();
+      friend     l_real operator *(const l_real &,const real &);
       //! Implementation of standard algebraic multiplication operation
-      friend     l_real operator *(const real &,const l_real &) throw();
+      friend     l_real operator *(const real &,const l_real &);
       //! Implementation of standard algebraic division operation
-      friend     l_real operator /(const l_real &,const real &) throw();
+      friend     l_real operator /(const l_real &,const real &);
       //! Implementation of standard algebraic division operation
-      friend     l_real operator /(const real &,const l_real &) throw();
+      friend     l_real operator /(const real &,const l_real &);
       //! Returns the convex hull of the arguments
-      friend inline l_interval operator |(const real &,const l_real &) throw();
+      friend inline l_interval operator |(const real &,const l_real &);
       //! Returns the convex hull of the arguments
-      friend inline l_interval operator |(const l_real &,const real &) throw();
+      friend inline l_interval operator |(const l_real &,const real &);
 
       //! Implementation of standard algebraic addition operation
-      friend  dotprecision operator +(const l_real &,const dotprecision &) throw();
+      friend  dotprecision operator +(const l_real &,const dotprecision &);
       //! Implementation of standard algebraic addition operation
-      friend  dotprecision operator +(const dotprecision &,const l_real &) throw();
+      friend  dotprecision operator +(const dotprecision &,const l_real &);
       //! Implementation of standard algebraic subtraction operation
-      friend  dotprecision operator -(const l_real &,const dotprecision &) throw();
+      friend  dotprecision operator -(const l_real &,const dotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend  dotprecision operator -(const dotprecision &,const l_real &) throw();
+      friend  dotprecision operator -(const dotprecision &,const l_real &);
       //! Returns the convex hull of the arguments
-      friend inline idotprecision operator |(const dotprecision &,const l_real &) throw();
+      friend inline idotprecision operator |(const dotprecision &,const l_real &);
       //! Returns the convex hull of the arguments
-      friend inline idotprecision operator |(const l_real &,const dotprecision &) throw();
+      friend inline idotprecision operator |(const l_real &,const dotprecision &);
 
       //! Implementation of standard algebraic addition and allocation operation
-      friend     l_real & operator +=(l_real &,const l_real &) throw();
+      friend     l_real & operator +=(l_real &,const l_real &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend     l_real & operator -=(l_real &,const l_real &) throw();
+      friend     l_real & operator -=(l_real &,const l_real &);
       //! Implementation of standard algebraic multiplication and allocation operation
-      friend     l_real & operator *=(l_real &,const l_real &) throw();
+      friend     l_real & operator *=(l_real &,const l_real &);
       //! Implementation of standard algebraic division and allocation operation
-      friend     l_real & operator /=(l_real &,const l_real &) throw();
+      friend     l_real & operator /=(l_real &,const l_real &);
 
       //! Implementation of standard algebraic addition and allocation operation
-      friend     l_real & operator +=(l_real &,const real &) throw();      
+      friend     l_real & operator +=(l_real &,const real &);      
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend     l_real & operator -=(l_real &,const real &) throw();
+      friend     l_real & operator -=(l_real &,const real &);
       //! Implementation of standard algebraic multiplication and allocation operation
-      friend     l_real & operator *=(l_real &,const real &) throw();      
+      friend     l_real & operator *=(l_real &,const real &);      
       //! Implementation of standard algebraic division and allocation operation
-      friend     l_real & operator /=(l_real &,const real &) throw();
+      friend     l_real & operator /=(l_real &,const real &);
 
       //! Implementation of standard algebraic addition and allocation operation
-      friend     real   & operator +=(real &,const l_real &) throw();
+      friend     real   & operator +=(real &,const l_real &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend     real   & operator -=(real &,const l_real &) throw();
+      friend     real   & operator -=(real &,const l_real &);
       //! Implementation of standard algebraic multiplication and allocation operation
-      friend     real   & operator *=(real &,const l_real &) throw();
+      friend     real   & operator *=(real &,const l_real &);
 	//! Implementation of standard algebraic division and allocation operation
-      friend     real   & operator /=(real &,const l_real &) throw();
+      friend     real   & operator /=(real &,const l_real &);
       
       //! Implementation of standard algebraic addition and allocation operation
-      friend     inline dotprecision & operator +=(dotprecision &d,const l_real &lr) throw() { lr._akku_add(d); return d; }
+      friend     inline dotprecision & operator +=(dotprecision &d,const l_real &lr) { lr._akku_add(d); return d; }
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend     inline dotprecision & operator -=(dotprecision &d,const l_real &lr) throw() { lr._akku_sub(d); return d; }
+      friend     inline dotprecision & operator -=(dotprecision &d,const l_real &lr) { lr._akku_sub(d); return d; }
 
       // ---- Compare operators ----
       //! Implementation of standard equality operation
-      friend bool operator ==(const l_real &,const l_real &) throw();
+      friend bool operator ==(const l_real &,const l_real &);
       //! Implementation of standard negated equality operation
-      friend bool operator !=(const l_real &,const l_real &) throw();
+      friend bool operator !=(const l_real &,const l_real &);
       //! Implementation of standard less-than operation
-      friend bool operator  <(const l_real &,const l_real &) throw();
+      friend bool operator  <(const l_real &,const l_real &);
       //! Implementation of standard greater-than operation
-      friend bool operator  >(const l_real &,const l_real &) throw();
+      friend bool operator  >(const l_real &,const l_real &);
       //! Implementation of standard less-or-equal-than operation
-      friend bool operator <=(const l_real &,const l_real &) throw();
+      friend bool operator <=(const l_real &,const l_real &);
       //! Implementation of standard greater-or-equal-than operation
-      friend bool operator >=(const l_real &,const l_real &) throw();
+      friend bool operator >=(const l_real &,const l_real &);
 
       //! Implementation of standard equality operation
-      friend bool operator ==(const real &,const l_real &) throw();
+      friend bool operator ==(const real &,const l_real &);
       //! Implementation of standard negated equality operation
-      friend bool operator !=(const real &,const l_real &) throw();
+      friend bool operator !=(const real &,const l_real &);
       //! Implementation of standard less-than operation
-      friend bool operator  <(const real &,const l_real &) throw();
+      friend bool operator  <(const real &,const l_real &);
       //! Implementation of standard greater-than operation
-      friend bool operator  >(const real &,const l_real &) throw();
+      friend bool operator  >(const real &,const l_real &);
       //! Implementation of standard less-or-equal-than operation
-      friend bool operator <=(const real &,const l_real &) throw();
+      friend bool operator <=(const real &,const l_real &);
       //! Implementation of standard greater-or-equal-than operation
-      friend bool operator >=(const real &,const l_real &) throw();
+      friend bool operator >=(const real &,const l_real &);
 
       //! Implementation of standard equality operation
-      friend bool operator ==(const l_real &,const real &) throw();
+      friend bool operator ==(const l_real &,const real &);
       //! Implementation of standard negated equality operation
-      friend bool operator !=(const l_real &,const real &) throw();
+      friend bool operator !=(const l_real &,const real &);
       //! Implementation of standard less-than operation
-      friend bool operator  <(const l_real &,const real &) throw();
+      friend bool operator  <(const l_real &,const real &);
       //! Implementation of standard greater-than operation
-      friend bool operator  >(const l_real &,const real &) throw();
+      friend bool operator  >(const l_real &,const real &);
       //! Implementation of standard less-or-equal-than operation
-      friend bool operator <=(const l_real &,const real &) throw();
+      friend bool operator <=(const l_real &,const real &);
       //! Implementation of standard greater-or-equal-than operation
-      friend bool operator >=(const l_real &,const real &) throw();
+      friend bool operator >=(const l_real &,const real &);
 
       //! Implementation of standard equality operation
-      friend bool operator ==(const dotprecision &,const l_real &) throw();
+      friend bool operator ==(const dotprecision &,const l_real &);
       //! Implementation of standard negated equality operation
-      friend bool operator !=(const dotprecision &,const l_real &) throw();
+      friend bool operator !=(const dotprecision &,const l_real &);
       //! Implementation of standard less-than operation
-      friend bool operator  <(const dotprecision &,const l_real &) throw();
+      friend bool operator  <(const dotprecision &,const l_real &);
       //! Implementation of standard greater-than operation
-      friend bool operator  >(const dotprecision &,const l_real &) throw();
+      friend bool operator  >(const dotprecision &,const l_real &);
       //! Implementation of standard less-or-equal-than operation
-      friend bool operator <=(const dotprecision &,const l_real &) throw();
+      friend bool operator <=(const dotprecision &,const l_real &);
       //! Implementation of standard greater-or-equal-than operation
-      friend bool operator >=(const dotprecision &,const l_real &) throw();
+      friend bool operator >=(const dotprecision &,const l_real &);
 
       //! Implementation of standard equality operation
-      friend bool operator ==(const l_real &,const dotprecision &) throw();
+      friend bool operator ==(const l_real &,const dotprecision &);
       //! Implementation of standard negated equality operation
-      friend bool operator !=(const l_real &,const dotprecision &) throw();
+      friend bool operator !=(const l_real &,const dotprecision &);
       //! Implementation of standard less-than operation
-      friend bool operator  <(const l_real &,const dotprecision &) throw();
+      friend bool operator  <(const l_real &,const dotprecision &);
       //! Implementation of standard greater-than operation
-      friend bool operator  >(const l_real &,const dotprecision &) throw();
+      friend bool operator  >(const l_real &,const dotprecision &);
       //! Implementation of standard less-or-equal-than operation
-      friend bool operator <=(const l_real &,const dotprecision &) throw();
+      friend bool operator <=(const l_real &,const dotprecision &);
       //! Implementation of standard greater-or-equal-than operation
-      friend bool operator >=(const l_real &,const dotprecision &) throw();
+      friend bool operator >=(const l_real &,const dotprecision &);
 
       //! Implementation of standard equality operation
-      friend bool operator ==(const interval &,const l_real &) throw();
+      friend bool operator ==(const interval &,const l_real &);
       //! Implementation of standard negated equality operation
-      friend bool operator !=(const interval &,const l_real &) throw();
+      friend bool operator !=(const interval &,const l_real &);
       //! Implementation of standard less-than operation
-      friend bool operator  <(const interval &,const l_real &) throw();
+      friend bool operator  <(const interval &,const l_real &);
       //! Implementation of standard greater-than operation
-      friend bool operator  >(const interval &,const l_real &) throw();
+      friend bool operator  >(const interval &,const l_real &);
       //! Implementation of standard less-or-equal-than operation
-      friend bool operator <=(const interval &,const l_real &) throw();
+      friend bool operator <=(const interval &,const l_real &);
       //! Implementation of standard greater-or-equal-than operation
-      friend bool operator >=(const interval &,const l_real &) throw();
+      friend bool operator >=(const interval &,const l_real &);
 
       //! Implementation of standard equality operation
-      friend bool operator ==(const l_real &,const interval &) throw();
+      friend bool operator ==(const l_real &,const interval &);
       //! Implementation of standard negated equality operation
-      friend bool operator !=(const l_real &,const interval &) throw();
+      friend bool operator !=(const l_real &,const interval &);
       //! Implementation of standard less-than operation
-      friend bool operator  <(const l_real &,const interval &) throw();
+      friend bool operator  <(const l_real &,const interval &);
       //! Implementation of standard greater-than operation
-      friend bool operator  >(const l_real &,const interval &) throw();
+      friend bool operator  >(const l_real &,const interval &);
       //! Implementation of standard less-or-equal-than operation
-      friend bool operator <=(const l_real &,const interval &) throw();
+      friend bool operator <=(const l_real &,const interval &);
       //! Implementation of standard greater-or-equal-than operation
-      friend bool operator >=(const l_real &,const interval &) throw();
+      friend bool operator >=(const l_real &,const interval &);
 
       //! Implementation of standard equality operation
-      friend bool operator ==(const idotprecision &,const l_real &) throw();
+      friend bool operator ==(const idotprecision &,const l_real &);
       //! Implementation of standard negated equality operation
-      friend bool operator !=(const idotprecision &,const l_real &) throw();
+      friend bool operator !=(const idotprecision &,const l_real &);
       //! Implementation of standard less-than operation
-      friend bool operator  <(const idotprecision &,const l_real &) throw();
+      friend bool operator  <(const idotprecision &,const l_real &);
       //! Implementation of standard greater-than operation
-      friend bool operator  >(const idotprecision &,const l_real &) throw();
+      friend bool operator  >(const idotprecision &,const l_real &);
       //! Implementation of standard less-or-equal-than operation
-      friend bool operator <=(const idotprecision &,const l_real &) throw();
+      friend bool operator <=(const idotprecision &,const l_real &);
       //! Implementation of standard greater-or-equal-than operation
-      friend bool operator >=(const idotprecision &,const l_real &) throw();
+      friend bool operator >=(const idotprecision &,const l_real &);
 
       //! Implementation of standard equality operation
-      friend bool operator ==(const l_real &,const idotprecision &) throw();
+      friend bool operator ==(const l_real &,const idotprecision &);
       //! Implementation of standard negated equality operation
-      friend bool operator !=(const l_real &,const idotprecision &) throw();
+      friend bool operator !=(const l_real &,const idotprecision &);
       //! Implementation of standard less-than operation
-      friend bool operator  <(const l_real &,const idotprecision &) throw();
+      friend bool operator  <(const l_real &,const idotprecision &);
       //! Implementation of standard greater-than operation
-      friend bool operator  >(const l_real &,const idotprecision &) throw();
+      friend bool operator  >(const l_real &,const idotprecision &);
       //! Implementation of standard less-or-equal-than operation
-      friend bool operator <=(const l_real &,const idotprecision &) throw();
+      friend bool operator <=(const l_real &,const idotprecision &);
       //! Implementation of standard greater-or-equal-than operation
-      friend bool operator >=(const l_real &,const idotprecision &) throw();
+      friend bool operator >=(const l_real &,const idotprecision &);
 
 
       //! Implementation of standard negation operation
-      friend bool operator!(const l_real& lr) throw();
+      friend bool operator!(const l_real& lr);
       
       // ---- functions ----
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend void accumulate(dotprecision&, const real&, const l_real&) throw();
+      friend void accumulate(dotprecision&, const real&, const l_real&);
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend void accumulate(dotprecision&, const l_real&, const real&) throw();
+      friend void accumulate(dotprecision&, const l_real&, const real&);
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend void accumulate(dotprecision&, const l_real&, const l_real&) throw();
+      friend void accumulate(dotprecision&, const l_real&, const l_real&);
       
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend void accumulate(idotprecision&,const real&, const l_real&) throw();
+      friend void accumulate(idotprecision&,const real&, const l_real&);
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend void accumulate(idotprecision&,const l_real&,const real&) throw();
+      friend void accumulate(idotprecision&,const l_real&,const real&);
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend void accumulate(idotprecision&,const l_real&, const l_real&) throw();
+      friend void accumulate(idotprecision&,const l_real&, const l_real&);
 
       //! The absolute value of a l_real value
-      friend l_real   abs  (const l_real&) throw();
+      friend l_real   abs  (const l_real&);
       //! The sign of a l_real value
-      friend int      sign (const l_real&) throw();
+      friend int      sign (const l_real&);
       //! Returns the precision of the long datatype value
-      friend int      StagPrec(const l_real&) throw();
+      friend int      StagPrec(const l_real&);
       //! Sets the precision of a specific long datatype value
-      friend l_real   adjust(const l_real&) throw();
+      friend l_real   adjust(const l_real&);
 
       //! Rounds the argument up to the next l_real value
       friend l_real   rnd_up(const dotprecision&);    // Blomquist, 20.11.2006;
@@ -466,106 +466,106 @@ class l_real
       // ---- Friends      -----
       
       //! Returns the infimum of an l_interval
-      friend inline l_real Inf(const l_interval &) throw();
+      friend inline l_real Inf(const l_interval &);
       //! Returns the supremum of an l_interval
-      friend inline l_real Sup(const l_interval &) throw();
+      friend inline l_real Sup(const l_interval &);
       //! Returns the rounded middle of the l_interval
-      friend        l_real mid(const l_interval &) throw();
+      friend        l_real mid(const l_interval &);
       //! Checks if the argument is zero
-      friend inline bool zero_(const l_real &) throw(); // Blomquist,27.11.02
+      friend inline bool zero_(const l_real &); // Blomquist,27.11.02
    private:
-      void _clear(int) throw(); // filling a l_real number from element int p
+      void _clear(int); // filling a l_real number from element int p
                                 //  up to the end with zero.
-      void _akku_out(const dotprecision&) throw(); // The dotprecision value is rounded to the
+      void _akku_out(const dotprecision&); // The dotprecision value is rounded to the
                         // activated l_real number in its own precision.
-      void _akku_out_up(const dotprecision&) throw(); // The dotprecision value is rounded up to 
+      void _akku_out_up(const dotprecision&); // The dotprecision value is rounded up to 
                       // the activated l_real number in its own precision.
-      void _akku_out_down(const dotprecision&) throw(); // The dotprecision value is rounded down 
+      void _akku_out_down(const dotprecision&); // The dotprecision value is rounded down 
                       // to the activated l_real number in its own precision.
-      void _akku_add(dotprecision&) const throw(); // adding the activated
+      void _akku_add(dotprecision&) const; // adding the activated
                                      // l_real number to the accumulator d.
-      void _akku_sub(dotprecision&) const throw(); // subtracting the 
+      void _akku_sub(dotprecision&) const; // subtracting the 
       // activated l_real number to the accumulator d of type dotprecision.
-      inline real& elem(int i) const throw() {  return data[i-1];  }
+      inline real& elem(int i) const {  return data[i-1];  }
 };
 
 
 
       // ---- Compare operators ----
-      bool operator ==(const l_real &,const l_real &) throw();
-      bool operator !=(const l_real &,const l_real &) throw();
-      bool operator  <(const l_real &,const l_real &) throw();
-      bool operator  >(const l_real &,const l_real &) throw();
-      bool operator <=(const l_real &,const l_real &) throw();
-      bool operator >=(const l_real &,const l_real &) throw();
+      bool operator ==(const l_real &,const l_real &);
+      bool operator !=(const l_real &,const l_real &);
+      bool operator  <(const l_real &,const l_real &);
+      bool operator  >(const l_real &,const l_real &);
+      bool operator <=(const l_real &,const l_real &);
+      bool operator >=(const l_real &,const l_real &);
 
-      bool operator ==(const real &,const l_real &) throw();
-      bool operator !=(const real &,const l_real &) throw();
-      bool operator  <(const real &,const l_real &) throw();
-      bool operator  >(const real &,const l_real &) throw();
-      bool operator <=(const real &,const l_real &) throw();
-      bool operator >=(const real &,const l_real &) throw();
+      bool operator ==(const real &,const l_real &);
+      bool operator !=(const real &,const l_real &);
+      bool operator  <(const real &,const l_real &);
+      bool operator  >(const real &,const l_real &);
+      bool operator <=(const real &,const l_real &);
+      bool operator >=(const real &,const l_real &);
 
-      bool operator ==(const l_real &,const real &) throw();
-      bool operator !=(const l_real &,const real &) throw();
-      bool operator  <(const l_real &,const real &) throw();
-      bool operator  >(const l_real &,const real &) throw();
-      bool operator <=(const l_real &,const real &) throw();
-      bool operator >=(const l_real &,const real &) throw();
+      bool operator ==(const l_real &,const real &);
+      bool operator !=(const l_real &,const real &);
+      bool operator  <(const l_real &,const real &);
+      bool operator  >(const l_real &,const real &);
+      bool operator <=(const l_real &,const real &);
+      bool operator >=(const l_real &,const real &);
 
-      bool operator ==(const dotprecision &,const l_real &) throw();
-      bool operator !=(const dotprecision &,const l_real &) throw();
-      bool operator  <(const dotprecision &,const l_real &) throw();
-      bool operator  >(const dotprecision &,const l_real &) throw();
-      bool operator <=(const dotprecision &,const l_real &) throw();
-      bool operator >=(const dotprecision &,const l_real &) throw();
+      bool operator ==(const dotprecision &,const l_real &);
+      bool operator !=(const dotprecision &,const l_real &);
+      bool operator  <(const dotprecision &,const l_real &);
+      bool operator  >(const dotprecision &,const l_real &);
+      bool operator <=(const dotprecision &,const l_real &);
+      bool operator >=(const dotprecision &,const l_real &);
 
-      bool operator ==(const l_real &,const dotprecision &) throw();
-      bool operator !=(const l_real &,const dotprecision &) throw();
-      bool operator  <(const l_real &,const dotprecision &) throw();
-      bool operator  >(const l_real &,const dotprecision &) throw();
-      bool operator <=(const l_real &,const dotprecision &) throw();
-      bool operator >=(const l_real &,const dotprecision &) throw();
+      bool operator ==(const l_real &,const dotprecision &);
+      bool operator !=(const l_real &,const dotprecision &);
+      bool operator  <(const l_real &,const dotprecision &);
+      bool operator  >(const l_real &,const dotprecision &);
+      bool operator <=(const l_real &,const dotprecision &);
+      bool operator >=(const l_real &,const dotprecision &);
 
-      bool operator ==(const interval &,const l_real &) throw();
-      bool operator !=(const interval &,const l_real &) throw();
-      bool operator  <(const interval &,const l_real &) throw();
-      bool operator  >(const interval &,const l_real &) throw();
-      bool operator <=(const interval &,const l_real &) throw();
-      bool operator >=(const interval &,const l_real &) throw();
+      bool operator ==(const interval &,const l_real &);
+      bool operator !=(const interval &,const l_real &);
+      bool operator  <(const interval &,const l_real &);
+      bool operator  >(const interval &,const l_real &);
+      bool operator <=(const interval &,const l_real &);
+      bool operator >=(const interval &,const l_real &);
 
-      bool operator ==(const l_real &,const interval &) throw();
-      bool operator !=(const l_real &,const interval &) throw();
-      bool operator  <(const l_real &,const interval &) throw();
-      bool operator  >(const l_real &,const interval &) throw();
-      bool operator <=(const l_real &,const interval &) throw();
-      bool operator >=(const l_real &,const interval &) throw();
+      bool operator ==(const l_real &,const interval &);
+      bool operator !=(const l_real &,const interval &);
+      bool operator  <(const l_real &,const interval &);
+      bool operator  >(const l_real &,const interval &);
+      bool operator <=(const l_real &,const interval &);
+      bool operator >=(const l_real &,const interval &);
 
-      bool operator ==(const idotprecision &,const l_real &) throw();
-      bool operator !=(const idotprecision &,const l_real &) throw();
-      bool operator  <(const idotprecision &,const l_real &) throw();
-      bool operator  >(const idotprecision &,const l_real &) throw();
-      bool operator <=(const idotprecision &,const l_real &) throw();
-      bool operator >=(const idotprecision &,const l_real &) throw();
+      bool operator ==(const idotprecision &,const l_real &);
+      bool operator !=(const idotprecision &,const l_real &);
+      bool operator  <(const idotprecision &,const l_real &);
+      bool operator  >(const idotprecision &,const l_real &);
+      bool operator <=(const idotprecision &,const l_real &);
+      bool operator >=(const idotprecision &,const l_real &);
 
-      bool operator ==(const l_real &,const idotprecision &) throw();
-      bool operator !=(const l_real &,const idotprecision &) throw();
-      bool operator  <(const l_real &,const idotprecision &) throw();
-      bool operator  >(const l_real &,const idotprecision &) throw();
-      bool operator <=(const l_real &,const idotprecision &) throw();
-      bool operator >=(const l_real &,const idotprecision &) throw();
-
-
-      bool operator!(const l_real& lr) throw();
+      bool operator ==(const l_real &,const idotprecision &);
+      bool operator !=(const l_real &,const idotprecision &);
+      bool operator  <(const l_real &,const idotprecision &);
+      bool operator  >(const l_real &,const idotprecision &);
+      bool operator <=(const l_real &,const idotprecision &);
+      bool operator >=(const l_real &,const idotprecision &);
 
 
-inline real _real(const l_real & a) throw() { return real(a); }
-inline l_real _l_real(const real & a) throw()  { return l_real(a); }
-inline dotprecision _dotprecision(const l_real & a) throw()
+      bool operator!(const l_real& lr);
+
+
+inline real _real(const l_real & a) { return real(a); }
+inline l_real _l_real(const real & a)  { return l_real(a); }
+inline dotprecision _dotprecision(const l_real & a)
                                                { return dotprecision(a); }
-inline l_real _l_real(const dotprecision & a) throw() 
+inline l_real _l_real(const dotprecision & a) 
                                                { return l_real(a); }
-l_interval _unchecked_l_interval(const l_real &, const l_real &) throw();
+l_interval _unchecked_l_interval(const l_real &, const l_real &);
 
 //! Rounds the argument up to the next l_real value
 l_real   rnd_up(const dotprecision&);    // Blomquist, 20.11.2006;
@@ -573,14 +573,14 @@ l_real   rnd_up(const dotprecision&);    // Blomquist, 20.11.2006;
 l_real   rnd_down(const dotprecision&);  // Blomquist, 20.11.2006;
 
 //! Fast calculation of \f$ 2^n \f$
-    inline l_real l_pow2n(const int n) throw()
+    inline l_real l_pow2n(const int n)
 {   // Fast and exact calculation of 2^n; -1074 <= n <= 1023;
     // Blomquist 01.10.02.
     return l_real( comp(0.5,n+1) );
 }
 
 //! Fast multiplication of reference parameter lr with \f$ 2^n \f$
-inline void times2pown(l_real& lr, const int n) throw() // Blomquist 03.10.02
+inline void times2pown(l_real& lr, const int n) // Blomquist 03.10.02
 { // lr is multiplied with 2^n; if lr[i]*2^n are all normalized, the result
   // is exact. if one of the lr[i]*2^n are denormalized, the result is not
   // exact in general.
@@ -604,7 +604,7 @@ delivers with \f$ lr+z \f$ an inclusion of the exact value \f$ y*2^n \f$
 
 \f$ n \f$ is restricted to:  \f$ -1074 <= n <= +1023 \f$
 */
-inline void times2pown(l_real& lr, interval& z, const int n) throw() 
+inline void times2pown(l_real& lr, interval& z, const int n) 
 {  // Blomquist 03.10.02;
 
     if ( n<-1074 || n>1023 ) 
@@ -641,7 +641,7 @@ Fast multiplication of a with \f$ 2^n \f$.
 
 If \f$ z = 0 \f$ then it holds \f$ a = y*2^n \f$ (exact multiplication!).
 */
-inline void Times2pown(l_real& a, interval& z, int n) throw()
+inline void Times2pown(l_real& a, interval& z, int n)
 // If we denote the old value of a with y then with the
 // new calculated values of a and z it holds:
 //  -----  a+z is an inclusion of y*2^n;  ------
@@ -692,7 +692,7 @@ Fast multiplication of a with \f$ 2^n \f$.
 
 \f$ p \f$ is NOT restricted to: \f$ -1074 <= n <= +1023 \f$
 */
-inline void Times2pown(l_real& a, const real& p) throw()
+inline void Times2pown(l_real& a, const real& p)
 // The first parameter delivers an approximation of a * 2^p;
 // For p in [-2100,+2100] p must be an integer value.
 // This condition is NOT tested in this function!
@@ -741,7 +741,7 @@ inline void Times2pown(l_real& a, const real& p) throw()
 } // Times2pown(...)
 
 
-inline bool zero_(const l_real& lr) throw()
+inline bool zero_(const l_real& lr)
 {  // returns only true if all lr.elem(i) == 0; Blomquist, 27.11.02; 
     int i=1, p=StagPrec(lr);
     bool tmp = true;
@@ -755,75 +755,75 @@ inline bool zero_(const l_real& lr) throw()
 
 // real staggered constants:
 //! Approximation of \f$ \ln 2 \f$
-l_real Ln2_l_real()   throw();   // ln(2) 
+l_real Ln2_l_real()  ;   // ln(2) 
 //! Approximation of \f$ \ln 10 \f$
-l_real Ln10_l_real()  throw();   // ln(10)
+l_real Ln10_l_real() ;   // ln(10)
 //! Approximation of \f$ \frac{1}{\ln 10} \f$
-l_real Ln10r_l_real() throw();   // 1/ln(10)
+l_real Ln10r_l_real();   // 1/ln(10)
 //! Approximation of \f$ \frac{\pi}{4} \f$
-l_real Pid4_l_real()  throw();   // Pi/4
+l_real Pid4_l_real() ;   // Pi/4
 //! Approximation of \f$ \sqrt{2} \f$
-l_real Sqrt2_l_real() throw();   // sqrt(2)
+l_real Sqrt2_l_real();   // sqrt(2)
 //! Approximation of \f$ \sqrt{5} \f$
-l_real Sqrt5_l_real() throw();   // sqrt(5)
+l_real Sqrt5_l_real();   // sqrt(5)
 //! Approximation of \f$ \sqrt{7} \f$
-l_real Sqrt7_l_real() throw();   // sqrt(7)
+l_real Sqrt7_l_real();   // sqrt(7)
 //! Approximation of \f$ \frac{1}{\ln 2} \f$
-l_real Ln2r_l_real() throw();     // 1/ln(2)
+l_real Ln2r_l_real();     // 1/ln(2)
 //! Approximation of \f$ \pi \f$
-l_real Pi_l_real() throw();       // Pi
+l_real Pi_l_real();       // Pi
 //! Approximation of \f$ \frac{\pi}{2} \f$
-l_real Pid2_l_real() throw();     // Pi/2
+l_real Pid2_l_real();     // Pi/2
 //! Approximation of \f$ 2\pi \f$
-l_real Pi2_l_real() throw();      // 2*Pi
+l_real Pi2_l_real();      // 2*Pi
 //! Approximation of \f$ \frac{\pi}{3} \f$
-l_real Pid3_l_real() throw();     // Pi/3
+l_real Pid3_l_real();     // Pi/3
 //! Approximation of \f$ \frac{1}{\pi} \f$
-l_real Pir_l_real() throw();      // 1/Pi
+l_real Pir_l_real();      // 1/Pi
 //! Approximation of \f$ \frac{1}{2\pi} \f$
-l_real Pi2r_l_real() throw();     // 1/(2*Pi)
+l_real Pi2r_l_real();     // 1/(2*Pi)
 //! Approximation of \f$ \sqrt{\pi} \f$
-l_real SqrtPi_l_real() throw();   // sqrt(Pi)
+l_real SqrtPi_l_real();   // sqrt(Pi)
 //! Approximation of \f$ \sqrt{2\pi} \f$
-l_real Sqrt2Pi_l_real() throw();  // sqrt(2*Pi)
+l_real Sqrt2Pi_l_real();  // sqrt(2*Pi)
 //! Approximation of \f$ \frac{1}{\sqrt{\pi}} \f$
-l_real SqrtPir_l_real() throw();  // 1/sqrt(Pi)
+l_real SqrtPir_l_real();  // 1/sqrt(Pi)
 //! Approximation of \f$ \frac{1}{\sqrt{2\pi}} \f$
-l_real Sqrt2Pir_l_real() throw(); // 1/sqrt(2*Pi)
+l_real Sqrt2Pir_l_real(); // 1/sqrt(2*Pi)
 //! Approximation of \f$ 2^\pi \f$
-l_real Pip2_l_real() throw();     // Pi^2
+l_real Pip2_l_real();     // Pi^2
 //! Approximation of \f$ \frac{1}{\sqrt{2}} \f$
-l_real Sqrt2r_l_real() throw();   // 1/sqrt(2)
+l_real Sqrt2r_l_real();   // 1/sqrt(2)
 //! Approximation of \f$ \sqrt{3} \f$
-l_real Sqrt3_l_real() throw();    // sqrt(3)
+l_real Sqrt3_l_real();    // sqrt(3)
 //! Approximation of \f$ \frac{\sqrt{3}}{2} \f$
-l_real Sqrt3d2_l_real() throw();  // sqrt(3)/2
+l_real Sqrt3d2_l_real();  // sqrt(3)/2
 //! Approximation of \f$ \frac{1}{\sqrt{3}} \f$
-l_real Sqrt3r_l_real() throw();   // 1/sqrt(3)
+l_real Sqrt3r_l_real();   // 1/sqrt(3)
 //! Approximation of \f$ \ln \pi \f$
-l_real LnPi_l_real() throw();     // ln(Pi)
+l_real LnPi_l_real();     // ln(Pi)
 //! Approximation of \f$ \ln 2\pi \f$
-l_real Ln2Pi_l_real() throw();    // ln(2*Pi)
+l_real Ln2Pi_l_real();    // ln(2*Pi)
 //! Approximation of \f$ e \f$
-l_real E_l_real() throw();        // e = exp(1)
+l_real E_l_real();        // e = exp(1)
 //! Approximation of \f$ \frac{1}{e} \f$
-l_real Er_l_real() throw();       // 1/e
+l_real Er_l_real();       // 1/e
 //! Approximation of \f$ e^2 \f$
-l_real Ep2_l_real() throw();      // e^2
+l_real Ep2_l_real();      // e^2
 //! Approximation of \f$ \frac{1}{e^2} \f$
-l_real Ep2r_l_real() throw();     // 1/e^2
+l_real Ep2r_l_real();     // 1/e^2
 //! Approximation of \f$ e^\pi \f$
-l_real EpPi_l_real() throw();     // e^Pi
+l_real EpPi_l_real();     // e^Pi
 //! Approximation of \f$ e^{2\pi} \f$
-l_real Ep2Pi_l_real() throw();    // e^(2*Pi)
+l_real Ep2Pi_l_real();    // e^(2*Pi)
 //! Approximation of \f$ e^{\frac{\pi}{2}} \f$
-l_real EpPid2_l_real() throw();   // e^(Pi/2)
+l_real EpPid2_l_real();   // e^(Pi/2)
 //! Approximation of \f$ e^{\frac{\pi}{4}} \f$
-l_real EpPid4_l_real() throw();   // e^(Pi/4)
+l_real EpPid4_l_real();   // e^(Pi/4)
 //! Approximation of Euler Gamma
-l_real EulerGa_l_real() throw();  // EulerGamma
+l_real EulerGa_l_real();  // EulerGamma
 //! Approximation of Catalan Numbers
-l_real Catalan_l_real() throw();  // Catalan
+l_real Catalan_l_real();  // Catalan
 
 } // namespace cxsc 
 

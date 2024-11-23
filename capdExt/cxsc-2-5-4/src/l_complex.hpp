@@ -53,69 +53,69 @@ class l_complex
     l_complex _l_complex(const cdotprecision &);
     // ------------- Constructors --------------------------------------------
     //! Constructor of class l_complex
-    l_complex(void)  throw() {}
+    l_complex(void)  {}
     //! Constructor of class l_complex
-    l_complex(const l_real& a, const l_real& b) throw() : re(a), im(b) { }
+    l_complex(const l_real& a, const l_real& b) : re(a), im(b) { }
     //! Constructor of class l_complex
-    l_complex(const real& a, const real& b) throw() : re(a), im(b) { }
+    l_complex(const real& a, const real& b) : re(a), im(b) { }
 
     //! Implementation of standard assigning operator
-    l_complex & operator = (const l_real & lr) throw() 
+    l_complex & operator = (const l_real & lr) 
         { re = lr; im = 0; return *this; }
     //! Implementation of standard assigning operator
-    l_complex & operator = (const real & r) throw() 
+    l_complex & operator = (const real & r) 
       { re = r; im = 0; return *this; } 
     //! Implementation of standard assigning operator
-    l_complex & operator = (const complex & c) throw() 
+    l_complex & operator = (const complex & c) 
         { re = Re(c); im = Im(c); return *this; } 
     //! Implementation of standard assigning operator
-    l_complex & operator = (const dotprecision & d) throw() 
+    l_complex & operator = (const dotprecision & d) 
         { re = d; im = 0.0; return *this; }
     //! Implementation of standard assigning operator
-    l_complex & operator = (const cdotprecision & cd) throw() 
+    l_complex & operator = (const cdotprecision & cd) 
         { re = Re(_l_complex(cd)); im = Im(_l_complex(cd)); return *this; }
 	 
 	 //! Implementation of standard assigning operator
-	 l_complex & operator = (const lx_complex &) throw();
+	 l_complex & operator = (const lx_complex &);
 
     // ------------- Type-Casts ----------------------------------------------
     //! Constructor of class l_complex
-    explicit inline l_complex(const l_real  &r) throw() : re(r), im(0.0) { }
+    explicit inline l_complex(const l_real  &r) : re(r), im(0.0) { }
     //! Constructor of class l_complex
-    explicit inline l_complex(const   real  &r) throw() : re(r), im(0.0) { }
+    explicit inline l_complex(const   real  &r) : re(r), im(0.0) { }
     //! Constructor of class l_complex
-    explicit inline l_complex(const complex &r) throw() : re(Re(r)), im(Im(r))
+    explicit inline l_complex(const complex &r) : re(Re(r)), im(Im(r))
                                                                          { }
     //! Constructor of class l_complex
-    explicit inline l_complex(const dotprecision &d) throw()
+    explicit inline l_complex(const dotprecision &d)
                   : re(d), im(0.0) { }
     //! Constructor of class l_complex
-    explicit inline l_complex(const cdotprecision &cd) throw()
+    explicit inline l_complex(const cdotprecision &cd)
 	          : re(Re(_l_complex(cd))), im(Im(_l_complex(cd))) { }
 
-//    friend inline l_complex _l_complex(const l_real &a) throw()
+//    friend inline l_complex _l_complex(const l_real &a)
 //	{ return l_complex(a); }
 //    friend inline l_complex _l_complex(const l_real &a, const l_real &b)
-//        throw()   { return l_complex(a,b); }
-//    friend inline l_complex _l_complex(const real &a) throw()
+//          { return l_complex(a,b); }
+//    friend inline l_complex _l_complex(const real &a)
 //	{ return l_complex(a); }
 //    friend inline l_complex _l_complex(const real &a, const real &b)
-//        throw()   { return l_complex(a,b); }
+//          { return l_complex(a,b); }
 //    friend inline l_complex _l_complex(const complex &c)
-//        throw()   { return l_complex(c); }
+//          { return l_complex(c); }
 //    friend inline l_complex _l_complex(const dotprecision &d)
-//        throw()   { return l_complex(d); }
+//          { return l_complex(d); }
     /*!
     \deprecated use standard contructors for typecasting
 
     \sa cxsc::l_complex::l_complex(const cdotprecision &cd)
     */
     friend inline l_complex _l_complex(const cdotprecision &cd)
-        throw()   { return l_complex(cd); }
+          { return l_complex(cd); }
 
     // ----------------------------------------------------------------------
     //! Returns the precision of the long datatype value
-    friend int StagPrec(const l_complex&) throw();
+    friend int StagPrec(const l_complex&);
 
 // ------------- Arithmetic Operators ---------------------------------------
     // ----------------------------------------------------------------------
@@ -130,95 +130,95 @@ class l_complex
     // ----------------- l_complex +/- l_complex ----------------------------
     //! Implementation of standard algebraic addition operation
     friend inline l_complex operator +
-                   (const l_complex &, const l_complex &) throw();
+                   (const l_complex &, const l_complex &);
 
     //! Implementation of standard algebraic subtraction operation
     friend inline l_complex operator -
-                   (const l_complex &, const l_complex &) throw();
+                   (const l_complex &, const l_complex &);
     
     // ----------------- l_complex + complex --------------------------------
     //! Implementation of standard algebraic positive sign operation
-    inline l_complex operator + (const complex &) const throw();
+    inline l_complex operator + (const complex &) const;
 
     //! Implementation of standard algebraic addition operation
     friend inline l_complex operator +
-                   (const complex &, const l_complex &) throw();
+                   (const complex &, const l_complex &);
 
     // ---------------- l_complex + real ------------------------------------
     //! Implementation of standard algebraic positive sign operation
-    inline l_complex operator + (const real &) const throw();
+    inline l_complex operator + (const real &) const;
 
     //! Implementation of standard algebraic addition operation
     friend inline l_complex operator +
-                   (const real &, const l_complex &) throw();
+                   (const real &, const l_complex &);
 
     // ---------------- l_complex + l_real ----------------------------------
     //! Implementation of standard algebraic positive sign operation
-    inline l_complex operator + (const l_real &) const throw();
+    inline l_complex operator + (const l_real &) const;
 
     //! Implementation of standard algebraic addition operation
     friend inline l_complex operator +
-                   (const l_real &, const l_complex &) throw();
+                   (const l_real &, const l_complex &);
 
     // ---------------- l_complex - l_real ----------------------------------
     //! Implementation of standard algebraic negative sign operation
-    inline l_complex operator - (const l_real &) const throw();
+    inline l_complex operator - (const l_real &) const;
 
     //! Implementation of standard algebraic subtraction operation
     friend inline l_complex operator -
-                   (const l_real &, const l_complex &) throw();
+                   (const l_real &, const l_complex &);
 
     // ----------------- l_complex - complex -------------------------------
     //! Implementation of standard algebraic negative sign operation
-    inline l_complex operator - (const complex &) const throw();
+    inline l_complex operator - (const complex &) const;
 
     //! Implementation of standard algebraic subtraction operation
     friend inline l_complex operator -
-                   (const complex &, const l_complex &) throw();
+                   (const complex &, const l_complex &);
 
     // ---------------- l_complex - real ------------------------------------
     //! Implementation of standard algebraic negative sign operation
-    inline l_complex operator - (const real &) const throw();
+    inline l_complex operator - (const real &) const;
 
     //! Implementation of standard algebraic subtraction operation
     friend inline l_complex operator -
-                   (const real &, const l_complex &) throw();
+                   (const real &, const l_complex &);
 
     // ---------------- l_complex + cdotprecision ---------------------------
     //! Implementation of standard algebraic addition operation
     friend cdotprecision operator+
-	   (const l_complex &, const cdotprecision &) throw();
+	   (const l_complex &, const cdotprecision &);
 
     //! Implementation of standard algebraic addition operation
     friend cdotprecision operator+ 
-      (const cdotprecision &, const l_complex &) throw();
+      (const cdotprecision &, const l_complex &);
 
     // ---------------- l_complex - cdotprecision ---------------------------
     //! Implementation of standard algebraic subtraction operation
     friend cdotprecision operator- 
-      (const l_complex &, const cdotprecision &) throw();
+      (const l_complex &, const cdotprecision &);
 
     //! Implementation of standard algebraic subtraction operation
     friend cdotprecision operator- 
-      (const cdotprecision &, const l_complex &) throw(); 
+      (const cdotprecision &, const l_complex &); 
 
     // ---------------- l_complex + dotprecision ----------------------------
     //! Implementation of standard algebraic addition operation
     friend cdotprecision operator+ 
-      (const l_complex &, const dotprecision &) throw();
+      (const l_complex &, const dotprecision &);
 
     //! Implementation of standard algebraic addition operation
     friend cdotprecision operator+ 
-      (const dotprecision &, const l_complex &) throw();
+      (const dotprecision &, const l_complex &);
 
     // ---------------- l_complex - dotprecision ----------------------------
     //! Implementation of standard algebraic subtraction operation
     friend cdotprecision operator- 
-      (const l_complex &, const dotprecision &) throw();
+      (const l_complex &, const dotprecision &);
 
     //! Implementation of standard algebraic subtraction operation
     friend cdotprecision operator- 
-      (const dotprecision &, const l_complex &) throw();
+      (const dotprecision &, const l_complex &);
 
 
 // ------------- Multiplication ---------------------------------------------
@@ -226,32 +226,32 @@ class l_complex
 
 //! Implementation of standard algebraic multiplication operation
 friend l_complex operator * (const l_complex& a, const l_complex& b)
-    throw();
+   ;
 
 // ------------------ l_complex * complex -----------------------------------
 //! Implementation of standard algebraic multiplication operation
 friend l_complex operator * (const l_complex& a, const complex& b)
-    throw();
+   ;
 
 //! Implementation of standard algebraic multiplication operation
 friend l_complex operator * ( const complex& b, const l_complex& a )
-    throw();
+   ;
 
 // ------------------ l_complex * real ---------------------------------------
     //! Implementation of standard algebraic multiplication operation
-    inline l_complex operator * (const real &) const throw();
+    inline l_complex operator * (const real &) const;
 
     //! Implementation of standard algebraic multiplication operation
     friend inline l_complex operator *
-                   (const real &, const l_complex &) throw();
+                   (const real &, const l_complex &);
 
 // ------------------ l_complex * l_real -------------------------------------
     //! Implementation of standard algebraic multiplication operation
-    inline l_complex operator * (const l_real &) const throw();
+    inline l_complex operator * (const l_real &) const;
 
     //! Implementation of standard algebraic multiplication operation
     friend inline l_complex operator *
-                   (const l_real &, const l_complex &) throw();
+                   (const l_real &, const l_complex &);
 
 
 // ----------------- Others --------------------------------------------------
@@ -265,7 +265,7 @@ friend l_complex operator * ( const complex& b, const l_complex& a )
     friend l_real   Im(const l_complex& a); // { return a.im; }
 
     //! Returns the conjugated complex value
-    friend inline l_complex conj(const l_complex&) throw(); // conjugated value
+    friend inline l_complex conj(const l_complex&); // conjugated value
     //! Sets the real part of a complex value
     friend l_complex & SetRe(l_complex & a,const l_real & b); 
 	// { a.re=b; return a; } // The real part of a is substituted by b.
@@ -279,111 +279,111 @@ friend l_complex operator * ( const complex& b, const l_complex& a )
 // ----- accumulate(cdotprecision,l_complex,l_complex|complex|real|l_real ----
     //! The accurate scalar product of the last two arguments added to the value of the first argument
     friend void accumulate(cdotprecision&, const l_complex&, 
-                                           const l_complex&) throw();
+                                           const l_complex&);
 
     //! The accurate scalar product of the last two arguments added to the value of the first argument
     friend void accumulate(cdotprecision&, const l_complex&, 
-                                           const complex&) throw();
+                                           const complex&);
 
     //! The accurate scalar product of the last two arguments added to the value of the first argument
     friend void accumulate(cdotprecision&, const l_complex&, 
-                                           const real&) throw();
+                                           const real&);
 
     //! The accurate scalar product of the last two arguments added to the value of the first argument
     friend void accumulate(cdotprecision&, const l_complex&, 
-                                           const l_real&) throw();
+                                           const l_real&);
 
 // ---------------- cdotprecision +(-)= l_complex ---------------------------- 
 //! Implementation of standard algebraic addition and allocation operation
 friend inline cdotprecision & operator += (cdotprecision &cd, 
-                                           const l_complex &lc) throw(); 
+                                           const l_complex &lc); 
 //! Implementation of standard algebraic subtraction and allocation operation
 friend inline cdotprecision & operator -= (cdotprecision &cd, 
-                                           const l_complex &lc) throw(); 
+                                           const l_complex &lc); 
 
 // ---------------- l_complex +(-)= l_complex|complex|real|l_real ------------
 //! Implementation of standard algebraic addition and allocation operation
-friend inline l_complex & operator += (l_complex &,const l_complex &) throw(); 
+friend inline l_complex & operator += (l_complex &,const l_complex &); 
 //! Implementation of standard algebraic subtraction and allocation operation
-friend inline l_complex & operator -= (l_complex &,const l_complex &) throw(); 
+friend inline l_complex & operator -= (l_complex &,const l_complex &); 
 //! Implementation of standard algebraic addition and allocation operation
-friend inline l_complex & operator += (l_complex &,const complex &) throw(); 
+friend inline l_complex & operator += (l_complex &,const complex &); 
 //! Implementation of standard algebraic subtraction and allocation operation
-friend inline l_complex & operator -= (l_complex &,const complex &) throw();
+friend inline l_complex & operator -= (l_complex &,const complex &);
 //! Implementation of standard algebraic addition and allocation operation
-friend inline l_complex & operator += (l_complex &,const real &) throw();
+friend inline l_complex & operator += (l_complex &,const real &);
 //! Implementation of standard algebraic subtraction and allocation operation
-friend inline l_complex & operator -= (l_complex &,const real &) throw();
+friend inline l_complex & operator -= (l_complex &,const real &);
 //! Implementation of standard algebraic addition and allocation operation
-friend inline l_complex & operator += (l_complex &,const l_real &) throw();
+friend inline l_complex & operator += (l_complex &,const l_real &);
 //! Implementation of standard algebraic subtraction and allocation operation
-friend inline l_complex & operator -= (l_complex &,const l_real &) throw(); 
+friend inline l_complex & operator -= (l_complex &,const l_real &); 
 
 // ---------------- l_complex *= l_complex|complex|real|l_real ---------------
 //! Implementation of standard algebraic multiplication and allocation operation
-friend inline l_complex & operator *= (l_complex &,const l_complex &) throw();
+friend inline l_complex & operator *= (l_complex &,const l_complex &);
 //! Implementation of standard algebraic multiplication and allocation operation
-friend inline l_complex & operator *= (l_complex &,const complex &) throw();
+friend inline l_complex & operator *= (l_complex &,const complex &);
 //! Implementation of standard algebraic multiplication and allocation operation
-friend inline l_complex & operator *= (l_complex &,const real &) throw();
+friend inline l_complex & operator *= (l_complex &,const real &);
 //! Implementation of standard algebraic multiplication and allocation operation
-friend inline l_complex & operator *= (l_complex &,const l_real &) throw();
+friend inline l_complex & operator *= (l_complex &,const l_real &);
 
 // ---------------- Compare Operators ----------------------------------------
-friend inline bool operator! (const l_complex &) throw();
+friend inline bool operator! (const l_complex &);
 //! Implementation of standard equality operation
-friend inline bool operator== (const l_complex &, const l_complex &) throw();
+friend inline bool operator== (const l_complex &, const l_complex &);
 //! Implementation of standard negated equality operation
-friend inline bool operator!= (const l_complex &, const l_complex &) throw();
+friend inline bool operator!= (const l_complex &, const l_complex &);
 //! Implementation of standard equality operation
-friend inline bool operator== (const l_complex &, const complex &) throw();
+friend inline bool operator== (const l_complex &, const complex &);
 //! Implementation of standard equality operation
-friend inline bool operator== (const complex &, const l_complex &) throw();
+friend inline bool operator== (const complex &, const l_complex &);
 //! Implementation of standard negated equality operation
-friend inline bool operator!= (const l_complex &, const complex &) throw();
+friend inline bool operator!= (const l_complex &, const complex &);
 //! Implementation of standard negated equality operation
-friend inline bool operator!= (const complex &, const l_complex &) throw();
+friend inline bool operator!= (const complex &, const l_complex &);
 //! Implementation of standard equality operation
-friend inline bool operator== (const l_complex &, const real &) throw();
+friend inline bool operator== (const l_complex &, const real &);
 //! Implementation of standard equality operation
-friend inline bool operator== (const real &, const l_complex &) throw();
+friend inline bool operator== (const real &, const l_complex &);
 //! Implementation of standard negated equality operation
-friend inline bool operator!= (const l_complex &, const real &) throw();
+friend inline bool operator!= (const l_complex &, const real &);
 //! Implementation of standard negated equality operation
-friend inline bool operator!= (const real &, const l_complex &) throw();
+friend inline bool operator!= (const real &, const l_complex &);
 //! Implementation of standard equality operation
-friend inline bool operator== (const l_complex &, const l_real &) throw();
+friend inline bool operator== (const l_complex &, const l_real &);
 //! Implementation of standard equality operation
-friend inline bool operator== (const l_real &, const l_complex &) throw();
+friend inline bool operator== (const l_real &, const l_complex &);
 //! Implementation of standard negated equality operation
-friend inline bool operator!= (const l_complex &, const l_real &) throw();
+friend inline bool operator!= (const l_complex &, const l_real &);
 //! Implementation of standard negated equality operation
-friend inline bool operator!= (const l_real &, const l_complex &) throw();
+friend inline bool operator!= (const l_real &, const l_complex &);
 //! Implementation of standard equality operation
 friend inline bool operator== (const l_complex &, const dotprecision &)
-                                                                  throw();
+                                                                 ;
 //! Implementation of standard equality operation
 friend inline bool operator== (const dotprecision &, const l_complex &)
-                                                                  throw();
+                                                                 ;
 //! Implementation of standard negated equality operation
 friend inline bool operator!= (const l_complex &, const dotprecision &)
-                                                                  throw();
+                                                                 ;
 //! Implementation of standard negated equality operation
 friend inline bool operator!= (const dotprecision &, const l_complex &)
-                                                                  throw();
+                                                                 ;
 
 //! Implementation of standard equality operation
 friend inline bool operator ==(const cdotprecision &, const l_complex &)
-    throw(); // {l_complex.inl}
+   ; // {l_complex.inl}
 //! Implementation of standard equality operation
 friend inline bool operator ==(const l_complex &, const cdotprecision &)
-    throw(); // {l_complex.inl}
+   ; // {l_complex.inl}
 //! Implementation of standard negated equality operation
 friend inline bool operator !=(const cdotprecision &, const l_complex &)
-    throw(); // {l_complex.inl}
+   ; // {l_complex.inl}
 //! Implementation of standard negated equality operation
 friend inline bool operator !=(const l_complex &, const cdotprecision &)
-    throw(); // {l_complex.inl}
+   ; // {l_complex.inl}
 
 // -------------- Division: Directed rounding, Blomquist 28.11.02 ------------
 
@@ -396,46 +396,46 @@ friend inline bool operator !=(const l_complex &, const cdotprecision &)
 
 // -------------- Division:  Blomquist 28.11.02 ------------------------------
     //! Implementation of standard algebraic division operation
-    friend l_complex operator / (const l_complex &,const l_complex &) throw();
+    friend l_complex operator / (const l_complex &,const l_complex &);
 
     //! Implementation of standard algebraic division operation
     friend inline l_complex operator / (const l_complex & a,
-                                        const complex & b) throw();
+                                        const complex & b);
     //! Implementation of standard algebraic division operation
     friend inline l_complex operator / (const l_complex & a,
-                                        const l_real & b) throw();
+                                        const l_real & b);
     //! Implementation of standard algebraic division operation
     friend inline l_complex operator / (const l_complex & a,
-                                        const real & b) throw();
+                                        const real & b);
 
     //! Implementation of standard algebraic division operation
     friend inline l_complex operator / (const complex& a,
-                                        const l_complex& b) throw();
+                                        const l_complex& b);
     //! Implementation of standard algebraic division operation
     friend inline l_complex operator / (const real& a,
-                                        const l_complex& b) throw();
+                                        const l_complex& b);
     //! Implementation of standard algebraic division operation
     friend inline l_complex operator / (const l_real& a,
-                                        const l_complex& b) throw();
+                                        const l_complex& b);
 
     //! Implementation of standard algebraic division and allocation operation
-    friend inline l_complex& operator /=(l_complex&,const l_complex&) throw();
+    friend inline l_complex& operator /=(l_complex&,const l_complex&);
     //! Implementation of standard algebraic division and allocation operation
-    friend inline l_complex& operator /=(l_complex&,const complex&) throw();
+    friend inline l_complex& operator /=(l_complex&,const complex&);
     //! Implementation of standard algebraic division and allocation operation
-    friend inline l_complex& operator /=(l_complex&,const real&) throw();
+    friend inline l_complex& operator /=(l_complex&,const real&);
     //! Implementation of standard algebraic division and allocation operation
-    friend inline l_complex& operator /=(l_complex&,const l_real&) throw();
+    friend inline l_complex& operator /=(l_complex&,const l_real&);
 
 //! The absolute value of a l_complex value
-friend l_real abs2(const l_complex &a) throw(); // a.re*a.re + a.im*a.im;
+friend l_real abs2(const l_complex &a); // a.re*a.re + a.im*a.im;
 //! The absolute value of a l_complex value
-friend l_real abs (const l_complex &z) throw(); 
+friend l_real abs (const l_complex &z); 
 
 // ----------------------- Output --------------------------------------------
 
 //! Implementation of standard output method
-friend std::ostream& operator << (std::ostream& s,const l_complex& z ) throw()
+friend std::ostream& operator << (std::ostream& s,const l_complex& z )
 // A complex number z of type l_complex is written to the output channel.
 {     
     s << '('          
@@ -446,7 +446,7 @@ friend std::ostream& operator << (std::ostream& s,const l_complex& z ) throw()
 }
 
 //! Implementation of standard output method
-friend std::string & operator << (std::string &s, const l_complex& a) throw()
+friend std::string & operator << (std::string &s, const l_complex& a)
 // The value of a variable a of type l_complex is copied to a string s.
 // s has the form:  (Re(a),Im(a))
 {  
@@ -461,7 +461,7 @@ friend std::string & operator << (std::string &s, const l_complex& a) throw()
 // ----------------------- Input ---------------------------------------------
 
 //! Implementation of standard input method
-friend std::istream & operator >> (std::istream &s, l_complex &a) throw()
+friend std::istream & operator >> (std::istream &s, l_complex &a)
 // An input of a complex number z of the form (Re(z),Im(z)) is copied to
 // the variable a of type l_complex.
 {  
@@ -491,7 +491,7 @@ friend std::istream & operator >> (std::istream &s, l_complex &a) throw()
 }
 
 //! Implementation of standard input method
-friend std::string & operator >> (std::string &s, l_complex &a) throw()
+friend std::string & operator >> (std::string &s, l_complex &a)
 // A complex number z of the form (Re(z),Im(z)), represented in a string s
 // is copied to a of type l_complex.
 {   
@@ -508,21 +508,21 @@ friend std::string & operator >> (std::string &s, l_complex &a) throw()
 
 }; // end of class l_complex
 
-inline l_complex _l_complex(const l_real &a) throw()
+inline l_complex _l_complex(const l_real &a)
 	{ return l_complex(a); }
 inline l_complex _l_complex(const l_real &a, const l_real &b)
-        throw()   { return l_complex(a,b); }
-inline l_complex _l_complex(const real &a) throw()
+          { return l_complex(a,b); }
+inline l_complex _l_complex(const real &a)
 	{ return l_complex(a); }
 inline l_complex _l_complex(const real &a, const real &b)
-        throw()   { return l_complex(a,b); }
+          { return l_complex(a,b); }
 inline l_complex _l_complex(const complex &c)
-        throw()   { return l_complex(c); }
+          { return l_complex(c); }
 inline l_complex _l_complex(const dotprecision &d)
-        throw()   { return l_complex(d); }
-inline l_complex conj(const l_complex&) throw();
+          { return l_complex(d); }
+inline l_complex conj(const l_complex&);
 //inline l_complex _l_complex(const cdotprecision &cd)
-//        throw()   { return l_complex(cd); }
+//          { return l_complex(cd); }
 
 l_real & Re(l_complex& a);
 l_real   Re(const l_complex& a);
@@ -536,7 +536,7 @@ l_complex & SetRe(l_complex & a,const l_real & b);
 l_complex & SetIm(l_complex & a,const l_real & b); 
 //        { a.im=b; return a; } // See SetRe(...);
 
-l_complex _l_complex(const cdotprecision &) throw();
+l_complex _l_complex(const cdotprecision &);
 
 }  // end namespace cxsc
 

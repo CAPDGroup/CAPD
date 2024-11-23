@@ -32,192 +32,192 @@ namespace cxsc {
 	//! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
 	INLINE l_ivector _l_ivector(const l_rmatrix &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LRMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
 	INLINE l_ivector _l_ivector(const l_rmatrix_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LRMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	INLINE void accumulate(idotprecision &dp, const l_rmatrix_subv & rv1, const l_ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	INLINE void accumulate(idotprecision &dp, const l_ivector & rv1, const l_rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	INLINE void accumulate(idotprecision &dp, const l_rmatrix_subv & rv1, const l_ivector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	INLINE void accumulate(idotprecision &dp, const l_ivector_slice & rv1, const l_rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Sets the infimum of the vector
 	INLINE void SetInf(l_ivector &iv,const l_rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
         //! Sets the supremum of the vector
 	INLINE void SetSup(l_ivector &iv,const l_rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Sets the infimum of the vector
 	INLINE void SetInf(l_ivector_slice &iv,const l_rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
         //! Sets the supremum of the vector
 	INLINE void SetSup(l_ivector_slice &iv,const l_rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
         //! Sets the unchecked infimum of the vector
 	INLINE void UncheckedSetInf(l_ivector &iv,const l_rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
         //! Sets the unchecked supremum of the vector
 	INLINE void UncheckedSetSup(l_ivector &iv,const l_rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
         //! Sets the unchecked infimum of the vector
 	INLINE void UncheckedSetInf(l_ivector_slice &iv,const l_rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
         //! Sets the unchecked supremum of the vector
 	INLINE void UncheckedSetSup(l_ivector_slice &iv,const l_rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const l_rmatrix &m,const l_ivector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LRMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const l_rmatrix_slice &ms,const l_ivector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LRMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const l_ivector &v,const l_rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LRMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const l_ivector &v,const l_rmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LRMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication and allocation operation
 	INLINE l_ivector &operator *=(l_ivector &v,const l_rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LRMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication and allocation operation
 	INLINE l_ivector &operator *=(l_ivector &v,const l_rmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LRMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const l_ivector_slice &v,const l_rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LRMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const ivector &v,const l_rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const ivector &v,const l_rmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const ivector_slice &v,const l_rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const l_rmatrix &m,const ivector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const l_rmatrix_slice &ms,const ivector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_LIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 } // namespace cxsc 

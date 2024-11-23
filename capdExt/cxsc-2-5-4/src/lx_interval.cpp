@@ -38,7 +38,7 @@ namespace cxsc {
 // ------------ Functions related to type lx_interval: ------------------
 // ----------------------------------------------------------------------
 
-lx_interval::lx_interval(const real& n, const string &s) throw()
+lx_interval::lx_interval(const real& n, const string &s)
 // Constructor:
 // (10^n, string) --- > (ex,li) vom Typ lx_interval
 // string s must be of the form:  
@@ -145,7 +145,7 @@ void scale_up(lx_interval &a)
     }
 }
 
-l_interval & l_interval::operator = (const lx_interval &a) throw()
+l_interval & l_interval::operator = (const lx_interval &a)
 {
     int exa;
     real p(expo(a)),exr;
@@ -164,7 +164,7 @@ l_interval & l_interval::operator = (const lx_interval &a) throw()
     return (*this) = al;
 }
 
-interval & interval::operator = (const lx_interval &a) throw()
+interval & interval::operator = (const lx_interval &a)
 {
     l_interval al;
     interval z;
@@ -213,7 +213,7 @@ l_interval times2powr(const l_real &a, const real &r)
     return res;
 }
 
-lx_interval expo2zero(const lx_interval &a) throw(OVERFLOW_ERROR)
+lx_interval expo2zero(const lx_interval &a)
 // The exponent to base 2 of the object a is set to zero.
 // The return value res is an inclusion of the object a
 // unless an overflow occurs. 
@@ -236,7 +236,7 @@ lx_interval expo2zero(const lx_interval &a) throw(OVERFLOW_ERROR)
     return res;
 }
 
-lx_interval::lx_interval(const lx_real& a, const lx_real& b) throw()
+lx_interval::lx_interval(const lx_real& a, const lx_real& b)
 {
     lx_real a_(a),b_(b);
     l_real lr;
@@ -289,7 +289,7 @@ lx_interval::lx_interval(const lx_real& a, const lx_real& b) throw()
     }
 }
 
-lx_interval operator + (const lx_interval &a, const lx_interval &b) throw()
+lx_interval operator + (const lx_interval &a, const lx_interval &b)
 {
     const real c1 = 10000.0;
     int stagsave = stagprec,
@@ -369,7 +369,7 @@ lx_interval operator + (const lx_interval &a, const lx_interval &b) throw()
     return res;
 }
 
-lx_interval operator * (const lx_interval &a, const lx_interval &b) throw()
+lx_interval operator * (const lx_interval &a, const lx_interval &b)
 {
     int stagsave = stagprec,
 	stagmax = 39,
@@ -497,7 +497,7 @@ lx_interval operator * (const lx_interval &a, const lx_interval &b) throw()
 } // operator *
 
 lx_interval operator / (const lx_interval &a, const lx_interval &b) 
-                              throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                             
 {
     int stagsave = stagprec,
 	stagmax = 39,
@@ -606,7 +606,7 @@ lx_interval operator / (const lx_interval &a, const lx_interval &b)
 
 // ----------------------- Input --------------------------------------------
 
-std::string & operator >> (std::string &s, lx_interval &a) throw()
+std::string & operator >> (std::string &s, lx_interval &a)
 // Writes string s to variable a of type lx_interval 
 // and returns an empty string s;
 // Example:  s = "{-4000,[2,2]}" delivers an interval a
@@ -628,14 +628,14 @@ std::string & operator >> (std::string &s, lx_interval &a) throw()
     return s;
 }
 
-void operator >> (const std::string &s, lx_interval &a) throw()
+void operator >> (const std::string &s, lx_interval &a)
 {
 // Writes strings s to variable a of type lx_interval;
     std::string r(s);
     r >> a;
 }
 
-void operator >> (const char *s, lx_interval &a) throw()
+void operator >> (const char *s, lx_interval &a)
 {
     std::string r(s);
     r >> a;
@@ -650,7 +650,7 @@ bool StrContains(const string &s, const char &a, const char &b)
     return (ia>=0 || ib>=0);
 }
 
-std::istream & operator >> (std::istream &s, lx_interval &a) throw()
+std::istream & operator >> (std::istream &s, lx_interval &a)
 // s must have the form: { p,[r1,r2] }, where r1<=r2 are real values
 // and the exponent p of type real must be an integer value to base 10;
 // The integer value condition and r1<=r2 are tested in the constructor
@@ -752,7 +752,7 @@ void Bin2Dec(const lx_interval& a, real& p, l_interval& m)
 	m = adjust(m);
 }  // Bin2Dec(...)
 
-std::ostream& operator << (std::ostream& s,const lx_interval& a) throw()
+std::ostream& operator << (std::ostream& s,const lx_interval& a)
 // An interval a of type lx_interval is written to the 
 // output channel in the decimal form: 
 // { 10**(p), l_interval m } = 10^p * m;
@@ -774,7 +774,7 @@ std::ostream& operator << (std::ostream& s,const lx_interval& a) throw()
    return s;
 }
 
-std::string & operator << (std::string &s, const lx_interval &a) throw()
+std::string & operator << (std::string &s, const lx_interval &a)
 // The value of a variable a of type lx_interval is copied to a string s.
 // s has the form:  {2**(ex), li} = 2^ex * li;
 {  
@@ -843,7 +843,7 @@ l_interval wide_any(int n)
 // ---------------- Functions related to class lx_real ------------------------
 // ----------------------------------------------------------------------------
 
-	lx_real::lx_real(const real& n, const string &s) throw()
+	lx_real::lx_real(const real& n, const string &s)
 // Constructor:
 // (10^n, string) --- > (ex,lr) vom Typ lx_real
 // string s must be of the form:  
@@ -900,7 +900,7 @@ l_interval wide_any(int n)
 	lr = adjust(lr);
 }
 
-	std::string & operator >> (std::string &s, lx_real &a) throw()
+	std::string & operator >> (std::string &s, lx_real &a)
 // Writes string s to variable a of type lx_real 
 // and returns an empty string s;
 // Example:  s = "{-4000,2}" delivers a value a
@@ -920,14 +920,14 @@ l_interval wide_any(int n)
 	return s;
 }
 
-	void operator >> (const std::string &s, lx_real &a) throw()
+	void operator >> (const std::string &s, lx_real &a)
 {
    // Writes string s to variable a of type lx_real;
 	std::string r(s);
 	r >> a;
 }
 
-	void operator >> (const char *s, lx_real &a) throw()
+	void operator >> (const char *s, lx_real &a)
 {
 	std::string r(s);
 	r >> a;
@@ -942,7 +942,7 @@ l_interval wide_any(int n)
 	return (ia>=0 || ib>=0);
 }
 	
-	std::istream & operator >> (std::istream &s, lx_real &a) throw()
+	std::istream & operator >> (std::istream &s, lx_real &a)
 // s must have the form: { p,r }, where r is a real value
 // and the exponent p of type real must be an integer value to base 10;
 // The integer value condition is tested in the constructor call:
@@ -983,7 +983,7 @@ l_interval wide_any(int n)
 }
 
 
-bool operator == (const lx_real &a, const lx_real &b) throw()
+bool operator == (const lx_real &a, const lx_real &b)
 {
 	const real c1 = 1e20;
 	l_real ar(lr_part(a)), br(lr_part(b));
@@ -1014,7 +1014,7 @@ bool operator == (const lx_real &a, const lx_real &b) throw()
 	 return res;
 }
 
-bool operator > (const lx_real &a, const lx_real &b) throw()
+bool operator > (const lx_real &a, const lx_real &b)
 {
 	l_real lra(lr_part(a)), lrb(lr_part(b));
 	bool zero_a(eq_zero(a)), zero_b(eq_zero(b)), bl(false);
@@ -1062,7 +1062,7 @@ bool operator > (const lx_real &a, const lx_real &b) throw()
 	return bl;
 }
 
-void scale_up(lx_real &a) throw()
+void scale_up(lx_real &a)
 // scale_up(a) scales a.lr upwardly as far as possible. 
 // Notice:    a.lr must absolutely be sorted, i.e. for
 //            example: a.lr[1]=1e50, a.lr[2]=1e20, a.lr[3]=1;   
@@ -1080,7 +1080,7 @@ void scale_up(lx_real &a) throw()
 	}
 }
 
-void scale_down(lx_real &a) throw()
+void scale_down(lx_real &a)
 // scale_down skaliert a moeglichst weit nach unten, ohne
 // dass dabei binaere Stellen verloren gehen.
 // Der mathematische Wert von a bleibt dabei erhalten, d.h.
@@ -1099,7 +1099,7 @@ void scale_down(lx_real &a) throw()
 }
 
 
-lx_real upper_bnd(const lx_real& x) throw()
+lx_real upper_bnd(const lx_real& x)
 // y = upper_bnd(x) calculates an upper bound y of  x < y;
 // lr = lr_part(x); (See the following code.)
 // The components lr[1],lr[2], ... ,lr[StagPrec(x)] must be sorted!
@@ -1142,7 +1142,7 @@ lx_real upper_bnd(const lx_real& x) throw()
 	 return res;
 } // upper_bnd(...)
 
-lx_real lower_bnd(const lx_real& x) throw()
+lx_real lower_bnd(const lx_real& x)
 // y = lower_bnd(x) calculates a rather great lower bound y of  x > y;
 // lr = lr_part(x); (See the following code.)
 // The components lr[1],lr[2], ... ,lr[StagPrec(x)] must be sorted!
@@ -1184,7 +1184,7 @@ lx_real lower_bnd(const lx_real& x) throw()
  return res;
 } // lower_bnd(...)
 
-lx_real operator + (const lx_real &a, const lx_real &b) throw()
+lx_real operator + (const lx_real &a, const lx_real &b)
 // An approximation of (a+b) is calculated. In most of the cases
 // a maximum of accuracy is achieved.
 {
@@ -1234,7 +1234,7 @@ lx_real operator + (const lx_real &a, const lx_real &b) throw()
  return res;
 }
 
-lx_real operator * (const lx_real& a, const lx_real& b) throw()
+lx_real operator * (const lx_real& a, const lx_real& b)
 // An approximation of (a*b) is calculated. In most of the cases
 // a maximum of accuracy is achieved.
 {
@@ -1338,7 +1338,7 @@ lx_real operator * (const lx_real& a, const lx_real& b) throw()
 	return res;
 } // operator *
 
-lx_real operator / (const lx_real &a, const lx_real &b) throw(DIV_BY_ZERO)
+lx_real operator / (const lx_real &a, const lx_real &b)
 {
 	int stagsave = stagprec,
  stagmax = 39,
@@ -1400,7 +1400,7 @@ lx_real operator / (const lx_real &a, const lx_real &b) throw(DIV_BY_ZERO)
 	 return res;
 } // operator /
 
-l_real & l_real::operator = (const lx_real& a) throw()
+l_real & l_real::operator = (const lx_real& a)
 {
 	int exar;
 	real p(expo(a)), exr;
@@ -1416,7 +1416,7 @@ l_real & l_real::operator = (const lx_real& a) throw()
 	return *this = ar;
 }
 
-real & real::operator = (const lx_real& a) throw()
+real & real::operator = (const lx_real& a)
 {
 	l_real lr;
 	real x;
@@ -1462,7 +1462,7 @@ real expo_RelDiam(const l_interval &x)
 // -------------- Elementary functions of type lx_interval ------------------
 // --------------------------------------------------------------------------
 
-lx_interval sqrt(const lx_interval &a) throw()
+lx_interval sqrt(const lx_interval &a)
 {
 	int stagsave = stagprec,
  stagmax = 30; // l_imath.cpp: sqrt() uses stagmax = 30;
@@ -1504,7 +1504,7 @@ lx_interval sqrt(const lx_interval &a) throw()
  return res;
 } // sqrt()
 
-lx_interval sqr(const lx_interval &x) throw()
+lx_interval sqr(const lx_interval &x)
 {
 	int stagsave = stagprec,
  stagmax = 39;
@@ -1532,7 +1532,7 @@ lx_interval sqr(const lx_interval &x) throw()
  return y;
 }
 
-lx_interval Lnp1(const lx_interval &x) throw()
+lx_interval Lnp1(const lx_interval &x)
 // Calculating an inclusion of ln(1+x) for
 // not too wide intervals,    |x| <= 1e-7;
 // This function is for the internal use only,
@@ -1581,7 +1581,7 @@ lx_interval Lnp1(const lx_interval &x) throw()
 	return res;
 } // Lnp1(...)
 
-lx_interval Ln_(const lx_interval &x) throw() 
+lx_interval Ln_(const lx_interval &x) 
 {
 	lx_interval T(0.0);
 	l_interval lx(li_part(x));
@@ -1627,7 +1627,7 @@ lx_interval Ln_(const lx_interval &x) throw()
 		 return T;
 } // Ln_(...)
 
-lx_interval ln(const lx_interval &x) throw() 
+lx_interval ln(const lx_interval &x) 
 {
 	int stagsave = stagprec,
  stagmax = 39;
@@ -1659,7 +1659,7 @@ lx_interval ln(const lx_interval &x) throw()
  return res;
 } // ln(...)
 
-lx_interval log2(const lx_interval &x) throw()
+lx_interval log2(const lx_interval &x)
 {
 	int stagsave = stagprec,
  stagmax = 39;
@@ -1673,7 +1673,7 @@ lx_interval log2(const lx_interval &x) throw()
  return res;
 }
 
-lx_interval log10(const lx_interval &x) throw()
+lx_interval log10(const lx_interval &x)
 {
 	int stagsave = stagprec,
  stagmax = 39;
@@ -1687,7 +1687,7 @@ lx_interval log10(const lx_interval &x) throw()
  return res;	
 }
 
-lx_interval Lnp1_(const lx_interval &x) throw()
+lx_interval Lnp1_(const lx_interval &x)
 {
 	const real r = 1e-7;
 	lx_interval res;
@@ -1697,7 +1697,7 @@ lx_interval Lnp1_(const lx_interval &x) throw()
 	return res;
 } // Lnp1_(...)
 
-lx_interval lnp1(const lx_interval &x) throw()
+lx_interval lnp1(const lx_interval &x)
 {
 	int stagsave = stagprec,
  stagmax = 39;
@@ -1734,7 +1734,7 @@ lx_interval lnp1(const lx_interval &x) throw()
 // --------------------- power function ------------------------------------
 // -------------------------------------------------------------------------
 
-lx_interval Power_(const lx_interval &x, const real &n) throw()
+lx_interval Power_(const lx_interval &x, const real &n)
 // Calculates the inclusion of [x]^n for integer values n.
 // The rel. diam of x should not be too great.
 // This function is only for the internal use! ( power(...) ) 
@@ -1781,7 +1781,7 @@ lx_interval Power_(const lx_interval &x, const real &n) throw()
 	return y;
 } // Power_()
 
-lx_interval power(const lx_interval &x, const real &n) throw()
+lx_interval power(const lx_interval &x, const real &n)
 {
 	int stagsave = stagprec,
  stagmax = 38;
@@ -1843,7 +1843,7 @@ int Poly_N_Exp(const lx_interval &x)
 } // Poly_N_Exp()
 
 
-lx_interval Exp_(const lx_interval &x) throw()
+lx_interval Exp_(const lx_interval &x)
 {
 	int ex,n,N;
 
@@ -1896,7 +1896,7 @@ lx_interval Exp_(const lx_interval &x) throw()
 	return res;
 } // Exp_(...)   
 
-lx_interval exp(const lx_interval &x) throw()
+lx_interval exp(const lx_interval &x)
 {
 	int stagsave = stagprec,
  stagmax = 40;
@@ -1931,7 +1931,7 @@ lx_interval exp(const lx_interval &x) throw()
  return res;
 } // exp()
 
-lx_interval exp2(const lx_interval &x) throw()
+lx_interval exp2(const lx_interval &x)
 {
 	int stagsave = stagprec,
  stagmax = 40;
@@ -1947,7 +1947,7 @@ lx_interval exp2(const lx_interval &x) throw()
  return res;
 } // exp2(...)  
 
-lx_interval exp10(const lx_interval &x) throw()
+lx_interval exp10(const lx_interval &x)
 {
 	int stagsave = stagprec,
  stagmax = 40;
@@ -1963,7 +1963,7 @@ lx_interval exp10(const lx_interval &x) throw()
  return res;
 } // exp10(...)   
 
-lx_interval pow(const lx_interval &x, const lx_interval &e) throw()
+lx_interval pow(const lx_interval &x, const lx_interval &e)
 // Calculating an inclusion of x^y;
 // If y is an integer value n with 
 //      -9007199254740991.0 <= n <= +9007199254740991.0,
@@ -2004,7 +2004,7 @@ lx_interval pow(const lx_interval &x, const lx_interval &e) throw()
  return y;
 } // pow(...)
 
-lx_interval xp1_pow_y(const lx_interval &x, const lx_interval &y) throw()
+lx_interval xp1_pow_y(const lx_interval &x, const lx_interval &y)
 {
 	int stagsave = stagprec,
  stagmax = 40;
@@ -2087,7 +2087,7 @@ lx_interval Expm1(const lx_interval &x)
 	return res;
 }
 
-lx_interval EXPm1(const lx_interval &x) throw()
+lx_interval EXPm1(const lx_interval &x)
 //  e^x - 1;
 //  Only for internal use and for
 //  not too wide intervals! 
@@ -2108,7 +2108,7 @@ lx_interval EXPm1(const lx_interval &x) throw()
  return res;
 } // EXPm1(...)
 
-lx_interval expm1(const lx_interval &x) throw()
+lx_interval expm1(const lx_interval &x)
 //  e^x - 1;
 {
 	int stagsave = stagprec,
@@ -2212,7 +2212,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return z;
  } // floor
 
- lx_interval sin(const lx_interval &x) throw()
+ lx_interval sin(const lx_interval &x)
 // Inclusion of sin(x)
 // Blomquist, 11.03.2008;
  {
@@ -2341,7 +2341,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
   return res;
  } // sin()
 
- lx_interval sin_n(const lx_interval &x, const real& n) throw()
+ lx_interval sin_n(const lx_interval &x, const real& n)
 // Inclusion of sin(n*Pi + x)
  {
 	 int stagsave = stagprec,
@@ -2364,7 +2364,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
   return res;
  } // sin_n(...)
 
- lx_interval cos(const lx_interval &x) throw()
+ lx_interval cos(const lx_interval &x)
 // Inclusion of cos(x)
  {
 	 int stagsave = stagprec,
@@ -2397,7 +2397,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
   return res;
  } // cos(...)
 
- lx_interval cos_n(const lx_interval &x, const real& n) throw()
+ lx_interval cos_n(const lx_interval &x, const real& n)
 // Inclusion of cos((n+0.5)*Pi + x)
  {
 	 int stagsave = stagprec,
@@ -2419,7 +2419,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
   return res;
  } // cos_n(...)
 
- lx_interval tan(const lx_interval& x) throw() 
+ lx_interval tan(const lx_interval& x) 
  {
 	 lx_interval c,y;
 
@@ -2437,7 +2437,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return y;
  } // tan()
 
- lx_interval cot(const lx_interval & x) throw() 
+ lx_interval cot(const lx_interval & x) 
  {
 	 lx_interval s,y;
 
@@ -2451,7 +2451,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return y;
  } // cot()
 
- lx_interval sqrt1px2(const lx_interval &x) throw() 
+ lx_interval sqrt1px2(const lx_interval &x) 
  {   // Inclusion of sqrt(1+x^2)
 	 int ext,c(3210);
 	 real ex;
@@ -2493,7 +2493,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 						return N;
  } // Poly_N_Atan()
 
- lx_interval Atan_(const lx_interval &x) throw() 
+ lx_interval Atan_(const lx_interval &x) 
 // Inclusion of atan(x) for rather tight intervals x only!
 // Only for the internal use in atan(x)!
  { 
@@ -2576,7 +2576,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return res;
  } // Atan_()
 
- lx_interval atan(const lx_interval &x) throw()
+ lx_interval atan(const lx_interval &x)
  {
 	 int stagsave = stagprec,
   stagmax = 39;
@@ -2609,7 +2609,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ---------------------- sqrt(1-x^2) -----------------------------------
 
- lx_interval Sqrt1mx2_(const lx_interval &x) throw() 
+ lx_interval Sqrt1mx2_(const lx_interval &x) 
 // Inclusion of sqrt(1-x^2) for rather tight intervals x;
 // For the internal use only!!
 // Blomquist, 08.04.2008;
@@ -2639,7 +2639,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return res;
  } // Sqrt(1-x^2) 
 
- lx_interval sqrt1mx2(const lx_interval &x) throw()
+ lx_interval sqrt1mx2(const lx_interval &x)
  {
 	 int stagsave = stagprec,
   stagmax = 39;
@@ -2674,7 +2674,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------- sqrt(x^2-1) ------------------------------------
 
- lx_interval sqrtx2m1(const lx_interval &x) throw() 
+ lx_interval sqrtx2m1(const lx_interval &x) 
 // Inclusion of sqrt(x^2-1)
 // Blomquist, 22.04.08;
  { 
@@ -2716,7 +2716,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------- asin(x) ----------------------------------------
 
- lx_interval Asin_(const lx_interval& x) throw()
+ lx_interval Asin_(const lx_interval& x)
 // Inclusion of asin(x) for rather tight intervals x only!
 // Only for the internal use in asin(x)!
  {
@@ -2764,7 +2764,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	return y;
 } // Asin_(x)
 
- lx_interval asin(const lx_interval &x) throw()
+ lx_interval asin(const lx_interval &x)
  {
 	 int stagsave = stagprec,
   stagmax = 39;
@@ -2801,7 +2801,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------- acos(x) ----------------------------------------
 
- lx_interval Acos_(const lx_interval& x) throw()
+ lx_interval Acos_(const lx_interval& x)
 // Inclusion of acos(x) for rather tight intervals x only!
 // Only for the internal use in acos(x)!
 // Blomquist, 24.04.2008;
@@ -2851,7 +2851,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	return y;
 } // Acos_(x)
 
- lx_interval acos(const lx_interval &x) throw()
+ lx_interval acos(const lx_interval &x)
 // Blomquist, 24.04.2008;
  {
 	 int stagsave = stagprec,
@@ -2890,7 +2890,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------- acot(x) ----------------------------------------
 
- lx_interval Acot_(const lx_interval& x) throw()
+ lx_interval Acot_(const lx_interval& x)
 // codomain of acot(x): (0,pi);
 // acot(x) is continuous at x=0;
 // Blomquist, 25.04.2008; 
@@ -2926,7 +2926,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return y;
  } // Acot_(x)
 
- lx_interval acot(const lx_interval &x) throw()
+ lx_interval acot(const lx_interval &x)
 // Blomquist, 24.04.2008;
  {
 	 int stagsave = stagprec,
@@ -2960,7 +2960,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // -------------------------- sinh(...) --------------------------------------
 
- lx_interval Sinh_(const lx_interval &x) throw()
+ lx_interval Sinh_(const lx_interval &x)
 // Inclusion of sinh(x) for sufficiently tight intervals x
  {
 	 int exl;
@@ -3009,7 +3009,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return res;
  } // Sinh_(...)
 
- lx_interval sinh(const lx_interval &x) throw()
+ lx_interval sinh(const lx_interval &x)
  {
 	 int stagsave = stagprec,
   stagmax = 39;
@@ -3042,7 +3042,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // -------------------------- cosh(...) ------------------------------------
 
- lx_interval Cosh_(const lx_interval& x) throw()
+ lx_interval Cosh_(const lx_interval& x)
 // codomain of cosh(x): [1,+infty);
 // This function is only used for tight intervals x,
 // with Inf(x)>=0;
@@ -3073,7 +3073,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return y;
  } // Cosh_(x)
 
- lx_interval cosh(const lx_interval &x) throw()
+ lx_interval cosh(const lx_interval &x)
  {
 	 int stagsave = stagprec,
   stagmax = 39;
@@ -3106,7 +3106,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // -------------------------- tanh(...) ------------------------------------
 
- lx_interval Tanh_(const lx_interval& x) throw()
+ lx_interval Tanh_(const lx_interval& x)
  {
 // Blomquist, 27.04.2008;
 	 int exl;
@@ -3152,7 +3152,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return y;
  } // Tanh_(x)
 
- lx_interval tanh(const lx_interval &x) throw()
+ lx_interval tanh(const lx_interval &x)
  {
 	 int stagsave = stagprec,
   stagmax = 39;
@@ -3185,7 +3185,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // -------------------------- coth(...) ------------------------------------
 
- lx_interval Coth_(const lx_interval& x) throw()
+ lx_interval Coth_(const lx_interval& x)
 // This function is only used for tight intervals x,
 // with Inf(x) > 0;
 // Blomquist, 27.04.2008;
@@ -3222,7 +3222,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return y;
  } // coth(x)
 
- lx_interval coth(const lx_interval &x) throw()
+ lx_interval coth(const lx_interval &x)
 // Blomquist, 27.04.2008;
  {
 	 int stagsave = stagprec,
@@ -3265,7 +3265,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // -------------------------- sqrt(1+x)-1 ------------------------------------
 
- lx_interval Sqrtp1m1_(const lx_interval& x) throw()
+ lx_interval Sqrtp1m1_(const lx_interval& x)
 // sqrtp1m1(x) calculates an inclusion of sqrt(x+1)-1;
 // Blomquist, 25.08.07;
  {
@@ -3293,7 +3293,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return y; 
  } // Sqrtp1m1_
 
- lx_interval sqrtp1m1(const lx_interval &x) throw()
+ lx_interval sqrtp1m1(const lx_interval &x)
  {
 	 int stagsave = stagprec,
   stagmax = 30;
@@ -3327,7 +3327,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // -------------------------- asinh(x) ------------------------------------
 
- lx_interval Asinh_(const lx_interval &x) throw()
+ lx_interval Asinh_(const lx_interval &x)
 // Inclusion of asinh(x)
  {
 	 int exl;
@@ -3368,7 +3368,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return res;
  } // Asinh_(...)
 
- lx_interval asinh(const lx_interval &x) throw()
+ lx_interval asinh(const lx_interval &x)
  {
 	 int stagsave = stagprec,
   stagmax = 39;
@@ -3399,7 +3399,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // -------------------------- acosh(...) -------------------------------
 
- lx_interval acosh(const lx_interval &x) throw()
+ lx_interval acosh(const lx_interval &x)
 // Inclusion of acosh(x)
  {
 	 int stagsave = stagprec,
@@ -3443,7 +3443,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------------- acoshp1(...) -----------------------------
 
- lx_interval Acoshp1_(const lx_interval &x) throw()
+ lx_interval Acoshp1_(const lx_interval &x)
 // This function is only used for tight intervals x,
 // with Inf(x) >= 0;
 // Blomquist, 03.05.2008;
@@ -3480,7 +3480,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return res;
  } // Acoshp1_(...)
 
- lx_interval acoshp1(const lx_interval &x) throw()
+ lx_interval acoshp1(const lx_interval &x)
 // Inclusion of acosh(1+x);
 // Blomquist, 03.05.2008;
  {
@@ -3517,7 +3517,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------------ atanh(...) ----------------------------------
 
- lx_interval Atanh_(const lx_interval &x) throw()
+ lx_interval Atanh_(const lx_interval &x)
 // Inclusion of atanh(x) only for sufficiently small
 // intervals x. Only for the internal use!
 // Blomquist, 03.05.2008;
@@ -3551,7 +3551,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return res;
  } // Atanh_(...)
 
- lx_interval atanh(const lx_interval &x) throw()
+ lx_interval atanh(const lx_interval &x)
  {
 	 int stagsave = stagprec,
   stagmax = 39;
@@ -3587,7 +3587,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------------ atanh1m(...) ---------------------------------
 
- lx_interval Atanh1m_(const lx_interval &x) throw()
+ lx_interval Atanh1m_(const lx_interval &x)
 // Inclusion of atanh(1-x); 0<x<2;
 // Only for not too wide intervals x;
 // For the internal use only!
@@ -3600,7 +3600,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return res;
  }  // Atanh1m_(...)
 
- lx_interval atanh1m(const lx_interval &x) throw()
+ lx_interval atanh1m(const lx_interval &x)
 // Blomquist, 07.05.2008;
  {
 	 int stagsave = stagprec,
@@ -3637,7 +3637,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------------ atanhm1p(...) ------------------------------
 
- lx_interval atanhm1p(const lx_interval &x) throw()
+ lx_interval atanhm1p(const lx_interval &x)
 // Inclusion of atanh(-1+x) , 0<x<2;
  {
 	 int stagsave = stagprec,
@@ -3656,7 +3656,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------------ acoth(...) ---------------------------------
 
- lx_interval Acoth_(const lx_interval& x) throw()
+ lx_interval Acoth_(const lx_interval& x)
 //  acoth(x), x=[x1,x2], x1>1; Calculating 
 //  inclusions only for not too wide intervals;
 //  Only for the internal use in acoth(x) !
@@ -3670,7 +3670,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return res;
  } // Acoth_
 
- lx_interval acoth(const lx_interval &x) throw()
+ lx_interval acoth(const lx_interval &x)
 // Blomquist, 13.05.2008;
  {
 	 int stagsave = stagprec,
@@ -3713,7 +3713,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------------ acoth(1+x) ---------------------------------
 
- lx_interval Acothp1_(const lx_interval& x) throw()
+ lx_interval Acothp1_(const lx_interval& x)
 //  arcoth(1+x), x>0; 
 //  only for not too wide intervals x and
 //  only for the internal use in acothp1(...)
@@ -3727,7 +3727,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return res;
  } // Acothp1_
 
- lx_interval acothp1(const lx_interval &x) throw()
+ lx_interval acothp1(const lx_interval &x)
 // Blomquist, 14.05.2008;
  {
 	 int stagsave = stagprec,
@@ -3766,7 +3766,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------------ acothm1m(...) ------------------------------
 
- lx_interval acothm1m(const lx_interval &x) throw()
+ lx_interval acothm1m(const lx_interval &x)
 // Inclusion of acoth(-1-x) , x>0;
  {
 	 int stagsave = stagprec,
@@ -3785,7 +3785,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ------------------------ sqrt(x^2+y^2) ------------------------------
 
- lx_interval Sqrtx2y2_(const lx_interval &x, const lx_interval &y) throw()
+ lx_interval Sqrtx2y2_(const lx_interval &x, const lx_interval &y)
 // Inclusion of sqrt(x^2+y^2);
 // x = [x1,x2], x1>=0;  y = [y1,y2], y1>=0;  x2>=y2;
 // For not too wide intervals x,y;
@@ -3828,7 +3828,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
   return res;
  }  // Sqrtx2y2_(...)
 
- lx_interval sqrtx2y2(const lx_interval &x, const lx_interval &y) throw()
+ lx_interval sqrtx2y2(const lx_interval &x, const lx_interval &y)
  {
 	 int stagsave = stagprec,
   stagmax = 30,
@@ -3915,7 +3915,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // ---------------------- ln(sqrt(x^2+y^2)) ----------------------------
 
- lx_interval Ln_sqrtx2y2_(const lx_interval &x, const lx_interval &y) throw()
+ lx_interval Ln_sqrtx2y2_(const lx_interval &x, const lx_interval &y)
 // Inclusion of ln(sqrt(x^2+y^2));
 // Blomquist, 19.05.2008;
  {
@@ -3951,7 +3951,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return res;
  }  // Ln_sqrtx2y2_(...)
 
- lx_interval ln_sqrtx2y2(const lx_interval &x, const lx_interval &y) throw()
+ lx_interval ln_sqrtx2y2(const lx_interval &x, const lx_interval &y)
  {
 	 int stagsave = stagprec,
   stagmax = 30;
@@ -3993,7 +3993,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 
 // -------------------------- n-th root --------------------------------
 
- lx_interval Sqrt_(const lx_interval& x, int n) throw()
+ lx_interval Sqrt_(const lx_interval& x, int n)
  {   // Inclusion of the n-th root, based on the pow(...) function
     // n>=2; For not too wide intervals x;
     // and for the internal use in sqrt(x,n) only!
@@ -4017,7 +4017,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 	 return res;
  } // Sqrt_(...)
 
- lx_interval sqrt(const lx_interval &x, int n) throw()
+ lx_interval sqrt(const lx_interval &x, int n)
  {
 	 int stagsave = stagprec,
   stagmax = 39,
@@ -4055,7 +4055,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Pi[40]; // CXSC_Pi[0], ... ,CXSC_Pi[39]
  static bool CXSC_Pi_initialized = false;
 
- lx_interval Pi_lx_interval() throw()
+ lx_interval Pi_lx_interval()
 // Inclusion of Pi, Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -4166,7 +4166,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Ln2[40]; // CXSC_Ln2[0], ... ,CXSC_Ln2[39]
  static bool CXSC_Ln2_initialized = false;
 
- lx_interval Ln2_lx_interval() throw()
+ lx_interval Ln2_lx_interval()
 // Inclusion of ln(2), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -4276,7 +4276,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Ln10[40]; // CXSC_Ln10[0], ... ,CXSC_Ln10[39]
  static bool CXSC_Ln10_initialized = false;
 
- lx_interval Ln10_lx_interval() throw()
+ lx_interval Ln10_lx_interval()
 // Inclusion of ln(10), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -4386,7 +4386,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Pir[40]; // CXSC_Pir[0], ... ,CXSC_Pir[39]
  static bool CXSC_Pir_initialized = false;
 
- lx_interval Pir_lx_interval() throw()
+ lx_interval Pir_lx_interval()
 // Inclusion of 1/Pi, Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -4496,7 +4496,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_SqrtPi[40]; // CXSC_SqrtPi[0], ... ,CXSC_SqrtPi[39]
  static bool CXSC_SqrtPi_initialized = false;
 
- lx_interval SqrtPi_lx_interval() throw()
+ lx_interval SqrtPi_lx_interval()
 // Inclusion of sqrt(Pi), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -4606,7 +4606,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Sqrt2Pi[40]; // CXSC_Sqrt2Pi[0], ... ,CXSC_Sqrt2Pi[39]
  static bool CXSC_Sqrt2Pi_initialized = false;
 
- lx_interval Sqrt2Pi_lx_interval() throw()
+ lx_interval Sqrt2Pi_lx_interval()
 // Inclusion of sqrt(2*Pi), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -4717,7 +4717,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Sqrt2[40]; // CXSC_Sqrt2[0], ... ,CXSC_Sqrt2[39]
  static bool CXSC_Sqrt2_initialized = false;
 
- lx_interval Sqrt2_lx_interval() throw()
+ lx_interval Sqrt2_lx_interval()
 // Inclusion of sqrt(2), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -4827,7 +4827,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Sqrt3[40]; // CXSC_Sqrt3[0], ... ,CXSC_Sqrt3[39]
  static bool CXSC_Sqrt3_initialized = false;
 
- lx_interval Sqrt3_lx_interval() throw()
+ lx_interval Sqrt3_lx_interval()
 // Inclusion of sqrt(3), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -4937,7 +4937,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Ln2r[40]; // CXSC_Ln2r[0], ... ,CXSC_Ln2r[39]
  static bool CXSC_Ln2r_initialized = false;
 
- lx_interval Ln2r_lx_interval() throw()
+ lx_interval Ln2r_lx_interval()
 // Inclusion of 1/ln(2), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -5047,7 +5047,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Pid3[40]; // CXSC_Pid3[0], ... ,CXSC_Pid3[39]
  static bool CXSC_Pid3_initialized = false;
 
- lx_interval Pid3_lx_interval() throw()
+ lx_interval Pid3_lx_interval()
 // Inclusion of Pi/3, Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -5157,7 +5157,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_SqrtPir[40]; // CXSC_SqrtPir[0], ... ,CXSC_SqrtPir[39]
  static bool CXSC_SqrtPir_initialized = false;
 
- lx_interval SqrtPir_lx_interval() throw()
+ lx_interval SqrtPir_lx_interval()
 // Inclusion of 1/sqrt(Pi), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -5267,7 +5267,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Sqrt2Pir[40]; // CXSC_Sqrt2Pir[0], ... ,CXSC_Sqrt2Pir[39]
  static bool CXSC_Sqrt2Pir_initialized = false;
 
- lx_interval Sqrt2Pir_lx_interval() throw()
+ lx_interval Sqrt2Pir_lx_interval()
 // Inclusion of 1/sqrt(2*Pi), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -5377,7 +5377,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_LnPi[40]; // CXSC_LnPi[0], ... ,CXSC_LnPi[39]
  static bool CXSC_LnPi_initialized = false;
 
- lx_interval LnPi_lx_interval() throw()
+ lx_interval LnPi_lx_interval()
 // Inclusion of ln(Pi), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -5487,7 +5487,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Ln2Pi[40]; // CXSC_Ln2Pi[0], ... ,CXSC_Ln2Pi[39]
  static bool CXSC_Ln2Pi_initialized = false;
 
- lx_interval Ln2Pi_lx_interval() throw()
+ lx_interval Ln2Pi_lx_interval()
 // Inclusion of ln(2*Pi), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -5597,7 +5597,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_E[40]; // CXSC_E[0], ... ,CXSC_E[39]
  static bool CXSC_E_initialized = false;
 
- lx_interval E_lx_interval() throw()
+ lx_interval E_lx_interval()
 // Inclusion of e, Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -5707,7 +5707,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_EpPi[40]; // CXSC_EpPi[0], ... ,CXSC_EpPi[39]
  static bool CXSC_EpPi_initialized = false;
 
- lx_interval EpPi_lx_interval() throw()
+ lx_interval EpPi_lx_interval()
 // Inclusion of e^Pi, Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -5817,7 +5817,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_EulerGamma[40]; // CXSC_EulerGamma[0],...,CXSC_EulerGamma[39]
  static bool CXSC_EulerGamma_initialized = false;
 
- lx_interval EulerGamma_lx_interval() throw()
+ lx_interval EulerGamma_lx_interval()
 // Inclusion of EulerGamma, Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -5927,7 +5927,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Catalan[40]; // CXSC_Catalan[0],...,CXSC_Catalan[39]
  static bool CXSC_Catalan_initialized = false;
 
- lx_interval Catalan_lx_interval() throw()
+ lx_interval Catalan_lx_interval()
 // Inclusion of Catalan, Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -6037,7 +6037,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_sqrt5[40]; // CXSC_sqrt5[0],...,CXSC_sqrt5[39]
  static bool CXSC_sqrt5_initialized = false;
 
- lx_interval sqrt5_lx_interval() throw()
+ lx_interval sqrt5_lx_interval()
 // Inclusion of sqrt(5), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -6147,7 +6147,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_sqrt7[40]; // CXSC_sqrt7[0],...,CXSC_sqrt7[39]
  static bool CXSC_sqrt7_initialized = false;
 
- lx_interval sqrt7_lx_interval() throw()
+ lx_interval sqrt7_lx_interval()
 // Inclusion of sqrt(7), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -6257,7 +6257,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_One_m[3]; // CXSC_One_m[0], ... ,CXSC_One_m[2]
  static bool CXSC_One_m_initialized = false;
 
- lx_interval One_m_lx_interval() throw()
+ lx_interval One_m_lx_interval()
 // Inclusion of 2^(-1023)*(2^(+1023) - 2^(-1074)) = 1-2^(-2097), 
 // Blomquist, 26.07.2007;
  {
@@ -6294,7 +6294,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_One_p[3]; // CXSC_One_p[0], ... ,CXSC_One_p[2]
  static bool CXSC_One_p_initialized = false;
 
- lx_interval One_p_lx_interval() throw()
+ lx_interval One_p_lx_interval()
 // Inclusion of 2^(-1023)*(2^(+1023) + 2^(-1074)) = 1+2^(-2097), 
 // Blomquist, 27.07.2007;
  {
@@ -6331,7 +6331,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Ln10r[40]; // CXSC_Ln10r[0], ... ,CXSC_Ln10r[39]
  static bool CXSC_Ln10r_initialized = false;
 
- lx_interval Ln10r_lx_interval() throw()
+ lx_interval Ln10r_lx_interval()
 // Inclusion of 1/ln(10), Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -6443,7 +6443,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Pid4[40]; // CXSC_Pid4[0], ... ,CXSC_Pid4[39]
  static bool CXSC_Pid4_initialized = false;
 
- lx_interval Pid4_lx_interval() throw()
+ lx_interval Pid4_lx_interval()
 // Inclusion of 1/ln(10), Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -6555,7 +6555,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Pid2[40]; // CXSC_Pid2[0], ... ,CXSC_Pid2[39]
  static bool CXSC_Pid2_initialized = false;
 
- lx_interval Pid2_lx_interval() throw()
+ lx_interval Pid2_lx_interval()
 // Inclusion of 1/ln(10), Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -6667,7 +6667,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Pi2[40]; // CXSC_Pi2[0], ... ,CXSC_Pi2[39]
  static bool CXSC_Pi2_initialized = false;
 
- lx_interval Pi2_lx_interval() throw()
+ lx_interval Pi2_lx_interval()
 // Inclusion of 2*pi, Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -6779,7 +6779,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Pi2r[40]; // CXSC_Pi2r[0], ... ,CXSC_Pi2r[39]
  static bool CXSC_Pi2r_initialized = false;
 
- lx_interval Pi2r_lx_interval() throw()
+ lx_interval Pi2r_lx_interval()
 // Inclusion of 1/Pi, Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -6891,7 +6891,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Pip2[40]; // CXSC_Pip2[0], ... ,CXSC_Pip2[39]
  static bool CXSC_Pip2_initialized = false;
 
- lx_interval Pip2_lx_interval() throw()
+ lx_interval Pip2_lx_interval()
 // Inclusion of 1/Pi, Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -7003,7 +7003,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Sqrt2r[40]; // CXSC_Sqrt2r[0], ... ,CXSC_Sqrt2r[39]
  static bool CXSC_Sqrt2r_initialized = false;
 
- lx_interval Sqrt2r_lx_interval() throw()
+ lx_interval Sqrt2r_lx_interval()
 // Inclusion of sqrt(2), Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -7115,7 +7115,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Sqrt3d2[40]; // CXSC_Sqrt3d2[0], ... ,CXSC_Sqrt3d2[39]
  static bool CXSC_Sqrt3d2_initialized = false;
 
- lx_interval Sqrt3d2_lx_interval() throw()
+ lx_interval Sqrt3d2_lx_interval()
 // Inclusion of sqrt(3), Blomquist, 15.06.2007;
  {
 	 l_interval y;
@@ -7227,7 +7227,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Sqrt3r[40]; // CXSC_Sqrt3r[0], ... ,CXSC_Sqrt3r[39]
  static bool CXSC_Sqrt3r_initialized = false;
 
- lx_interval Sqrt3r_lx_interval() throw()
+ lx_interval Sqrt3r_lx_interval()
 // Inclusion of 1/sqrt(3), Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -7339,7 +7339,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Er[40]; // CXSC_Er[0], ... ,CXSC_Er[39]
  static bool CXSC_Er_initialized = false;
 
- lx_interval Er_lx_interval() throw()
+ lx_interval Er_lx_interval()
 // Inclusion of 1/sqrt(3), Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -7451,7 +7451,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Ep2[40]; // CXSC_Ep2[0], ... ,CXSC_Ep2[39]
  static bool CXSC_Ep2_initialized = false;
 
- lx_interval Ep2_lx_interval() throw()
+ lx_interval Ep2_lx_interval()
 // Inclusion of e^2, Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -7563,7 +7563,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Ep2r[40]; // CXSC_Ep2r[0], ... ,CXSC_Ep2r[39]
  static bool CXSC_Ep2r_initialized = false;
 
- lx_interval Ep2r_lx_interval() throw()
+ lx_interval Ep2r_lx_interval()
 // Inclusion of 1/e^2, Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -7675,7 +7675,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_Ep2Pi[40]; // CXSC_Ep2Pi[0], ... ,CXSC_Ep2Pi[39]
  static bool CXSC_Ep2Pi_initialized = false;
 
- lx_interval Ep2Pi_lx_interval() throw()
+ lx_interval Ep2Pi_lx_interval()
 // Inclusion of e^(2pi), Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -7787,7 +7787,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_EpPid2[40]; // CXSC_EpPid2[0], ... ,CXSC_EpPid2[39]
  static bool CXSC_EpPid2_initialized = false;
 
- lx_interval EpPid2_lx_interval() throw()
+ lx_interval EpPid2_lx_interval()
 // Inclusion of e^(pi/2), Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -7899,7 +7899,7 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
  static real CXSC_EpPid4[40]; // CXSC_EpPid4[0], ... ,CXSC_EpPid4[39]
  static bool CXSC_EpPid4_initialized = false;
 
- lx_interval EpPid4_lx_interval() throw()
+ lx_interval EpPid4_lx_interval()
 // Inclusion of e^(pi/4), Blomquist, 27.11.2008;
  {
 	 l_interval y;
@@ -8011,170 +8011,170 @@ real pot3_n[20] = {3.0, 9.0, 27.0, 81.0, 243.0, 729.0, 2187.0, 6561.0,
 // ---------------- lx_real constants in high accuracy --------------------
 // ------------------------------------------------------------------------------
 
- lx_real Pi_lx_real() throw()
+ lx_real Pi_lx_real()
  { return mid(Pi_lx_interval()); }
- lx_real Pip2_lx_real() throw()
+ lx_real Pip2_lx_real()
  { return mid(Pip2_lx_interval()); }
- lx_real Pi2r_lx_real() throw()
+ lx_real Pi2r_lx_real()
  { return mid(Pi2r_lx_interval()); }
- lx_real Pi2_lx_real() throw()
+ lx_real Pi2_lx_real()
  { return mid(Pi2_lx_interval()); }
- lx_real Pid4_lx_real() throw()
+ lx_real Pid4_lx_real()
  { return mid(Pid4_lx_interval()); }
- lx_real Pid2_lx_real() throw()
+ lx_real Pid2_lx_real()
  { return mid(Pid2_lx_interval()); }
- lx_real Ln2_lx_real() throw()
+ lx_real Ln2_lx_real()
  { return mid(Ln2_lx_interval()); }
- lx_real Ln10_lx_real() throw()
+ lx_real Ln10_lx_real()
  { return mid(Ln10_lx_interval()); }
- lx_real Ln10r_lx_real() throw()
+ lx_real Ln10r_lx_real()
  { return mid(Ln10r_lx_interval()); }
- lx_real Pir_lx_real() throw()
+ lx_real Pir_lx_real()
  { return mid(Pir_lx_interval()); }
- lx_real SqrtPi_lx_real() throw()
+ lx_real SqrtPi_lx_real()
  { return mid(SqrtPi_lx_interval()); }
- lx_real Sqrt2Pi_lx_real() throw()
+ lx_real Sqrt2Pi_lx_real()
  { return mid(Sqrt2Pi_lx_interval()); }
- lx_real Sqrt2_lx_real() throw()
+ lx_real Sqrt2_lx_real()
  { return mid(Sqrt2_lx_interval()); }
- lx_real Sqrt2r_lx_real() throw()
+ lx_real Sqrt2r_lx_real()
  { return mid(Sqrt2r_lx_interval()); }
- lx_real Sqrt3_lx_real() throw()
+ lx_real Sqrt3_lx_real()
  { return mid(Sqrt3_lx_interval()); }
- lx_real Sqrt3r_lx_real() throw()
+ lx_real Sqrt3r_lx_real()
  { return mid(Sqrt3r_lx_interval()); }
- lx_real Sqrt3d2_lx_real() throw()
+ lx_real Sqrt3d2_lx_real()
  { return mid(Sqrt3d2_lx_interval()); }
- lx_real Ln2r_lx_real() throw()
+ lx_real Ln2r_lx_real()
  { return mid(Ln2r_lx_interval()); }
- lx_real Pid3_lx_real() throw()
+ lx_real Pid3_lx_real()
  { return mid(Pid3_lx_interval()); }
- lx_real SqrtPir_lx_real() throw()
+ lx_real SqrtPir_lx_real()
  { return mid(SqrtPir_lx_interval()); }
- lx_real Sqrt2Pir_lx_real() throw()
+ lx_real Sqrt2Pir_lx_real()
  { return mid(Sqrt2Pir_lx_interval()); }
- lx_real LnPi_lx_real() throw()
+ lx_real LnPi_lx_real()
  { return mid(LnPi_lx_interval()); }
- lx_real Ln2Pi_lx_real() throw()
+ lx_real Ln2Pi_lx_real()
  { return mid(Ln2Pi_lx_interval()); }
- lx_real E_lx_real() throw()
+ lx_real E_lx_real()
  { return mid(E_lx_interval()); }
- lx_real Ep2r_lx_real() throw()
+ lx_real Ep2r_lx_real()
  { return mid(Ep2r_lx_interval()); }
- lx_real Ep2_lx_real() throw()
+ lx_real Ep2_lx_real()
  { return mid(Ep2_lx_interval()); }
- lx_real Er_lx_real() throw()
+ lx_real Er_lx_real()
  { return mid(Er_lx_interval()); }
- lx_real EpPi_lx_real() throw()
+ lx_real EpPi_lx_real()
  { return mid(EpPi_lx_interval()); }
- lx_real EpPid2_lx_real() throw()
+ lx_real EpPid2_lx_real()
  { return mid(EpPid2_lx_interval()); }
- lx_real EpPid4_lx_real() throw()
+ lx_real EpPid4_lx_real()
  { return mid(EpPid4_lx_interval()); }
- lx_real Ep2Pi_lx_real() throw()
+ lx_real Ep2Pi_lx_real()
  { return mid(Ep2Pi_lx_interval()); }
- lx_real EulerGamma_lx_real() throw()
+ lx_real EulerGamma_lx_real()
  { return mid(EulerGamma_lx_interval()); }
- lx_real Catalan_lx_real() throw()
+ lx_real Catalan_lx_real()
  { return mid(Catalan_lx_interval()); }
- lx_real sqrt5_lx_real() throw()
+ lx_real sqrt5_lx_real()
  { return mid(sqrt5_lx_interval()); }
- lx_real sqrt7_lx_real() throw()
+ lx_real sqrt7_lx_real()
  { return mid(sqrt7_lx_interval()); }
- lx_real One_m_lx_real() throw()
+ lx_real One_m_lx_real()
  { return mid(One_m_lx_interval()); }
- lx_real One_p_lx_real() throw()
+ lx_real One_p_lx_real()
  { return mid(One_p_lx_interval()); }
 
 // --------------------------------------------------------------------------
 // -------Elementary functions related to type lx_real ----------------------
 // --------------------------------------------------------------------------
 
- lx_real sqrt(const lx_real& x) throw()
+ lx_real sqrt(const lx_real& x)
  { return mid(sqrt(lx_interval(x))); }
- lx_real sqr(const lx_real& x) throw()
+ lx_real sqr(const lx_real& x)
  { return mid(sqr(lx_interval(x))); }
- lx_real ln(const lx_real& x) throw()
+ lx_real ln(const lx_real& x)
  { return mid(ln(lx_interval(x))); }
- lx_real log2(const lx_real& x) throw()
+ lx_real log2(const lx_real& x)
  { return mid(log2(lx_interval(x))); }
- lx_real log10(const lx_real& x) throw()
+ lx_real log10(const lx_real& x)
  { return mid(log10(lx_interval(x))); }
- lx_real lnp1(const lx_real& x) throw()
+ lx_real lnp1(const lx_real& x)
  { return mid(lnp1(lx_interval(x))); }
- lx_real exp(const lx_real& x) throw()
+ lx_real exp(const lx_real& x)
  { return mid(exp(lx_interval(x))); }
- lx_real exp2(const lx_real& x) throw()
+ lx_real exp2(const lx_real& x)
  { return mid(exp2(lx_interval(x))); }
- lx_real exp10(const lx_real& x) throw()
+ lx_real exp10(const lx_real& x)
  { return mid(exp10(lx_interval(x))); }
- lx_real expm1(const lx_real& x) throw()
+ lx_real expm1(const lx_real& x)
  { return mid(expm1(lx_interval(x))); }
- lx_real power(const lx_real& x, const real& r) throw()
+ lx_real power(const lx_real& x, const real& r)
  { return mid(power(lx_interval(x),r)); }
- lx_real pow(const lx_real& x, const lx_real& y) throw()
+ lx_real pow(const lx_real& x, const lx_real& y)
  { return mid(pow(lx_interval(x),lx_interval(y))); }
- lx_real xp1_pow_y(const lx_real& x, const lx_real& y) throw()
+ lx_real xp1_pow_y(const lx_real& x, const lx_real& y)
  { return mid(xp1_pow_y(lx_interval(x),lx_interval(y))); }
- lx_real sin(const lx_real& x) throw()
+ lx_real sin(const lx_real& x)
  { return mid(sin(lx_interval(x))); }
- lx_real sin_n(const lx_real& x, const real& n) throw()
+ lx_real sin_n(const lx_real& x, const real& n)
  { return mid(sin_n(lx_interval(x),n)); }
- lx_real cos(const lx_real& x) throw()
+ lx_real cos(const lx_real& x)
  { return mid(cos(lx_interval(x))); }
- lx_real cos_n(const lx_real& x, const real& n) throw()
+ lx_real cos_n(const lx_real& x, const real& n)
  { return mid(cos_n(lx_interval(x),n)); }
- lx_real tan(const lx_real& x) throw()
+ lx_real tan(const lx_real& x)
  { return mid(tan(lx_interval(x))); }
- lx_real cot(const lx_real& x) throw()
+ lx_real cot(const lx_real& x)
  { return mid(cot(lx_interval(x))); }
- lx_real sqrt1px2(const lx_real& x) throw()
+ lx_real sqrt1px2(const lx_real& x)
  { return mid(sqrt1px2(lx_interval(x))); }
- lx_real atan(const lx_real& x) throw()
+ lx_real atan(const lx_real& x)
  { return mid(atan(lx_interval(x))); }
- lx_real sqrt1mx2(const lx_real& x) throw()
+ lx_real sqrt1mx2(const lx_real& x)
  { return mid(sqrt1mx2(lx_interval(x))); }
- lx_real sqrtx2m1(const lx_real& x) throw()
+ lx_real sqrtx2m1(const lx_real& x)
  { return mid(sqrtx2m1(lx_interval(x))); }
- lx_real asin(const lx_real& x) throw()
+ lx_real asin(const lx_real& x)
  { return mid(asin(lx_interval(x))); }
- lx_real acos(const lx_real& x) throw()
+ lx_real acos(const lx_real& x)
  { return mid(acos(lx_interval(x))); }
- lx_real acot(const lx_real& x) throw()
+ lx_real acot(const lx_real& x)
  { return mid(acot(lx_interval(x))); }
- lx_real sinh(const lx_real& x) throw()
+ lx_real sinh(const lx_real& x)
  { return mid(sinh(lx_interval(x))); }
- lx_real cosh(const lx_real& x) throw()
+ lx_real cosh(const lx_real& x)
  { return mid(cosh(lx_interval(x))); }
- lx_real tanh(const lx_real& x) throw()
+ lx_real tanh(const lx_real& x)
  { return mid(tanh(lx_interval(x))); }
- lx_real coth(const lx_real& x) throw()
+ lx_real coth(const lx_real& x)
  { return mid(coth(lx_interval(x))); }
- lx_real sqrtp1m1(const lx_real& x) throw()
+ lx_real sqrtp1m1(const lx_real& x)
  { return mid(sqrtp1m1(lx_interval(x))); }
- lx_real asinh(const lx_real& x) throw()
+ lx_real asinh(const lx_real& x)
  { return mid(asinh(lx_interval(x))); }
- lx_real acosh(const lx_real& x) throw()
+ lx_real acosh(const lx_real& x)
  { return mid(acosh(lx_interval(x))); }
- lx_real acoshp1(const lx_real& x) throw()
+ lx_real acoshp1(const lx_real& x)
  { return mid(acoshp1(lx_interval(x))); }
- lx_real atanh(const lx_real& x) throw()
+ lx_real atanh(const lx_real& x)
  { return mid(atanh(lx_interval(x))); }
- lx_real atanh1m(const lx_real& x) throw()
+ lx_real atanh1m(const lx_real& x)
  { return mid(atanh1m(lx_interval(x))); }
- lx_real atanhm1p(const lx_real& x) throw()
+ lx_real atanhm1p(const lx_real& x)
  { return mid(atanhm1p(lx_interval(x))); }
- lx_real acoth(const lx_real& x) throw()
+ lx_real acoth(const lx_real& x)
  { return mid(acoth(lx_interval(x))); }
- lx_real acothp1(const lx_real& x) throw()
+ lx_real acothp1(const lx_real& x)
  { return mid(acothp1(lx_interval(x))); }
- lx_real acothm1m(const lx_real& x) throw()
+ lx_real acothm1m(const lx_real& x)
  { return mid(acothm1m(lx_interval(x))); }
- lx_real sqrtx2y2(const lx_real& x, const lx_real& y) throw()
+ lx_real sqrtx2y2(const lx_real& x, const lx_real& y)
  { return mid(sqrtx2y2(lx_interval(x),lx_interval(y))); }
- lx_real ln_sqrtx2y2(const lx_real& x, const lx_real& y) throw()
+ lx_real ln_sqrtx2y2(const lx_real& x, const lx_real& y)
  { return mid(ln_sqrtx2y2(lx_interval(x),lx_interval(y))); }
- lx_real sqrt(const lx_real& x, int n) throw()
+ lx_real sqrt(const lx_real& x, int n)
  { return mid(sqrt(lx_interval(x),n)); }
 
 } // namespace cxsc

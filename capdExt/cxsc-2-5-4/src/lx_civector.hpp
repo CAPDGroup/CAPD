@@ -52,80 +52,80 @@ class lx_civector
 	//------ Konstruktoren ----------------------------------------------------
 		
 	//! Constructor of class lx_civector
-	inline lx_civector () throw();
+	inline lx_civector ();
 		
 	/*!
 	\param i Dimension of vector
 	Creation of a variable of type lx_civector with length \f$ n = i \f$ and index bounds \f$ lb = 1 \f$, and \f$ ub = i \f$. The values of the elements are undefined.
 	*/
-	explicit inline lx_civector(int i) throw();
+	explicit inline lx_civector(int i);
 		
 	//! Constructor of class lx_civector
 	explicit inline lx_civector(int i1, int i2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_IVECTOR_WRONG_BOUNDARIES,ERROR_IVECTOR_NO_MORE_MEMORY);
+		;
 #else
-		throw();
+		;
 #endif
 		
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const lx_cinterval &) throw();
+	explicit inline lx_civector(const lx_cinterval &);
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const l_cinterval &) throw();
+	explicit inline lx_civector(const l_cinterval &);
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const cinterval &) throw();
+	explicit inline lx_civector(const cinterval &);
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const lx_complex &) throw();
+	explicit inline lx_civector(const lx_complex &);
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const l_complex &) throw();
+	explicit inline lx_civector(const l_complex &);
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const complex &) throw();
+	explicit inline lx_civector(const complex &);
 		
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const lx_interval &) throw();
+	explicit inline lx_civector(const lx_interval &);
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const l_interval &)  throw();
+	explicit inline lx_civector(const l_interval &) ;
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const interval &)    throw();
+	explicit inline lx_civector(const interval &)   ;
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const lx_real &)     throw();
+	explicit inline lx_civector(const lx_real &)    ;
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const l_real &)      throw();
+	explicit inline lx_civector(const l_real &)     ;
 	//! Constructor of class lx_civector
-	explicit inline lx_civector(const real &)        throw();
+	explicit inline lx_civector(const real &)       ;
 	
 	//! Constructor of class lx_civector
-	inline lx_civector(const lx_civector &) throw();
+	inline lx_civector(const lx_civector &);
 		
 	
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator = (const lx_civector &) throw();
+	inline lx_civector & operator = (const lx_civector &);
 	
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const lx_cinterval &) throw();
+	inline lx_civector & operator =(const lx_cinterval &);
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const l_cinterval &) throw();
+	inline lx_civector & operator =(const l_cinterval &);
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const cinterval &) throw();
+	inline lx_civector & operator =(const cinterval &);
 		//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const lx_complex &) throw();
+	inline lx_civector & operator =(const lx_complex &);
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const l_complex &) throw();
+	inline lx_civector & operator =(const l_complex &);
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const complex &) throw();
+	inline lx_civector & operator =(const complex &);
 	
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const lx_interval &) throw();
+	inline lx_civector & operator =(const lx_interval &);
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const l_interval &) throw();
+	inline lx_civector & operator =(const l_interval &);
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const interval &) throw();
+	inline lx_civector & operator =(const interval &);
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const lx_real &) throw();
+	inline lx_civector & operator =(const lx_real &);
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const l_real &) throw();
+	inline lx_civector & operator =(const l_real &);
 	//! Implementation of standard assigning operator
-	inline lx_civector & operator =(const real &) throw();
+	inline lx_civector & operator =(const real &);
 	
 	//--------- Destruktor ----------------------------------------------------
 	inline ~lx_civector() { delete [] dat; }
@@ -134,66 +134,66 @@ class lx_civector
 	//! Operator for accessing the single elements of the vector
 	inline lx_cinterval & operator [](const int &i)
 #if(CXSC_INDEX_CHECK)
-			throw(ERROR_IVECTOR_ELEMENT_NOT_IN_VEC);
+			;
 #else
-	throw();
+	;
 #endif
 	//! Operator for accessing the single elements of the vector
 	inline const lx_cinterval & operator [](const int &i) const
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IVECTOR_ELEMENT_NOT_IN_VEC);
+	;
 #else
-	throw();
+	;
 #endif
 	
 //------ Standardfunktionen -----------------------------------------------
 	
 //! Returns the lower bound of the vector
-friend inline int Lb(const lx_civector &a) throw() { return a.l; }
+friend inline int Lb(const lx_civector &a) { return a.l; }
 //! Returns the upper bound of the vector
-friend inline int Ub(const lx_civector &a) throw() { return a.u; }
+friend inline int Ub(const lx_civector &a) { return a.u; }
 //! Returns the dimension of the vector
-friend inline int VecLen(const lx_civector &a) throw() { return a.size; }
+friend inline int VecLen(const lx_civector &a) { return a.size; }
 //! Sets the lower bound of the vector
-friend inline lx_civector& SetLb(lx_civector &a, int l) throw() 
+friend inline lx_civector& SetLb(lx_civector &a, int l) 
 { a.l=l; a.u=l+a.size-1; return a; }
 //! Sets the upper bound of the vector
-friend inline lx_civector & SetUb(lx_civector &a, int u) throw()
+friend inline lx_civector & SetUb(lx_civector &a, int u)
 { a.u=u; a.l=u-a.size+1; return a; }
 
 //! Resizes the vector
 friend inline void Resize(lx_civector &rv, int lb, int ub)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__WRONG_BOUNDARIES<lx_civector>);
+		;
 #else
-		throw();
+		;
 #endif
 
 //! Resizes the vector	
 friend inline void Resize(lx_civector &rv, int len)
 #if(CXSC_INDEX_CHECK)
-				throw(ERROR__WRONG_BOUNDARIES<lx_civector>);
+				;
 #else
-		throw();
+		;
 #endif		
 	
 }; // End of class lx_civector
 
 //! Doubles the vector size
-inline void DoubleSize(lx_civector&) throw();
+inline void DoubleSize(lx_civector&);
 
 inline void Resize(lx_civector &rv, int lb, int ub)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__WRONG_BOUNDARIES<lx_civector>);
+		;
 #else
-		throw();
+		;
 #endif
 		
 		inline void Resize(lx_civector &rv, int len)
 #if(CXSC_INDEX_CHECK)
-				throw(ERROR__WRONG_BOUNDARIES<lx_civector>);
+				;
 #else
-		throw();
+		;
 #endif		
 
 } // End namespace cxsc

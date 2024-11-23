@@ -40,12 +40,12 @@ class cxscmatrix_column
 	private:
 	int c;
 	public:
-	inline cxscmatrix_column(const int &i) throw():c(i) { }
-	inline int col() const throw() { return c; }
+	inline cxscmatrix_column(const int &i):c(i) { }
+	inline int col() const { return c; }
 };
 
-inline int Row(const int &i) throw() { return i; }
-inline cxscmatrix_column Col(const int &i) throw() { return cxscmatrix_column(i); }
+inline int Row(const int &i) { return i; }
+inline cxscmatrix_column Col(const int &i) { return cxscmatrix_column(i); }
 
 template <class T>
 class cxscmatrix_subv
@@ -59,11 +59,11 @@ class cxscmatrix_subv
 	public:
 	//----------------- Konstruktoren ----------------------------------
 
-	cxscmatrix_subv<T> (T *d, const int &l, const int &u, const int &s, const int &st, const int &o) throw():dat(d),lb(l),ub(u),size(s),start(st),offset(o) { }
+	cxscmatrix_subv<T> (T *d, const int &l, const int &u, const int &s, const int &st, const int &o):dat(d),lb(l),ub(u),size(s),start(st),offset(o) { }
 
 	//---------------------- Standardfunktionen ------------------------
 
-	inline T &operator [](const int &i) throw() { return dat[start+((i-lb)*offset)]; }
+	inline T &operator [](const int &i) { return dat[start+((i-lb)*offset)]; }
 
 };
 
@@ -82,7 +82,7 @@ class cxscmatrix
 	public:
 	//--------------------------  Konstruktoren ----------------------------
 
-	inline cxscmatrix<T>(const cxscmatrix &rm) throw()
+	inline cxscmatrix<T>(const cxscmatrix &rm)
 	{
 		lb1=rm.lb1; ub1=rm.ub1;
 		lb2=rm.lb2; ub2=rm.ub2;
@@ -91,14 +91,14 @@ class cxscmatrix
 		dat=new T[xsize*ysize];
 	}
 	
-	inline cxscmatrix<T>() throw()
+	inline cxscmatrix<T>()
 	{
 		dat=NULL;
 		lb1=lb2=1;
 		ub1=ub2=xsize=ysize=0;
 	}
 
-	explicit inline cxscmatrix<T>(const int &m, const int &n) throw()
+	explicit inline cxscmatrix<T>(const int &m, const int &n)
 	{
 		lb1=lb2=1;
 		ub1=ysize=m;
@@ -106,7 +106,7 @@ class cxscmatrix
 		dat=new T[m*n];
 	}
 
-	explicit inline cxscmatrix<T>(const int &m1, const int &n1, const int &m2, const int &n2) throw()
+	explicit inline cxscmatrix<T>(const int &m1, const int &n1, const int &m2, const int &n2)
 	{	
 		lb1=m1; ub1=m2;
 		lb2=n1; ub2=n2;
@@ -115,7 +115,7 @@ class cxscmatrix
 		dat=new T[xsize*ysize];
 	}
 
-	inline cxscmatrix<T>(const cxscmatrix_slice<T> &sl) throw()
+	inline cxscmatrix<T>(const cxscmatrix_slice<T> &sl)
 	{
 		int i,j;
 		
@@ -133,14 +133,14 @@ class cxscmatrix
 		}
 	}
 	
-	inline cxscmatrix<T> &operator =(const T &r) throw()
+	inline cxscmatrix<T> &operator =(const T &r)
 	{
 		for(int i=0;i<xsize*ysize;i++)
 			dat[i]=r;
 		return *this;
 	}
 
-	inline cxscmatrix<T> &operator =(const cxscmatrix<T> &m) throw()
+	inline cxscmatrix<T> &operator =(const cxscmatrix<T> &m)
 	{
 		T *ndat=new T[m.xsize*m.ysize];
 		for(int i=0;i<m.xsize*m.ysize;i++)
@@ -151,20 +151,20 @@ class cxscmatrix
 		return *this;
 	}
 
-	cxscmatrix<T> &operator =(const cxscvector<T> &v) throw();
+	cxscmatrix<T> &operator =(const cxscvector<T> &v);
 
 	//--------------------------- Destruktoren -----------------------------
 
-	inline ~cxscmatrix() throw()
+	inline ~cxscmatrix()
 	{
 		delete [] dat;
 	}
 
 	//------------------------- Standardfunktionen -------------------------
 
-	friend inline int Lb(const cxscmatrix<T> &rm, const ASPECT &i) throw() { return (i==ROW?rm.lb1:rm.lb2); }
-	friend inline int Ub(const cxscmatrix<T> &rm, const ASPECT &i) throw() { return (i==ROW?rm.ub1:rm.ub2); }
-	friend inline void SetLb(cxscmatrix<T> &m, const ASPECT &i,const int &j) throw(WRONG_ROW_OR_COL)
+	friend inline int Lb(const cxscmatrix<T> &rm, const ASPECT &i) { return (i==ROW?rm.lb1:rm.lb2); }
+	friend inline int Ub(const cxscmatrix<T> &rm, const ASPECT &i) { return (i==ROW?rm.ub1:rm.ub2); }
+	friend inline void SetLb(cxscmatrix<T> &m, const ASPECT &i,const int &j)
 	{
 		switch(i)
 		{
@@ -181,7 +181,7 @@ class cxscmatrix
 		}
 	}
 	
-	friend inline void SetUb(cxscmatrix<T> &m, const ASPECT &i,const int &j) throw(WRONG_ROW_OR_COL)
+	friend inline void SetUb(cxscmatrix<T> &m, const ASPECT &i,const int &j)
 	{
 		switch(i)
 		{
@@ -198,7 +198,7 @@ class cxscmatrix
 		}
 	}
 	
-	friend inline void Resize(cxscmatrix<T> &A) throw()
+	friend inline void Resize(cxscmatrix<T> &A)
 	{
 		A.xsize=A.ysize=A.ub1=A.ub2=0;
 		A.lb1=A.lb2=1;
@@ -206,7 +206,7 @@ class cxscmatrix
 		A.dat=NULL;
 	}
 
-	friend inline void Resize(cxscmatrix<T> &A,const int &m, const int &n) throw()
+	friend inline void Resize(cxscmatrix<T> &A,const int &m, const int &n)
 	{
 		T *ndat=new T[m*n];
 		int l1,u1,l2,u2;
@@ -241,7 +241,7 @@ class cxscmatrix
 		A.lb1=A.lb2=1;
 	}
 
-	friend inline void Resize(cxscmatrix<T> &A,const int &m1, const int &m2,const int &n1,const int &n2) throw()
+	friend inline void Resize(cxscmatrix<T> &A,const int &m1, const int &m2,const int &n1,const int &n2)
 	{
 		int m,n;
 		n=A.xsize=n2-n1+1;
@@ -279,12 +279,12 @@ class cxscmatrix
 		A.ub2=n2;
 	}
 
-	inline cxscmatrix_subv<T> operator [](const int &i) throw() { return cxscmatrix_subv<T>(dat, lb2, ub2, xsize, xsize*(i-lb1),1); }
-	inline cxscmatrix_subv<T> operator [](const cxscmatrix_column &i) throw() { return cxscmatrix_subv<T>(dat, lb1, ub1, ysize, i.col()-lb2, xsize); }
-	inline cxscmatrix_slice<T> operator ()() throw() { return cxscmatrix_slice<T>(*this,lb1,ub1,lb2,ub2); }
-	inline cxscmatrix_slice<T> operator ()(const int &m, const int &n) throw() { return cxscmatrix_slice<T>(*this,1,ub1,1,ub2); }
-	inline cxscmatrix_slice<T> operator ()(const int &m1, const int &m2, const int &n1, const int &n2) throw() { return cxscmatrix_slice<T>(*this,m1,m2,n1,n2); }
-	friend std::ostream &operator <<(std::ostream &s,const cxscmatrix<T> &r) throw()
+	inline cxscmatrix_subv<T> operator [](const int &i) { return cxscmatrix_subv<T>(dat, lb2, ub2, xsize, xsize*(i-lb1),1); }
+	inline cxscmatrix_subv<T> operator [](const cxscmatrix_column &i) { return cxscmatrix_subv<T>(dat, lb1, ub1, ysize, i.col()-lb2, xsize); }
+	inline cxscmatrix_slice<T> operator ()() { return cxscmatrix_slice<T>(*this,lb1,ub1,lb2,ub2); }
+	inline cxscmatrix_slice<T> operator ()(const int &m, const int &n) { return cxscmatrix_slice<T>(*this,1,ub1,1,ub2); }
+	inline cxscmatrix_slice<T> operator ()(const int &m1, const int &m2, const int &n1, const int &n2) { return cxscmatrix_slice<T>(*this,m1,m2,n1,n2); }
+	friend std::ostream &operator <<(std::ostream &s,const cxscmatrix<T> &r)
 	{
 		int i,j;
 		for (i=0;i<r.ysize;i++)
@@ -298,7 +298,7 @@ class cxscmatrix
 		return s;
 	}
 
-	friend inline cxscmatrix<T> operator +(const cxscmatrix<T> &m1,const cxscmatrix<T> &m2) throw()
+	friend inline cxscmatrix<T> operator +(const cxscmatrix<T> &m1,const cxscmatrix<T> &m2)
 	{
 		int x=1,y=1;
 
@@ -313,7 +313,7 @@ class cxscmatrix
 		return r;
 	}
 	
-	friend inline cxscmatrix<T> operator -(const cxscmatrix<T> &m1,const cxscmatrix<T> &m2) throw()
+	friend inline cxscmatrix<T> operator -(const cxscmatrix<T> &m1,const cxscmatrix<T> &m2)
 	{
 		int x=1,y=1;
 
@@ -328,7 +328,7 @@ class cxscmatrix
 		return r;
 	}
 	
-	friend inline cxscmatrix<T> operator |(const cxscmatrix<T> &m1,const cxscmatrix<T> &m2) throw()
+	friend inline cxscmatrix<T> operator |(const cxscmatrix<T> &m1,const cxscmatrix<T> &m2)
 	{
 		int x=1,y=1;
 
@@ -343,7 +343,7 @@ class cxscmatrix
 		return r;
 	}
 
-	friend inline cxscmatrix<T> operator *(const cxscmatrix<T> &m1, const cxscmatrix<T> &m2) throw()
+	friend inline cxscmatrix<T> operator *(const cxscmatrix<T> &m1, const cxscmatrix<T> &m2)
 	{
 		cxscmatrix<T> r(m1.lb1,m1.ub1,m2.lb2,m2.ub2);
 
@@ -360,9 +360,9 @@ class cxscmatrix
 		return r;
 	}
 
-	friend inline cxscmatrix<T> operator *(const cxscmatrix<T> &m,const T &c) throw() { return c*m; }
+	friend inline cxscmatrix<T> operator *(const cxscmatrix<T> &m,const T &c) { return c*m; }
 //	template <class S>//,class U>
-//	friend inline cxscmatrix<T> _ms_mult(const cxscmatrix<T> &m,const S &c) throw()//,const U &u) throw()
+//	friend inline cxscmatrix<T> _ms_mult(const cxscmatrix<T> &m,const S &c)//,const U &u)
 //	{
 //		cxscmatrix<T> r(m.lb1,m.ub1,m.lb2,m.ub2);
 //
@@ -371,7 +371,7 @@ class cxscmatrix
 //		return r;
 //	}
 
-	friend inline cxscmatrix<T> operator /(const cxscmatrix<T> &m,const T &c) throw()
+	friend inline cxscmatrix<T> operator /(const cxscmatrix<T> &m,const T &c)
 	{
 		cxscmatrix<T> r(m.lb1,m.ub1,m.lb2,m.ub2);
 
@@ -380,7 +380,7 @@ class cxscmatrix
 		return r;
 	}
 
-	friend cxscvector<T> &cxscvector<T>::operator =(const cxscmatrix<T> &m) throw();
+	friend cxscvector<T> &cxscvector<T>::operator =(const cxscmatrix<T> &m);
 	
 };
 
@@ -396,19 +396,19 @@ class cxscmatrix_slice
 	public:
 	//--------------- Konstruktoren ----------------------------------------
 
-	explicit inline cxscmatrix_slice<T>(cxscmatrix<T> &a,const int &l1,const int &u1,const int &l2, const int &u2) throw():dat(a.dat),lb1(a.lb1),lb2(a.lb2),ub1(a.ub1),ub2(a.ub2),xsize(u2-l2+1),ysize(u1-l1+1),xstart(l2),xend(u2),ystart(l1),yend(u1),sxsize(u2-l2+1),sysize(u1-l1+1) { }
-	explicit inline cxscmatrix_slice<T>(cxscmatrix_slice<T> &a,const int &l1,const int &u1,const int &l2, const int &u2) throw():dat(a.dat),lb1(a.lb1),lb2(a.lb2),ub1(a.ub1),ub2(a.ub2),xsize(u2-l2+1),ysize(u1-l1+1),xstart(l2),xend(u2),ystart(l1),yend(u1) { }
+	explicit inline cxscmatrix_slice<T>(cxscmatrix<T> &a,const int &l1,const int &u1,const int &l2, const int &u2):dat(a.dat),lb1(a.lb1),lb2(a.lb2),ub1(a.ub1),ub2(a.ub2),xsize(u2-l2+1),ysize(u1-l1+1),xstart(l2),xend(u2),ystart(l1),yend(u1),sxsize(u2-l2+1),sysize(u1-l1+1) { }
+	explicit inline cxscmatrix_slice<T>(cxscmatrix_slice<T> &a,const int &l1,const int &u1,const int &l2, const int &u2):dat(a.dat),lb1(a.lb1),lb2(a.lb2),ub1(a.ub1),ub2(a.ub2),xsize(u2-l2+1),ysize(u1-l1+1),xstart(l2),xend(u2),ystart(l1),yend(u1) { }
 
 	//---------------- Standardfunktionen -----------------------------------
 
-	friend inline int Lb(const cxscmatrix_slice<T> &rm, const int &i) throw() { return (i==ROW?rm.ystart:rm.xstart); }
-	friend inline int Ub(const cxscmatrix_slice<T> &rm, const int &i) throw() { return (i==ROW?rm.yend:rm.xend); }
-	inline cxscmatrix_subv<T> operator [](const int &i) throw() { return cxscmatrix_subv<T>(dat, lb2, ub2, xsize, xsize*(i-lb1),1); }
-	inline cxscmatrix_subv<T> operator [](const cxscmatrix_column &i) throw() { return cxscmatrix_subv<T>(dat, lb1, ub1, ysize, i.col()-lb2, xsize); }
-	inline cxscmatrix_slice<T> operator ()() throw() { return cxscmatrix_slice<T>(*this,lb1,ub1,lb2,ub2); }
-	inline cxscmatrix_slice<T> operator ()(const int &m, const int &n) throw() { return cxscmatrix_slice<T>(*this,1,ub1,1,ub2); }
-	inline cxscmatrix_slice<T> operator ()(const int &m1, const int &m2, const int &n1, const int &n2) throw() { return cxscmatrix_slice<T>(*this,m1,m2,n1,n2); }
-	friend std::ostream &operator <<(std::ostream &s,const cxscmatrix_slice<T> &r) throw()
+	friend inline int Lb(const cxscmatrix_slice<T> &rm, const int &i) { return (i==ROW?rm.ystart:rm.xstart); }
+	friend inline int Ub(const cxscmatrix_slice<T> &rm, const int &i) { return (i==ROW?rm.yend:rm.xend); }
+	inline cxscmatrix_subv<T> operator [](const int &i) { return cxscmatrix_subv<T>(dat, lb2, ub2, xsize, xsize*(i-lb1),1); }
+	inline cxscmatrix_subv<T> operator [](const cxscmatrix_column &i) { return cxscmatrix_subv<T>(dat, lb1, ub1, ysize, i.col()-lb2, xsize); }
+	inline cxscmatrix_slice<T> operator ()() { return cxscmatrix_slice<T>(*this,lb1,ub1,lb2,ub2); }
+	inline cxscmatrix_slice<T> operator ()(const int &m, const int &n) { return cxscmatrix_slice<T>(*this,1,ub1,1,ub2); }
+	inline cxscmatrix_slice<T> operator ()(const int &m1, const int &m2, const int &n1, const int &n2) { return cxscmatrix_slice<T>(*this,m1,m2,n1,n2); }
+	friend std::ostream &operator <<(std::ostream &s,const cxscmatrix_slice<T> &r)
 	{
 		int i,j;
 		for (i=r.ystart;i<=r.yend;i++)
@@ -422,7 +422,7 @@ class cxscmatrix_slice
 		return s;
 	}
 
-	friend inline cxscmatrix<T> operator +(const cxscmatrix_slice<T> &m1,const cxscmatrix_slice<T> &m2) throw()
+	friend inline cxscmatrix<T> operator +(const cxscmatrix_slice<T> &m1,const cxscmatrix_slice<T> &m2)
 	{
 		int x=1,y=1;
 
@@ -444,7 +444,7 @@ class cxscmatrix_slice
 
 // uses components of class cxscmatrix_subv, therefore cannot be in cxscvect.hpp
 template <class T>
-cxscvector<T>::cxscvector<T>(const cxscmatrix_subv<T> &v) throw()
+cxscvector<T>::cxscvector<T>(const cxscmatrix_subv<T> &v)
 {
 	l=v.l;
 	u=v.u;
@@ -455,7 +455,7 @@ cxscvector<T>::cxscvector<T>(const cxscmatrix_subv<T> &v) throw()
 }
 
 template <class T>
-cxscvector<T> &cxscvector<T>::operator =(const cxscmatrix<T> &m) throw()
+cxscvector<T> &cxscvector<T>::operator =(const cxscmatrix<T> &m)
 {
 	if(m.xsize!=1&&m.ysize!=1)
 		cerr<<"Falsche Indexgrenzen bei cxscvect=cxscmatr\n"<<std::endl;
@@ -486,7 +486,7 @@ cxscvector<T> &cxscvector<T>::operator =(const cxscmatrix<T> &m) throw()
 }
 
 template <class T>
-cxscmatrix<T> &cxscmatrix<T>::operator =(const cxscvector<T> &v) throw()
+cxscmatrix<T> &cxscmatrix<T>::operator =(const cxscvector<T> &v)
 {
 	T *ndat=new T[v.size];
 	for(int i=0;i<v.size;i++)
@@ -511,7 +511,7 @@ cxscmatrix<T> &cxscmatrix<T>::operator =(const cxscvector<T> &v) throw()
 }
 
 template <class T,class S,class U>
-cxscmatrix<U> _ms_mult(const cxscmatrix<S> &m,const T &s,const U &u=0) throw()
+cxscmatrix<U> _ms_mult(const cxscmatrix<S> &m,const T &s,const U &u=0)
 {
 	cxscmatrix<U> r(m.lb1,m.ub1,m.lb2,m.ub2);
 
@@ -522,7 +522,7 @@ cxscmatrix<U> _ms_mult(const cxscmatrix<S> &m,const T &s,const U &u=0) throw()
 }
 
 template <class T,class S,class R>
-cxscvector<R> _mv_mult(const cxscmatrix<S> &m,const cxscvector<T> &v,R) throw()
+cxscvector<R> _mv_mult(const cxscmatrix<S> &m,const cxscvector<T> &v,R)
 {
 	cxscvector<R> r(m.lb1,m.ub1);
 
@@ -537,7 +537,7 @@ cxscvector<R> _mv_mult(const cxscmatrix<S> &m,const cxscvector<T> &v,R) throw()
 }
 
 template <class T,class S, class R>
-cxscvector<T> _vm_mult(const cxscvector<T> &v,const cxscmatrix<S> &m,R) throw()
+cxscvector<T> _vm_mult(const cxscvector<T> &v,const cxscmatrix<S> &m,R)
 {
 	cxscvector<R> r(m.lb2,m.ub2);
 

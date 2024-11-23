@@ -32,30 +32,30 @@ namespace cxsc {
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cmatrix_subv & rv1, const ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const ivector & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cmatrix_subv & rv1, const ivector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const ivector_slice & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 } // namespace cxsc 

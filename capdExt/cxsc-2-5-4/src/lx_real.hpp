@@ -67,9 +67,9 @@ namespace cxsc {
     // ------------- Constructors --------------------------------------------
 
     //! Constructor of class lx_real
-			lx_real(void)  throw() {}
+			lx_real(void)  {}
     //! Constructor of class lx_real
-			lx_real(const real& n, const l_real &a) throw() 
+			lx_real(const real& n, const l_real &a) 
 			{ 
 				if ( !(Is_Integer(n)) ) 
 					cxscthrow(REAL_NOT_ALLOWED("lx_real(const real&, const l_real&)"));
@@ -80,7 +80,7 @@ namespace cxsc {
 			}
 
     //! Constructor of class lx_real
-			lx_real(const real& n, const real &a) throw() 
+			lx_real(const real& n, const real &a) 
 			{ 
 				if ( !(Is_Integer(n)) ) 
 					cxscthrow(REAL_NOT_ALLOWED("lx_real(const real&, const real&)"));
@@ -91,71 +91,71 @@ namespace cxsc {
 			}
 
     //! Constructor of class lx_real
-			explicit lx_real(const l_real &a) throw() : ex(0), lr(a) { }
+			explicit lx_real(const l_real &a) : ex(0), lr(a) { }
     //! Constructor of class lx_real
-			explicit lx_real(const real &a)   throw() : ex(0), lr(a) { }
+			explicit lx_real(const real &a)   : ex(0), lr(a) { }
 	 //! Constructor of class lx_real
-			lx_real(const real&, const string&) throw();
+			lx_real(const real&, const string&);
 
 
     // ------------- Assignments ---------------------------------------------
 	 
     //! Implementation of standard assigning operator
-			inline lx_real & operator = (const lx_real &) throw();
+			inline lx_real & operator = (const lx_real &);
 	 //! Implementation of standard assigning operator
-			inline lx_real & operator = (const l_real &)  throw();
+			inline lx_real & operator = (const l_real &) ;
 	 //! Implementation of standard assigning operator
-			inline lx_real & operator = (const real &)    throw();
+			inline lx_real & operator = (const real &)   ;
 
     // ------------- Functions -----------------------------------------------
 
 	 //! Returns the precision of a lx_real value
-			friend inline int StagPrec(const lx_real&) throw(); 
+			friend inline int StagPrec(const lx_real&); 
 	 //! Returns the exponent a.ex of a lx_real value a
-			friend inline real expo(const lx_real&) throw();
+			friend inline real expo(const lx_real&);
 	 //! Returns the sign of a lx_real value
-			friend inline int sign(const lx_real&) throw();
+			friend inline int sign(const lx_real&);
 	 //! Returns the l_real component a.lr of a lx_real value a
-			friend inline l_real lr_part(const lx_real&) throw();
+			friend inline l_real lr_part(const lx_real&);
 	 //! Returns the absolute value of a lx_real value a
-			friend inline lx_real abs(const lx_real&) throw();
+			friend inline lx_real abs(const lx_real&);
 	 //! Scaling a.lr upwards and keeps the value of a unchanged
-			friend void scale_up  (lx_real &) throw();
+			friend void scale_up  (lx_real &);
 	 //! Scaling a.lr downwards and keeps the value of a unchanged
-			friend void scale_down(lx_real &) throw();
+			friend void scale_down(lx_real &);
 	 //! matches the precision of an lx_real value to the actual stagprec value
-			friend inline lx_real adjust(const lx_real &) throw();
+			friend inline lx_real adjust(const lx_real &);
 
 	 //! Returns 1 if \f$ a=0 \f$ and 0 otherwise
-			friend inline bool eq_zero (const lx_real &a) throw(); // a = 0;
+			friend inline bool eq_zero (const lx_real &a); // a = 0;
 	 //! Returns 1 if \f$ a>0 \f$ and 0 otherwise
-			friend inline bool gr_zero (const lx_real &a) throw(); // a > 0;
+			friend inline bool gr_zero (const lx_real &a); // a > 0;
 	 //! Returns 1 if \f$ a\ge0 \f$ and 0 otherwise
-			friend inline bool ge_zero (const lx_real &a) throw(); // a >=0;
+			friend inline bool ge_zero (const lx_real &a); // a >=0;
 	 //! Returns 1 if \f$ a<0 \f$ and 0 otherwise
-			friend inline bool sm_zero (const lx_real &a) throw(); // a < 0;
+			friend inline bool sm_zero (const lx_real &a); // a < 0;
 	 //! Returns 1 if \f$ a\le0 \f$ and 0 otherwise
-			friend inline bool se_zero (const lx_real &a) throw(); // a <=0;
+			friend inline bool se_zero (const lx_real &a); // a <=0;
 	 
 	 //! Multiplication with \f$ 2^r; \f$ the real value r must be an integer
-			friend inline void times2pown(lx_real &, const real &) throw();
+			friend inline void times2pown(lx_real &, const real &);
 	 //! Multiplication with \f$ 2^r; \f$ the real value r must be a negative integer
-			friend inline void times2pown_neg(lx_real& a, const real& n) throw();
+			friend inline void times2pown_neg(lx_real& a, const real& n);
 	 //! Implementation of standard negation operation
-			friend inline bool operator ! (const lx_real &) throw();
+			friend inline bool operator ! (const lx_real &);
     //! Implementation of standard algebraic negative sign operation
-			friend inline lx_real operator -(const lx_real &) throw();
+			friend inline lx_real operator -(const lx_real &);
 
 
 // ----------------------- Output --------------------------------------------
 
 //friend inline std::ostream& operator << (std::ostream& s, const lx_real& a) 
-//    throw(); // A value a of type lx_real is written to the output channel.
+//   ; // A value a of type lx_real is written to the output channel.
 // The above operator is declared and defined in
 // lx_interval.hpp (outside the class lx_interval) , lx_interval.inl;
 //! Implementation of standard output method
 friend std::string & operator << (std::string &s, const lx_real& a) 
-					throw();
+					;
 // The value of a variable a of type lx_real is copied to a string s.
 // s has the form:  {2**(ex)*li};  ex is the exponent to base 2.
 
@@ -165,206 +165,206 @@ friend std::string & operator << (std::string &s, const lx_real& a)
 // ------- friend functions declared in class lx_real: ---------
 // -------------------------------------------------------------
 
-inline int StagPrec(const lx_real&) throw();
-inline real expo(const lx_real&) throw();
-inline int sign(const lx_real&) throw();
-inline l_real lr_part(const lx_real&) throw();
-inline lx_real abs(const lx_real&) throw();
-inline lx_real adjust(const lx_real &) throw();
-inline void times2pown_neg(lx_real&, const real&) throw();
+inline int StagPrec(const lx_real&);
+inline real expo(const lx_real&);
+inline int sign(const lx_real&);
+inline l_real lr_part(const lx_real&);
+inline lx_real abs(const lx_real&);
+inline lx_real adjust(const lx_real &);
+inline void times2pown_neg(lx_real&, const real&);
 
-       void scale_up  (lx_real&)   throw();
-		 void scale_down(lx_real &a) throw();
+       void scale_up  (lx_real&)  ;
+		 void scale_down(lx_real &a);
 
-		 inline bool eq_zero (const lx_real &a) throw(); // a = 0;
-		 inline bool gr_zero (const lx_real &a) throw(); // a > 0;
-		 inline bool ge_zero (const lx_real &a) throw(); // a >=0;
-		 inline bool sm_zero (const lx_real &a) throw(); // a < 0;
-		 inline bool se_zero (const lx_real &a) throw(); // a <=0;
+		 inline bool eq_zero (const lx_real &a); // a = 0;
+		 inline bool gr_zero (const lx_real &a); // a > 0;
+		 inline bool ge_zero (const lx_real &a); // a >=0;
+		 inline bool sm_zero (const lx_real &a); // a < 0;
+		 inline bool se_zero (const lx_real &a); // a <=0;
 
-		 inline void times2pown(lx_real &, const real &) throw();
-		 inline bool operator ! (const lx_real &) throw();
+		 inline void times2pown(lx_real &, const real &);
+		 inline bool operator ! (const lx_real &);
 
-		 inline lx_real operator -(const lx_real &) throw();
+		 inline lx_real operator -(const lx_real &);
 
 // -------------------------- Input ------------------------------------
 
 //! Implementation of standard input method
-		 string & operator >> (string &s, lx_real &a) throw();
+		 string & operator >> (string &s, lx_real &a);
 //! Implementation of standard input method
-		 void operator >> (const string &s, lx_real &a) throw();
+		 void operator >> (const string &s, lx_real &a);
 //! Implementation of standard input method
-		 void operator >> (const char *s, lx_real&) throw();
+		 void operator >> (const char *s, lx_real&);
 //! Implementation of standard input method
-		 std::istream & operator >> (std::istream &s, lx_real &a) throw();
+		 std::istream & operator >> (std::istream &s, lx_real &a);
 
 // -------------------------- Output ------------------------------------
 
    std::string & operator << (std::string &s, const lx_real& a) 
-					throw();
+					;
 //inline std::ostream& operator << (std::ostream& s, const lx_real& a) 
-//    throw(); // A value a of type lx_real is written to the output channel.
+//   ; // A value a of type lx_real is written to the output channel.
 //! Implementation of standard output method
 		 inline std::string & operator << (std::string &s, const lx_real& a) 
-				 throw();
+				;
 // The value of a variable a of type lx_real is copied to a string s.
 // s has the form:  {2**(ex),lr}
 
 // ---- function declarations outside the class lx_real ----
 
 //! Returns \f$ a+b; \f$ a,b must be integers with \f$ |a|,|b|\le2^{53}. \f$
-		 inline real add_real(const real &a, const real &b) throw();
+		 inline real add_real(const real &a, const real &b);
 
 //! Returns \f$ a-b; \f$ a,b must be integers with \f$ |a|,|b|\le2^{53}. \f$
-		 inline real sub_real(const real &a, const real &b) throw();
+		 inline real sub_real(const real &a, const real &b);
 
 //! Returns a rather small upper bound of x.
-		 lx_real upper_bnd(const lx_real& x) throw();
+		 lx_real upper_bnd(const lx_real& x);
 
 //! Returns a rather great lower bound of x.
-		 lx_real lower_bnd(const lx_real& x) throw();
+		 lx_real lower_bnd(const lx_real& x);
 //! Implementation of standard algebraic positive sign operation
-		 inline lx_real operator +(const lx_real &) throw();
+		 inline lx_real operator +(const lx_real &);
 
 //! Implementation of standard algebraic addition operation
-		 lx_real operator + (const lx_real &, const lx_real &) throw();
+		 lx_real operator + (const lx_real &, const lx_real &);
 //! Implementation of standard algebraic addition operation
-		 inline lx_real operator + (const lx_real&, const l_real &) throw();
+		 inline lx_real operator + (const lx_real&, const l_real &);
 //! Implementation of standard algebraic addition operation
-		 inline lx_real operator + (const l_real&, const lx_real &) throw();
+		 inline lx_real operator + (const l_real&, const lx_real &);
 //! Implementation of standard algebraic addition operation
-		 inline lx_real operator + (const lx_real&, const real &) throw();
+		 inline lx_real operator + (const lx_real&, const real &);
 //! Implementation of standard algebraic addition operation
-		 inline lx_real operator + (const real&, const lx_real &) throw();
+		 inline lx_real operator + (const real&, const lx_real &);
 
 //! Implementation of standard algebraic addition and allocation operation
-		 inline lx_real & operator +=(lx_real &, const lx_real &) throw();
+		 inline lx_real & operator +=(lx_real &, const lx_real &);
 //! Implementation of standard algebraic addition and allocation operation
-		 inline lx_real & operator +=(lx_real &, const l_real &) throw();
+		 inline lx_real & operator +=(lx_real &, const l_real &);
 //! Implementation of standard algebraic addition and allocation operation
-		 inline lx_real & operator +=(lx_real &, const real &) throw();
+		 inline lx_real & operator +=(lx_real &, const real &);
 
 //! Implementation of standard algebraic subtraction operation
-		 inline lx_real operator - (const lx_real &, const lx_real &) throw();
+		 inline lx_real operator - (const lx_real &, const lx_real &);
 //! Implementation of standard algebraic subtraction operation
-		 inline lx_real operator - (const lx_real &, const l_real &) throw();
+		 inline lx_real operator - (const lx_real &, const l_real &);
 //! Implementation of standard algebraic subtraction operation
-		 inline lx_real operator - (const l_real &, const lx_real &) throw();
+		 inline lx_real operator - (const l_real &, const lx_real &);
 //! Implementation of standard algebraic subtraction operation
-		 inline lx_real operator - (const lx_real &, const real &) throw();
+		 inline lx_real operator - (const lx_real &, const real &);
 //! Implementation of standard algebraic subtraction operation
-		 inline lx_real operator - (const real &, const lx_real &) throw();
+		 inline lx_real operator - (const real &, const lx_real &);
 
 //! Implementation of standard algebraic subtraction and allocation operation
-		 inline lx_real & operator -=(lx_real &, const lx_real &) throw();
+		 inline lx_real & operator -=(lx_real &, const lx_real &);
 //! Implementation of standard algebraic subtraction and allocation operation
-		 inline lx_real & operator -=(lx_real &, const l_real &) throw();
+		 inline lx_real & operator -=(lx_real &, const l_real &);
 //! Implementation of standard algebraic subtraction and allocation operation
-		 inline lx_real & operator -=(lx_real &, const real &) throw();
+		 inline lx_real & operator -=(lx_real &, const real &);
 
 //! Implementation of standard algebraic multiplication operation
-		 lx_real operator * (const lx_real &, const lx_real &) throw();
+		 lx_real operator * (const lx_real &, const lx_real &);
 //! Implementation of standard algebraic multiplication operation
-		 inline lx_real operator * (const lx_real&, const l_real &) throw();
+		 inline lx_real operator * (const lx_real&, const l_real &);
 //! Implementation of standard algebraic multiplication operation
-		 inline lx_real operator * (const l_real&, const lx_real &) throw();
+		 inline lx_real operator * (const l_real&, const lx_real &);
 //! Implementation of standard algebraic multiplication operation
-		 inline lx_real operator * (const lx_real&, const real &) throw();
+		 inline lx_real operator * (const lx_real&, const real &);
 //! Implementation of standard algebraic multiplication operation
-		 inline lx_real operator * (const real&, const lx_real &) throw();
+		 inline lx_real operator * (const real&, const lx_real &);
 
 //! Implementation of standard algebraic multiplication and allocation operation
-		 inline lx_real & operator *=(lx_real &, const lx_real &) throw();
+		 inline lx_real & operator *=(lx_real &, const lx_real &);
 //! Implementation of standard algebraic multiplication and allocation operation
-		 inline lx_real & operator *=(lx_real &, const l_real &) throw();
+		 inline lx_real & operator *=(lx_real &, const l_real &);
 //! Implementation of standard algebraic multiplication and allocation operation
-		 inline lx_real & operator *=(lx_real &, const real &) throw();
+		 inline lx_real & operator *=(lx_real &, const real &);
 
 //! Implementation of standard algebraic division operation
-		 lx_real operator / (const lx_real &, const lx_real &) throw(DIV_BY_ZERO);
+		 lx_real operator / (const lx_real &, const lx_real &);
 //! Implementation of standard algebraic division operation
-		 inline lx_real operator / (const lx_real&, const l_real &) throw();
+		 inline lx_real operator / (const lx_real&, const l_real &);
 //! Implementation of standard algebraic division operation
-		 inline lx_real operator / (const l_real&, const lx_real &) throw();
+		 inline lx_real operator / (const l_real&, const lx_real &);
 //! Implementation of standard algebraic division operation
-		 inline lx_real operator / (const lx_real&, const real &) throw();
+		 inline lx_real operator / (const lx_real&, const real &);
 //! Implementation of standard algebraic division operation
-		 inline lx_real operator / (const real&, const lx_real &) throw();
+		 inline lx_real operator / (const real&, const lx_real &);
 
 //! Implementation of standard algebraic division and allocation operation
-		 inline lx_real & operator /=(lx_real &, const lx_real &) throw();
+		 inline lx_real & operator /=(lx_real &, const lx_real &);
 //! Implementation of standard algebraic division and allocation operation
-		 inline lx_real & operator /=(lx_real &, const l_real &) throw();
+		 inline lx_real & operator /=(lx_real &, const l_real &);
 //! Implementation of standard algebraic division and allocation operation
-		 inline lx_real & operator /=(lx_real &, const real &) throw();
+		 inline lx_real & operator /=(lx_real &, const real &);
 
 //! Implementation of standard equality operation
-		 bool operator == (const lx_real &, const lx_real &) throw();
+		 bool operator == (const lx_real &, const lx_real &);
 //! Implementation of standard equality operation
-		 inline bool operator == (const lx_real &, const l_real &) throw();
+		 inline bool operator == (const lx_real &, const l_real &);
 //! Implementation of standard equality operation
-		 inline bool operator == (const l_real &, const lx_real &) throw();
+		 inline bool operator == (const l_real &, const lx_real &);
 //! Implementation of standard equality operation
-		 inline bool operator == (const lx_real &, const real &)   throw();
+		 inline bool operator == (const lx_real &, const real &)  ;
 //! Implementation of standard equality operation
-		 inline bool operator == (const real &,   const lx_real &) throw();
+		 inline bool operator == (const real &,   const lx_real &);
 
 //! Implementation of standard negated equality operation
-		 inline bool operator != (const lx_real &, const lx_real &) throw();
+		 inline bool operator != (const lx_real &, const lx_real &);
 //! Implementation of standard negated equality operation
-		 inline bool operator != (const lx_real &, const l_real &) throw();
+		 inline bool operator != (const lx_real &, const l_real &);
 //! Implementation of standard negated equality operation
-		 inline bool operator != (const l_real &, const lx_real &) throw();
+		 inline bool operator != (const l_real &, const lx_real &);
 //! Implementation of standard negated equality operation
-		 inline bool operator != (const lx_real &, const real &)   throw();
+		 inline bool operator != (const lx_real &, const real &)  ;
 //! Implementation of standard negated equality operation
-		 inline bool operator != (const real &,   const lx_real &) throw();
+		 inline bool operator != (const real &,   const lx_real &);
 
 //! Implementation of standard greater-than operation
-		 bool operator > (const lx_real &, const lx_real &) throw();
+		 bool operator > (const lx_real &, const lx_real &);
 
 //! Implementation of standard less-or-equal-than operation
-		 inline bool operator <= (const lx_real &, const lx_real &) throw();
+		 inline bool operator <= (const lx_real &, const lx_real &);
 //! Implementation of standard less-than operation
-		 inline bool operator <  (const lx_real &, const lx_real &) throw();
+		 inline bool operator <  (const lx_real &, const lx_real &);
 //! Implementation of standard greater-or-equal-than operation
-		 inline bool operator >= (const lx_real &, const lx_real &) throw();
-
-//! Implementation of standard greater-than operation
-		 inline bool operator >  (const real &, const lx_real &) throw();
-//! Implementation of standard less-or-equal-than operation
-		 inline bool operator <= (const real &, const lx_real &) throw();
-//! Implementation of standard less-than operation
-		 inline bool operator <  (const real &, const lx_real &) throw();
-//! Implementation of standard greater-or-equal-than operation
-		 inline bool operator >= (const real &, const lx_real &) throw();
+		 inline bool operator >= (const lx_real &, const lx_real &);
 
 //! Implementation of standard greater-than operation
-		 inline bool operator >  (const lx_real &, const real &) throw();
+		 inline bool operator >  (const real &, const lx_real &);
 //! Implementation of standard less-or-equal-than operation
-		 inline bool operator <= (const lx_real &, const real &) throw();
+		 inline bool operator <= (const real &, const lx_real &);
 //! Implementation of standard less-than operation
-		 inline bool operator <  (const lx_real &, const real &) throw();
+		 inline bool operator <  (const real &, const lx_real &);
 //! Implementation of standard greater-or-equal-than operation
-		 inline bool operator >= (const lx_real &, const real &) throw();
+		 inline bool operator >= (const real &, const lx_real &);
 
 //! Implementation of standard greater-than operation
-		 inline bool operator >  (const l_real &, const lx_real &) throw();
+		 inline bool operator >  (const lx_real &, const real &);
 //! Implementation of standard less-or-equal-than operation
-		 inline bool operator <= (const l_real &, const lx_real &) throw();
+		 inline bool operator <= (const lx_real &, const real &);
 //! Implementation of standard less-than operation
-		 inline bool operator <  (const l_real &, const lx_real &) throw();
+		 inline bool operator <  (const lx_real &, const real &);
 //! Implementation of standard greater-or-equal-than operation
-		 inline bool operator >= (const l_real &, const lx_real &) throw();
+		 inline bool operator >= (const lx_real &, const real &);
 
 //! Implementation of standard greater-than operation
-		 inline bool operator >  (const lx_real &, const l_real &) throw();
+		 inline bool operator >  (const l_real &, const lx_real &);
 //! Implementation of standard less-or-equal-than operation
-		 inline bool operator <= (const lx_real &, const l_real &) throw();
+		 inline bool operator <= (const l_real &, const lx_real &);
 //! Implementation of standard less-than operation
-		 inline bool operator <  (const lx_real &, const l_real &) throw();
+		 inline bool operator <  (const l_real &, const lx_real &);
 //! Implementation of standard greater-or-equal-than operation
-		 inline bool operator >= (const lx_real &, const l_real &) throw();
+		 inline bool operator >= (const l_real &, const lx_real &);
+
+//! Implementation of standard greater-than operation
+		 inline bool operator >  (const lx_real &, const l_real &);
+//! Implementation of standard less-or-equal-than operation
+		 inline bool operator <= (const lx_real &, const l_real &);
+//! Implementation of standard less-than operation
+		 inline bool operator <  (const lx_real &, const l_real &);
+//! Implementation of standard greater-or-equal-than operation
+		 inline bool operator >= (const lx_real &, const l_real &);
 
 //! Calculating the maximum of two lx_real values
 		 inline lx_real max(const lx_real&, const lx_real&);
@@ -372,84 +372,84 @@ inline void times2pown_neg(lx_real&, const real&) throw();
 		 inline lx_real min(const lx_real&, const lx_real&);
 
 //! Returns the truncated integer part of x.
-		 inline real cutint(const real& x) throw();
+		 inline real cutint(const real& x);
 
 // ------------------- lx_real Constants ------------------------------------
 
     //! lx_real approximation for \f$ \pi \f$
-		 lx_real Pi_lx_real() throw(); // pi
+		 lx_real Pi_lx_real(); // pi
 	 //! lx_real approximation for \f$ \pi^2 \f$
-		 lx_real Pip2_lx_real() throw(); // pi^2
+		 lx_real Pip2_lx_real(); // pi^2
 	 //! lx_real approximation for \f$ 2\pi \f$
-		 lx_real Pi2_lx_real() throw(); // 2*pi
+		 lx_real Pi2_lx_real(); // 2*pi
 	 //! lx_real approximation for \f$ \frac{\pi}{4} \f$
-		 lx_real Pid4_lx_real() throw(); // Pi/4
+		 lx_real Pid4_lx_real(); // Pi/4
 	 //! lx_real approximation for \f$ \frac{\pi}{2} \f$
-		 lx_real Pid2_lx_real() throw(); // Pi/2
+		 lx_real Pid2_lx_real(); // Pi/2
     //! lx_real approximation for \f$ \ln(2) \f$
-		 lx_real Ln2_lx_real() throw();
+		 lx_real Ln2_lx_real();
     //! lx_real approximation for \f$ \ln(10) \f$
-		 lx_real Ln10_lx_real() throw();
+		 lx_real Ln10_lx_real();
 	 //! lx_real approximation for \f$ \frac{1}{\ln(10)} \f$
-		 lx_real Ln10r_lx_real() throw();
+		 lx_real Ln10r_lx_real();
     //! lx_real approximation for \f$ \frac{1}{\pi} \f$
-		 lx_real Pir_lx_real() throw();
+		 lx_real Pir_lx_real();
 	 //! lx_real approximation for \f$ \frac{1}{2\pi} \f$
-		 lx_real Pi2r_lx_real() throw();  // 1/(2*pi)
+		 lx_real Pi2r_lx_real();  // 1/(2*pi)
     //! lx_real approximation for \f$ \sqrt{\pi} \f$
-		 lx_real SqrtPi_lx_real() throw();
+		 lx_real SqrtPi_lx_real();
     //! lx_real approximation for \f$ \sqrt{2\pi} \f$
-		 lx_real Sqrt2Pi_lx_real() throw();
+		 lx_real Sqrt2Pi_lx_real();
     //! lx_real approximation for \f$ \sqrt{2} \f$
-		 lx_real Sqrt2_lx_real() throw();
+		 lx_real Sqrt2_lx_real();
 	 //! lx_real approximation for \f$ \frac{1}{\sqrt{2}} \f$
-		 lx_real Sqrt2r_lx_real() throw();
+		 lx_real Sqrt2r_lx_real();
     //! lx_real approximation for \f$ \sqrt{3} \f$
-		 lx_real Sqrt3_lx_real() throw();
+		 lx_real Sqrt3_lx_real();
 	 //! lx_real approximation for \f$ \frac{1}{\sqrt{3}} \f$
-		 lx_real Sqrt3r_lx_real() throw();
+		 lx_real Sqrt3r_lx_real();
 	 //! lx_real approximation for \f$ \frac{\sqrt{3}}{2} \f$
-		 lx_real Sqrt3d2_lx_real() throw();
+		 lx_real Sqrt3d2_lx_real();
     //! lx_real approximation for \f$ 1/\ln(2) \f$
-		 lx_real Ln2r_lx_real() throw();
+		 lx_real Ln2r_lx_real();
     //! lx_real approximation for \f$ \pi/3 \f$
-		 lx_real Pid3_lx_real() throw();
+		 lx_real Pid3_lx_real();
     //! lx_real approximation for \f$ 1/\sqrt{\pi} \f$
-		 lx_real SqrtPir_lx_real() throw();
+		 lx_real SqrtPir_lx_real();
     //! lx_real approximation for \f$ 1/\sqrt{2\pi} \f$
-		 lx_real Sqrt2Pir_lx_real() throw();
+		 lx_real Sqrt2Pir_lx_real();
     //! lx_real approximation for \f$ \ln(\pi) \f$
-		 lx_real LnPi_lx_real() throw();
+		 lx_real LnPi_lx_real();
     //! lx_real approximation for \f$ \ln(2\pi) \f$
-		 lx_real Ln2Pi_lx_real() throw();
+		 lx_real Ln2Pi_lx_real();
     //! lx_real approximation for \f$ e=2.718... \f$
-		 lx_real E_lx_real() throw();
+		 lx_real E_lx_real();
 	 //! lx_real approximation for \f$ e^2 \f$
-		 lx_real Ep2_lx_real() throw();
+		 lx_real Ep2_lx_real();
 	 //! lx_real approximation for \f$ \frac{1}{e^2} \f$
-		 lx_real Ep2r_lx_real() throw();
+		 lx_real Ep2r_lx_real();
 	 //! lx_real approximation for \f$ \frac{1}{e} \f$
-		 lx_real Er_lx_real() throw();
+		 lx_real Er_lx_real();
     //! lx_real approximation for \f$ e^{\pi} \f$
-		 lx_real EpPi_lx_real() throw();
+		 lx_real EpPi_lx_real();
 	 //! lx_real approximation for \f$ e^{\pi/2} \f$
-		 lx_real EpPid2_lx_real() throw();
+		 lx_real EpPid2_lx_real();
 	 //! lx_real approximation for \f$ e^{\pi/4} \f$
-		 lx_real EpPid4_lx_real() throw();
+		 lx_real EpPid4_lx_real();
 	 //! lx_real approximation for \f$ e^{2\pi} \f$
-		 lx_real Ep2Pi_lx_real() throw();
+		 lx_real Ep2Pi_lx_real();
     //! lx_real approximation for \f$ \mbox{EulerGamma}=0.5772... \f$
-		 lx_real EulerGamma_lx_real() throw();
+		 lx_real EulerGamma_lx_real();
     //! lx_real approximation for \f$ \mbox{Catalan}=0.9159... \f$
-		 lx_real Catalan_lx_real() throw();
+		 lx_real Catalan_lx_real();
     //! lx_real approximation for \f$ \sqrt{5} \f$
-		 lx_real sqrt5_lx_real() throw();
+		 lx_real sqrt5_lx_real();
     //! lx_real approximation for \f$ \sqrt{7} \f$
-		 lx_real sqrt7_lx_real() throw();
+		 lx_real sqrt7_lx_real();
     //! lx_real approximation for \f$ 1-2^{-2097} \f$
-		 lx_real One_m_lx_real() throw();
+		 lx_real One_m_lx_real();
     //! lx_real approximation for \f$ 1+2^{-2097} \f$
-		 lx_real One_p_lx_real() throw();
+		 lx_real One_p_lx_real();
 
 // **********************************************************************
 // **********************************************************************
@@ -648,91 +648,91 @@ const real ln_N[180] =
 // ------------------------------------------------------------------------
 
 //! Calculates \f$ \sqrt{[x]}  \f$
- lx_real sqrt(const lx_real&) throw();
+ lx_real sqrt(const lx_real&);
 //! Calculates \f$ [x]^2  \f$
- lx_real sqr(const lx_real&) throw();
+ lx_real sqr(const lx_real&);
 //! Calculates \f$ \ln([x]) \f$
- lx_real ln(const lx_real &) throw();
+ lx_real ln(const lx_real &);
 //! Calculates \f$ \log2([x]) \f$
- lx_real log2(const lx_real &) throw();
+ lx_real log2(const lx_real &);
 //! Calculates \f$ \log10([x]) \f$
- lx_real log10(const lx_real &) throw();
+ lx_real log10(const lx_real &);
 //! Calculates \f$ \ln(1+[x]) \f$
- lx_real lnp1(const lx_real &) throw();
+ lx_real lnp1(const lx_real &);
 //! Calculates \f$ \exp([x]) \f$
- lx_real exp(const lx_real &) throw();
+ lx_real exp(const lx_real &);
 //! Calculates \f$ 2^{[x]} \f$
- lx_real exp2(const lx_real &) throw(); // 2^x
+ lx_real exp2(const lx_real &); // 2^x
 //! Calculates \f$ 10^{[x]} \f$
- lx_real exp10(const lx_real &) throw(); // 10^x
+ lx_real exp10(const lx_real &); // 10^x
 //! Calculates \f$ \exp([x])-1 \f$
- lx_real expm1(const lx_real &x) throw(); 
+ lx_real expm1(const lx_real &x); 
 //! Calculates \f$ [x]^n \f$
- lx_real power(const lx_real &, const real &) throw();
+ lx_real power(const lx_real &, const real &);
 //! Calculates \f$ [x]^{[y]} \f$
- lx_real pow(const lx_real &, const lx_real &) throw();
+ lx_real pow(const lx_real &, const lx_real &);
 //! Calculates \f$ (1+[x])^{[y]} \f$
- lx_real xp1_pow_y(const lx_real &, const lx_real &) throw(); 
+ lx_real xp1_pow_y(const lx_real &, const lx_real &); 
 //! Calculates \f$ \sin([x]) \f$
- lx_real sin(const lx_real &)throw();
+ lx_real sin(const lx_real &);
 //! Calculates \f$ \sin(n\cdot\pi+[x]) \f$
- lx_real sin_n(const lx_real &x, const real& n) throw();
+ lx_real sin_n(const lx_real &x, const real& n);
 //! Calculates \f$ \cos([x]) \f$
- lx_real cos(const lx_real &) throw();
+ lx_real cos(const lx_real &);
 //! Calculates \f$ \cos((n+1/2)\cdot\pi+[x]) \f$
- lx_real cos_n(const lx_real &x, const real& n) throw();
+ lx_real cos_n(const lx_real &x, const real& n);
 //! Calculates \f$ \tan([x]) \f$
- lx_real tan(const lx_real &) throw();
+ lx_real tan(const lx_real &);
 //! Calculates \f$ \cot([x]) \f$
- lx_real cot(const lx_real &) throw();
+ lx_real cot(const lx_real &);
 //! Calculates \f$ \sqrt{1+[x]^2} \f$
- lx_real sqrt1px2(const lx_real &) throw();
+ lx_real sqrt1px2(const lx_real &);
 //! Calculates \f$ \arctan([x]) \f$
- lx_real atan(const lx_real &) throw();
+ lx_real atan(const lx_real &);
 //! Calculates \f$ \sqrt{1-[x]^2} \f$
- lx_real sqrt1mx2(const lx_real &) throw();
+ lx_real sqrt1mx2(const lx_real &);
 //! Calculates \f$ \sqrt{[x]^2-1} \f$
- lx_real sqrtx2m1(const lx_real &) throw();
+ lx_real sqrtx2m1(const lx_real &);
 //! Calculates \f$ \arcsin([x]) \f$
- lx_real asin(const lx_real & ) throw();
+ lx_real asin(const lx_real & );
 //! Calculates \f$ \arccos([x]) \f$
- lx_real acos(const lx_real &) throw();
+ lx_real acos(const lx_real &);
 //! Calculates \f$ \mbox{arccot}([x]) \f$
- lx_real acot(const lx_real &) throw();
+ lx_real acot(const lx_real &);
 //! Calculates \f$ \sinh([x]) \f$
- lx_real sinh(const lx_real &) throw();
+ lx_real sinh(const lx_real &);
 //! Calculates \f$ \cosh([x]) \f$
- lx_real cosh(const lx_real &) throw();
+ lx_real cosh(const lx_real &);
 //! Calculates \f$ \tanh([x]) \f$
- lx_real tanh(const lx_real &) throw();
+ lx_real tanh(const lx_real &);
 //! Calculates \f$ \coth([x]) \f$
- lx_real coth(const lx_real &) throw();
+ lx_real coth(const lx_real &);
 //! Calculates \f$ \sqrt{([x]+1)-1} \f$
- lx_real sqrtp1m1(const lx_real &) throw();
+ lx_real sqrtp1m1(const lx_real &);
 //! Calculates \f$ \mbox{arcsinh}([x]) \f$
- lx_real asinh(const lx_real &) throw();
+ lx_real asinh(const lx_real &);
 //! Calculates \f$ \mbox{arccosh}([x]) \f$
- lx_real acosh(const lx_real &) throw();
+ lx_real acosh(const lx_real &);
 //! Calculates \f$ \mbox{arccosh}(1+[x]) \f$
- lx_real acoshp1(const lx_real &) throw();
+ lx_real acoshp1(const lx_real &);
 //! Calculates \f$ \mbox{arctanh}([x]) \f$
- lx_real atanh(const lx_real &) throw();
+ lx_real atanh(const lx_real &);
 //! Calculates \f$ \mbox{arctanh}(1-[x]) \f$
- lx_real atanh1m(const lx_real &) throw();
+ lx_real atanh1m(const lx_real &);
 //! Calculates \f$ \mbox{arctanh}(-1+[x]) \f$
- lx_real atanhm1p(const lx_real &) throw();
+ lx_real atanhm1p(const lx_real &);
 //! Calculates \f$ \mbox{arccoth}([x]) \f$
- lx_real acoth(const lx_real &) throw();
+ lx_real acoth(const lx_real &);
 //! Calculates \f$ \mbox{arccoth}(+1+[x]) \f$
- lx_real acothp1(const lx_real &) throw();
+ lx_real acothp1(const lx_real &);
 //! Calculates \f$ \mbox{arctanh}(-1-[x]) \f$
- lx_real acothm1m(const lx_real &) throw();
+ lx_real acothm1m(const lx_real &);
 //! Calculates \f$ \sqrt{[x]^2 + [y]^2} \f$
- lx_real sqrtx2y2(const lx_real &, const lx_real &) throw();
+ lx_real sqrtx2y2(const lx_real &, const lx_real &);
 //! Calculates \f$ \ln(\sqrt{[x]^2 + [y]^2}) \f$
- lx_real ln_sqrtx2y2(const lx_real &, const lx_real &) throw();
+ lx_real ln_sqrtx2y2(const lx_real &, const lx_real &);
 //! Calculates \f$ \sqrt[n]{[x]} \f$
- lx_real sqrt(const lx_real &, int) throw();
+ lx_real sqrt(const lx_real &, int);
 
 } // end namespace cxsc
 

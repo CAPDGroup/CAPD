@@ -52,21 +52,21 @@ class cxscvector
 
 	public:
 	//------ Konstruktoren ----------------------------------------------------
-	inline cxscvector::cxscvector<T> () throw()
+	inline cxscvector::cxscvector<T> ()
 	{
 		dat=NULL;
 		size=u=0;
 		l=1;
 	}
 
-	explicit inline cxscvector<T>(const int &i) throw()
+	explicit inline cxscvector<T>(const int &i)
 	{
 		dat=new T[i];
 		l=1;
 		size=u=i;
 	}
 
-	explicit inline cxscvector<T>(const int &i1,const int &i2) throw()
+	explicit inline cxscvector<T>(const int &i1,const int &i2)
 	{
 		l=i1;
 		u=i2;
@@ -75,7 +75,7 @@ class cxscvector
 		dat=new T[size];
 	}
 
-	inline cxscvector<T>(const cxscvector_slice<T> &rs) throw()
+	inline cxscvector<T>(const cxscvector_slice<T> &rs)
 	{
 		T *from=rs.dat;
 		
@@ -88,7 +88,7 @@ class cxscvector
 			dat[i]=from[to];
 	}
 
-	inline cxscvector<T>(const cxscvector<T> &v) throw()
+	inline cxscvector<T>(const cxscvector<T> &v)
 	{
 		u=size=v.size;
 		l=1;
@@ -98,9 +98,9 @@ class cxscvector
 			dat[i]=v.dat[i];
 	}
 
-	cxscvector<T>(const cxscmatrix_subv<T> &v) throw(); // defined in cxscmatr.hpp
+	cxscvector<T>(const cxscmatrix_subv<T> &v); // defined in cxscmatr.hpp
 	
-	inline cxscvector<T> &cxscvector<T>::operator =(const cxscvector<T> &rv) throw()
+	inline cxscvector<T> &cxscvector<T>::operator =(const cxscvector<T> &rv)
 	{
 		T *ndat=new T[rv.size];
 		
@@ -113,7 +113,7 @@ class cxscvector
 		return *this;
 	}
 
-	inline cxscvector<T> &operator =(const T &r) throw()
+	inline cxscvector<T> &operator =(const T &r)
 	{
 		for (int i=0;i<size;i++)
 			dat[i]=r;
@@ -121,19 +121,19 @@ class cxscvector
 	return *this;
 	}
 
-	cxscvector<T> &operator =(const cxscmatrix<T> &) throw();
+	cxscvector<T> &operator =(const cxscmatrix<T> &);
 
 	//--------- Destruktor ----------------------------------------------------
 	inline ~cxscvector() { delete [] dat; }
 
 	//------ Standardfunktionen -----------------------------------------------
 	
-//	friend cxscvector<real> Inf<T>(const cxscvector<T> &) throw();
-	friend inline int Lb(const cxscvector<T> &rv) throw() { return rv.l; }
-	friend inline int Ub(const cxscvector<T> &rv) throw() { return rv.u; }
-	friend inline void SetLb(cxscvector<T> &rv, const int &l) throw() { rv.l=l; rv.u=l+rv.size-1; }
-	friend inline void SetUb(cxscvector<T> &rv, const int &u) throw() { rv.u=u; rv.l=u-rv.size+1; }
-	friend inline void Resize(cxscvector<T> &rv) throw()
+//	friend cxscvector<real> Inf<T>(const cxscvector<T> &);
+	friend inline int Lb(const cxscvector<T> &rv) { return rv.l; }
+	friend inline int Ub(const cxscvector<T> &rv) { return rv.u; }
+	friend inline void SetLb(cxscvector<T> &rv, const int &l) { rv.l=l; rv.u=l+rv.size-1; }
+	friend inline void SetUb(cxscvector<T> &rv, const int &u) { rv.u=u; rv.l=u-rv.size+1; }
+	friend inline void Resize(cxscvector<T> &rv)
 	{
 		rv.size=rv.u=0;
 		rv.l=1;
@@ -141,7 +141,7 @@ class cxscvector
 		rv.dat=NULL;
 	}
 
-	friend inline void Resize(cxscvector<T> &rv, const int &len) throw()
+	friend inline void Resize(cxscvector<T> &rv, const int &len)
 	{
 		if(rv.size==len)
 			SetLb(rv,1);
@@ -160,7 +160,7 @@ class cxscvector
 		}
 	}
 
-	friend void Resize(cxscvector<T> &rv, const int &lb, const int &ub) throw()
+	friend void Resize(cxscvector<T> &rv, const int &lb, const int &ub)
 	{
 		if(rv.size==ub-lb+1)
 			SetUb(rv,ub);
@@ -180,28 +180,28 @@ class cxscvector
 		}
 	}
 
-	inline T & operator [](const int &i) throw() { return dat[i-l]; }
-	inline cxscvector<T> & operator ()() throw() { return *this; }
-	inline cxscvector_slice<T> operator ()(const int &) throw() { return cxscvector_slice<T>(*this,1,i); }
-	friend inline void accumulate(dotprecision &dp, const cxscvector<T> & rv1, const cxscvector<T> &rv2) throw()
+	inline T & operator [](const int &i) { return dat[i-l]; }
+	inline cxscvector<T> & operator ()() { return *this; }
+	inline cxscvector_slice<T> operator ()(const int &) { return cxscvector_slice<T>(*this,1,i); }
+	friend inline void accumulate(dotprecision &dp, const cxscvector<T> & rv1, const cxscvector<T> &rv2)
 	{
 		for(int i=0;i<rv1.size;i++)
 			accumulate(dp,rv1.dat[i],rv2.dat[i]);
 	}
 
-	friend inline void accumulate(dotprecision &dp, const cxscvector_slice<T> & sl, const cxscvector<T> &rv) throw()
+	friend inline void accumulate(dotprecision &dp, const cxscvector_slice<T> & sl, const cxscvector<T> &rv)
 	{
 		for(int i=0,j=sl.start-sl.l;i<rv.size;i++,j++)
 			accumulate(dp,sl.dat[j],rv.dat[i]);
 	}
 
-	friend inline void accumulate(dotprecision &dp, const cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline void accumulate(dotprecision &dp, const cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		for(int i=0,j=sl.start-sl.l;i<rv.size;i++,j++)
 			accumulate(dp,sl.dat[j],rv.dat[i]);
 	}
 
-	friend inline cxscvector<T> operator /(const cxscvector<T> &rv, const T &s) throw()
+	friend inline cxscvector<T> operator /(const cxscvector<T> &rv, const T &s)
 	{
 		cxscvector<T> p(rv.l,rv.u);
 
@@ -211,7 +211,7 @@ class cxscvector
 		return p;
 	}
 
-	friend inline cxscvector<T> operator /(const cxscvector_slice<T> &sl, const T &s) throw()
+	friend inline cxscvector<T> operator /(const cxscvector_slice<T> &sl, const T &s)
 	{
 		cxscvector<T> p(sl.l,sl.u);
 
@@ -221,7 +221,7 @@ class cxscvector
 		return p;
 	}
 
-	friend inline cxscvector<T> operator *(const cxscvector<T> &rv, const T &s) throw()
+	friend inline cxscvector<T> operator *(const cxscvector<T> &rv, const T &s)
 	{
 		cxscvector<T> p(rv.l,rv.u);
 
@@ -231,7 +231,7 @@ class cxscvector
 		return p;
 	}
 
-	friend inline cxscvector<T> operator *(const T &s, const cxscvector<T> &rv) throw()
+	friend inline cxscvector<T> operator *(const T &s, const cxscvector<T> &rv)
 	{
 		cxscvector<T> p(rv.l,rv.u);
 
@@ -241,7 +241,7 @@ class cxscvector
 		return p;
 	}
 
-	friend inline cxscvector<T> operator *(const cxscvector_slice<T> &sl, const T &s) throw()
+	friend inline cxscvector<T> operator *(const cxscvector_slice<T> &sl, const T &s)
 	{
 		cxscvector<T> p(sl.l,sl.u);
 
@@ -251,7 +251,7 @@ class cxscvector
 		return p;
 	}
 
-	friend inline T operator *(const cxscvector<T> & rv1, const cxscvector<T> &rv2) throw()
+	friend inline T operator *(const cxscvector<T> & rv1, const cxscvector<T> &rv2)
 	{
 		dotakku[0]=0;
 		for(int i=0;i<rv1.size;i++)
@@ -260,7 +260,7 @@ class cxscvector
 		return rnd(dotakku[0]);
 	}
 
-	friend inline T operator *(const cxscvector_slice<T> & sl, const cxscvector<T> &rv) throw()
+	friend inline T operator *(const cxscvector_slice<T> & sl, const cxscvector<T> &rv)
 	{
 		dotakku[0]=0;
 		for(int i=0,j=sl.start-sl.l;i<rv.size;i++,j++)
@@ -269,7 +269,7 @@ class cxscvector
 		return rnd(dotakku[0]);
 	}
 
-	friend inline T operator *(const cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline T operator *(const cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		dotakku[0]=0;
 		for(int i=0,j=sl.start-sl.l;i<rv.size;i++,j++)
@@ -278,7 +278,7 @@ class cxscvector
 		return rnd(dotakku[0]);
 	}
 
-	friend inline cxscvector<T> operator +(const cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline cxscvector<T> operator +(const cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		cxscvector<T> sum(rv1.l,rv1.u);
 
@@ -287,7 +287,7 @@ class cxscvector
 		return sum;
 	}
 
-	friend inline cxscvector<T> operator +(const cxscvector<T> &rv,const cxscvector_slice<T> &sl) throw()
+	friend inline cxscvector<T> operator +(const cxscvector<T> &rv,const cxscvector_slice<T> &sl)
 	{
 		cxscvector<T> sum(rv.l,rv.u);
 
@@ -296,7 +296,7 @@ class cxscvector
 		return sum;
 	}
 
-	friend inline cxscvector<T> operator +(const cxscvector_slice<T> &sl,const cxscvector<T> &rv) throw()
+	friend inline cxscvector<T> operator +(const cxscvector_slice<T> &sl,const cxscvector<T> &rv)
 	{
 		cxscvector<T> sum(rv.l,rv.u);
 
@@ -305,8 +305,8 @@ class cxscvector
 		return sum;
 	}
 
-	friend inline cxscvector<T> operator +(const cxscvector<T> &rv) throw() { return rv; }
-	friend inline cxscvector<T> operator +(const cxscvector_slice<T> &s1,const cxscvector_slice<T> &s2) throw()
+	friend inline cxscvector<T> operator +(const cxscvector<T> &rv) { return rv; }
+	friend inline cxscvector<T> operator +(const cxscvector_slice<T> &s1,const cxscvector_slice<T> &s2)
 	{
 		cxscvector<T> sum(s1.l,s1.u);
 
@@ -315,49 +315,49 @@ class cxscvector
 		return sum;
 	}
 
-	friend inline cxscvector<T> & operator +=(cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline cxscvector<T> & operator +=(cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		for(int i=0;i<rv1.size;i++)
 			rv1.dat[i]+=rv2.dat[i];
 		return rv1;
 	}
 
-	friend inline cxscvector<T> & operator +=(cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline cxscvector<T> & operator +=(cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		for(int i=0,j=sl.start-sl.l;i<rv.size;i++,j++)
 			rv.dat[i]+=sl.dat[j];
 		return rv;
 	}
 
-	friend inline cxscvector_slice<T> & operator +=(cxscvector_slice<T> &sl, const cxscvector<T> &rv) throw()
+	friend inline cxscvector_slice<T> & operator +=(cxscvector_slice<T> &sl, const cxscvector<T> &rv)
 	{
 		for(int i=0,j=sl.start-sl.l;i<rv.size;i++,j++)
 			sl.dat[j]+=rv.dat[i];
 		return sl;
 	}
 
-	friend inline cxscvector<T> & operator -=(cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline cxscvector<T> & operator -=(cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		for(int i=0;i<rv1.size;i++)
 			rv1.dat[i]-=rv2.dat[i];
 		return rv1;
 	}
 
-	friend inline cxscvector<T> & operator -=(cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline cxscvector<T> & operator -=(cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		for(int i=0,j=sl.start-sl.l;i<rv.size;i++,j++)
 			rv.dat[i]-=sl.dat[j];
 		return rv;
 	}
 
-	friend inline cxscvector_slice<T> & operator -=(cxscvector_slice<T> &sl, const cxscvector<T> &rv) throw()
+	friend inline cxscvector_slice<T> & operator -=(cxscvector_slice<T> &sl, const cxscvector<T> &rv)
 	{
 		for(int i=0,j=sl.start-sl.l;i<rv.size;i++,j++)
 			sl.dat[j]-=rv.dat[i];
 		return sl;
 	}
 
-	friend inline cxscvector<T> operator -(const cxscvector<T> &rv) throw()
+	friend inline cxscvector<T> operator -(const cxscvector<T> &rv)
 	{
 		cxscvector<T> sum(rv.l,rv.u);
 
@@ -367,7 +367,7 @@ class cxscvector
 		return sum;
 	}
 
-	friend inline cxscvector<T> operator -(const cxscvector_slice<T> &sl) throw()
+	friend inline cxscvector<T> operator -(const cxscvector_slice<T> &sl)
 	{
 		cxscvector<T> sum(sl.l,sl.u);
 
@@ -377,7 +377,7 @@ class cxscvector
 		return sum;
 	}
 
-	friend inline cxscvector<T> operator -(const cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline cxscvector<T> operator -(const cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		cxscvector<T> sum(rv1.l,rv1.u);
 
@@ -386,7 +386,7 @@ class cxscvector
 		return sum; 
 	}
 
-	friend inline cxscvector<T> operator -(const cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline cxscvector<T> operator -(const cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		cxscvector<T> sum(rv.l,rv.u);
 
@@ -396,7 +396,7 @@ class cxscvector
 		return sum;
 	}
 	
-	friend inline cxscvector<T> operator -(const cxscvector_slice<T> &sl,const cxscvector<T> &rv) throw()
+	friend inline cxscvector<T> operator -(const cxscvector_slice<T> &sl,const cxscvector<T> &rv)
 	{
 		cxscvector<T> sum(sl.l,sl.u);
 
@@ -405,7 +405,7 @@ class cxscvector
 		return sum;
 	}
 
-	friend inline cxscvector<T> operator |(const cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline cxscvector<T> operator |(const cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		cxscvector<T> sum(rv1.l,rv1.u);
 
@@ -414,7 +414,7 @@ class cxscvector
 		return sum;
 	}
 
-	friend inline cxscvector<T> operator |(const cxscvector<T> &rv,const cxscvector_slice<T> &sl) throw()
+	friend inline cxscvector<T> operator |(const cxscvector<T> &rv,const cxscvector_slice<T> &sl)
 	{
 		cxscvector<T> sum(rv.l,rv.u);
 
@@ -423,7 +423,7 @@ class cxscvector
 		return sum;
 	}
 
-	friend inline cxscvector<T> operator |(const cxscvector_slice<T> &sl,const cxscvector<T> &rv) throw()
+	friend inline cxscvector<T> operator |(const cxscvector_slice<T> &sl,const cxscvector<T> &rv)
 	{
 		cxscvector<T> sum(rv.l,rv.u);
 
@@ -432,28 +432,28 @@ class cxscvector
 		return sum;
 	}
 
-	friend inline cxscvector<T> & operator |=(cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline cxscvector<T> & operator |=(cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		for(int i=0;i<rv1.size;i++)
 			rv1.dat[i]|=rv2.dat[i];
 		return rv1;
 	}
 
-	friend inline cxscvector<T> & operator |=(cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline cxscvector<T> & operator |=(cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		for(int i=0,j=sl.start-sl.l;i<rv.size;i++,j++)
 			rv.dat[i]|=sl.dat[j];
 		return rv;
 	}
 
-	friend inline cxscvector_slice<T> & operator |=(cxscvector_slice<T> &sl, const cxscvector<T> &rv) throw()
+	friend inline cxscvector_slice<T> & operator |=(cxscvector_slice<T> &sl, const cxscvector<T> &rv)
 	{
 		for(int i=0,j=sl.start-sl.l;i<rv.size;i++,j++)
 			sl.dat[j]|=rv.dat[i];
 		return sl;
 	}
 
-	friend inline bool operator ==(const cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline bool operator ==(const cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		if(rv1.size!=rv2.size)
 			return(false);
@@ -464,7 +464,7 @@ class cxscvector
 		return (i==rv1.size);
 	}	
 
-	friend inline bool operator ==(const cxscvector_slice<T> &sl, const cxscvector<T> &rv) throw()
+	friend inline bool operator ==(const cxscvector_slice<T> &sl, const cxscvector<T> &rv)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -475,7 +475,7 @@ class cxscvector
 		return (i==rv.size);
 	}	
 
-	friend inline bool operator ==(const cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline bool operator ==(const cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -486,7 +486,7 @@ class cxscvector
 		return (i==rv.size);
 	}	
 
-	friend inline bool operator !=(const cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline bool operator !=(const cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		if(rv1.size!=rv2.size)
 			return(true);
@@ -497,7 +497,7 @@ class cxscvector
 		return (i!=rv1.size);
 	}	
 
-	friend inline bool operator !=(const cxscvector_slice<T> &sl, const cxscvector<T> &rv) throw()
+	friend inline bool operator !=(const cxscvector_slice<T> &sl, const cxscvector<T> &rv)
 	{
 		if(sl.size!=rv.size)
 			return(true);
@@ -508,7 +508,7 @@ class cxscvector
 		return (i!=rv.size);
 	}	
 
-	friend inline bool operator !=(const cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline bool operator !=(const cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		if(sl.size!=rv.size)
 			return(true);
@@ -519,7 +519,7 @@ class cxscvector
 		return (i!=rv.size);
 	}	
 
-	friend inline bool operator <(const cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline bool operator <(const cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		if(rv1.size!=rv2.size)
 			return(false);
@@ -530,7 +530,7 @@ class cxscvector
 		return (i!=rv1.size);
 	}
 
-	friend inline bool operator <(const cxscvector_slice<T> &sl, const cxscvector<T> &rv) throw()
+	friend inline bool operator <(const cxscvector_slice<T> &sl, const cxscvector<T> &rv)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -541,7 +541,7 @@ class cxscvector
 		return (i!=sl.size);
 	}
 
-	friend inline bool operator <(const cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline bool operator <(const cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -552,7 +552,7 @@ class cxscvector
 		return (i!=sl.size);
 	}
 
-	friend inline bool operator <=(const cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline bool operator <=(const cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		if(rv1.size!=rv2.size)
 			return(false);
@@ -563,7 +563,7 @@ class cxscvector
 		return (i!=rv1.size);
 	}
 
-	friend inline bool operator <=(const cxscvector_slice<T> &sl, const cxscvector<T> &rv) throw()
+	friend inline bool operator <=(const cxscvector_slice<T> &sl, const cxscvector<T> &rv)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -574,7 +574,7 @@ class cxscvector
 		return (i!=sl.size);
 	}
 
-	friend inline bool operator <=(const cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline bool operator <=(const cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -585,7 +585,7 @@ class cxscvector
 		return (i!=sl.size);
 	}
 
-	friend inline bool operator >(const cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline bool operator >(const cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		if(rv1.size!=rv2.size)
 			return(false);
@@ -596,7 +596,7 @@ class cxscvector
 		return (i!=rv1.size);
 	}
 
-	friend inline bool operator >(const cxscvector_slice<T> &sl, const cxscvector<T> &rv) throw()
+	friend inline bool operator >(const cxscvector_slice<T> &sl, const cxscvector<T> &rv)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -607,7 +607,7 @@ class cxscvector
 		return (i!=sl.size);
 	}
 
-	friend inline bool operator >(const cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline bool operator >(const cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -618,7 +618,7 @@ class cxscvector
 		return (i!=sl.size);
 	}
 
-	friend inline bool operator >=(const cxscvector<T> &rv1, const cxscvector<T> &rv2) throw()
+	friend inline bool operator >=(const cxscvector<T> &rv1, const cxscvector<T> &rv2)
 	{
 		if(rv1.size!=rv2.size)
 			return(false);
@@ -629,7 +629,7 @@ class cxscvector
 		return (i!=rv1.size);
 	}
 
-	friend inline bool operator >=(const cxscvector_slice<T> &sl, const cxscvector<T> &rv) throw()
+	friend inline bool operator >=(const cxscvector_slice<T> &sl, const cxscvector<T> &rv)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -640,7 +640,7 @@ class cxscvector
 		return (i!=sl.size);
 	}
 
-	friend inline bool operator >=(const cxscvector<T> &rv, const cxscvector_slice<T> &sl) throw()
+	friend inline bool operator >=(const cxscvector<T> &rv, const cxscvector_slice<T> &sl)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -651,7 +651,7 @@ class cxscvector
 		return (i!=sl.size);
 	}
 
-	friend inline bool operator !(const cxscvector<T> &rv) throw()
+	friend inline bool operator !(const cxscvector<T> &rv)
 	{
 		int i;
 		for(i=0;i<rv.size;i++)
@@ -663,7 +663,7 @@ class cxscvector
 		return true;
 	}
 
-	inline cxscvector<T>::operator void*() throw()
+	inline cxscvector<T>::operator void*()
 	{
 		for(int i=0;i<size;i++)
 		{
@@ -674,7 +674,7 @@ class cxscvector
 		return (void *)0;
 	}
 
-	friend inline cxscvector<T> abs(const cxscvector<T> &rv) throw()
+	friend inline cxscvector<T> abs(const cxscvector<T> &rv)
 	{
 		cxscvector<T> erg(rv.l,rv.u);
 		
@@ -684,7 +684,7 @@ class cxscvector
 		return erg;
 	}
 
-	friend inline cxscvector<T> abs(const cxscvector_slice<T> &sl) throw()
+	friend inline cxscvector<T> abs(const cxscvector_slice<T> &sl)
 	{
 		cxscvector<T> erg(sl.l,sl.u);
 		
@@ -694,14 +694,14 @@ class cxscvector
 		return erg;
 	}
 
-	friend std::ostream &operator <<(std::ostream &s, const cxscvector<T> &rv) throw()
+	friend std::ostream &operator <<(std::ostream &s, const cxscvector<T> &rv)
 	{
 		for(int i=0;i<rv.size;i++)
 			s<<rv.dat[i]<<std::endl;
 		return s;
 	}
 
-	friend std::istream &operator >>(std::istream &s, cxscvector<T> &rv) throw()
+	friend std::istream &operator >>(std::istream &s, cxscvector<T> &rv)
 	{
 		for(int i=0;i<rv.size;i++)
 			s>>rv.dat[i];
@@ -722,22 +722,22 @@ class cxscvector_slice
 	public:
 	
 	//--------------------- Konstruktoren -----------------------------------
-	explicit inline cxscvector_slice<T>(cxscvector<T> &a, const int &l, const int &u) throw():dat(a.dat),l(a.l),u(a.u),size(u-l+1),start(l),end(u) { }
-	inline cxscvector_slice<T> & operator =(const cxscvector_slice<T> &sl) throw()
+	explicit inline cxscvector_slice<T>(cxscvector<T> &a, const int &l, const int &u):dat(a.dat),l(a.l),u(a.u),size(u-l+1),start(l),end(u) { }
+	inline cxscvector_slice<T> & operator =(const cxscvector_slice<T> &sl)
 	{
 		for (int i=start-lb, j=sl.start-sl.lb;i<end;i++,j++)
 			dat[i]=sl.dat[j];
 		return *this;
 	}
 	
-	inline cxscvector_slice<T> & operator =(const cxscvector<T> &rv) throw()
+	inline cxscvector_slice<T> & operator =(const cxscvector<T> &rv)
 	{
 		for (int i=start-lb, j=0;i<end;i++,j++)
 			dat[i]=rv.dat[j];
 		return *this;
 	}
 
-	inline cxscvector_slice<T> & operator =(const T &r) throw()
+	inline cxscvector_slice<T> & operator =(const T &r)
 	{
 		for (int i=start-lb;i<end;i++)
 			dat[i]=r;
@@ -746,20 +746,20 @@ class cxscvector_slice
 
 
 	//--------------------- Standardfunktionen ------------------------------
-	friend inline int Lb(const cxscvector_slice<T> &sl) throw() { return sl.start; }
-	friend inline int Ub(const cxscvector_slice<T> &sl) throw() { return sl.end; }
-	inline T & operator [](const int &i) throw() { return dat[i-l]; }
-	friend inline void accumulate<T>(dotprecision &,const cxscvector_slice<T> &,const cxscvector<T> &) throw();
-	friend inline void accumulate<T>(dotprecision &,const cxscvector<T> &,const cxscvector_slice<T> &) throw();
-	friend inline void accumulate(dotprecision &dp, const cxscvector_slice<T> & sl1, const cxscvector_slice<T> &sl2) throw()
+	friend inline int Lb(const cxscvector_slice<T> &sl) { return sl.start; }
+	friend inline int Ub(const cxscvector_slice<T> &sl) { return sl.end; }
+	inline T & operator [](const int &i) { return dat[i-l]; }
+	friend inline void accumulate<T>(dotprecision &,const cxscvector_slice<T> &,const cxscvector<T> &);
+	friend inline void accumulate<T>(dotprecision &,const cxscvector<T> &,const cxscvector_slice<T> &);
+	friend inline void accumulate(dotprecision &dp, const cxscvector_slice<T> & sl1, const cxscvector_slice<T> &sl2)
 	{
 		for(int i=sl1.start-sl1.l,j=sl2.start-sl2.l;i<sl1.size;i++,j++)
 			accumulate(dp,sl1.dat[i],sl2.dat[j]);
 	}
 
-	friend inline cxscvector<T> operator /<T>(const cxscvector_slice<T> &sl, const T &s) throw();
-	friend inline cxscvector<T> operator *<T>(const T &s, const cxscvector_slice<T> &sl) throw();
-	friend inline cxscvector<T> operator *<T>(const cxscvector_slice<T> &sl, const T &s) throw();
+	friend inline cxscvector<T> operator /<T>(const cxscvector_slice<T> &sl, const T &s);
+	friend inline cxscvector<T> operator *<T>(const T &s, const cxscvector_slice<T> &sl);
+	friend inline cxscvector<T> operator *<T>(const cxscvector_slice<T> &sl, const T &s);
 //	{
 //		cxscvector<T> p(sl.l,sl.u);
 //
@@ -769,7 +769,7 @@ class cxscvector_slice
 //		return p;
 //	}
 
-	friend inline T operator *(const cxscvector_slice<T> & sl1, const cxscvector_slice<T> &sl2) throw()
+	friend inline T operator *(const cxscvector_slice<T> & sl1, const cxscvector_slice<T> &sl2)
 	{
 		dotakku[0]=0;
 		for(int i=sl1.start-sl1.l,j=sl2.start-sl2.l;i<sl1.size;i++,j++)
@@ -778,45 +778,45 @@ class cxscvector_slice
 		return rnd(dotakku[0]);
 	}
 
-	friend inline T operator *<T>(const cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline T operator *<T>(const cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline cxscvector<T> operator +<T>(const cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline cxscvector<T> operator +<T>(const cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline cxscvector<T> operator +<T>(const cxscvector_slice<T> &, const cxscvector_slice<T> &) throw();
-	friend inline cxscvector<T> operator +(const cxscvector_slice<T> &sl) throw() { return sl; }
-	friend inline cxscvector<T> &operator +=<T>(cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline cxscvector_slice<T> &operator +=<T>(cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline cxscvector_slice<T> & operator +=(cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2) throw()
+	friend inline T operator *<T>(const cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline T operator *<T>(const cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline cxscvector<T> operator +<T>(const cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline cxscvector<T> operator +<T>(const cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline cxscvector<T> operator +<T>(const cxscvector_slice<T> &, const cxscvector_slice<T> &);
+	friend inline cxscvector<T> operator +(const cxscvector_slice<T> &sl) { return sl; }
+	friend inline cxscvector<T> &operator +=<T>(cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline cxscvector_slice<T> &operator +=<T>(cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline cxscvector_slice<T> & operator +=(cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2)
 	{
 		for(int i=sl1.start-sl1.l,j=sl2.start-sl1.l;i<sl1.end;i++,j++)
 			sl1.dat[i]+=sl2.dat[j];
 		return sl1;
 	}
 
-	friend inline cxscvector<T> &operator -=<T>(cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline cxscvector_slice<T> &operator -=<T>(cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline cxscvector_slice<T> & operator -=(cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2) throw()
+	friend inline cxscvector<T> &operator -=<T>(cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline cxscvector_slice<T> &operator -=<T>(cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline cxscvector_slice<T> & operator -=(cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2)
 	{
 		for(int i=sl1.start-sl1.l,j=sl2.start-sl2.l;i<sl1.end;i++,j++)
 			sl1.dat[i]-=sl2.dat[j];
 		return sl1;
 	}
 
-	friend inline cxscvector<T> operator -<T>(const cxscvector_slice<T> &) throw();
-	friend inline cxscvector<T> operator -<T>(const cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline cxscvector<T> operator -<T>(const cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline cxscvector<T> operator |<T>(const cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline cxscvector<T> operator |<T>(const cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline cxscvector<T> &operator |=<T>(cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline cxscvector_slice<T> &operator |=<T>(cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline cxscvector_slice<T> & operator |=(cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2) throw()
+	friend inline cxscvector<T> operator -<T>(const cxscvector_slice<T> &);
+	friend inline cxscvector<T> operator -<T>(const cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline cxscvector<T> operator -<T>(const cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline cxscvector<T> operator |<T>(const cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline cxscvector<T> operator |<T>(const cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline cxscvector<T> &operator |=<T>(cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline cxscvector_slice<T> &operator |=<T>(cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline cxscvector_slice<T> & operator |=(cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2)
 	{
 		for(int i=sl1.start-sl1.l,j=sl2.start-sl1.l;i<sl1.end;i++,j++)
 			sl1.dat[i]|=sl2.dat[j];
 		return sl1;
 	}
 
-	friend inline bool operator ==(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2) throw()
+	friend inline bool operator ==(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2)
 	{
 		if(sl1.size!=sl2.size)
 			return(false);
@@ -827,9 +827,9 @@ class cxscvector_slice
 		return (i==sl1.size);
 	}	
 
-	friend inline bool operator ==<T>(const cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline bool operator ==<T>(const cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline bool operator !=(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2) throw()
+	friend inline bool operator ==<T>(const cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline bool operator ==<T>(const cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline bool operator !=(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2)
 	{
 		if(sl1.size!=sl2.size)
 			return(true);
@@ -840,9 +840,9 @@ class cxscvector_slice
 		return (i!=sl1.size);
 	}	
 
-	friend inline bool operator !=<T>(const cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline bool operator !=<T>(const cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline bool operator <(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2) throw()
+	friend inline bool operator !=<T>(const cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline bool operator !=<T>(const cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline bool operator <(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2)
 	{
 		if(sl1.size!=sl2.size)
 			return(false);
@@ -853,9 +853,9 @@ class cxscvector_slice
 		return (i!=sl1.size);
 	}
 
-	friend inline bool operator < <T>(const cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline bool operator < <T>(const cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline bool operator <=(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2) throw()
+	friend inline bool operator < <T>(const cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline bool operator < <T>(const cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline bool operator <=(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2)
 	{
 		if(sl1.size!=sl2.size)
 			return(false);
@@ -866,9 +866,9 @@ class cxscvector_slice
 		return (i!=sl1.size);
 	}
 
-	friend inline bool operator <=<T>(const cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline bool operator <=<T>(const cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline bool operator >(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2) throw()
+	friend inline bool operator <=<T>(const cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline bool operator <=<T>(const cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline bool operator >(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2)
 	{
 		if(sl1.size!=sl2.size)
 			return(false);
@@ -879,9 +879,9 @@ class cxscvector_slice
 		return (i!=sl1.size);
 	}
 
-	friend inline bool operator ><T>(const cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline bool operator ><T>(const cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline bool operator >=(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2) throw()
+	friend inline bool operator ><T>(const cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline bool operator ><T>(const cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline bool operator >=(const cxscvector_slice<T> &sl1, const cxscvector_slice<T> &sl2)
 	{
 		if(sl1.size!=sl2.size)
 			return(false);
@@ -892,9 +892,9 @@ class cxscvector_slice
 		return (i!=sl1.size);
 	}
 
-	friend inline bool operator >=<T>(const cxscvector_slice<T> &, const cxscvector<T> &) throw();
-	friend inline bool operator >=<T>(const cxscvector<T> &, const cxscvector_slice<T> &) throw();
-	friend inline bool operator !(const cxscvector_slice<T> &sl) throw()
+	friend inline bool operator >=<T>(const cxscvector_slice<T> &, const cxscvector<T> &);
+	friend inline bool operator >=<T>(const cxscvector<T> &, const cxscvector_slice<T> &);
+	friend inline bool operator !(const cxscvector_slice<T> &sl)
 	{
 		int i;
 		for(i=sl.start-sl.l;i<sl.size;i++)
@@ -906,7 +906,7 @@ class cxscvector_slice
 		return true;
 	}
 
-	inline cxscvector_slice<T>::operator void*() throw()
+	inline cxscvector_slice<T>::operator void*()
 	{
 		for(int i=start-l;i<size;i++)
 		{
@@ -917,7 +917,7 @@ class cxscvector_slice
 		return (void *)0;
 	}
 
-	friend inline cxscvector<T> abs<T>(const cxscvector_slice<T> &) throw();
+	friend inline cxscvector<T> abs<T>(const cxscvector_slice<T> &);
 };
 
 } // namespace cxsc 

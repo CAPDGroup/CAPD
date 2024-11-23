@@ -36,7 +36,7 @@ namespace cxsc {
 int abs(int a);
 
 	template <class V>
-	TINLINE void _vresize(V &rv) throw()
+	TINLINE void _vresize(V &rv)
 	{
 		rv.size=rv.u=0;
 		rv.l=1;
@@ -47,9 +47,9 @@ int abs(int a);
 	template <class V,class S>
 	TINLINE void _vresize(V &rv, const int &len)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__WRONG_BOUNDARIES<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		if(rv.size==len)
@@ -75,9 +75,9 @@ int abs(int a);
 	template <class V,class S>
 	TINLINE void _vresize(V &rv, const int &lb, const int &ub)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__WRONG_BOUNDARIES<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		if(rv.size==ub-lb+1)
@@ -102,7 +102,7 @@ int abs(int a);
 	}
 
 	template <class V1,class V2,class S>
-	TINLINE V1 &_vvassign(V1 &rv1,const V2 &rv2) throw()
+	TINLINE V1 &_vvassign(V1 &rv1,const V2 &rv2)
 	{
 		S *ndat=new S[rv2.size];
 		rv1.l=rv2.l;
@@ -118,7 +118,7 @@ int abs(int a);
 	}
 
 	template <class V,class S>
-	TINLINE V & _vsassign(V &rv,const S &r) throw()
+	TINLINE V & _vsassign(V &rv,const S &r)
 	{
 		for (int i=0;i<rv.size;i++)
 			rv.dat[i]=r;
@@ -129,9 +129,9 @@ int abs(int a);
 	template <class VS1,class VS2>
 	TINLINE VS1 & _vsvsassign(VS1 &sl1,const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -143,7 +143,7 @@ int abs(int a);
 	}
 	
 	template <class V,class VS,class S>
-	TINLINE V & _vvsassign(V &rv,const VS &sl) throw()
+	TINLINE V & _vvsassign(V &rv,const VS &sl)
 	{
 		S *ndat=new S[sl.size];
 		rv.l=sl.start;
@@ -159,9 +159,9 @@ int abs(int a);
 	template <class VS,class V>
 	TINLINE VS & _vsvassign(VS &sl,const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -173,7 +173,7 @@ int abs(int a);
 	}
 
 	template <class VS,class S>
-	TINLINE VS & _vssassign(VS &sl,const S &r) throw()
+	TINLINE VS & _vssassign(VS &sl,const S &r)
 	{
 		for (int i=sl.start-sl.l;i<=sl.end-sl.l;i++)
 			sl.dat[i]=r;
@@ -183,9 +183,9 @@ int abs(int a);
 	template <class DP,class V1,class V2>
 	TINLINE void _vvaccu(DP &dp, const V1 & rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(OP_WITH_WRONG_DIM)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -198,9 +198,9 @@ int abs(int a);
 	template <class DP,class VS,class V>
 	TINLINE void _vsvaccu(DP &dp, const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(OP_WITH_WRONG_DIM)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -211,7 +211,7 @@ int abs(int a);
 	}
 
 	template <class V,class S,class E>
-	TINLINE E _vsdiv(const V &rv, const S &s) throw()
+	TINLINE E _vsdiv(const V &rv, const S &s)
 	{
 		E p(rv.l,rv.u);
 
@@ -222,7 +222,7 @@ int abs(int a);
 	}
 
 	template <class V,class S>
-	TINLINE V &_vsdivassign(V &rv,const S &r) throw()
+	TINLINE V &_vsdivassign(V &rv,const S &r)
 	{
 		for(int i=0;i<rv.size;i++)
 			rv.dat[i]/=r;
@@ -230,7 +230,7 @@ int abs(int a);
 	}
 
 	template <class VS,class S,class E>
-	TINLINE E _vssdiv(const VS &sl, const S &s) throw()
+	TINLINE E _vssdiv(const VS &sl, const S &s)
 	{
 		E p(sl.start,sl.end);
 
@@ -241,7 +241,7 @@ int abs(int a);
 	}
 
 	template <class V,class S,class E>
-	TINLINE E _vsmult(const V &rv, const S &s) throw()
+	TINLINE E _vsmult(const V &rv, const S &s)
 	{
 		E p(rv.l,rv.u);
 
@@ -252,7 +252,7 @@ int abs(int a);
 	}
 
 	template <class VS,class S,class E>
-	TINLINE E _vssmult(const VS &sl, const S &s) throw()
+	TINLINE E _vssmult(const VS &sl, const S &s)
 	{
 		E p(sl.start,sl.end);
 
@@ -265,9 +265,9 @@ int abs(int a);
 	template <class V1,class V2,class E>
 	TINLINE E _vvlmult(const V1 & rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -284,9 +284,9 @@ int abs(int a);
 	template <class VS,class V,class E>
 	TINLINE E _vsvlmult(const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -303,9 +303,9 @@ int abs(int a);
 	template <class VS1,class VS2,class E>
 	TINLINE E _vsvslmult(const VS1 & sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -322,9 +322,9 @@ int abs(int a);
 	template <class V1,class V2,class E>
 	TINLINE E _vvlimult(const V1 & rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -339,9 +339,9 @@ int abs(int a);
 	template <class VS,class V,class E>
 	TINLINE E _vsvlimult(const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -356,9 +356,9 @@ int abs(int a);
 	template <class VS1,class VS2,class E>
 	TINLINE E _vsvslimult(const VS1 & sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -373,9 +373,9 @@ int abs(int a);
 	template <class V1,class V2,class E>
 	TINLINE E _vvmult(const V1 & rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -405,9 +405,9 @@ int abs(int a);
 	template <class VS,class V,class E>
 	TINLINE E _vsvmult(const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -436,9 +436,9 @@ int abs(int a);
 	template <class VS1,class VS2,class E>
 	TINLINE E _vsvsmult(const VS1 & sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -467,9 +467,9 @@ int abs(int a);
 	template <class V1,class V2,class E>
 	TINLINE E _vvimult(const V1 & rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -496,9 +496,9 @@ int abs(int a);
 	template <class VS,class V,class E>
 	TINLINE E _vsvimult(const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -525,9 +525,9 @@ int abs(int a);
 	template <class VS1,class VS2,class E>
 	TINLINE E _vsvsimult(const VS1 & sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -554,9 +554,9 @@ int abs(int a);
 	template <class V1,class V2,class E>
 	TINLINE E _vvcmult(const V1 & rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -583,9 +583,9 @@ int abs(int a);
 	template <class VS,class V,class E>
 	TINLINE E _vsvcmult(const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -612,9 +612,9 @@ int abs(int a);
 	template <class VS1,class VS2,class E>
 	TINLINE E _vsvscmult(const VS1 & sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -641,9 +641,9 @@ int abs(int a);
 	template <class V1,class V2,class E>
 	TINLINE E _vvcimult(const V1 & rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -670,9 +670,9 @@ int abs(int a);
 	template <class VS,class V,class E>
 	TINLINE E _vsvcimult(const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -699,9 +699,9 @@ int abs(int a);
 	template <class VS1,class VS2,class E>
 	TINLINE E _vsvscimult(const VS1 & sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -726,7 +726,7 @@ int abs(int a);
 	}
 
 	template <class V,class S>
-	TINLINE V &_vsmultassign(V &rv,const S &r) throw()
+	TINLINE V &_vsmultassign(V &rv,const S &r)
 	{
 		for(int i=0;i<rv.size;i++)
 			rv.dat[i]*=r;
@@ -734,7 +734,7 @@ int abs(int a);
 	}
 
 	template <class VS,class S>
-	TINLINE VS &_vssmultassign(VS &rv,const S &r) throw()
+	TINLINE VS &_vssmultassign(VS &rv,const S &r)
 	{
 		for(int i=rv.start-rv.l;i<=rv.end-rv.l;i++)
 			rv.dat[i]*=r;
@@ -742,7 +742,7 @@ int abs(int a);
 	}
 
 	template <class VS,class S>
-	TINLINE VS &_vssdivassign(VS &rv,const S &r) throw()
+	TINLINE VS &_vssdivassign(VS &rv,const S &r)
 	{
 		for(int i=rv.start-rv.l;i<=rv.end-rv.l;i++)
 			rv.dat[i]/=r;
@@ -752,9 +752,9 @@ int abs(int a);
 	template <class V1,class V2,class E>
 	TINLINE E _vvplus(const V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.l,rv1.u);
@@ -770,9 +770,9 @@ int abs(int a);
 	template <class V,class VS,class E>
 	TINLINE E _vvsplus(const V &rv,const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv.l,rv.u);
@@ -788,9 +788,9 @@ int abs(int a);
 	template <class VS1,class VS2,class E>
 	TINLINE E _vsvsplus(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(s1.start,s1.end);
@@ -806,9 +806,9 @@ int abs(int a);
 	template <class VS1,class VS2,class E>
 	TINLINE E _vsvsminus(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(s1.start,s1.end);
@@ -824,9 +824,9 @@ int abs(int a);
 	template <class V1,class V2>
 	TINLINE V1 &_vvplusassign(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -840,9 +840,9 @@ int abs(int a);
 	template <class V,class VS>
 	TINLINE V &_vvsplusassign(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -856,9 +856,9 @@ int abs(int a);
 	template <class VS,class V>
 	TINLINE VS &_vsvplusassign(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -872,9 +872,9 @@ int abs(int a);
 	template <class VS1,class VS2>
 	TINLINE VS1 &_vsvsplusassign(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -888,9 +888,9 @@ int abs(int a);
 	template <class VS1,class VS2>
 	TINLINE VS1 &_vsvsminusassign(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -904,9 +904,9 @@ int abs(int a);
 	template <class V1,class V2>
 	TINLINE V1 &_vvminusassign(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -920,9 +920,9 @@ int abs(int a);
 	template <class V,class VS>
 	TINLINE V &_vvsminusassign(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -936,9 +936,9 @@ int abs(int a);
 	template <class VS,class V>
 	TINLINE VS &_vsvminusassign(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -950,7 +950,7 @@ int abs(int a);
 	}
 
 	template <class V>
-	TINLINE V _vminus(const V &rv) throw()
+	TINLINE V _vminus(const V &rv)
 	{
 		V sum(rv.l,rv.u);
 
@@ -961,7 +961,7 @@ int abs(int a);
 	}
 
 	template <class VS,class V>
-	TINLINE V _vsminus(const VS &sl) throw()
+	TINLINE V _vsminus(const VS &sl)
 	{
 		V sum(sl.start,sl.end);
 
@@ -974,9 +974,9 @@ int abs(int a);
 	template <class V1,class V2,class E>
 	TINLINE E _vvminus(const V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.l,rv1.u);
@@ -992,9 +992,9 @@ int abs(int a);
 	template <class V,class VS,class E>
 	TINLINE E _vvsminus(const V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv.l,rv.u);
@@ -1011,9 +1011,9 @@ int abs(int a);
 	template <class VS,class V,class E>
 	TINLINE E _vsvminus(const VS &sl,const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(sl.start,sl.end);
@@ -1029,9 +1029,9 @@ int abs(int a);
 	template <class V1,class V2,class E>
 	TINLINE E _vvconv(const V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.l,rv1.u);
@@ -1047,9 +1047,9 @@ int abs(int a);
 	template <class V,class VS,class E>
 	TINLINE E _vvsconv(const V &rv,const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv.l,rv.u);
@@ -1065,9 +1065,9 @@ int abs(int a);
 	template <class VS1,class VS2,class E>
 	TINLINE E _vsvsconv(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(s1.start,s1.end);
@@ -1083,9 +1083,9 @@ int abs(int a);
 	template <class V1,class V2>
 	TINLINE V1 &_vvconvassign(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1099,9 +1099,9 @@ int abs(int a);
 	template <class V,class VS>
 	TINLINE V &_vvsconvassign(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1115,9 +1115,9 @@ int abs(int a);
 	template <class VS,class V>
 	TINLINE VS &_vsvconvassign(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1131,9 +1131,9 @@ int abs(int a);
 	template <class VS1,class VS2>
 	TINLINE VS1 &_vsvsconvassign(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1147,9 +1147,9 @@ int abs(int a);
 	template <class V1,class V2,class E>
 	TINLINE E _vvsect(const V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.l,rv1.u);
@@ -1165,9 +1165,9 @@ int abs(int a);
 	template <class V,class VS,class E>
 	TINLINE E _vvssect(const V &rv,const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv.l,rv.u);
@@ -1183,9 +1183,9 @@ int abs(int a);
 	template <class VS1,class VS2,class E>
 	TINLINE E _vsvssect(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(s1.start,s1.end);
@@ -1201,9 +1201,9 @@ int abs(int a);
 	template <class V1,class V2>
 	TINLINE V1 &_vvsectassign(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1217,9 +1217,9 @@ int abs(int a);
 	template <class V,class VS>
 	TINLINE V &_vvssectassign(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1233,9 +1233,9 @@ int abs(int a);
 	template <class VS,class V>
 	TINLINE VS &_vsvsectassign(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1249,9 +1249,9 @@ int abs(int a);
 	template <class VS1,class VS2>
 	TINLINE VS1 &_vsvssectassign(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1263,7 +1263,7 @@ int abs(int a);
 	}
 
 	template <class V1,class V2>
-	TINLINE bool _vveq(const V1 &rv1, const V2 &rv2) throw()
+	TINLINE bool _vveq(const V1 &rv1, const V2 &rv2)
 	{
 		if(rv1.size!=rv2.size)
 			return(false);
@@ -1275,7 +1275,7 @@ int abs(int a);
 	}	
 
 	template <class VS,class V>
-	TINLINE bool _vsveq(const VS &sl, const V &rv) throw()
+	TINLINE bool _vsveq(const VS &sl, const V &rv)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -1287,7 +1287,7 @@ int abs(int a);
 	}	
 
 	template <class V1,class V2>
-	TINLINE bool _vvneq(const V1 &rv1, const V2 &rv2) throw()
+	TINLINE bool _vvneq(const V1 &rv1, const V2 &rv2)
 	{
 		if(rv1.size!=rv2.size)
 			return(true);
@@ -1299,7 +1299,7 @@ int abs(int a);
 	}	
 
 	template <class VS,class V>
-	TINLINE bool _vsvneq(const VS &sl, const V &rv) throw()
+	TINLINE bool _vsvneq(const VS &sl, const V &rv)
 	{
 		if(sl.size!=rv.size)
 			return(true);
@@ -1311,7 +1311,7 @@ int abs(int a);
 	}	
 
 	template <class V1,class V2>
-	TINLINE bool _vvless(const V1 &rv1, const V2 &rv2) throw()
+	TINLINE bool _vvless(const V1 &rv1, const V2 &rv2)
 	{
 		if(rv1.size!=rv2.size)
 			return(false);
@@ -1323,7 +1323,7 @@ int abs(int a);
 	}
 
 	template <class VS,class V>
-	TINLINE bool _vsvless(const VS &sl, const V &rv) throw()
+	TINLINE bool _vsvless(const VS &sl, const V &rv)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -1335,7 +1335,7 @@ int abs(int a);
 	}
 
 	template <class V1,class V2>
-	TINLINE bool _vvleq(const V1 &rv1, const V2 &rv2) throw()
+	TINLINE bool _vvleq(const V1 &rv1, const V2 &rv2)
 	{
 		if(rv1.size!=rv2.size)
 			return(false);
@@ -1347,7 +1347,7 @@ int abs(int a);
 	}
 
 	template <class VS,class V>
-	TINLINE bool _vsvleq(const VS &sl, const V &rv) throw()
+	TINLINE bool _vsvleq(const VS &sl, const V &rv)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -1359,7 +1359,7 @@ int abs(int a);
 	}
 
 	template <class V,class VS>
-	TINLINE bool _vvsless(const V &rv, const VS &sl) throw()
+	TINLINE bool _vvsless(const V &rv, const VS &sl)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -1371,7 +1371,7 @@ int abs(int a);
 	}
 
 	template <class V,class VS>
-	TINLINE bool _vvsleq(const V &rv, const VS &sl) throw()
+	TINLINE bool _vvsleq(const V &rv, const VS &sl)
 	{
 		if(sl.size!=rv.size)
 			return(false);
@@ -1383,7 +1383,7 @@ int abs(int a);
 	}
 
 	template <class V>
-	TINLINE bool _vnot(const V &rv) throw()
+	TINLINE bool _vnot(const V &rv)
 	{
 		int i;
 		for(i=0;i<rv.size;i++)
@@ -1396,7 +1396,7 @@ int abs(int a);
 	}
 
 	template <class V>
-	TINLINE void *_vvoid(const V &rv) throw()
+	TINLINE void *_vvoid(const V &rv)
 	{
 		for(int i=0;i<rv.size;i++)
 		{
@@ -1408,7 +1408,7 @@ int abs(int a);
 	}
 
 	template <class V>
-	TINLINE V _vconj(const V &rv) throw()
+	TINLINE V _vconj(const V &rv)
 	{
 		V erg(rv.l,rv.u);
 		
@@ -1419,7 +1419,7 @@ int abs(int a);
 	}
 
 	template <class VS,class E>
-	TINLINE E _vsconj(const VS &sl) throw()
+	TINLINE E _vsconj(const VS &sl)
 	{
 		E erg(sl.start,sl.end);
 		
@@ -1430,7 +1430,7 @@ int abs(int a);
 	}
 
 	template <class V,class E>
-	TINLINE E _vabs(const V &rv) throw()
+	TINLINE E _vabs(const V &rv)
 	{
 		E erg(rv.l,rv.u);
 		
@@ -1441,7 +1441,7 @@ int abs(int a);
 	}
 
 	template <class VS,class E>
-	TINLINE E _vsabs(const VS &sl) throw()
+	TINLINE E _vsabs(const VS &sl)
 	{
 		E erg(sl.start,sl.end);
 		
@@ -1452,7 +1452,7 @@ int abs(int a);
 	}
 
 	template <class V,class E>
-	TINLINE E _vdiam(const V &rv) throw()
+	TINLINE E _vdiam(const V &rv)
 	{
 		E erg(rv.l,rv.u);
 		
@@ -1463,7 +1463,7 @@ int abs(int a);
 	}
 
 	template <class VS,class E>
-	TINLINE E _vsdiam(const VS &sl) throw()
+	TINLINE E _vsdiam(const VS &sl)
 	{
 		E erg(sl.start,sl.end);
 		
@@ -1474,7 +1474,7 @@ int abs(int a);
 	}
 
 	template <class V,class E>
-	TINLINE E _vmid(const V &rv) throw()
+	TINLINE E _vmid(const V &rv)
 	{
 		E erg(rv.l,rv.u);
 		
@@ -1485,7 +1485,7 @@ int abs(int a);
 	}
 
 	template <class VS,class E>
-	TINLINE E _vsmid(const VS &sl) throw()
+	TINLINE E _vsmid(const VS &sl)
 	{
 		E erg(sl.start,sl.end);
 		
@@ -1496,7 +1496,7 @@ int abs(int a);
 	}
 
 	template <class V,class E>
-	TINLINE E _vinf(const V &rv) throw()
+	TINLINE E _vinf(const V &rv)
 	{
 		E erg(rv.l,rv.u);
 		
@@ -1507,7 +1507,7 @@ int abs(int a);
 	}
 
 	template <class VS,class E>
-	TINLINE E _vsinf(const VS &sl) throw()
+	TINLINE E _vsinf(const VS &sl)
 	{
 		E erg(sl.start,sl.end);
 		
@@ -1518,7 +1518,7 @@ int abs(int a);
 	}
 
 	template <class V,class E>
-	TINLINE E _vsup(const V &rv) throw()
+	TINLINE E _vsup(const V &rv)
 	{
 		E erg(rv.l,rv.u);
 		
@@ -1529,7 +1529,7 @@ int abs(int a);
 	}
 
 	template <class VS,class E>
-	TINLINE E _vssup(const VS &sl) throw()
+	TINLINE E _vssup(const VS &sl)
 	{
 		E erg(sl.start,sl.end);
 		
@@ -1540,7 +1540,7 @@ int abs(int a);
 	}
 
 	template <class V,class E>
-	TINLINE E _vre(const V &rv) throw()
+	TINLINE E _vre(const V &rv)
 	{
 		E erg(rv.l,rv.u);
 		
@@ -1551,7 +1551,7 @@ int abs(int a);
 	}
 
 	template <class VS,class E>
-	TINLINE E _vsre(const VS &sl) throw()
+	TINLINE E _vsre(const VS &sl)
 	{
 		E erg(sl.start,sl.end);
 		
@@ -1562,7 +1562,7 @@ int abs(int a);
 	}
 
 	template <class V,class E>
-	TINLINE E _vim(const V &rv) throw()
+	TINLINE E _vim(const V &rv)
 	{
 		E erg(rv.l,rv.u);
 		
@@ -1573,7 +1573,7 @@ int abs(int a);
 	}
 
 	template <class VS,class E>
-	TINLINE E _vsim(const VS &sl) throw()
+	TINLINE E _vsim(const VS &sl)
 	{
 		E erg(sl.start,sl.end);
 		
@@ -1584,7 +1584,7 @@ int abs(int a);
 	}
 
 	template <class V,class S>
-	TINLINE V &_vsusetsup(V &v, const S &s) throw()
+	TINLINE V &_vsusetsup(V &v, const S &s)
 	{
 		for(int i=0;i<v.size;i++)
 			UncheckedSetInf(v.dat[i],s);
@@ -1592,7 +1592,7 @@ int abs(int a);
 	}
 
 	template <class V,class S>
-	TINLINE V &_vsusetinf(V &v, const S &s) throw()
+	TINLINE V &_vsusetinf(V &v, const S &s)
 	{
 		for(int i=0;i<v.size;i++)
 			UncheckedSetInf(v.dat[i],s);
@@ -1600,7 +1600,7 @@ int abs(int a);
 	}
 
 	template <class V,class S>
-	TINLINE V &_vssetinf(V &v, const S &s) throw()
+	TINLINE V &_vssetinf(V &v, const S &s)
 	{
 		for(int i=0;i<v.size;i++)
 			SetInf(v.dat[i],s);
@@ -1608,7 +1608,7 @@ int abs(int a);
 	}
 
 	template <class V,class S>
-	TINLINE V &_vssetsup(V &v, const S &s) throw()
+	TINLINE V &_vssetsup(V &v, const S &s)
 	{
 		for(int i=0;i<v.size;i++)
 			SetSup(v.dat[i],s);
@@ -1616,7 +1616,7 @@ int abs(int a);
 	}
 
 	template <class V,class S>
-	TINLINE V &_vssetre(V &v, const S &s) throw()
+	TINLINE V &_vssetre(V &v, const S &s)
 	{
 		for(int i=0;i<v.size;i++)
 			SetRe(v.dat[i],s);
@@ -1624,7 +1624,7 @@ int abs(int a);
 	}
 
 	template <class V,class S>
-	TINLINE V &_vssetim(V &v, const S &s) throw()
+	TINLINE V &_vssetim(V &v, const S &s)
 	{
 		for(int i=0;i<v.size;i++)
 			SetIm(v.dat[i],s);
@@ -1632,7 +1632,7 @@ int abs(int a);
 	}
 
 	template <class VS,class S>
-	TINLINE VS &_vssusetsup(VS &vs, const S &s) throw()
+	TINLINE VS &_vssusetsup(VS &vs, const S &s)
 	{
 		for(int i=vs.start-vs.l;i<=vs.end-vs.l;i++)
 			UncheckedSetInf(vs.dat[i],s);
@@ -1640,7 +1640,7 @@ int abs(int a);
 	}
 
 	template <class VS,class S>
-	TINLINE VS &_vssusetinf(VS &vs, const S &s) throw()
+	TINLINE VS &_vssusetinf(VS &vs, const S &s)
 	{
 		for(int i=vs.start-vs.l;i<=vs.end-vs.l;i++)
 			UncheckedSetInf(vs.dat[i],s);
@@ -1648,7 +1648,7 @@ int abs(int a);
 	}
 
 	template <class VS,class S>
-	TINLINE VS &_vsssetinf(VS &vs, const S &s) throw()
+	TINLINE VS &_vsssetinf(VS &vs, const S &s)
 	{
 		for(int i=vs.start-vs.l;i<=vs.end-vs.l;i++)
 			SetInf(vs.dat[i],s);
@@ -1656,7 +1656,7 @@ int abs(int a);
 	}
 
 	template <class VS,class S>
-	TINLINE VS &_vsssetsup(VS &vs, const S &s) throw()
+	TINLINE VS &_vsssetsup(VS &vs, const S &s)
 	{
 		for(int i=vs.start-vs.l;i<=vs.end-vs.l;i++)
 			SetSup(vs.dat[i],s);
@@ -1664,7 +1664,7 @@ int abs(int a);
 	}
 
 	template <class VS,class S>
-	TINLINE VS &_vsssetre(VS &vs, const S &s) throw()
+	TINLINE VS &_vsssetre(VS &vs, const S &s)
 	{
 		for(int i=vs.start-vs.l;i<=vs.end-vs.l;i++)
 			SetRe(vs.dat[i],s);
@@ -1672,7 +1672,7 @@ int abs(int a);
 	}
 
 	template <class VS,class S>
-	TINLINE VS &_vsssetim(VS &vs, const S &s) throw()
+	TINLINE VS &_vsssetim(VS &vs, const S &s)
 	{
 		for(int i=vs.start-vs.l;i<=vs.end-vs.l;i++)
 			SetIm(vs.dat[i],s);
@@ -1682,9 +1682,9 @@ int abs(int a);
 	template <class V1,class V2>
 	TINLINE V1 &_vvsetinf(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1698,9 +1698,9 @@ int abs(int a);
 	template <class V,class VS>
 	TINLINE V &_vvssetinf(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1714,9 +1714,9 @@ int abs(int a);
 	template <class VS,class V>
 	TINLINE VS &_vsvsetinf(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1730,9 +1730,9 @@ int abs(int a);
 	template <class VS1,class VS2>
 	TINLINE VS1 &_vsvssetinf(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1746,9 +1746,9 @@ int abs(int a);
 	template <class V1,class V2>
 	TINLINE V1 &_vvsetsup(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1762,9 +1762,9 @@ int abs(int a);
 	template <class V,class VS>
 	TINLINE V &_vvssetsup(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1778,9 +1778,9 @@ int abs(int a);
 	template <class VS,class V>
 	TINLINE VS &_vsvsetsup(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1794,9 +1794,9 @@ int abs(int a);
 	template <class VS1,class VS2>
 	TINLINE VS1 &_vsvssetsup(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1810,9 +1810,9 @@ int abs(int a);
 	template <class V1,class V2>
 	TINLINE V1 &_vvusetinf(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1826,9 +1826,9 @@ int abs(int a);
 	template <class V,class VS>
 	TINLINE V &_vvsusetinf(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1842,9 +1842,9 @@ int abs(int a);
 	template <class VS,class V>
 	TINLINE VS &_vsvusetinf(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1858,9 +1858,9 @@ int abs(int a);
 	template <class VS1,class VS2>
 	TINLINE VS1 &_vsvsusetinf(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1874,9 +1874,9 @@ int abs(int a);
 	template <class V1,class V2>
 	TINLINE V1 &_vvusetsup(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1890,9 +1890,9 @@ int abs(int a);
 	template <class V,class VS>
 	TINLINE V &_vvsusetsup(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1906,9 +1906,9 @@ int abs(int a);
 	template <class VS,class V>
 	TINLINE VS &_vsvusetsup(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1922,9 +1922,9 @@ int abs(int a);
 	template <class VS1,class VS2>
 	TINLINE VS1 &_vsvsusetsup(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1938,9 +1938,9 @@ int abs(int a);
 	template <class V1,class V2>
 	TINLINE V1 &_vvsetim(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1954,9 +1954,9 @@ int abs(int a);
 	template <class V,class VS>
 	TINLINE V &_vvssetim(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1970,9 +1970,9 @@ int abs(int a);
 	template <class VS,class V>
 	TINLINE VS &_vsvsetim(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1986,9 +1986,9 @@ int abs(int a);
 	template <class VS1,class VS2>
 	TINLINE VS1 &_vsvssetim(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2002,9 +2002,9 @@ int abs(int a);
 	template <class V1,class V2>
 	TINLINE V1 &_vvsetre(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2018,9 +2018,9 @@ int abs(int a);
 	template <class V,class VS>
 	TINLINE V &_vvssetre(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2034,9 +2034,9 @@ int abs(int a);
 	template <class VS,class V>
 	TINLINE VS &_vsvsetre(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2050,9 +2050,9 @@ int abs(int a);
 	template <class VS1,class VS2>
 	TINLINE VS1 &_vsvssetre(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2066,9 +2066,9 @@ int abs(int a);
 	template <class DP,class VS1,class VS2>
 	TINLINE void _vsvsaccu(DP &dp, const VS1 & sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(OP_WITH_WRONG_DIM)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2079,7 +2079,7 @@ int abs(int a);
 	}
 
 	template <class VS1,class VS2>
-	TINLINE bool _vsvseq(const VS1 &sl1, const VS2 &sl2) throw()
+	TINLINE bool _vsvseq(const VS1 &sl1, const VS2 &sl2)
 	{
 		if(sl1.size!=sl2.size)
 			return(false);
@@ -2091,7 +2091,7 @@ int abs(int a);
 	}	
 
 	template <class VS1,class VS2>
-	TINLINE bool _vsvsneq(const VS1 &sl1, const VS2 &sl2) throw()
+	TINLINE bool _vsvsneq(const VS1 &sl1, const VS2 &sl2)
 	{
 		if(sl1.size!=sl2.size)
 			return(true);
@@ -2103,7 +2103,7 @@ int abs(int a);
 	}	
 
 	template <class VS1,class VS2>
-	TINLINE bool _vsvsless(const VS1 &sl1, const VS2 &sl2) throw()
+	TINLINE bool _vsvsless(const VS1 &sl1, const VS2 &sl2)
 	{
 		if(sl1.size!=sl2.size)
 			return(false);
@@ -2115,7 +2115,7 @@ int abs(int a);
 	}	
 
 	template <class VS1,class VS2>
-	TINLINE bool _vsvsleq(const VS1 &sl1, const VS2 &sl2) throw()
+	TINLINE bool _vsvsleq(const VS1 &sl1, const VS2 &sl2)
 	{
 		if(sl1.size!=sl2.size)
 			return(true);
@@ -2127,7 +2127,7 @@ int abs(int a);
 	}	
 
 	template <class VS>
-	TINLINE bool _vsnot(const VS &sl) throw()
+	TINLINE bool _vsnot(const VS &sl)
 	{
 		for(int i=sl.start-sl.l,k=0;k<sl.size;i++,k++)
 		{
@@ -2139,7 +2139,7 @@ int abs(int a);
 	}
 
 	template <class VS>
-	TINLINE void *_vsvoid(const VS &sl) throw()
+	TINLINE void *_vsvoid(const VS &sl)
 	{
 		for(int i=sl.start-sl.l,k=0;i<sl.size;i++,k++)
 		{
@@ -2151,7 +2151,7 @@ int abs(int a);
 	}
 
 	template <class V>
-	std::ostream &_vout(std::ostream &s, const V &rv) throw()
+	std::ostream &_vout(std::ostream &s, const V &rv)
 	{
 		for(int j=0;j<rv.size;j++)
 			s<<rv.dat[j]<<std::endl;
@@ -2159,7 +2159,7 @@ int abs(int a);
 	}
 
 	template <class V>
-	std::istream &_vin(std::istream &s, V &rv) throw()
+	std::istream &_vin(std::istream &s, V &rv)
 	{
 		for(int j=0;j<rv.size;j++)
 			s>>rv.dat[j];
@@ -2168,7 +2168,7 @@ int abs(int a);
 
 
 	template <class V>
-	std::ostream &_vsout(std::ostream &s, const V &rv) throw()
+	std::ostream &_vsout(std::ostream &s, const V &rv)
 	{
 		for(int j=rv.start;j<=rv.end;j++)
 			s<<rv[j]<<std::endl;
@@ -2176,7 +2176,7 @@ int abs(int a);
 	}
 
 	template <class V>
-	std::istream &_vsin(std::istream &s, V &rv) throw()
+	std::istream &_vsin(std::istream &s, V &rv)
 	{
 		for(int j=rv.start;j<=rv.end;j++)
 			s>>rv[j];

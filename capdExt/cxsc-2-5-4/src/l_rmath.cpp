@@ -29,7 +29,7 @@
 
 namespace cxsc {
 
-l_real sqrt(const l_real &x) throw(ERROR_LREAL_STD_FKT_OUT_OF_DEF)
+l_real sqrt(const l_real &x)
 // Blomquist, additional scaling, 10.12.02
 {
    int stagsave = stagprec, stagmax = 19, stagcalc;
@@ -67,7 +67,7 @@ l_real sqrt(const l_real &x) throw(ERROR_LREAL_STD_FKT_OUT_OF_DEF)
 }
 
 l_real sqrtx2y2(const l_real& x, 
-                       const l_real& y) throw() // Blomquist 6.12.02
+                       const l_real& y) // Blomquist 6.12.02
 // Calculation of an approximation of sqrt(x^2+y^2).
 // In general the maximum precision is stagprec=19, predifined by the used
 // sqrt-function declared in l_rmath.hpp.
@@ -130,7 +130,7 @@ l_real sqrtx2y2(const l_real& x,
     return r;
 } // sqrtx2y2(...)
 
-l_real sqrt1px2(const l_real& x) throw()
+l_real sqrt1px2(const l_real& x)
 // Inclusion of sqrt(1+x^2); Blomquist, 13.12.02;
 // With stagmax=19 we get about 16*19=304 exact decimal digits.
 {
@@ -205,75 +205,75 @@ l_real power(const l_real& x, int n)
 }
 
 // real staggered constants (the same as in l_interval.hpp):
-l_real Ln2_l_real()   throw()   // ln(2) 
+l_real Ln2_l_real()     // ln(2) 
 { return mid( Ln2_l_interval() ); }
-l_real Ln10_l_real()  throw()   // ln(10)
+l_real Ln10_l_real()    // ln(10)
 { return mid( Ln10_l_interval() ); }
-l_real Ln10r_l_real() throw()   // 1/ln(10)
+l_real Ln10r_l_real()   // 1/ln(10)
 { return mid( Ln10r_l_interval()); }
-l_real Pid4_l_real()  throw()   // Pi/4
+l_real Pid4_l_real()    // Pi/4
 { return mid( Pid4_l_interval() ); }
-l_real Sqrt2_l_real() throw()   // sqrt(2)
+l_real Sqrt2_l_real()   // sqrt(2)
 { return mid( Sqrt2_l_interval() ); }
-l_real Sqrt5_l_real() throw()   // sqrt(5)
+l_real Sqrt5_l_real()   // sqrt(5)
 { return mid( Sqrt5_l_interval() ); }
-l_real Sqrt7_l_real() throw()   // sqrt(7)
+l_real Sqrt7_l_real()   // sqrt(7)
 { return mid( Sqrt7_l_interval() ); }
-l_real Ln2r_l_real() throw()     // 1/ln(2)
+l_real Ln2r_l_real()     // 1/ln(2)
 { return mid( Ln2r_l_interval() ); }
-l_real Pi_l_real() throw()       // Pi
+l_real Pi_l_real()       // Pi
 { return mid( Pi_l_interval() ); }
-l_real Pid2_l_real() throw()     // Pi/2
+l_real Pid2_l_real()     // Pi/2
 { return mid( Pid2_l_interval() ); }
-l_real Pi2_l_real() throw()      // 2*Pi
+l_real Pi2_l_real()      // 2*Pi
 { return mid( Pi2_l_interval() ); }
-l_real Pid3_l_real() throw()     // Pi/3
+l_real Pid3_l_real()     // Pi/3
 { return mid( Pid3_l_interval() ); }
-l_real Pir_l_real() throw()      // 1/Pi
+l_real Pir_l_real()      // 1/Pi
 { return mid( Pir_l_interval() ); }
-l_real Pi2r_l_real() throw()     // 1/(2*Pi)
+l_real Pi2r_l_real()     // 1/(2*Pi)
 { return mid( Pi2r_l_interval() ); }
-l_real SqrtPi_l_real() throw()   // sqrt(Pi)
+l_real SqrtPi_l_real()   // sqrt(Pi)
 { return mid( SqrtPi_l_interval() ); }
-l_real Sqrt2Pi_l_real() throw()  // sqrt(2*Pi)
+l_real Sqrt2Pi_l_real()  // sqrt(2*Pi)
 { return mid( Sqrt2Pi_l_interval() ); }
-l_real SqrtPir_l_real() throw()  // 1/sqrt(Pi)
+l_real SqrtPir_l_real()  // 1/sqrt(Pi)
 { return mid( SqrtPir_l_interval() ); }
-l_real Sqrt2Pir_l_real() throw() // 1/sqrt(2*Pi)
+l_real Sqrt2Pir_l_real() // 1/sqrt(2*Pi)
 { return mid( Sqrt2Pir_l_interval() ); }
-l_real Pip2_l_real() throw()     // Pi^2
+l_real Pip2_l_real()     // Pi^2
 { return mid( Pip2_l_interval() ); }
-l_real Sqrt2r_l_real() throw()   // 1/sqrt(2)
+l_real Sqrt2r_l_real()   // 1/sqrt(2)
 { return mid( Sqrt2r_l_interval() ); }
-l_real Sqrt3_l_real() throw()    // sqrt(3)
+l_real Sqrt3_l_real()    // sqrt(3)
 { return mid( Sqrt3_l_interval() ); }
-l_real Sqrt3d2_l_real() throw()  // sqrt(3)/2
+l_real Sqrt3d2_l_real()  // sqrt(3)/2
 { return mid( Sqrt3d2_l_interval() ); }
-l_real Sqrt3r_l_real() throw()   // 1/sqrt(3)
+l_real Sqrt3r_l_real()   // 1/sqrt(3)
 { return mid( Sqrt3r_l_interval() ); }
-l_real LnPi_l_real() throw()     // ln(Pi)
+l_real LnPi_l_real()     // ln(Pi)
 { return mid( LnPi_l_interval() ); }
-l_real Ln2Pi_l_real() throw()    // ln(2*Pi)
+l_real Ln2Pi_l_real()    // ln(2*Pi)
 { return mid( Ln2Pi_l_interval() ); }
-l_real E_l_real() throw()        // e = exp(1)
+l_real E_l_real()        // e = exp(1)
 { return mid( E_l_interval() ); }
-l_real Er_l_real() throw()       // 1/e
+l_real Er_l_real()       // 1/e
 { return mid( Er_l_interval() ); }
-l_real Ep2_l_real() throw()      // e^2
+l_real Ep2_l_real()      // e^2
 { return mid( Ep2_l_interval() ); }
-l_real Ep2r_l_real() throw()     // 1/e^2
+l_real Ep2r_l_real()     // 1/e^2
 { return mid( Ep2r_l_interval() ); }
-l_real EpPi_l_real() throw()     // e^Pi
+l_real EpPi_l_real()     // e^Pi
 { return mid( EpPi_l_interval() ); }
-l_real Ep2Pi_l_real() throw()    // e^(2*Pi)
+l_real Ep2Pi_l_real()    // e^(2*Pi)
 { return mid( Ep2Pi_l_interval() ); }
-l_real EpPid2_l_real() throw()   // e^(Pi/2)
+l_real EpPid2_l_real()   // e^(Pi/2)
 { return mid( EpPid2_l_interval() ); }
-l_real EpPid4_l_real() throw()   // e^(Pi/4)
+l_real EpPid4_l_real()   // e^(Pi/4)
 { return mid( EpPid4_l_interval() ); }
-l_real EulerGa_l_real() throw()  // EulerGamma
+l_real EulerGa_l_real()  // EulerGamma
 { return mid(EulerGa_l_interval()  ); }
-l_real Catalan_l_real() throw()  // Catalan
+l_real Catalan_l_real()  // Catalan
 { return mid( Catalan_l_interval() ); }
 
 } // namespace cxsc

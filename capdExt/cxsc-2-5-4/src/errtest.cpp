@@ -32,8 +32,8 @@ namespace cxsc {
 class err1701 : public ERROR_LRVECTOR, public WRONG_ROUNDING
 {
 	public:
-	virtual int errnum() const throw() { return 1701; }
-	err1701() throw() { }
+	virtual int errnum() const { return 1701; }
+	err1701() { }
 };
 
 

@@ -27,7 +27,7 @@ namespace cxsc {
 
 // ---- Konstruktoren ----
 
-inline idotprecision::idotprecision(const dotprecision &a,const dotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL)
+inline idotprecision::idotprecision(const dotprecision &a,const dotprecision &b)
          : inf(a), sup(b), k(0)
 {
    if(a>b)
@@ -106,92 +106,92 @@ inline idotprecision _unchecked_idotprecision(const dotprecision & a, const dotp
 
 // ---- Standardfunkt ---- (arithmetische Operatoren)
 
-inline idotprecision operator-(const idotprecision &a) throw() { return idotprecision (-a.sup, -a.inf); }
-inline idotprecision operator+(const idotprecision &a) throw() { return a; }
+inline idotprecision operator-(const idotprecision &a) { return idotprecision (-a.sup, -a.inf); }
+inline idotprecision operator+(const idotprecision &a) { return a; }
 
-inline idotprecision operator+(const idotprecision &a,const idotprecision &b) throw() { return idotprecision(a.inf+b.inf,a.sup+b.sup); }
-inline idotprecision operator-(const idotprecision &a,const idotprecision &b) throw() { return idotprecision(a.inf-b.sup,a.sup-b.inf); }
-inline idotprecision operator |(const idotprecision &a,const idotprecision &b) throw() 
+inline idotprecision operator+(const idotprecision &a,const idotprecision &b) { return idotprecision(a.inf+b.inf,a.sup+b.sup); }
+inline idotprecision operator-(const idotprecision &a,const idotprecision &b) { return idotprecision(a.inf-b.sup,a.sup-b.inf); }
+inline idotprecision operator |(const idotprecision &a,const idotprecision &b) 
 {
    return idotprecision((a.inf<b.inf)?a.inf:b.inf,(a.sup>b.sup)?a.sup:b.sup);
 }
 // ID-D
 
-inline idotprecision operator +(const idotprecision &a,const dotprecision &b) throw() { return idotprecision(a.inf+b,a.sup+b); }
-inline idotprecision operator +(const dotprecision &b,const idotprecision &a) throw() { return idotprecision(a.inf+b,a.sup+b); } 
-inline idotprecision operator -(const idotprecision &a,const dotprecision &b) throw() { return idotprecision(a.inf-b,a.sup-b); } 
-inline idotprecision operator -(const dotprecision &a,const idotprecision &b) throw() { return idotprecision(a-b.sup,a-b.inf); }
+inline idotprecision operator +(const idotprecision &a,const dotprecision &b) { return idotprecision(a.inf+b,a.sup+b); }
+inline idotprecision operator +(const dotprecision &b,const idotprecision &a) { return idotprecision(a.inf+b,a.sup+b); } 
+inline idotprecision operator -(const idotprecision &a,const dotprecision &b) { return idotprecision(a.inf-b,a.sup-b); } 
+inline idotprecision operator -(const dotprecision &a,const idotprecision &b) { return idotprecision(a-b.sup,a-b.inf); }
 
-inline idotprecision operator |(const dotprecision &a,const idotprecision &b) throw() 
+inline idotprecision operator |(const dotprecision &a,const idotprecision &b) 
 {
    return idotprecision((a<b.inf)?a:b.inf,(a>b.sup)?a:b.sup);
 }
-inline idotprecision operator |(const idotprecision &a,const dotprecision &b) throw() 
+inline idotprecision operator |(const idotprecision &a,const dotprecision &b) 
 {
    return idotprecision((a.inf<b)?a.inf:b,(a.sup>b)?a.sup:b);
 }
-inline idotprecision operator |(const dotprecision &a,const dotprecision &b) throw()
+inline idotprecision operator |(const dotprecision &a,const dotprecision &b)
 {
    if(a>b) return idotprecision(b,a);
    else    return idotprecision(a,b);
 }
-inline idotprecision operator &(const dotprecision &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const dotprecision &a,const idotprecision &b) 
 {
    return idotprecision((a>b.inf)?a:b.inf,(a<b.sup)?a:b.sup);
 }
-inline idotprecision operator &(const idotprecision &a,const dotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const idotprecision &a,const dotprecision &b) 
 {
    return idotprecision((a.inf>b)?a.inf:b,(a.sup<b)?a.sup:b);
 }
 
 // ID-L
 
-inline idotprecision operator +(const idotprecision &a,const long &b) throw() { return idotprecision(a.inf+b,a.sup+b); }
-inline idotprecision operator +(const long &b,const idotprecision &a) throw() { return idotprecision(a.inf+b,a.sup+b); } 
-inline idotprecision operator -(const idotprecision &a,const long &b) throw() { return idotprecision(a.inf-b,a.sup-b); } 
-inline idotprecision operator -(const long &a,const idotprecision &b) throw() { return idotprecision(a-b.sup,a-b.inf); }
+inline idotprecision operator +(const idotprecision &a,const long &b) { return idotprecision(a.inf+b,a.sup+b); }
+inline idotprecision operator +(const long &b,const idotprecision &a) { return idotprecision(a.inf+b,a.sup+b); } 
+inline idotprecision operator -(const idotprecision &a,const long &b) { return idotprecision(a.inf-b,a.sup-b); } 
+inline idotprecision operator -(const long &a,const idotprecision &b) { return idotprecision(a-b.sup,a-b.inf); }
 
-inline idotprecision operator |(const long &a,const idotprecision &b) throw() 
+inline idotprecision operator |(const long &a,const idotprecision &b) 
 {
    return idotprecision((a<b.inf)?dotprecision(a):b.inf,(a>b.sup)?dotprecision(a):b.sup);
 }
-inline idotprecision operator |(const idotprecision &a,const long &b) throw() 
+inline idotprecision operator |(const idotprecision &a,const long &b) 
 {
    return idotprecision((a.inf<b)?a.inf:dotprecision(b),(a.sup>b)?a.sup:dotprecision(b));
 }
-inline idotprecision operator &(const idotprecision &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const idotprecision &a,const idotprecision &b) 
 {
    return idotprecision((a.inf>b.inf)?a.inf:b.inf,(a.sup<b.sup)?a.sup:b.sup);
 }
-inline idotprecision operator &(const long &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const long &a,const idotprecision &b) 
 {
    return idotprecision((a>b.inf)?dotprecision(a):b.inf,(a<b.sup)?dotprecision(a):b.sup);
 }
-inline idotprecision operator &(const idotprecision &a,const long &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const idotprecision &a,const long &b) 
 {
    return idotprecision((a.inf>b)?a.inf:dotprecision(b),(a.sup<b)?a.sup:dotprecision(b));
 }
 
 // ID-R
 
-inline idotprecision operator +(const idotprecision &a,const real &b) throw() { return idotprecision(a.inf+b,a.sup+b); }
-inline idotprecision operator +(const real &b,const idotprecision &a) throw() { return idotprecision(a.inf+b,a.sup+b); } 
-inline idotprecision operator -(const idotprecision &a,const real &b) throw() { return idotprecision(a.inf-b,a.sup-b); } 
-inline idotprecision operator -(const real &a,const idotprecision &b) throw() { return idotprecision(a-b.sup,a-b.inf); }
+inline idotprecision operator +(const idotprecision &a,const real &b) { return idotprecision(a.inf+b,a.sup+b); }
+inline idotprecision operator +(const real &b,const idotprecision &a) { return idotprecision(a.inf+b,a.sup+b); } 
+inline idotprecision operator -(const idotprecision &a,const real &b) { return idotprecision(a.inf-b,a.sup-b); } 
+inline idotprecision operator -(const real &a,const idotprecision &b) { return idotprecision(a-b.sup,a-b.inf); }
 
-inline idotprecision operator |(const real &a,const idotprecision &b) throw() 
+inline idotprecision operator |(const real &a,const idotprecision &b) 
 {
    return idotprecision((a<b.inf)?dotprecision(a):b.inf,(a>b.sup)?dotprecision(a):b.sup);
 }
-inline idotprecision operator |(const idotprecision &a,const real &b) throw() 
+inline idotprecision operator |(const idotprecision &a,const real &b) 
 {
    return idotprecision((a.inf<b)?a.inf:dotprecision(b),(a.sup>b)?a.sup:dotprecision(b));
 }
-inline idotprecision operator &(const real &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const real &a,const idotprecision &b) 
 {
    return idotprecision((a>b.inf)?dotprecision(a):b.inf,(a<b.sup)?dotprecision(a):b.sup);
 }
-inline idotprecision operator &(const idotprecision &a,const real &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const idotprecision &a,const real &b) 
 {
    return idotprecision((a.inf>b)?a.inf:dotprecision(b),(a.sup<b)?a.sup:dotprecision(b));
 }
@@ -199,37 +199,37 @@ inline idotprecision operator &(const idotprecision &a,const real &b) throw(ERRO
 
 // ID-I
 
-inline idotprecision operator +(const idotprecision &a,const interval &b) throw() { return idotprecision(a.inf+b.inf,a.sup+b.sup); }
-inline idotprecision operator +(const interval &b,const idotprecision &a) throw() { return idotprecision(a.inf+b.inf,a.sup+b.sup); } 
-inline idotprecision operator -(const idotprecision &a,const interval &b) throw() { return idotprecision(a.inf-b.sup,a.sup-b.inf); } 
-inline idotprecision operator -(const interval &a,const idotprecision &b) throw() { return idotprecision(a.inf-b.sup,a.sup-b.inf); }
+inline idotprecision operator +(const idotprecision &a,const interval &b) { return idotprecision(a.inf+b.inf,a.sup+b.sup); }
+inline idotprecision operator +(const interval &b,const idotprecision &a) { return idotprecision(a.inf+b.inf,a.sup+b.sup); } 
+inline idotprecision operator -(const idotprecision &a,const interval &b) { return idotprecision(a.inf-b.sup,a.sup-b.inf); } 
+inline idotprecision operator -(const interval &a,const idotprecision &b) { return idotprecision(a.inf-b.sup,a.sup-b.inf); }
 
-inline idotprecision operator |(const interval &a,const idotprecision &b) throw() 
+inline idotprecision operator |(const interval &a,const idotprecision &b) 
 {
    return idotprecision((a.inf<b.inf)?dotprecision(a.inf):b.inf,(a.sup>b.sup)?dotprecision(a.sup):b.sup);
 }
-inline idotprecision operator |(const idotprecision &a,const interval &b) throw() 
+inline idotprecision operator |(const idotprecision &a,const interval &b) 
 {
    return idotprecision((a.inf<b.inf)?a.inf:dotprecision(b.inf),(a.sup>b.sup)?a.sup:dotprecision(b.sup));
 }
-inline idotprecision operator &(const interval &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const interval &a,const idotprecision &b) 
 {
    return idotprecision((a.inf>b.inf)?dotprecision(a.inf):b.inf,(a.sup<b.sup)?dotprecision(a.sup):b.sup);
 }
-inline idotprecision operator &(const idotprecision &a,const interval &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const idotprecision &a,const interval &b) 
 {
    return idotprecision((a.inf>b.inf)?a.inf:dotprecision(b.inf),(a.sup<b.sup)?a.sup:dotprecision(b.sup));
 }
 
 // D-R
 
-inline idotprecision operator |(const dotprecision &a,const real &b) throw() 
+inline idotprecision operator |(const dotprecision &a,const real &b) 
 {
    if(a<b)
       return idotprecision(a,dotprecision(b));
    return idotprecision(dotprecision(b),a);
 }
-inline idotprecision operator |(const real &b,const dotprecision &a) throw() 
+inline idotprecision operator |(const real &b,const dotprecision &a) 
 {
    if(a<b)
       return idotprecision(a,dotprecision(b));
@@ -238,29 +238,29 @@ inline idotprecision operator |(const real &b,const dotprecision &a) throw()
 
 
 
-inline idotprecision & operator +=(idotprecision &a,const idotprecision &b) throw() { a.inf+=b.inf,a.sup+=b.sup; return a;}
-inline idotprecision & operator +=(idotprecision &a,const dotprecision &b) throw() { a.inf+=b,a.sup+=b; return a;}
-inline idotprecision & operator -=(idotprecision &a,const idotprecision &b) throw() { a.inf-=b.inf,a.sup-=b.sup; return a;}
-inline idotprecision & operator -=(idotprecision &a,const dotprecision &b) throw() { a.inf-=b,a.sup-=b; return a;}
-inline idotprecision & operator +=(idotprecision &a,const interval &b) throw() 
+inline idotprecision & operator +=(idotprecision &a,const idotprecision &b) { a.inf+=b.inf,a.sup+=b.sup; return a;}
+inline idotprecision & operator +=(idotprecision &a,const dotprecision &b) { a.inf+=b,a.sup+=b; return a;}
+inline idotprecision & operator -=(idotprecision &a,const idotprecision &b) { a.inf-=b.inf,a.sup-=b.sup; return a;}
+inline idotprecision & operator -=(idotprecision &a,const dotprecision &b) { a.inf-=b,a.sup-=b; return a;}
+inline idotprecision & operator +=(idotprecision &a,const interval &b) 
 {
    a.inf+=Inf(b);
    a.sup+=Sup(b);
    return a;
 }
-inline idotprecision & operator -=(idotprecision &a,const interval &b) throw()
+inline idotprecision & operator -=(idotprecision &a,const interval &b)
 {
    a.inf-=Sup(b);
    a.sup-=Inf(b);
    return a;
 }
-inline idotprecision & operator +=(idotprecision &a,const real &b) throw()
+inline idotprecision & operator +=(idotprecision &a,const real &b)
 {
    a.inf+=b;
    a.sup+=b;
    return a;
 }
-inline idotprecision & operator -=(idotprecision &a,const real &b) throw()
+inline idotprecision & operator -=(idotprecision &a,const real &b)
 {
    a.inf-=b;
    a.sup-=b;
@@ -268,7 +268,7 @@ inline idotprecision & operator -=(idotprecision &a,const real &b) throw()
 }
       
 
-inline idotprecision & operator |=(idotprecision &a,const idotprecision &b) throw() 
+inline idotprecision & operator |=(idotprecision &a,const idotprecision &b) 
 {
    if(b.inf<a.inf)
       a.inf=b.inf;
@@ -276,7 +276,7 @@ inline idotprecision & operator |=(idotprecision &a,const idotprecision &b) thro
       a.sup=b.sup;
    return a;
 }
-inline idotprecision & operator &=(idotprecision &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision & operator &=(idotprecision &a,const idotprecision &b) 
 {
    if(b.inf>a.inf)
       a.inf=b.inf;
@@ -287,7 +287,7 @@ inline idotprecision & operator &=(idotprecision &a,const idotprecision &b) thro
       cxscthrow(ERROR_IDOTPRECISION_EMPTY_INTERVAL("inline idotprecision & operator &=(idotprecision &a,const idotprecision &b)"));
    return a;
 }
-inline idotprecision & operator |=(idotprecision &a,const dotprecision &b) throw() 
+inline idotprecision & operator |=(idotprecision &a,const dotprecision &b) 
 {
    if(b<a.inf)
       a.inf=b;
@@ -295,7 +295,7 @@ inline idotprecision & operator |=(idotprecision &a,const dotprecision &b) throw
       a.sup=b;
    return a;
 }
-inline idotprecision & operator &=(idotprecision &a,const dotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision & operator &=(idotprecision &a,const dotprecision &b) 
 {
    if(b>a.inf)
       a.inf=b;
@@ -307,176 +307,176 @@ inline idotprecision & operator &=(idotprecision &a,const dotprecision &b) throw
 }
 
 // --- Vergleichsoperationen ----
-inline bool operator ==(const idotprecision &a,const idotprecision &b) throw() {   return(a.inf==b.inf && a.sup==b.sup); }
-inline bool operator !=(const idotprecision &a,const idotprecision &b) throw() {   return(a.inf!=b.inf || a.sup!=b.sup); }
-inline bool operator ==(const dotprecision &r,const idotprecision &a)     throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const dotprecision &r,const idotprecision &a)     throw() {   return(r!=a.inf || r!=a.sup); }
-inline bool operator ==(const idotprecision &a,const dotprecision &r)     throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const idotprecision &a,const dotprecision &r)     throw() {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const idotprecision &a,const idotprecision &b) {   return(a.inf==b.inf && a.sup==b.sup); }
+inline bool operator !=(const idotprecision &a,const idotprecision &b) {   return(a.inf!=b.inf || a.sup!=b.sup); }
+inline bool operator ==(const dotprecision &r,const idotprecision &a)     {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const dotprecision &r,const idotprecision &a)     {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const idotprecision &a,const dotprecision &r)     {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const idotprecision &a,const dotprecision &r)     {   return(r!=a.inf || r!=a.sup); }
 
-inline bool operator ==(const real &r,const idotprecision &a)     throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const real &r,const idotprecision &a)     throw() {   return(r!=a.inf || r!=a.sup); }
-inline bool operator ==(const idotprecision &a,const real &r)     throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const idotprecision &a,const real &r)     throw() {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const real &r,const idotprecision &a)     {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const real &r,const idotprecision &a)     {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const idotprecision &a,const real &r)     {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const idotprecision &a,const real &r)     {   return(r!=a.inf || r!=a.sup); }
 
-inline bool operator ==(const interval &a,const idotprecision &b) throw() {   return(Inf(a)==b.inf && Sup(a)==b.sup); }
-inline bool operator !=(const interval &a,const idotprecision &b) throw() {   return(Inf(a)!=b.inf || Sup(a)!=b.sup); }
-inline bool operator ==(const idotprecision &a,const interval &b) throw() {   return(a.inf==Inf(b) && a.sup==Sup(b)); }
-inline bool operator !=(const idotprecision &a,const interval &b) throw() {   return(a.inf!=Inf(b) || a.sup!=Sup(b)); }
+inline bool operator ==(const interval &a,const idotprecision &b) {   return(Inf(a)==b.inf && Sup(a)==b.sup); }
+inline bool operator !=(const interval &a,const idotprecision &b) {   return(Inf(a)!=b.inf || Sup(a)!=b.sup); }
+inline bool operator ==(const idotprecision &a,const interval &b) {   return(a.inf==Inf(b) && a.sup==Sup(b)); }
+inline bool operator !=(const idotprecision &a,const interval &b) {   return(a.inf!=Inf(b) || a.sup!=Sup(b)); }
 
 // --- Mengenvergleiche ---
 // <,>,...
-inline bool operator <=(const idotprecision &a,const idotprecision &b) throw()
+inline bool operator <=(const idotprecision &a,const idotprecision &b)
 {
    return(a.inf>=b.inf && a.sup<=b.sup);   
 }
-inline bool operator >=(const idotprecision &a,const idotprecision &b) throw()
+inline bool operator >=(const idotprecision &a,const idotprecision &b)
 {
    return(a.inf<=b.inf && a.sup>=b.sup);   
 }
-inline bool operator <(const idotprecision &a,const idotprecision &b) throw()
+inline bool operator <(const idotprecision &a,const idotprecision &b)
 {
    return(a.inf>b.inf && a.sup<b.sup);   
 }
-inline bool operator >(const idotprecision &a,const idotprecision &b) throw()
+inline bool operator >(const idotprecision &a,const idotprecision &b)
 {
    return(a.inf<b.inf && a.sup>b.sup);   
 }
 
-inline bool operator <=(const dotprecision &a,const idotprecision &b) throw()
+inline bool operator <=(const dotprecision &a,const idotprecision &b)
 {
    return(a>=b.inf && a<=b.sup);   
 }
-inline bool operator >=(const dotprecision &a,const idotprecision &b) throw()
+inline bool operator >=(const dotprecision &a,const idotprecision &b)
 {
    return(a<=b.inf && a>=b.sup);   
 }
-inline bool operator <(const dotprecision &a,const idotprecision &b) throw()
+inline bool operator <(const dotprecision &a,const idotprecision &b)
 {
    return(a>b.inf && a<b.sup);   
 }
 
-inline bool operator <=(const idotprecision &a,const dotprecision &b) throw()
+inline bool operator <=(const idotprecision &a,const dotprecision &b)
 {
    return(a.inf>=b && a.sup<=b);   
 }
-inline bool operator >=(const idotprecision &a,const dotprecision &b) throw()
+inline bool operator >=(const idotprecision &a,const dotprecision &b)
 {
    return(a.inf<=b && a.sup>=b);   
 }
-inline bool operator >(const idotprecision &a,const dotprecision &b) throw()
+inline bool operator >(const idotprecision &a,const dotprecision &b)
 {
    return(a.inf<b && a.sup>b);   
 }
 
-inline bool operator <=(const real &a,const idotprecision &b) throw()
+inline bool operator <=(const real &a,const idotprecision &b)
 {
    return(a>=b.inf && a<=b.sup);   
 }
-inline bool operator >=(const real &a,const idotprecision &b) throw()
+inline bool operator >=(const real &a,const idotprecision &b)
 {
    return(a<=b.inf && a>=b.sup);   
 }
-inline bool operator <(const real &a,const idotprecision &b) throw()
+inline bool operator <(const real &a,const idotprecision &b)
 {
    return(a>b.inf && a<b.sup);   
 }
 
-inline bool operator <=(const idotprecision &a,const real &b) throw()
+inline bool operator <=(const idotprecision &a,const real &b)
 {
    return(a.inf>=b && a.sup<=b);   
 }
-inline bool operator >=(const idotprecision &a,const real &b) throw()
+inline bool operator >=(const idotprecision &a,const real &b)
 {
    return(a.inf<=b && a.sup>=b);   
 }
-inline bool operator >(const idotprecision &a,const real &b) throw()
+inline bool operator >(const idotprecision &a,const real &b)
 {
    return(a.inf<b && a.sup>b);   
 }
 
-inline bool operator <=(const interval &a,const idotprecision &b) throw()
+inline bool operator <=(const interval &a,const idotprecision &b)
 {
    return(Inf(a)>=b.inf && Sup(a)<=b.sup);   
 }
-inline bool operator >=(const interval &a,const idotprecision &b) throw()
+inline bool operator >=(const interval &a,const idotprecision &b)
 {
    return(Inf(a)<=b.inf && Sup(a)>=b.sup);   
 }
-inline bool operator <(const interval &a,const idotprecision &b) throw()
+inline bool operator <(const interval &a,const idotprecision &b)
 {
    return(Inf(a)>b.inf && Sup(a)<b.sup);   
 }
-inline bool operator >(const interval &a,const idotprecision &b) throw()
+inline bool operator >(const interval &a,const idotprecision &b)
 {
    return(Inf(a)<b.inf && Sup(a)>b.sup);   
 }
 
-inline bool operator <=(const idotprecision &a,const interval &b) throw()
+inline bool operator <=(const idotprecision &a,const interval &b)
 {
    return(a.inf>=Inf(b) && a.sup<=Sup(b));   
 }
-inline bool operator >=(const idotprecision &a,const interval &b) throw()
+inline bool operator >=(const idotprecision &a,const interval &b)
 {
    return(a.inf<=Inf(b) && a.sup>=Sup(b));   
 }
-inline bool operator <(const idotprecision &a,const interval &b) throw()
+inline bool operator <(const idotprecision &a,const interval &b)
 {
    return(a.inf>Inf(b) && a.sup<Sup(b));   
 }
-inline bool operator >(const idotprecision &a,const interval &b) throw()
+inline bool operator >(const idotprecision &a,const interval &b)
 {
    return(a.inf<Inf(b) && a.sup>Sup(b));   
 }
 
 // ----- Funktionen -----
 
-inline idotprecision & SetInf (idotprecision & a, const dotprecision & b)  throw()
+inline idotprecision & SetInf (idotprecision & a, const dotprecision & b) 
 { // ggf. exception
    a.inf=b; 
    return a;
 }
-inline idotprecision & SetSup (idotprecision & a, const dotprecision & b) throw()
+inline idotprecision & SetSup (idotprecision & a, const dotprecision & b)
 {
    a.sup=b;
    return a;
 }
-inline idotprecision & SetInf (idotprecision & a, const real & b)  throw()
+inline idotprecision & SetInf (idotprecision & a, const real & b) 
 { // ggf. exception
    a.inf=b; 
    return a;
 }
-inline idotprecision & SetSup (idotprecision & a, const real & b) throw()
+inline idotprecision & SetSup (idotprecision & a, const real & b)
 {
    a.sup=b;
    return a;
 }
-inline idotprecision & UncheckedSetInf (idotprecision & a, const dotprecision & b) throw()
+inline idotprecision & UncheckedSetInf (idotprecision & a, const dotprecision & b)
 {
    a.inf=b;
    return a;
 }
-inline idotprecision & UncheckedSetSup (idotprecision & a, const dotprecision & b) throw()
+inline idotprecision & UncheckedSetSup (idotprecision & a, const dotprecision & b)
 {
    a.sup=b;
    return a;
 }
-inline idotprecision & UncheckedSetInf (idotprecision & a, const real & b) throw()
+inline idotprecision & UncheckedSetInf (idotprecision & a, const real & b)
 {
    a.inf=b;
    return a;
 }
-inline idotprecision & UncheckedSetSup (idotprecision & a, const real & b) throw()
+inline idotprecision & UncheckedSetSup (idotprecision & a, const real & b)
 {
    a.sup=b;
    return a;
 }
 
-inline bool operator !(const idotprecision &a) throw() { return (a.inf <= dotprecision(0.0) && a.sup >= dotprecision(0.0)); }  
+inline bool operator !(const idotprecision &a) { return (a.inf <= dotprecision(0.0) && a.sup >= dotprecision(0.0)); }  
 
-inline bool IsEmpty(const idotprecision &a) throw() { return (a.inf>a.sup); }
+inline bool IsEmpty(const idotprecision &a) { return (a.inf>a.sup); }
 
-inline idotprecision abs(const idotprecision &a) throw()
+inline idotprecision abs(const idotprecision &a)
 {
    dotprecision h1  = abs(a.inf);
    dotprecision h2  = abs(a.sup);
@@ -490,9 +490,9 @@ inline idotprecision abs(const idotprecision &a) throw()
    return idotprecision(h1, h2); 
 }
 
-inline void accumulate  (idotprecision & a, const interval & b, const real & c) throw() { accumulate(a,b,_interval(c)); }
-inline void accumulate  (idotprecision & a, const real & b, const interval & c) throw() { accumulate(a,_interval(b),c); }
-inline void accumulate  (idotprecision & a, const real & b, const real & c) throw() { accumulate(a,_interval(b),_interval(c)); }
+inline void accumulate  (idotprecision & a, const interval & b, const real & c) { accumulate(a,b,_interval(c)); }
+inline void accumulate  (idotprecision & a, const real & b, const interval & c) { accumulate(a,_interval(b),c); }
+inline void accumulate  (idotprecision & a, const real & b, const real & c) { accumulate(a,_interval(b),_interval(c)); }
 
 } // namespace cxsc
 

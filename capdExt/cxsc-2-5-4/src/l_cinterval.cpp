@@ -34,7 +34,7 @@ namespace cxsc {
 
 #define CXSC_Zero 0.0
 
-cinterval::cinterval(const l_cinterval & a) throw()
+cinterval::cinterval(const l_cinterval & a)
 {
     interval u,v;
     u = a.re;
@@ -42,7 +42,7 @@ cinterval::cinterval(const l_cinterval & a) throw()
     *this = cinterval(u,v);
 }
 
-cinterval & cinterval::operator = (const l_cinterval & a) throw()
+cinterval & cinterval::operator = (const l_cinterval & a)
 {
     interval u,v;
     u = a.re;
@@ -50,14 +50,14 @@ cinterval & cinterval::operator = (const l_cinterval & a) throw()
 return *this = cinterval(u,v);
 }
 
-l_cinterval::l_cinterval(const dotprecision  &a) throw() : re(a),im(0) {}
-l_cinterval::l_cinterval(const idotprecision &a) throw() : re(a),im(0) {}
+l_cinterval::l_cinterval(const dotprecision  &a) : re(a),im(0) {}
+l_cinterval::l_cinterval(const idotprecision &a) : re(a),im(0) {}
 l_cinterval::l_cinterval(const cdotprecision &a) 
-                                         throw() : re(Re(a)),im(Im(a)) {}
-l_cinterval::l_cinterval(const cidotprecision &a) throw() : 
+                                         : re(Re(a)),im(Im(a)) {}
+l_cinterval::l_cinterval(const cidotprecision &a) : 
                          re( l_interval(Re(a))),im(l_interval(Im(a)) ) {}
 
-l_cinterval operator * (const l_cinterval & a, const l_cinterval & b) throw()
+l_cinterval operator * (const l_cinterval & a, const l_cinterval & b)
 {
     idotprecision akku;
     l_cinterval res;
@@ -90,7 +90,7 @@ void product(const l_real& a, const l_real& b, const l_real& c,
 void product(const l_real& c, const l_real& d, int& ex, l_interval& res);
 l_real quotient(const l_interval& z, const l_interval& n, int round, 
 		int ex_z, int ex_n);
-//void Times2pown(l_interval& a, int n) throw();
+//void Times2pown(l_interval& a, int n);
 
 // *********************************************************************
 
@@ -528,7 +528,7 @@ l_cinterval C_point_div(const l_cinterval& z, const l_cinterval& n)
 
 
 l_cinterval operator / (const l_cinterval & a, const l_cinterval & b) 
-                                                      throw(DIV_BY_ZERO)
+                                                     
 {
     if (0.0 <= b.re && 0.0 <= b.im ) {
 //    if (0.0 <= (sqr(b.re) + sqr(b.im))) {
@@ -542,7 +542,7 @@ l_cinterval operator / (const l_cinterval & a, const l_cinterval & b)
     else return cidiv(a,b);
 }
 
-l_interval abs(const l_cinterval &a) throw()
+l_interval abs(const l_cinterval &a)
 {
     return sqrtx2y2(a.re,a.im);
 }
@@ -550,7 +550,7 @@ l_interval abs(const l_cinterval &a) throw()
 
 // ---- Ausgabefunkt. ---------------------------------------
 
-std::ostream & operator << (std::ostream &s, const l_cinterval& a) throw()
+std::ostream & operator << (std::ostream &s, const l_cinterval& a)
 {
     s << '('          
       << a.re << ','  
@@ -559,7 +559,7 @@ std::ostream & operator << (std::ostream &s, const l_cinterval& a) throw()
     return s;
 }
 
-std::string & operator << (std::string &s, const l_cinterval& a) throw()
+std::string & operator << (std::string &s, const l_cinterval& a)
 {
 // string s; l_cinterval a;
 // s << a; s delivers the string of the value a in the form:
@@ -573,7 +573,7 @@ std::string & operator << (std::string &s, const l_cinterval& a) throw()
 }
 
 std::string & operator >> (std::string &s, l_cinterval &a) 
-                                     throw(EMPTY_INTERVAL)
+                                    
 // With: 
 //       l_cinterval a;
 //       string("([1.234,1.234],[2.567,2.567])") >> a;
@@ -633,7 +633,7 @@ std::string & operator >> (std::string &s, l_cinterval &a)
 }
 
 std::istream & operator >> (std::istream & s, l_cinterval& a) 
-                                                 throw(EMPTY_INTERVAL)
+                                                
 // With: 
 //       l_cinterval lc;
 //       cout << "([a,b],[c,d]) = ?" << endl;
@@ -712,13 +712,13 @@ std::istream & operator >> (std::istream & s, l_cinterval& a)
    return s;
 }
 
-void operator >> (const std::string &s, l_cinterval &a) throw(EMPTY_INTERVAL)
+void operator >> (const std::string &s, l_cinterval &a)
 {
    std::string r(s);
    r >> a;
 }
 
-void operator >> (const char *s, l_cinterval &a) throw(EMPTY_INTERVAL)
+void operator >> (const char *s, l_cinterval &a)
 {
    std::string r(s);
    r >> a;

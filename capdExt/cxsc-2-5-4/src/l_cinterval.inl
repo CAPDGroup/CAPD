@@ -30,19 +30,19 @@ namespace cxsc {
 
 // ---- implicit constructors  ------------------------------
       
-inline l_cinterval::l_cinterval(const interval & a,const interval & b) throw()
+inline l_cinterval::l_cinterval(const interval & a,const interval & b)
       : re(a), im(b)
 {
 }
 
 inline l_cinterval::l_cinterval(const l_interval & a, 
-                                const l_interval & b) throw()
+                                const l_interval & b)
       : re(a), im(b)
 {
 }
 
 inline l_cinterval::l_cinterval(const complex & a, const complex & b)  
-                                      throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+                                     
    : re(Re(a),Re(b)),
      im(Im(a),Im(b))
 {
@@ -51,7 +51,7 @@ inline l_cinterval::l_cinterval(const complex & a, const complex & b)
 }
 
 inline l_cinterval::l_cinterval(const l_complex & a, const l_complex & b)  
-                                      throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+                                     
    : re(Re(a),Re(b)),
      im(Im(a),Im(b))
 {
@@ -61,91 +61,91 @@ inline l_cinterval::l_cinterval(const l_complex & a, const l_complex & b)
 
 // ---- explicit constructors  ------------------------------
 
-inline l_cinterval::l_cinterval(const real & a) throw() : re(a,a), im(0,0) {}
-inline l_cinterval::l_cinterval(const l_real & a) throw() : re(a,a), im(0,0) {}
+inline l_cinterval::l_cinterval(const real & a) : re(a,a), im(0,0) {}
+inline l_cinterval::l_cinterval(const l_real & a) : re(a,a), im(0,0) {}
 
 
 inline l_cinterval::l_cinterval(const interval & a) 
-                               throw() : re(a), im(0,0) {}
+                               : re(a), im(0,0) {}
 inline l_cinterval::l_cinterval(const l_interval & a) 
-                               throw() : re(a), im(0,0) {}
+                               : re(a), im(0,0) {}
 inline l_cinterval::l_cinterval(const complex & a) 
-                           throw() : re(Re(a),Re(a)),im(Im(a),Im(a)) {}
+                           : re(Re(a),Re(a)),im(Im(a),Im(a)) {}
 inline l_cinterval::l_cinterval(const l_complex & a) 
-                           throw() : re(Re(a),Re(a)),im(Im(a),Im(a)) {} 
+                           : re(Re(a),Re(a)),im(Im(a),Im(a)) {} 
 inline l_cinterval::l_cinterval(const cinterval & a) 
-       throw() : re(Inf(Re(a)),Sup(Re(a))),im(Inf(Im(a)),Sup(Im(a))) {} 
+       : re(Inf(Re(a)),Sup(Re(a))),im(Inf(Im(a)),Sup(Im(a))) {} 
 
      
 // ---- assignments -----------------------------------------
 
-inline l_cinterval & l_cinterval::operator =(const real & a) throw()
+inline l_cinterval & l_cinterval::operator =(const real & a)
 {
    re=a,im=0.0;
    return *this;   
 }
 
-inline l_cinterval & l_cinterval::operator =(const l_real & a) throw()
+inline l_cinterval & l_cinterval::operator =(const l_real & a)
 {
    re=a,im=0.0;
    return *this;   
 }
 
 
-inline l_cinterval & l_cinterval::operator =(const interval & a) throw()
+inline l_cinterval & l_cinterval::operator =(const interval & a)
 {
    re=a,im=0.0;
    return *this;
 }
 
-inline l_cinterval & l_cinterval::operator =(const l_interval & a) throw()
+inline l_cinterval & l_cinterval::operator =(const l_interval & a)
 {
    re=a,im=0.0;
    return *this;
 }
 
-inline l_cinterval & l_cinterval::operator =(const complex & a) throw()
+inline l_cinterval & l_cinterval::operator =(const complex & a)
 {
    re=Re(a),im=Im(a);
    return *this;
 }
 
-inline l_cinterval & l_cinterval::operator =(const l_complex & a) throw()
+inline l_cinterval & l_cinterval::operator =(const l_complex & a)
 {
    re=Re(a),im=Im(a);
    return *this;
 }
 
-inline l_cinterval & l_cinterval::operator =(const cinterval & a) throw()
+inline l_cinterval & l_cinterval::operator =(const cinterval & a)
 {
      re = Re(a);	
      im = Im(a);	
      return *this;
 }
 
-inline l_cinterval & l_cinterval::operator =(const l_cinterval & a) throw()
+inline l_cinterval & l_cinterval::operator =(const l_cinterval & a)
 {
      re = a.re;	
      im = a.im;	
      return *this;
 }
  
-inline l_cinterval & l_cinterval::operator =(const dotprecision & a) throw()
+inline l_cinterval & l_cinterval::operator =(const dotprecision & a)
 {
    return *this = l_cinterval(a);
 }
 
-inline l_cinterval & l_cinterval::operator =(const idotprecision & a) throw()
+inline l_cinterval & l_cinterval::operator =(const idotprecision & a)
 {
    return *this = l_cinterval(a);
 }
 
-inline l_cinterval & l_cinterval::operator =(const cdotprecision & a) throw()
+inline l_cinterval & l_cinterval::operator =(const cdotprecision & a)
 {
    return *this = l_cinterval(a);
 }
 
-inline l_cinterval & l_cinterval::operator =(const cidotprecision & a) throw()
+inline l_cinterval & l_cinterval::operator =(const cidotprecision & a)
 {
    return *this = l_cinterval(a);
 }
@@ -153,35 +153,35 @@ inline l_cinterval & l_cinterval::operator =(const cidotprecision & a) throw()
 
 // ---- Std.Operators ---------------------------------------
 
-inline l_cinterval operator -(const l_cinterval & a) throw ()
+inline l_cinterval operator -(const l_cinterval & a)
 {
    return l_cinterval(-a.re,-a.im);
 }
 
-inline l_cinterval operator +(const l_cinterval & a) throw ()
+inline l_cinterval operator +(const l_cinterval & a)
 {
    return a;
 }
 
-inline bool operator! (const l_cinterval & a)  throw()
+inline bool operator! (const l_cinterval & a) 
 {
    return !a.re && !a.im;
 }
 
 inline l_cinterval operator +(const l_cinterval & a, 
-                              const l_cinterval & b) throw()
+                              const l_cinterval & b)
 {
    return l_cinterval(a.re + b.re, a.im + b.im);
 }
 
 inline l_cinterval operator -(const l_cinterval & a, 
-                              const l_cinterval & b) throw()
+                              const l_cinterval & b)
 {
    return l_cinterval(a.re - b.re, a.im - b.im);
 }
 
 inline l_cinterval operator &(const l_cinterval & a, const l_cinterval & b) 
-                                      throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+                                     
 {
    l_cinterval tmp = a;
    l_real x,y;
@@ -203,7 +203,7 @@ inline l_cinterval operator &(const l_cinterval & a, const l_cinterval & b)
 }
 
 inline l_cinterval operator |(const l_cinterval & a, const l_cinterval & b) 
-                                                                    throw()
+                                                                   
 {
    l_cinterval tmp = a;
    l_real x,y;
@@ -223,96 +223,96 @@ inline l_cinterval operator |(const l_cinterval & a, const l_cinterval & b)
 }
 
 inline l_cinterval & operator +=(l_cinterval & a, const l_cinterval & b) 
-                                             throw() { return a = a+b; }
+                                             { return a = a+b; }
 inline l_cinterval & operator -=(l_cinterval & a, const l_cinterval & b) 
-                                             throw() { return a = a-b; }
+                                             { return a = a-b; }
 inline l_cinterval & operator *=(l_cinterval & a, const l_cinterval & b) 
-                                             throw() { return a = a*b; }
+                                             { return a = a*b; }
 inline l_cinterval & operator /=(l_cinterval & a, const l_cinterval & b) 
-                                             throw() { return a = a/b; }
+                                             { return a = a/b; }
 inline l_cinterval & operator |=(l_cinterval & a, const l_cinterval & b) 
-                                             throw() { return a = a|b; }
+                                             { return a = a|b; }
 inline l_cinterval & operator &=(l_cinterval & a, const l_cinterval & b) 
-               throw(ERROR_CINTERVAL_EMPTY_INTERVAL) { return a = a&b; }
+               { return a = a&b; }
 
 // LCI <--> R
 
-inline l_cinterval operator +(const l_cinterval & a, const real & b) throw() 
+inline l_cinterval operator +(const l_cinterval & a, const real & b) 
                                               { return a + l_cinterval(b); }
-inline l_cinterval operator +(const real & a, const l_cinterval & b) throw() 
+inline l_cinterval operator +(const real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) + b; }
-inline l_cinterval operator -(const l_cinterval & a, const real & b) throw() 
+inline l_cinterval operator -(const l_cinterval & a, const real & b) 
                                               { return a - l_cinterval(b); }
-inline l_cinterval operator -(const real & a, const l_cinterval & b) throw() 
+inline l_cinterval operator -(const real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) - b; }
-inline l_cinterval operator *(const l_cinterval & a, const real & b) throw() 
+inline l_cinterval operator *(const l_cinterval & a, const real & b) 
                                      { return l_cinterval(a.re*b, a.im*b); }
-inline l_cinterval operator *(const real & a, const l_cinterval & b) throw()
+inline l_cinterval operator *(const real & a, const l_cinterval & b)
                                      { return l_cinterval(b.re*a, b.im*a); }
-inline l_cinterval operator /(const l_cinterval & a, const real & b) throw()
+inline l_cinterval operator /(const l_cinterval & a, const real & b)
                                      { return l_cinterval(a.re/b, a.im/b); }
-inline l_cinterval operator /(const real & a, const l_cinterval & b) throw() 
+inline l_cinterval operator /(const real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) / b; }
-inline l_cinterval operator |(const l_cinterval & a, const real & b) throw() 
+inline l_cinterval operator |(const l_cinterval & a, const real & b) 
                                                 { return a|l_cinterval(b); }
-inline l_cinterval operator |(const real & a, const l_cinterval & b) throw() 
+inline l_cinterval operator |(const real & a, const l_cinterval & b) 
                                                 { return l_cinterval(a)|b; }
-inline l_cinterval operator &(const l_cinterval & a, const real & b) throw() 
+inline l_cinterval operator &(const l_cinterval & a, const real & b) 
                                               { return a & l_cinterval(b); }
-inline l_cinterval operator &(const real & a, const l_cinterval & b) throw() 
+inline l_cinterval operator &(const real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) & b; }
 
-inline l_cinterval & operator +=(l_cinterval & a, const real & b) throw() 
+inline l_cinterval & operator +=(l_cinterval & a, const real & b) 
                                             { return a = a+l_cinterval(b); }
-inline l_cinterval & operator -=(l_cinterval & a, const real & b) throw() 
+inline l_cinterval & operator -=(l_cinterval & a, const real & b) 
                                            { return a = a -l_cinterval(b); }
-inline l_cinterval & operator *=(l_cinterval & a, const real & b) throw()
+inline l_cinterval & operator *=(l_cinterval & a, const real & b)
                                                        { return a = a * b; }
-inline l_cinterval & operator /=(l_cinterval & a, const real & b) throw()
+inline l_cinterval & operator /=(l_cinterval & a, const real & b)
                                                        { return a = a / b; }
-inline l_cinterval & operator |=(l_cinterval & a, const real & b) throw() 
+inline l_cinterval & operator |=(l_cinterval & a, const real & b) 
                                             { return a = a|l_cinterval(b); }
-inline l_cinterval & operator &=(l_cinterval & a, const real & b) throw() 
+inline l_cinterval & operator &=(l_cinterval & a, const real & b) 
                                             { return a = a&l_cinterval(b); }
 
 // LCI <--> LR
 
-inline l_cinterval operator +(const l_cinterval & a, const l_real & b) throw() 
+inline l_cinterval operator +(const l_cinterval & a, const l_real & b) 
                                               { return a + l_cinterval(b); }
-inline l_cinterval operator +(const l_real & a, const l_cinterval & b) throw() 
+inline l_cinterval operator +(const l_real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) + b; }
-inline l_cinterval operator -(const l_cinterval & a, const l_real & b) throw() 
+inline l_cinterval operator -(const l_cinterval & a, const l_real & b) 
                                               { return a - l_cinterval(b); }
-inline l_cinterval operator -(const l_real & a, const l_cinterval & b) throw() 
+inline l_cinterval operator -(const l_real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) - b; }
-inline l_cinterval operator *(const l_cinterval & a, const l_real & b) throw() 
+inline l_cinterval operator *(const l_cinterval & a, const l_real & b) 
                                      { return l_cinterval(a.re*b, a.im*b); }
-inline l_cinterval operator *(const l_real & a, const l_cinterval & b) throw()
+inline l_cinterval operator *(const l_real & a, const l_cinterval & b)
                                      { return l_cinterval(b.re*a, b.im*a); }
-inline l_cinterval operator /(const l_cinterval & a, const l_real & b) throw()
+inline l_cinterval operator /(const l_cinterval & a, const l_real & b)
                                      { return l_cinterval(a.re/b, a.im/b); }
-inline l_cinterval operator /(const l_real & a, const l_cinterval & b) throw() 
+inline l_cinterval operator /(const l_real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) / b; }
-inline l_cinterval operator |(const l_cinterval & a, const l_real & b) throw() 
+inline l_cinterval operator |(const l_cinterval & a, const l_real & b) 
                                                 { return a|l_cinterval(b); }
-inline l_cinterval operator |(const l_real & a, const l_cinterval & b) throw() 
+inline l_cinterval operator |(const l_real & a, const l_cinterval & b) 
                                                 { return l_cinterval(a)|b; }
-inline l_cinterval operator &(const l_cinterval & a, const l_real & b) throw() 
+inline l_cinterval operator &(const l_cinterval & a, const l_real & b) 
                                               { return a & l_cinterval(b); }
-inline l_cinterval operator &(const l_real & a, const l_cinterval & b) throw() 
+inline l_cinterval operator &(const l_real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) & b; }
 
-inline l_cinterval & operator +=(l_cinterval & a, const l_real & b) throw() 
+inline l_cinterval & operator +=(l_cinterval & a, const l_real & b) 
                                             { return a = a+l_cinterval(b); }
-inline l_cinterval & operator -=(l_cinterval & a, const l_real & b) throw() 
+inline l_cinterval & operator -=(l_cinterval & a, const l_real & b) 
                                            { return a = a -l_cinterval(b); }
-inline l_cinterval & operator *=(l_cinterval & a, const l_real & b) throw()
+inline l_cinterval & operator *=(l_cinterval & a, const l_real & b)
                                                        { return a = a * b; }
-inline l_cinterval & operator /=(l_cinterval & a, const l_real & b) throw()
+inline l_cinterval & operator /=(l_cinterval & a, const l_real & b)
                                                        { return a = a / b; }
-inline l_cinterval & operator |=(l_cinterval & a, const l_real & b) throw() 
+inline l_cinterval & operator |=(l_cinterval & a, const l_real & b) 
                                             { return a = a|l_cinterval(b); }
-inline l_cinterval & operator &=(l_cinterval & a, const l_real & b) throw() 
+inline l_cinterval & operator &=(l_cinterval & a, const l_real & b) 
                                             { return a = a&l_cinterval(b); }
 
 
@@ -320,82 +320,82 @@ inline l_cinterval & operator &=(l_cinterval & a, const l_real & b) throw()
 // LCI <--> C
 
 inline l_cinterval operator +(const l_cinterval & a, const complex & b) 
-                                      throw() { return a + l_cinterval(b); }
+                                      { return a + l_cinterval(b); }
 inline l_cinterval operator +(const complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) + b; }
+                                      { return l_cinterval(a) + b; }
 inline l_cinterval operator -(const l_cinterval & a, const complex & b) 
-                                      throw() { return a - l_cinterval(b); }
+                                      { return a - l_cinterval(b); }
 inline l_cinterval operator -(const complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) - b; }
+                                      { return l_cinterval(a) - b; }
 inline l_cinterval operator *(const l_cinterval & a, const complex & b) 
-                                      throw() { return a * l_cinterval(b); }
+                                      { return a * l_cinterval(b); }
 inline l_cinterval operator *(const complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) * b; }
+                                      { return l_cinterval(a) * b; }
 inline l_cinterval operator /(const l_cinterval & a, const complex & b) 
-                                      throw() { return a / l_cinterval(b); }
+                                      { return a / l_cinterval(b); }
 inline l_cinterval operator /(const complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) / b; }
+                                      { return l_cinterval(a) / b; }
 inline l_cinterval operator |(const l_cinterval & a, const complex & b) 
-                                      throw() { return a | l_cinterval(b); }
+                                      { return a | l_cinterval(b); }
 inline l_cinterval operator |(const complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) | b; }
+                                      { return l_cinterval(a) | b; }
 inline l_cinterval operator &(const l_cinterval & a, const complex & b) 
-                                      throw() { return a & l_cinterval(b); }
+                                      { return a & l_cinterval(b); }
 inline l_cinterval operator &(const complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) & b; }
+                                      { return l_cinterval(a) & b; }
 
-inline l_cinterval & operator +=(l_cinterval & a, const complex & b) throw() 
+inline l_cinterval & operator +=(l_cinterval & a, const complex & b) 
                                           { return a = a + l_cinterval(b); }
-inline l_cinterval & operator -=(l_cinterval & a, const complex & b) throw() 
+inline l_cinterval & operator -=(l_cinterval & a, const complex & b) 
                                           { return a = a - l_cinterval(b); }
-inline l_cinterval & operator *=(l_cinterval & a, const complex & b) throw() 
+inline l_cinterval & operator *=(l_cinterval & a, const complex & b) 
                                           { return a = a * l_cinterval(b); }
-inline l_cinterval & operator /=(l_cinterval & a, const complex & b) throw() 
+inline l_cinterval & operator /=(l_cinterval & a, const complex & b) 
                                           { return a = a / l_cinterval(b); }
-inline l_cinterval & operator |=(l_cinterval & a, const complex & b) throw() 
+inline l_cinterval & operator |=(l_cinterval & a, const complex & b) 
                                           { return a = a | l_cinterval(b); }
-inline l_cinterval & operator &=(l_cinterval & a, const complex & b) throw() 
+inline l_cinterval & operator &=(l_cinterval & a, const complex & b) 
                                           { return a = a & l_cinterval(b); }
 
 
 // LCI <--> LC
 
 inline l_cinterval operator +(const l_cinterval & a, const l_complex & b) 
-                                      throw() { return a + l_cinterval(b); }
+                                      { return a + l_cinterval(b); }
 inline l_cinterval operator +(const l_complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) + b; }
+                                      { return l_cinterval(a) + b; }
 inline l_cinterval operator -(const l_cinterval & a, const l_complex & b) 
-                                      throw() { return a - l_cinterval(b); }
+                                      { return a - l_cinterval(b); }
 inline l_cinterval operator -(const l_complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) - b; }
+                                      { return l_cinterval(a) - b; }
 inline l_cinterval operator *(const l_cinterval & a, const l_complex & b) 
-                                      throw() { return a * l_cinterval(b); }
+                                      { return a * l_cinterval(b); }
 inline l_cinterval operator *(const l_complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) * b; }
+                                      { return l_cinterval(a) * b; }
 inline l_cinterval operator /(const l_cinterval & a, const l_complex & b) 
-                                      throw() { return a / l_cinterval(b); }
+                                      { return a / l_cinterval(b); }
 inline l_cinterval operator /(const l_complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) / b; }
+                                      { return l_cinterval(a) / b; }
 inline l_cinterval operator |(const l_cinterval & a, const l_complex & b) 
-                                      throw() { return a | l_cinterval(b); }
+                                      { return a | l_cinterval(b); }
 inline l_cinterval operator |(const l_complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) | b; }
+                                      { return l_cinterval(a) | b; }
 inline l_cinterval operator &(const l_cinterval & a, const l_complex & b) 
-                                      throw() { return a & l_cinterval(b); }
+                                      { return a & l_cinterval(b); }
 inline l_cinterval operator &(const l_complex & a, const l_cinterval & b) 
-                                      throw() { return l_cinterval(a) & b; }
+                                      { return l_cinterval(a) & b; }
 
-inline l_cinterval & operator +=(l_cinterval & a, const l_complex & b) throw() 
+inline l_cinterval & operator +=(l_cinterval & a, const l_complex & b) 
                                           { return a = a + l_cinterval(b); }
-inline l_cinterval & operator -=(l_cinterval & a, const l_complex & b) throw() 
+inline l_cinterval & operator -=(l_cinterval & a, const l_complex & b) 
                                           { return a = a - l_cinterval(b); }
-inline l_cinterval & operator *=(l_cinterval & a, const l_complex & b) throw() 
+inline l_cinterval & operator *=(l_cinterval & a, const l_complex & b) 
                                           { return a = a * l_cinterval(b); }
-inline l_cinterval & operator /=(l_cinterval & a, const l_complex & b) throw() 
+inline l_cinterval & operator /=(l_cinterval & a, const l_complex & b) 
                                           { return a = a / l_cinterval(b); }
-inline l_cinterval & operator |=(l_cinterval & a, const l_complex & b) throw() 
+inline l_cinterval & operator |=(l_cinterval & a, const l_complex & b) 
                                           { return a = a | l_cinterval(b); }
-inline l_cinterval & operator &=(l_cinterval & a, const l_complex & b) throw() 
+inline l_cinterval & operator &=(l_cinterval & a, const l_complex & b) 
                                           { return a = a & l_cinterval(b); }
 
 
@@ -403,281 +403,281 @@ inline l_cinterval & operator &=(l_cinterval & a, const l_complex & b) throw()
 // LCI <--> I
 
 inline l_cinterval operator +(const l_cinterval & a, 
-                              const interval & b) throw()
+                              const interval & b)
                                             { return a + l_cinterval(b); } 
 inline l_cinterval operator +(const interval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) + b; }
 inline l_cinterval operator -(const l_cinterval & a,
-                              const interval & b) throw() 
+                              const interval & b) 
                                             { return a - l_cinterval(b); }
 inline l_cinterval operator -(const interval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) - b; }
 inline l_cinterval operator *(const l_cinterval & a,
-                              const interval & b) throw()
+                              const interval & b)
                                    { return l_cinterval(a.re*b, a.im*b); }
 inline l_cinterval operator *(const interval & a,
-                              const l_cinterval & b) throw()
+                              const l_cinterval & b)
                                    { return l_cinterval(b.re*a, b.im*a); }
 inline l_cinterval operator /(const l_cinterval & a,
-                              const interval & b) throw()
+                              const interval & b)
                                    { return l_cinterval(a.re/b, a.im/b); }
 inline l_cinterval operator /(const interval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) / b; }
 inline l_cinterval operator |(const l_cinterval & a,
-                              const interval & b) throw() 
+                              const interval & b) 
                                             { return a | l_cinterval(b); }
 inline l_cinterval operator |(const interval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) | b; }
 inline l_cinterval operator &(const l_cinterval & a,
-                              const interval & b) throw() 
+                              const interval & b) 
                                             { return a & l_cinterval(b); }
 inline l_cinterval operator &(const interval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) & b; }
 
 inline l_cinterval & operator +=(l_cinterval & a, const interval & b) 
-                                throw() { return a = a + l_cinterval(b); }
+                                { return a = a + l_cinterval(b); }
 inline l_cinterval & operator -=(l_cinterval & a, const interval & b) 
-                                throw() { return a = a - l_cinterval(b); }
+                                { return a = a - l_cinterval(b); }
 inline l_cinterval & operator *=(l_cinterval & a, const interval & b) 
-                                throw() { return a = a * l_cinterval(b); }
+                                { return a = a * l_cinterval(b); }
 inline l_cinterval & operator /=(l_cinterval & a, const interval & b) 
-                                throw() { return a = a / l_cinterval(b); }
+                                { return a = a / l_cinterval(b); }
 inline l_cinterval & operator |=(l_cinterval & a, const interval & b) 
-                                throw() { return a = a | l_cinterval(b); }
+                                { return a = a | l_cinterval(b); }
 inline l_cinterval & operator &=(l_cinterval & a, const interval & b) 
-                                throw() { return a = a & l_cinterval(b); }
+                                { return a = a & l_cinterval(b); }
 
 // LCI <--> LI
 
 inline l_cinterval operator +(const l_cinterval & a, 
-                              const l_interval & b) throw()
+                              const l_interval & b)
                                             { return a + l_cinterval(b); } 
 inline l_cinterval operator +(const l_interval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) + b; }
 inline l_cinterval operator -(const l_cinterval & a,
-                              const l_interval & b) throw() 
+                              const l_interval & b) 
                                             { return a - l_cinterval(b); }
 inline l_cinterval operator -(const l_interval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) - b; }
 inline l_cinterval operator *(const l_cinterval & a,
-                              const l_interval & b) throw()
+                              const l_interval & b)
                                    { return l_cinterval(a.re*b, a.im*b); }
 inline l_cinterval operator *(const l_interval & a,
-                              const l_cinterval & b) throw()
+                              const l_cinterval & b)
                                    { return l_cinterval(b.re*a, b.im*a); }
 inline l_cinterval operator /(const l_cinterval & a,
-                              const l_interval & b) throw()
+                              const l_interval & b)
                                    { return l_cinterval(a.re/b, a.im/b); }
 inline l_cinterval operator /(const l_interval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) / b; }
 inline l_cinterval operator |(const l_cinterval & a,
-                              const l_interval & b) throw() 
+                              const l_interval & b) 
                                             { return a | l_cinterval(b); }
 inline l_cinterval operator |(const l_interval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) | b; }
 inline l_cinterval operator &(const l_cinterval & a,
-                              const l_interval & b) throw() 
+                              const l_interval & b) 
                                             { return a & l_cinterval(b); }
 inline l_cinterval operator &(const l_interval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) & b; }
 
 inline l_cinterval & operator +=(l_cinterval & a, const l_interval & b) 
-                                throw() { return a = a + l_cinterval(b); }
+                                { return a = a + l_cinterval(b); }
 inline l_cinterval & operator -=(l_cinterval & a, const l_interval & b) 
-                                throw() { return a = a - l_cinterval(b); }
+                                { return a = a - l_cinterval(b); }
 inline l_cinterval & operator *=(l_cinterval & a, const l_interval & b) 
-                                throw() { return a = a * l_cinterval(b); }
+                                { return a = a * l_cinterval(b); }
 inline l_cinterval & operator /=(l_cinterval & a, const l_interval & b) 
-                                throw() { return a = a / l_cinterval(b); }
+                                { return a = a / l_cinterval(b); }
 inline l_cinterval & operator |=(l_cinterval & a, const l_interval & b) 
-                                throw() { return a = a | l_cinterval(b); }
+                                { return a = a | l_cinterval(b); }
 inline l_cinterval & operator &=(l_cinterval & a, const l_interval & b) 
-                                throw() { return a = a & l_cinterval(b); }
+                                { return a = a & l_cinterval(b); }
 
 // LCI <--> CI
 
 inline l_cinterval operator +(const l_cinterval & a, 
-                              const cinterval & b) throw()
+                              const cinterval & b)
                                             { return a + l_cinterval(b); } 
 inline l_cinterval operator +(const cinterval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) + b; }
 inline l_cinterval operator -(const l_cinterval & a,
-                              const cinterval & b) throw() 
+                              const cinterval & b) 
                                             { return a - l_cinterval(b); }
 inline l_cinterval operator -(const cinterval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) - b; }
 inline l_cinterval operator *(const l_cinterval & a,
-                              const cinterval & b) throw()
+                              const cinterval & b)
                                             { return a * l_cinterval(b); }
 inline l_cinterval operator *(const cinterval & a,
-                              const l_cinterval & b) throw()
+                              const l_cinterval & b)
                                             { return l_cinterval(a) * b; }
 inline l_cinterval operator /(const l_cinterval & a,
-                              const cinterval & b) throw()
+                              const cinterval & b)
                                             { return a / l_cinterval(b); }
 inline l_cinterval operator /(const cinterval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) / b; }
 inline l_cinterval operator |(const l_cinterval & a,
-                              const cinterval & b) throw() 
+                              const cinterval & b) 
                                             { return a | l_cinterval(b); }
 inline l_cinterval operator |(const cinterval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) | b; }
 inline l_cinterval operator &(const l_cinterval & a,
-                              const cinterval & b) throw() 
+                              const cinterval & b) 
                                             { return a & l_cinterval(b); }
 inline l_cinterval operator &(const cinterval & a,
-                              const l_cinterval & b) throw() 
+                              const l_cinterval & b) 
                                             { return l_cinterval(a) & b; }
 
 inline l_cinterval & operator +=(l_cinterval & a, const cinterval & b) 
-                                throw() { return a = a + l_cinterval(b); }
+                                { return a = a + l_cinterval(b); }
 inline l_cinterval & operator -=(l_cinterval & a, const cinterval & b) 
-                                throw() { return a = a - l_cinterval(b); }
+                                { return a = a - l_cinterval(b); }
 inline l_cinterval & operator *=(l_cinterval & a, const cinterval & b) 
-                                throw() { return a = a * l_cinterval(b); }
+                                { return a = a * l_cinterval(b); }
 inline l_cinterval & operator /=(l_cinterval & a, const cinterval & b) 
-                                throw() { return a = a / l_cinterval(b); }
+                                { return a = a / l_cinterval(b); }
 inline l_cinterval & operator |=(l_cinterval & a, const cinterval & b) 
-                                throw() { return a = a | l_cinterval(b); }
+                                { return a = a | l_cinterval(b); }
 inline l_cinterval & operator &=(l_cinterval & a, const cinterval & b) 
-                                throw() { return a = a & l_cinterval(b); }
+                                { return a = a & l_cinterval(b); }
 
 // C-R
 
-inline l_cinterval operator |(const l_complex & a, const real & b) throw() 
+inline l_cinterval operator |(const l_complex & a, const real & b) 
                                { return l_cinterval(a) | l_cinterval(b); }
-inline l_cinterval operator |(const real & a, const l_complex & b) throw() 
+inline l_cinterval operator |(const real & a, const l_complex & b) 
                                { return l_cinterval(a) | l_cinterval(b); }
-inline l_cinterval operator |(const complex & a, const l_real & b) throw() 
+inline l_cinterval operator |(const complex & a, const l_real & b) 
                                { return l_cinterval(a) | l_cinterval(b); }
-inline l_cinterval operator |(const l_real & a, const complex & b) throw() 
+inline l_cinterval operator |(const l_real & a, const complex & b) 
                                { return l_cinterval(a) | l_cinterval(b); }
-inline l_cinterval operator |(const l_complex & a, const l_real & b) throw() 
+inline l_cinterval operator |(const l_complex & a, const l_real & b) 
                                  { return l_cinterval(a) | l_cinterval(b); }
-inline l_cinterval operator |(const l_real & a, const l_complex & b) throw() 
+inline l_cinterval operator |(const l_real & a, const l_complex & b) 
                                  { return l_cinterval(a) | l_cinterval(b); }
-inline l_cinterval operator |(const cinterval & a, const l_real & b) throw() 
+inline l_cinterval operator |(const cinterval & a, const l_real & b) 
                                  { return l_cinterval(a) | l_cinterval(b); }
-inline l_cinterval operator |(const l_real & a, const cinterval & b) throw() 
+inline l_cinterval operator |(const l_real & a, const cinterval & b) 
                                  { return l_cinterval(a) | l_cinterval(b); }
 inline l_cinterval operator |(const cinterval & a, const l_complex & b) 
-                    throw() { return l_cinterval(a) | l_cinterval(b); }
+                    { return l_cinterval(a) | l_cinterval(b); }
 inline l_cinterval operator |(const l_complex & a, const cinterval & b) 
-                    throw() { return l_cinterval(a) | l_cinterval(b); }
+                    { return l_cinterval(a) | l_cinterval(b); }
 
 // LC <--> I
 
-inline l_cinterval operator +(const l_complex & a, const interval & b) throw() 
+inline l_cinterval operator +(const l_complex & a, const interval & b) 
                                    { return l_cinterval(a) + l_cinterval(b); }
-inline l_cinterval operator +(const interval & a, const l_complex & b) throw() 
+inline l_cinterval operator +(const interval & a, const l_complex & b) 
                                    { return l_cinterval(a) + l_cinterval(b); }
-inline l_cinterval operator -(const l_complex & a, const interval & b) throw() 
+inline l_cinterval operator -(const l_complex & a, const interval & b) 
                                    { return l_cinterval(a) - l_cinterval(b); }
-inline l_cinterval operator -(const interval & a, const l_complex & b) throw() 
+inline l_cinterval operator -(const interval & a, const l_complex & b) 
                                    { return l_cinterval(a) - l_cinterval(b); }
-inline l_cinterval operator *(const l_complex & a, const interval & b) throw()
+inline l_cinterval operator *(const l_complex & a, const interval & b)
                                                 { return l_cinterval(a) * b; }
-inline l_cinterval operator *(const interval & a, const l_complex & b) throw()
+inline l_cinterval operator *(const interval & a, const l_complex & b)
                                                 { return l_cinterval(b) * a; }
-inline l_cinterval operator /(const l_complex & a, const interval & b) throw()
+inline l_cinterval operator /(const l_complex & a, const interval & b)
                                                 { return l_cinterval(a) / b; }
-inline l_cinterval operator /(const interval & a, const l_complex & b) throw()
+inline l_cinterval operator /(const interval & a, const l_complex & b)
                                    { return l_cinterval(a) / l_cinterval(b); }
-inline l_cinterval operator |(const l_complex & a, const interval & b) throw()
+inline l_cinterval operator |(const l_complex & a, const interval & b)
                                    { return l_cinterval(a) | l_cinterval(b); }
-inline l_cinterval operator |(const interval & a, const l_complex & b) throw()
+inline l_cinterval operator |(const interval & a, const l_complex & b)
                                    { return l_cinterval(a) | l_cinterval(b); }
-inline l_cinterval operator &(const l_complex & a, const interval & b) throw()
+inline l_cinterval operator &(const l_complex & a, const interval & b)
                                    { return l_cinterval(a) & l_cinterval(b); }
-inline l_cinterval operator &(const interval & a, const l_complex & b) throw()
+inline l_cinterval operator &(const interval & a, const l_complex & b)
                                    { return l_cinterval(a) & l_cinterval(b); }
 
 // C <--> LI
 
-inline l_cinterval operator +(const complex & a, const l_interval & b) throw() 
+inline l_cinterval operator +(const complex & a, const l_interval & b) 
                                    { return l_cinterval(a) + l_cinterval(b); }
-inline l_cinterval operator +(const l_interval & a, const complex & b) throw() 
+inline l_cinterval operator +(const l_interval & a, const complex & b) 
                                    { return l_cinterval(a) + l_cinterval(b); }
-inline l_cinterval operator -(const complex & a, const l_interval & b) throw() 
+inline l_cinterval operator -(const complex & a, const l_interval & b) 
                                    { return l_cinterval(a) - l_cinterval(b); }
-inline l_cinterval operator -(const l_interval & a, const complex & b) throw() 
+inline l_cinterval operator -(const l_interval & a, const complex & b) 
                                    { return l_cinterval(a) - l_cinterval(b); }
-inline l_cinterval operator *(const complex & a, const l_interval & b) throw()
+inline l_cinterval operator *(const complex & a, const l_interval & b)
                                                 { return l_cinterval(a) * b; }
-inline l_cinterval operator *(const l_interval & a, const complex & b) throw()
+inline l_cinterval operator *(const l_interval & a, const complex & b)
                                                 { return l_cinterval(b) * a; }
-inline l_cinterval operator /(const complex & a, const l_interval & b) throw()
+inline l_cinterval operator /(const complex & a, const l_interval & b)
                                                 { return l_cinterval(a) / b; }
-inline l_cinterval operator /(const l_interval & a, const complex & b) throw()
+inline l_cinterval operator /(const l_interval & a, const complex & b)
                                    { return l_cinterval(a) / l_cinterval(b); }
-inline l_cinterval operator |(const complex & a, const l_interval & b) throw()
+inline l_cinterval operator |(const complex & a, const l_interval & b)
                                    { return l_cinterval(a) | l_cinterval(b); }
-inline l_cinterval operator |(const l_interval & a, const complex & b) throw()
+inline l_cinterval operator |(const l_interval & a, const complex & b)
                                    { return l_cinterval(a) | l_cinterval(b); }
-inline l_cinterval operator &(const complex & a, const l_interval & b) throw()
+inline l_cinterval operator &(const complex & a, const l_interval & b)
                                    { return l_cinterval(a) & l_cinterval(b); }
-inline l_cinterval operator &(const l_interval & a, const complex & b) throw()
+inline l_cinterval operator &(const l_interval & a, const complex & b)
                                    { return l_cinterval(a) & l_cinterval(b); }
 
 // LC <--> LI
 
 inline l_cinterval operator +(const l_complex & a, const l_interval & b) 
-                           throw() { return l_cinterval(a) + l_cinterval(b); }
+                           { return l_cinterval(a) + l_cinterval(b); }
 inline l_cinterval operator +(const l_interval & a, const l_complex & b) 
-                           throw() { return l_cinterval(a) + l_cinterval(b); }
+                           { return l_cinterval(a) + l_cinterval(b); }
 inline l_cinterval operator -(const l_complex & a, const l_interval & b) 
-                           throw() { return l_cinterval(a) - l_cinterval(b); }
+                           { return l_cinterval(a) - l_cinterval(b); }
 inline l_cinterval operator -(const l_interval & a, const l_complex & b) 
-                           throw() { return l_cinterval(a) - l_cinterval(b); }
+                           { return l_cinterval(a) - l_cinterval(b); }
 inline l_cinterval operator *(const l_complex & a, const l_interval & b) 
-                                        throw() { return l_cinterval(a) * b; }
+                                        { return l_cinterval(a) * b; }
 inline l_cinterval operator *(const l_interval & a, const l_complex & b) 
-                                        throw() { return l_cinterval(b) * a; }
+                                        { return l_cinterval(b) * a; }
 inline l_cinterval operator /(const l_complex & a, const l_interval & b) 
-                                        throw() { return l_cinterval(a) / b; }
+                                        { return l_cinterval(a) / b; }
 inline l_cinterval operator /(const l_interval & a, const l_complex & b) 
-                           throw() { return l_cinterval(a) / l_cinterval(b); }
+                           { return l_cinterval(a) / l_cinterval(b); }
 inline l_cinterval operator |(const l_complex & a, const l_interval & b) 
-                           throw() { return l_cinterval(a) | l_cinterval(b); }
+                           { return l_cinterval(a) | l_cinterval(b); }
 inline l_cinterval operator |(const l_interval & a, const l_complex & b) 
-                           throw() { return l_cinterval(a) | l_cinterval(b); }
+                           { return l_cinterval(a) | l_cinterval(b); }
 inline l_cinterval operator &(const l_complex & a, const l_interval & b) 
-                           throw() { return l_cinterval(a) & l_cinterval(b); }
+                           { return l_cinterval(a) & l_cinterval(b); }
 inline l_cinterval operator &(const l_interval & a, const l_complex & b) 
-                           throw() { return l_cinterval(a) & l_cinterval(b); }
+                           { return l_cinterval(a) & l_cinterval(b); }
 
 
 // LC <--> C
 
 inline l_cinterval operator |(const l_complex & a, const complex & b) 
-                           throw() { return l_cinterval(a) | l_cinterval(b); }
+                           { return l_cinterval(a) | l_cinterval(b); }
 inline l_cinterval operator |(const complex & a, const l_complex & b) 
-                           throw() { return l_cinterval(a) | l_cinterval(b); }
+                           { return l_cinterval(a) | l_cinterval(b); }
 inline l_cinterval operator |(const l_complex & a, const l_complex & b) 
-                           throw() { return l_cinterval(a) | l_cinterval(b); }
+                           { return l_cinterval(a) | l_cinterval(b); }
 
 
 // ---- Comp.Operat.  ---------------------------------------
 
-inline bool operator== (const l_cinterval & a, const l_cinterval & b) throw()
+inline bool operator== (const l_cinterval & a, const l_cinterval & b)
 {
    return a.re==b.re && a.im==b.im;
 }
-inline bool operator!= (const l_cinterval & a, const l_cinterval & b) throw()
+inline bool operator!= (const l_cinterval & a, const l_cinterval & b)
 {
    return a.re!=b.re || a.im!=b.im;
 }
@@ -685,84 +685,84 @@ inline bool operator!= (const l_cinterval & a, const l_cinterval & b) throw()
 
 // LCI-R
 
-inline bool operator== (const l_cinterval & a, const real & b) throw() 
+inline bool operator== (const l_cinterval & a, const real & b) 
                                               { return a == l_cinterval(b); }
-inline bool operator== (const real & a, const l_cinterval & b) throw() 
+inline bool operator== (const real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) == b; }
-inline bool operator!= (const l_cinterval & a, const real & b) throw() 
+inline bool operator!= (const l_cinterval & a, const real & b) 
                                               { return a != l_cinterval(b); }
-inline bool operator!= (const real & a, const l_cinterval & b) throw() 
+inline bool operator!= (const real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) != b; }
 
 // LCI-LR
 
-inline bool operator== (const l_cinterval & a, const l_real & b) throw() 
+inline bool operator== (const l_cinterval & a, const l_real & b) 
                                               { return a == l_cinterval(b); }
-inline bool operator== (const l_real & a, const l_cinterval & b) throw() 
+inline bool operator== (const l_real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) == b; }
-inline bool operator!= (const l_cinterval & a, const l_real & b) throw() 
+inline bool operator!= (const l_cinterval & a, const l_real & b) 
                                               { return a != l_cinterval(b); }
-inline bool operator!= (const l_real & a, const l_cinterval & b) throw() 
+inline bool operator!= (const l_real & a, const l_cinterval & b) 
                                               { return l_cinterval(a) != b; }
 
 // LCI <--> I
 
-inline bool operator== (const l_cinterval & a, const interval & b) throw() 
+inline bool operator== (const l_cinterval & a, const interval & b) 
                                               { return a == l_cinterval(b); }
-inline bool operator== (const interval & a, const l_cinterval & b) throw() 
+inline bool operator== (const interval & a, const l_cinterval & b) 
                                               { return l_cinterval(a) == b; }
-inline bool operator!= (const l_cinterval & a, const interval & b) throw() 
+inline bool operator!= (const l_cinterval & a, const interval & b) 
                                               { return a != l_cinterval(b); }
-inline bool operator!= (const interval & a, const l_cinterval & b) throw() 
+inline bool operator!= (const interval & a, const l_cinterval & b) 
                                               { return l_cinterval(a) != b; }
 
 // LCI <--> LI
 
-inline bool operator== (const l_cinterval & a, const l_interval & b) throw() 
+inline bool operator== (const l_cinterval & a, const l_interval & b) 
                                              { return a == l_cinterval(b); }
-inline bool operator== (const l_interval & a, const l_cinterval & b) throw() 
+inline bool operator== (const l_interval & a, const l_cinterval & b) 
                                              { return l_cinterval(a) == b; }
-inline bool operator!= (const l_cinterval & a, const l_interval & b) throw() 
+inline bool operator!= (const l_cinterval & a, const l_interval & b) 
                                              { return a != l_cinterval(b); }
-inline bool operator!= (const l_interval & a, const l_cinterval & b) throw() 
+inline bool operator!= (const l_interval & a, const l_cinterval & b) 
                                              { return l_cinterval(a) != b; }
 
 // LCI <--> C
 
-inline bool operator== (const l_cinterval & a, const complex & b) throw() 
+inline bool operator== (const l_cinterval & a, const complex & b) 
                                             { return a == l_cinterval(b); }
-inline bool operator== (const complex & a, const l_cinterval & b) throw() 
+inline bool operator== (const complex & a, const l_cinterval & b) 
                                             { return l_cinterval(a) == b; }
-inline bool operator!= (const l_cinterval & a, const complex & b) throw() 
+inline bool operator!= (const l_cinterval & a, const complex & b) 
                                             { return a != l_cinterval(b); }
-inline bool operator!= (const complex & a, const l_cinterval & b) throw() 
+inline bool operator!= (const complex & a, const l_cinterval & b) 
                                             { return l_cinterval(a) != b; }
 
 // LCI <--> LC
 
-inline bool operator== (const l_cinterval & a, const l_complex & b) throw() 
+inline bool operator== (const l_cinterval & a, const l_complex & b) 
                                             { return a == l_cinterval(b); }
-inline bool operator== (const l_complex & a, const l_cinterval & b) throw() 
+inline bool operator== (const l_complex & a, const l_cinterval & b) 
                                             { return l_cinterval(a) == b; }
-inline bool operator!= (const l_cinterval & a, const l_complex & b) throw() 
+inline bool operator!= (const l_cinterval & a, const l_complex & b) 
                                             { return a != l_cinterval(b); }
-inline bool operator!= (const l_complex & a, const l_cinterval & b) throw() 
+inline bool operator!= (const l_complex & a, const l_cinterval & b) 
                                             { return l_cinterval(a) != b; }
 
 // LCI <--> CI
 
-inline bool operator== (const l_cinterval & a, const cinterval & b) throw() 
+inline bool operator== (const l_cinterval & a, const cinterval & b) 
                                             { return a == l_cinterval(b); }
-inline bool operator== (const cinterval & a, const l_cinterval & b) throw() 
+inline bool operator== (const cinterval & a, const l_cinterval & b) 
                                             { return l_cinterval(a) == b; }
-inline bool operator!= (const l_cinterval & a, const cinterval & b) throw() 
+inline bool operator!= (const l_cinterval & a, const cinterval & b) 
                                             { return a != l_cinterval(b); }
-inline bool operator!= (const cinterval & a, const l_cinterval & b) throw() 
+inline bool operator!= (const cinterval & a, const l_cinterval & b) 
                                             { return l_cinterval(a) != b; }
 
 
 // ---- Set Operators ----
-inline bool operator  <(const l_cinterval & a, const l_cinterval & b) throw()
+inline bool operator  <(const l_cinterval & a, const l_cinterval & b)
 {
    if (Inf(a.re) <= Inf(b.re) || Sup(a.re) >= Sup(b.re)) 
       return false;
@@ -772,10 +772,10 @@ inline bool operator  <(const l_cinterval & a, const l_cinterval & b) throw()
    return true; 
 }
 
-inline bool operator  >(const l_cinterval & a, const l_cinterval & b) throw() 
+inline bool operator  >(const l_cinterval & a, const l_cinterval & b) 
                                                             { return b < a; }
 
-inline bool operator <=(const l_cinterval & a, const l_cinterval & b) throw()
+inline bool operator <=(const l_cinterval & a, const l_cinterval & b)
 {
    if (Inf(a.re) < Inf(b.re) || Sup(a.re) > Sup(b.re)) 
       return false;
@@ -785,159 +785,159 @@ inline bool operator <=(const l_cinterval & a, const l_cinterval & b) throw()
    return true; 
 }
 
-inline bool operator >= (const l_cinterval & a, const l_cinterval & b) throw()
+inline bool operator >= (const l_cinterval & a, const l_cinterval & b)
                                                             { return b <= a; }
 
 // lCI <--> R
 
-inline bool operator  <(const real & a, const l_cinterval & b) throw() 
+inline bool operator  <(const real & a, const l_cinterval & b) 
                                         { return l_cinterval(a) < b; }
-inline bool operator  >(const real & a, const l_cinterval & b) throw() 
+inline bool operator  >(const real & a, const l_cinterval & b) 
                                         { return l_cinterval(a) > b; }
-inline bool operator <=(const real & a, const l_cinterval & b) throw() 
+inline bool operator <=(const real & a, const l_cinterval & b) 
                                        { return l_cinterval(a) <= b; }
-inline bool operator >=(const real & a, const l_cinterval & b) throw() 
+inline bool operator >=(const real & a, const l_cinterval & b) 
                                        { return l_cinterval(a) >= b; }
 
-inline bool operator  <(const l_cinterval & a, const real & b) throw() 
+inline bool operator  <(const l_cinterval & a, const real & b) 
                                         { return a < l_cinterval(b); }
-inline bool operator  >(const l_cinterval & a, const real & b) throw() 
+inline bool operator  >(const l_cinterval & a, const real & b) 
                                         { return a > l_cinterval(b); }
-inline bool operator <=(const l_cinterval & a, const real & b) throw() 
+inline bool operator <=(const l_cinterval & a, const real & b) 
                                        { return a <= l_cinterval(b); }
-inline bool operator >=(const l_cinterval & a, const real & b) throw() 
+inline bool operator >=(const l_cinterval & a, const real & b) 
                                        { return a >= l_cinterval(b); }
 
 // lCI <--> LR
 
-inline bool operator  <(const l_real & a, const l_cinterval & b) throw() 
+inline bool operator  <(const l_real & a, const l_cinterval & b) 
                                           { return l_cinterval(a) < b; }
-inline bool operator  >(const l_real & a, const l_cinterval & b) throw() 
+inline bool operator  >(const l_real & a, const l_cinterval & b) 
                                           { return l_cinterval(a) > b; }
-inline bool operator <=(const l_real & a, const l_cinterval & b) throw() 
+inline bool operator <=(const l_real & a, const l_cinterval & b) 
                                          { return l_cinterval(a) <= b; }
-inline bool operator >=(const l_real & a, const l_cinterval & b) throw() 
+inline bool operator >=(const l_real & a, const l_cinterval & b) 
                                          { return l_cinterval(a) >= b; }
 
-inline bool operator  <(const l_cinterval & a, const l_real & b) throw() 
+inline bool operator  <(const l_cinterval & a, const l_real & b) 
                                           { return a < l_cinterval(b); }
-inline bool operator  >(const l_cinterval & a, const l_real & b) throw() 
+inline bool operator  >(const l_cinterval & a, const l_real & b) 
                                           { return a > l_cinterval(b); }
-inline bool operator <=(const l_cinterval & a, const l_real & b) throw() 
+inline bool operator <=(const l_cinterval & a, const l_real & b) 
                                          { return a <= l_cinterval(b); }
-inline bool operator >=(const l_cinterval & a, const l_real & b) throw() 
+inline bool operator >=(const l_cinterval & a, const l_real & b) 
                                          { return a >= l_cinterval(b); }
 
 // LCI <--> I
 
-inline bool operator  <(const interval & a, const l_cinterval & b) throw() 
+inline bool operator  <(const interval & a, const l_cinterval & b) 
                                             { return l_cinterval(a) < b; }
-inline bool operator  >(const interval & a, const l_cinterval & b) throw()
+inline bool operator  >(const interval & a, const l_cinterval & b)
                                             { return l_cinterval(a) > b; }
-inline bool operator <=(const interval & a, const l_cinterval & b) throw()
+inline bool operator <=(const interval & a, const l_cinterval & b)
                                            { return l_cinterval(a) <= b; }
-inline bool operator >=(const interval & a, const l_cinterval & b) throw() 
+inline bool operator >=(const interval & a, const l_cinterval & b) 
                                            { return l_cinterval(a) >= b; }
 
-inline bool operator  <(const l_cinterval & a, const interval & b) throw() 
+inline bool operator  <(const l_cinterval & a, const interval & b) 
                                             { return a < l_cinterval(b); }
-inline bool operator  >(const l_cinterval & a, const interval & b) throw() 
+inline bool operator  >(const l_cinterval & a, const interval & b) 
                                             { return a > l_cinterval(b); }
-inline bool operator <=(const l_cinterval & a, const interval & b) throw() 
+inline bool operator <=(const l_cinterval & a, const interval & b) 
                                            { return a <= l_cinterval(b); }
-inline bool operator >=(const l_cinterval & a, const interval & b) throw() 
+inline bool operator >=(const l_cinterval & a, const interval & b) 
                                            { return a >= l_cinterval(b); }
 
 // LCI <--> LI
 
-inline bool operator  <(const l_interval & a, const l_cinterval & b) throw() 
+inline bool operator  <(const l_interval & a, const l_cinterval & b) 
                                               { return l_cinterval(a) < b; }
-inline bool operator  >(const l_interval & a, const l_cinterval & b) throw()
+inline bool operator  >(const l_interval & a, const l_cinterval & b)
                                               { return l_cinterval(a) > b; }
-inline bool operator <=(const l_interval & a, const l_cinterval & b) throw()
+inline bool operator <=(const l_interval & a, const l_cinterval & b)
                                              { return l_cinterval(a) <= b; }
-inline bool operator >=(const l_interval & a, const l_cinterval & b) throw() 
+inline bool operator >=(const l_interval & a, const l_cinterval & b) 
                                              { return l_cinterval(a) >= b; }
 
-inline bool operator  <(const l_cinterval & a, const l_interval & b) throw() 
+inline bool operator  <(const l_cinterval & a, const l_interval & b) 
                                               { return a < l_cinterval(b); }
-inline bool operator  >(const l_cinterval & a, const l_interval & b) throw() 
+inline bool operator  >(const l_cinterval & a, const l_interval & b) 
                                               { return a > l_cinterval(b); }
-inline bool operator <=(const l_cinterval & a, const l_interval & b) throw() 
+inline bool operator <=(const l_cinterval & a, const l_interval & b) 
                                              { return a <= l_cinterval(b); }
-inline bool operator >=(const l_cinterval & a, const l_interval & b) throw() 
+inline bool operator >=(const l_cinterval & a, const l_interval & b) 
                                              { return a >= l_cinterval(b); }
 
 // LCI <--> C
 
-inline bool operator  <(const complex & a, const l_cinterval & b) throw() 
+inline bool operator  <(const complex & a, const l_cinterval & b) 
                                            { return l_cinterval(a) < b; }
-inline bool operator  >(const complex & a, const l_cinterval & b) throw()
+inline bool operator  >(const complex & a, const l_cinterval & b)
                                            { return l_cinterval(a) > b; }
-inline bool operator <=(const complex & a, const l_cinterval & b) throw()
+inline bool operator <=(const complex & a, const l_cinterval & b)
                                           { return l_cinterval(a) <= b; }
-inline bool operator >=(const complex & a, const l_cinterval & b) throw()
+inline bool operator >=(const complex & a, const l_cinterval & b)
                                           { return l_cinterval(a) >= b; }
 
-inline bool operator  <(const l_cinterval & a, const complex & b) throw()
+inline bool operator  <(const l_cinterval & a, const complex & b)
                                            { return a < l_cinterval(b); }
-inline bool operator  >(const l_cinterval & a, const complex & b) throw() 
+inline bool operator  >(const l_cinterval & a, const complex & b) 
                                            { return a > l_cinterval(b); }
-inline bool operator <=(const l_cinterval & a, const complex & b) throw() 
+inline bool operator <=(const l_cinterval & a, const complex & b) 
                                           { return a <= l_cinterval(b); }
-inline bool operator >=(const l_cinterval & a, const complex & b) throw()
+inline bool operator >=(const l_cinterval & a, const complex & b)
                                           { return a >= l_cinterval(b); }
 
 // LCI <--> LC
 
-inline bool operator  <(const l_complex & a, const l_cinterval & b) throw() 
+inline bool operator  <(const l_complex & a, const l_cinterval & b) 
                                              { return l_cinterval(a) < b; }
-inline bool operator  >(const l_complex & a, const l_cinterval & b) throw()
+inline bool operator  >(const l_complex & a, const l_cinterval & b)
                                              { return l_cinterval(a) > b; }
-inline bool operator <=(const l_complex & a, const l_cinterval & b) throw()
+inline bool operator <=(const l_complex & a, const l_cinterval & b)
                                             { return l_cinterval(a) <= b; }
-inline bool operator >=(const l_complex & a, const l_cinterval & b) throw()
+inline bool operator >=(const l_complex & a, const l_cinterval & b)
                                             { return l_cinterval(a) >= b; }
 
-inline bool operator  <(const l_cinterval & a, const l_complex & b) throw()
+inline bool operator  <(const l_cinterval & a, const l_complex & b)
                                              { return a < l_cinterval(b); }
-inline bool operator  >(const l_cinterval & a, const l_complex & b) throw() 
+inline bool operator  >(const l_cinterval & a, const l_complex & b) 
                                              { return a > l_cinterval(b); }
-inline bool operator <=(const l_cinterval & a, const l_complex & b) throw() 
+inline bool operator <=(const l_cinterval & a, const l_complex & b) 
                                             { return a <= l_cinterval(b); }
-inline bool operator >=(const l_cinterval & a, const l_complex & b) throw()
+inline bool operator >=(const l_cinterval & a, const l_complex & b)
                                             { return a >= l_cinterval(b); }
 
 // LCI <--> CI
 
-inline bool operator  <(const cinterval & a, const l_cinterval & b) throw() 
+inline bool operator  <(const cinterval & a, const l_cinterval & b) 
                                              { return l_cinterval(a) < b; }
-inline bool operator  >(const cinterval & a, const l_cinterval & b) throw()
+inline bool operator  >(const cinterval & a, const l_cinterval & b)
                                              { return l_cinterval(a) > b; }
-inline bool operator <=(const cinterval & a, const l_cinterval & b) throw()
+inline bool operator <=(const cinterval & a, const l_cinterval & b)
                                             { return l_cinterval(a) <= b; }
-inline bool operator >=(const cinterval & a, const l_cinterval & b) throw()
+inline bool operator >=(const cinterval & a, const l_cinterval & b)
                                             { return l_cinterval(a) >= b; }
 
-inline bool operator  <(const l_cinterval & a, const cinterval & b) throw()
+inline bool operator  <(const l_cinterval & a, const cinterval & b)
                                              { return a < l_cinterval(b); }
-inline bool operator  >(const l_cinterval & a, const cinterval & b) throw() 
+inline bool operator  >(const l_cinterval & a, const cinterval & b) 
                                              { return a > l_cinterval(b); }
-inline bool operator <=(const l_cinterval & a, const cinterval & b) throw() 
+inline bool operator <=(const l_cinterval & a, const cinterval & b) 
                                             { return a <= l_cinterval(b); }
-inline bool operator >=(const l_cinterval & a, const cinterval & b) throw()
+inline bool operator >=(const l_cinterval & a, const cinterval & b)
                                             { return a >= l_cinterval(b); }
 
 
 // ---- Others   -------------------------------------------
 
-inline l_complex    Inf(const l_cinterval & a) throw() 
+inline l_complex    Inf(const l_cinterval & a) 
                                  { return l_complex(Inf(a.re),Inf(a.im)); }
-inline l_complex    Sup(const l_cinterval & a) throw() 
+inline l_complex    Sup(const l_cinterval & a) 
                                  { return l_complex(Sup(a.re),Sup(a.im)); }
 
 inline l_cinterval & SetInf(l_cinterval & a, const complex & b) 
-                                      throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+                                     
 {
    Inf(a.re) = Re(b);
    Inf(a.im) = Im(b);
@@ -949,7 +949,7 @@ inline l_cinterval & SetInf(l_cinterval & a, const complex & b)
 }
 
 inline l_cinterval & SetSup(l_cinterval & a, const complex & b) 
-                                      throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+                                     
 {
    Sup(a.re)=Re(b);
    Sup(a.im)=Im(b);
@@ -961,7 +961,7 @@ inline l_cinterval & SetSup(l_cinterval & a, const complex & b)
 }
 
 inline l_cinterval & SetInf(l_cinterval & a, const l_complex & b) 
-                                      throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+                                     
 {
    Inf(a.re) = Re(b);
    Inf(a.im) = Im(b);
@@ -973,7 +973,7 @@ inline l_cinterval & SetInf(l_cinterval & a, const l_complex & b)
 }
 
 inline l_cinterval & SetSup(l_cinterval & a, const l_complex & b) 
-                                      throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+                                     
 {
    Sup(a.re)=Re(b);
    Sup(a.im)=Im(b);
@@ -985,7 +985,7 @@ inline l_cinterval & SetSup(l_cinterval & a, const l_complex & b)
 }
 
 inline l_cinterval & SetInf(l_cinterval & a, const real & b) 
-                         throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+                        
 {
    Inf(a.re)=b;
    Inf(a.im)=0.0;
@@ -997,7 +997,7 @@ inline l_cinterval & SetInf(l_cinterval & a, const real & b)
 }
 
 inline l_cinterval & SetSup(l_cinterval & a, const real & b) 
-                         throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+                        
 {
    Sup(a.re)=b;
    Sup(a.im)=0.0;
@@ -1009,7 +1009,7 @@ inline l_cinterval & SetSup(l_cinterval & a, const real & b)
 }
 
 inline l_cinterval & SetInf(l_cinterval & a, const l_real & b) 
-                         throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+                        
 {
    Inf(a.re)=b;
    Inf(a.im)=0.0;
@@ -1021,7 +1021,7 @@ inline l_cinterval & SetInf(l_cinterval & a, const l_real & b)
 }
 
 inline l_cinterval & SetSup(l_cinterval & a, const l_real & b) 
-                         throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+                        
 {
    Sup(a.re)=b;
    Sup(a.im)=0.0;
@@ -1034,7 +1034,7 @@ inline l_cinterval & SetSup(l_cinterval & a, const l_real & b)
 
 
 inline l_cinterval & UncheckedSetInf(l_cinterval & a, const complex & b)
-                                                                   throw()
+                                                                  
 {
    Inf(a.re)=Re(b);
    Inf(a.im)=Im(b);
@@ -1042,7 +1042,7 @@ inline l_cinterval & UncheckedSetInf(l_cinterval & a, const complex & b)
 }
 
 inline l_cinterval & UncheckedSetInf(l_cinterval & a, const real & b) 
-                                                                throw()
+                                                               
 {
    Inf(a.re)=b;
    Inf(a.im)=0.0;
@@ -1050,7 +1050,7 @@ inline l_cinterval & UncheckedSetInf(l_cinterval & a, const real & b)
 }
 
 inline l_cinterval & UncheckedSetSup(l_cinterval & a, const complex & b) 
-                                                                   throw()
+                                                                  
 {
    Sup(a.re)=Re(b);
    Sup(a.im)=Im(b);
@@ -1058,7 +1058,7 @@ inline l_cinterval & UncheckedSetSup(l_cinterval & a, const complex & b)
 }
 
 inline l_cinterval & UncheckedSetSup(l_cinterval & a, const real & b) 
-                                                                throw()
+                                                               
 {
    Sup(a.re)=b;
    Sup(a.im)=0.0;
@@ -1066,7 +1066,7 @@ inline l_cinterval & UncheckedSetSup(l_cinterval & a, const real & b)
 }
 
 inline l_cinterval & UncheckedSetInf(l_cinterval & a, const l_complex & b)
-                                                                   throw()
+                                                                  
 {
    Inf(a.re)=Re(b);
    Inf(a.im)=Im(b);
@@ -1074,7 +1074,7 @@ inline l_cinterval & UncheckedSetInf(l_cinterval & a, const l_complex & b)
 }
 
 inline l_cinterval & UncheckedSetInf(l_cinterval & a, const l_real & b) 
-                                                                throw()
+                                                               
 {
    Inf(a.re)=b;
    Inf(a.im)=0.0;
@@ -1082,7 +1082,7 @@ inline l_cinterval & UncheckedSetInf(l_cinterval & a, const l_real & b)
 }
 
 inline l_cinterval & UncheckedSetSup(l_cinterval & a, const l_complex & b) 
-                                                                   throw()
+                                                                  
 {
    Sup(a.re)=Re(b);
    Sup(a.im)=Im(b);
@@ -1090,7 +1090,7 @@ inline l_cinterval & UncheckedSetSup(l_cinterval & a, const l_complex & b)
 }
 
 inline l_cinterval & UncheckedSetSup(l_cinterval & a, const l_real & b) 
-                                                                throw()
+                                                               
 {
    Sup(a.re)=b;
    Sup(a.im)=0.0;
@@ -1098,23 +1098,23 @@ inline l_cinterval & UncheckedSetSup(l_cinterval & a, const l_real & b)
 }
 
 
-inline l_cinterval conj(const l_cinterval & a) throw() 
+inline l_cinterval conj(const l_cinterval & a) 
 { return l_cinterval(a.re,-a.im); }
 
-inline l_complex mid(const l_cinterval &a) throw() 
+inline l_complex mid(const l_cinterval &a) 
 { return l_complex(mid(a.re), mid(a.im)); }
 
-inline l_complex diam(const l_cinterval &a) throw()
+inline l_complex diam(const l_cinterval &a)
 { return l_complex(diam(a.re),diam(a.im)); }
 
-inline l_cinterval adjust(const l_cinterval & a) throw() 
+inline l_cinterval adjust(const l_cinterval & a) 
 { 
   return l_cinterval(adjust(Re(a)),adjust(Im(a)));	
 	
 // return l_cinterval(a.re,-a.im); 
 }
 
-inline void times2pown(l_cinterval& x, const int& n) throw() 
+inline void times2pown(l_cinterval& x, const int& n) 
 // Blomquist, 08.03.07;
 {
     if ( n<-1074 || n>1023 ) 
@@ -1128,7 +1128,7 @@ inline void times2pown(l_cinterval& x, const int& n) throw()
     x = l_cinterval(u,v);
 }
 
-inline void Times2pown(l_cinterval& x, const int& n) throw() 
+inline void Times2pown(l_cinterval& x, const int& n) 
 // Blomquist, 28.03.07;
 {
 

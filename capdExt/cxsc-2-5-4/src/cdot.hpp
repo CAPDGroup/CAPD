@@ -130,171 +130,171 @@ class cdotprecision
 
       // ---- Ausgabefunkt. ---------------------------------------
       //! Implementation of standard input method
-      friend std::istream& operator >> (std::istream& s, cdotprecision& a)       throw();
+      friend std::istream& operator >> (std::istream& s, cdotprecision& a)      ;
       //! Implementation of standard output method
-      friend std::ostream& operator << (std::ostream& s, const cdotprecision& a) throw();
+      friend std::ostream& operator << (std::ostream& s, const cdotprecision& a);
       //! Implementation of standard input method
-      friend std::string&  operator >> (std::string&  s, cdotprecision& a)       throw();
+      friend std::string&  operator >> (std::string&  s, cdotprecision& a)      ;
       //! Implementation of standard output method
-      friend std::string&  operator << (std::string&  s, const cdotprecision& a) throw();
+      friend std::string&  operator << (std::string&  s, const cdotprecision& a);
       //! Implementation of standard input method
-      friend void          operator >> (const std::string &s,cdotprecision& a)   throw();
+      friend void          operator >> (const std::string &s,cdotprecision& a)  ;
       //! Implementation of standard input method
-      friend void          operator >> (const char *s       ,cdotprecision& a)   throw();
+      friend void          operator >> (const char *s       ,cdotprecision& a)  ;
 
       // ---- Standardfunkt ---- (arithmetische Operatoren)
       //! Implementation of standard algebraic negative sign operation
-      friend inline cdotprecision operator -(const cdotprecision &) throw();
+      friend inline cdotprecision operator -(const cdotprecision &);
       //! Implementation of standard algebraic positive sign operation
-      friend inline cdotprecision operator +(const cdotprecision &) throw();
+      friend inline cdotprecision operator +(const cdotprecision &);
 
       //! Implementation of standard algebraic addition operation
-      friend inline cdotprecision operator +(const cdotprecision &,const cdotprecision &) throw();
+      friend inline cdotprecision operator +(const cdotprecision &,const cdotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline cdotprecision operator -(const cdotprecision &,const cdotprecision &) throw();
+      friend inline cdotprecision operator -(const cdotprecision &,const cdotprecision &);
 
       //! Implementation of standard algebraic addition operation
-      friend inline cdotprecision operator +(const cdotprecision &,const complex &) throw();
+      friend inline cdotprecision operator +(const cdotprecision &,const complex &);
       //! Implementation of standard algebraic addition operation
-      friend inline cdotprecision operator +(const complex &,const cdotprecision &) throw();
+      friend inline cdotprecision operator +(const complex &,const cdotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline cdotprecision operator -(const cdotprecision &,const complex &) throw();
+      friend inline cdotprecision operator -(const cdotprecision &,const complex &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline cdotprecision operator -(const complex &,const cdotprecision &) throw();
+      friend inline cdotprecision operator -(const complex &,const cdotprecision &);
       
       //! Implementation of standard algebraic addition operation
-      friend inline cdotprecision operator +(const cdotprecision &,const dotprecision &) throw();
+      friend inline cdotprecision operator +(const cdotprecision &,const dotprecision &);
       //! Implementation of standard algebraic addition operation
-      friend inline cdotprecision operator +(const dotprecision &,const cdotprecision &) throw();
+      friend inline cdotprecision operator +(const dotprecision &,const cdotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline cdotprecision operator -(const cdotprecision &,const dotprecision &) throw();
+      friend inline cdotprecision operator -(const cdotprecision &,const dotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline cdotprecision operator -(const dotprecision &,const cdotprecision &) throw();
+      friend inline cdotprecision operator -(const dotprecision &,const cdotprecision &);
       
       //! Implementation of standard algebraic addition operation
-      friend inline cdotprecision operator +(const cdotprecision &,const real &) throw();
+      friend inline cdotprecision operator +(const cdotprecision &,const real &);
       //! Implementation of standard algebraic addition operation
-      friend inline cdotprecision operator +(const real &,const cdotprecision &) throw();
+      friend inline cdotprecision operator +(const real &,const cdotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline cdotprecision operator -(const cdotprecision &,const real &) throw();
+      friend inline cdotprecision operator -(const cdotprecision &,const real &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline cdotprecision operator -(const real &,const cdotprecision &) throw();
+      friend inline cdotprecision operator -(const real &,const cdotprecision &);
 
       //! Implementation of standard algebraic addition operation
-      friend inline cdotprecision operator +(const cdotprecision &, const l_real &) throw();
+      friend inline cdotprecision operator +(const cdotprecision &, const l_real &);
       //! Implementation of standard algebraic addition operation
-      friend inline cdotprecision operator +(const l_real &, const cdotprecision &) throw();
+      friend inline cdotprecision operator +(const l_real &, const cdotprecision &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline cdotprecision operator -(const cdotprecision &, const l_real &) throw();
+      friend inline cdotprecision operator -(const cdotprecision &, const l_real &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline cdotprecision operator -(const l_real &, const cdotprecision &) throw();
+      friend inline cdotprecision operator -(const l_real &, const cdotprecision &);
 
       //! Implementation of standard algebraic addition and allocation operation
-      friend inline cdotprecision & operator +=(cdotprecision &,const cdotprecision &) throw();
+      friend inline cdotprecision & operator +=(cdotprecision &,const cdotprecision &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend inline cdotprecision & operator -=(cdotprecision &,const cdotprecision &) throw();
+      friend inline cdotprecision & operator -=(cdotprecision &,const cdotprecision &);
       //! Implementation of standard algebraic addition and allocation operation
-      friend inline cdotprecision & operator +=(cdotprecision &,const complex &) throw();
+      friend inline cdotprecision & operator +=(cdotprecision &,const complex &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend inline cdotprecision & operator -=(cdotprecision &,const complex &) throw();
+      friend inline cdotprecision & operator -=(cdotprecision &,const complex &);
       //! Implementation of standard algebraic addition and allocation operation
-      friend inline cdotprecision & operator +=(cdotprecision &,const real &) throw();
+      friend inline cdotprecision & operator +=(cdotprecision &,const real &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend inline cdotprecision & operator -=(cdotprecision &,const real &) throw();
+      friend inline cdotprecision & operator -=(cdotprecision &,const real &);
       //! Implementation of standard algebraic addition and allocation operation
-      friend inline cdotprecision & operator +=(cdotprecision &,const l_real &) throw();
+      friend inline cdotprecision & operator +=(cdotprecision &,const l_real &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend inline cdotprecision & operator -=(cdotprecision &,const l_real &) throw();
+      friend inline cdotprecision & operator -=(cdotprecision &,const l_real &);
       
       //! Implementation of standard algebraic addition and allocation operation
-      friend inline cdotprecision & operator +=(cdotprecision &,const dotprecision &) throw();
+      friend inline cdotprecision & operator +=(cdotprecision &,const dotprecision &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend inline cdotprecision & operator -=(cdotprecision &,const dotprecision &) throw();
+      friend inline cdotprecision & operator -=(cdotprecision &,const dotprecision &);
 
       // ---- Vergleichsop. ----
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const cdotprecision &,const cdotprecision &) throw();
+      friend inline bool operator ==(const cdotprecision &,const cdotprecision &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const cdotprecision &,const cdotprecision &) throw();
+      friend inline bool operator !=(const cdotprecision &,const cdotprecision &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const dotprecision &,const cdotprecision &) throw();
+      friend inline bool operator ==(const dotprecision &,const cdotprecision &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const dotprecision &,const cdotprecision &) throw();
+      friend inline bool operator !=(const dotprecision &,const cdotprecision &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const cdotprecision &,const dotprecision &) throw();
+      friend inline bool operator ==(const cdotprecision &,const dotprecision &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const cdotprecision &,const dotprecision &) throw();
+      friend inline bool operator !=(const cdotprecision &,const dotprecision &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const complex &,const cdotprecision &) throw();
+      friend inline bool operator ==(const complex &,const cdotprecision &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const complex &,const cdotprecision &) throw();
+      friend inline bool operator !=(const complex &,const cdotprecision &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const cdotprecision &,const complex &) throw();
+      friend inline bool operator ==(const cdotprecision &,const complex &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const cdotprecision &,const complex &) throw();
+      friend inline bool operator !=(const cdotprecision &,const complex &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const real &,const cdotprecision &) throw();
+      friend inline bool operator ==(const real &,const cdotprecision &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const real &,const cdotprecision &) throw();
+      friend inline bool operator !=(const real &,const cdotprecision &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const cdotprecision &,const real &) throw();
+      friend inline bool operator ==(const cdotprecision &,const real &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const cdotprecision &,const real &) throw();
+      friend inline bool operator !=(const cdotprecision &,const real &);
 
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const cdotprecision &, const l_real &) throw();
+      friend inline bool operator ==(const cdotprecision &, const l_real &);
       //! Implementation of standard equality operation
-      friend inline bool operator ==(const l_real &, const cdotprecision &) throw();
+      friend inline bool operator ==(const l_real &, const cdotprecision &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const cdotprecision &, const l_real &) throw();
+      friend inline bool operator !=(const cdotprecision &, const l_real &);
       //! Implementation of standard negated equality operation
-      friend inline bool operator !=(const l_real &, const cdotprecision &) throw();
+      friend inline bool operator !=(const l_real &, const cdotprecision &);
 
       //! Implementation of standard negation operation
-      friend inline bool operator !(const cdotprecision&) throw();
+      friend inline bool operator !(const cdotprecision&);
       
       // ---- Funktionen    ----
       
       //! Returns the real part of the complex dotprecision value
       friend inline dotprecision & Re(cdotprecision& a);
       //! Returns the imaginary part of the complex dotprecision value
-      friend inline dotprecision & Im(cdotprecision& a)  throw();
+      friend inline dotprecision & Im(cdotprecision& a) ;
       //! Returns the real part of the complex dotprecision value
       friend inline const dotprecision & Re(const cdotprecision& a);
       //! Returns the imaginary part of the complex dotprecision value
-      friend inline const dotprecision & Im(const cdotprecision& a)  throw();
+      friend inline const dotprecision & Im(const cdotprecision& a) ;
       //! Sets the real part of a complex dotprecision value
-      friend inline cdotprecision& SetRe (cdotprecision& a, const dotprecision& b)  throw();
+      friend inline cdotprecision& SetRe (cdotprecision& a, const dotprecision& b) ;
       //! Sets the imaginary part of a complex dotprecision value
-      friend inline cdotprecision& SetIm (cdotprecision& a, const dotprecision& b) throw();
+      friend inline cdotprecision& SetIm (cdotprecision& a, const dotprecision& b);
       
       //! Returns the conjugated complex dotprecision value
-      friend inline cdotprecision conj(const cdotprecision &a) throw();
+      friend inline cdotprecision conj(const cdotprecision &a);
 
       //! Converting the exact complex dotprecision value with one rounding into a complex value
-      friend void rnd(const cdotprecision &,complex &,rndtype ) throw();
+      friend void rnd(const cdotprecision &,complex &,rndtype );
       //! Converting the exact complex dotprecision value with one rounding into the nearest lower and upper complex value
-      friend void rnd(const cdotprecision &,complex &,complex &) throw();
+      friend void rnd(const cdotprecision &,complex &,complex &);
       //! Converting the exact complex dotprecision value into an interval with the nearest lower and upper bound
-      friend void rnd (const cdotprecision&, cinterval&) throw();
+      friend void rnd (const cdotprecision&, cinterval&);
       //! Converting the exact complex dotprecision value with one rounding into a complex value
-      friend complex rnd(const cdotprecision &,rndtype) throw();
+      friend complex rnd(const cdotprecision &,rndtype);
       
       //! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend        void accumulate  (cdotprecision&, const complex&, const complex&) throw();
+      friend        void accumulate  (cdotprecision&, const complex&, const complex&);
       //! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend inline void accumulate  (cdotprecision&, const complex&, const real&) throw();
+      friend inline void accumulate  (cdotprecision&, const complex&, const real&);
       //! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend inline void accumulate  (cdotprecision&, const real&, const complex&) throw();
+      friend inline void accumulate  (cdotprecision&, const real&, const complex&);
       //! The accurate scalar product of the last two arguments added to the value of the first argument
-      friend inline void accumulate  (cdotprecision&, const real&, const real&) throw();
+      friend inline void accumulate  (cdotprecision&, const real&, const real&);
 };
 
 // ---------------------------------------------------------------------------
@@ -305,19 +305,19 @@ class cdotprecision
 
 inline cdotprecision _cdotprecision(const l_complex&);
 
-std::istream& operator >> (std::istream& s, cdotprecision& a)       throw();
-std::ostream& operator << (std::ostream& s, const cdotprecision& a) throw();
-std::string&  operator >> (std::string&  s, cdotprecision& a)       throw();
-std::string&  operator << (std::string&  s, const cdotprecision& a) throw();
-void          operator >> (const std::string &s,cdotprecision& a)   throw();
-void          operator >> (const char *s       ,cdotprecision& a)   throw();
+std::istream& operator >> (std::istream& s, cdotprecision& a)      ;
+std::ostream& operator << (std::ostream& s, const cdotprecision& a);
+std::string&  operator >> (std::string&  s, cdotprecision& a)      ;
+std::string&  operator << (std::string&  s, const cdotprecision& a);
+void          operator >> (const std::string &s,cdotprecision& a)  ;
+void          operator >> (const char *s       ,cdotprecision& a)  ;
 
-void rnd(const cdotprecision &,complex &,rndtype = RND_NEXT) throw();
-void rnd(const cdotprecision &,complex &,complex &) throw();
-void rnd(const cdotprecision&, cinterval&) throw();
-complex rnd(const cdotprecision &,rndtype = RND_NEXT) throw();
+void rnd(const cdotprecision &,complex &,rndtype = RND_NEXT);
+void rnd(const cdotprecision &,complex &,complex &);
+void rnd(const cdotprecision&, cinterval&);
+complex rnd(const cdotprecision &,rndtype = RND_NEXT);
 
-void accumulate  (cdotprecision&, const complex&, const complex&) throw();
+void accumulate  (cdotprecision&, const complex&, const complex&);
 
 
 // ---------------------------------------------------------------------------
@@ -327,8 +327,8 @@ void accumulate  (cdotprecision&, const complex&, const complex&) throw();
 // ---------------------------------------------------------------------------
 
 //! Implementation of standard algebraic addition and allocation operation
-inline cdotprecision & operator += (cdotprecision &cd, const l_complex &lc) throw(); 
-inline cdotprecision & operator -= (cdotprecision &cd, const l_complex &lc) throw(); 
+inline cdotprecision & operator += (cdotprecision &cd, const l_complex &lc); 
+inline cdotprecision & operator -= (cdotprecision &cd, const l_complex &lc); 
 
 // ---------------------------------------------------------------------------
 // ----                                                                   ----

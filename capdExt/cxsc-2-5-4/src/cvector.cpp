@@ -38,9 +38,9 @@ namespace cxsc {
 
 	void accumulate(cdotprecision &dp, const cvector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -57,9 +57,9 @@ namespace cxsc {
 
 	void accumulate(cdotprecision &dp, const cvector_slice & sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -76,9 +76,9 @@ namespace cxsc {
 
 	void accumulate(cdotprecision &dp, const cvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -95,9 +95,9 @@ namespace cxsc {
 
 	void accumulate(cdotprecision &dp, const cvector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -113,9 +113,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const cvector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -129,9 +129,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const cvector_slice & sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -145,9 +145,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const cvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -161,9 +161,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const cvector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -177,9 +177,9 @@ namespace cxsc {
 
 	void accumulate(cdotprecision &dp, const cvector & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -197,9 +197,9 @@ namespace cxsc {
 
 	 void accumulate(cdotprecision &dp, const rvector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -217,9 +217,9 @@ namespace cxsc {
 
 	 void accumulate(cdotprecision &dp, const rvector_slice & sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -237,9 +237,9 @@ namespace cxsc {
 
 	 void accumulate(cdotprecision &dp,const cvector_slice &sl,const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -257,9 +257,9 @@ namespace cxsc {
 
 	void accumulate(cdotprecision &dp, const rvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -277,9 +277,9 @@ namespace cxsc {
 
 	void accumulate(cdotprecision &dp,const cvector &rv,const rvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -297,9 +297,9 @@ namespace cxsc {
 
 	 void accumulate(cdotprecision &dp, const cvector_slice & sl1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -317,9 +317,9 @@ namespace cxsc {
 
 	void accumulate(cdotprecision &dp, const rvector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -337,9 +337,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const cvector & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -354,9 +354,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const rvector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -371,9 +371,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const rvector_slice & sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -388,9 +388,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp,const cvector_slice &sl,const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -405,9 +405,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const rvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -422,9 +422,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp,const cvector &rv,const rvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -439,9 +439,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const cvector_slice & sl1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -456,9 +456,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const rvector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -474,9 +474,9 @@ namespace cxsc {
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	 void accumulate(cidotprecision &dp, const cvector_slice &sl, const ivector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -494,9 +494,9 @@ namespace cxsc {
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	 void accumulate(cidotprecision &dp, const ivector & rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -514,9 +514,9 @@ namespace cxsc {
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	 void accumulate(cidotprecision &dp, const cvector &rv1, const ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -534,9 +534,9 @@ namespace cxsc {
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	 void accumulate(cidotprecision &dp, const ivector &rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -554,9 +554,9 @@ namespace cxsc {
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	 void accumulate(cidotprecision &dp, const ivector_slice &sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -574,9 +574,9 @@ namespace cxsc {
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	 void accumulate(cidotprecision &dp, const cvector &rv, const ivector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -594,9 +594,9 @@ namespace cxsc {
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	 void accumulate(cidotprecision &dp, const cvector_slice &sl1, const ivector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -614,9 +614,9 @@ namespace cxsc {
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	 void accumulate(cidotprecision &dp, const ivector_slice &sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)

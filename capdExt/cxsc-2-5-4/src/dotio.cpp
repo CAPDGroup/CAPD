@@ -52,7 +52,7 @@ extern __thread char *dm;
 #endif
 
 
-std::string & operator <<(std::string & s,const dotprecision &a) throw()
+std::string & operator <<(std::string & s,const dotprecision &a)
 {
    if(ioflags.isset(IOFlags::realformat))
    {
@@ -110,7 +110,7 @@ std::string & operator <<(std::string & s,const dotprecision &a) throw()
    return s;
 }
 
-std::ostream & operator <<(std::ostream & s,const dotprecision &a) throw()
+std::ostream & operator <<(std::ostream & s,const dotprecision &a)
 {
    string str="";
    str << a;
@@ -118,7 +118,7 @@ std::ostream & operator <<(std::ostream & s,const dotprecision &a) throw()
    return s;
 }
 
-std::string & operator >>(std::string & s,dotprecision &a) throw()
+std::string & operator >>(std::string & s,dotprecision &a)
 {
    rndtype rnd;
    a_intg rndfl;
@@ -146,18 +146,18 @@ std::string & operator >>(std::string & s,dotprecision &a) throw()
   
    return s;
 }
-void operator >>(const std::string &s,dotprecision &a) throw()
+void operator >>(const std::string &s,dotprecision &a)
 {
    string s2(s);
    s2 >> a;
 }
-void operator >>(const char *s,dotprecision &a) throw()
+void operator >>(const char *s,dotprecision &a)
 {
    string s2(s);
    s2 >> a;
 }
 
-std::istream & operator >>(std::istream & s,dotprecision &a) throw()
+std::istream & operator >>(std::istream & s,dotprecision &a)
 {
    char c;
    string d="";

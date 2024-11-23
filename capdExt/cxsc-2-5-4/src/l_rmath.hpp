@@ -31,45 +31,45 @@
 namespace cxsc {
 
 //! Calculates \f$ x^2  \f$
-inline l_real sqr     (const l_real&) throw(); // Sqr(x)
+inline l_real sqr     (const l_real&); // Sqr(x)
 //! Calculates \f$ \sqrt{x}  \f$
-       l_real sqrt    (const l_real&) throw(ERROR_LREAL_STD_FKT_OUT_OF_DEF);
+       l_real sqrt    (const l_real&);
                                                // Sqrt(x)
 //! Calculates \f$ \sqrt{x^2+y^2} \f$
-       l_real sqrtx2y2(const l_real&, const l_real&) throw(); 
+       l_real sqrtx2y2(const l_real&, const l_real&); 
                                                // Sqrt(x^2+y^2)
 //! Calculates \f$ \sqrt{1+x^2} \f$
-       l_real sqrt1px2(const l_real&) throw(); // Sqrt(1+x^2)
+       l_real sqrt1px2(const l_real&); // Sqrt(1+x^2)
 //! Calculates \f$ \sqrt{(x+1)-1} \f$
-inline l_real sqrtp1m1(const l_real &) throw(); 
+inline l_real sqrtp1m1(const l_real &); 
 //! Calculates \f$ \sqrt{x^2-1} \f$
-inline l_real sqrtx2m1(const l_real &) throw();
+inline l_real sqrtx2m1(const l_real &);
 //! Calculates \f$ \sqrt{1-x^2} \f$
-inline l_real sqrt1mx2(const l_real &) throw();
+inline l_real sqrt1mx2(const l_real &);
 //! Calculates \f$ \exp(x)-1 \f$
-inline l_real expm1   (const l_real &x) throw();
+inline l_real expm1   (const l_real &x);
 //! Calculates \f$ \exp(-x^2) \f$
-inline l_real expmx2  (const l_real&) throw();
+inline l_real expmx2  (const l_real&);
 //! Calculates \f$ \ln{\sqrt{x^2+y^2}} \f$
-inline l_real ln_sqrtx2y2(const l_real& x, const l_real& y) throw();
+inline l_real ln_sqrtx2y2(const l_real& x, const l_real& y);
 //! Calculates \f$ \arccos(1+x) \f$
 inline l_real acoshp1 (const l_real& x);
 
 // inline l_real sqrt   (const l_real &, int);  // Sqrt(x, n)
-// inline l_real sin    (const l_real&) throw();        // Sin(x)
-// inline l_real cos    (const l_real&) throw();        // Cos(x)
-// inline l_real tan    (const l_real&) throw();        // Tan(x)
-// inline l_real cot    (const l_real&) throw();        // Cot(x)
+// inline l_real sin    (const l_real&);        // Sin(x)
+// inline l_real cos    (const l_real&);        // Cos(x)
+// inline l_real tan    (const l_real&);        // Tan(x)
+// inline l_real cot    (const l_real&);        // Cot(x)
 // inline l_real asin   (const l_real&);        // ASin(x)
 // inline l_real acos   (const l_real&);        // ACos(x)
 // inline l_real atan   (const l_real&);        // ATan(x) 
 // inline l_real acot   (const l_real&);        // ACot(x)
-// inline l_real exp    (const l_real&) throw();        // Exp(x)
+// inline l_real exp    (const l_real&);        // Exp(x)
 // inline l_real ln     (const l_real&);        // Ln(x)
-// inline l_real sinh   (const l_real&) throw();        // Sinh(x)
-// inline l_real cosh   (const l_real&) throw();        // Cosh(x)
-// inline l_real tanh   (const l_real&) throw();        // Tanh(x) 
-// inline l_real coth   (const l_real&) throw();        // Coth(x)
+// inline l_real sinh   (const l_real&);        // Sinh(x)
+// inline l_real cosh   (const l_real&);        // Cosh(x)
+// inline l_real tanh   (const l_real&);        // Tanh(x) 
+// inline l_real coth   (const l_real&);        // Coth(x)
 // inline l_real asinh  (const l_real&);        // ASinh(x)
 // inline l_real acosh  (const l_real&);        // ACosh(x)
 // inline l_real atanh  (const l_real&);        // ATanh(x)
@@ -81,41 +81,41 @@ inline l_real pow    (const l_real&, const l_real&); // Pow(x,y)
 l_real power         (const l_real&, const int);     // Power(x,n)
 
 // real staggered constants (the same as in l_interval.hpp):
-l_real Ln2_l_real()   throw();   // ln(2) 
-l_real Ln10_l_real()  throw();   // ln(10)
-l_real Ln10r_l_real() throw();   // 1/ln(10)
-l_real Pid4_l_real()  throw();   // Pi/4
-l_real Sqrt2_l_real() throw();   // sqrt(2)
-l_real Sqrt5_l_real() throw();   // sqrt(5)
-l_real Sqrt7_l_real() throw();   // sqrt(7)
-l_real Ln2r_l_real() throw();     // 1/ln(2)
-l_real Pi_l_real() throw();       // Pi
-l_real Pid2_l_real() throw();     // Pi/2
-l_real Pi2_l_real() throw();      // 2*Pi
-l_real Pid3_l_real() throw();     // Pi/3
-l_real Pir_l_real() throw();      // 1/Pi
-l_real Pi2r_l_real() throw();     // 1/(2*Pi)
-l_real SqrtPi_l_real() throw();   // sqrt(Pi)
-l_real Sqrt2Pi_l_real() throw();  // sqrt(2*Pi)
-l_real SqrtPir_l_real() throw();  // 1/sqrt(Pi)
-l_real Sqrt2Pir_l_real() throw(); // 1/sqrt(2*Pi)
-l_real Pip2_l_real() throw();     // Pi^2
-l_real Sqrt2r_l_real() throw();   // 1/sqrt(2)
-l_real Sqrt3_l_real() throw();    // sqrt(3)
-l_real Sqrt3d2_l_real() throw();  // sqrt(3)/2
-l_real Sqrt3r_l_real() throw();   // 1/sqrt(3)
-l_real LnPi_l_real() throw();     // ln(Pi)
-l_real Ln2Pi_l_real() throw();    // ln(2*Pi)
-l_real E_l_real() throw();        // e = exp(1)
-l_real Er_l_real() throw();       // 1/e
-l_real Ep2_l_real() throw();      // e^2
-l_real Ep2r_l_real() throw();     // 1/e^2
-l_real EpPi_l_real() throw();     // e^Pi
-l_real Ep2Pi_l_real() throw();    // e^(2*Pi)
-l_real EpPid2_l_real() throw();   // e^(Pi/2)
-l_real EpPid4_l_real() throw();   // e^(Pi/4)
-l_real EulerGa_l_real() throw();  // EulerGamma
-l_real Catalan_l_real() throw();  // Catalan
+l_real Ln2_l_real()  ;   // ln(2) 
+l_real Ln10_l_real() ;   // ln(10)
+l_real Ln10r_l_real();   // 1/ln(10)
+l_real Pid4_l_real() ;   // Pi/4
+l_real Sqrt2_l_real();   // sqrt(2)
+l_real Sqrt5_l_real();   // sqrt(5)
+l_real Sqrt7_l_real();   // sqrt(7)
+l_real Ln2r_l_real();     // 1/ln(2)
+l_real Pi_l_real();       // Pi
+l_real Pid2_l_real();     // Pi/2
+l_real Pi2_l_real();      // 2*Pi
+l_real Pid3_l_real();     // Pi/3
+l_real Pir_l_real();      // 1/Pi
+l_real Pi2r_l_real();     // 1/(2*Pi)
+l_real SqrtPi_l_real();   // sqrt(Pi)
+l_real Sqrt2Pi_l_real();  // sqrt(2*Pi)
+l_real SqrtPir_l_real();  // 1/sqrt(Pi)
+l_real Sqrt2Pir_l_real(); // 1/sqrt(2*Pi)
+l_real Pip2_l_real();     // Pi^2
+l_real Sqrt2r_l_real();   // 1/sqrt(2)
+l_real Sqrt3_l_real();    // sqrt(3)
+l_real Sqrt3d2_l_real();  // sqrt(3)/2
+l_real Sqrt3r_l_real();   // 1/sqrt(3)
+l_real LnPi_l_real();     // ln(Pi)
+l_real Ln2Pi_l_real();    // ln(2*Pi)
+l_real E_l_real();        // e = exp(1)
+l_real Er_l_real();       // 1/e
+l_real Ep2_l_real();      // e^2
+l_real Ep2r_l_real();     // 1/e^2
+l_real EpPi_l_real();     // e^Pi
+l_real Ep2Pi_l_real();    // e^(2*Pi)
+l_real EpPid2_l_real();   // e^(Pi/2)
+l_real EpPid4_l_real();   // e^(Pi/4)
+l_real EulerGa_l_real();  // EulerGamma
+l_real Catalan_l_real();  // Catalan
 
 } // namespace cxsc 
 

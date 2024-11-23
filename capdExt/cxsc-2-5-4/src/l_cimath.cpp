@@ -102,7 +102,7 @@ bool disjoint(const l_interval& x, const l_interval& y)
 /* ***************************************************************************/
 
 
-l_cinterval exp(const l_cinterval& z) throw()
+l_cinterval exp(const l_cinterval& z)
 {
     int stagsave = stagprec,
 	stagmax = 19;
@@ -127,17 +127,17 @@ l_cinterval exp(const l_cinterval& z) throw()
     return y;
 }
 
-l_cinterval exp2(const l_cinterval& z) throw()
+l_cinterval exp2(const l_cinterval& z)
 {
 	return exp(z*Ln2_l_interval());
 }
 
-l_cinterval exp10(const l_cinterval& z) throw()
+l_cinterval exp10(const l_cinterval& z)
 {
 	return exp(z*Ln10_l_interval());
 }
 
-l_cinterval expm1(const l_cinterval& z) throw()
+l_cinterval expm1(const l_cinterval& z)
 // exp(z) - 1;
 // Calculates nearly optimal inclusions for not too wide intervals z.
 // Blomquist, 03.12.2008;
@@ -174,7 +174,7 @@ l_cinterval expm1(const l_cinterval& z) throw()
  return res;
 }
 
-l_cinterval cos(const l_cinterval& z) throw()
+l_cinterval cos(const l_cinterval& z)
 {
     int stagsave = stagprec,
 	stagmax = 19;
@@ -199,7 +199,7 @@ l_cinterval cos(const l_cinterval& z) throw()
     return y;
 }
 
-l_cinterval sin(const l_cinterval& z) throw()
+l_cinterval sin(const l_cinterval& z)
 {
     int stagsave = stagprec,
 	stagmax = 19;
@@ -224,7 +224,7 @@ l_cinterval sin(const l_cinterval& z) throw()
     return y;
 }
 
-l_cinterval cosh(const l_cinterval& z) throw()
+l_cinterval cosh(const l_cinterval& z)
 {
     int stagsave = stagprec,
 	stagmax = 19;
@@ -249,7 +249,7 @@ l_cinterval cosh(const l_cinterval& z) throw()
     return y;
 }
 
-l_cinterval sinh(const l_cinterval& z) throw()
+l_cinterval sinh(const l_cinterval& z)
 {
     int stagsave = stagprec,
 	stagmax = 19;
@@ -274,7 +274,7 @@ l_cinterval sinh(const l_cinterval& z) throw()
     return y;
 }
 
-l_cinterval sqr(const l_cinterval& z) throw()
+l_cinterval sqr(const l_cinterval& z)
 // Blomquist, 21.11.2006;
 {   
     dotprecision akku;
@@ -456,7 +456,7 @@ void horizontal_check( //-------------------------------------------- 040726 --
 } // end horizontal_check
 
 
-l_cinterval Tan( const l_cinterval& z ) throw() // -------------- 040827 --
+l_cinterval Tan( const l_cinterval& z ) // -------------- 040827 --
 {
     l_cinterval y;
 
@@ -599,7 +599,7 @@ l_cinterval Tan( const l_cinterval& z ) throw() // -------------- 040827 --
 
 } // Tan
 
-l_cinterval tan( const l_cinterval& z ) throw() 
+l_cinterval tan( const l_cinterval& z ) 
 {
 // tan(z) has the poles z_k = pi*(1+2k)/2;   |k| in {0,1,2,3,...}.
 // z = z_k + eps = pi*(1+2k)/2 + eps;  With  |eps|<<1  k can be calculated
@@ -648,7 +648,7 @@ l_cinterval tan( const l_cinterval& z ) throw()
     return y;
 } // tan()
 
-l_cinterval cot( const l_cinterval& z ) throw() 
+l_cinterval cot( const l_cinterval& z ) 
 {
 // cot(z) has the poles z_k = k*pi;   |k| in {0,1,2,3,...}.
 // z = z_k + eps = k*pi + eps;  With  |eps|<<1  k can be calculated
@@ -702,7 +702,7 @@ l_cinterval cot( const l_cinterval& z ) throw()
 //
 //  tanh( z ) = transp( i * tan( transp( i * z ) )
 //
-l_cinterval tanh( const l_cinterval& z ) throw()
+l_cinterval tanh( const l_cinterval& z )
 {
     int stagsave = stagprec,
 	stagmax = 19; 
@@ -725,7 +725,7 @@ l_cinterval tanh( const l_cinterval& z ) throw()
 //   coth( z ) = i * cot( i * z );
 //
 
-l_cinterval coth( const l_cinterval& z ) throw()
+l_cinterval coth( const l_cinterval& z )
 { // coth( z ) = i * cot( i * z );
     int stagsave = stagprec,
 	stagmax = 19; 
@@ -753,7 +753,7 @@ l_cinterval coth( const l_cinterval& z ) throw()
 //
 //
 
-l_interval Atan(const l_interval& y, const l_interval& x) throw()
+l_interval Atan(const l_interval& y, const l_interval& x)
 // Calculating an inclusion of atan(y/x) with x<>[0,0];
 // This help function must only be used for POINT intervals y,x !!
 // This function avoids internal overflow by calculating y/x.
@@ -801,7 +801,7 @@ l_interval Atan(const l_interval& y, const l_interval& x) throw()
     return res;
 }
 
-l_interval Atan(const l_interval& y, const l_real& x) throw()
+l_interval Atan(const l_interval& y, const l_real& x)
 // Calculating an inclusion of atan(y/x) with x<>0.0;
 // This help function must only be used for POINT intervals y !!
 // This function avoids internal overflow by calculating y/x. 
@@ -836,7 +836,7 @@ l_interval Atan(const l_interval& y, const l_real& x) throw()
 //
 //  atan is the inverse function of tan(t), t in (-pi/2,pi/2).
 //
-l_interval Arg( const l_cinterval& z ) throw()
+l_interval Arg( const l_cinterval& z )
 {
     l_real 
 	srez = Sup( Re(z) ),
@@ -936,7 +936,7 @@ l_interval Arg( const l_cinterval& z ) throw()
 //  atan is the inverse function of tan(t), t in (-pi/2,pi/2).
 //
 
-l_interval arg( const l_cinterval& z ) throw()
+l_interval arg( const l_cinterval& z )
 {
     l_real
 	srez = Sup( Re(z) ),
@@ -1014,7 +1014,7 @@ l_interval arg( const l_cinterval& z ) throw()
 //  (ii) arg_inclmon(Z) = [-pi,pi] if Arg(Z) is not defined.
 //
 
-l_interval arg_inclmon( const l_cinterval& z ) throw()
+l_interval arg_inclmon( const l_cinterval& z )
 {
     if( Inf( Re(z) ) < 0.0 && Inf( Im(z) ) <= 0.0 && Sup( Im(z) ) >= 0.0  )
 	return l_interval( -Sup( Pi_l_interval() ),Sup( Pi_l_interval() ) );
@@ -1034,7 +1034,7 @@ l_interval arg_inclmon( const l_cinterval& z ) throw()
 //  Ln(z) is undefined if z contains zero; z must not touch the negative real
 //  axis from below;
 //
-l_cinterval Ln( const l_cinterval& z ) throw()
+l_cinterval Ln( const l_cinterval& z )
 { // Blomquist;
     int stagsave = stagprec,
 	stagmax = 19; 
@@ -1067,7 +1067,7 @@ l_cinterval Ln( const l_cinterval& z ) throw()
 //
 //  ln(z) is undefined if z contains zero.
 //
-l_cinterval ln( const l_cinterval& z ) throw()
+l_cinterval ln( const l_cinterval& z )
 {
     int stagsave = stagprec,
 	stagmax = 19; 
@@ -1091,7 +1091,7 @@ l_cinterval ln( const l_cinterval& z ) throw()
 //
 //-- end ln -------------------------------------------------------------------
 
-l_cinterval lnp1(const l_cinterval& z) throw()
+l_cinterval lnp1(const l_cinterval& z)
 {  // ln(1+z);
 	// Calculates nearly optimal inclusions for not too wide intervals z.
    // Blomquist, 03.12.2008;
@@ -1130,12 +1130,12 @@ l_cinterval lnp1(const l_cinterval& z) throw()
 	return y;
 }
 
-l_cinterval log2( const l_cinterval& z ) throw()
+l_cinterval log2( const l_cinterval& z )
 {
 	return Ln(z) / Ln2_l_interval();
 }
 
-l_cinterval log10( const l_cinterval& z ) throw()
+l_cinterval log10( const l_cinterval& z )
 {
 	return Ln(z) / Ln10_l_interval();
 }
@@ -1267,7 +1267,7 @@ l_interval Im_Sqrt_point( const l_interval& rez, const l_interval& imz )
     }
 }
 
-l_cinterval sqrt( const l_cinterval& z ) throw() // ----------------------
+l_cinterval sqrt( const l_cinterval& z ) // ----------------------
 //
 //  Analytic square root function with z in the principal branch.
 //  The branch cut is the negative real axis. On the branch cut 
@@ -1326,7 +1326,7 @@ l_cinterval sqrt( const l_cinterval& z ) throw() // ----------------------
     return y;
 }  
 
-l_cinterval sqrtp1m1(const l_cinterval& z) throw()
+l_cinterval sqrtp1m1(const l_cinterval& z)
 // sqrt(1+z)-1;
 // Calculates nearly optimal inclusions for not too wide intervals z.
 // Blomquist, 08.07.2008;
@@ -1350,7 +1350,7 @@ l_cinterval sqrtp1m1(const l_cinterval& z) throw()
  	return res;
 }
 
-l_cinterval sqrt1px2(const l_cinterval& z) throw()
+l_cinterval sqrt1px2(const l_cinterval& z)
 // sqrt(1+z^2);
 // Calculates nearly optimal inclusions for not too wide intervals z.
 // Blomquist, 03.07.2008;
@@ -1394,7 +1394,7 @@ l_cinterval sqrt1px2(const l_cinterval& z) throw()
 }
 // -- end sqrt1px2 ---------------------------------------------------------
 
-l_cinterval sqrtx2m1(const l_cinterval& z) throw()
+l_cinterval sqrtx2m1(const l_cinterval& z)
 // sqrt(z^2-1);
 // Calculates nearly optimal inclusions for not too wide intervals z.
 // Blomquist, 04.12.2008;
@@ -1431,7 +1431,7 @@ l_cinterval sqrtx2m1(const l_cinterval& z) throw()
  	return res;
 }
 
-l_cinterval sqrt1mx2(const l_cinterval& z) throw()
+l_cinterval sqrt1mx2(const l_cinterval& z)
 // sqrt(1-z^2);
 // Calculates nearly optimal inclusions for not too wide intervals z.
 // Blomquist, 04.12.2008;
@@ -1604,7 +1604,7 @@ l_interval Im_Sqrt_point( const l_interval& rez, const l_interval& imz,
 	    sin( Arg( l_cinterval( rez, imz ) ) / n );
 }
 
-l_cinterval sqrt( const l_cinterval& z, int n ) throw() // ----- 040915 --
+l_cinterval sqrt( const l_cinterval& z, int n ) // ----- 040915 --
 //
 //  Analytic n-th root function
 //  sqrt(z,n) is undefined if z contains negative real numbers.
@@ -1816,7 +1816,7 @@ std::list<l_cinterval> sqrt_all( const l_cinterval& z, int n )
 //  Fast, validated power function for integer powers, based on exp and ln.
 //  Medium amount of overestimation.
 //
-l_cinterval power_fast( const l_cinterval& z, int n ) throw()
+l_cinterval power_fast( const l_cinterval& z, int n )
 {
     if( n == 0 )
 	return l_cinterval( l_interval(1) );
@@ -2237,7 +2237,7 @@ void vertical_check( //---------------------------------------------- 040720 --
     }
 }
 
-l_cinterval power( const l_cinterval& z, int n ) throw() //---- 040720 --
+l_cinterval power( const l_cinterval& z, int n ) //---- 040720 --
 //
 //  Power function for integer powers with optimal (save roundoff) accuracy.
 //
@@ -2362,7 +2362,7 @@ l_cinterval power( const l_cinterval& z, int n ) throw() //---- 040720 --
 //  Analytic power function for real interval exponent, based on Ln.
 //
 
-l_cinterval pow( const l_cinterval& z, const l_interval& p ) throw()
+l_cinterval pow( const l_cinterval& z, const l_interval& p )
 // Neue Version von pow(...) von 040627
 {
     return exp( p*Ln(z) );
@@ -2376,7 +2376,7 @@ l_cinterval pow( const l_cinterval& z, const l_interval& p ) throw()
 //  Analytic power function for complex interval exponent, based on Ln.
 //
 
-l_cinterval pow( const l_cinterval& z, const l_cinterval& p ) throw()
+l_cinterval pow( const l_cinterval& z, const l_cinterval& p )
 {
     return exp( p*Ln(z) );
 }
@@ -2395,7 +2395,7 @@ l_cinterval pow( const l_cinterval& z, const l_cinterval& p ) throw()
 //  (potential modification: return the entire complex plane).
 //
 std::list<l_cinterval> pow_all( const l_cinterval& z, 
-				const l_interval& p ) throw()
+				const l_interval& p )
 {
     l_interval abs_z = abs(z);
 
@@ -2747,7 +2747,7 @@ l_interval Asin_beta( const l_interval& x, const l_interval& y )
     return res;
 } // Asin_beta(...)
 
-l_cinterval asin( const l_cinterval& z ) throw() //------------- 040730 --
+l_cinterval asin( const l_cinterval& z ) //------------- 040730 --
 {
     const real gr = 6.355804e307; // upper bound for abs(rez),abs(imz)
     l_interval
@@ -3014,7 +3014,7 @@ l_interval Acos_beta( const l_interval& x, const l_interval& y )
 
 //-- acos ---------------------------------------------------
 //
-l_cinterval acos( const l_cinterval& z ) throw()
+l_cinterval acos( const l_cinterval& z )
 {
     const real gr = 6.355804e307; // upper bound for abs(rez),abs(imz)
     l_interval 
@@ -3179,7 +3179,7 @@ l_cinterval acos( const l_cinterval& z ) throw()
 
 //-- asinh ---------------------------------------------------------- 040730 --
 //
-l_cinterval asinh( const l_cinterval& z ) throw()
+l_cinterval asinh( const l_cinterval& z )
 //
 //  asinh( z ) = i * asin( -i * z )
 //
@@ -3193,7 +3193,7 @@ l_cinterval asinh( const l_cinterval& z ) throw()
 
 //-- acosh ---------------------------------------------------------- 040908 --
 //
-l_cinterval acosh( const l_cinterval& z ) throw()
+l_cinterval acosh( const l_cinterval& z )
 //
 //  acosh( z ) = i * acos( z ) = +/- i * ( pi / 2 - asin( z ) )
 //
@@ -3530,7 +3530,7 @@ l_interval Q_atan_UPSIGN(const l_interval& x, const l_interval& y)
 } // Q_atan_UPSIGN
 
 
-l_cinterval atan( const l_cinterval& z ) throw() //----- 040912 --
+l_cinterval atan( const l_cinterval& z ) //----- 040912 --
 {
     l_interval
 	rez = Re(z),
@@ -3728,7 +3728,7 @@ l_cinterval atan( const l_cinterval& z ) throw() //----- 040912 --
 //  acot( z ) = atan( 1/z )
 //  The code of acot( z ) is almost identical to the code of atan( z )
 //
-l_cinterval acot( const l_cinterval& z ) throw()
+l_cinterval acot( const l_cinterval& z )
 {
  l_interval
     rez = Re(z),
@@ -3926,7 +3926,7 @@ l_cinterval acot( const l_cinterval& z ) throw()
 
 //-- atanh ---------------------------------------------------------- 040912 --
 //
-l_cinterval atanh( const l_cinterval& z ) throw()
+l_cinterval atanh( const l_cinterval& z )
 //
 //  atanh( z ) = - i * atan( i * z )
 //
@@ -3939,7 +3939,7 @@ l_cinterval atanh( const l_cinterval& z ) throw()
 
 //-- acoth ---------------------------------------------------------- 040912 --
 //
-l_cinterval acoth( const l_cinterval& z ) throw()
+l_cinterval acoth( const l_cinterval& z )
 //
 //  acoth( z ) = i * acot( i * z )
 //

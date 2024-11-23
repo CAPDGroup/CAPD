@@ -32,97 +32,97 @@ namespace cxsc {
 	//! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
 	INLINE l_ivector _l_ivector(const rmatrix &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
 	INLINE l_ivector _l_ivector(const rmatrix_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	INLINE void accumulate(idotprecision &dp, const rmatrix_subv & rv1, const l_ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	INLINE void accumulate(idotprecision &dp, const l_ivector & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	INLINE void accumulate(idotprecision &dp, const rmatrix_subv & rv1, const l_ivector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	INLINE void accumulate(idotprecision &dp, const l_ivector_slice & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const rmatrix &m,const l_ivector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const rmatrix_slice &ms,const l_ivector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const l_ivector &v,const rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const l_ivector &v,const rmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication and allocation operation
 	INLINE l_ivector &operator *=(l_ivector &v,const rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication and allocation operation
 	INLINE l_ivector &operator *=(l_ivector &v,const rmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Implementation of multiplication operation
 	INLINE l_ivector operator *(const l_ivector_slice &v,const rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 } // namespace cxsc 

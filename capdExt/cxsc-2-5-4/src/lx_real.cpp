@@ -32,7 +32,7 @@
 
 namespace cxsc {
 
-inline std::ostream& operator << (std::ostream& s, const lx_real& b) throw()
+inline std::ostream& operator << (std::ostream& s, const lx_real& b)
 // A value a of type lx_real is written to the output channel.
 // The output has the form:  {2**(ex),lr}
 {

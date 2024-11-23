@@ -31,7 +31,7 @@ namespace cxsc {
 // --------- Functions and operators related to type lx_cinterval --------
 // -----------------------------------------------------------------------
 
-l_cinterval & l_cinterval::operator = (const lx_cinterval &a) throw()
+l_cinterval & l_cinterval::operator = (const lx_cinterval &a)
 // This operator is declared in l_cinterval.hpp !!
 {
     l_interval lre,lim;
@@ -42,7 +42,7 @@ l_cinterval & l_cinterval::operator = (const lx_cinterval &a) throw()
     return (*this) = lc;
 }
 
-cinterval & cinterval::operator = (const lx_cinterval &a) throw()
+cinterval & cinterval::operator = (const lx_cinterval &a)
 // This operator is declared in cinterval.hpp !!
 {
     l_cinterval lc;
@@ -56,7 +56,7 @@ cinterval & cinterval::operator = (const lx_cinterval &a) throw()
 
 // ------------------------ Input --------------------------------------
 /*
-std::string & operator >> (std::string &s, lx_cinterval &a) throw()
+std::string & operator >> (std::string &s, lx_cinterval &a)
 // Funktionierende Version mit Zweier-Exponenten
 {
     lx_interval Lar, Lai;
@@ -72,7 +72,7 @@ std::string & operator >> (std::string &s, lx_cinterval &a) throw()
     return s;
 }
 */
-std::string & operator >> (std::string &s, lx_cinterval &a) throw()
+std::string & operator >> (std::string &s, lx_cinterval &a)
 // Funktionierende Version mit Zehner-Exponenten, z.B.
 // s = ( {+1, [4,4.01]} , {-2, [7,7]} ) 
 {
@@ -96,20 +96,20 @@ std::string & operator >> (std::string &s, lx_cinterval &a) throw()
     return s;
 }
 
-void operator >> (const std::string &s, lx_cinterval &a) throw()
+void operator >> (const std::string &s, lx_cinterval &a)
 {
 // Writes strings s to variable a of type lx_cinterval;
     std::string r(s);
     r >> a;
 }
 
-void operator >> (const char *s, lx_cinterval &a) throw()
+void operator >> (const char *s, lx_cinterval &a)
 {
     std::string r(s);
     r >> a;
 }
 
-std::istream & operator >> (std::istream &s, lx_cinterval &a) throw()
+std::istream & operator >> (std::istream &s, lx_cinterval &a)
 {
     lx_interval Lar, Lai;
     char c;
@@ -153,7 +153,7 @@ std::istream & operator >> (std::istream &s, lx_cinterval &a) throw()
 // --------------------------- sqr function ---------------------------------
 // --------------------------------------------------------------------------
 
-lx_cinterval sqr(const lx_cinterval &z) throw()
+lx_cinterval sqr(const lx_cinterval &z)
 {
 	lx_interval rez(Re(z)), reza(abs(rez)),
 					imz(Im(z)), imza(abs(imz));
@@ -236,7 +236,7 @@ lx_interval Im_Sqrt_Point(const lx_interval &rez, const lx_interval &imz)
 	return res;
 }
 
-lx_cinterval sqrt(const lx_cinterval& z) throw()
+lx_cinterval sqrt(const lx_cinterval& z)
 {
 	lx_cinterval y;
 	lx_real
@@ -286,7 +286,7 @@ lx_cinterval sqrt(const lx_cinterval& z) throw()
 	 
 //  sqrt_all(z) computes a list of 2 intervals containing all square roots of z
 //
-std::list<lx_cinterval> sqrt_all( const lx_cinterval& z ) throw()
+std::list<lx_cinterval> sqrt_all( const lx_cinterval& z )
 {
 	lx_real
 		irez = Inf( Re(z) ),
@@ -415,7 +415,7 @@ std::list<lx_cinterval> sqrt_all( const lx_cinterval& z ) throw()
 
 // -------------------------- exp(...) --------------------------------------
 
-	lx_cinterval exp(const lx_cinterval& z) throw()
+	lx_cinterval exp(const lx_cinterval& z)
 	{
 		int stagsave = stagprec,
   stagmax = 39;
@@ -435,19 +435,19 @@ std::list<lx_cinterval> sqrt_all( const lx_cinterval& z ) throw()
 			  return y;
 	}
 
-	lx_cinterval exp2(const lx_cinterval& z) throw()
+	lx_cinterval exp2(const lx_cinterval& z)
 	{
 		return exp(z*Ln2_lx_interval());
 	}
 
-	lx_cinterval exp10(const lx_cinterval& z) throw()
+	lx_cinterval exp10(const lx_cinterval& z)
 	{
 		return exp(z*Ln10_lx_interval());
 	}
 
 // -------------------------- cos(...) --------------------------------------
 
-	lx_cinterval cos(const lx_cinterval& z) throw()
+	lx_cinterval cos(const lx_cinterval& z)
 	{
 		int stagsave = stagprec,
   stagmax = 39;
@@ -469,7 +469,7 @@ std::list<lx_cinterval> sqrt_all( const lx_cinterval& z ) throw()
 
 // -------------------------- sin(...) --------------------------------------
 
-	lx_cinterval sin(const lx_cinterval& z) throw()
+	lx_cinterval sin(const lx_cinterval& z)
 	{
 		int stagsave = stagprec,
   stagmax = 39;
@@ -491,7 +491,7 @@ std::list<lx_cinterval> sqrt_all( const lx_cinterval& z ) throw()
 
 // -------------------------- cosh(...) -------------------------------------
 
-	lx_cinterval cosh(const lx_cinterval& z) throw()
+	lx_cinterval cosh(const lx_cinterval& z)
 	{
 		int stagsave = stagprec,
   stagmax = 39;
@@ -513,7 +513,7 @@ std::list<lx_cinterval> sqrt_all( const lx_cinterval& z ) throw()
 
 // -------------------------- sinh(...) -------------------------------------
 
-	lx_cinterval sinh(const lx_cinterval& z) throw()
+	lx_cinterval sinh(const lx_cinterval& z)
 	{
 		int stagsave = stagprec,
   stagmax = 39;
@@ -620,7 +620,7 @@ lx_interval Atan(const lx_interval& y, const lx_real& x)
 //
 //  atan is the inverse function of tan(t), t in (-pi/2,pi/2).
 //
-lx_interval Arg(const lx_cinterval& z) throw()
+lx_interval Arg(const lx_cinterval& z)
 {
 	lx_real 
 		srez = Sup( Re(z) ),
@@ -715,7 +715,7 @@ lx_interval Arg(const lx_cinterval& z) throw()
 //  (iv)  arg(Z) == Arg(Z) if Arg(Z) is well-defined.
 	//
 
-lx_interval arg( const lx_cinterval& z ) throw()
+lx_interval arg( const lx_cinterval& z )
 {
 	lx_real
 		srez = Sup( Re(z) ),
@@ -817,7 +817,7 @@ lx_interval arg( const lx_cinterval& z ) throw()
 					sin( Arg( lx_cinterval( rez, imz ) ) / n );
 	}
 
-lx_cinterval sqrt(const lx_cinterval& z, int n ) throw() 
+lx_cinterval sqrt(const lx_cinterval& z, int n ) 
 			//
 //  Analytic n-th root function
 //  sqrt(z,n) is undefined if z contains negative real numbers.
@@ -958,7 +958,7 @@ lx_cinterval sqrt(const lx_cinterval& z, int n ) throw()
 
 //-- sqrt_all ------------------------------------------------------- 040628 --
 	//
-	std::list<lx_cinterval> sqrt_all( const lx_cinterval& z, int n ) throw()
+	std::list<lx_cinterval> sqrt_all( const lx_cinterval& z, int n )
 			//
 //  sqrt_all(z,n) computes a list of n intervals containing all n-th roots of z
 			//
@@ -1021,7 +1021,7 @@ lx_cinterval sqrt(const lx_cinterval& z, int n ) throw()
 //  Ln(z) is undefined if z contains zero; z must not touch the negative real
 //  axis from below;
 //
-lx_cinterval Ln(const lx_cinterval& z) throw()
+lx_cinterval Ln(const lx_cinterval& z)
 {  // Blomquist, 24.09.2007;
 	int stagsave = stagprec,
   	stagmax = 30; 
@@ -1055,7 +1055,7 @@ lx_cinterval Ln(const lx_cinterval& z) throw()
 //
 //  ln(z) is undefined if z contains zero.
 //
-lx_cinterval ln(const lx_cinterval& z) throw()
+lx_cinterval ln(const lx_cinterval& z)
 {
 	int stagsave = stagprec,
   		stagmax = 30; 
@@ -1082,12 +1082,12 @@ lx_cinterval ln(const lx_cinterval& z) throw()
 //  log2(z),log10 are undefined if z contains zero; z must not touch the 
 //  negative real axis from below;
 //
-lx_cinterval log2(const lx_cinterval& z) throw()
+lx_cinterval log2(const lx_cinterval& z)
 {  // Blomquist, 30.11.2008;
 	return Ln(z) / Ln2_lx_interval();
 }
 
-lx_cinterval log10(const lx_cinterval& z) throw()
+lx_cinterval log10(const lx_cinterval& z)
 {  // Blomquist, 30.11.2008;
 	return Ln(z) / Ln10_lx_interval();
 }
@@ -1104,7 +1104,7 @@ lx_cinterval log10(const lx_cinterval& z) throw()
 //  If n is not an integer value, an error message is generated.
 //  Medium amount of overestimation.
 //
-lx_cinterval power_fast(const lx_cinterval& z, const real& n) throw()
+lx_cinterval power_fast(const lx_cinterval& z, const real& n)
 {
 	if( n == 0 ) return lx_cinterval(lx_interval(1));
 	else if( n == 1 ) return z;
@@ -1153,7 +1153,7 @@ lx_cinterval power_fast(const lx_cinterval& z, const real& n) throw()
 //  exponent n of type real.
 //
 
-	lx_cinterval power( const lx_cinterval& x, const real& n ) throw()
+	lx_cinterval power( const lx_cinterval& x, const real& n )
 	{
 		if( !(Is_Integer(n)) )
 	//  n is not an integer
@@ -1205,7 +1205,7 @@ lx_cinterval power_fast(const lx_cinterval& z, const real& n) throw()
 //  Analytic power function for a real interval exponent, based on Ln.
 	//
 
-	lx_cinterval pow( const lx_cinterval& z, const lx_interval& p ) throw()
+	lx_cinterval pow( const lx_cinterval& z, const lx_interval& p )
 	{
 		return exp( p*Ln(z) );
 	}
@@ -1218,7 +1218,7 @@ lx_cinterval power_fast(const lx_cinterval& z, const real& n) throw()
 //  Analytic power function for a complex interval exponent, based on Ln.
 	//
 
-	lx_cinterval pow(const lx_cinterval& z, const lx_cinterval& p) throw()
+	lx_cinterval pow(const lx_cinterval& z, const lx_cinterval& p)
 	{
 		return exp( p*Ln(z) );
 	}
@@ -1382,7 +1382,7 @@ void horizontal_check( const lx_interval& hy, const lx_interval& cosh_2y,
 } // end horizontal_check
 
 
-lx_cinterval Tan(const lx_cinterval& z) throw() 
+lx_cinterval Tan(const lx_cinterval& z) 
 {
 	lx_cinterval y;
 	lx_interval
@@ -1519,7 +1519,7 @@ lx_cinterval Tan(const lx_cinterval& z) throw()
 	return y;
 } // Tan
 
-lx_cinterval tan(const lx_cinterval& z) throw() 
+lx_cinterval tan(const lx_cinterval& z) 
 {
 // tan(z) has the poles z_k = pi*(1+2k)/2;   |k| in {0,1,2,3,...}.
 // z = z_k + eps = pi*(1+2k)/2 + eps;  With  |eps|<<1  k can be calculated
@@ -1576,7 +1576,7 @@ lx_cinterval tan(const lx_cinterval& z) throw()
   return y;
 	} // tan()
 
-	lx_cinterval cot(const lx_cinterval& z) throw() 
+	lx_cinterval cot(const lx_cinterval& z) 
 	{
 // cot(z) has the poles z_k = k*pi;   |k| in {0,1,2,3,...}.
 // z = z_k + eps = k*pi + eps;  With  |eps|<<1  k can be calculated
@@ -1638,7 +1638,7 @@ lx_cinterval tan(const lx_cinterval& z) throw()
 //
 //  tanh( z ) = transp( i * tan( transp( i * z ) )
 //
-lx_cinterval tanh(const lx_cinterval& z) throw()
+lx_cinterval tanh(const lx_cinterval& z)
 {
 	int stagsave = stagprec,
   		stagmax = 39; 
@@ -1660,7 +1660,7 @@ lx_cinterval tanh(const lx_cinterval& z) throw()
 //   coth( z ) = i * cot( i * z );
 //
 
-lx_cinterval coth(const lx_cinterval& z) throw()
+lx_cinterval coth(const lx_cinterval& z)
 { // coth( z ) = i * cot( i * z );
 	int stagsave = stagprec,
   		stagmax = 39; 
@@ -1901,7 +1901,7 @@ lx_interval f_aux_asin(const lx_interval& x, const lx_interval& y)
 					 return res;
 	} // Asin_beta(...)
 
-lx_cinterval asin(const lx_cinterval& z) throw() 
+lx_cinterval asin(const lx_cinterval& z) 
 {
 	int stagsave = stagprec,
   		stagmax = 30;
@@ -2246,7 +2246,7 @@ lx_interval Acos_beta(const lx_interval& x, const lx_interval& y)
 } // Acos_beta(...)
 
 //
-lx_cinterval acos(const lx_cinterval& z) throw()   
+lx_cinterval acos(const lx_cinterval& z)   
 {
 	lx_interval 
 		rez = Re(z),
@@ -2410,7 +2410,7 @@ lx_cinterval acos(const lx_cinterval& z) throw()
 
 //-- asinh --------------------------------------------------------------------
 //
-lx_cinterval asinh( const lx_cinterval& z ) throw()
+lx_cinterval asinh( const lx_cinterval& z )
 //
 //  asinh( z ) = i * asin( -i * z )
 //
@@ -2423,7 +2423,7 @@ lx_cinterval asinh( const lx_cinterval& z ) throw()
 
 //-- acosh --------------------------------------------------------------------
 //
-lx_cinterval acosh( const lx_cinterval& z ) throw()
+lx_cinterval acosh( const lx_cinterval& z )
 //
 //  acosh( z ) = i * acos( z ) = +/- i * ( pi / 2 - asin( z ) )
 //
@@ -2834,7 +2834,7 @@ lx_interval Q_atan(const lx_interval& x, const lx_interval& y)
   return res;
 } // Q_atan
 
-lx_cinterval atan( const lx_cinterval& z ) throw()
+lx_cinterval atan( const lx_cinterval& z )
 {
 	int stagsave = stagprec,
   	stagmax = 30;
@@ -3001,7 +3001,7 @@ lx_cinterval atan( const lx_cinterval& z ) throw()
 //
 //-- end atan -----------------------------------------------------------------
 
-lx_cinterval acot( const lx_cinterval& z ) throw()
+lx_cinterval acot( const lx_cinterval& z )
 {
 	int stagsave = stagprec,
   	stagmax = 30;
@@ -3174,7 +3174,7 @@ lx_cinterval acot( const lx_cinterval& z ) throw()
 
 //-- atanh --------------------------------------------------------------------
 //
-lx_cinterval atanh( const lx_cinterval& z ) throw()
+lx_cinterval atanh( const lx_cinterval& z )
 //
 //  atanh( z ) = - i * atan( i * z )
 //
@@ -3187,7 +3187,7 @@ lx_cinterval atanh( const lx_cinterval& z ) throw()
 
 //-- acoth --------------------------------------------------------------------
 //
-lx_cinterval acoth( const lx_cinterval& z ) throw()
+lx_cinterval acoth( const lx_cinterval& z )
 //
 //  acoth( z ) = i * acot( i * z )
 //
@@ -3200,7 +3200,7 @@ lx_cinterval acoth( const lx_cinterval& z ) throw()
 
 // ---- sqrt1px2 --------------------------------------------------------------
 //
-lx_cinterval sqrt1px2(const lx_cinterval& z) throw()
+lx_cinterval sqrt1px2(const lx_cinterval& z)
 // sqrt(1+z^2);
 // Blomquist, 03.07.2008;
 {
@@ -3244,7 +3244,7 @@ lx_cinterval sqrt1px2(const lx_cinterval& z) throw()
 }
 // -- end sqrt1px2 ------------------------------------------------------------
 
-lx_cinterval sqrt1mx2(const lx_cinterval& z) throw()
+lx_cinterval sqrt1mx2(const lx_cinterval& z)
 // sqrt(1-z^2);
 // Blomquist, 03.07.2008;
 {
@@ -3280,7 +3280,7 @@ lx_cinterval sqrt1mx2(const lx_cinterval& z) throw()
   return res;
 }
 
-lx_cinterval sqrtx2m1(const lx_cinterval& z) throw()
+lx_cinterval sqrtx2m1(const lx_cinterval& z)
 // sqrt(z^2-1);
 // Blomquist, 03.07.2008;
 {
@@ -3316,7 +3316,7 @@ lx_cinterval sqrtx2m1(const lx_cinterval& z) throw()
   return res;
 }
 
-lx_cinterval sqrtp1m1(const lx_cinterval& z) throw()
+lx_cinterval sqrtp1m1(const lx_cinterval& z)
 // sqrt(1+z)-1;
 // Blomquist, 08.07.2008;
 {
@@ -3339,7 +3339,7 @@ lx_cinterval sqrtp1m1(const lx_cinterval& z) throw()
   return res;
 }
 
-lx_cinterval expm1(const lx_cinterval& z) throw()
+lx_cinterval expm1(const lx_cinterval& z)
 // exp(z) - 1;
 // Blomquist, 09.08.2008;
 {
@@ -3375,7 +3375,7 @@ lx_cinterval expm1(const lx_cinterval& z) throw()
   return res;
 }
 
-lx_cinterval lnp1(const lx_cinterval& z) throw()
+lx_cinterval lnp1(const lx_cinterval& z)
 {// ln(1+z);
  // Blomquist, 11.08.2008;
 	int stagsave = stagprec,
@@ -3421,7 +3421,7 @@ lx_cinterval lnp1(const lx_cinterval& z) throw()
 //  (potential modification: return the entire complex plane).
 //
 std::list<lx_cinterval> pow_all( const lx_cinterval& z, 
-											const lx_interval& p ) throw()
+											const lx_interval& p )
 {
 	lx_interval abs_z = abs(z);
 

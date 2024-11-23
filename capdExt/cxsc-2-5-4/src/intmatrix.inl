@@ -28,17 +28,17 @@
 
 namespace cxsc {
 
-INLINE intmatrix::intmatrix() throw():dat(NULL),lb1(1),ub1(0),lb2(1),ub2(0),xsize(0),ysize(0)
+INLINE intmatrix::intmatrix():dat(NULL),lb1(1),ub1(0),lb2(1),ub2(0),xsize(0),ysize(0)
 {
 }
 
-INLINE intmatrix::intmatrix(const int &r) throw():lb1(1),ub1(1),lb2(1),ub2(1),xsize(1),ysize(1)
+INLINE intmatrix::intmatrix(const int &r):lb1(1),ub1(1),lb2(1),ub2(1),xsize(1),ysize(1)
 {
 	dat=new int[1];
 	*dat=r;
 }
 
-INLINE intmatrix::intmatrix(const intmatrix &rm) throw():lb1(rm.lb1),ub1(rm.ub1),lb2(rm.lb2),ub2(rm.ub2),xsize(rm.xsize),ysize(rm.ysize)
+INLINE intmatrix::intmatrix(const intmatrix &rm):lb1(rm.lb1),ub1(rm.ub1),lb2(rm.lb2),ub2(rm.ub2),xsize(rm.xsize),ysize(rm.ysize)
 {
 	dat=new int[xsize*ysize];
 	for(int i=0;i<xsize*ysize;i++)
@@ -47,9 +47,9 @@ INLINE intmatrix::intmatrix(const intmatrix &rm) throw():lb1(rm.lb1),ub1(rm.ub1)
 
 INLINE intmatrix::intmatrix(const int &m, const int &n)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_WRONG_BOUNDARIES):lb1(1),ub1(m),lb2(1),ub2(n),xsize(n),ysize(m)
+	:lb1(1),ub1(m),lb2(1),ub2(n),xsize(n),ysize(m)
 #else
-	throw():lb1(1),ub1(m),lb2(1),ub2(n),xsize(n),ysize(m)
+	:lb1(1),ub1(m),lb2(1),ub2(n),xsize(n),ysize(m)
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -60,9 +60,9 @@ INLINE intmatrix::intmatrix(const int &m, const int &n)
 
 INLINE intmatrix::intmatrix(const int &m1, const int &m2, const int &n1, const int &n2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_WRONG_BOUNDARIES):lb1(m1),ub1(m2),lb2(n1),ub2(n2),xsize(n2-n1+1),ysize(m2-m1+1)
+	:lb1(m1),ub1(m2),lb2(n1),ub2(n2),xsize(n2-n1+1),ysize(m2-m1+1)
 #else
-	throw():lb1(m1),ub1(m2),lb2(n1),ub2(n2),xsize(n2-n1+1),ysize(m2-m1+1)
+	:lb1(m1),ub1(m2),lb2(n1),ub2(n2),xsize(n2-n1+1),ysize(m2-m1+1)
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -71,21 +71,21 @@ INLINE intmatrix::intmatrix(const int &m1, const int &m2, const int &n1, const i
 	dat=new int[xsize*ysize];
 }
 
-INLINE intvector::intvector(const intmatrix_subv &v) throw():l(v.lb),u(v.ub),size(v.size)
+INLINE intvector::intvector(const intmatrix_subv &v):l(v.lb),u(v.ub),size(v.size)
 {
 	dat=new int[size];
 	for (int i=0, j=v.start;i<v.size;i++,j+=v.offset)
 		dat[i]=v.dat[j];
 }
 
-INLINE intmatrix::intmatrix(const intvector &v) throw():lb1(v.l),ub1(v.u),lb2(1),ub2(1),xsize(1),ysize(v.size)
+INLINE intmatrix::intmatrix(const intvector &v):lb1(v.l),ub1(v.u),lb2(1),ub2(1),xsize(1),ysize(v.size)
 {
 	dat=new int[v.size];
 	for(int i=0;i<v.size;i++)
 		dat[i]=v.dat[i];
 }
 
-INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v.end),lb2(1),ub2(1),xsize(1),ysize(v.size)
+INLINE intmatrix::intmatrix(const intvector_slice &v):lb1(v.start),ub1(v.end),lb2(1),ub2(1),xsize(1),ysize(v.size)
 {
 	dat=new int[v.size];
 	for(int i=0,j=v.start-v.l;i<v.size;i++,j++)
@@ -94,9 +94,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 	
 	INLINE int &intmatrix_subv::operator [](const int &i) const
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_INTVECTOR_ELEMENT_NOT_IN_VEC)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -105,7 +105,7 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 		return dat[start+((i-lb)*offset)];
 	}
 
-	INLINE intmatrix::intmatrix(const intmatrix_slice &sl) throw():lb1(sl.start1),ub1(sl.end1),lb2(sl.start2),ub2(sl.end2),xsize(sl.sxsize),ysize(sl.sysize)
+	INLINE intmatrix::intmatrix(const intmatrix_slice &sl):lb1(sl.start1),ub1(sl.end1),lb2(sl.start2),ub2(sl.end2),xsize(sl.sxsize),ysize(sl.sysize)
 	{
 		int i,j;
 		
@@ -121,9 +121,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 
 	INLINE intmatrix_subv Row(intmatrix &m,const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_ROW_OR_COL_NOT_IN_MAT)
+	
 #else
-	throw()
+	
 #endif
 	
 	{
@@ -132,9 +132,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 
 	INLINE intmatrix_subv Col(intmatrix &m,const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_ROW_OR_COL_NOT_IN_MAT)
+	
 #else
-	throw()
+	
 #endif
 	
 	{
@@ -143,9 +143,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 
 	INLINE intmatrix_subv Row(const intmatrix &m,const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_ROW_OR_COL_NOT_IN_MAT)
+	
 #else
-	throw()
+	
 #endif
 	
 	{
@@ -154,9 +154,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 
 	INLINE intmatrix_subv Col(const intmatrix &m,const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_ROW_OR_COL_NOT_IN_MAT)
+	
 #else
-	throw()
+	
 #endif
 	
 	{
@@ -165,9 +165,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 		
 	INLINE intmatrix_subv intmatrix::operator [](const int &i) const
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_INTMATRIX_ROW_OR_COL_NOT_IN_MAT)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -178,9 +178,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 	
 	INLINE intmatrix_subv intmatrix::operator [](const cxscmatrix_column &i) const
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_INTMATRIX_ROW_OR_COL_NOT_IN_MAT)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -191,9 +191,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 	
 	INLINE intmatrix_slice intmatrix::operator ()(const int &m, const int &n)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_INTMATRIX_SUB_ARRAY_TOO_BIG)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -204,9 +204,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 	
 	INLINE intmatrix_slice intmatrix::operator ()(const int &m1, const int &m2, const int &n1, const int &n2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_INTMATRIX_SUB_ARRAY_TOO_BIG)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -217,9 +217,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 
 	INLINE intmatrix_subv intmatrix_slice::operator [](const int &i)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_INTMATRIX_ROW_OR_COL_NOT_IN_MAT)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -230,9 +230,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 	
 	INLINE intmatrix_subv intmatrix_slice::operator [](const cxscmatrix_column &i)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_INTMATRIX_ROW_OR_COL_NOT_IN_MAT)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -243,9 +243,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 	
 	INLINE intmatrix_slice intmatrix_slice::operator ()(const int &m, const int &n)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_INTMATRIX_SUB_ARRAY_TOO_BIG)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -256,9 +256,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 	
 	INLINE intmatrix_slice intmatrix_slice::operator ()(const int &m1, const int &m2, const int &n1, const int &n2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_INTMATRIX_SUB_ARRAY_TOO_BIG)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -269,9 +269,9 @@ INLINE intmatrix::intmatrix(const intvector_slice &v) throw():lb1(v.start),ub1(v
 
 INLINE intmatrix_subv intmatrix_subv::operator ()(const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_SUB_ARRAY_TOO_BIG)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -282,9 +282,9 @@ INLINE intmatrix_subv intmatrix_subv::operator ()(const int &i)
 
 INLINE intmatrix_subv intmatrix_subv::operator ()(const int &i1,const int &i2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_SUB_ARRAY_TOO_BIG)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -293,236 +293,236 @@ INLINE intmatrix_subv intmatrix_subv::operator ()(const int &i1,const int &i2)
 	return intmatrix_subv(dat,i1,i2,i2-i1+1,start+(i1-lb)*offset,offset);
 }
 
-	INLINE intmatrix_subv &intmatrix_subv::operator =(const intmatrix_subv &rv) throw() { return _mvmvassign(*this,rv); }
-	INLINE intmatrix_subv &intmatrix_subv::operator =(const int &r) throw() { return _mvsassign(*this,r); }
+	INLINE intmatrix_subv &intmatrix_subv::operator =(const intmatrix_subv &rv) { return _mvmvassign(*this,rv); }
+	INLINE intmatrix_subv &intmatrix_subv::operator =(const int &r) { return _mvsassign(*this,r); }
 	INLINE intmatrix_subv &intmatrix_subv::operator =(const intvector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvassign(*this,v); }
 	INLINE intmatrix_subv &intmatrix_subv::operator =(const intvector_slice &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvassign(*this,intvector(v)); }
-	INLINE intmatrix &intmatrix::operator =(const int &r) throw() { return _msassign(*this,r); }
-	INLINE intmatrix &intmatrix::operator =(const intmatrix &m) throw() { return _mmassign<intmatrix,intmatrix,int>(*this,m,0); }
-	INLINE intmatrix &intmatrix::operator =(const intvector &v) throw() { return _mvassign<intmatrix,intvector,int>(*this,v); }
-	INLINE intmatrix &intmatrix::operator =(const intvector_slice &v) throw() { return _mvassign<intmatrix,intvector,int>(*this,intvector(v)); }
-	INLINE intmatrix::operator void*() throw() { return _mvoid(*this); }
+	INLINE intmatrix &intmatrix::operator =(const int &r) { return _msassign(*this,r); }
+	INLINE intmatrix &intmatrix::operator =(const intmatrix &m) { return _mmassign<intmatrix,intmatrix,int>(*this,m,0); }
+	INLINE intmatrix &intmatrix::operator =(const intvector &v) { return _mvassign<intmatrix,intvector,int>(*this,v); }
+	INLINE intmatrix &intmatrix::operator =(const intvector_slice &v) { return _mvassign<intmatrix,intvector,int>(*this,intvector(v)); }
+	INLINE intmatrix::operator void*() { return _mvoid(*this); }
 	INLINE intmatrix_slice &intmatrix_slice::operator =(const intmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmassign(*this,m); }
 	INLINE intmatrix_slice &intmatrix_slice::operator =(const intmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmsassign(*this,ms); }
-	INLINE intmatrix_slice &intmatrix_slice::operator =(const int &r) throw() { return _mssassign(*this,r); }
+	INLINE intmatrix_slice &intmatrix_slice::operator =(const int &r) { return _mssassign(*this,r); }
 	INLINE intmatrix_slice &intmatrix_slice::operator =(const intvector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmassign(*this,intmatrix(v)); }
 	INLINE intmatrix_slice &intmatrix_slice::operator =(const intvector_slice &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmassign(*this,intmatrix(intvector(v))); }
 	INLINE intmatrix_slice &intmatrix_slice::operator =(const intmatrix_subv &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmassign(*this,intmatrix(intvector(v))); }
 	INLINE intmatrix_slice &intmatrix_slice::operator +=(const intmatrix &m1)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmplusassign(*this,m1); }
 	INLINE intmatrix_slice &intmatrix_slice::operator +=(const intmatrix_slice &ms2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmsplusassign(*this,ms2); }
 	INLINE intmatrix_slice &intmatrix_slice::operator -=(const intmatrix &m1)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmminusassign(*this,m1); }
 	INLINE intmatrix_slice &intmatrix_slice::operator -=(const intmatrix_slice &ms2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmsminusassign(*this,ms2); }
-	INLINE intmatrix_slice &intmatrix_slice::operator *=(const int &c) throw() { return _mssmultassign(*this,c); }
-	INLINE intmatrix_slice &intmatrix_slice::operator /=(const int &c) throw() { return _mssdivassign(*this,c); }
-	INLINE intmatrix_slice::operator void*() throw() { return _msvoid(*this); }
-	INLINE intvector operator /(const intmatrix_subv &rv, const int &s) throw() { return _mvsdiv<intmatrix_subv,int,intvector>(rv,s); }
-	INLINE intvector operator *(const intmatrix_subv &rv, const int &s) throw() { return _mvsmult<intmatrix_subv,int,intvector>(rv,s); }
-	INLINE intvector operator *(const int &s, const intmatrix_subv &rv) throw() { return _mvsmult<intmatrix_subv,int,intvector>(rv,s); }
-	INLINE intmatrix_subv &intmatrix_subv::operator *=(const int &c) throw() { return _mvsmultassign(*this,c); }
-	INLINE intmatrix_subv &intmatrix_subv::operator +=(const int &c) throw() { return _mvsplusassign(*this,c); }
-	INLINE intmatrix_subv &intmatrix_subv::operator -=(const int &c) throw() { return _mvsminusassign(*this,c); }
-	INLINE intmatrix_subv &intmatrix_subv::operator /=(const int &c) throw() { return _mvsdivassign(*this,c); }
-	INLINE intvector abs(const intmatrix_subv &mv) throw() { return _mvabs<intmatrix_subv,intvector>(mv); }
-	INLINE intvector &intvector::operator =(const intmatrix_subv &mv) throw() { return _vmvassign<intvector,intmatrix_subv,int>(*this,mv); }
-	INLINE intvector_slice &intvector_slice::operator =(const intmatrix_subv &mv) throw() { return _vsvassign(*this,intvector(mv)); }
+	INLINE intmatrix_slice &intmatrix_slice::operator *=(const int &c) { return _mssmultassign(*this,c); }
+	INLINE intmatrix_slice &intmatrix_slice::operator /=(const int &c) { return _mssdivassign(*this,c); }
+	INLINE intmatrix_slice::operator void*() { return _msvoid(*this); }
+	INLINE intvector operator /(const intmatrix_subv &rv, const int &s) { return _mvsdiv<intmatrix_subv,int,intvector>(rv,s); }
+	INLINE intvector operator *(const intmatrix_subv &rv, const int &s) { return _mvsmult<intmatrix_subv,int,intvector>(rv,s); }
+	INLINE intvector operator *(const int &s, const intmatrix_subv &rv) { return _mvsmult<intmatrix_subv,int,intvector>(rv,s); }
+	INLINE intmatrix_subv &intmatrix_subv::operator *=(const int &c) { return _mvsmultassign(*this,c); }
+	INLINE intmatrix_subv &intmatrix_subv::operator +=(const int &c) { return _mvsplusassign(*this,c); }
+	INLINE intmatrix_subv &intmatrix_subv::operator -=(const int &c) { return _mvsminusassign(*this,c); }
+	INLINE intmatrix_subv &intmatrix_subv::operator /=(const int &c) { return _mvsdivassign(*this,c); }
+	INLINE intvector abs(const intmatrix_subv &mv) { return _mvabs<intmatrix_subv,intvector>(mv); }
+	INLINE intvector &intvector::operator =(const intmatrix_subv &mv) { return _vmvassign<intvector,intmatrix_subv,int>(*this,mv); }
+	INLINE intvector_slice &intvector_slice::operator =(const intmatrix_subv &mv) { return _vsvassign(*this,intvector(mv)); }
 
 	INLINE void accumulate(dotprecision &dp, const intmatrix_subv & rv1, const intmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ _mvmvaccu(dp,rv1,rv2); }
 	INLINE void accumulate(dotprecision &dp, const intvector & rv1, const intmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ _vmvaccu(dp,rv1,rv2); }
 	INLINE void accumulate(dotprecision &dp, const intmatrix_subv & rv1, const intvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ _vmvaccu(dp,rv2,rv1); }
 	INLINE void accumulate(dotprecision &dp,const intvector_slice &sl,const intmatrix_subv &sv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ _vmvaccu(dp,intvector(sl),sv); }
 	INLINE void accumulate(dotprecision &dp,const intmatrix_subv &mv,const intvector_slice &vs)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ _vmvaccu(dp,intvector(vs),mv); }
 	INLINE intvector operator +(const intmatrix_subv & rv1, const intmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvmvplus<intmatrix_subv,intmatrix_subv,intvector>(rv1,rv2); }
 	INLINE intvector operator +(const intmatrix_subv &rv1,const intvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvplus<intmatrix_subv,intvector,intvector>(rv1,rv2); }
 	INLINE intvector operator +(const intvector & rv1, const intmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvplus<intmatrix_subv,intvector,intvector>(rv2,rv1); }
 	INLINE intvector operator +(const intvector_slice &sl,const intmatrix_subv &mv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvplus<intmatrix_subv,intvector,intvector>(mv,intvector(sl)); }
 	INLINE intvector operator +(const intmatrix_subv &mv,const intvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvplus<intmatrix_subv,intvector,intvector>(mv,intvector(sl)); }
 	INLINE intmatrix_subv &intmatrix_subv::operator +=(const intvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvplusassign(*this,rv); }
 	INLINE intmatrix_subv &intmatrix_subv::operator +=(const intvector_slice &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvplusassign(*this,intvector(rv)); }
 	INLINE intvector operator -(const intmatrix_subv & rv1, const intmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvmvminus<intmatrix_subv,intmatrix_subv,intvector>(rv1,rv2); }
 	INLINE intvector operator -(const intvector & rv1, const intmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vmvminus<intvector,intmatrix_subv,intvector>(rv1,rv2); }
 	INLINE intvector operator -(const intmatrix_subv &rv1,const intvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvminus<intmatrix_subv,intvector,intvector>(rv1,rv2); }
 	INLINE intvector operator -(const intvector_slice &sl,const intmatrix_subv &mv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vmvminus<intvector,intmatrix_subv,intvector>(intvector(sl),mv); }
 	INLINE intvector operator -(const intmatrix_subv &mv,const intvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvminus<intmatrix_subv,intvector,intvector>(mv,intvector(sl)); }
 	INLINE intmatrix_subv &intmatrix_subv::operator -=(const intvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvminusassign(*this,rv); }
 	INLINE intmatrix_subv &intmatrix_subv::operator -=(const intvector_slice &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTVECTOR_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvminusassign(*this,intvector(rv)); }
 	/*!
@@ -530,66 +530,66 @@ INLINE intmatrix_subv intmatrix_subv::operator ()(const int &i1,const int &i2)
 
 	\sa cxsc::intmatrix::intmatrix(const intmatrix &rm)
 	*/
-	INLINE intmatrix _intmatrix(const intmatrix &rm) throw() { return rm; }
+	INLINE intmatrix _intmatrix(const intmatrix &rm) { return rm; }
 	/*!
 	\deprecated use standard contructors for typecasting
 
 	\sa cxsc::intmatrix::intmatrix(const intvector &v)
 	*/
-	INLINE intmatrix _intmatrix(const intvector &v) throw() { return intmatrix(v); }
+	INLINE intmatrix _intmatrix(const intvector &v) { return intmatrix(v); }
 	/*!
 	\deprecated use standard contructors for typecasting
 
 	\sa cxsc::intmatrix::intmatrix(const intvector_slice &v)
 	*/
-	INLINE intmatrix _intmatrix(const intvector_slice &v) throw() { return intmatrix(v); }
+	INLINE intmatrix _intmatrix(const intvector_slice &v) { return intmatrix(v); }
 	/*!
 	\deprecated use standard contructors for typecasting
 
 	\sa cxsc::intmatrix::intmatrix(const int &r)
 	*/
-	INLINE intmatrix _intmatrix(const int &r) throw() { return intmatrix(r); }
-	INLINE intmatrix &intmatrix::operator =(const intmatrix_slice &ms) throw() { return _mmsassign<intmatrix,intmatrix_slice,int>(*this,ms); }
+	INLINE intmatrix _intmatrix(const int &r) { return intmatrix(r); }
+	INLINE intmatrix &intmatrix::operator =(const intmatrix_slice &ms) { return _mmsassign<intmatrix,intmatrix_slice,int>(*this,ms); }
 	INLINE int Lb(const intmatrix &rm, const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_WRONG_ROW_OR_COL)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mlb(rm,i); }
 	INLINE int Ub(const intmatrix &rm, const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_WRONG_ROW_OR_COL)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mub(rm,i); }
 	INLINE int Lb(const intmatrix_slice &rm, const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_WRONG_ROW_OR_COL)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mslb(rm,i); }
 	INLINE int Ub(const intmatrix_slice &rm, const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_WRONG_ROW_OR_COL)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msub(rm,i); }
 	INLINE intmatrix &SetLb(intmatrix &m, const int &i,const int &j)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_WRONG_ROW_OR_COL)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msetlb(m,i,j); }
 	INLINE intmatrix &SetUb(intmatrix &m, const int &i,const int &j)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_WRONG_ROW_OR_COL)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msetub(m,i,j); }
 	
@@ -605,200 +605,200 @@ INLINE intmatrix_subv intmatrix_subv::operator ()(const int &i1,const int &i2)
         INLINE int ColLen ( const intmatrix_slice& A ) // Length of the columns of an integer matrix
         { return Ub(A,1)-Lb(A,1)+1; }                  //-------------------------------------------
 	
-	INLINE void Resize(intmatrix &A) throw() { _mresize(A); }
+	INLINE void Resize(intmatrix &A) { _mresize(A); }
 	INLINE void Resize(intmatrix &A,const int &m, const int &n)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_WRONG_BOUNDARIES)
+	
 #else
-	throw()
+	
 #endif
 	{ _mresize<intmatrix,int>(A,m,n); }
 	INLINE void Resize(intmatrix &A,const int &m1, const int &m2,const int &n1,const int &n2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_WRONG_BOUNDARIES)
+	
 #else
-	throw()
+	
 #endif
 	{ _mresize<intmatrix,int>(A,m1,m2,n1,n2); }
-	INLINE intmatrix abs(const intmatrix &m) throw() { return _mabs<intmatrix,intmatrix>(m); }
-	INLINE intmatrix abs(const intmatrix_slice &ms) throw() { return _msabs<intmatrix_slice,intmatrix>(ms); }
-	INLINE intmatrix operator *(const int &c, const intmatrix &m) throw() { return _smmult<int,intmatrix,intmatrix>(c,m); }
-	INLINE intmatrix operator *(const int &c, const intmatrix_slice &ms) throw() { return _smsmult<int,intmatrix_slice,intmatrix>(c,ms); }
-	INLINE intmatrix operator *(const intmatrix &m,const int &c) throw() { return _smmult<int,intmatrix,intmatrix>(c,m); }
-	INLINE intmatrix operator *(const intmatrix_slice &ms,const int &c) throw() { return _smsmult<int,intmatrix_slice,intmatrix>(c,ms); }
-	INLINE intmatrix &operator *=(intmatrix &m,const int &c) throw() { return _msmultassign(m,c); }
-	INLINE intmatrix operator /(const intmatrix &m,const int &c) throw() { return _msdiv<intmatrix,int,intmatrix>(m,c); }
-	INLINE intmatrix operator /(const intmatrix_slice &ms, const int &c) throw() { return _mssdiv<intmatrix_slice,int,intmatrix>(ms,c); }
-	INLINE intmatrix &operator /=(intmatrix &m,const int &c) throw() { return _msdivassign(m,c); }
+	INLINE intmatrix abs(const intmatrix &m) { return _mabs<intmatrix,intmatrix>(m); }
+	INLINE intmatrix abs(const intmatrix_slice &ms) { return _msabs<intmatrix_slice,intmatrix>(ms); }
+	INLINE intmatrix operator *(const int &c, const intmatrix &m) { return _smmult<int,intmatrix,intmatrix>(c,m); }
+	INLINE intmatrix operator *(const int &c, const intmatrix_slice &ms) { return _smsmult<int,intmatrix_slice,intmatrix>(c,ms); }
+	INLINE intmatrix operator *(const intmatrix &m,const int &c) { return _smmult<int,intmatrix,intmatrix>(c,m); }
+	INLINE intmatrix operator *(const intmatrix_slice &ms,const int &c) { return _smsmult<int,intmatrix_slice,intmatrix>(c,ms); }
+	INLINE intmatrix &operator *=(intmatrix &m,const int &c) { return _msmultassign(m,c); }
+	INLINE intmatrix operator /(const intmatrix &m,const int &c) { return _msdiv<intmatrix,int,intmatrix>(m,c); }
+	INLINE intmatrix operator /(const intmatrix_slice &ms, const int &c) { return _mssdiv<intmatrix_slice,int,intmatrix>(ms,c); }
+	INLINE intmatrix &operator /=(intmatrix &m,const int &c) { return _msdivassign(m,c); }
 	INLINE intvector::intvector(const intmatrix &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_TYPE_CAST_OF_THICK_OBJ)
+	
 #else
-	throw()
+	
 #endif
 	{ _vmconstr<intvector,intmatrix,int>(*this,sl); }
 	INLINE intvector::intvector(const intmatrix_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_TYPE_CAST_OF_THICK_OBJ)
+	
 #else
-	throw()
+	
 #endif
 	{ _vmsconstr<intvector,intmatrix_slice,int>(*this,sl); }
 	INLINE intvector &intvector::operator =(const intmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_TYPE_CAST_OF_THICK_OBJ)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vmassign<intvector,intmatrix,int>(*this,m); }
 	INLINE intvector &intvector::operator =(const intmatrix_slice &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_TYPE_CAST_OF_THICK_OBJ)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vmassign<intvector,intmatrix,int>(*this,intmatrix(m)); }
 	INLINE intvector_slice &intvector_slice::operator =(const intmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<intvector>,ERROR_INTMATRIX_TYPE_CAST_OF_THICK_OBJ)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vsvassign(*this,intvector(m)); }
 	INLINE intvector_slice & intvector_slice::operator =(const intmatrix_slice &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<intvector>,ERROR_INTMATRIX_TYPE_CAST_OF_THICK_OBJ)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vsvassign(*this,intvector(intmatrix(m))); }
 	INLINE intmatrix_subv &intmatrix_subv::operator =(const intmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_TYPE_CAST_OF_THICK_OBJ)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvassign(*this,intvector(m)); }
 	INLINE intmatrix_subv &intmatrix_subv::operator =(const intmatrix_slice &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_TYPE_CAST_OF_THICK_OBJ)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mvvassign(*this,intvector(intmatrix(m))); }
 
-	INLINE const intmatrix &operator +(const intmatrix &m) throw() { return m; }
-	INLINE intmatrix operator +(const intmatrix_slice &m) throw() { return intmatrix(m); }
+	INLINE const intmatrix &operator +(const intmatrix &m) { return m; }
+	INLINE intmatrix operator +(const intmatrix_slice &m) { return intmatrix(m); }
 	INLINE intmatrix operator +(const intmatrix &m1,const intmatrix &m2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mmplus<intmatrix,intmatrix,intmatrix>(m1,m2); }
 	INLINE intmatrix operator +(const intmatrix &m,const intmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mmsplus<intmatrix,intmatrix_slice,intmatrix>(m,ms); }
 	INLINE intmatrix operator +(const intmatrix_slice &ms,const intmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mmsplus<intmatrix,intmatrix_slice,intmatrix>(m,ms); }
 	INLINE intmatrix operator +(const intmatrix_slice &m1,const intmatrix_slice &m2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmsplus<intmatrix_slice,intmatrix_slice,intmatrix>(m1,m2); }
 	INLINE intmatrix &operator +=(intmatrix &m1,const intmatrix &m2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mmplusassign(m1,m2); }
 	INLINE intmatrix &operator +=(intmatrix &m1,const intmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mmsplusassign(m1,ms); }
-	INLINE intmatrix operator -(const intmatrix &m) throw() { return _mminus(m); }
-	INLINE intmatrix operator -(const intmatrix_slice &m) throw() { return _msminus<intmatrix_slice,intmatrix>(m); }
+	INLINE intmatrix operator -(const intmatrix &m) { return _mminus(m); }
+	INLINE intmatrix operator -(const intmatrix_slice &m) { return _msminus<intmatrix_slice,intmatrix>(m); }
 	INLINE intmatrix operator -(const intmatrix &m1,const intmatrix &m2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mmminus<intmatrix,intmatrix,intmatrix>(m1,m2); }
 	INLINE intmatrix operator -(const intmatrix &m,const intmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mmsminus<intmatrix,intmatrix_slice,intmatrix>(m,ms); }
 	INLINE intmatrix operator -(const intmatrix_slice &ms,const intmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmminus<intmatrix_slice,intmatrix,intmatrix>(ms,m); }
 	INLINE intmatrix operator -(const intmatrix_slice &ms1,const intmatrix_slice &ms2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _msmsminus<intmatrix_slice,intmatrix_slice,intmatrix>(ms1,ms2); }
 	INLINE intmatrix &operator -=(intmatrix &m1,const intmatrix &m2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mmminusassign(m1,m2); }
 	INLINE intmatrix &operator -=(intmatrix &m1,const intmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_INTMATRIX_OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ return _mmsminusassign(m1,ms); }
-	INLINE bool operator ==(const intmatrix &m1,const intmatrix &m2) throw() { return _mmeq(m1,m2); }
-	INLINE bool operator !=(const intmatrix &m1,const intmatrix &m2) throw() { return _mmneq(m1,m2); }
-	INLINE bool operator <(const intmatrix &m1,const intmatrix &m2) throw() { return _mmless(m1,m2); }
-	INLINE bool operator <=(const intmatrix &m1,const intmatrix &m2) throw() { return _mmleq(m1,m2); }
-	INLINE bool operator >(const intmatrix &m1,const intmatrix &m2) throw() { return _mmless(m2,m1); }
-	INLINE bool operator >=(const intmatrix &m1,const intmatrix &m2) throw() { return _mmleq(m2,m1); }
-	INLINE bool operator ==(const intmatrix &m1,const intmatrix_slice &ms) throw() { return _mmseq(m1,ms); }
-	INLINE bool operator !=(const intmatrix &m1,const intmatrix_slice &ms) throw() { return _mmsneq(m1,ms); }
-	INLINE bool operator <(const intmatrix &m1,const intmatrix_slice &ms) throw() { return _mmsless(m1,ms); }
-	INLINE bool operator <=(const intmatrix &m1,const intmatrix_slice &ms) throw() { return _mmsleq(m1,ms); }
-	INLINE bool operator >(const intmatrix &m1,const intmatrix_slice &ms) throw() { return _msmless(ms,m1); }
-	INLINE bool operator >=(const intmatrix &m1,const intmatrix_slice &ms) throw() { return _msmleq(ms,m1); }
-	INLINE bool operator ==(const intmatrix_slice &m1,const intmatrix_slice &m2) throw() { return _msmseq(m1,m2); }
-	INLINE bool operator !=(const intmatrix_slice &m1,const intmatrix_slice &m2) throw() { return _msmsneq(m1,m2); }
-	INLINE bool operator <(const intmatrix_slice &m1,const intmatrix_slice &m2) throw() { return _msmsless(m1,m2); }
-	INLINE bool operator <=(const intmatrix_slice &m1,const intmatrix_slice &m2) throw() { return _msmsleq(m1,m2); }
-	INLINE bool operator >(const intmatrix_slice &m1,const intmatrix_slice &m2) throw() { return _msmsless(m2,m1); }
-	INLINE bool operator >=(const intmatrix_slice &m1,const intmatrix_slice &m2) throw() { return _msmsleq(m2,m1); }
-	INLINE bool operator !(const intmatrix &ms) throw() { return _mnot(ms); }
-	INLINE bool operator !(const intmatrix_slice &ms) throw() { return _msnot(ms); }
-	INLINE std::ostream &operator <<(std::ostream &s,const intmatrix &r) throw() { return _mout(s,r); }
-	INLINE std::ostream &operator <<(std::ostream &s,const intmatrix_slice &r) throw() { return _msout(s,r); }
-	INLINE std::istream &operator >>(std::istream &s,intmatrix &r) throw() { return _min(s,r); }
-	INLINE std::istream &operator >>(std::istream &s,intmatrix_slice &r) throw() { return _msin(s,r); }
+	INLINE bool operator ==(const intmatrix &m1,const intmatrix &m2) { return _mmeq(m1,m2); }
+	INLINE bool operator !=(const intmatrix &m1,const intmatrix &m2) { return _mmneq(m1,m2); }
+	INLINE bool operator <(const intmatrix &m1,const intmatrix &m2) { return _mmless(m1,m2); }
+	INLINE bool operator <=(const intmatrix &m1,const intmatrix &m2) { return _mmleq(m1,m2); }
+	INLINE bool operator >(const intmatrix &m1,const intmatrix &m2) { return _mmless(m2,m1); }
+	INLINE bool operator >=(const intmatrix &m1,const intmatrix &m2) { return _mmleq(m2,m1); }
+	INLINE bool operator ==(const intmatrix &m1,const intmatrix_slice &ms) { return _mmseq(m1,ms); }
+	INLINE bool operator !=(const intmatrix &m1,const intmatrix_slice &ms) { return _mmsneq(m1,ms); }
+	INLINE bool operator <(const intmatrix &m1,const intmatrix_slice &ms) { return _mmsless(m1,ms); }
+	INLINE bool operator <=(const intmatrix &m1,const intmatrix_slice &ms) { return _mmsleq(m1,ms); }
+	INLINE bool operator >(const intmatrix &m1,const intmatrix_slice &ms) { return _msmless(ms,m1); }
+	INLINE bool operator >=(const intmatrix &m1,const intmatrix_slice &ms) { return _msmleq(ms,m1); }
+	INLINE bool operator ==(const intmatrix_slice &m1,const intmatrix_slice &m2) { return _msmseq(m1,m2); }
+	INLINE bool operator !=(const intmatrix_slice &m1,const intmatrix_slice &m2) { return _msmsneq(m1,m2); }
+	INLINE bool operator <(const intmatrix_slice &m1,const intmatrix_slice &m2) { return _msmsless(m1,m2); }
+	INLINE bool operator <=(const intmatrix_slice &m1,const intmatrix_slice &m2) { return _msmsleq(m1,m2); }
+	INLINE bool operator >(const intmatrix_slice &m1,const intmatrix_slice &m2) { return _msmsless(m2,m1); }
+	INLINE bool operator >=(const intmatrix_slice &m1,const intmatrix_slice &m2) { return _msmsleq(m2,m1); }
+	INLINE bool operator !(const intmatrix &ms) { return _mnot(ms); }
+	INLINE bool operator !(const intmatrix_slice &ms) { return _msnot(ms); }
+	INLINE std::ostream &operator <<(std::ostream &s,const intmatrix &r) { return _mout(s,r); }
+	INLINE std::ostream &operator <<(std::ostream &s,const intmatrix_slice &r) { return _msout(s,r); }
+	INLINE std::istream &operator >>(std::istream &s,intmatrix &r) { return _min(s,r); }
+	INLINE std::istream &operator >>(std::istream &s,intmatrix_slice &r) { return _msin(s,r); }
 
         INLINE intvector permvec(const intmatrix& A) {
           intvector p(RowLen(A));

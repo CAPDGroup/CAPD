@@ -28,7 +28,7 @@
 namespace cxsc {
 
 	template <class M>
-	std::ostream &_mout(std::ostream &s,const M &r) throw()
+	std::ostream &_mout(std::ostream &s,const M &r)
 	{
 		int i,j;
 		for (i=0;i<r.ysize;i++)
@@ -43,7 +43,7 @@ namespace cxsc {
 	}
 
 	template <class M>
-	std::istream &_min(std::istream &s,M &r) throw()
+	std::istream &_min(std::istream &s,M &r)
 	{
 		int i,j;
 		for (i=0;i<r.ysize;i++)
@@ -57,7 +57,7 @@ namespace cxsc {
 	}
 
 	template <class MS>
-	std::ostream &_msout(std::ostream &s,const MS &r) throw()
+	std::ostream &_msout(std::ostream &s,const MS &r)
 	{
 		int i,j;
 		for (i=0;i<r.sysize;i++)
@@ -72,7 +72,7 @@ namespace cxsc {
 	}
 
 	template <class MS>
-	std::istream &_msin(std::istream &s,MS &r) throw()
+	std::istream &_msin(std::istream &s,MS &r)
 	{
 		int i,j;
 		for (i=0;i<r.sysize;i++)

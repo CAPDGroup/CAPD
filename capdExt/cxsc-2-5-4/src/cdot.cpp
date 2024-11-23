@@ -32,7 +32,7 @@ namespace cxsc {
 
 // ---- Ausgabefunkt. ---------------------------------------
 
-std::ostream & operator << (std::ostream &s, const cdotprecision& a) throw()
+std::ostream & operator << (std::ostream &s, const cdotprecision& a)
 {
    s << '('
      << a.re << ',' 
@@ -40,7 +40,7 @@ std::ostream & operator << (std::ostream &s, const cdotprecision& a) throw()
      << ')';
    return s;
 }
-std::string & operator << (std::string &s, const cdotprecision& a) throw()
+std::string & operator << (std::string &s, const cdotprecision& a)
 {
    s += '(';
    s << a.re;
@@ -50,7 +50,7 @@ std::string & operator << (std::string &s, const cdotprecision& a) throw()
    return s;
 }
 
-std::istream & operator >> (std::istream &s, cdotprecision &a) throw()
+std::istream & operator >> (std::istream &s, cdotprecision &a)
 {
    char c;
 
@@ -81,7 +81,7 @@ std::istream & operator >> (std::istream &s, cdotprecision &a) throw()
         
 
 
-std::string & operator >> (std::string &s, cdotprecision &a) throw()
+std::string & operator >> (std::string &s, cdotprecision &a)
 {
    s = skipwhitespacessinglechar (s, '(');
    s >> a.re;
@@ -95,45 +95,45 @@ std::string & operator >> (std::string &s, cdotprecision &a) throw()
    return s;
 }
 
-void operator >>(const std::string &s,cdotprecision &a) throw()
+void operator >>(const std::string &s,cdotprecision &a)
 {
    std::string r(s);
    r>>a;
 }
 
-void operator >>(const char *s,cdotprecision &a) throw()
+void operator >>(const char *s,cdotprecision &a)
 {
    std::string r(s);
    r>>a;
 }                          
 
-void rnd(const cdotprecision &a,complex &b,rndtype r) throw()
+void rnd(const cdotprecision &a,complex &b,rndtype r)
 {
    Re(b)=rnd(a.re,r);
    Im(b)=rnd(a.im,r);
 }
 
-void rnd(const cdotprecision &a,complex &b,complex &c) throw()
+void rnd(const cdotprecision &a,complex &b,complex &c)
 {
    rnd(a,b,RND_DOWN);
    rnd(a,c,RND_UP);
 }
 
-void rnd (const cdotprecision& d, cinterval& x) throw() 
+void rnd (const cdotprecision& d, cinterval& x) 
 {
     complex a,b;
     rnd(d,a,b);
     x = cinterval(a,b);
 }
 
-complex rnd(const cdotprecision &a,rndtype r) throw()
+complex rnd(const cdotprecision &a,rndtype r)
 {
    complex b;
    rnd(a,b,r);
    return b;
 }
 
-void accumulate(cdotprecision & a, const complex & b, const complex & c) throw()
+void accumulate(cdotprecision & a, const complex & b, const complex & c)
 {
    c_padd(a.re.ptr(),a.im.ptr(), *(a_cmpx*)&b,*(a_cmpx*)&c);
 }

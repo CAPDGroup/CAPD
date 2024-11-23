@@ -31,142 +31,142 @@ namespace cxsc {
 
 	INLINE civector _civector(const imatrix &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE civector _civector(const imatrix_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 
 	void accumulate(cidotprecision &dp, const imatrix_subv & rv1, const civector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	void accumulate(cidotprecision &dp, const civector & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	void accumulate(cidotprecision &dp, const imatrix_subv & rv1, const civector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	void accumulate(cidotprecision &dp, const civector_slice & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	
 	INLINE void SetIm(civector &iv,const imatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE void SetRe(civector &iv,const imatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE void SetIm(civector_slice &iv,const imatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE void SetRe(civector_slice &iv,const imatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 
 	INLINE civector operator *(const imatrix &m,const civector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE civector operator *(const imatrix_slice &ms,const civector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE civector operator *(const civector &v,const imatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE civector operator *(const civector &v,const imatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE civector &operator *=(civector &v,const imatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE civector &operator *=(civector &v,const imatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	INLINE civector operator *(const civector_slice &v,const imatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	
 	INLINE civector operator *(const cvector &v,const imatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE civector operator *(const cvector &v,const imatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE civector operator *(const cvector_slice &v,const imatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE civector operator *(const imatrix &m,const cvector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE civector operator *(const imatrix_slice &ms,const cvector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 } // namespace cxsc 

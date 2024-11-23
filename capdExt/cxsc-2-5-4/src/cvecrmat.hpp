@@ -31,134 +31,134 @@ namespace cxsc {
 
 	INLINE cvector _cvector(const rmatrix &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE cvector _cvector(const rmatrix_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 
 	void accumulate(cdotprecision &dp, const rmatrix_subv & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	void accumulate(cdotprecision &dp, const cvector & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	void accumulate(cidotprecision &dp, const rmatrix_subv & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	void accumulate(cidotprecision &dp, const cvector & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	void accumulate(cdotprecision &dp, const rmatrix_subv & rv1, const cvector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	void accumulate(cdotprecision &dp, const cvector_slice & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	void accumulate(cidotprecision &dp, const rmatrix_subv & rv1, const cvector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	void accumulate(cidotprecision &dp, const cvector_slice & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	
 	INLINE void SetIm(cvector &iv,const rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE void SetRe(cvector &iv,const rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE void SetIm(cvector_slice &iv,const rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE void SetRe(cvector_slice &iv,const rmatrix_subv &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 
 	INLINE cvector operator *(const rmatrix &m,const cvector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE cvector operator *(const rmatrix_slice &ms,const cvector &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE cvector operator *(const cvector &v,const rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE cvector operator *(const cvector &v,const rmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE cvector &operator *=(cvector &v,const rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE cvector &operator *=(cvector &v,const rmatrix_slice &ms)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	INLINE cvector operator *(const cvector_slice &v,const rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 } // namespace cxsc 

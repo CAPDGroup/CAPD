@@ -32,25 +32,25 @@ namespace cxsc{
 using namespace fi_lib;
 inline interval sqrt   (const interval &a)         { return j_sqrt(a); }
 
-inline interval sin    (const interval &a) throw() { return j_sin(a); }
-inline interval cos    (const interval &a) throw() { return j_cos(a); }
-inline interval tan    (const interval &a) throw() { return j_tan(a); }
-inline interval cot    (const interval &a) throw() { return j_cot(a); }
+inline interval sin    (const interval &a) { return j_sin(a); }
+inline interval cos    (const interval &a) { return j_cos(a); }
+inline interval tan    (const interval &a) { return j_tan(a); }
+inline interval cot    (const interval &a) { return j_cot(a); }
 
 inline interval asin   (const interval &a)         { return j_asin(a); }
 inline interval acos   (const interval &a)         { return j_acos(a); }
 inline interval atan   (const interval &a)         { return j_atan(a); }
 inline interval acot   (const interval &a)         { return j_acot(a); }
 
-inline interval exp    (const interval &a) throw() { return j_exp(a); }
+inline interval exp    (const interval &a) { return j_exp(a); }
 inline interval ln     (const interval &a)         { return j_log(a); }
 inline interval log2   (const interval &a)         { return j_log2(a); }
 inline interval log10  (const interval &a)         { return j_lg10(a); }
 
-inline interval sinh   (const interval &a) throw() { return j_sinh(a); }
-inline interval cosh   (const interval &a) throw() { return j_cosh(a); }
-inline interval tanh   (const interval &a) throw() { return j_tanh(a); }
-inline interval coth   (const interval &a) throw() { return j_coth(a); }
+inline interval sinh   (const interval &a) { return j_sinh(a); }
+inline interval cosh   (const interval &a) { return j_cosh(a); }
+inline interval tanh   (const interval &a) { return j_tanh(a); }
+inline interval coth   (const interval &a) { return j_coth(a); }
 
 inline interval asinh  (const interval &a)         { return j_asnh(a); }
 inline interval acosh  (const interval &a)         { return j_acsh(a); }

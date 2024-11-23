@@ -73,396 +73,396 @@ class cvector
 	// complex
 template <class V,class MS,class S> friend void _vmsconstr(V &v,const MS &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__TYPE_CAST_OF_THICK_OBJ<MS>);
+	;
 #else
-	throw();
+	;
 #endif
 template <class V,class M,class S> friend void _vmconstr(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__TYPE_CAST_OF_THICK_OBJ<M>);
+	;
 #else
-	throw();
+	;
 #endif
- template <class V> friend 	void _vresize(V &rv) throw();
+ template <class V> friend 	void _vresize(V &rv);
  template <class V,class S> friend 	void _vresize(V &rv, const int &len)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__WRONG_BOUNDARIES<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class S> friend 	void _vresize(V &rv, const int &lb, const int &ub)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__WRONG_BOUNDARIES<V>);
+		;
 #else
-	throw();
+	;
 #endif
- template <class V1,class V2,class S> friend 	 V1 &_vvassign(V1 &rv1,const V2 &rv2) throw();
- template <class V,class S> friend 	 V & _vsassign(V &rv,const S &r) throw();
- template <class V,class VS,class S> friend 	 V & _vvsassign(V &rv,const VS &sl) throw();
+ template <class V1,class V2,class S> friend 	 V1 &_vvassign(V1 &rv1,const V2 &rv2);
+ template <class V,class S> friend 	 V & _vsassign(V &rv,const S &r);
+ template <class V,class VS,class S> friend 	 V & _vvsassign(V &rv,const VS &sl);
  template <class VS,class V> friend 	 VS & _vsvassign(VS &sl,const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
 template <class V,class M,class S> friend  V &_vmassign(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__TYPE_CAST_OF_THICK_OBJ<M>);
+	;
 #else
-	throw();
+	;
 #endif
-template <class M,class V,class S> friend  M &_mvassign(M &m,const V &v) throw();
- template <class V> friend 	 V _vconj(const V &rv) throw();
- template <class VS,class E> friend 	 E _vsconj(const VS &sl) throw();
- template <class V,class E> friend 	 E _vabs(const V &rv) throw();
- template <class VS,class E> friend 	 E _vsabs(const VS &sl) throw();
-template <class MV,class V> friend  V _mvabs(const MV &mv) throw();
- template <class V,class E> friend 	 E _vim(const V &rv) throw();
- template <class V,class E> friend 	 E _vre(const V &rv) throw();
+template <class M,class V,class S> friend  M &_mvassign(M &m,const V &v);
+ template <class V> friend 	 V _vconj(const V &rv);
+ template <class VS,class E> friend 	 E _vsconj(const VS &sl);
+ template <class V,class E> friend 	 E _vabs(const V &rv);
+ template <class VS,class E> friend 	 E _vsabs(const VS &sl);
+template <class MV,class V> friend  V _mvabs(const MV &mv);
+ template <class V,class E> friend 	 E _vim(const V &rv);
+ template <class V,class E> friend 	 E _vre(const V &rv);
  template <class V1,class V2> friend 	 V1 &_vvsetim(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2> friend 	 V1 &_vvsetre(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS> friend 	 V &_vvssetim(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS> friend 	 V &_vvssetre(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
 template <class V,class MV> friend  V &_vmvsetim(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>);
+	;
 #else
-	throw();
+	;
 #endif
 template <class V,class MV> friend  V &_vmvsetre(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>);
+	;
 #else
-	throw();
+	;
 #endif
- template <class V,class S> friend 	 V &_vssetre(V &v, const S &s) throw();
- template <class V,class S> friend 	 V &_vssetim(V &v, const S &s) throw();
+ template <class V,class S> friend 	 V &_vssetre(V &v, const S &s);
+ template <class V,class S> friend 	 V &_vssetim(V &v, const S &s);
 
 //-------- vector-vector -----------------------
  template <class DP,class V1,class V2> friend 	void _vvaccu(DP &dp, const V1 & rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(OP_WITH_WRONG_DIM);
+		;
 #else
-	throw();
+	;
 #endif
  template <class DP,class VS,class V> friend 	void _vsvaccu(DP &dp, const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(OP_WITH_WRONG_DIM);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2,class E> friend 	 E _vvcmult(const V1 & rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V,class E> friend 	 E _vsvcmult(const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
- template <class V,class S> friend 	 V &_vsmultassign(V &rv,const S &r) throw();
+ template <class V,class S> friend 	 V &_vsmultassign(V &rv,const S &r);
  template <class V1,class V2,class E> friend 	 E _vvplus(const V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS,class E> friend 	 E _vvsplus(const V &rv,const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2,class E> friend 	 E _vsvsplus(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2,class E> friend 	 E _vsvsminus(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2> friend 	 V1 &_vvplusassign(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS> friend 	 V &_vvsplusassign(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V> friend 	 VS &_vsvplusassign(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvsplusassign(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvsminusassign(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2> friend 	 V1 &_vvminusassign(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS> friend 	 V &_vvsminusassign(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V> friend 	 VS &_vsvminusassign(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
- template <class V> friend 	 V _vminus(const V &rv) throw();
- template <class VS,class V> friend 	 V _vsminus(const VS &sl) throw();
+ template <class V> friend 	 V _vminus(const V &rv);
+ template <class VS,class V> friend 	 V _vsminus(const VS &sl);
  template <class V1,class V2,class E> friend 	 E _vvminus(const V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS,class E> friend 	 E _vvsminus(const V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V,class E> friend 	 E _vsvminus(const VS &sl,const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class MV,class S> friend 	 S _vmvcmult(const V &rv1, const MV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class MV,class S> friend 	 S _vmvcimult(const V &rv1, const MV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2,class E> friend 	 E _vvconv(const V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS,class E> friend 	 E _vvsconv(const V &rv,const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2,class E> friend 	 E _vsvsconv(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
 	//--------- vector-scalar -----------------
- template <class V,class S,class E> friend 	 E _vsdiv(const V &rv, const S &s) throw();
- template <class V,class S> friend 	 V &_vsdivassign(V &rv,const S &r) throw();
- template <class VS,class S,class E> friend 	 E _vssdiv(const VS &sl, const S &s) throw();
- template <class V,class S,class E> friend 	 E _vsmult(const V &rv, const S &s) throw();
- template <class VS,class S,class E> friend 	 E _vssmult(const VS &sl, const S &s) throw();
- template <class MV,class S,class E> friend 	 E _mvsmult(const MV &rv, const S &s) throw();
+ template <class V,class S,class E> friend 	 E _vsdiv(const V &rv, const S &s);
+ template <class V,class S> friend 	 V &_vsdivassign(V &rv,const S &r);
+ template <class VS,class S,class E> friend 	 E _vssdiv(const VS &sl, const S &s);
+ template <class V,class S,class E> friend 	 E _vsmult(const V &rv, const S &s);
+ template <class VS,class S,class E> friend 	 E _vssmult(const VS &sl, const S &s);
+ template <class MV,class S,class E> friend 	 E _mvsmult(const MV &rv, const S &s);
  template <class MV1,class MV2,class E> friend 	 E _mvmvplus(const MV1 &rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class MV,class V,class E> friend 	 E _mvvplus(const MV &rv1, const V &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class MV,class V,class E> friend 	 E _mvvminus(const MV &rv1, const V &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class MV,class E> friend 	 E _vmvminus(const V &rv1, const MV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class MV1,class MV2,class E> friend 	 E _mvmvminus(const MV1 &rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
 template <class MV,class V> friend  MV &_mvvplusassign(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>);
+	;
 #else
-	throw();
+	;
 #endif
 template <class MV,class V> friend  MV &_mvvminusassign(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>);
+	;
 #else
-	throw();
+	;
 #endif
- template <class MV,class S,class E> friend 	 E _mvsdiv(const MV &rv, const S &s) throw();
+ template <class MV,class S,class E> friend 	 E _mvsdiv(const MV &rv, const S &s);
 template <class MV,class V> friend  MV &_mvvassign(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>);
+	;
 #else
-	throw();
+	;
 #endif
 template <class DP,class V,class SV> friend 	void _vmvaccu(DP &dp, const V & rv1, const SV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(OP_WITH_WRONG_DIM);
+		;
 #else
-	throw();
+	;
 #endif
 
- template <class V1,class V2> friend 	 bool _vveq(const V1 &rv1, const V2 &rv2) throw();
- template <class VS,class V> friend 	 bool _vsveq(const VS &sl, const V &rv) throw();
- template <class V1,class V2> friend 	 bool _vvneq(const V1 &rv1, const V2 &rv2) throw();
- template <class VS,class V> friend 	 bool _vsvneq(const VS &sl, const V &rv) throw();
- template <class V1,class V2> friend 	 bool _vvless(const V1 &rv1, const V2 &rv2) throw();
- template <class VS,class V> friend 	 bool _vsvless(const VS &sl, const V &rv) throw();
- template <class V1,class V2> friend 	 bool _vvleq(const V1 &rv1, const V2 &rv2) throw();
- template <class VS,class V> friend 	 bool _vsvleq(const VS &sl, const V &rv) throw();
- template <class V,class VS> friend 	 bool _vvsless(const V &rv, const VS &sl) throw();
- template <class V,class VS> friend 	 bool _vvsleq(const V &rv, const VS &sl) throw();
- template <class V> friend 	 bool _vnot(const V &rv) throw();
- template <class V> friend 	void *_vvoid(const V &rv) throw();
- template <class VS1,class VS2> friend 	 bool _vsvseq(const VS1 &sl1, const VS2 &sl2) throw();
- template <class VS1,class VS2> friend 	 bool _vsvsneq(const VS1 &sl1, const VS2 &sl2) throw();
- template <class VS1,class VS2> friend 	 bool _vsvsless(const VS1 &sl1, const VS2 &sl2) throw();
- template <class VS1,class VS2> friend 	 bool _vsvsleq(const VS1 &sl1, const VS2 &sl2) throw();
- template <class VS> friend 	 bool _vsnot(const VS &sl) throw();
- template <class VS> friend 	void *_vsvoid(const VS &sl) throw();
- template <class V> friend 	std::ostream &_vout(std::ostream &s, const V &rv) throw();
- template <class V> friend 	std::istream &_vin(std::istream &s, V &rv) throw();
+ template <class V1,class V2> friend 	 bool _vveq(const V1 &rv1, const V2 &rv2);
+ template <class VS,class V> friend 	 bool _vsveq(const VS &sl, const V &rv);
+ template <class V1,class V2> friend 	 bool _vvneq(const V1 &rv1, const V2 &rv2);
+ template <class VS,class V> friend 	 bool _vsvneq(const VS &sl, const V &rv);
+ template <class V1,class V2> friend 	 bool _vvless(const V1 &rv1, const V2 &rv2);
+ template <class VS,class V> friend 	 bool _vsvless(const VS &sl, const V &rv);
+ template <class V1,class V2> friend 	 bool _vvleq(const V1 &rv1, const V2 &rv2);
+ template <class VS,class V> friend 	 bool _vsvleq(const VS &sl, const V &rv);
+ template <class V,class VS> friend 	 bool _vvsless(const V &rv, const VS &sl);
+ template <class V,class VS> friend 	 bool _vvsleq(const V &rv, const VS &sl);
+ template <class V> friend 	 bool _vnot(const V &rv);
+ template <class V> friend 	void *_vvoid(const V &rv);
+ template <class VS1,class VS2> friend 	 bool _vsvseq(const VS1 &sl1, const VS2 &sl2);
+ template <class VS1,class VS2> friend 	 bool _vsvsneq(const VS1 &sl1, const VS2 &sl2);
+ template <class VS1,class VS2> friend 	 bool _vsvsless(const VS1 &sl1, const VS2 &sl2);
+ template <class VS1,class VS2> friend 	 bool _vsvsleq(const VS1 &sl1, const VS2 &sl2);
+ template <class VS> friend 	 bool _vsnot(const VS &sl);
+ template <class VS> friend 	void *_vsvoid(const VS &sl);
+ template <class V> friend 	std::ostream &_vout(std::ostream &s, const V &rv);
+ template <class V> friend 	std::istream &_vin(std::istream &s, V &rv);
 
 	//------------- vector-matrix ---------------
-template <class V,class MV2,class S> friend  V &_vmvassign(V &v,const MV2 &rv) throw();
+template <class V,class MV2,class S> friend  V &_vmvassign(V &v,const MV2 &rv);
  template <class M,class V,class E> friend 	 E _mvcmult(const M &m,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class M,class V,class E> friend 	 E _mvcimult(const M &m,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class M,class E> friend 	 E _vmcmult(const V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class M,class E> friend 	 E _vmcimult(const V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class M,class S> friend 	 V &_vmcmultassign(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class M,class S> friend 	 V &_vmcimultassign(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class MS,class V,class E> friend 	 E _msvcmult(const MS &ms,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class MS,class V,class E> friend 	 E _msvcimult(const MS &ms,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class MS,class E> friend 	 E _vmscmult(const V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class MS,class E> friend 	 E _vmscimult(const V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class MS,class S> friend 	 V &_vmscmultassign(V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class MS,class S> friend 	 V &_vmscimultassign(V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>);
+		;
 #else
-	throw();
+	;
 #endif
 
 	// Real
@@ -474,164 +474,164 @@ template <class V,class MV2,class S> friend  V &_vmvassign(V &v,const MV2 &rv) t
 	// vector-vector
  template <class V1,class V2,class E> friend 	 E _vvcimult(const V1 & rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V,class E> friend 	 E _vsvcimult(const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2,class E> friend 	 E _vsvscimult(const VS1 & sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2,class E> friend 	 E _vvsect(const V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS,class E> friend 	 E _vvssect(const V &rv,const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2,class E> friend 	 E _vsvssect(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
 
 	// vector-matrix
 	// cinterval -----------------
  template <class V1,class V2> friend 	 V1 &_vvsetinf(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2> friend 	 V1 &_vvsetsup(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2> friend 	 V1 &_vvusetinf(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2> friend 	 V1 &_vvusetsup(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V> friend 	 VS &_vsvsetinf(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V> friend 	 VS &_vsvsetsup(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V> friend 	 VS &_vsvusetinf(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V> friend 	 VS &_vsvusetsup(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
 template <class MV,class V> friend  MV &_mvvsetinf(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>);
+	;
 #else
-	throw();
+	;
 #endif
 template <class MV,class V> friend  MV &_mvvsetsup(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>);
+	;
 #else
-	throw();
+	;
 #endif
 template <class MV,class V> friend  MV &_mvvusetinf(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>);
+	;
 #else
-	throw();
+	;
 #endif
 template <class MV,class V> friend  MV &_mvvusetsup(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>);
+	;
 #else
-	throw();
+	;
 #endif
- template <class V,class E> friend 	 E _vmid(const V &rv) throw();
- template <class V,class E> friend 	 E _vinf(const V &rv) throw();
- template <class V,class E> friend 	 E _vsup(const V &rv) throw();
- template <class V,class E> friend 	 E _vdiam(const V &rv) throw();
- template <class VS,class E> friend 	 E _vsmid(const VS &sl) throw();
- template <class VS,class E> friend 	 E _vsinf(const VS &sl) throw();
- template <class VS,class E> friend 	 E _vssup(const VS &sl) throw();
- template <class VS,class E> friend 	 E _vsdiam(const VS &sl) throw();
-template <class MV,class V> friend  V _mvdiam(const MV &mv) throw();
-template <class MV,class V> friend  V _mvmid(const MV &mv) throw();
-template <class MV,class V> friend  V _mvinf(const MV &mv) throw();
-template <class MV,class V> friend  V _mvsup(const MV &mv) throw();
+ template <class V,class E> friend 	 E _vmid(const V &rv);
+ template <class V,class E> friend 	 E _vinf(const V &rv);
+ template <class V,class E> friend 	 E _vsup(const V &rv);
+ template <class V,class E> friend 	 E _vdiam(const V &rv);
+ template <class VS,class E> friend 	 E _vsmid(const VS &sl);
+ template <class VS,class E> friend 	 E _vsinf(const VS &sl);
+ template <class VS,class E> friend 	 E _vssup(const VS &sl);
+ template <class VS,class E> friend 	 E _vsdiam(const VS &sl);
+template <class MV,class V> friend  V _mvdiam(const MV &mv);
+template <class MV,class V> friend  V _mvmid(const MV &mv);
+template <class MV,class V> friend  V _mvinf(const MV &mv);
+template <class MV,class V> friend  V _mvsup(const MV &mv);
 
 	// vector-vector
  template <class V1,class V2> friend 	 V1 &_vvconvassign(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2> friend 	 V1 &_vvsectassign(V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V> friend 	 VS &_vsvconvassign(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V> friend 	 VS &_vsvsectassign(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
 template <class MV,class V> friend  MV &_mvvconvassign(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>);
+	;
 #else
-	throw();
+	;
 #endif
 template <class MV,class V> friend  MV &_mvvsectassign(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>);
+	;
 #else
-	throw();
+	;
 #endif
 
 
@@ -639,42 +639,42 @@ template <class MV,class V> friend  MV &_mvvsectassign(MV &v,const V &rv)
 
 	//------ Konstruktoren ----------------------------------------------------
 	//! Constructor of class cvector
-	cvector () throw();
+	cvector ();
 	//! Constructor of class cvector
-	explicit cvector(const int &i) throw();
+	explicit cvector(const int &i);
 #ifdef OLD_CXSC
 	//! Constructor of class cvector
-	explicit cvector(const class index &i) throw(); // for backwards compatibility
+	explicit cvector(const class index &i); // for backwards compatibility
 #endif
 	//! Constructor of class cvector
 	explicit cvector(const int &i1,const int &i2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CVECTOR_WRONG_BOUNDARIES,ERROR_CVECTOR_NO_MORE_MEMORY);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Constructor of class cvector
-	cvector(const cmatrix_subv &) throw();
+	cvector(const cmatrix_subv &);
 	//! Constructor of class cvector
-	explicit cvector(const complex& r) throw();
+	explicit cvector(const complex& r);
 	//! Constructor of class cvector
 	explicit cvector(const cmatrix& )
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Constructor of class cvector
 	explicit cvector(const cmatrix_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Constructor of class cvector
-	cvector(const cvector_slice &rs) throw();
+	cvector(const cvector_slice &rs);
 	//! Constructor of class cvector
-	cvector(const cvector &v) throw();
+	cvector(const cvector &v);
 	//! Constructor of class cvector
 	cvector(const scvector_slice &rs);
 	//! Constructor of class cvector
@@ -685,82 +685,82 @@ template <class MV,class V> friend  MV &_mvvsectassign(MV &v,const V &rv)
 	//! Constructor of class cvector
 	explicit cvector(const srvector &v);
 	//! Constructor of class cvector
-	explicit cvector(const real &) throw();
+	explicit cvector(const real &);
 	//! Constructor of class cvector
-	explicit cvector(const rvector_slice &rs) throw();
+	explicit cvector(const rvector_slice &rs);
 	//! Constructor of class cvector
-	explicit cvector(const rvector &v) throw();
+	explicit cvector(const rvector &v);
 	//! Constructor of class cvector
 	explicit cvector(const rmatrix &)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Constructor of class cvector
 	explicit cvector(const rmatrix_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Constructor of class cvector
-	explicit cvector(const rmatrix_subv &) throw();
+	explicit cvector(const rmatrix_subv &);
 	
 	// complex
 	//! Implementation of standard assigning operator
-	cvector &operator =(const cvector &rv) throw();
+	cvector &operator =(const cvector &rv);
 	//! Implementation of standard assigning operator
-	cvector &operator =(const cvector_slice &sl) throw();
+	cvector &operator =(const cvector_slice &sl);
 	//! Implementation of standard assigning operator
 	cvector &operator =(const scvector &rv);
 	//! Implementation of standard assigning operator
 	cvector &operator =(const scvector_slice &sl);
 	//! Implementation of standard assigning operator
-	cvector &operator =(const complex &r) throw();
+	cvector &operator =(const complex &r);
 	//! Implementation of standard assigning operator
 	cvector &operator =(const cmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of standard assigning operator
 	cvector &operator =(const cmatrix_slice &)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of standard assigning operator
-	cvector &operator =(const cmatrix_subv &) throw();
+	cvector &operator =(const cmatrix_subv &);
 	// Real
 	//! Implementation of standard assigning operator
-	cvector &operator =(const rvector &rv) throw();
+	cvector &operator =(const rvector &rv);
 	//! Implementation of standard assigning operator
-	cvector &operator =(const rvector_slice &sl) throw();
+	cvector &operator =(const rvector_slice &sl);
 	//! Implementation of standard assigning operator
 	cvector &operator =(const srvector &rv);
 	//! Implementation of standard assigning operator
 	cvector &operator =(const srvector_slice &sl);
 	//! Implementation of standard assigning operator
-	cvector &operator =(const real &r) throw();
+	cvector &operator =(const real &r);
 	//! Implementation of standard assigning operator
 	cvector &operator =(const rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of standard assigning operator
 	cvector &operator =(const rmatrix_slice &)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of standard assigning operator
-	cvector &operator =(const rmatrix_subv &) throw();
+	cvector &operator =(const rmatrix_subv &);
 
         cvector& operator+=(const srvector&);
         cvector& operator+=(const scvector&);
@@ -783,53 +783,53 @@ template <class MV,class V> friend  MV &_mvvsectassign(MV &v,const V &rv)
 	
 	friend INLINE complex::complex(const cvector &)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_CVECTOR_USE_OF_UNINITIALIZED_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Returns the lower bound of the vector
-	friend INLINE int Lb(const cvector &rv) throw() { return rv.l; }
+	friend INLINE int Lb(const cvector &rv) { return rv.l; }
 	//! Returns the upper bound of the vector
-	friend INLINE int Ub(const cvector &rv) throw() { return rv.u; }
+	friend INLINE int Ub(const cvector &rv) { return rv.u; }
 	//! Returns the dimension of the vector
-        friend INLINE int VecLen(const cvector &rv) throw() { return rv.size; }
+        friend INLINE int VecLen(const cvector &rv) { return rv.size; }
 	//! Sets the lower bound of the vector
-	friend INLINE cvector & SetLb(cvector &rv, const int &l) throw() { rv.l=l; rv.u=l+rv.size-1; return rv;}
+	friend INLINE cvector & SetLb(cvector &rv, const int &l) { rv.l=l; rv.u=l+rv.size-1; return rv;}
 	//! Sets the upper bound of the vector
-	friend INLINE cvector & SetUb(cvector &rv, const int &u) throw() { rv.u=u; rv.l=u-rv.size+1; return rv;}
+	friend INLINE cvector & SetUb(cvector &rv, const int &u) { rv.u=u; rv.l=u-rv.size+1; return rv;}
 	//! Operator for accessing the single elements of the vector (read-only)
 	INLINE complex & operator [](const int &i) const
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CVECTOR_ELEMENT_NOT_IN_VEC);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Operator for accessing the single elements of the vector
 	INLINE complex & operator [](const int &i) 
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CVECTOR_ELEMENT_NOT_IN_VEC);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Operator for accessing the whole vector
-	INLINE cvector & operator ()() throw() { return *this; }
+	INLINE cvector & operator ()() { return *this; }
 	//! Operator for accessing a part of the vector
 	INLINE cvector_slice operator ()(const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CVECTOR_SUB_ARRAY_TOO_BIG);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Operator for accessing a part of the vector
 	cvector_slice operator ()(const int &i1,const int &i2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CVECTOR_SUB_ARRAY_TOO_BIG);
+	;
 #else
-	throw();
+	;
 #endif
-	operator void*() throw();
+	operator void*();
 //#else
 //#endif
 };
@@ -860,263 +860,263 @@ class cvector_slice
 
  template <class VS1,class VS2> friend 	 VS1 & _vsvsassign(VS1 &sl1,const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
 
- template <class V,class VS,class S> friend 	 V & _vvsassign(V &rv,const VS &sl) throw();
+ template <class V,class VS,class S> friend 	 V & _vvsassign(V &rv,const VS &sl);
 
  template <class VS,class V> friend 	 VS & _vsvassign(VS &sl,const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
 
- template <class VS,class S> friend 	 VS & _vssassign(VS &sl,const S &r) throw();
+ template <class VS,class S> friend 	 VS & _vssassign(VS &sl,const S &r);
 
  template <class DP,class VS,class V> friend 	void _vsvaccu(DP &dp, const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(OP_WITH_WRONG_DIM);
+		;
 #else
-	throw();
+	;
 #endif
  template <class DP,class VS1,class VS2> friend 	void _vsvsaccu(DP &dp, const VS1 & sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(OP_WITH_WRONG_DIM);
+		;
 #else
-	throw();
+	;
 #endif
 
- template <class VS,class S,class E> friend 	 E _vssdiv(const VS &sl, const S &s) throw();
- template <class VS,class S,class E> friend 	 E _vssmult(const VS &sl, const S &s) throw();
+ template <class VS,class S,class E> friend 	 E _vssdiv(const VS &sl, const S &s);
+ template <class VS,class S,class E> friend 	 E _vssmult(const VS &sl, const S &s);
 
  template <class VS,class V,class E> friend 	 E _vsvcmult(const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
- template <class VS,class S> friend 	 VS &_vssmultassign(VS &rv,const S &r) throw();
- template <class VS,class S> friend 	 VS &_vssdivassign(VS &rv,const S &r) throw();
+ template <class VS,class S> friend 	 VS &_vssmultassign(VS &rv,const S &r);
+ template <class VS,class S> friend 	 VS &_vssdivassign(VS &rv,const S &r);
  template <class V,class VS,class E> friend 	 E _vvsplus(const V &rv,const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2,class E> friend 	 E _vsvsplus(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2,class E> friend 	 E _vsvsminus(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS> friend 	 V &_vvsplusassign(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvsplusassign(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvsminusassign(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS> friend 	 V &_vvsminusassign(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
 
- template <class VS,class V> friend 	 V _vsminus(const VS &sl) throw();
+ template <class VS,class V> friend 	 V _vsminus(const VS &sl);
 
  template <class V,class VS,class E> friend 	 E _vvsminus(const V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V,class E> friend 	 E _vsvminus(const VS &sl,const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS,class E> friend 	 E _vvsconv(const V &rv,const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2,class E> friend 	 E _vsvsconv(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
- template <class VS,class V> friend 	 bool _vsveq(const VS &sl, const V &rv) throw();
- template <class VS,class V> friend 	 bool _vsvneq(const VS &sl, const V &rv) throw();
- template <class VS,class V> friend 	 bool _vsvless(const VS &sl, const V &rv) throw();
- template <class VS,class V> friend 	 bool _vsvleq(const VS &sl, const V &rv) throw();
- template <class V,class VS> friend 	 bool _vvsless(const V &rv, const VS &sl) throw();
- template <class V,class VS> friend 	 bool _vvsleq(const V &rv, const VS &sl) throw();
- template <class VS,class E> friend 	 E _vsconj(const VS &sl) throw();
- template <class VS,class E> friend 	 E _vsabs(const VS &sl) throw();
+ template <class VS,class V> friend 	 bool _vsveq(const VS &sl, const V &rv);
+ template <class VS,class V> friend 	 bool _vsvneq(const VS &sl, const V &rv);
+ template <class VS,class V> friend 	 bool _vsvless(const VS &sl, const V &rv);
+ template <class VS,class V> friend 	 bool _vsvleq(const VS &sl, const V &rv);
+ template <class V,class VS> friend 	 bool _vvsless(const V &rv, const VS &sl);
+ template <class V,class VS> friend 	 bool _vvsleq(const V &rv, const VS &sl);
+ template <class VS,class E> friend 	 E _vsconj(const VS &sl);
+ template <class VS,class E> friend 	 E _vsabs(const VS &sl);
 
  template <class VS1,class VS2,class E> friend 	 E _vsvscmult(const VS1 & sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
 
- template <class VS1,class VS2> friend 	 bool _vsvseq(const VS1 &sl1, const VS2 &sl2) throw();
- template <class VS1,class VS2> friend 	 bool _vsvsneq(const VS1 &sl1, const VS2 &sl2) throw();
- template <class VS1,class VS2> friend 	 bool _vsvsless(const VS1 &sl1, const VS2 &sl2) throw();
- template <class VS1,class VS2> friend 	 bool _vsvsleq(const VS1 &sl1, const VS2 &sl2) throw();
- template <class VS> friend 	 bool _vsnot(const VS &sl) throw();
- template <class VS> friend 	void *_vsvoid(const VS &sl) throw();
- template <class V> friend 	std::ostream &_vsout(std::ostream &s, const V &rv) throw();
- template <class V> friend 	std::istream &_vsin(std::istream &s, V &rv) throw();
- template <class VS,class E> friend 	 E _vsim(const VS &sl) throw();
- template <class VS,class E> friend 	 E _vsre(const VS &sl) throw();
+ template <class VS1,class VS2> friend 	 bool _vsvseq(const VS1 &sl1, const VS2 &sl2);
+ template <class VS1,class VS2> friend 	 bool _vsvsneq(const VS1 &sl1, const VS2 &sl2);
+ template <class VS1,class VS2> friend 	 bool _vsvsless(const VS1 &sl1, const VS2 &sl2);
+ template <class VS1,class VS2> friend 	 bool _vsvsleq(const VS1 &sl1, const VS2 &sl2);
+ template <class VS> friend 	 bool _vsnot(const VS &sl);
+ template <class VS> friend 	void *_vsvoid(const VS &sl);
+ template <class V> friend 	std::ostream &_vsout(std::ostream &s, const V &rv);
+ template <class V> friend 	std::istream &_vsin(std::istream &s, V &rv);
+ template <class VS,class E> friend 	 E _vsim(const VS &sl);
+ template <class VS,class E> friend 	 E _vsre(const VS &sl);
  template <class VS,class V> friend 	 VS &_vsvsetim(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V> friend 	 VS &_vsvsetre(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvssetim(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvssetre(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
 /*	friend TINLINE cvector_slice &_vsmvsetim(cvector_slice &,const
 rmatrix_subv &) #if(CXSC_INDEX_CHECK)
-throw(ERROR__OP_WITH_WRONG_DIM<cvector_slice>); #else 	throw();
+; #else 	;
 #endif
 	friend TINLINE cvector_slice &_vsmvsetre(cvector_slice &,const rmatrix_subv &)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector_slice>);
+	;
 #else
-	throw();
+	;
 #endif  */     // 4.10.00 S.W.
 
- template <class VS,class S> friend 	 VS &_vsssetim(VS &vs, const S &s) throw();
- template <class VS,class S> friend 	 VS &_vsssetre(VS &vs, const S &s) throw();
+ template <class VS,class S> friend 	 VS &_vsssetim(VS &vs, const S &s);
+ template <class VS,class S> friend 	 VS &_vsssetre(VS &vs, const S &s);
 
  template <class VS,class M,class S> friend 	 VS &_vsmcmultassign(VS &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>);
+		;
 #else
-	throw();
+	;
 #endif
 	
 	// complex / Real
  template <class VS,class V> friend 	 VS &_vsvplusassign(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V> friend 	 VS &_vsvminusassign(VS &sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class MS,class E> friend 	 E _vmscmult(const V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>);
+		;
 #else
-	throw();
+	;
 #endif
 	
  template <class V,class VS,class E> friend 	 E _vvssect(const V &rv,const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2,class E> friend 	 E _vsvssect(const VS1 &s1,const VS2 &s2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
 	// interval -----------
 	// vector-vector -------
  template <class V1,class V2,class E> friend 	 E _vvcimult(const V1 & rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS,class V,class E> friend 	 E _vsvcimult(const VS & sl, const V &rv)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2,class E> friend 	 E _vsvscimult(const VS1 & sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2,class E> friend 	 E _vvplus(const V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V1,class V2,class E> friend 	 E _vvminus(const V1 &rv1, const V2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>);
+		;
 #else
-	throw();
+	;
 #endif
 
 	// vector-matrix -------
 /*   friend TINLINE civector _mvscimult<imatrix,cvector_slice,civector>(const
 imatrix &m,const cvector_slice &v) #if(CXSC_INDEX_CHECK)
-	throw(ERROR_IMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif */  // 4.10.00. S.W.
 /*   friend TINLINE civector _vsmcimult<cvector_slice,imatrix,civector>(const
 cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CIMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 */  // 4.10.00 S.W.
 
@@ -1124,38 +1124,38 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	// cinterval -- vector-vector
  template <class V,class VS> friend 	 V &_vvsconvassign(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS> friend 	 V &_vvssectassign(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvsconvassign(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvssectassign(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
 #endif
 	
 	//--------------------- Konstruktoren -----------------------------------
 	//! Constructor of class cvector_slice
-	explicit INLINE cvector_slice(cvector &a, const int &lb, const int &ub) throw():dat(a.dat),l(a.l),u(a.u),size(ub-lb+1),start(lb),end(ub) { }
+	explicit INLINE cvector_slice(cvector &a, const int &lb, const int &ub):dat(a.dat),l(a.l),u(a.u),size(ub-lb+1),start(lb),end(ub) { }
 	//! Constructor of class cvector_slice
-	explicit INLINE cvector_slice(cvector_slice &a, const int &lb, const int &ub) throw():dat(a.dat),l(a.l),u(a.u),size(ub-lb+1),start(lb),end(ub) { }
+	explicit INLINE cvector_slice(cvector_slice &a, const int &lb, const int &ub):dat(a.dat),l(a.l),u(a.u),size(ub-lb+1),start(lb),end(ub) { }
 	public:
 	//! Constructor of class cvector_slice
-	INLINE cvector_slice(const cvector_slice &a) throw():dat(a.dat),l(a.l),u(a.u),size(a.size),start(a.start),end(a.end) { }
+	INLINE cvector_slice(const cvector_slice &a):dat(a.dat),l(a.l),u(a.u),size(a.size),start(a.start),end(a.end) { }
 	public:
 	// complex
 	//! Implementation of standard assigning operator
@@ -1166,35 +1166,35 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! Implementation of standard assigning operator
 	INLINE cvector_slice & operator =(const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of standard assigning operator
 	INLINE cvector_slice & operator =(const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of standard assigning operator
-	INLINE cvector_slice & operator =(const complex &r) throw();
+	INLINE cvector_slice & operator =(const complex &r);
 	//! Implementation of standard assigning operator
 	INLINE cvector_slice & operator =(const cmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>,ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of standard assigning operator
 	INLINE cvector_slice & operator =(const cmatrix_slice &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>,ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of standard assigning operator
-	INLINE cvector_slice &operator =(const cmatrix_subv &) throw();
+	INLINE cvector_slice &operator =(const cmatrix_subv &);
 	// Real
 	//! Implementation of standard assigning operator
 	INLINE cvector_slice & operator =(const srvector &rv);
@@ -1204,91 +1204,91 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! Implementation of standard assigning operator
 	INLINE cvector_slice & operator =(const rvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	INLINE cvector_slice & operator =(const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of standard assigning operator
-	INLINE cvector_slice & operator =(const real &r) throw();
+	INLINE cvector_slice & operator =(const real &r);
 	//! Implementation of standard assigning operator
 	INLINE cvector_slice & operator =(const rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<rvector>,ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of standard assigning operator
 	INLINE cvector_slice & operator =(const rmatrix_slice &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<rvector>,ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of standard assigning operator
-	INLINE cvector_slice &operator =(const rmatrix_subv &mv) throw();
+	INLINE cvector_slice &operator =(const rmatrix_subv &mv);
 
 	// cinterval --------
  template <class V,class VS> friend 	 V &_vvssetinf(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS> friend 	 V &_vvssetsup(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS> friend 	 V &_vvsusetinf(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class V,class VS> friend 	 V &_vvsusetsup(V &rv, const VS &sl)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<V>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvssetinf(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvssetsup(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvsusetinf(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
  template <class VS1,class VS2> friend 	 VS1 &_vsvsusetsup(VS1 &sl1, const VS2 &sl2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<VS1>);
+		;
 #else
-	throw();
+	;
 #endif
 
 	// cinterval -- vector-vector
  template <class V,class MS,class E> friend 	 E _vmscimult(const V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>);
+		;
 #else
-	throw();
+	;
 #endif
 
 
@@ -1296,185 +1296,185 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 
 	friend INLINE complex::complex(const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_CVECTOR_USE_OF_UNINITIALIZED_OBJ);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Returns the lower bound of the vector
-	friend INLINE int Lb(const cvector_slice &sl) throw() { return sl.start; }
+	friend INLINE int Lb(const cvector_slice &sl) { return sl.start; }
 	//! Returns the upper bound of the vector
-	friend INLINE int Ub(const cvector_slice &sl) throw() { return sl.end; }
+	friend INLINE int Ub(const cvector_slice &sl) { return sl.end; }
 	//! Returns the dimension of the vector
-        friend INLINE int VecLen(const cvector_slice &sl) throw() { return sl.end-sl.start+1; }
+        friend INLINE int VecLen(const cvector_slice &sl) { return sl.end-sl.start+1; }
 	//! Operator for accessing the single elements of the vector (read-only)
 	INLINE complex & operator [](const int &i) const
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CVECTOR_ELEMENT_NOT_IN_VEC);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Operator for accessing the single elements of the vector
 	INLINE complex & operator [](const int &i) 
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CVECTOR_ELEMENT_NOT_IN_VEC);
+	;
 #else
-	throw();
+	;
 #endif
 	
 	//! Operator for accessing the whole vector
-	INLINE cvector_slice & operator ()() throw() { return *this; }
+	INLINE cvector_slice & operator ()() { return *this; }
 	//! Operator for accessing a part of the vector
 	INLINE cvector_slice operator ()(const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CVECTOR_SUB_ARRAY_TOO_BIG);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Operator for accessing a part of the vector
 	INLINE cvector_slice operator ()(const int &i1,const int &i2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CVECTOR_SUB_ARRAY_TOO_BIG);
+	;
 #else
-	throw();
+	;
 #endif
 	
 	//! Implementation of division and allocation operation
-	INLINE cvector_slice &operator /=(const complex &r) throw();
+	INLINE cvector_slice &operator /=(const complex &r);
 	//! Implementation of division and allocation operation
-	INLINE cvector_slice &operator /=(const real &r) throw();
+	INLINE cvector_slice &operator /=(const real &r);
 	//! Implementation of multiplication and allocation operation
-	INLINE cvector_slice &operator *=(const complex &r) throw();
+	INLINE cvector_slice &operator *=(const complex &r);
 	//! Implementation of multiplication and allocation operation
 	INLINE cvector_slice &operator *=(const cmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication and allocation operation
 	INLINE cvector_slice &operator *=(const rmatrix &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_RMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication and allocation operation
-	INLINE cvector_slice &operator *=(const real &r) throw();
+	INLINE cvector_slice &operator *=(const real &r);
 	//! Implementation of addition and allocation operation
 	INLINE cvector_slice &operator +=(const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition and allocation operation
 	INLINE cvector_slice &operator +=(const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction and allocation operation
 	INLINE cvector_slice &operator -=(const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction and allocation operation
 	INLINE cvector_slice &operator -=(const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Allocates the convex hull of the arguments to the first argument
 	INLINE cvector_slice &operator |=(const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Allocates the convex hull of the arguments to the first argument
 	INLINE cvector_slice &operator |=(const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Allocates the intersection of the arguments to the first argument
 	INLINE cvector_slice &operator &=(const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Allocates the intersection of the arguments to the first argument
 	INLINE cvector_slice &operator &=(const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	
 	//! Implementation of addition and allocation operation
 	INLINE cvector_slice &operator +=(const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition and allocation operation
 	INLINE cvector_slice &operator +=(const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction and allocation operation
 	INLINE cvector_slice &operator -=(const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction and allocation operation
 	INLINE cvector_slice &operator -=(const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Allocates the convex hull of the arguments to the first argument
 	INLINE cvector_slice &operator |=(const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Allocates the convex hull of the arguments to the first argument
 	INLINE cvector_slice &operator |=(const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Allocates the intersection of the arguments to the first argument
 	INLINE cvector_slice &operator &=(const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Allocates the intersection of the arguments to the first argument
 	INLINE cvector_slice &operator &=(const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
-	INLINE operator void*() throw();
+	INLINE operator void*();
 
         cvector_slice& operator+=(const srvector&);
         cvector_slice& operator+=(const scvector&);
@@ -1493,193 +1493,193 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 //======================== Vector Functions =============================
 
 	//! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-	INLINE cvector _cvector(const complex &r) throw();
-//	INLINE cvector _cvector(const cmatrix &m) throw(ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ);
-//	INLINE cvector _cvector(const cmatrix_slice &sl) throw(ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	INLINE cvector _cvector(const complex &r);
+//	INLINE cvector _cvector(const cmatrix &m);
+//	INLINE cvector _cvector(const cmatrix_slice &sl);
 	//! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-	INLINE cvector _cvector(const real &r) throw();
+	INLINE cvector _cvector(const real &r);
 	//! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-	INLINE cvector _cvector(const rvector_slice &rs) throw();
+	INLINE cvector _cvector(const rvector_slice &rs);
 	//! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-	INLINE cvector _cvector(const rvector &rs) throw();
-//	INLINE cvector _cvector(const rmatrix &m) throw(ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
-//	INLINE cvector _cvector(const rmatrix_slice &sl) throw(ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ);
+	INLINE cvector _cvector(const rvector &rs);
+//	INLINE cvector _cvector(const rmatrix &m);
+//	INLINE cvector _cvector(const rmatrix_slice &sl);
 	//! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-	INLINE cvector _cvector(const rmatrix_subv &rs) throw();
+	INLINE cvector _cvector(const rmatrix_subv &rs);
 
 	//! Returns the vector with the new given real part vector
 	INLINE cvector &SetRe(cvector &iv,const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Returns the vector with the new given real part vector
 	INLINE cvector_slice &SetRe(cvector_slice &iv,const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Returns the vector with the new given real part vector
 	INLINE cvector &SetRe(cvector &iv,const rvector_slice &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Returns the vector with the new given real part vector
 	INLINE cvector_slice &SetRe(cvector_slice &iv,const rvector_slice &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Returns the vector with the new given imaginary part vector
 	INLINE cvector &SetIm(cvector &iv,const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Returns the vector with the new given imaginary part vector
 	INLINE cvector_slice &SetIm(cvector_slice &iv,const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Returns the vector with the new given imaginary part vector
 	INLINE cvector &SetIm(cvector &iv,const rvector_slice &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Returns the vector with the new given imaginary part vector
 	INLINE cvector_slice &SetIm(cvector_slice &iv,const rvector_slice &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR_CMATRIX_OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Sets componentwise the real parts of the cvector
-	INLINE cvector &SetRe(cvector &iv,const real &r) throw();
+	INLINE cvector &SetRe(cvector &iv,const real &r);
 	//! Sets componentwise the imaginary parts of the cvector
-	INLINE cvector &SetIm(cvector &iv,const real &r) throw();
+	INLINE cvector &SetIm(cvector &iv,const real &r);
 	//! Sets componentwise the real parts of the cvector
-	INLINE cvector_slice &SetRe(cvector_slice &iv,const real &r) throw();
+	INLINE cvector_slice &SetRe(cvector_slice &iv,const real &r);
 	//! Sets componentwise the imaginary parts of the cvector
-	INLINE cvector_slice &SetIm(cvector_slice &iv,const real &r) throw();
+	INLINE cvector_slice &SetIm(cvector_slice &iv,const real &r);
 
 	//! Resizes the vector
-	INLINE void Resize(cvector &rv) throw();
+	INLINE void Resize(cvector &rv);
 	//! Resizes the vector
 	INLINE void Resize(cvector &rv, const int &len)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__WRONG_BOUNDARIES<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Resizes the vector
 	INLINE void Resize(cvector &rv, const int &lb, const int &ub)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__WRONG_BOUNDARIES<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	
 	//! Returns the conjugated cvector
-	INLINE cvector conj(const cvector &rv) throw();
+	INLINE cvector conj(const cvector &rv);
 	//! Returns the conjugated cvector
-	INLINE cvector conj(const cvector_slice &sl) throw();
+	INLINE cvector conj(const cvector_slice &sl);
 	
 	//! Returns the absolute value of the vector
-	INLINE rvector abs(const cvector &rv) throw();
+	INLINE rvector abs(const cvector &rv);
 	//! Returns the absolute value of the vector
-	INLINE rvector abs(const cvector_slice &sl) throw();
+	INLINE rvector abs(const cvector_slice &sl);
 	//! Returns the imaginary part of the vector
-	INLINE rvector Im(const cvector &v) throw();
+	INLINE rvector Im(const cvector &v);
 	//! Returns the imaginary part of the vector
-	INLINE rvector Im(const cvector_slice &v) throw();
+	INLINE rvector Im(const cvector_slice &v);
 	//! Returns the real part of the cvector
-	INLINE rvector Re(const cvector &v) throw();
+	INLINE rvector Re(const cvector &v);
 	//! Returns the real part of the cvector
-	INLINE rvector Re(const cvector_slice &v) throw();
+	INLINE rvector Re(const cvector_slice &v);
 	//! Implementation of standard negation operation
-	INLINE bool operator !(const cvector &rv) throw();
+	INLINE bool operator !(const cvector &rv);
 	//! Implementation of standard negation operation
-	INLINE bool operator !(const cvector_slice &sl) throw();
+	INLINE bool operator !(const cvector_slice &sl);
 
 //======================= Vector / Scalar ===============================
 
 //----------------------------- complex ---------------------------
 
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const cvector &rv, const complex &s) throw();
+	INLINE cvector operator *(const cvector &rv, const complex &s);
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const cvector_slice &sl, const complex &s) throw();
+	INLINE cvector operator *(const cvector_slice &sl, const complex &s);
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const complex &s, const cvector &rv) throw();
+	INLINE cvector operator *(const complex &s, const cvector &rv);
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const complex &s, const cvector_slice &sl) throw();
+	INLINE cvector operator *(const complex &s, const cvector_slice &sl);
 	//! Implementation of multiplication and allocation operation
-	INLINE cvector &operator *=(cvector &rv,const complex &r) throw();
+	INLINE cvector &operator *=(cvector &rv,const complex &r);
 
 	//! Implementation of division operation
-	INLINE cvector operator /(const cvector &rv, const complex &s) throw();
+	INLINE cvector operator /(const cvector &rv, const complex &s);
 	//! Implementation of division operation
-	INLINE cvector operator /(const cvector_slice &sl, const complex &s) throw();
+	INLINE cvector operator /(const cvector_slice &sl, const complex &s);
 	//! Implementation of division and allocation operation
-	INLINE cvector &operator /=(cvector &rv,const complex &r) throw();
+	INLINE cvector &operator /=(cvector &rv,const complex &r);
 
 //---------------------------- Real --------------------------------------
 
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const cvector &rv, const real &s) throw();
+	INLINE cvector operator *(const cvector &rv, const real &s);
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const cvector_slice &sl, const real &s) throw();
+	INLINE cvector operator *(const cvector_slice &sl, const real &s);
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const real &s, const cvector &rv) throw();
+	INLINE cvector operator *(const real &s, const cvector &rv);
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const real &s, const cvector_slice &sl) throw();
+	INLINE cvector operator *(const real &s, const cvector_slice &sl);
 	//! Implementation of multiplication and allocation operation
-	INLINE cvector &operator *=(cvector &rv,const real &r) throw();
+	INLINE cvector &operator *=(cvector &rv,const real &r);
 
 	//! Implementation of division operation
-	INLINE cvector operator /(const cvector &rv, const real &s) throw();
+	INLINE cvector operator /(const cvector &rv, const real &s);
 	//! Implementation of division operation
-	INLINE cvector operator /(const cvector_slice &sl, const real &s) throw();
+	INLINE cvector operator /(const cvector_slice &sl, const real &s);
 	//! Implementation of division and allocation operation
-	INLINE cvector &operator /=(cvector &rv,const real &r) throw();
+	INLINE cvector &operator /=(cvector &rv,const real &r);
 
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const rvector &rv, const complex &s) throw();
+	INLINE cvector operator *(const rvector &rv, const complex &s);
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const rvector_slice &sl, const complex &s) throw();
+	INLINE cvector operator *(const rvector_slice &sl, const complex &s);
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const complex &s, const rvector &rv) throw();
+	INLINE cvector operator *(const complex &s, const rvector &rv);
 	//! Implementation of multiplication operation
-	INLINE cvector operator *(const complex &s, const rvector_slice &sl) throw();
+	INLINE cvector operator *(const complex &s, const rvector_slice &sl);
 
 	//! Implementation of division operation
-	INLINE cvector operator /(const rvector &rv, const complex &s) throw();
+	INLINE cvector operator /(const rvector &rv, const complex &s);
 	//! Implementation of division operation
-	INLINE cvector operator /(const rvector_slice &sl, const complex &s) throw();
+	INLINE cvector operator /(const rvector_slice &sl, const complex &s);
 
 //======================= Vector / Vector ===============================
 
 
 	//! Implementation of standard output method
-	INLINE std::ostream &operator <<(std::ostream &s, const cvector &rv) throw();
+	INLINE std::ostream &operator <<(std::ostream &s, const cvector &rv);
 	//! Implementation of standard output method
-	INLINE std::ostream &operator <<(std::ostream &o, const cvector_slice &sl) throw();
+	INLINE std::ostream &operator <<(std::ostream &o, const cvector_slice &sl);
 	//! Implementation of standard input method
-	INLINE std::istream &operator >>(std::istream &s, cvector &rv) throw();
+	INLINE std::istream &operator >>(std::istream &s, cvector &rv);
 	//! Implementation of standard input method
-	INLINE std::istream &operator >>(std::istream &s, cvector_slice &rv) throw();
+	INLINE std::istream &operator >>(std::istream &s, cvector_slice &rv);
 	
 //----------------------- complex / complex ---------------------------
 
@@ -1692,9 +1692,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cvector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -1703,9 +1703,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cvector_slice & sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -1714,9 +1714,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -1725,9 +1725,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cvector & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -1736,9 +1736,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cmatrix_subv & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -1747,9 +1747,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cmatrix_subv & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -1758,9 +1758,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cvector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -1769,210 +1769,210 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector_slice & sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cmatrix_subv & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cmatrix_subv & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const cvector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const cvector_slice &sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const cvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const cvector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	
 	//! Implementation of positive sign operation
-	INLINE const cvector &operator +(const cvector &rv) throw();
+	INLINE const cvector &operator +(const cvector &rv);
 	//! Implementation of positive sign operation
-	INLINE cvector operator +(const cvector_slice &sl) throw();
+	INLINE cvector operator +(const cvector_slice &sl);
 
 	//! Implementation of addition operation
 	INLINE cvector operator +(const cvector &rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition operation
 	INLINE cvector operator +(const cvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition operation
 	INLINE cvector operator +(const cvector_slice &sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition operation
 	INLINE cvector operator +(const cvector_slice &sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition and allocation operation
 	INLINE cvector & operator +=(cvector &rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition and allocation operation
 	INLINE cvector &operator +=(cvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Implementation of negative sign operation
-	INLINE cvector operator -(const cvector &rv) throw();
+	INLINE cvector operator -(const cvector &rv);
 	//! Implementation of negative sign operation
-	INLINE cvector operator -(const cvector_slice &sl) throw();
+	INLINE cvector operator -(const cvector_slice &sl);
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const cvector &rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const cvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const cvector_slice &sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const cvector_slice &sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction and allocation operation
 	INLINE cvector & operator -=(cvector &rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction and allocation operation
 	INLINE cvector &operator -=(cvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Implementation of standard equality operation
-	INLINE bool operator ==(const cvector &rv1, const cvector &rv2) throw();
+	INLINE bool operator ==(const cvector &rv1, const cvector &rv2);
 	//! Implementation of standard equality operation
-	INLINE bool operator ==(const cvector_slice &sl1, const cvector_slice &sl2) throw();
+	INLINE bool operator ==(const cvector_slice &sl1, const cvector_slice &sl2);
 	//! Implementation of standard equality operation
-	INLINE bool operator ==(const cvector_slice &sl, const cvector &rv) throw();
+	INLINE bool operator ==(const cvector_slice &sl, const cvector &rv);
 	//! Implementation of standard equality operation
-	INLINE bool operator ==(const cvector &rv, const cvector_slice &sl) throw();
+	INLINE bool operator ==(const cvector &rv, const cvector_slice &sl);
 	//! Implementation of standard negated equality operation
-	INLINE bool operator !=(const cvector &rv1, const cvector &rv2) throw();
+	INLINE bool operator !=(const cvector &rv1, const cvector &rv2);
 	//! Implementation of standard negated equality operation
-	INLINE bool operator !=(const cvector_slice &sl1, const cvector_slice &sl2) throw();
+	INLINE bool operator !=(const cvector_slice &sl1, const cvector_slice &sl2);
 	//! Implementation of standard negated equality operation
-	INLINE bool operator !=(const cvector_slice &sl, const cvector &rv) throw();
+	INLINE bool operator !=(const cvector_slice &sl, const cvector &rv);
 	//! Implementation of standard negated equality operation
-	INLINE bool operator !=(const cvector &rv, const cvector_slice &sl) throw();
-/*	INLINE bool operator <(const cvector &rv1, const cvector &rv2) throw();
-	INLINE bool operator <(const cvector_slice &sl1, const cvector_slice &sl2) throw();
-	INLINE bool operator < (const cvector_slice &sl, const cvector &rv) throw();
-	INLINE bool operator < (const cvector &rv, const cvector_slice &sl) throw();
-	INLINE bool operator <=(const cvector &rv1, const cvector &rv2) throw();
-	INLINE bool operator <=(const cvector_slice &sl1, const cvector_slice &sl2) throw();
-	INLINE bool operator <=(const cvector_slice &sl, const cvector &rv) throw();
-	INLINE bool operator <=(const cvector &rv, const cvector_slice &sl) throw();
-	INLINE bool operator >(const cvector &rv1, const cvector &rv2) throw();
-	INLINE bool operator >(const cvector_slice &sl1, const cvector_slice &sl2) throw();
-	INLINE bool operator >(const cvector_slice &sl, const cvector &rv) throw();
-	INLINE bool operator >(const cvector &rv, const cvector_slice &sl) throw();
-	INLINE bool operator >=(const cvector &rv1, const cvector &rv2) throw();
-	INLINE bool operator >=(const cvector_slice &sl1, const cvector_slice &sl2) throw();
-	INLINE bool operator >=(const cvector_slice &sl, const cvector &rv) throw();
-	INLINE bool operator >=(const cvector &rv, const cvector_slice &sl) throw();
+	INLINE bool operator !=(const cvector &rv, const cvector_slice &sl);
+/*	INLINE bool operator <(const cvector &rv1, const cvector &rv2);
+	INLINE bool operator <(const cvector_slice &sl1, const cvector_slice &sl2);
+	INLINE bool operator < (const cvector_slice &sl, const cvector &rv);
+	INLINE bool operator < (const cvector &rv, const cvector_slice &sl);
+	INLINE bool operator <=(const cvector &rv1, const cvector &rv2);
+	INLINE bool operator <=(const cvector_slice &sl1, const cvector_slice &sl2);
+	INLINE bool operator <=(const cvector_slice &sl, const cvector &rv);
+	INLINE bool operator <=(const cvector &rv, const cvector_slice &sl);
+	INLINE bool operator >(const cvector &rv1, const cvector &rv2);
+	INLINE bool operator >(const cvector_slice &sl1, const cvector_slice &sl2);
+	INLINE bool operator >(const cvector_slice &sl, const cvector &rv);
+	INLINE bool operator >(const cvector &rv, const cvector_slice &sl);
+	INLINE bool operator >=(const cvector &rv1, const cvector &rv2);
+	INLINE bool operator >=(const cvector_slice &sl1, const cvector_slice &sl2);
+	INLINE bool operator >=(const cvector_slice &sl, const cvector &rv);
+	INLINE bool operator >=(const cvector &rv, const cvector_slice &sl);
 */
 //-------------------------------- complex / Real --------------------------------
 
@@ -1980,9 +1980,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cvector & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -1992,9 +1992,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const rvector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2003,9 +2003,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const rvector_slice & sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2014,9 +2014,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp,const cvector_slice &sl,const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2025,9 +2025,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const rvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2036,9 +2036,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const rvector & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2047,9 +2047,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cvector & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2058,9 +2058,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const rvector_slice & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2069,9 +2069,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cvector_slice & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2080,9 +2080,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp,const cvector &rv,const rvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2091,9 +2091,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const rmatrix_subv & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2102,9 +2102,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cmatrix_subv & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2113,9 +2113,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const rmatrix_subv & rv1, const cvector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2124,9 +2124,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cmatrix_subv & rv1, const rvector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2135,9 +2135,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cvector_slice & sl1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2146,9 +2146,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const rvector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2157,9 +2157,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const rmatrix_subv & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2168,9 +2168,9 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cdotprecision &dp, const cmatrix_subv & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! The accurate scalar product of the last two arguments added to the value of the first argument (without error bound)
@@ -2179,387 +2179,387 @@ cvector_slice &v,const imatrix &m) #if(CXSC_INDEX_CHECK)
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const rvector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const rvector_slice & sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp,const cvector_slice &sl,const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const rvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const rvector & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const rvector_slice & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector_slice & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp,const cvector &rv,const rvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const rmatrix_subv & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cmatrix_subv & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const rmatrix_subv & rv1, const cvector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cmatrix_subv & rv1, const rvector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector_slice & sl1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const rvector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const rmatrix_subv & rv1, const cmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cmatrix_subv & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector_slice &, const ivector &)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const ivector & sl1, const cvector_slice &)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector &, const ivector &)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const ivector &, const cvector &)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const ivector_slice &, const cvector &)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector &, const ivector_slice &)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector_slice &, const ivector_slice &)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const ivector_slice &, const cvector_slice &)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const rvector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const rvector_slice &sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const rvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const rvector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const cvector & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const cvector_slice &sl, const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const cvector &rv, const rvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of multiplication operation
 	INLINE complex operator *(const cvector_slice & sl1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	
 	//! Implementation of addition operation
 	INLINE cvector operator +(const rvector &rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition operation
 	INLINE cvector operator +(const rvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition operation
 	INLINE cvector operator +(const rvector_slice &sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition operation
 	INLINE cvector operator +(const rvector_slice &sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Implementation of addition operation
 	INLINE cvector operator +(const cvector &rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition operation
 	INLINE cvector operator +(const cvector &rv, const rvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition operation
 	INLINE cvector operator +(const cvector_slice &sl, const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition operation
 	INLINE cvector operator +(const cvector_slice &sl1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Implementation of addition and allocation operation
 	INLINE cvector & operator +=(cvector &rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of addition and allocation operation
 	INLINE cvector &operator +=(cvector &rv, const rvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const rvector &rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const rvector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const rvector_slice &sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const rvector_slice &sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const cvector &rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const cvector &rv, const rvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const cvector_slice &sl, const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction operation
 	INLINE cvector operator -(const cvector_slice &sl1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction and allocation operation
 	INLINE cvector & operator -=(cvector &rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 	//! Implementation of subtraction and allocation operation
 	INLINE cvector &operator -=(cvector &rv, const rvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<cvector>);
+	;
 #else
-	throw();
+	;
 #endif
 
 } // namespace cxsc 

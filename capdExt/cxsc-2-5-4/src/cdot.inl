@@ -162,133 +162,133 @@ inline cdotprecision _cdotprecision(const l_complex& lc)
 
 // ---- Standardfunkt ---- (arithmetische Operatoren)
 
-inline cdotprecision operator-(const cdotprecision &a) throw() 
+inline cdotprecision operator-(const cdotprecision &a) 
 { 
   return cdotprecision (-a.re, -a.im); 
 }
-inline cdotprecision operator+(const cdotprecision &a) throw() 
+inline cdotprecision operator+(const cdotprecision &a) 
 { 
   return a; 
 }
 
-inline cdotprecision operator+(const cdotprecision &a,const cdotprecision &b) throw() 
+inline cdotprecision operator+(const cdotprecision &a,const cdotprecision &b) 
 { 
   return cdotprecision(a.re+b.re,a.im+b.im); 
 }
-inline cdotprecision operator-(const cdotprecision &a,const cdotprecision &b) throw() 
+inline cdotprecision operator-(const cdotprecision &a,const cdotprecision &b) 
 { 
   return cdotprecision(a.re-b.re,a.im-b.im); 
 }
 
-inline cdotprecision operator +(const cdotprecision &a,const complex &b) throw() { return cdotprecision(a.re+Re(b),a.im+Im(b)); }
-inline cdotprecision operator +(const complex &b,const cdotprecision &a) throw() { return cdotprecision(a.re+Re(b),a.im+Im(b)); } 
-inline cdotprecision operator -(const cdotprecision &a,const complex &b) throw() { return cdotprecision(a.re-Re(b),a.im-Im(b)); } 
-inline cdotprecision operator -(const complex &a,const cdotprecision &b) throw() { return cdotprecision(Re(a)-b.re,Im(a)-b.im); }
+inline cdotprecision operator +(const cdotprecision &a,const complex &b) { return cdotprecision(a.re+Re(b),a.im+Im(b)); }
+inline cdotprecision operator +(const complex &b,const cdotprecision &a) { return cdotprecision(a.re+Re(b),a.im+Im(b)); } 
+inline cdotprecision operator -(const cdotprecision &a,const complex &b) { return cdotprecision(a.re-Re(b),a.im-Im(b)); } 
+inline cdotprecision operator -(const complex &a,const cdotprecision &b) { return cdotprecision(Re(a)-b.re,Im(a)-b.im); }
 
-inline cdotprecision operator +(const cdotprecision &a,const dotprecision &b) throw() { return cdotprecision(a.re+b,a.im); }
-inline cdotprecision operator +(const dotprecision &b,const cdotprecision &a) throw() { return cdotprecision(a.re+b,a.im); } 
-inline cdotprecision operator -(const cdotprecision &a,const dotprecision &b) throw() { return cdotprecision(a.re-b,a.im); } 
-inline cdotprecision operator -(const dotprecision &a,const cdotprecision &b) throw() { return cdotprecision(a-b.re,-b.im); }
+inline cdotprecision operator +(const cdotprecision &a,const dotprecision &b) { return cdotprecision(a.re+b,a.im); }
+inline cdotprecision operator +(const dotprecision &b,const cdotprecision &a) { return cdotprecision(a.re+b,a.im); } 
+inline cdotprecision operator -(const cdotprecision &a,const dotprecision &b) { return cdotprecision(a.re-b,a.im); } 
+inline cdotprecision operator -(const dotprecision &a,const cdotprecision &b) { return cdotprecision(a-b.re,-b.im); }
 
-inline cdotprecision operator +(const cdotprecision &a,const real &b) throw() { return cdotprecision(a.re+b,a.im); }
-inline cdotprecision operator +(const real &b,const cdotprecision &a) throw() { return cdotprecision(a.re+b,a.im); } 
-inline cdotprecision operator -(const cdotprecision &a,const real &b) throw() { return cdotprecision(a.re-b,a.im); } 
-inline cdotprecision operator -(const real &a,const cdotprecision &b) throw() { return cdotprecision(a-b.re,b.im); }
+inline cdotprecision operator +(const cdotprecision &a,const real &b) { return cdotprecision(a.re+b,a.im); }
+inline cdotprecision operator +(const real &b,const cdotprecision &a) { return cdotprecision(a.re+b,a.im); } 
+inline cdotprecision operator -(const cdotprecision &a,const real &b) { return cdotprecision(a.re-b,a.im); } 
+inline cdotprecision operator -(const real &a,const cdotprecision &b) { return cdotprecision(a-b.re,b.im); }
 
-inline cdotprecision operator +(const cdotprecision &a, const l_real &b) throw() 
+inline cdotprecision operator +(const cdotprecision &a, const l_real &b) 
 { 
   return cdotprecision(a.re+b,a.im);
 }
-inline cdotprecision operator +(const l_real &b, const cdotprecision &a) throw() 
+inline cdotprecision operator +(const l_real &b, const cdotprecision &a) 
 { 
   return cdotprecision(a.re+b,a.im);
 }
-inline cdotprecision operator -(const cdotprecision &a, const l_real &b) throw() 
+inline cdotprecision operator -(const cdotprecision &a, const l_real &b) 
 { 
   return cdotprecision(a.re-b,a.im);
 }
-inline cdotprecision operator -(const l_real &b, const cdotprecision &a) throw() 
+inline cdotprecision operator -(const l_real &b, const cdotprecision &a) 
 { 
   return cdotprecision(b-a.re,-a.im); 
 }
 
-inline cdotprecision & operator +=(cdotprecision &a,const cdotprecision &b) throw() { a.re+=b.re;a.im+=b.im; return a;}
-inline cdotprecision & operator +=(cdotprecision &a,const dotprecision &b) throw() { a.re+=b; return a;}
-inline cdotprecision & operator -=(cdotprecision &a,const cdotprecision &b) throw() { a.re-=b.re;a.im-=b.im; return a;}
-inline cdotprecision & operator -=(cdotprecision &a,const dotprecision &b) throw() { a.re-=b; return a;}
-inline cdotprecision & operator +=(cdotprecision &a,const complex &b) throw() 
+inline cdotprecision & operator +=(cdotprecision &a,const cdotprecision &b) { a.re+=b.re;a.im+=b.im; return a;}
+inline cdotprecision & operator +=(cdotprecision &a,const dotprecision &b) { a.re+=b; return a;}
+inline cdotprecision & operator -=(cdotprecision &a,const cdotprecision &b) { a.re-=b.re;a.im-=b.im; return a;}
+inline cdotprecision & operator -=(cdotprecision &a,const dotprecision &b) { a.re-=b; return a;}
+inline cdotprecision & operator +=(cdotprecision &a,const complex &b) 
 {
    a.re+=Re(b);
    a.im+=Im(b);
    return a;
 }
-inline cdotprecision & operator -=(cdotprecision &a,const complex &b) throw()
+inline cdotprecision & operator -=(cdotprecision &a,const complex &b)
 {
    a.re-=Re(b);
    a.im-=Im(b);
    return a;
 }
-inline cdotprecision & operator +=(cdotprecision &a,const real &b) throw()
+inline cdotprecision & operator +=(cdotprecision &a,const real &b)
 {
    a.re+=b;
    return a;
 }
-inline cdotprecision & operator -=(cdotprecision &a,const real &b) throw()
+inline cdotprecision & operator -=(cdotprecision &a,const real &b)
 {
    a.re-=b;
    return a;
 }
-inline cdotprecision & operator +=(cdotprecision &a,const l_real &b) throw()
+inline cdotprecision & operator +=(cdotprecision &a,const l_real &b)
 { // Blomquist 17.09.02.
    a.re+=b;
    return a;
 }
-inline cdotprecision & operator -=(cdotprecision &a,const l_real &b) throw()
+inline cdotprecision & operator -=(cdotprecision &a,const l_real &b)
 { // Blomquist 17.09.02.
    a.re-=b;
    return a;
 }
-inline cdotprecision & operator += (cdotprecision &cd, const l_complex &lc) throw() 
+inline cdotprecision & operator += (cdotprecision &cd, const l_complex &lc) 
 {
    cd = cd + cdotprecision(lc); return cd;
 }
-inline cdotprecision & operator -= (cdotprecision &cd, const l_complex &lc) throw() 
+inline cdotprecision & operator -= (cdotprecision &cd, const l_complex &lc) 
 {
    cd = cd - cdotprecision(lc); return cd;
 }
       
 // --- Vergleichsoperationen ----
-inline bool operator ==(const cdotprecision &a,const cdotprecision &b) throw() {   return(a.re==b.re && a.im==b.im); }
-inline bool operator !=(const cdotprecision &a,const cdotprecision &b) throw() {   return(a.re!=b.re || a.im!=b.im); }
-inline bool operator ==(const dotprecision &r,const cdotprecision &a)     throw() {   return(r==a.re && !a.im); }
-inline bool operator !=(const dotprecision &r,const cdotprecision &a)     throw() {   return(r!=a.re || !!a.im); }
-inline bool operator ==(const cdotprecision &a,const dotprecision &r)     throw() {   return(r==a.re && !a.im); }
-inline bool operator !=(const cdotprecision &a,const dotprecision &r)     throw() {   return(r!=a.re || !!a.im); }
-inline bool operator ==(const complex &c,const cdotprecision &a)     throw() {   return(Re(c)==a.re && Im(c)==a.im); }
-inline bool operator !=(const complex &c,const cdotprecision &a)     throw() {   return(Re(c)!=a.re || Im(c)!=a.im); }
-inline bool operator ==(const cdotprecision &a,const complex &c)     throw() {   return(Re(c)==a.re && Im(c)==a.im); }
-inline bool operator !=(const cdotprecision &a,const complex &c)     throw() {   return(Re(c)!=a.re || Im(c)!=a.im); }
-inline bool operator ==(const real &c,const cdotprecision &a)     throw() {   return(c==a.re && !a.im); }
-inline bool operator !=(const real &c,const cdotprecision &a)     throw() {   return(c!=a.re || !!a.im); }
-inline bool operator ==(const cdotprecision &a,const real &c)     throw() {   return(c==a.re && !a.im); }
-inline bool operator !=(const cdotprecision &a,const real &c)     throw() {   return(c!=a.re || !!a.im); }
+inline bool operator ==(const cdotprecision &a,const cdotprecision &b) {   return(a.re==b.re && a.im==b.im); }
+inline bool operator !=(const cdotprecision &a,const cdotprecision &b) {   return(a.re!=b.re || a.im!=b.im); }
+inline bool operator ==(const dotprecision &r,const cdotprecision &a)     {   return(r==a.re && !a.im); }
+inline bool operator !=(const dotprecision &r,const cdotprecision &a)     {   return(r!=a.re || !!a.im); }
+inline bool operator ==(const cdotprecision &a,const dotprecision &r)     {   return(r==a.re && !a.im); }
+inline bool operator !=(const cdotprecision &a,const dotprecision &r)     {   return(r!=a.re || !!a.im); }
+inline bool operator ==(const complex &c,const cdotprecision &a)     {   return(Re(c)==a.re && Im(c)==a.im); }
+inline bool operator !=(const complex &c,const cdotprecision &a)     {   return(Re(c)!=a.re || Im(c)!=a.im); }
+inline bool operator ==(const cdotprecision &a,const complex &c)     {   return(Re(c)==a.re && Im(c)==a.im); }
+inline bool operator !=(const cdotprecision &a,const complex &c)     {   return(Re(c)!=a.re || Im(c)!=a.im); }
+inline bool operator ==(const real &c,const cdotprecision &a)     {   return(c==a.re && !a.im); }
+inline bool operator !=(const real &c,const cdotprecision &a)     {   return(c!=a.re || !!a.im); }
+inline bool operator ==(const cdotprecision &a,const real &c)     {   return(c==a.re && !a.im); }
+inline bool operator !=(const cdotprecision &a,const real &c)     {   return(c!=a.re || !!a.im); }
 
-inline bool operator ==(const l_real &c,const cdotprecision &a) throw() 
+inline bool operator ==(const l_real &c,const cdotprecision &a) 
 { 
   return(c==a.re && !a.im);
 }
 
-inline bool operator !=(const l_real &c,const cdotprecision &a) throw()
+inline bool operator !=(const l_real &c,const cdotprecision &a)
 { 
   return(c!=a.re || !!a.im);
 }
 
-inline bool operator ==(const cdotprecision &a,const l_real &c) throw()
+inline bool operator ==(const cdotprecision &a,const l_real &c)
 { 
   return(c==a.re && !a.im);
 }
 
-inline bool operator !=(const cdotprecision &a,const l_real &c) throw()
+inline bool operator !=(const cdotprecision &a,const l_real &c)
 { 
   return(c!=a.re || !!a.im);
 }
@@ -299,7 +299,7 @@ inline dotprecision & Re(cdotprecision& a)
   return a.re; 
 }
 
-inline dotprecision & Im(cdotprecision& a) throw() 
+inline dotprecision & Im(cdotprecision& a) 
 { 
   return a.im;
 }
@@ -309,44 +309,44 @@ inline const dotprecision & Re(const cdotprecision& a)
   return a.re; 
 }
 
-inline const dotprecision & Im(const cdotprecision& a) throw()
+inline const dotprecision & Im(const cdotprecision& a)
 { 
   return a.im; 
 }
 
-inline cdotprecision& SetRe (cdotprecision& a, const dotprecision& b)  throw()
+inline cdotprecision& SetRe (cdotprecision& a, const dotprecision& b) 
 {                         // ggf. exception
    a.re=b; 
    return a;
 }
 
-inline cdotprecision& SetIm (cdotprecision& a, const dotprecision& b) throw()
+inline cdotprecision& SetIm (cdotprecision& a, const dotprecision& b)
 {
    a.im=b;
    return a;
 }
 
-inline cdotprecision conj(const cdotprecision& a) throw()
+inline cdotprecision conj(const cdotprecision& a)
 {
    return cdotprecision(a.re,-a.im);
 }
 
-inline bool operator !(const cdotprecision &a) throw() 
+inline bool operator !(const cdotprecision &a) 
 { 
    return !a.re && !a.im;
 }  
 
-inline void accumulate  (cdotprecision & a, const complex & b, const real & c) throw()
+inline void accumulate  (cdotprecision & a, const complex & b, const real & c)
 { 
   accumulate(a,b,complex(c));
 }
 
-inline void accumulate  (cdotprecision & a, const real & b, const complex & c) throw()
+inline void accumulate  (cdotprecision & a, const real & b, const complex & c)
 { 
   accumulate(a,complex(b),c);
 }
 
-inline void accumulate  (cdotprecision & a, const real & b, const real & c) throw()
+inline void accumulate  (cdotprecision & a, const real & b, const real & c)
 { 
   accumulate(a,complex(b),complex(c)); 
 }

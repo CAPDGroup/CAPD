@@ -45,9 +45,9 @@ class l_interval;
 template <class S,class M>
 TINLINE void _smconstr(S &s,const M &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__TYPE_CAST_OF_THICK_OBJ<M>,ERROR__USE_OF_UNINITIALIZED_OBJ<M>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -60,9 +60,9 @@ TINLINE void _smconstr(S &s,const M &m)
 template <class V,class M,class S>
 TINLINE void _vmconstr(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__TYPE_CAST_OF_THICK_OBJ<M>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -91,9 +91,9 @@ TINLINE void _vmconstr(V &v,const M &m)
 template <class V,class MS,class S>
 TINLINE void _vmsconstr(V &v,const MS &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__TYPE_CAST_OF_THICK_OBJ<MS>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -191,7 +191,7 @@ inline string MatrixMarketElement(const cinterval& x) {
 
 
 template <class M>
-std::ostream &_mout(std::ostream &s,const M &r) throw()
+std::ostream &_mout(std::ostream &s,const M &r)
 {
 	if(ioflags.isset(IOFlags::matrixmarketinout)) {
 		s << "%%MatrixMarket matrix array " << ElementName(r) <<" general" << std::endl;
@@ -333,7 +333,7 @@ inline void mm_add_element(cinterval& ci, std::string& tmp, MM_FIELD& field) {
 
 
 template <class M>
-std::istream &_min(std::istream &s,M &r) throw()
+std::istream &_min(std::istream &s,M &r)
 {
 	if(ioflags.isset(IOFlags::matrixmarketinout)) {
 		//MatrixMarket
@@ -488,7 +488,7 @@ std::istream &_min(std::istream &s,M &r) throw()
 }
 
 	template <class MS>
-	std::ostream &_msout(std::ostream &s,const MS &r) throw()
+	std::ostream &_msout(std::ostream &s,const MS &r)
 	{
 		int i,j;
 		for (i=0;i<r.sysize;i++)
@@ -503,7 +503,7 @@ std::istream &_min(std::istream &s,M &r) throw()
 	}
 
 	template <class MS>
-	std::istream &_msin(std::istream &s,MS &r) throw()
+	std::istream &_msin(std::istream &s,MS &r)
 	{
 		int i,j;
 		for (i=0;i<r.sysize;i++)
@@ -517,7 +517,7 @@ std::istream &_min(std::istream &s,M &r) throw()
 	}
 
 	template <class M1,class M2,class S>
-	TINLINE M1 &_mmassign(M1 &m1,const M2 &m,S ms) throw()
+	TINLINE M1 &_mmassign(M1 &m1,const M2 &m,S ms)
 	{
 		S *ndat=new S[m.xsize*m.ysize];
 		for(int i=0;i<m.xsize*m.ysize;i++)
@@ -533,7 +533,7 @@ std::istream &_min(std::istream &s,M &r) throw()
 	}
 
 	template <class M,class MS2,class S>
-	TINLINE M &_mmsassign(M &m,const MS2 &ms) throw()
+	TINLINE M &_mmsassign(M &m,const MS2 &ms)
 	{
 		S *ndat=new S[ms.sxsize*ms.sysize];
 		m.lb1=ms.start1;
@@ -555,9 +555,9 @@ std::istream &_min(std::istream &s,M &r) throw()
 	template <class MS,class M>
 	TINLINE MS &_msmassign(MS &ms,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -574,9 +574,9 @@ std::istream &_min(std::istream &s,M &r) throw()
 	template <class MS1,class MS2>
 	TINLINE MS1 &_msmsassign(MS1 &ms1,const MS2 &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -591,7 +591,7 @@ std::istream &_min(std::istream &s,M &r) throw()
 	}
 
 	template <class M,class S>
-	TINLINE M &_msassign(M &m,const S &r) throw()
+	TINLINE M &_msassign(M &m,const S &r)
 	{
 		for(int i=0;i<m.ysize;i++)
 		{
@@ -602,7 +602,7 @@ std::istream &_min(std::istream &s,M &r) throw()
 	}
 
 	template <class MS,class S>
-	TINLINE MS &_mssassign(MS &ms,const S &r) throw()
+	TINLINE MS &_mssassign(MS &ms,const S &r)
 	{
 		for(int i=0;i<ms.sysize;i++)
 		{
@@ -615,9 +615,9 @@ std::istream &_min(std::istream &s,M &r) throw()
 template <class V,class M,class S>
 TINLINE V &_vmassign(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__TYPE_CAST_OF_THICK_OBJ<M>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -648,7 +648,7 @@ TINLINE V &_vmassign(V &v,const M &m)
 
 // result depends on the matrix (left arg), as defined in the reference to C-XSC
 template <class M,class V,class S>
-TINLINE M &_mvassign(M &m,const V &v) throw()
+TINLINE M &_mvassign(M &m,const V &v)
 {
 	delete [] m.dat;
 	m.dat=new S[v.size];
@@ -674,9 +674,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M>
 	TINLINE int _mlb(const M &m, const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__WRONG_ROW_OR_COL<M>)
+	
 #else
-	throw()
+	
 #endif
 	{
 		switch(i)
@@ -696,9 +696,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M>
 	TINLINE int _mub(const M &m, const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__WRONG_ROW_OR_COL<M>)
+	
 #else
-	throw()
+	
 #endif
 	{
 		switch(i)
@@ -718,9 +718,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS>
 	TINLINE int _mslb(const MS &ms, const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__WRONG_ROW_OR_COL<MS>)
+	
 #else
-	throw()
+	
 #endif
 	{
 		switch(i)
@@ -740,9 +740,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS>
 	TINLINE int _msub(const MS &ms, const int &i)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__WRONG_ROW_OR_COL<MS>)
+	
 #else
-	throw()
+	
 #endif
 	{
 		switch(i)
@@ -762,9 +762,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M>
 	TINLINE M &_msetlb(M &m, const int &i,const int &j)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__WRONG_ROW_OR_COL<M>)
+	
 #else
-	throw()
+	
 #endif
 	{
 		switch(i)
@@ -789,9 +789,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M>
 	TINLINE M &_msetub(M &m, const int &i,const int &j)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__WRONG_ROW_OR_COL<M>)
+	
 #else
-	throw()
+	
 #endif
 	{
 		switch(i)
@@ -814,7 +814,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 	
 	template <class M>
-	TINLINE void _mresize(M &A) throw()
+	TINLINE void _mresize(M &A)
 	{
 		A.xsize=A.ysize=A.ub1=A.ub2=0;
 		A.lb1=A.lb2=1;
@@ -825,9 +825,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class S>
 	TINLINE void _mresize(M &A,const int &m, const int &n)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__WRONG_BOUNDARIES<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -869,9 +869,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class S>
 	TINLINE void _mresize(M &A,const int &m1, const int &m2,const int &n1,const int &n2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__WRONG_BOUNDARIES<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -957,7 +957,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 	
 	template <class M,class E>
-	TINLINE E _mabs(const M &m) throw()
+	TINLINE E _mabs(const M &m)
 	{
 		E r(m.lb1,m.ub1,m.lb2,m.ub2);
 		for(int i=0;i<m.xsize*m.ysize;i++)
@@ -966,7 +966,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class E>
-	TINLINE E _msabs(const MS &ms) throw()
+	TINLINE E _msabs(const MS &ms)
 	{
 		E r(ms.start1,ms.end1,ms.start2,ms.end2);
 		for(int i=0;i<ms.sysize;i++)
@@ -978,7 +978,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 	
 	template <class M,class E>
-	TINLINE E _mdiam(const M &m) throw()
+	TINLINE E _mdiam(const M &m)
 	{
 		E r(m.lb1,m.ub1,m.lb2,m.ub2);
 		for(int i=0;i<m.xsize*m.ysize;i++)
@@ -987,7 +987,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class E>
-	TINLINE E _msdiam(const MS &ms) throw()
+	TINLINE E _msdiam(const MS &ms)
 	{
 		E r(ms.start1,ms.end1,ms.start2,ms.end2);
 		for(int i=0;i<ms.sysize;i++)
@@ -999,7 +999,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 	
 	template <class M,class E>
-	TINLINE E _mmid(const M &m) throw()
+	TINLINE E _mmid(const M &m)
 	{
 		E r(m.lb1,m.ub1,m.lb2,m.ub2);
 		for(int i=0;i<m.xsize*m.ysize;i++)
@@ -1008,7 +1008,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class E>
-	TINLINE E _msmid(const MS &ms) throw()
+	TINLINE E _msmid(const MS &ms)
 	{
 		E r(ms.start1,ms.end1,ms.start2,ms.end2);
 		for(int i=0;i<ms.sysize;i++)
@@ -1020,7 +1020,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 	
 	template <class M,class E>
-	TINLINE E _minf(const M &m) throw()
+	TINLINE E _minf(const M &m)
 	{
 		E r(m.lb1,m.ub1,m.lb2,m.ub2);
 		for(int i=0;i<m.xsize*m.ysize;i++)
@@ -1029,7 +1029,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class E>
-	TINLINE E _msinf(const MS &ms) throw()
+	TINLINE E _msinf(const MS &ms)
 	{
 		E r(ms.start1,ms.end1,ms.start2,ms.end2);
 		for(int i=0;i<ms.sysize;i++)
@@ -1041,7 +1041,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 	
 	template <class M,class E>
-	TINLINE E _msup(const M &m) throw()
+	TINLINE E _msup(const M &m)
 	{
 		E r(m.lb1,m.ub1,m.lb2,m.ub2);
 		for(int i=0;i<m.xsize*m.ysize;i++)
@@ -1050,7 +1050,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class E>
-	TINLINE E _mssup(const MS &ms) throw()
+	TINLINE E _mssup(const MS &ms)
 	{
 		E r(ms.start1,ms.end1,ms.start2,ms.end2);
 		for(int i=0;i<ms.sysize;i++)
@@ -1064,9 +1064,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2>
 	TINLINE M1 &_mmsetinf(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1080,9 +1080,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class M2>
 	TINLINE MS1 &_msmsetinf(MS1 &ms1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1099,9 +1099,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class MS2>
 	TINLINE M1 &_mmssetinf(M1 &m1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1118,9 +1118,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2>
 	TINLINE MS1 &_msmssetinf(MS1 &ms1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1137,9 +1137,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2>
 	TINLINE M1 &_mmsetsup(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1153,9 +1153,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class M2>
 	TINLINE MS1 &_msmsetsup(MS1 &ms1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1172,9 +1172,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class MS2>
 	TINLINE M1 &_mmssetsup(M1 &m1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1191,9 +1191,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2>
 	TINLINE MS1 &_msmssetsup(MS1 &ms1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1210,9 +1210,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2>
 	TINLINE M1 &_mmusetinf(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1226,9 +1226,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class M2>
 	TINLINE MS1 &_msmusetinf(MS1 &ms1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1245,9 +1245,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class MS2>
 	TINLINE M1 &_mmsusetinf(M1 &m1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1264,9 +1264,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2>
 	TINLINE MS1 &_msmsusetinf(MS1 &ms1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1283,9 +1283,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2>
 	TINLINE M1 &_mmusetsup(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1299,9 +1299,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class M2>
 	TINLINE MS1 &_msmusetsup(MS1 &ms1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1318,9 +1318,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class MS2>
 	TINLINE M1 &_mmsusetsup(M1 &m1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1337,9 +1337,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2>
 	TINLINE MS1 &_msmsusetsup(MS1 &ms1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1356,9 +1356,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2>
 	TINLINE M1 &_mmsetre(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1372,9 +1372,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class M2>
 	TINLINE MS1 &_msmsetre(MS1 &ms1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1391,9 +1391,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class MS2>
 	TINLINE M1 &_mmssetre(M1 &m1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1410,9 +1410,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2>
 	TINLINE MS1 &_msmssetre(MS1 &ms1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1429,9 +1429,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2>
 	TINLINE M1 &_mmsetim(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1445,9 +1445,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class M2>
 	TINLINE MS1 &_msmsetim(MS1 &ms1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1464,9 +1464,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class MS2>
 	TINLINE M1 &_mmssetim(M1 &m1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1483,9 +1483,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2>
 	TINLINE MS1 &_msmssetim(MS1 &ms1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1500,7 +1500,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 	
 	template <class M,class E>
-	TINLINE E _mim(const M &m) throw()
+	TINLINE E _mim(const M &m)
 	{
 		E r(m.lb1,m.ub1,m.lb2,m.ub2);
 		for(int i=0;i<m.xsize*m.ysize;i++)
@@ -1509,7 +1509,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class E>
-	TINLINE E _msim(const MS &ms) throw()
+	TINLINE E _msim(const MS &ms)
 	{
 		E r(ms.start1,ms.end1,ms.start2,ms.end2);
 		for(int i=0;i<ms.sysize;i++)
@@ -1521,7 +1521,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 	
 	template <class M,class E>
-	TINLINE E _mre(const M &m) throw()
+	TINLINE E _mre(const M &m)
 	{
 		E r(m.lb1,m.ub1,m.lb2,m.ub2);
 		for(int i=0;i<m.xsize*m.ysize;i++)
@@ -1530,7 +1530,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class E>
-	TINLINE E _msre(const MS &ms) throw()
+	TINLINE E _msre(const MS &ms)
 	{
 		E r(ms.start1,ms.end1,ms.start2,ms.end2);
 		for(int i=0;i<ms.sysize;i++)
@@ -1544,9 +1544,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class E>
 	TINLINE E _mmsect(const M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1566,9 +1566,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class E>
 	TINLINE E _mmssect(const M &m,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1593,9 +1593,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class E>
 	TINLINE E _mmconv(const M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1615,9 +1615,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class E>
 	TINLINE E _mmsconv(const M &m,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1642,9 +1642,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class E>
 	TINLINE E _mmplus(const M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1664,9 +1664,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class E>
 	TINLINE E _mmsplus(const M &m,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1689,7 +1689,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M>
-	TINLINE M _mminus(const M &m) throw()
+	TINLINE M _mminus(const M &m)
 	{
 		M sum(m.lb1,m.ub1,m.lb2,m.ub2);
 		for(int i=0;i<m.xsize*m.ysize;i++)
@@ -1698,7 +1698,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 	
 	template <class MS,class E>
-	TINLINE E _msminus(const MS &ms) throw()
+	TINLINE E _msminus(const MS &ms)
 	{
 		E r(ms.start1,ms.end1,ms.start2,ms.end2);
 		for(int i=0;i<ms.sysize;i++)
@@ -1712,9 +1712,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class E>
 	TINLINE E _mmminus(const M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1735,9 +1735,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2>
 	TINLINE M1 &_mmconvassign(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1751,9 +1751,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS>
 	TINLINE M &_mmsconvassign(M &m1,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1770,9 +1770,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class M>
 	TINLINE MS &_msmconvassign(MS &ms,const M &m1)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1789,9 +1789,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2>
 	TINLINE MS1 &_msmsconvassign(MS1 &ms1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1808,9 +1808,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2>
 	TINLINE M1 &_mmsectassign(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1824,9 +1824,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS>
 	TINLINE M &_mmssectassign(M &m1,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1843,9 +1843,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class M>
 	TINLINE MS &_msmsectassign(MS &ms,const M &m1)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1862,9 +1862,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2>
 	TINLINE MS1 &_msmssectassign(MS1 &ms1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1881,9 +1881,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2>
 	TINLINE M1 &_mmplusassign(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1897,9 +1897,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS>
 	TINLINE M &_mmsplusassign(M &m1,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1916,9 +1916,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class M>
 	TINLINE MS &_msmplusassign(MS &ms,const M &m1)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1935,9 +1935,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2>
 	TINLINE MS1 &_msmsplusassign(MS1 &ms1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1954,9 +1954,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class E>
 	TINLINE E _mmsminus(const M &m,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -1981,9 +1981,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class M,class E>
 	TINLINE E _msmminus(const MS &ms,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2007,9 +2007,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2,class E>
 	TINLINE E _msmsminus(const MS1 &ms1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2031,9 +2031,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2>
 	TINLINE M1 &_mmminusassign(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2047,9 +2047,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS>
 	TINLINE M &_mmsminusassign(M &m1,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2066,9 +2066,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class M>
 	TINLINE MS &_msmminusassign(MS &ms,const M &m1)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2085,9 +2085,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2>
 	TINLINE MS1 &_msmsminusassign(MS1 &ms1,const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2104,9 +2104,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class E>
 	TINLINE E _mmmult(const M1 &m1, const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,m2.lb2,m2.ub2);
@@ -2153,9 +2153,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class E>
 	TINLINE E _mmimult(const M1 &m1, const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,m2.lb2,m2.ub2);
@@ -2193,9 +2193,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class E>
 	TINLINE E _mmlmult(const M1 &m1, const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,m2.lb2,m2.ub2);
@@ -2223,9 +2223,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class E>
 	TINLINE E _mmlimult(const M1 &m1, const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,m2.lb2,m2.ub2);
@@ -2262,9 +2262,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class E>
 	TINLINE E _mmcmult(const M1 &m1, const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,m2.lb2,m2.ub2);
@@ -2311,9 +2311,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class E>
 	TINLINE E _mmcimult(const M1 &m1, const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,m2.lb2,m2.ub2);
@@ -2352,9 +2352,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class S>
 	TINLINE M1 &_mmmultassign(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2402,9 +2402,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class S>
 	TINLINE M1 &_mmimultassign(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2449,9 +2449,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class S>
 	TINLINE M1 &_mmlmultassign(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2485,9 +2485,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class S>
 	TINLINE M1 &_mmlimultassign(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2520,9 +2520,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class S>
 	TINLINE M1 &_mmcmultassign(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2567,9 +2567,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M1,class M2,class S>
 	TINLINE M1 &_mmcimultassign(M1 &m1,const M2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -2614,9 +2614,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class E>
 	TINLINE E _mmsmult(const M &m1, const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,ms.start2,ms.end2);
@@ -2655,9 +2655,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class E>
 	TINLINE E _mmsimult(const M &m1, const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,ms.start2,ms.end2);
@@ -2694,9 +2694,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class E>
 	TINLINE E _mmslmult(const M &m1, const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,ms.start2,ms.end2);
@@ -2726,9 +2726,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class E>
 	TINLINE E _mmslimult(const M &m1, const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,ms.start2,ms.end2);
@@ -2756,9 +2756,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class E>
 	TINLINE E _mmscmult(const M &m1, const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,ms.start2,ms.end2);
@@ -2794,9 +2794,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class E>
 	TINLINE E _mmscimult(const M &m1, const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m1.lb1,m1.ub1,ms.start2,ms.end2);
@@ -2833,9 +2833,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class M,class E>
 	TINLINE E _msmmult(const MS &ms, const M &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1,m2.lb2,m2.ub2);
@@ -2875,9 +2875,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class M,class E>
 	TINLINE E _msmimult(const MS &ms, const M &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1,m2.lb2,m2.ub2);
@@ -2914,9 +2914,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class M,class E>
 	TINLINE E _msmlmult(const MS &ms, const M &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1,m2.lb2,m2.ub2);
@@ -2947,9 +2947,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class M,class E>
 	TINLINE E _msmlimult(const MS &ms, const M &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1,m2.lb2,m2.ub2);
@@ -2977,9 +2977,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class M,class E>
 	TINLINE E _msmcmult(const MS &ms, const M &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1,m2.lb2,m2.ub2);
@@ -3016,9 +3016,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class M,class E>
 	TINLINE E _msmcimult(const MS &ms, const M &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1,m2.lb2,m2.ub2);
@@ -3055,9 +3055,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class S>
 	TINLINE M &_mmsmultassign(M &m1,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -3105,9 +3105,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class S>
 	TINLINE M &_mmsimultassign(M &m1,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -3152,9 +3152,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class S>
 	TINLINE M &_mmslmultassign(M &m1,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -3190,9 +3190,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class S>
 	TINLINE M &_mmslimultassign(M &m1,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -3225,9 +3225,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class S>
 	TINLINE M &_mmscmultassign(M &m1,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -3272,9 +3272,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class MS,class S>
 	TINLINE M &_mmscimultassign(M &m1,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -3319,9 +3319,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2,class E>
 	TINLINE E _msmsmult(const MS1 &ms1, const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms1.start1,ms1.end1,ms2.start2,ms2.end2);
@@ -3361,9 +3361,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2,class E>
 	TINLINE E _msmsimult(const MS1 &ms1, const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms1.start1,ms1.end1,ms2.start2,ms2.end2);
@@ -3400,9 +3400,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2,class E>
 	TINLINE E _msmslmult(const MS1 &ms1, const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms1.start1,ms1.end1,ms2.start2,ms2.end2);
@@ -3432,9 +3432,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2,class E>
 	TINLINE E _msmslimult(const MS1 &ms1, const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms1.start1,ms1.end1,ms2.start2,ms2.end2);
@@ -3462,9 +3462,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2,class E>
 	TINLINE E _msmscmult(const MS1 &ms1, const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms1.start1,ms1.end1,ms2.start2,ms2.end2);
@@ -3501,9 +3501,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2,class E>
 	TINLINE E _msmscimult(const MS1 &ms1, const MS2 &ms2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms1.start1,ms1.end1,ms2.start2,ms2.end2);
@@ -3538,7 +3538,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 	
 	template <class S,class M,class E>
-	TINLINE E _smmult(const S &c, const M &m) throw()
+	TINLINE E _smmult(const S &c, const M &m)
 	{
 		E r(m.lb1,m.ub1,m.lb2,m.ub2);
 
@@ -3548,7 +3548,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M,class S>
-	TINLINE M &_msmultassign(M &m,const S &c) throw()
+	TINLINE M &_msmultassign(M &m,const S &c)
 	{
 		for(int i=0;i<m.xsize*m.ysize;i++)
 			m.dat[i]*=c;
@@ -3556,7 +3556,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 	
 	template <class S,class MS,class E>
-	TINLINE E _smsmult(const S &c, const MS &ms) throw()
+	TINLINE E _smsmult(const S &c, const MS &ms)
 	{
 		E r(ms.start1,ms.end1,ms.start2,ms.end2);
 
@@ -3569,7 +3569,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class S>
-	TINLINE MS &_mssmultassign(MS &ms,const S &c) throw()
+	TINLINE MS &_mssmultassign(MS &ms,const S &c)
 	{
 		for(int i=0;i<ms.sxsize;i++)
 		{
@@ -3582,9 +3582,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class V,class E>
 	TINLINE E _mvmult(const M &m,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb1,m.ub1);
@@ -3618,9 +3618,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class V,class E>
 	TINLINE E _mvimult(const M &m,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb1,m.ub1);
@@ -3654,9 +3654,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class V,class E>
 	TINLINE E _mvlmult(const M &m,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb1,m.ub1);
@@ -3681,9 +3681,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class V,class E>
 	TINLINE E _mvlimult(const M &m,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb1,m.ub1);
@@ -3708,9 +3708,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class V,class E>
 	TINLINE E _mvcmult(const M &m,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb1,m.ub1);
@@ -3744,9 +3744,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class M,class V,class E>
 	TINLINE E _mvcimult(const M &m,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb1,m.ub1);
@@ -3780,9 +3780,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class E>
 	TINLINE E _vmmult(const V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb2,m.ub2);
@@ -3806,9 +3806,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class E>
 	TINLINE E _vmimult(const V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb2,m.ub2);
@@ -3832,9 +3832,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class E>
 	TINLINE E _vmcmult(const V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb2,m.ub2);
@@ -3859,9 +3859,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class E>
 	TINLINE E _vmcimult(const V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb2,m.ub2);
@@ -3886,9 +3886,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class E>
 	TINLINE E _vmlmult(const V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb2,m.ub2);
@@ -3912,9 +3912,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class E>
 	TINLINE E _vmlimult(const V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(m.lb2,m.ub2);
@@ -3939,9 +3939,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class S>
 	TINLINE V &_vmmultassign(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -3972,9 +3972,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class S>
 	TINLINE V &_vmimultassign(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4003,9 +4003,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class S>
 	TINLINE V &_vmlmultassign(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4034,9 +4034,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class S>
 	TINLINE V &_vmlimultassign(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4065,9 +4065,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class S>
 	TINLINE V &_vmcmultassign(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4096,9 +4096,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class M,class S>
 	TINLINE V &_vmcimultassign(V &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4127,9 +4127,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class VS,class M,class S>
 	TINLINE VS &_vsmmultassign(VS &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4155,9 +4155,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class VS,class M,class S>
 	TINLINE VS &_vsmimultassign(VS &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4183,9 +4183,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class VS,class M,class S>
 	TINLINE VS &_vsmlmultassign(VS &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4211,9 +4211,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class VS,class M,class S>
 	TINLINE VS &_vsmlimultassign(VS &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4239,9 +4239,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class VS,class M,class S>
 	TINLINE VS &_vsmcmultassign(VS &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4267,9 +4267,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class VS,class M,class S>
 	TINLINE VS &_vsmcimultassign(VS &v,const M &m)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<M>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4295,9 +4295,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class V,class E>
 	TINLINE E _msvmult(const MS &ms,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1);
@@ -4329,9 +4329,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class V,class E>
 	TINLINE E _msvimult(const MS &ms,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1);
@@ -4364,9 +4364,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class V,class E>
 	TINLINE E _msvlmult(const MS &ms,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1);
@@ -4390,9 +4390,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class V,class E>
 	TINLINE E _msvlimult(const MS &ms,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1);
@@ -4416,9 +4416,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class V,class E>
 	TINLINE E _msvcmult(const MS &ms,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1);
@@ -4451,9 +4451,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS,class V,class E>
 	TINLINE E _msvcimult(const MS &ms,const V &v)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start1,ms.end1);
@@ -4486,9 +4486,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class E>
 	TINLINE E _vmsmult(const V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start2,ms.end2);
@@ -4512,9 +4512,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class E>
 	TINLINE E _vmsimult(const V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start2,ms.end2);
@@ -4539,9 +4539,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class E>
 	TINLINE E _vmscmult(const V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start2,ms.end2);
@@ -4565,9 +4565,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class E>
 	TINLINE E _vmscimult(const V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start2,ms.end2);
@@ -4590,9 +4590,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class E>
 	TINLINE E _vmslmult(const V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start2,ms.end2);
@@ -4616,9 +4616,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class E>
 	TINLINE E _vmslimult(const V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E r(ms.start2,ms.end2);
@@ -4642,9 +4642,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class S>
 	TINLINE V &_vmsmultassign(V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4673,9 +4673,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class S>
 	TINLINE V &_vmsimultassign(V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4704,9 +4704,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class S>
 	TINLINE V &_vmslmultassign(V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4735,9 +4735,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class S>
 	TINLINE V &_vmslimultassign(V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4766,9 +4766,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class S>
 	TINLINE V &_vmscmultassign(V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4797,9 +4797,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class V,class MS,class S>
 	TINLINE V &_vmscimultassign(V &v,const MS &ms)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MS>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4826,7 +4826,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M,class S,class E>
-	TINLINE E _msdiv(const M &m,const S &c) throw()
+	TINLINE E _msdiv(const M &m,const S &c)
 	{
 		E r(m.lb1,m.ub1,m.lb2,m.ub2);
 
@@ -4836,7 +4836,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M,class S>
-	TINLINE M &_msdivassign(M &m,const S &c) throw()
+	TINLINE M &_msdivassign(M &m,const S &c)
 	{
 		for(int i=0;i<m.xsize*m.ysize;i++)
 			m.dat[i]/=c;
@@ -4844,7 +4844,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class S,class E>
-	TINLINE E _mssdiv(const MS &ms, const S &c) throw()
+	TINLINE E _mssdiv(const MS &ms, const S &c)
 	{
 		E r(ms.start1,ms.end1,ms.start2,ms.end2);
 
@@ -4857,7 +4857,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class S>
-	TINLINE MS &_mssdivassign(MS &ms,const S &c) throw()
+	TINLINE MS &_mssdivassign(MS &ms,const S &c)
 	{
 		for(int i=0;i<ms.sxsize;i++)
 		{
@@ -4870,9 +4870,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2,class E>
 	TINLINE E _msmsconv(const MS1 &m1,const MS2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4897,9 +4897,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2,class E>
 	TINLINE E _msmssect(const MS1 &m1,const MS2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4924,9 +4924,9 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	template <class MS1,class MS2,class E>
 	TINLINE E _msmsplus(const MS1 &m1,const MS2 &m2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -4949,7 +4949,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M>
-	TINLINE void *_mvoid(const M &m) throw()
+	TINLINE void *_mvoid(const M &m)
 	{
 		for(int i=0;i<m.xsize*m.ysize;i++)
 		{
@@ -4960,7 +4960,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M>
-	TINLINE bool _mnot(const M &m) throw()
+	TINLINE bool _mnot(const M &m)
 	{
 		for(int i=0;i<m.xsize*m.ysize;i++)
 		{
@@ -4971,7 +4971,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS>
-	TINLINE void *_msvoid(const MS &ms) throw()
+	TINLINE void *_msvoid(const MS &ms)
 	{
 		for(int i=0;i<ms.sysize;i++)
 		{
@@ -4985,7 +4985,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS>
-	TINLINE bool _msnot(const MS &ms) throw()
+	TINLINE bool _msnot(const MS &ms)
 	{
 		for(int i=0;i<ms.sysize;i++)
 		{
@@ -4999,7 +4999,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M1,class M2>
-	TINLINE bool _mmeq(const M1 &m1,const M2 &m2) throw()
+	TINLINE bool _mmeq(const M1 &m1,const M2 &m2)
 	{
 		if((m1.xsize!=m2.xsize)||(m1.ysize!=m2.ysize)) return false;
 		for(int i=0;i<m1.xsize*m1.ysize;i++)
@@ -5011,7 +5011,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M1,class M2>
-	TINLINE bool _mmneq(const M1 &m1,const M2 &m2) throw()
+	TINLINE bool _mmneq(const M1 &m1,const M2 &m2)
 	{
 		if((m1.xsize!=m2.xsize)||(m1.ysize!=m2.ysize)) return true;
 		for(int i=0;i<m1.xsize*m1.ysize;i++)
@@ -5023,7 +5023,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M1,class M2>
-	TINLINE bool _mmless(const M1 &m1,const M2 &m2) throw()
+	TINLINE bool _mmless(const M1 &m1,const M2 &m2)
 	{
 		if((m1.xsize!=m2.xsize)||(m1.ysize!=m2.ysize)) return false;
 		for(int i=0;i<m1.xsize*m1.ysize;i++)
@@ -5035,7 +5035,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M1,class M2>
-	TINLINE bool _mmleq(const M1 &m1,const M2 &m2) throw()
+	TINLINE bool _mmleq(const M1 &m1,const M2 &m2)
 	{
 		if((m1.xsize!=m2.xsize)||(m1.ysize!=m2.ysize)) return false;
 		for(int i=0;i<m1.xsize*m1.ysize;i++)
@@ -5047,7 +5047,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M,class MS>
-	TINLINE bool _mmseq(const M &m1,const MS &ms) throw()
+	TINLINE bool _mmseq(const M &m1,const MS &ms)
 	{
 		if((m1.xsize!=ms.sxsize)||(m1.ysize!=ms.sysize)) return false;
 		for(int i=0;i<m1.ysize;i++)
@@ -5062,7 +5062,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M,class MS>
-	TINLINE bool _mmsneq(const M &m1,const MS &ms) throw()
+	TINLINE bool _mmsneq(const M &m1,const MS &ms)
 	{
 		if((m1.xsize!=ms.sxsize)||(m1.ysize!=ms.sysize)) return true;
 		for(int i=0;i<m1.ysize;i++)
@@ -5077,7 +5077,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M,class MS>
-	TINLINE bool _mmsless(const M &m1,const MS &ms) throw()
+	TINLINE bool _mmsless(const M &m1,const MS &ms)
 	{
 		if((m1.xsize!=ms.sxsize)||(m1.ysize!=ms.sysize)) return false;
 		for(int i=0;i<m1.ysize;i++)
@@ -5092,7 +5092,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class M,class MS>
-	TINLINE bool _mmsleq(const M &m1,const MS &ms) throw()
+	TINLINE bool _mmsleq(const M &m1,const MS &ms)
 	{
 		if((m1.xsize!=ms.sxsize)||(m1.ysize!=ms.sysize)) return false;
 		for(int i=0;i<m1.ysize;i++)
@@ -5107,7 +5107,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class M>
-	TINLINE bool _msmless(const MS &ms,const M &m1) throw()
+	TINLINE bool _msmless(const MS &ms,const M &m1)
 	{
 		if((m1.xsize!=ms.sxsize)||(m1.ysize!=ms.sysize)) return false;
 		for(int i=0;i<m1.ysize;i++)
@@ -5122,7 +5122,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS,class M>
-	TINLINE bool _msmleq(const MS &ms,const M &m1) throw()
+	TINLINE bool _msmleq(const MS &ms,const M &m1)
 	{
 		if((m1.xsize!=ms.sxsize)||(m1.ysize!=ms.sysize)) return false;
 		for(int i=0;i<m1.ysize;i++)
@@ -5137,7 +5137,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS1,class MS2>
-	TINLINE bool _msmseq(const MS1 &ms1,const MS2 &ms2) throw()
+	TINLINE bool _msmseq(const MS1 &ms1,const MS2 &ms2)
 	{
 		if((ms1.sxsize!=ms2.sxsize)||(ms1.sysize!=ms2.sysize)) return false;
 		for(int i=0;i<ms1.sysize;i++)
@@ -5152,7 +5152,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS1,class MS2>
-	TINLINE bool _msmsneq(const MS1 &ms1,const MS2 &ms2) throw()
+	TINLINE bool _msmsneq(const MS1 &ms1,const MS2 &ms2)
 	{
 		if((ms1.sxsize!=ms2.sxsize)||(ms1.sysize!=ms2.sysize)) return true;
 		for(int i=0;i<ms1.sysize;i++)
@@ -5167,7 +5167,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS1,class MS2>
-	TINLINE bool _msmsless(const MS1 &ms1,const MS2 &ms2) throw()
+	TINLINE bool _msmsless(const MS1 &ms1,const MS2 &ms2)
 	{
 		if((ms1.sxsize!=ms2.sxsize)||(ms1.sysize!=ms2.sysize)) return false;
 		for(int i=0;i<ms1.sysize;i++)
@@ -5182,7 +5182,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 	}
 
 	template <class MS1,class MS2>
-	TINLINE bool _msmsleq(const MS1 &ms1,const MS2 &ms2) throw()
+	TINLINE bool _msmsleq(const MS1 &ms1,const MS2 &ms2)
 	{
 		if((ms1.sxsize!=ms2.sxsize)||(ms1.sysize!=ms2.sysize)) return false;
 		for(int i=0;i<ms1.sysize;i++)
@@ -5201,7 +5201,7 @@ TINLINE M &_mvassign(M &m,const V &v) throw()
 
 
 template <class V,class MV2,class S>
-TINLINE V &_vmvassign(V &v,const MV2 &rv) throw()
+TINLINE V &_vmvassign(V &v,const MV2 &rv)
 {
 	delete [] v.dat;
 	v.dat=new S[rv.size];
@@ -5216,9 +5216,9 @@ TINLINE V &_vmvassign(V &v,const MV2 &rv) throw()
 template <class MV1,class MV2>
 TINLINE MV1 &_mvmvassign(MV1 &v,const MV2 &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV1>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5230,7 +5230,7 @@ TINLINE MV1 &_mvmvassign(MV1 &v,const MV2 &rv)
 }
 
 template <class MV,class S>
-TINLINE MV &_mvsassign(MV &v,const  S &r) throw()
+TINLINE MV &_mvsassign(MV &v,const  S &r)
 {
 	for(int i=v.start,j=0;j<v.size;j++,i+=v.offset)
 		v.dat[i]=r;
@@ -5240,9 +5240,9 @@ TINLINE MV &_mvsassign(MV &v,const  S &r) throw()
 template <class MV,class V>
 TINLINE MV &_mvvassign(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5254,7 +5254,7 @@ TINLINE MV &_mvvassign(MV &v,const V &rv)
 }
 
 template <class MV,class V>
-TINLINE V _mvabs(const MV &mv) throw()
+TINLINE V _mvabs(const MV &mv)
 {
 	V v(mv.lb,mv.ub);
 	for(int i=0,j=mv.start;i<mv.size;i++,j+=mv.offset)
@@ -5263,7 +5263,7 @@ TINLINE V _mvabs(const MV &mv) throw()
 }
 
 template <class MV,class V>
-TINLINE V _mvdiam(const MV &mv) throw()
+TINLINE V _mvdiam(const MV &mv)
 {
 	V v(mv.lb,mv.ub);
 	for(int i=0,j=mv.start;i<mv.size;i++,j+=mv.offset)
@@ -5272,7 +5272,7 @@ TINLINE V _mvdiam(const MV &mv) throw()
 }
 
 template <class MV,class V>
-TINLINE V _mvmid(const MV &mv) throw()
+TINLINE V _mvmid(const MV &mv)
 {
 	V v(mv.lb,mv.ub);
 	for(int i=0,j=mv.start;i<mv.size;i++,j+=mv.offset)
@@ -5281,7 +5281,7 @@ TINLINE V _mvmid(const MV &mv) throw()
 }
 
 template <class MV,class V>
-TINLINE V _mvinf(const MV &mv) throw()
+TINLINE V _mvinf(const MV &mv)
 {
 	V v(mv.lb,mv.ub);
 	for(int i=0,j=mv.start;i<mv.size;i++,j+=mv.offset)
@@ -5290,7 +5290,7 @@ TINLINE V _mvinf(const MV &mv) throw()
 }
 
 template <class MV,class V>
-TINLINE V _mvsup(const MV &mv) throw()
+TINLINE V _mvsup(const MV &mv)
 {
 	V v(mv.lb,mv.ub);
 	for(int i=0,j=mv.start;i<mv.size;i++,j+=mv.offset)
@@ -5299,7 +5299,7 @@ TINLINE V _mvsup(const MV &mv) throw()
 }
 
 template <class MV,class V>
-TINLINE V _mvim(const MV &mv) throw()
+TINLINE V _mvim(const MV &mv)
 {
 	V v(mv.lb,mv.ub);
 	for(int i=0,j=mv.start;i<mv.size;i++,j+=mv.offset)
@@ -5308,7 +5308,7 @@ TINLINE V _mvim(const MV &mv) throw()
 }
 
 template <class MV,class V>
-TINLINE V _mvre(const MV &mv) throw()
+TINLINE V _mvre(const MV &mv)
 {
 	V v(mv.lb,mv.ub);
 	for(int i=0,j=mv.start;i<mv.size;i++,j+=mv.offset)
@@ -5319,9 +5319,9 @@ TINLINE V _mvre(const MV &mv) throw()
 template <class DP,class V,class SV>
 	TINLINE void _vmvaccu(DP &dp, const V & rv1, const SV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(OP_WITH_WRONG_DIM)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5334,9 +5334,9 @@ template <class DP,class V,class SV>
 template <class DP,class MV1,class MV2>
 	TINLINE void _mvmvaccu(DP &dp, const MV1 & rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(OP_WITH_WRONG_DIM)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5349,9 +5349,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV1,class MV2,class S>
 	TINLINE S _mvmvmult(const MV1 & rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5367,9 +5367,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV1,class MV2,class S>
 	TINLINE S _mvmvimult(const MV1 & rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5385,9 +5385,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV1,class MV2,class S>
 	TINLINE S _mvmvlmult(const MV1 & rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5403,9 +5403,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV1,class MV2,class S>
 	TINLINE S _mvmvlimult(const MV1 & rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5421,9 +5421,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV1,class MV2,class S>
 	TINLINE S _mvmvcmult(const MV1 & rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5439,9 +5439,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV1,class MV2,class S>
 	TINLINE S _mvmvcimult(const MV1 & rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV1>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5457,9 +5457,9 @@ template <class DP,class MV1,class MV2>
 	template <class V,class MV,class S>
 	TINLINE S _vmvmult(const V &rv1, const MV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5475,9 +5475,9 @@ template <class DP,class MV1,class MV2>
 	template <class V,class MV,class S>
 	TINLINE S _vmvimult(const V &rv1, const MV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5493,9 +5493,9 @@ template <class DP,class MV1,class MV2>
 	template <class V,class MV,class S>
 	TINLINE S _vmvlmult(const V &rv1, const MV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5511,9 +5511,9 @@ template <class DP,class MV1,class MV2>
 	template <class V,class MV,class S>
 	TINLINE S _vmvlimult(const V &rv1, const MV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5529,9 +5529,9 @@ template <class DP,class MV1,class MV2>
 	template <class V,class MV,class S>
 	TINLINE S _vmvcmult(const V &rv1, const MV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5547,9 +5547,9 @@ template <class DP,class MV1,class MV2>
 	template <class V,class MV,class S>
 	TINLINE S _vmvcimult(const V &rv1, const MV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+		
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -5563,7 +5563,7 @@ template <class DP,class MV1,class MV2>
 	}
 
 	template <class MV,class S,class E>
-	TINLINE E _mvsmult(const MV &rv, const S &s) throw()
+	TINLINE E _mvsmult(const MV &rv, const S &s)
 	{
 		E p(rv.lb,rv.ub);
 
@@ -5577,9 +5577,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV1,class MV2,class E>
 	TINLINE E _mvmvconv(const MV1 &rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.lb,rv1.ub);
@@ -5595,9 +5595,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV,class V,class E>
 	TINLINE E _mvvconv(const MV &rv1, const V &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.lb,rv1.ub);
@@ -5613,9 +5613,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV1,class MV2,class E>
 	TINLINE E _mvmvsect(const MV1 &rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.lb,rv1.ub);
@@ -5631,9 +5631,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV,class V,class E>
 	TINLINE E _mvvsect(const MV &rv1, const V &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.lb,rv1.ub);
@@ -5649,9 +5649,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV1,class MV2,class E>
 	TINLINE E _mvmvplus(const MV1 &rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.lb,rv1.ub);
@@ -5667,9 +5667,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV1,class MV2,class E>
 	TINLINE E _mvmvminus(const MV1 &rv1, const MV2 &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.lb,rv1.ub);
@@ -5685,9 +5685,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV,class V,class E>
 	TINLINE E _mvvplus(const MV &rv1, const V &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.lb,rv1.ub);
@@ -5703,9 +5703,9 @@ template <class DP,class MV1,class MV2>
 	template <class MV,class V,class E>
 	TINLINE E _mvvminus(const MV &rv1, const V &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.lb,rv1.ub);
@@ -5721,9 +5721,9 @@ template <class DP,class MV1,class MV2>
 	template <class V,class MV,class E>
 	TINLINE E _vmvminus(const V &rv1, const MV &rv2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR__OP_WITH_WRONG_DIM<E>)
+		
 #else
-	throw()
+	
 #endif
 	{
 		E sum(rv1.l,rv1.u);
@@ -5737,7 +5737,7 @@ template <class DP,class MV1,class MV2>
 	}
 
 	template <class MV,class S,class E>
-	TINLINE E _mvsdiv(const MV &rv, const S &s) throw()
+	TINLINE E _mvsdiv(const MV &rv, const S &s)
 	{
 		E p(rv.lb,rv.ub);
 
@@ -5748,7 +5748,7 @@ template <class DP,class MV1,class MV2>
 	}
 
 template <class MV,class S>
-TINLINE MV &_mvsmultassign(MV &v,const S &r) throw()
+TINLINE MV &_mvsmultassign(MV &v,const S &r)
 {
 	for(int i=v.start,j=0;j<v.size;j++,i+=v.offset)
 		v.dat[i]*=r;
@@ -5756,7 +5756,7 @@ TINLINE MV &_mvsmultassign(MV &v,const S &r) throw()
 }
 
 template <class MV, class S>
-TINLINE MV &_mvsplusassign(MV &v,const S &r) throw()
+TINLINE MV &_mvsplusassign(MV &v,const S &r)
 {
 	for(int i=v.start,j=0;j<v.size;j++,i+=v.offset)
 		v.dat[i]+=r;
@@ -5764,7 +5764,7 @@ TINLINE MV &_mvsplusassign(MV &v,const S &r) throw()
 }
 	
 template <class MV,class S>
-TINLINE MV &_mvsminusassign(MV &v,const S &r) throw()
+TINLINE MV &_mvsminusassign(MV &v,const S &r)
 {
 	for(int i=v.start,j=0;j<v.size;j++,i+=v.offset)
 		v.dat[i]-=r;
@@ -5772,7 +5772,7 @@ TINLINE MV &_mvsminusassign(MV &v,const S &r) throw()
 }
 	
 template <class MV,class S>
-TINLINE MV &_mvsdivassign(MV &v,const S &r) throw()
+TINLINE MV &_mvsdivassign(MV &v,const S &r)
 {
 	for(int i=v.start,j=0;j<v.size;j++,i+=v.offset)
 		v.dat[i]/=r;
@@ -5782,9 +5782,9 @@ TINLINE MV &_mvsdivassign(MV &v,const S &r) throw()
 template <class MV,class V>
 TINLINE MV &_mvvconvassign(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5798,9 +5798,9 @@ TINLINE MV &_mvvconvassign(MV &v,const V &rv)
 template <class V,class MV>
 TINLINE V &_vmvconvassign(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5814,9 +5814,9 @@ TINLINE V &_vmvconvassign(V &rv,const MV &v)
 template <class MV,class V>
 TINLINE MV &_mvvsectassign(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5830,9 +5830,9 @@ TINLINE MV &_mvvsectassign(MV &v,const V &rv)
 template <class V,class MV>
 TINLINE V &_vmvsectassign(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5846,9 +5846,9 @@ TINLINE V &_vmvsectassign(V &rv,const MV &v)
 template <class MV,class V>
 TINLINE MV &_mvvplusassign(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5862,9 +5862,9 @@ TINLINE MV &_mvvplusassign(MV &v,const V &rv)
 template <class V,class MV>
 TINLINE V &_vmvplusassign(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5878,9 +5878,9 @@ TINLINE V &_vmvplusassign(V &rv,const MV &v)
 template <class MV,class V>
 TINLINE MV &_mvvminusassign(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5894,9 +5894,9 @@ TINLINE MV &_mvvminusassign(MV &v,const V &rv)
 template <class V,class MV>
 TINLINE V &_vmvminusassign(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5908,7 +5908,7 @@ TINLINE V &_vmvminusassign(V &rv,const MV &v)
 }
 
 	template <class MV,class S>
-	TINLINE MV &_mvsusetsup(MV &mv, const S &s) throw()
+	TINLINE MV &_mvsusetsup(MV &mv, const S &s)
 	{
 		for(int i=mv.start,j=0;j<mv.size;j++,i+=mv.offset)
 			UncheckedSetInf(mv.dat[i],s);
@@ -5916,7 +5916,7 @@ TINLINE V &_vmvminusassign(V &rv,const MV &v)
 	}
 
 	template <class MV,class S>
-	TINLINE MV &_mvsusetinf(MV &mv, const S &s) throw()
+	TINLINE MV &_mvsusetinf(MV &mv, const S &s)
 	{
 		for(int i=mv.start,j=0;j<mv.size;j++,i+=mv.offset)
 			UncheckedSetInf(mv.dat[i],s);
@@ -5924,7 +5924,7 @@ TINLINE V &_vmvminusassign(V &rv,const MV &v)
 	}
 
 	template <class MV,class S>
-	TINLINE MV &_mvssetinf(MV &mv, const S &s) throw()
+	TINLINE MV &_mvssetinf(MV &mv, const S &s)
 	{
 		for(int i=mv.start,j=0;j<mv.size;j++,i+=mv.offset)
 			SetInf(mv.dat[i],s);
@@ -5932,7 +5932,7 @@ TINLINE V &_vmvminusassign(V &rv,const MV &v)
 	}
 
 	template <class MV,class S>
-	TINLINE MV &_mvssetsup(MV &mv, const S &s) throw()
+	TINLINE MV &_mvssetsup(MV &mv, const S &s)
 	{
 		for(int i=mv.start,j=0;j<mv.size;j++,i+=mv.offset)
 			SetSup(mv.dat[i],s);
@@ -5940,7 +5940,7 @@ TINLINE V &_vmvminusassign(V &rv,const MV &v)
 	}
 
 	template <class MV,class S>
-	TINLINE MV &_mvssetre(MV &mv, const S &s) throw()
+	TINLINE MV &_mvssetre(MV &mv, const S &s)
 	{
 		for(int i=mv.start,j=0;j<mv.size;j++,i+=mv.offset)
 			SetRe(mv.dat[i],s);
@@ -5948,7 +5948,7 @@ TINLINE V &_vmvminusassign(V &rv,const MV &v)
 	}
 
 	template <class MV,class S>
-	TINLINE MV &_mvssetim(MV &mv, const S &s) throw()
+	TINLINE MV &_mvssetim(MV &mv, const S &s)
 	{
 		for(int i=mv.start,j=0;j<mv.size;j++,i+=mv.offset)
 			SetIm(mv.dat[i],s);
@@ -5958,9 +5958,9 @@ TINLINE V &_vmvminusassign(V &rv,const MV &v)
 template <class MV,class V>
 TINLINE MV &_mvvsetinf(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5974,9 +5974,9 @@ TINLINE MV &_mvvsetinf(MV &v,const V &rv)
 template <class V,class MV>
 TINLINE V &_vmvsetinf(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -5990,9 +5990,9 @@ TINLINE V &_vmvsetinf(V &rv,const MV &v)
 template <class MV,class V>
 TINLINE MV &_mvvusetinf(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -6006,9 +6006,9 @@ TINLINE MV &_mvvusetinf(MV &v,const V &rv)
 template <class V,class MV>
 TINLINE V &_vmvusetinf(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -6022,9 +6022,9 @@ TINLINE V &_vmvusetinf(V &rv,const MV &v)
 template <class MV,class V>
 TINLINE MV &_mvvsetsup(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -6038,9 +6038,9 @@ TINLINE MV &_mvvsetsup(MV &v,const V &rv)
 template <class V,class MV>
 TINLINE V &_vmvsetsup(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -6054,9 +6054,9 @@ TINLINE V &_vmvsetsup(V &rv,const MV &v)
 template <class MV,class V>
 TINLINE MV &_mvvusetsup(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -6070,9 +6070,9 @@ TINLINE MV &_mvvusetsup(MV &v,const V &rv)
 template <class V,class MV>
 TINLINE V &_vmvusetsup(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -6086,9 +6086,9 @@ TINLINE V &_vmvusetsup(V &rv,const MV &v)
 template <class MV,class V>
 TINLINE MV &_mvvsetim(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -6102,9 +6102,9 @@ TINLINE MV &_mvvsetim(MV &v,const V &rv)
 template <class V,class MV>
 TINLINE V &_vmvsetim(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -6118,9 +6118,9 @@ TINLINE V &_vmvsetim(V &rv,const MV &v)
 template <class MV,class V>
 TINLINE MV &_mvvsetre(MV &v,const V &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<MV>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -6134,9 +6134,9 @@ TINLINE MV &_mvvsetre(MV &v,const V &rv)
 template <class V,class MV>
 TINLINE V &_vmvsetre(V &rv,const MV &v)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<V>)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -6153,7 +6153,7 @@ TINLINE V &_vmvsetre(V &rv,const MV &v)
 
 /*
 template <class S,class S,class U>
-rmatrix<U> _ms_mult(const rmatrix<S> &m,const S &s,const U &u=0) throw()
+rmatrix<U> _ms_mult(const rmatrix<S> &m,const S &s,const U &u=0)
 {
 	rmatrix<U> r(m.lb1,m.ub1,m.lb2,m.ub2);
 
@@ -6164,7 +6164,7 @@ rmatrix<U> _ms_mult(const rmatrix<S> &m,const S &s,const U &u=0) throw()
 }
 
 template <class S,class S,class R>
-cxscvector<R> _mv_mult(const rmatrix<S> &m,const rvector &v,R) throw()
+cxscvector<R> _mv_mult(const rmatrix<S> &m,const rvector &v,R)
 {
 	cxscvector<R> r(m.lb1,m.ub1);
 
@@ -6180,7 +6180,7 @@ cxscvector<R> _mv_mult(const rmatrix<S> &m,const rvector &v,R) throw()
 }
 
 template <class S,class S, class R>
-rvector _vm_mult(const rvector &v,const rmatrix<S> &m,R) throw()
+rvector _vm_mult(const rvector &v,const rmatrix<S> &m,R)
 {
 	cxscvector<R> r(m.lb2,m.ub2);
 

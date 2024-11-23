@@ -40,9 +40,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const civector & rv1, const civector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -53,9 +53,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const civector_slice & sl, const civector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -66,9 +66,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const civector &rv, const civector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -79,9 +79,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const civector_slice & sl1, const civector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -92,9 +92,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const rvector & rv1, const civector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -111,9 +111,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const civector & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -130,9 +130,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const rvector_slice & sl, const civector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -149,9 +149,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp,const civector_slice &sl,const rvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -168,9 +168,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const rvector &rv, const civector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -187,9 +187,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp,const civector &rv,const rvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -206,9 +206,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const civector_slice & sl1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -225,9 +225,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const rvector_slice & sl1, const civector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -244,9 +244,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const civector_slice & sl1, const rmatrix_subv &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -263,9 +263,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const rmatrix_subv & sl1, const civector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -282,9 +282,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const cvector & rv1, const civector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -295,9 +295,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const civector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -308,9 +308,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const cvector_slice & sl, const civector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -321,9 +321,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp,const civector_slice &sl,const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -334,9 +334,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const cvector &rv, const civector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -347,9 +347,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp,const civector &rv,const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -360,9 +360,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const civector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -373,9 +373,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const cvector_slice & sl1, const civector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -386,9 +386,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const ivector & rv1, const civector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -405,9 +405,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const civector & rv1, const ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -424,9 +424,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const ivector_slice & sl, const civector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -443,9 +443,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp,const civector_slice &sl,const ivector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -462,9 +462,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const ivector &rv, const civector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -481,9 +481,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp,const civector &rv,const ivector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -500,9 +500,9 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const civector_slice & sl1, const ivector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -519,9 +519,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const ivector_slice & sl1, const civector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)

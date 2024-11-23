@@ -34,7 +34,7 @@
 namespace cxsc {
   
     //Ostrowskis comparison matrix
-    rmatrix CompMat ( const rmatrix& A) throw() {
+    rmatrix CompMat ( const rmatrix& A) {
       rmatrix M(Lb(A,1), Ub(A,1), Lb(A,2), Ub(A,2));
 
       for(int i=Lb(A,1) ; i<=Ub(A,1) ; i++) {
@@ -80,9 +80,9 @@ namespace cxsc {
 
 	void accumulate(dotprecision &dp, const rmatrix_subv & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -98,9 +98,9 @@ namespace cxsc {
 
 	 void accumulate(dotprecision &dp, const rvector & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -116,9 +116,9 @@ namespace cxsc {
 
 	void accumulate(dotprecision &dp, const rmatrix_subv & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -134,9 +134,9 @@ namespace cxsc {
 
 	 void accumulate(idotprecision &dp, const rmatrix_subv & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -152,9 +152,9 @@ namespace cxsc {
 
 	 void accumulate(idotprecision &dp, const rvector & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -170,9 +170,9 @@ namespace cxsc {
 
 	 void accumulate(idotprecision &dp, const rmatrix_subv & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -188,9 +188,9 @@ namespace cxsc {
 
 	 void accumulate(cdotprecision &dp, const rmatrix_subv & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -207,9 +207,9 @@ namespace cxsc {
 
 	 void accumulate(cdotprecision &dp, const rvector & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -225,9 +225,9 @@ namespace cxsc {
 
 	 void accumulate(cdotprecision &dp, const rmatrix_subv & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -243,9 +243,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const rmatrix_subv & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -259,9 +259,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const rvector & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -275,9 +275,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const rmatrix_subv & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -292,9 +292,9 @@ namespace cxsc {
 
 	void accumulate(dotprecision &dp,const rvector_slice &sl,const rmatrix_subv &sv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -310,9 +310,9 @@ namespace cxsc {
 
 	 void accumulate(cdotprecision &dp, const rvector_slice & sl1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -329,9 +329,9 @@ namespace cxsc {
 
 	 void accumulate(idotprecision &dp, const rvector_slice & sl1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -346,9 +346,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const rvector_slice & sl1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -363,9 +363,9 @@ namespace cxsc {
 
 	void accumulate(dotprecision &dp,const rmatrix_subv &mv,const rvector_slice &vs)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -382,9 +382,9 @@ namespace cxsc {
 
 	 void accumulate(cdotprecision &dp, const rmatrix_subv & rv1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -401,9 +401,9 @@ namespace cxsc {
 
 	 void accumulate(idotprecision &dp, const rmatrix_subv & rv1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -418,9 +418,9 @@ namespace cxsc {
 
 	 void accumulate(cidotprecision &dp, const rmatrix_subv & rv1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)

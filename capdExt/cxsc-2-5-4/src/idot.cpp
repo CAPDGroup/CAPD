@@ -31,7 +31,7 @@ namespace cxsc {
 //idotprecision idotakku[MAXIDOTAKKU]; 
 // ---- Ausgabefunkt. ---------------------------------------
 
-std::ostream & operator << (std::ostream &s, const idotprecision& a) throw()
+std::ostream & operator << (std::ostream &s, const idotprecision& a)
 {
    s << '['          << SaveOpt << RndDown  
      << a.inf << ',' << RndUp 
@@ -39,7 +39,7 @@ std::ostream & operator << (std::ostream &s, const idotprecision& a) throw()
      << ']';
    return s;
 }
-std::string & operator << (std::string &s, const idotprecision& a) throw()
+std::string & operator << (std::string &s, const idotprecision& a)
 {
    s += '[';
    s << SaveOpt << RndDown  
@@ -51,7 +51,7 @@ std::string & operator << (std::string &s, const idotprecision& a) throw()
    return s;
 }
 
-std::istream & operator >> (std::istream &s, idotprecision &a) throw()
+std::istream & operator >> (std::istream &s, idotprecision &a)
 {
    char c;
 
@@ -84,7 +84,7 @@ std::istream & operator >> (std::istream &s, idotprecision &a) throw()
         
 
 
-std::string & operator >> (std::string &s, idotprecision &a) throw()
+std::string & operator >> (std::string &s, idotprecision &a)
 {
    s = skipwhitespacessinglechar (s, '[');
    s >> SaveOpt >> RndDown >> a.inf;
@@ -101,32 +101,32 @@ std::string & operator >> (std::string &s, idotprecision &a) throw()
    return s;
 }
 
-void operator >>(const std::string &s,idotprecision &a) throw()
+void operator >>(const std::string &s,idotprecision &a)
 {
    std::string r(s);
    r>>a;
 }
 
-void operator >>(const char *s,idotprecision &a) throw()
+void operator >>(const char *s,idotprecision &a)
 {
    std::string r(s);
    r>>a;
 }                          
 
-void rnd(const idotprecision &a,interval &b) throw()
+void rnd(const idotprecision &a,interval &b)
 {
    Inf(b)=rnd(a.inf,RND_DOWN);
    Sup(b)=rnd(a.sup,RND_UP);
 }
 
-interval rnd(const idotprecision &a) throw()
+interval rnd(const idotprecision &a)
 {
    interval b;
    rnd(a,b);
    return b;
 }
 
-void accumulate(idotprecision & a, const interval & b, const interval & c) throw()
+void accumulate(idotprecision & a, const interval & b, const interval & c)
 {
    i_padd(a.inf.ptr(),a.sup.ptr(), *(a_intv*)&b,*(a_intv*)&c);
 }

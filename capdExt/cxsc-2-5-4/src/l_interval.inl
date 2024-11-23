@@ -27,9 +27,9 @@ namespace cxsc {
 
 inline void l_interval::_allo(int nprec)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+  
 #else
-   throw()
+  
 #endif
 {
    prec=nprec;
@@ -44,9 +44,9 @@ inline void l_interval::_allo(int nprec)
 
 inline l_interval::l_interval() 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+  
 #else
-   throw()
+  
 #endif
 {
    _allo(stagprec);
@@ -54,9 +54,9 @@ inline l_interval::l_interval()
 
 inline l_interval::l_interval(const l_interval & a) 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+  
 #else
-   throw()
+  
 #endif
 {
    int i;
@@ -67,9 +67,9 @@ inline l_interval::l_interval(const l_interval & a)
       
 inline l_interval::l_interval(const real &a, const real &b) 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL)
+  
 #else
-   throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+  
 #endif
 {
    _allo(1);
@@ -79,42 +79,42 @@ inline l_interval::l_interval(const real &a, const real &b)
    
 }
 
-l_interval::l_interval(const real &a) throw()
+l_interval::l_interval(const real &a)
 {
    try { _allo(1); }
    catch(const ERROR_LINTERVAL_WRONG_STAGPREC &) {} // won't occur!
    elem(1)=a,elem(2)=a;
 }
 
-inline l_interval & l_interval::operator= (const real & a)        throw()
+inline l_interval & l_interval::operator= (const real & a)       
 {
    return (*this)=_l_interval(a);
 }
 
-inline l_interval & l_interval::operator= (const l_real & a)      throw()
+inline l_interval & l_interval::operator= (const l_real & a)     
 {
    return (*this)=_l_interval(a);
 }
 
-inline l_interval & l_interval::operator= (const interval & a)    throw()
+inline l_interval & l_interval::operator= (const interval & a)   
 {
    return (*this)=_l_interval(a);
 }
 
-inline l_interval::~l_interval() throw()
+inline l_interval::~l_interval()
 {
    delete [] data;
 }
 // ---- Typwandlungen ----
 
-l_interval::l_interval(const interval & a) throw()
+l_interval::l_interval(const interval & a)
 {
    try { _allo(1); }
    catch(const ERROR_LINTERVAL_WRONG_STAGPREC &) {} // won't occur!
    elem(1)=Inf(a),elem(2)=Sup(a);
 }
 
-l_interval::l_interval(const l_real & a) throw()
+l_interval::l_interval(const l_real & a)
 {
    try { _allo(StagPrec(a)); }
    catch(const ERROR_LINTERVAL_WRONG_STAGPREC &) {} // shouldn't occur!
@@ -124,32 +124,32 @@ l_interval::l_interval(const l_real & a) throw()
    elem(prec+1)=a[prec];
 }
 
-inline interval _interval(const real & a, const l_real & b) throw() // Sollte in l_real!!!
+inline interval _interval(const real & a, const l_real & b) // Sollte in l_real!!!
 {
    return _interval(_l_interval(_l_real(a),b));
 }
 
-inline interval _interval(const l_real & a, const real & b) throw() // Sollte in l_real!!!
+inline interval _interval(const l_real & a, const real & b) // Sollte in l_real!!!
 {
    return _interval(_l_interval(a,_l_real(b)));
 }
 
-inline interval _interval(const l_real & a) throw() // l_real!
+inline interval _interval(const l_real & a) // l_real!
 {
    return _interval(_l_interval(a,a));
 }
 
-inline interval _unchecked_interval(const l_real & a, const l_real & b) throw() // l_real!
+inline interval _unchecked_interval(const l_real & a, const l_real & b) // l_real!
 {
    return _unchecked_interval(_real(a),_real(b));
 }
 
 // ---- Standardfunkt ---- (arithmetische Operatoren)
 
-inline l_interval operator+(const l_interval &a) throw() { return a; }
+inline l_interval operator+(const l_interval &a) { return a; }
 
 // LI-LI
-inline l_interval operator|(const l_interval & li1, const l_interval & li2) throw(ERROR_LINTERVAL_IN_EXACT_CH_OR_IS)
+inline l_interval operator|(const l_interval & li1, const l_interval & li2)
 {  
    // liefert ConvexHull zweier Intervalle; Einschluss von aussen!
    l_interval li3, li4;    // innen, aussen
@@ -163,7 +163,7 @@ inline l_interval operator|(const l_interval & li1, const l_interval & li2) thro
    return li4;
 }  
 
-inline l_interval operator&(const l_interval & li1, const l_interval & li2) throw(ERROR_LINTERVAL_EMPTY_INTERVAL, ERROR_LINTERVAL_IN_EXACT_CH_OR_IS)
+inline l_interval operator&(const l_interval & li1, const l_interval & li2)
 {  
    // liefert Intersection zweier Intervalle; Einschluss von aussen!
    l_interval li3, li4;    // innen, aussen
@@ -184,196 +184,196 @@ inline l_interval operator&(const l_interval & li1, const l_interval & li2) thro
    return li4;
 }   
 
-inline l_interval & operator +=(l_interval &a,const l_interval &b) throw() { return a=a+b; }
-inline l_interval & operator -=(l_interval &a,const l_interval &b) throw() { return a=a-b; }
-inline l_interval & operator *=(l_interval &a,const l_interval &b) throw() { return a=a*b; }
-inline l_interval & operator /=(l_interval &a,const l_interval &b) throw() { return a=a/b; }
-inline l_interval & operator |=(l_interval &a,const l_interval &b) throw() { return a=a|b; }
-inline l_interval & operator &=(l_interval &a,const l_interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=a&b; }
+inline l_interval & operator +=(l_interval &a,const l_interval &b) { return a=a+b; }
+inline l_interval & operator -=(l_interval &a,const l_interval &b) { return a=a-b; }
+inline l_interval & operator *=(l_interval &a,const l_interval &b) { return a=a*b; }
+inline l_interval & operator /=(l_interval &a,const l_interval &b) { return a=a/b; }
+inline l_interval & operator |=(l_interval &a,const l_interval &b) { return a=a|b; }
+inline l_interval & operator &=(l_interval &a,const l_interval &b) { return a=a&b; }
 
 // LI-LR
-inline l_interval operator +(const l_interval &a,const l_real &b) throw() { return a+_l_interval(b); }
-inline l_interval operator +(const l_real &a,const l_interval &b) throw() { return _l_interval(a)+b; }
-inline l_interval operator -(const l_interval &a,const l_real &b) throw() { return a-_l_interval(b); }
-inline l_interval operator -(const l_real &a,const l_interval &b) throw() { return _l_interval(a)-b; }
-inline l_interval operator *(const l_interval &a,const l_real &b) throw() { return a*_l_interval(b); }
-inline l_interval operator *(const l_real &a,const l_interval &b) throw() { return _l_interval(a)*b; }
-inline l_interval operator /(const l_interval &a,const l_real &b) throw() { return a/_l_interval(b); }
-inline l_interval operator /(const l_real &a,const l_interval &b) throw() { return _l_interval(a)/b; } 
-inline l_interval operator |(const l_real &a,const l_interval &b) throw() { return _l_interval(a)|b; }
-inline l_interval operator |(const l_interval &a,const l_real &b) throw() { return a|_l_interval(b); }
-inline l_interval operator |(const l_real &a,const l_real &b)     throw() { return _l_interval(a)|_l_interval(b); }  // WARNING! For exact upper and lower bounds use the constructor!
-inline l_interval operator &(const l_real &a,const l_interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return _l_interval(a)&b; }
-inline l_interval operator &(const l_interval &a,const l_real &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a&_l_interval(b); }
+inline l_interval operator +(const l_interval &a,const l_real &b) { return a+_l_interval(b); }
+inline l_interval operator +(const l_real &a,const l_interval &b) { return _l_interval(a)+b; }
+inline l_interval operator -(const l_interval &a,const l_real &b) { return a-_l_interval(b); }
+inline l_interval operator -(const l_real &a,const l_interval &b) { return _l_interval(a)-b; }
+inline l_interval operator *(const l_interval &a,const l_real &b) { return a*_l_interval(b); }
+inline l_interval operator *(const l_real &a,const l_interval &b) { return _l_interval(a)*b; }
+inline l_interval operator /(const l_interval &a,const l_real &b) { return a/_l_interval(b); }
+inline l_interval operator /(const l_real &a,const l_interval &b) { return _l_interval(a)/b; } 
+inline l_interval operator |(const l_real &a,const l_interval &b) { return _l_interval(a)|b; }
+inline l_interval operator |(const l_interval &a,const l_real &b) { return a|_l_interval(b); }
+inline l_interval operator |(const l_real &a,const l_real &b)     { return _l_interval(a)|_l_interval(b); }  // WARNING! For exact upper and lower bounds use the constructor!
+inline l_interval operator &(const l_real &a,const l_interval &b) { return _l_interval(a)&b; }
+inline l_interval operator &(const l_interval &a,const l_real &b) { return a&_l_interval(b); }
 
-inline l_interval & operator +=(l_interval &a,const l_real &b) throw() { return a=a+_l_interval(b); }      
-inline l_interval & operator -=(l_interval &a,const l_real &b) throw() { return a=a-_l_interval(b); }
-inline l_interval & operator *=(l_interval &a,const l_real &b) throw() { return a=a*_l_interval(b); }              
-inline l_interval & operator /=(l_interval &a,const l_real &b) throw() { return a=a/_l_interval(b); } 
-inline l_interval & operator |=(l_interval &a,const l_real &b) throw() { return a=a|_l_interval(b); }
-inline l_interval & operator &=(l_interval &a,const l_real &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=a&_l_interval(b); }
+inline l_interval & operator +=(l_interval &a,const l_real &b) { return a=a+_l_interval(b); }      
+inline l_interval & operator -=(l_interval &a,const l_real &b) { return a=a-_l_interval(b); }
+inline l_interval & operator *=(l_interval &a,const l_real &b) { return a=a*_l_interval(b); }              
+inline l_interval & operator /=(l_interval &a,const l_real &b) { return a=a/_l_interval(b); } 
+inline l_interval & operator |=(l_interval &a,const l_real &b) { return a=a|_l_interval(b); }
+inline l_interval & operator &=(l_interval &a,const l_real &b) { return a=a&_l_interval(b); }
  
 // LI-I
-inline l_interval operator +(const l_interval &a,const interval &b) throw() { return a+_l_interval(b); }
-inline l_interval operator +(const interval &a,const l_interval &b) throw() { return _l_interval(a)+b; }
-inline l_interval operator -(const l_interval &a,const interval &b) throw() { return a-_l_interval(b); }
-inline l_interval operator -(const interval &a,const l_interval &b) throw() { return _l_interval(a)-b; }
-inline l_interval operator *(const l_interval &a,const interval &b) throw() { return a*_l_interval(b); }
-inline l_interval operator *(const interval &a,const l_interval &b) throw() { return _l_interval(a)*b; }
-inline l_interval operator /(const l_interval &a,const interval &b) throw() { return a/_l_interval(b); }
-inline l_interval operator /(const interval &a,const l_interval &b) throw() { return _l_interval(a)/b; } 
-inline l_interval operator |(const interval &a,const l_interval &b) throw() { return _l_interval(a)|b; }
-inline l_interval operator |(const l_interval &a,const interval &b) throw() { return a|_l_interval(b); }
-inline l_interval operator &(const interval &a,const l_interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return _l_interval(a)&b; }
-inline l_interval operator &(const l_interval &a,const interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a&_l_interval(b); }
+inline l_interval operator +(const l_interval &a,const interval &b) { return a+_l_interval(b); }
+inline l_interval operator +(const interval &a,const l_interval &b) { return _l_interval(a)+b; }
+inline l_interval operator -(const l_interval &a,const interval &b) { return a-_l_interval(b); }
+inline l_interval operator -(const interval &a,const l_interval &b) { return _l_interval(a)-b; }
+inline l_interval operator *(const l_interval &a,const interval &b) { return a*_l_interval(b); }
+inline l_interval operator *(const interval &a,const l_interval &b) { return _l_interval(a)*b; }
+inline l_interval operator /(const l_interval &a,const interval &b) { return a/_l_interval(b); }
+inline l_interval operator /(const interval &a,const l_interval &b) { return _l_interval(a)/b; } 
+inline l_interval operator |(const interval &a,const l_interval &b) { return _l_interval(a)|b; }
+inline l_interval operator |(const l_interval &a,const interval &b) { return a|_l_interval(b); }
+inline l_interval operator &(const interval &a,const l_interval &b) { return _l_interval(a)&b; }
+inline l_interval operator &(const l_interval &a,const interval &b) { return a&_l_interval(b); }
 
-inline l_interval & operator +=(l_interval &a,const interval &b) throw() { return a=a+_l_interval(b); }      
-inline l_interval & operator -=(l_interval &a,const interval &b) throw() { return a=a-_l_interval(b); }
-inline l_interval & operator *=(l_interval &a,const interval &b) throw() { return a=a*_l_interval(b); }              
-inline l_interval & operator /=(l_interval &a,const interval &b) throw() { return a=a/_l_interval(b); } 
-inline l_interval & operator |=(l_interval &a,const interval &b) throw() { return a=a|_l_interval(b); }
-inline l_interval & operator &=(l_interval &a,const interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=a&_l_interval(b); }
+inline l_interval & operator +=(l_interval &a,const interval &b) { return a=a+_l_interval(b); }      
+inline l_interval & operator -=(l_interval &a,const interval &b) { return a=a-_l_interval(b); }
+inline l_interval & operator *=(l_interval &a,const interval &b) { return a=a*_l_interval(b); }              
+inline l_interval & operator /=(l_interval &a,const interval &b) { return a=a/_l_interval(b); } 
+inline l_interval & operator |=(l_interval &a,const interval &b) { return a=a|_l_interval(b); }
+inline l_interval & operator &=(l_interval &a,const interval &b) { return a=a&_l_interval(b); }
  
 // LI-R
-inline l_interval operator +(const l_interval &a,const real &b) throw() { return a+_l_interval(b); }
-inline l_interval operator +(const real &a,const l_interval &b) throw() { return _l_interval(a)+b; }
-inline l_interval operator -(const l_interval &a,const real &b) throw() { return a-_l_interval(b); }
-inline l_interval operator -(const real &a,const l_interval &b) throw() { return _l_interval(a)-b; }
-inline l_interval operator *(const l_interval &a,const real &b) throw() { return a*_l_interval(b); }
-inline l_interval operator *(const real &a,const l_interval &b) throw() { return _l_interval(a)*b; }
-inline l_interval operator /(const l_interval &a,const real &b) throw() { return a/_l_interval(b); }
-inline l_interval operator /(const real &a,const l_interval &b) throw() { return _l_interval(a)/b; } 
-inline l_interval operator |(const real &a,const l_interval &b) throw() { return _l_interval(a)|b; }
-inline l_interval operator |(const l_interval &a,const real &b) throw() { return a|_l_interval(b); }
-inline l_interval operator &(const real &a,const l_interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return _l_interval(a)&b; }
-inline l_interval operator &(const l_interval &a,const real &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a&_l_interval(b); }
+inline l_interval operator +(const l_interval &a,const real &b) { return a+_l_interval(b); }
+inline l_interval operator +(const real &a,const l_interval &b) { return _l_interval(a)+b; }
+inline l_interval operator -(const l_interval &a,const real &b) { return a-_l_interval(b); }
+inline l_interval operator -(const real &a,const l_interval &b) { return _l_interval(a)-b; }
+inline l_interval operator *(const l_interval &a,const real &b) { return a*_l_interval(b); }
+inline l_interval operator *(const real &a,const l_interval &b) { return _l_interval(a)*b; }
+inline l_interval operator /(const l_interval &a,const real &b) { return a/_l_interval(b); }
+inline l_interval operator /(const real &a,const l_interval &b) { return _l_interval(a)/b; } 
+inline l_interval operator |(const real &a,const l_interval &b) { return _l_interval(a)|b; }
+inline l_interval operator |(const l_interval &a,const real &b) { return a|_l_interval(b); }
+inline l_interval operator &(const real &a,const l_interval &b) { return _l_interval(a)&b; }
+inline l_interval operator &(const l_interval &a,const real &b) { return a&_l_interval(b); }
 
-inline l_interval & operator +=(l_interval &a,const real &b) throw() { return a=a+_l_interval(b); }      
-inline l_interval & operator -=(l_interval &a,const real &b) throw() { return a=a-_l_interval(b); }
-inline l_interval & operator *=(l_interval &a,const real &b) throw() { return a=a*_l_interval(b); }              
-inline l_interval & operator /=(l_interval &a,const real &b) throw() { return a=a/_l_interval(b); } 
-inline l_interval & operator |=(l_interval &a,const real &b) throw() { return a=a|_l_interval(b); }
-inline l_interval & operator &=(l_interval &a,const real &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=a&_l_interval(b); }
+inline l_interval & operator +=(l_interval &a,const real &b) { return a=a+_l_interval(b); }      
+inline l_interval & operator -=(l_interval &a,const real &b) { return a=a-_l_interval(b); }
+inline l_interval & operator *=(l_interval &a,const real &b) { return a=a*_l_interval(b); }              
+inline l_interval & operator /=(l_interval &a,const real &b) { return a=a/_l_interval(b); } 
+inline l_interval & operator |=(l_interval &a,const real &b) { return a=a|_l_interval(b); }
+inline l_interval & operator &=(l_interval &a,const real &b) { return a=a&_l_interval(b); }
 
 // LI-ID
-inline idotprecision operator +(const l_interval &a,const idotprecision &b) throw() { return _idotprecision(a)+b; }
-inline idotprecision operator +(const idotprecision &a,const l_interval &b) throw() { return a+_idotprecision(b); }
-inline idotprecision operator -(const l_interval &a,const idotprecision &b) throw() { return _idotprecision(a)-b; }
-inline idotprecision operator -(const idotprecision &a,const l_interval &b) throw() { return a-_idotprecision(b); }
-inline idotprecision operator |(const idotprecision &a,const l_interval &b) throw() { return a|_idotprecision(b); }
-inline idotprecision operator |(const l_interval &a,const idotprecision &b) throw() { return _idotprecision(a)|b; }
-inline idotprecision operator &(const idotprecision &a,const l_interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a&_idotprecision(b); }
-inline idotprecision operator &(const l_interval &a,const idotprecision &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return _idotprecision(a)&b; }
+inline idotprecision operator +(const l_interval &a,const idotprecision &b) { return _idotprecision(a)+b; }
+inline idotprecision operator +(const idotprecision &a,const l_interval &b) { return a+_idotprecision(b); }
+inline idotprecision operator -(const l_interval &a,const idotprecision &b) { return _idotprecision(a)-b; }
+inline idotprecision operator -(const idotprecision &a,const l_interval &b) { return a-_idotprecision(b); }
+inline idotprecision operator |(const idotprecision &a,const l_interval &b) { return a|_idotprecision(b); }
+inline idotprecision operator |(const l_interval &a,const idotprecision &b) { return _idotprecision(a)|b; }
+inline idotprecision operator &(const idotprecision &a,const l_interval &b) { return a&_idotprecision(b); }
+inline idotprecision operator &(const l_interval &a,const idotprecision &b) { return _idotprecision(a)&b; }
 
-inline idotprecision & operator +=(idotprecision &a,const l_interval &b) throw() { return a+=_idotprecision(b); }      
-inline idotprecision & operator -=(idotprecision &a,const l_interval &b) throw() { return a-=_idotprecision(b); }
-inline idotprecision & operator |=(idotprecision &a,const l_interval &b) throw() { return a|=_idotprecision(b); }
-inline idotprecision & operator &=(idotprecision &a,const l_interval &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) { return a&=idotprecision(b); }
+inline idotprecision & operator +=(idotprecision &a,const l_interval &b) { return a+=_idotprecision(b); }      
+inline idotprecision & operator -=(idotprecision &a,const l_interval &b) { return a-=_idotprecision(b); }
+inline idotprecision & operator |=(idotprecision &a,const l_interval &b) { return a|=_idotprecision(b); }
+inline idotprecision & operator &=(idotprecision &a,const l_interval &b) { return a&=idotprecision(b); }
 
 // LR-R
-inline l_interval operator |(const real &a,const l_real &b) throw() { return l_real(a)|b; }
-inline l_interval operator |(const l_real &a,const real &b) throw() { return a|l_real(b); }
+inline l_interval operator |(const real &a,const l_real &b) { return l_real(a)|b; }
+inline l_interval operator |(const l_real &a,const real &b) { return a|l_real(b); }
 
 // LR-D
-inline idotprecision operator |(const dotprecision &a,const l_real &b) throw() { return a|dotprecision(b); }
-inline idotprecision operator |(const l_real &a,const dotprecision &b) throw() { return dotprecision(a)|b; }
+inline idotprecision operator |(const dotprecision &a,const l_real &b) { return a|dotprecision(b); }
+inline idotprecision operator |(const l_real &a,const dotprecision &b) { return dotprecision(a)|b; }
 
 // LR-I
-inline l_interval operator +(const l_real &a,const interval &b) throw() { return a+_l_interval(b); }
-inline l_interval operator +(const interval &a,const l_real &b) throw() { return _l_interval(a)+b; }
-inline l_interval operator -(const l_real &a,const interval &b) throw() { return a-_l_interval(b); }
-inline l_interval operator -(const interval &a,const l_real &b) throw() { return _l_interval(a)-b; }
-inline l_interval operator *(const l_real &a,const interval &b) throw() { return a*_l_interval(b); }
-inline l_interval operator *(const interval &a,const l_real &b) throw() { return _l_interval(a)*b; }
-inline l_interval operator /(const l_real &a,const interval &b) throw() { return a/_l_interval(b); }
-inline l_interval operator /(const interval &a,const l_real &b) throw() { return _l_interval(a)/b; } 
-inline l_interval operator |(const interval &a,const l_real &b) throw() { return _l_interval(a)|b; }
-inline l_interval operator |(const l_real &a,const interval &b) throw() { return a|_l_interval(b); }
-inline l_interval operator &(const interval &a,const l_real &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return _l_interval(a)&b; }
-inline l_interval operator &(const l_real &a,const interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a&_l_interval(b); }
+inline l_interval operator +(const l_real &a,const interval &b) { return a+_l_interval(b); }
+inline l_interval operator +(const interval &a,const l_real &b) { return _l_interval(a)+b; }
+inline l_interval operator -(const l_real &a,const interval &b) { return a-_l_interval(b); }
+inline l_interval operator -(const interval &a,const l_real &b) { return _l_interval(a)-b; }
+inline l_interval operator *(const l_real &a,const interval &b) { return a*_l_interval(b); }
+inline l_interval operator *(const interval &a,const l_real &b) { return _l_interval(a)*b; }
+inline l_interval operator /(const l_real &a,const interval &b) { return a/_l_interval(b); }
+inline l_interval operator /(const interval &a,const l_real &b) { return _l_interval(a)/b; } 
+inline l_interval operator |(const interval &a,const l_real &b) { return _l_interval(a)|b; }
+inline l_interval operator |(const l_real &a,const interval &b) { return a|_l_interval(b); }
+inline l_interval operator &(const interval &a,const l_real &b) { return _l_interval(a)&b; }
+inline l_interval operator &(const l_real &a,const interval &b) { return a&_l_interval(b); }
 
 // ---- Vergleichsop. ----
-inline bool operator !=(const l_interval &a,const l_interval &b) throw() { return !(a==b); }
+inline bool operator !=(const l_interval &a,const l_interval &b) { return !(a==b); }
 
-inline bool operator ==(const l_real &a,const l_interval &b) throw() { return _l_interval(a)==b; }
-inline bool operator !=(const l_real &a,const l_interval &b) throw() { return _l_interval(a)!=b; }
-inline bool operator ==(const l_interval &a,const l_real &b) throw() { return a==_l_interval(b); }
-inline bool operator !=(const l_interval &a,const l_real &b) throw() { return a!=_l_interval(b); }
+inline bool operator ==(const l_real &a,const l_interval &b) { return _l_interval(a)==b; }
+inline bool operator !=(const l_real &a,const l_interval &b) { return _l_interval(a)!=b; }
+inline bool operator ==(const l_interval &a,const l_real &b) { return a==_l_interval(b); }
+inline bool operator !=(const l_interval &a,const l_real &b) { return a!=_l_interval(b); }
 
-inline bool operator ==(const interval &a,const l_interval &b) throw() { return _l_interval(a)==b; }
-inline bool operator !=(const interval &a,const l_interval &b) throw() { return _l_interval(a)!=b; }
-inline bool operator ==(const l_interval &a,const interval &b) throw() { return a==_l_interval(b); }
-inline bool operator !=(const l_interval &a,const interval &b) throw() { return a!=_l_interval(b); }
+inline bool operator ==(const interval &a,const l_interval &b) { return _l_interval(a)==b; }
+inline bool operator !=(const interval &a,const l_interval &b) { return _l_interval(a)!=b; }
+inline bool operator ==(const l_interval &a,const interval &b) { return a==_l_interval(b); }
+inline bool operator !=(const l_interval &a,const interval &b) { return a!=_l_interval(b); }
 
-inline bool operator ==(const real &a,const l_interval &b) throw() { return _l_interval(a)==b; }
-inline bool operator !=(const real &a,const l_interval &b) throw() { return _l_interval(a)!=b; }
-inline bool operator ==(const l_interval &a,const real &b) throw() { return a==_l_interval(b); }
-inline bool operator !=(const l_interval &a,const real &b) throw() { return a!=_l_interval(b); }
+inline bool operator ==(const real &a,const l_interval &b) { return _l_interval(a)==b; }
+inline bool operator !=(const real &a,const l_interval &b) { return _l_interval(a)!=b; }
+inline bool operator ==(const l_interval &a,const real &b) { return a==_l_interval(b); }
+inline bool operator !=(const l_interval &a,const real &b) { return a!=_l_interval(b); }
 
-inline bool operator ==(const idotprecision &a,const l_interval &b) throw() { return a==_idotprecision(b); }
-inline bool operator !=(const idotprecision &a,const l_interval &b) throw() { return a!=_idotprecision(b); }
-inline bool operator ==(const l_interval &a,const idotprecision &b) throw() { return _idotprecision(a)==b; }
-inline bool operator !=(const l_interval &a,const idotprecision &b) throw() { return _idotprecision(a)!=b; }
+inline bool operator ==(const idotprecision &a,const l_interval &b) { return a==_idotprecision(b); }
+inline bool operator !=(const idotprecision &a,const l_interval &b) { return a!=_idotprecision(b); }
+inline bool operator ==(const l_interval &a,const idotprecision &b) { return _idotprecision(a)==b; }
+inline bool operator !=(const l_interval &a,const idotprecision &b) { return _idotprecision(a)!=b; }
 
-inline bool operator ==(const dotprecision &a,const l_interval &b) throw() { return a==_idotprecision(b); }
-inline bool operator !=(const dotprecision &a,const l_interval &b) throw() { return a!=_idotprecision(b); }
-inline bool operator ==(const l_interval &a,const dotprecision &b) throw() { return _idotprecision(a)==b; }
-inline bool operator !=(const l_interval &a,const dotprecision &b) throw() { return _idotprecision(a)!=b; }
+inline bool operator ==(const dotprecision &a,const l_interval &b) { return a==_idotprecision(b); }
+inline bool operator !=(const dotprecision &a,const l_interval &b) { return a!=_idotprecision(b); }
+inline bool operator ==(const l_interval &a,const dotprecision &b) { return _idotprecision(a)==b; }
+inline bool operator !=(const l_interval &a,const dotprecision &b) { return _idotprecision(a)!=b; }
 
 // ---- Mengenvergle. ----
-inline bool operator  <(const l_real &a,const l_interval &b) throw() { return _l_interval(a)<b; }
-inline bool operator  >(const l_real &a,const l_interval &b) throw() { return _l_interval(a)>b; }
-inline bool operator <=(const l_real &a,const l_interval &b) throw() { return _l_interval(a)<=b; }
-inline bool operator >=(const l_real &a,const l_interval &b) throw() { return _l_interval(a)>=b; }
-inline bool operator  <(const l_interval &a,const l_real &b) throw() { return a<_l_interval(b); }
-inline bool operator  >(const l_interval &a,const l_real &b) throw() { return a>_l_interval(b); }
-inline bool operator <=(const l_interval &a,const l_real &b) throw() { return a<=_l_interval(b); }
-inline bool operator >=(const l_interval &a,const l_real &b) throw() { return a>=_l_interval(b); }
+inline bool operator  <(const l_real &a,const l_interval &b) { return _l_interval(a)<b; }
+inline bool operator  >(const l_real &a,const l_interval &b) { return _l_interval(a)>b; }
+inline bool operator <=(const l_real &a,const l_interval &b) { return _l_interval(a)<=b; }
+inline bool operator >=(const l_real &a,const l_interval &b) { return _l_interval(a)>=b; }
+inline bool operator  <(const l_interval &a,const l_real &b) { return a<_l_interval(b); }
+inline bool operator  >(const l_interval &a,const l_real &b) { return a>_l_interval(b); }
+inline bool operator <=(const l_interval &a,const l_real &b) { return a<=_l_interval(b); }
+inline bool operator >=(const l_interval &a,const l_real &b) { return a>=_l_interval(b); }
 
-inline bool operator  <(const interval &a,const l_interval &b) throw() { return _l_interval(a)<b; }
-inline bool operator  >(const interval &a,const l_interval &b) throw() { return _l_interval(a)>b; }
-inline bool operator <=(const interval &a,const l_interval &b) throw() { return _l_interval(a)<=b; }
-inline bool operator >=(const interval &a,const l_interval &b) throw() { return _l_interval(a)>=b; }
-inline bool operator  <(const l_interval &a,const interval &b) throw() { return a<_l_interval(b); }
-inline bool operator  >(const l_interval &a,const interval &b) throw() { return a>_l_interval(b); }
-inline bool operator <=(const l_interval &a,const interval &b) throw() { return a<=_l_interval(b); }
-inline bool operator >=(const l_interval &a,const interval &b) throw() { return a>=_l_interval(b); }
+inline bool operator  <(const interval &a,const l_interval &b) { return _l_interval(a)<b; }
+inline bool operator  >(const interval &a,const l_interval &b) { return _l_interval(a)>b; }
+inline bool operator <=(const interval &a,const l_interval &b) { return _l_interval(a)<=b; }
+inline bool operator >=(const interval &a,const l_interval &b) { return _l_interval(a)>=b; }
+inline bool operator  <(const l_interval &a,const interval &b) { return a<_l_interval(b); }
+inline bool operator  >(const l_interval &a,const interval &b) { return a>_l_interval(b); }
+inline bool operator <=(const l_interval &a,const interval &b) { return a<=_l_interval(b); }
+inline bool operator >=(const l_interval &a,const interval &b) { return a>=_l_interval(b); }
 
-inline bool operator  <(const real &a,const l_interval &b) throw() { return _l_interval(a)<b; }
-inline bool operator  >(const real &a,const l_interval &b) throw() { return _l_interval(a)>b; }
-inline bool operator <=(const real &a,const l_interval &b) throw() { return _l_interval(a)<=b; }
-inline bool operator >=(const real &a,const l_interval &b) throw() { return _l_interval(a)>=b; }
-inline bool operator  <(const l_interval &a,const real &b) throw() { return a<_l_interval(b); }
-inline bool operator  >(const l_interval &a,const real &b) throw() { return a>_l_interval(b); }
-inline bool operator <=(const l_interval &a,const real &b) throw() { return a<=_l_interval(b); }
-inline bool operator >=(const l_interval &a,const real &b) throw() { return a>=_l_interval(b); }
+inline bool operator  <(const real &a,const l_interval &b) { return _l_interval(a)<b; }
+inline bool operator  >(const real &a,const l_interval &b) { return _l_interval(a)>b; }
+inline bool operator <=(const real &a,const l_interval &b) { return _l_interval(a)<=b; }
+inline bool operator >=(const real &a,const l_interval &b) { return _l_interval(a)>=b; }
+inline bool operator  <(const l_interval &a,const real &b) { return a<_l_interval(b); }
+inline bool operator  >(const l_interval &a,const real &b) { return a>_l_interval(b); }
+inline bool operator <=(const l_interval &a,const real &b) { return a<=_l_interval(b); }
+inline bool operator >=(const l_interval &a,const real &b) { return a>=_l_interval(b); }
 
-inline bool operator  <(const idotprecision &a,const l_interval &b) throw() { return a<_idotprecision(b); }
-inline bool operator  >(const idotprecision &a,const l_interval &b) throw() { return a>_idotprecision(b); }
-inline bool operator <=(const idotprecision &a,const l_interval &b) throw() { return a<=_idotprecision(b); }
-inline bool operator >=(const idotprecision &a,const l_interval &b) throw() { return a>=_idotprecision(b); }
-inline bool operator  <(const l_interval &a,const idotprecision &b) throw() { return _idotprecision(a)<b; }
-inline bool operator  >(const l_interval &a,const idotprecision &b) throw() { return _idotprecision(a)>b; }
-inline bool operator <=(const l_interval &a,const idotprecision &b) throw() { return _idotprecision(a)<=b; }
-inline bool operator >=(const l_interval &a,const idotprecision &b) throw() { return _idotprecision(a)>=b; }
+inline bool operator  <(const idotprecision &a,const l_interval &b) { return a<_idotprecision(b); }
+inline bool operator  >(const idotprecision &a,const l_interval &b) { return a>_idotprecision(b); }
+inline bool operator <=(const idotprecision &a,const l_interval &b) { return a<=_idotprecision(b); }
+inline bool operator >=(const idotprecision &a,const l_interval &b) { return a>=_idotprecision(b); }
+inline bool operator  <(const l_interval &a,const idotprecision &b) { return _idotprecision(a)<b; }
+inline bool operator  >(const l_interval &a,const idotprecision &b) { return _idotprecision(a)>b; }
+inline bool operator <=(const l_interval &a,const idotprecision &b) { return _idotprecision(a)<=b; }
+inline bool operator >=(const l_interval &a,const idotprecision &b) { return _idotprecision(a)>=b; }
 
-inline bool operator  <(const dotprecision &a,const l_interval &b) throw() { return a<_idotprecision(b); }
-inline bool operator  >(const dotprecision &a,const l_interval &b) throw() { return a>_idotprecision(b); }
-inline bool operator <=(const dotprecision &a,const l_interval &b) throw() { return a<=_idotprecision(b); }
-inline bool operator >=(const dotprecision &a,const l_interval &b) throw() { return a>=_idotprecision(b); }
-inline bool operator  <(const l_interval &a,const dotprecision &b) throw() { return _idotprecision(a)<b; }
-inline bool operator  >(const l_interval &a,const dotprecision &b) throw() { return _idotprecision(a)>b; }
-inline bool operator <=(const l_interval &a,const dotprecision &b) throw() { return _idotprecision(a)<=b; }
-inline bool operator >=(const l_interval &a,const dotprecision &b) throw() { return _idotprecision(a)>=b; }
+inline bool operator  <(const dotprecision &a,const l_interval &b) { return a<_idotprecision(b); }
+inline bool operator  >(const dotprecision &a,const l_interval &b) { return a>_idotprecision(b); }
+inline bool operator <=(const dotprecision &a,const l_interval &b) { return a<=_idotprecision(b); }
+inline bool operator >=(const dotprecision &a,const l_interval &b) { return a>=_idotprecision(b); }
+inline bool operator  <(const l_interval &a,const dotprecision &b) { return _idotprecision(a)<b; }
+inline bool operator  >(const l_interval &a,const dotprecision &b) { return _idotprecision(a)>b; }
+inline bool operator <=(const l_interval &a,const dotprecision &b) { return _idotprecision(a)<=b; }
+inline bool operator >=(const l_interval &a,const dotprecision &b) { return _idotprecision(a)>=b; }
 
 // ---- Funktionen    ----
 
 static const int LI_Min_Exp_ = -1074,
                  LI_maxexpo1 = 1023;
       
-//inline l_interval_Inf Inf (l_interval & a)  throw() { return l_interval_Inf(a); }
-//inline l_interval_Sup Sup (l_interval & a)  throw() { return l_interval_Sup(a); }
-inline l_real Inf (const l_interval &li) throw()
+//inline l_interval_Inf Inf (l_interval & a)  { return l_interval_Inf(a); }
+//inline l_interval_Sup Sup (l_interval & a)  { return l_interval_Sup(a); }
+inline l_real Inf (const l_interval &li)
 {
    // l_real in der Praezision des Intervals
    int save_stagprec=stagprec;
@@ -387,7 +387,7 @@ inline l_real Inf (const l_interval &li) throw()
         
    return lr;     
 }
-inline l_real Sup (const l_interval &li) throw()
+inline l_real Sup (const l_interval &li)
 {
    // l_real in der Praezision des Intervals
    int save_stagprec=stagprec;
@@ -404,14 +404,14 @@ inline l_real Sup (const l_interval &li) throw()
    return lr;     
 }
 
-inline int StagPrec(const l_interval &a) throw() { return a.prec; }
+inline int StagPrec(const l_interval &a) { return a.prec; }
       
-inline l_interval & SetInf (l_interval & a, const l_real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=_l_interval(b,Sup((const l_interval)a)); }
-inline l_interval & SetSup (l_interval & a, const l_real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=_l_interval(Inf((const l_interval)a),b); }
-inline l_interval & SetInf (l_interval & a, const real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return SetInf(a,_l_real(b)); }
-inline l_interval & SetSup (l_interval & a, const real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return SetSup(a,_l_real(b)); }
+inline l_interval & SetInf (l_interval & a, const l_real & b) { return a=_l_interval(b,Sup((const l_interval)a)); }
+inline l_interval & SetSup (l_interval & a, const l_real & b) { return a=_l_interval(Inf((const l_interval)a),b); }
+inline l_interval & SetInf (l_interval & a, const real & b) { return SetInf(a,_l_real(b)); }
+inline l_interval & SetSup (l_interval & a, const real & b) { return SetSup(a,_l_real(b)); }
 
-inline l_interval adjust(const l_interval & x) throw()
+inline l_interval adjust(const l_interval & x)
 {  
    l_interval  y;
 
@@ -432,12 +432,12 @@ inline l_interval adjust(const l_interval & x) throw()
    return y;
 }
 
-inline l_interval & UncheckedSetInf (l_interval & a, const l_real & b) throw() { return a=_unchecked_l_interval(b,Sup(a)); }
-inline l_interval & UncheckedSetSup (l_interval & a, const l_real & b) throw() { return a=_unchecked_l_interval(Inf(a),b); }
-inline l_interval & UncheckedSetInf (l_interval & a, const real & b) throw() { return UncheckedSetInf(a,_l_real(b)); }
-inline l_interval & UncheckedSetSup (l_interval & a, const real & b) throw() { return UncheckedSetSup(a,_l_real(b)); }
+inline l_interval & UncheckedSetInf (l_interval & a, const l_real & b) { return a=_unchecked_l_interval(b,Sup(a)); }
+inline l_interval & UncheckedSetSup (l_interval & a, const l_real & b) { return a=_unchecked_l_interval(Inf(a),b); }
+inline l_interval & UncheckedSetInf (l_interval & a, const real & b) { return UncheckedSetInf(a,_l_real(b)); }
+inline l_interval & UncheckedSetSup (l_interval & a, const real & b) { return UncheckedSetSup(a,_l_real(b)); }
 
-inline l_interval abs  (const l_interval & li1) throw()
+inline l_interval abs  (const l_interval & li1)
 {
    l_interval li2;   
    l_real i   = Inf(li1), s   = Sup(li1);
@@ -455,26 +455,26 @@ inline l_interval abs  (const l_interval & li1) throw()
    return li2;     
 }
 
-inline l_real     diam (const l_interval & li) throw()
+inline l_real     diam (const l_interval & li)
 {
    return _l_real(diam(_interval(li.elem(li.prec),li.elem(li.prec+1))));
 }
 
-inline void accumulate(idotprecision & a, const real & b, const l_interval & c) throw() { accumulate(a,_l_interval(b),c); }
-inline void accumulate(idotprecision & a, const l_interval & b, const real & c) throw() { accumulate(a,b,_l_interval(c)); }
-inline void accumulate(idotprecision & a, const interval & b, const l_real & c) throw() { accumulate(a,_l_interval(b),_l_interval(c)); }
-inline void accumulate(idotprecision & a, const l_real & b, const interval & c) throw() { accumulate(a,_l_interval(b),_l_interval(c)); }    
-inline void accumulate(idotprecision & a, const l_interval & b, const l_real & c) throw() { accumulate(a,b,_l_interval(c)); }
-inline void accumulate(idotprecision & a, const l_real & b, const l_interval & c) throw() { accumulate(a,_l_interval(b),c); }
-inline void accumulate(idotprecision & a, const l_interval & b, const interval & c) throw() { accumulate(a,b,_l_interval(c)); }
-inline void accumulate(idotprecision & a, const interval & b, const l_interval & c) throw() { accumulate(a,_l_interval(b),c); }
+inline void accumulate(idotprecision & a, const real & b, const l_interval & c) { accumulate(a,_l_interval(b),c); }
+inline void accumulate(idotprecision & a, const l_interval & b, const real & c) { accumulate(a,b,_l_interval(c)); }
+inline void accumulate(idotprecision & a, const interval & b, const l_real & c) { accumulate(a,_l_interval(b),_l_interval(c)); }
+inline void accumulate(idotprecision & a, const l_real & b, const interval & c) { accumulate(a,_l_interval(b),_l_interval(c)); }    
+inline void accumulate(idotprecision & a, const l_interval & b, const l_real & c) { accumulate(a,b,_l_interval(c)); }
+inline void accumulate(idotprecision & a, const l_real & b, const l_interval & c) { accumulate(a,_l_interval(b),c); }
+inline void accumulate(idotprecision & a, const l_interval & b, const interval & c) { accumulate(a,b,_l_interval(c)); }
+inline void accumulate(idotprecision & a, const interval & b, const l_interval & c) { accumulate(a,_l_interval(b),c); }
 
 
 inline real & l_interval::operator[](int a)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_ELEMENT_NOT_IN_LONG)
+  
 #else
-   throw()
+  
 #endif
 {
 #if (CXSC_INDEX_CHECK)
@@ -484,7 +484,7 @@ inline real & l_interval::operator[](int a)
    return data[a-1];
 }
 
-inline void l_interval::_clear(int p) throw()
+inline void l_interval::_clear(int p)
 { 
    int i;
    // fuellt l_interval ab Stelle p bis zum Ende mit Null.
@@ -499,7 +499,7 @@ inline bool point_intv(const l_interval &a ) // bool delivers: a is a point inte
    return a.elem(k+1) == a.elem(k);
 }
 
-inline bool zero_(const l_interval& li) throw()
+inline bool zero_(const l_interval& li)
 {  // returns only true if all li.elem(i) == 0; Blomquist, 27.11.02; 
     int i=1, p=StagPrec(li)+1;
     bool tmp = true;

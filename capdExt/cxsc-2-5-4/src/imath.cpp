@@ -42,7 +42,7 @@ extern "C" {
 namespace cxsc {
 
 
-interval sqr    (const interval &a) throw() 
+interval sqr    (const interval &a) 
 { 
   interval res;
   res= a*a;
@@ -50,7 +50,7 @@ interval sqr    (const interval &a) throw()
   return res;
 }
 
-interval sqrt   (const interval &a, int n)  throw(STD_FKT_OUT_OF_DEF)
+interval sqrt   (const interval &a, int n) 
 { 
    if ( ((n>0) && (Inf(a)>=0.0)) || ((n<0) && (Inf(a)>0.0)) ) 
       return pow(a,interval(1.0,1.0)/n); 
@@ -60,7 +60,7 @@ interval sqrt   (const interval &a, int n)  throw(STD_FKT_OUT_OF_DEF)
    }
 }
 
-interval sqrt1px2(const interval& x) throw()
+interval sqrt1px2(const interval& x)
 // Inclusion of sqrt(1+x^2); Blomquist, 13.12.02;
 {
     interval t = abs(x),y;
@@ -77,7 +77,7 @@ interval sqrt1px2(const interval& x) throw()
     return y;
 }
 
-interval sqrtx2y2(const interval& x, const interval& y) throw()
+interval sqrtx2y2(const interval& x, const interval& y)
 // Inclusion of sqrt(x^2+y^2); Blomquist, 13.12.02;
 {
     interval a=abs(x), b=abs(y), r;
@@ -96,13 +96,13 @@ interval sqrtx2y2(const interval& x, const interval& y) throw()
 } // sqrtx2y2
 
 //********************************************************************
-//  Constants for:   interval sqrtp1m1(const interval& x) throw()
+//  Constants for:   interval sqrtp1m1(const interval& x)
 //  Blomquist 05.08.03
 const real Delta_f = 2*minreal;
 const real q_sqrtp1m1m = 9007199254740984.0 / 9007199254740992.0;
 const real q_sqrtp1m1p = 4503599627370502.0 / 4503599627370496.0;
 //********************************************************************
-interval sqrtp1m1(const interval& x) throw()
+interval sqrtp1m1(const interval& x)
 // interval(a,b) is an inclusion of sqrt(x+1)-1;
 // Exported by imath.hpp;       Blomquist, 05.08.03;
 {
@@ -324,7 +324,7 @@ static real q_lnp1m = 9007199254740986.0 / 9007199254740992.0; // 1-eps
 static real q_lnp1p = 4503599627370501.0 / 4503599627370496.0; // 1+eps
 // ---------------------------------------------------------------------------
 
-interval lnp1(const interval& x) throw()
+interval lnp1(const interval& x)
 // returns an inclusion of ln(1+t), with t in x; Blomquist 28.07.03;
 { 
     real ix=Inf(x), sx=Sup(x),a,b;   // ln(1+x) <= [a,b]
@@ -360,7 +360,7 @@ interval erf    (const interval &a)         { return j_erf(a);  }
 */
 interval erfc   (const interval &a)         { return j_erfc(a); }
 
-//interval pow    (const interval &a, const interval &b) throw(ERROR_INTERVAL_STD_FKT_OUT_OF_DEF)
+//interval pow    (const interval &a, const interval &b)
 //{
 //	if(Inf(a)>0)
 //		return j_exp(b*ln(a));
@@ -387,7 +387,7 @@ inline interval _interval(const a_intv &x)
        return *((const interval *)(&x));
 }
 
-interval pow    (const interval &a, const interval &b) throw()
+interval pow    (const interval &a, const interval &b)
        { 
          interval res; 
          if(Inf(a)==0 && Inf(b)>=0)
@@ -578,7 +578,7 @@ real b0 = MakeHexReal(0,1022-510,0x0016A09E,0x667F3BCD);
 // 2. b >= b0 ==> g(b) := (0.5*b)*b >= MinReal with arbitrary rounding
 //                                   modus by the two multiplications.
 
-interval ln_sqrtx2y2(const interval& x, const interval& y) throw()
+interval ln_sqrtx2y2(const interval& x, const interval& y)
 // ln( sqrt(x^2+y^2) ) == 0.5*ln(x^2+y^2);   Blomquist, 22.11.03;
 {
     interval ax=abs(x), ay=abs(y);
@@ -1268,7 +1268,7 @@ pow2( interval( 6299691458188962.0 / Ne,6299691458189149.0 / Ne ) , 1016 ) };
 // ******************** Gamma(x), 1/Gamma(x) **********************************
 // ****************************************************************************
 
-inline int round_g(const real& x) throw() 
+inline int round_g(const real& x) 
 // Only for the internal use ( interval gammar(x) )
 // For |x| < 2147483647.5 the assignment  y = round_g(x)  delivers:
 // y = round_g(-0.1);            --->  y = 1;

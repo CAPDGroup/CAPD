@@ -40,51 +40,51 @@ l_complex operator+(const l_complex& x)
 
 // ----------------- cdotprecision +/- l_complex ----------------------------
 
-cdotprecision operator+(const l_complex& lc, const cdotprecision& cd) throw() 
+cdotprecision operator+(const l_complex& lc, const cdotprecision& cd) 
 { 
    return _cdotprecision(lc) + cd; 
 }
 
-cdotprecision operator+(const cdotprecision& cd, const l_complex& lc) throw() 
+cdotprecision operator+(const cdotprecision& cd, const l_complex& lc) 
 { 
    return _cdotprecision(lc) + cd; 
 }   
 
-cdotprecision operator-(const l_complex& lc, const cdotprecision& cd) throw() 
+cdotprecision operator-(const l_complex& lc, const cdotprecision& cd) 
 { 
    return _cdotprecision(lc) - cd; 
 }
 
-cdotprecision operator-(const cdotprecision& cd, const l_complex& lc) throw() 
+cdotprecision operator-(const cdotprecision& cd, const l_complex& lc) 
 { 
    return cd - _cdotprecision(lc); 
 }
 
 // ------------------ dotprecision +/- l_complex ----------------------------
 
-cdotprecision operator+(const l_complex& lc, const dotprecision& cd) throw() 
+cdotprecision operator+(const l_complex& lc, const dotprecision& cd) 
 { 
    return _cdotprecision(lc) + cd; 
 }
 
-cdotprecision operator+(const dotprecision& cd, const l_complex& lc) throw() 
+cdotprecision operator+(const dotprecision& cd, const l_complex& lc) 
 { 
    return _cdotprecision(lc) + cd; 
 }   
 
-cdotprecision operator-(const l_complex& lc, const dotprecision& cd) throw() 
+cdotprecision operator-(const l_complex& lc, const dotprecision& cd) 
 { 
    return _cdotprecision(lc) - cd; 
 }
 
-cdotprecision operator-(const dotprecision& cd, const l_complex& lc) throw() 
+cdotprecision operator-(const dotprecision& cd, const l_complex& lc) 
 { 
    return cd - _cdotprecision(lc); 
 }
 
 // ---------------- l_complex * l_complex -----------------------------------
 l_complex operator * (const l_complex& a, const l_complex& b)
-    throw()
+   
 {
     l_real r, i; 
     dotprecision dot(0.0);
@@ -103,7 +103,7 @@ l_complex operator * (const l_complex& a, const l_complex& b)
 
 // ------------------ l_complex * complex -----------------------------------
 l_complex operator * (const l_complex& a, const complex& b)
-    throw()
+   
 {
     l_real r, i; 
     dotprecision dot(0.0);
@@ -121,7 +121,7 @@ l_complex operator * (const l_complex& a, const complex& b)
 }
 
 l_complex operator * ( const complex& b, const l_complex& a )
-    throw()
+   
 {
     l_real r, i; 
     dotprecision dot(0.0);
@@ -460,18 +460,18 @@ l_complex divu (const l_complex & a, const l_complex & b)
    return _c_division(a,b,RND_UP);
 }
 
-l_complex operator / (const l_complex &a, const l_complex &b) throw()
+l_complex operator / (const l_complex &a, const l_complex &b)
 {
    return divn(a,b);
 }
 
-int StagPrec(const l_complex& lc) throw()
+int StagPrec(const l_complex& lc)
 {
     return StagPrec(lc.re);
 }      
 
 void accumulate(cdotprecision& cd, const l_complex& lc1, 
-                                   const l_complex& lc2) throw()
+                                   const l_complex& lc2)
 {
     accumulate(Re(cd),lc1.re,lc2.re); 
     accumulate(Re(cd),-lc1.im,lc2.im);
@@ -480,7 +480,7 @@ void accumulate(cdotprecision& cd, const l_complex& lc1,
 }
 
 void accumulate(cdotprecision& cd, const l_complex& lc, 
-                                   const complex& c) throw()
+                                   const complex& c)
 {
     accumulate(Re(cd),lc.re,Re(c)); 
     accumulate(Re(cd),-lc.im,Im(c));
@@ -489,20 +489,20 @@ void accumulate(cdotprecision& cd, const l_complex& lc,
 }
 
 void accumulate(cdotprecision& cd, const l_complex& lc, 
-                                   const real& r) throw()
+                                   const real& r)
 {
     accumulate(Re(cd),lc.re,r); 
     accumulate(Im(cd),lc.im,r);
 }
 
 void accumulate(cdotprecision& cd, const l_complex& lc, 
-                                   const l_real& lr) throw()
+                                   const l_real& lr)
 {
     accumulate(Re(cd),lc.re,lr); 
     accumulate(Im(cd),lc.im,lr);
 }
 
-l_real abs2(const l_complex &a) throw()
+l_real abs2(const l_complex &a)
 {
    dotprecision dot(0.0);
    accumulate(dot,a.re,a.re);
@@ -510,7 +510,7 @@ l_real abs2(const l_complex &a) throw()
    return l_real(dot);
 }
 
-l_real abs(const l_complex& z) throw()
+l_real abs(const l_complex& z)
 // Calculation of an approximation of |z|.
 // In general the maximum precision is stagprec=19, predifined by the used
 // sqrt-function declared in l_rmath.hpp.
@@ -531,7 +531,7 @@ l_real   Re(const l_complex& a) { return a.re; }
 l_real & Im(l_complex& a) { return a.im; }
 l_real   Im(const l_complex& a) { return a.im; }
 
-complex & complex::operator = (const l_complex& a) throw()
+complex & complex::operator = (const l_complex& a)
 {
 	real x(Re(a)), y(Im(a));
 	return *this = complex(x,y);

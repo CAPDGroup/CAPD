@@ -33,59 +33,59 @@ namespace cxsc {
 
 	INLINE cinterval operator *(const cvector & rv1, const ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vvcimult<cvector,ivector,cinterval>(rv1,rv2); }
 	INLINE cinterval operator *(const cvector_slice &sl, const ivector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vsvcimult<cvector_slice,ivector,cinterval>(sl,rv); }
 	INLINE cinterval operator *(const cvector &rv, const ivector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vsvcimult<ivector_slice,cvector,cinterval>(sl,rv); }
 	INLINE cinterval operator *(const cvector_slice & sl1, const ivector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vsvscimult<cvector_slice,ivector_slice,cinterval>(sl1,sl2); }
 	
 	INLINE cinterval operator *(const ivector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vvcimult<cvector,ivector,cinterval>(rv2,rv1); }
 	INLINE cinterval operator *(const ivector_slice &sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vsvcimult<ivector_slice,cvector,cinterval>(sl,rv); }
 	INLINE cinterval operator *(const ivector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vsvcimult<cvector_slice,ivector,cinterval>(sl,rv); }
 	INLINE cinterval operator *(const ivector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>)
+	
 #else
-	throw()
+	
 #endif
 	{ return _vsvscimult<cvector_slice,ivector_slice,cinterval>(sl2,sl1); }
 	

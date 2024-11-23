@@ -32,7 +32,7 @@ namespace cxsc {
 
 // ---- Ausgabefunkt. ---------------------------------------
 
-std::ostream & operator << (std::ostream &s, const cidotprecision& a) throw()
+std::ostream & operator << (std::ostream &s, const cidotprecision& a)
 {
    s << '(' << SaveOpt         
      << '[' << RndDown << a.reinf << ',' << RndUp << a.resup << ']' << ','  
@@ -41,7 +41,7 @@ std::ostream & operator << (std::ostream &s, const cidotprecision& a) throw()
      
    return s;
 }
-std::string & operator << (std::string &s, const cidotprecision &a) throw()
+std::string & operator << (std::string &s, const cidotprecision &a)
 {
    s+="([";
    s << SaveOpt << RndDown << a.reinf;
@@ -55,7 +55,7 @@ std::string & operator << (std::string &s, const cidotprecision &a) throw()
    return s;
 }
 
-std::istream & operator >> (std::istream &s, cidotprecision &a) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+std::istream & operator >> (std::istream &s, cidotprecision &a)
 {
    char c;
 
@@ -92,7 +92,7 @@ std::istream & operator >> (std::istream &s, cidotprecision &a) throw(ERROR_CIDO
    return s;
 }
 
-std::string & operator >> (std::string &s, cidotprecision &a) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+std::string & operator >> (std::string &s, cidotprecision &a)
 {
    s = skipwhitespacessinglechar (s, '(');
    s = skipwhitespacessinglechar (s, '[');
@@ -118,19 +118,19 @@ std::string & operator >> (std::string &s, cidotprecision &a) throw(ERROR_CIDOTP
    return s;
 }
 
-void operator >>(const std::string &s,cidotprecision &a) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+void operator >>(const std::string &s,cidotprecision &a)
 {
    std::string r(s);
    r>>a;
 }
-void operator >>(const char *s,cidotprecision &a) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+void operator >>(const char *s,cidotprecision &a)
 {
    std::string r(s);
    r>>a;
 }
 
 
-void accumulate(cidotprecision & a,const cinterval & b,const cinterval & c) throw()
+void accumulate(cidotprecision & a,const cinterval & b,const cinterval & c)
 {
    z_padd(
       a.reinf.ptr(),a.iminf.ptr(),

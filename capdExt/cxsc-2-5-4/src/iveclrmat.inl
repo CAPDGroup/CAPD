@@ -30,30 +30,30 @@ namespace cxsc {
 
 	INLINE void accumulate(idotprecision &dp, const l_rmatrix_subv & rv1, const ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ _vmvaccu<idotprecision,ivector,l_rmatrix_subv>(dp,rv2,rv1); }
 	INLINE void accumulate(idotprecision &dp, const ivector & rv1, const l_rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ _vmvaccu<idotprecision,ivector,l_rmatrix_subv>(dp,rv1,rv2); }
 	INLINE void accumulate(idotprecision &dp, const l_rmatrix_subv & rv1, const ivector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ _vmvaccu<idotprecision,ivector,l_rmatrix_subv>(dp,ivector(rv2),rv1); }
 	INLINE void accumulate(idotprecision &dp, const ivector_slice & rv1, const l_rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ _vmvaccu<idotprecision,ivector,l_rmatrix_subv>(dp,ivector(rv1),rv2); }
 

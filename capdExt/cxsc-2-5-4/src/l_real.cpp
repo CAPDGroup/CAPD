@@ -48,20 +48,20 @@ int stagprec = 2;
 #endif
 
 
-interval::interval(const l_real & a) throw()
+interval::interval(const l_real & a)
 {
    dotprecision dot(a);
    rnd(dot,inf,sup);
 }
 
-interval & interval::operator =(const l_real & a) throw()
+interval & interval::operator =(const l_real & a)
 {
    dotprecision dot(a);
    rnd(dot,inf,sup);
    return *this;
 }
 
-idotprecision::idotprecision(const l_real & a) throw() : inf(0),
+idotprecision::idotprecision(const l_real & a) : inf(0),
                                                          sup(0)
 { 
    *this+=a;
@@ -77,7 +77,7 @@ idotprecision::idotprecision(const l_real & a,const l_real & b) :
 
 
 
-void l_real::_clear(int p) throw()
+void l_real::_clear(int p)
 {  
    // filling a l_real number from element p up to the end with zero.
    for (int i=p; i<=prec; i++)
@@ -85,7 +85,7 @@ void l_real::_clear(int p) throw()
 }
 
 
-void l_real::_akku_out(const dotprecision& d) throw()
+void l_real::_akku_out(const dotprecision& d)
 {   
     // The dotprecision value is rounded to the activated l_real number
     // in its own precision.
@@ -104,7 +104,7 @@ void l_real::_akku_out(const dotprecision& d) throw()
     }
 }
 
-void l_real::_akku_out_up(const dotprecision& d) throw()
+void l_real::_akku_out_up(const dotprecision& d)
 {   
     // The dotprecision value is rounded up to the activated l_real
     // number in its own precision.
@@ -127,7 +127,7 @@ void l_real::_akku_out_up(const dotprecision& d) throw()
     }
 }
 
-void l_real::_akku_out_down(const dotprecision& d) throw()
+void l_real::_akku_out_down(const dotprecision& d)
 {   
     // The dotprecision value is rounded up to the activated l_real
     // number in its own precision.
@@ -150,7 +150,7 @@ void l_real::_akku_out_down(const dotprecision& d) throw()
     }
 }
 
-void l_real::_akku_add(dotprecision& d) const throw()
+void l_real::_akku_add(dotprecision& d) const
 { 
    // adding the activated l_real number to the accumulator d.
    for (int i=1; i<=prec; i++) 
@@ -159,7 +159,7 @@ void l_real::_akku_add(dotprecision& d) const throw()
    }
 }
 
-void l_real::_akku_sub(dotprecision& d) const throw()
+void l_real::_akku_sub(dotprecision& d) const
 { 
    // subtracting the activated l_real number from the accumulator d.
    for (int i=1; i<=prec; i++) 
@@ -171,7 +171,7 @@ void l_real::_akku_sub(dotprecision& d) const throw()
 //---------------------------------------------------------------------------
 // Constructors and destructors
 //
-l_real::l_real() throw()
+l_real::l_real()
 {
    data=new real[stagprec];      
    if(data)
@@ -180,12 +180,12 @@ l_real::l_real() throw()
       prec=0;
 }
 
-l_real::~l_real() throw()
+l_real::~l_real()
 {
    delete [] data;
 }
 
-l_real::l_real(const l_real& lr) throw() 
+l_real::l_real(const l_real& lr) 
                                  : data(new real[lr.prec])
 {
    if(data)
@@ -196,27 +196,27 @@ l_real::l_real(const l_real& lr) throw()
       prec=0;
 }
 
-l_real::l_real(const real & r) throw()
+l_real::l_real(const real & r)
                              : prec(1), 
                                data(new real[1])
 {
     data[0]=r;
 }
 
-l_real::l_real(const double & db) throw()
+l_real::l_real(const double & db)
                              : prec(1), data(new real[1])
 {  
    data[0] = db;   // Blomquist 10.09.02. Deklaration in l_real.hpp
 }
 
-l_real::l_real(int i) throw()
+l_real::l_real(int i)
                     : prec(1),
                       data(new real[1])
 {
    data[0]=i;
 }
 
-l_real::l_real(long i) throw()
+l_real::l_real(long i)
                     : prec(1),
                       data(new real[1])
 {
@@ -225,27 +225,27 @@ l_real::l_real(long i) throw()
 //---------------------------------------------------------------------------
 // Type transfers
 
-real::real(const l_real& lr) throw()
+real::real(const l_real& lr)
 {
    dotprecision dot(0.0);
    lr._akku_add(dot);
    w=rnd(dot).w;
 }
 
-dotprecision::dotprecision(const l_real& lr) throw() : akku(new a_btyp[A_LENGTH])
+dotprecision::dotprecision(const l_real& lr) : akku(new a_btyp[A_LENGTH])
 {
    memset(akku,0,BUFFERSIZE);
    lr._akku_add(*this);
 }
 
-dotprecision & dotprecision::operator =(const l_real & lr) throw()
+dotprecision & dotprecision::operator =(const l_real & lr)
 {
    memset(akku,0,BUFFERSIZE);
    lr._akku_add(*this);
    return *this;
 }
 
-l_real::l_real(const dotprecision & d) throw() : prec(stagprec),
+l_real::l_real(const dotprecision & d) : prec(stagprec),
                                                  data(new real[prec])
 {
    _akku_out(d);
@@ -254,7 +254,7 @@ l_real::l_real(const dotprecision & d) throw() : prec(stagprec),
 //---------------------------------------------------------------------------
 // assignments 
 //
-l_real& l_real::operator=(const real& r) throw()
+l_real& l_real::operator=(const real& r)
 { 
    // Siehe _l_real(real..)
 
@@ -271,7 +271,7 @@ l_real& l_real::operator=(const real& r) throw()
    return *this;
 }
 
-l_real& l_real::operator=(const l_real& lr) throw()
+l_real& l_real::operator=(const l_real& lr)
 { 
    // Siehe c++-FAQ assignment-operators.html#[12.1]
 
@@ -287,7 +287,7 @@ l_real& l_real::operator=(const l_real& lr) throw()
    return *this;
 }
 
-l_real& l_real::operator=(const dotprecision & d) throw()
+l_real& l_real::operator=(const dotprecision & d)
 { 
    if(prec!=stagprec)
    {
@@ -299,7 +299,7 @@ l_real& l_real::operator=(const dotprecision & d) throw()
 }
 
 
-real& l_real::operator[](int i) const throw() 
+real& l_real::operator[](int i) const 
 {
         if (i<1 || i>prec) 
         {
@@ -309,12 +309,12 @@ real& l_real::operator[](int i) const throw()
         return data[i-1];
 }
 
-int StagPrec(const l_real& lr) throw()
+int StagPrec(const l_real& lr)
 {
         return lr.prec;
 }
 
-std::istream& operator>>(std::istream& s, l_real& lr) throw()
+std::istream& operator>>(std::istream& s, l_real& lr)
 {
         dotprecision dot;
         s >> dot;
@@ -322,14 +322,14 @@ std::istream& operator>>(std::istream& s, l_real& lr) throw()
         return s;
 }
 
-std::ostream& operator<<(std::ostream& s, const l_real& lr) throw()
+std::ostream& operator<<(std::ostream& s, const l_real& lr)
 {
 	dotprecision dot(0.0);
         lr._akku_add(dot);
         s << dot;
         return s;
 }
-std::string& operator>>(std::string& s, l_real& lr) throw()
+std::string& operator>>(std::string& s, l_real& lr)
 {
 	dotprecision dot;
         s >> dot;
@@ -337,40 +337,40 @@ std::string& operator>>(std::string& s, l_real& lr) throw()
         return s;
 }
 
-std::string& operator<<(std::string& s, const l_real& lr) throw()
+std::string& operator<<(std::string& s, const l_real& lr)
 {
         dotprecision dot(0.0);
         lr._akku_add(dot);
         s << dot;
         return s;
 }
-void operator>>(const std::string& s, l_real& lr) throw()
+void operator>>(const std::string& s, l_real& lr)
 {
    std::string r(s);
    r>>lr;
 }
-void operator>>(const char *s, l_real& lr) throw()
+void operator>>(const char *s, l_real& lr)
 {
    std::string r(s);
    r>>lr;
 }
 
 
-void accumulate(dotprecision& d, const real& r, const l_real& lr) throw()
+void accumulate(dotprecision& d, const real& r, const l_real& lr)
 {
 // accumulate(d, l_real(r), lr);       Blomquist: Old version, not from me!
     for (int i=1; i<=lr.prec; i++)  // Blomquist: My new version, 24.09.02
 	accumulate(d, lr.elem(i), r);
 }
 
-void accumulate(dotprecision& d, const l_real& lr, const real& r) throw()
+void accumulate(dotprecision& d, const l_real& lr, const real& r)
 {
 //  accumulate(d, lr, l_real(r));      Blomquist: Old version, not from me!
     for (int i=1; i<=lr.prec; i++)  // Blomquist: My new version, 24.09.02
 	accumulate(d, lr.elem(i), r);
 }
 
-void accumulate(dotprecision& d, const l_real& lr1, const l_real&lr2) throw()
+void accumulate(dotprecision& d, const l_real& lr1, const l_real&lr2)
 {
    int i, j;
 
@@ -380,9 +380,9 @@ void accumulate(dotprecision& d, const l_real& lr1, const l_real&lr2) throw()
             accumulate(d, lr1.elem(i), lr2.elem(j));
 }
 
-void accumulate(idotprecision & a, const real & b, const l_real & c) throw() { accumulate(a,l_interval(b),l_interval(c)); }
-void accumulate(idotprecision & a, const l_real & b, const real & c) throw() { accumulate(a,l_interval(b),l_interval(c)); }
-void accumulate(idotprecision & a, const l_real & b, const l_real & c) throw() { accumulate(a,l_interval(b),l_interval(c)); }
+void accumulate(idotprecision & a, const real & b, const l_real & c) { accumulate(a,l_interval(b),l_interval(c)); }
+void accumulate(idotprecision & a, const l_real & b, const real & c) { accumulate(a,l_interval(b),l_interval(c)); }
+void accumulate(idotprecision & a, const l_real & b, const l_real & c) { accumulate(a,l_interval(b),l_interval(c)); }
 
 l_real rnd_up(const dotprecision& a)
 { // Blomquist, 20.11.2006;
@@ -398,93 +398,93 @@ l_real rnd_down(const dotprecision& a)
     return lr;
 }
 
-l_real  operator-(const l_real& lr, const real& r) throw() { return lr-_l_real(r); }
-l_real  operator-(const real& r, const l_real& lr) throw() { return _l_real(r)-lr; }
-l_real  operator+(const l_real& lr, const real& r) throw() { return lr+_l_real(r); }
-l_real  operator+(const real& r, const l_real& lr) throw() { return _l_real(r)+lr; }
-l_real  operator*(const l_real& lr, const real& r) throw() { return lr*_l_real(r); }
-l_real  operator*(const real& r, const l_real& lr) throw() { return _l_real(r)*lr; }
-l_real  operator/(const l_real& lr, const real& r) throw() { return lr/_l_real(r); }
-l_real  operator/(const real& r, const l_real& lr) throw() { return _l_real(r)/lr; }
+l_real  operator-(const l_real& lr, const real& r) { return lr-_l_real(r); }
+l_real  operator-(const real& r, const l_real& lr) { return _l_real(r)-lr; }
+l_real  operator+(const l_real& lr, const real& r) { return lr+_l_real(r); }
+l_real  operator+(const real& r, const l_real& lr) { return _l_real(r)+lr; }
+l_real  operator*(const l_real& lr, const real& r) { return lr*_l_real(r); }
+l_real  operator*(const real& r, const l_real& lr) { return _l_real(r)*lr; }
+l_real  operator/(const l_real& lr, const real& r) { return lr/_l_real(r); }
+l_real  operator/(const real& r, const l_real& lr) { return _l_real(r)/lr; }
 
-dotprecision operator-(const l_real& lr, const dotprecision& r) throw() 
+dotprecision operator-(const l_real& lr, const dotprecision& r) 
 { 
    return _dotprecision(lr)-r; 
 }
-dotprecision operator-(const dotprecision& r, const l_real& lr) throw() 
+dotprecision operator-(const dotprecision& r, const l_real& lr) 
 { 
    return r-_dotprecision(lr); 
 }
-dotprecision operator+(const l_real& lr, const dotprecision& r) throw() 
+dotprecision operator+(const l_real& lr, const dotprecision& r) 
 { 
    return _dotprecision(lr)+r; 
 }
-dotprecision operator+(const dotprecision& r, const l_real& lr) throw() 
+dotprecision operator+(const dotprecision& r, const l_real& lr) 
 { 
    return r+_dotprecision(lr); 
 }
 
 
-l_real& operator-=(l_real& lr, const real& r) throw()
+l_real& operator-=(l_real& lr, const real& r)
 { lr = lr-_l_real(r); return lr; }
     
-l_real& operator+=(l_real& lr, const real& r) throw()
+l_real& operator+=(l_real& lr, const real& r)
 { lr = lr+_l_real(r); return lr; }
 
-l_real& operator*=(l_real& lr, const real& r) throw()
+l_real& operator*=(l_real& lr, const real& r)
 { lr = lr*_l_real(r); return lr; }
 
-l_real& operator/=(l_real& lr, const real& r) throw()
+l_real& operator/=(l_real& lr, const real& r)
 { lr = lr/_l_real(r); return lr; }
 
-real& operator-=(real& r, const l_real& lr) throw() { r = r-_real(lr); return r; }
-real& operator+=(real& r, const l_real& lr) throw() { r = r+_real(lr); return r; }
-real& operator*=(real& r, const l_real& lr) throw() { r = r*_real(lr); return r; }
-real& operator/=(real& r, const l_real& lr) throw() { r = r/_real(lr); return r; }
+real& operator-=(real& r, const l_real& lr) { r = r-_real(lr); return r; }
+real& operator+=(real& r, const l_real& lr) { r = r+_real(lr); return r; }
+real& operator*=(real& r, const l_real& lr) { r = r*_real(lr); return r; }
+real& operator/=(real& r, const l_real& lr) { r = r/_real(lr); return r; }
 
-bool operator==(const l_real& lr, const real& r) throw() { return lr==_l_real(r); }
-bool operator==(const real& r, const l_real& lr) throw() { return _l_real(r)==lr; }
-bool operator!=(const l_real& lr, const real& r) throw() { return lr!=_l_real(r); }
-bool operator!=(const real& r, const l_real& lr) throw() { return _l_real(r)!=lr; }
+bool operator==(const l_real& lr, const real& r) { return lr==_l_real(r); }
+bool operator==(const real& r, const l_real& lr) { return _l_real(r)==lr; }
+bool operator!=(const l_real& lr, const real& r) { return lr!=_l_real(r); }
+bool operator!=(const real& r, const l_real& lr) { return _l_real(r)!=lr; }
 
-bool operator<=(const l_real& lr, const real& r) throw() { return lr<=_l_real(r); }
-bool operator<=(const real& r, const l_real& lr) throw() { return _l_real(r)<=lr; }
-bool operator>=(const l_real& lr, const real& r) throw() { return lr>=_l_real(r); }
-bool operator>=(const real& r, const l_real& lr) throw() { return _l_real(r)>=lr; }
+bool operator<=(const l_real& lr, const real& r) { return lr<=_l_real(r); }
+bool operator<=(const real& r, const l_real& lr) { return _l_real(r)<=lr; }
+bool operator>=(const l_real& lr, const real& r) { return lr>=_l_real(r); }
+bool operator>=(const real& r, const l_real& lr) { return _l_real(r)>=lr; }
 
-bool operator<(const l_real& lr, const real& r) throw() { return lr<_l_real(r); }
-bool operator<(const real& r, const l_real& lr) throw() { return _l_real(r)<lr; }
-bool operator>(const l_real& lr, const real& r) throw() { return lr>_l_real(r); }
-bool operator>(const real& r, const l_real& lr) throw() { return _l_real(r)>lr; }
+bool operator<(const l_real& lr, const real& r) { return lr<_l_real(r); }
+bool operator<(const real& r, const l_real& lr) { return _l_real(r)<lr; }
+bool operator>(const l_real& lr, const real& r) { return lr>_l_real(r); }
+bool operator>(const real& r, const l_real& lr) { return _l_real(r)>lr; }
 
-bool operator==(const l_real& lr, const dotprecision& d) throw() { return _dotprecision(lr)==d; }
-bool operator==(const dotprecision& d, const l_real& lr) throw() { return d==_dotprecision(lr); }
-bool operator!=(const l_real& lr, const dotprecision& d) throw() { return _dotprecision(lr)!=d; }
-bool operator!=(const dotprecision& d, const l_real& lr) throw() { return d!=_dotprecision(lr); }
+bool operator==(const l_real& lr, const dotprecision& d) { return _dotprecision(lr)==d; }
+bool operator==(const dotprecision& d, const l_real& lr) { return d==_dotprecision(lr); }
+bool operator!=(const l_real& lr, const dotprecision& d) { return _dotprecision(lr)!=d; }
+bool operator!=(const dotprecision& d, const l_real& lr) { return d!=_dotprecision(lr); }
 
-bool operator<=(const l_real& lr, const dotprecision& d) throw() { return _dotprecision(lr)<=d; }
-bool operator<=(const dotprecision& d, const l_real& lr) throw() { return d<=_dotprecision(lr); }
-bool operator>=(const l_real& lr, const dotprecision& d) throw() { return _dotprecision(lr)>=d; }
-bool operator>=(const dotprecision& d, const l_real& lr) throw() { return d>=_dotprecision(lr); }
+bool operator<=(const l_real& lr, const dotprecision& d) { return _dotprecision(lr)<=d; }
+bool operator<=(const dotprecision& d, const l_real& lr) { return d<=_dotprecision(lr); }
+bool operator>=(const l_real& lr, const dotprecision& d) { return _dotprecision(lr)>=d; }
+bool operator>=(const dotprecision& d, const l_real& lr) { return d>=_dotprecision(lr); }
 
-bool operator<(const l_real& lr, const dotprecision& d) throw() { return _dotprecision(lr)<d; }
-bool operator<(const dotprecision& d, const l_real& lr) throw() { return d<_dotprecision(lr); }
-bool operator>(const l_real& lr, const dotprecision& d) throw() { return _dotprecision(lr)>d; }
-bool operator>(const dotprecision& d, const l_real& lr) throw() { return d>_dotprecision(lr); }
+bool operator<(const l_real& lr, const dotprecision& d) { return _dotprecision(lr)<d; }
+bool operator<(const dotprecision& d, const l_real& lr) { return d<_dotprecision(lr); }
+bool operator>(const l_real& lr, const dotprecision& d) { return _dotprecision(lr)>d; }
+bool operator>(const dotprecision& d, const l_real& lr) { return d>_dotprecision(lr); }
 
-l_real operator-(const l_real& lr1) throw()
+l_real operator-(const l_real& lr1)
 {
    l_real lr2(lr1);
    for (int i=1; i<=lr1.prec; i++)
       lr2.elem(i) =  -(lr1.elem(i));
    return lr2;
 }
-l_real operator+(const l_real& lr1) throw()
+l_real operator+(const l_real& lr1)
 {
    return lr1;
 }
 
-l_real operator-(const l_real& lr1, const l_real& lr2) throw()
+l_real operator-(const l_real& lr1, const l_real& lr2)
 {
    l_real lr3;
    dotprecision dot(0.0);
@@ -494,7 +494,7 @@ l_real operator-(const l_real& lr1, const l_real& lr2) throw()
    return lr3;
 }
 
-l_real operator+(const l_real& lr1, const l_real& lr2) throw()
+l_real operator+(const l_real& lr1, const l_real& lr2)
 {
    l_real lr3;
    dotprecision dot(0.0);
@@ -505,7 +505,7 @@ l_real operator+(const l_real& lr1, const l_real& lr2) throw()
    return lr3;
 }
 
-l_real operator*(const l_real& lr1, const l_real& lr2) throw()
+l_real operator*(const l_real& lr1, const l_real& lr2)
 {
    l_real lr3;
    dotprecision dot(0.0);
@@ -514,8 +514,8 @@ l_real operator*(const l_real& lr1, const l_real& lr2) throw()
    return lr3;
 }
 
-l_real operator/(const l_real& lr1, const l_real& lr2) throw(DIV_BY_ZERO)
-{  // Blomquist, 09.12.02; throw() ---> throw(DIV_BY_ZERO)
+l_real operator/(const l_real& lr1, const l_real& lr2)
+{  // Blomquist, 09.12.02; --->
    real a, b;
    l_real lr3;
    lr3._clear(1);
@@ -546,12 +546,12 @@ l_real operator/(const l_real& lr1, const l_real& lr2) throw(DIV_BY_ZERO)
 }
 
 
-l_real & operator-=(l_real& lr1, const l_real& lr2) throw() { return lr1 = lr1-lr2; }
-l_real & operator+=(l_real& lr1, const l_real& lr2) throw() { return lr1 = lr1+lr2; }
-l_real & operator*=(l_real& lr1, const l_real& lr2) throw() { return lr1 = lr1*lr2; }
-l_real & operator/=(l_real& lr1, const l_real& lr2) throw() { return lr1 = lr1/lr2; }
+l_real & operator-=(l_real& lr1, const l_real& lr2) { return lr1 = lr1-lr2; }
+l_real & operator+=(l_real& lr1, const l_real& lr2) { return lr1 = lr1+lr2; }
+l_real & operator*=(l_real& lr1, const l_real& lr2) { return lr1 = lr1*lr2; }
+l_real & operator/=(l_real& lr1, const l_real& lr2) { return lr1 = lr1/lr2; }
 
-bool operator==(const l_real& lr1, const l_real& lr2) throw()
+bool operator==(const l_real& lr1, const l_real& lr2)
 {
    dotprecision dot1(0.0);
    dotprecision dot2(0.0);
@@ -560,7 +560,7 @@ bool operator==(const l_real& lr1, const l_real& lr2) throw()
    return (dot1==dot2);
 }
 
-bool operator<=(const l_real& lr1, const l_real& lr2) throw()
+bool operator<=(const l_real& lr1, const l_real& lr2)
 {
    dotprecision dot1(0.0);
    dotprecision dot2(0.0);
@@ -569,96 +569,96 @@ bool operator<=(const l_real& lr1, const l_real& lr2) throw()
    return (dot1<=dot2);
 }
 
-bool operator!(const l_real& lr) throw()
+bool operator!(const l_real& lr)
 {
    dotprecision dot(0.0);
    lr._akku_add(dot);
    return (!dot);
 }
 
-bool operator!=(const l_real& lr1, const l_real& lr2) throw() { return !(lr1==lr2); }
-bool operator< (const l_real& lr1, const l_real& lr2) throw() { return !(lr2<=lr1); }
-bool operator> (const l_real& lr1, const l_real& lr2) throw() { return !(lr1<=lr2); }
-bool operator>=(const l_real& lr1, const l_real& lr2) throw() { return (lr2<=lr1);  }
+bool operator!=(const l_real& lr1, const l_real& lr2) { return !(lr1==lr2); }
+bool operator< (const l_real& lr1, const l_real& lr2) { return !(lr2<=lr1); }
+bool operator> (const l_real& lr1, const l_real& lr2) { return !(lr1<=lr2); }
+bool operator>=(const l_real& lr1, const l_real& lr2) { return (lr2<=lr1);  }
 
 // ID-LR
 
- idotprecision operator +(const idotprecision &a,const l_real &b) throw() 
+ idotprecision operator +(const idotprecision &a,const l_real &b) 
 { 
    return idotprecision(a.inf+b,a.sup+b); 
 }
 
- idotprecision operator +(const l_real &b,const idotprecision &a) throw() 
+ idotprecision operator +(const l_real &b,const idotprecision &a) 
 { 
    return idotprecision(a.inf+b,a.sup+b); 
 } 
 
- idotprecision operator -(const idotprecision &a,const l_real &b) throw() 
+ idotprecision operator -(const idotprecision &a,const l_real &b) 
 { 
    return idotprecision(a.inf-b,a.sup-b); 
 } 
 
- idotprecision operator -(const l_real &a,const idotprecision &b) throw() 
+ idotprecision operator -(const l_real &a,const idotprecision &b) 
 { 
    return idotprecision(a-b.sup,a-b.inf); 
 }
 
-idotprecision operator |(const l_real &a,const idotprecision &b) throw() 
+idotprecision operator |(const l_real &a,const idotprecision &b) 
 {
    return idotprecision((a<b.inf)?_dotprecision(a):b.inf,(a>b.sup)?_dotprecision(a):b.sup);
 }
 
- idotprecision operator |(const idotprecision &a,const l_real &b) throw() 
+ idotprecision operator |(const idotprecision &a,const l_real &b) 
 {
    return idotprecision((a.inf<b)?a.inf:_dotprecision(b),(a.sup>b)?a.sup:_dotprecision(b));
 }
 
- idotprecision operator &(const l_real &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+ idotprecision operator &(const l_real &a,const idotprecision &b) 
 {
    return idotprecision((a>b.inf)?_dotprecision(a):b.inf,(a<b.sup)?_dotprecision(a):b.sup);
 }
 
- idotprecision operator &(const idotprecision &a,const l_real &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+ idotprecision operator &(const idotprecision &a,const l_real &b) 
 {
    return idotprecision((a.inf>b)?a.inf:_dotprecision(b),(a.sup<b)?a.sup:_dotprecision(b));
 }
 
 // LR-ID
-idotprecision & operator +=(idotprecision &a,const l_real &b) throw() { return a+=dotprecision(b); }      
-idotprecision & operator -=(idotprecision &a,const l_real &b) throw() { return a-=dotprecision(b); }
-idotprecision & operator |=(idotprecision &a,const l_real &b) throw() { return a|=dotprecision(b); }
-idotprecision & operator &=(idotprecision &a,const l_real &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) { return a&=dotprecision(b); }
+idotprecision & operator +=(idotprecision &a,const l_real &b) { return a+=dotprecision(b); }      
+idotprecision & operator -=(idotprecision &a,const l_real &b) { return a-=dotprecision(b); }
+idotprecision & operator |=(idotprecision &a,const l_real &b) { return a|=dotprecision(b); }
+idotprecision & operator &=(idotprecision &a,const l_real &b) { return a&=dotprecision(b); }
 
 
-bool operator ==(const interval &i,const l_real &r) throw() { return Inf(i)==r && Sup(i)==r; }
-bool operator !=(const interval &i,const l_real &r) throw() { return Inf(i)!=r || Sup(i)!=r; }
-bool operator  <(const interval &i,const l_real &r) throw() { return false; }
-bool operator  >(const interval &i,const l_real &r) throw() { return Inf(i)<r && Sup(i)>r; }
-bool operator <=(const interval &i,const l_real &r) throw() { return Inf(i)==r && Sup(i)==r; }
-bool operator >=(const interval &i,const l_real &r) throw() { return Inf(i)<=r && Sup(i)>=r; }
+bool operator ==(const interval &i,const l_real &r) { return Inf(i)==r && Sup(i)==r; }
+bool operator !=(const interval &i,const l_real &r) { return Inf(i)!=r || Sup(i)!=r; }
+bool operator  <(const interval &i,const l_real &r) { return false; }
+bool operator  >(const interval &i,const l_real &r) { return Inf(i)<r && Sup(i)>r; }
+bool operator <=(const interval &i,const l_real &r) { return Inf(i)==r && Sup(i)==r; }
+bool operator >=(const interval &i,const l_real &r) { return Inf(i)<=r && Sup(i)>=r; }
 
-bool operator ==(const l_real &r,const interval &i) throw() { return Inf(i)==r && Sup(i)==r; }
-bool operator !=(const l_real &r,const interval &i) throw()   { return Inf(i)!=r || Sup(i)!=r; }
-bool operator  <(const l_real &r,const interval &i) throw()   { return Inf(i)<r && Sup(i)>r; }
-bool operator  >(const l_real &r,const interval &i) throw()   { return false; }
-bool operator <=(const l_real &r,const interval &i) throw()   { return Inf(i)<=r && Sup(i)>=r; }
-bool operator >=(const l_real &r,const interval &i) throw()   { return Inf(i)==r && Sup(i)==r; }
+bool operator ==(const l_real &r,const interval &i) { return Inf(i)==r && Sup(i)==r; }
+bool operator !=(const l_real &r,const interval &i)   { return Inf(i)!=r || Sup(i)!=r; }
+bool operator  <(const l_real &r,const interval &i)   { return Inf(i)<r && Sup(i)>r; }
+bool operator  >(const l_real &r,const interval &i)   { return false; }
+bool operator <=(const l_real &r,const interval &i)   { return Inf(i)<=r && Sup(i)>=r; }
+bool operator >=(const l_real &r,const interval &i)   { return Inf(i)==r && Sup(i)==r; }
 
-bool operator ==(const idotprecision &i,const l_real &r) throw() { return Inf(i)==r && Sup(i)==r; }
-bool operator !=(const idotprecision &i,const l_real &r) throw() { return Inf(i)!=r || Sup(i)!=r; }
-bool operator  <(const idotprecision &i,const l_real &r) throw() { return false; }
-bool operator  >(const idotprecision &i,const l_real &r) throw() { return Inf(i)<r && Sup(i)>r; }
-bool operator <=(const idotprecision &i,const l_real &r) throw() { return Inf(i)==r && Sup(i)==r; }
-bool operator >=(const idotprecision &i,const l_real &r) throw() { return Inf(i)<=r && Sup(i)>=r; }
+bool operator ==(const idotprecision &i,const l_real &r) { return Inf(i)==r && Sup(i)==r; }
+bool operator !=(const idotprecision &i,const l_real &r) { return Inf(i)!=r || Sup(i)!=r; }
+bool operator  <(const idotprecision &i,const l_real &r) { return false; }
+bool operator  >(const idotprecision &i,const l_real &r) { return Inf(i)<r && Sup(i)>r; }
+bool operator <=(const idotprecision &i,const l_real &r) { return Inf(i)==r && Sup(i)==r; }
+bool operator >=(const idotprecision &i,const l_real &r) { return Inf(i)<=r && Sup(i)>=r; }
 
-bool operator ==(const l_real &r,const idotprecision &i) throw() { return Inf(i)==r && Sup(i)==r; }
-bool operator !=(const l_real &r,const idotprecision &i) throw()   { return Inf(i)!=r || Sup(i)!=r; }
-bool operator  <(const l_real &r,const idotprecision &i) throw()   { return Inf(i)<r && Sup(i)>r; }
-bool operator  >(const l_real &r,const idotprecision &i) throw()   { return false; }
-bool operator <=(const l_real &r,const idotprecision &i) throw()   { return Inf(i)<=r && Sup(i)>=r; }
-bool operator >=(const l_real &r,const idotprecision &i) throw()   { return Inf(i)==r && Sup(i)==r; }
+bool operator ==(const l_real &r,const idotprecision &i) { return Inf(i)==r && Sup(i)==r; }
+bool operator !=(const l_real &r,const idotprecision &i)   { return Inf(i)!=r || Sup(i)!=r; }
+bool operator  <(const l_real &r,const idotprecision &i)   { return Inf(i)<r && Sup(i)>r; }
+bool operator  >(const l_real &r,const idotprecision &i)   { return false; }
+bool operator <=(const l_real &r,const idotprecision &i)   { return Inf(i)<=r && Sup(i)>=r; }
+bool operator >=(const l_real &r,const idotprecision &i)   { return Inf(i)==r && Sup(i)==r; }
 
-real & real::operator = (const l_real& a) throw()
+real & real::operator = (const l_real& a)
 {  // Blomquist, 12.11.2008;
 	real x(a);
 	return *this = x;
@@ -667,7 +667,7 @@ real & real::operator = (const l_real& a) throw()
 //---------------------------------------------------------------------------
 // Other functions:
 //
-l_real  abs(const l_real& lr1) throw()
+l_real  abs(const l_real& lr1)
 {
    l_real lr2;
    dotprecision dot(0.0);
@@ -681,14 +681,14 @@ l_real  abs(const l_real& lr1) throw()
    return lr2;
 }
 
-int sign(const l_real& lr) throw()
+int sign(const l_real& lr)
 {
    dotprecision dot(0.0);
    lr._akku_add(dot);
    return sign(dot);
 }
 
-l_real adjust(const l_real & x) throw()
+l_real adjust(const l_real & x)
 {
    l_real  y;
   

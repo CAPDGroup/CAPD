@@ -119,39 +119,39 @@ class real
    public:
       // ---- implicit constructors -------------------------------
       //! Constructor of class real
-      real(void)  throw ()                  { }
+      real(void)                   { }
       //! Constructor of class real
-      real(const float  &a) throw () : w(a) { }
+      real(const float  &a) : w(a) { }
       //! Constructor of class real
-      real(const double &a) throw () : w(a) { }
+      real(const double &a) : w(a) { }
       //! Constructor of class real
-      real(const int     a) throw () : w(a) { }
+      real(const int     a) : w(a) { }
       //! Constructor of class real
-      real(const long    a) throw () : w(a) { }
+      real(const long    a) : w(a) { }
 
       // ---- explicit constructors -------------------------------
       //! Constructor of class real
-      explicit real(const l_real &) throw();
+      explicit real(const l_real &);
 
       // The following are defined in the specific vector, matrix-files
 #if(CXSC_INDEX_CHECK) 
       //! Constructor of class real
-      explicit INLINE real(const rvector &)       throw (ERROR_RVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_RVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE real(const rvector &)      ;
       //! Constructor of class real
-      explicit INLINE real(const rvector_slice &) throw (ERROR_RVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_RVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE real(const rvector_slice &);
       //! Constructor of class real
-      explicit INLINE real(const rmatrix &)       throw (ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_RMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE real(const rmatrix &)      ;
       //! Constructor of class real
-      explicit INLINE real(const rmatrix_slice &) throw (ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_RMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE real(const rmatrix_slice &);
 #else
       //! Constructor of class real
-      explicit INLINE real(const rvector &)       throw ();
+      explicit INLINE real(const rvector &)      ;
       //! Constructor of class real
-      explicit INLINE real(const rvector_slice &) throw ();
+      explicit INLINE real(const rvector_slice &);
       //! Constructor of class real
-      explicit INLINE real(const rmatrix &)       throw ();
+      explicit INLINE real(const rmatrix &)      ;
       //! Constructor of class real
-      explicit INLINE real(const rmatrix_slice &) throw ();
+      explicit INLINE real(const rmatrix_slice &);
 #endif
       
 
@@ -160,9 +160,9 @@ class real
       // ---- compatibility typecasts -----------------------------
 
       //! Typecast to convert a real value into a double value
-      friend inline double _double(const real &a) throw();
+      friend inline double _double(const real &a);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend inline real   _real(const double &a) throw();
+      friend inline real   _real(const double &a);
 
 #if(CXSC_INDEX_CHECK)
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
@@ -171,28 +171,28 @@ class real
 
       \sa cxsc::real::real(const rvector &)
       */
-      friend INLINE real _real(const rvector &)       throw (ERROR_RVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_RVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _real(const rvector &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::real::real(const rvector_slice &)
       */
-      friend INLINE real _real(const rvector_slice &) throw (ERROR_RVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_RVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _real(const rvector_slice &);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::real::real(const rmatrix &)
       */
-      friend INLINE real _real(const rmatrix &)       throw (ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_RMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _real(const rmatrix &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::real::real(const rmatrix_slice &)
       */
-      friend INLINE real _real(const rmatrix_slice &) throw (ERROR_RMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_RMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _real(const rmatrix_slice &);
 #else
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
@@ -200,121 +200,121 @@ class real
 
       \sa cxsc::real::real(const rvector &)
       */
-      friend INLINE real _real(const rvector &)       throw ();
+      friend INLINE real _real(const rvector &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::real::real(const rvector_slice &)
       */
-      friend INLINE real _real(const rvector_slice &) throw ();
+      friend INLINE real _real(const rvector_slice &);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::real::real(const rmatrix &)
       */
-      friend INLINE real _real(const rmatrix &)       throw ();
+      friend INLINE real _real(const rmatrix &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::real::real(const rmatrix_slice &)
       */
-      friend INLINE real _real(const rmatrix_slice &) throw ();
+      friend INLINE real _real(const rmatrix_slice &);
 #endif
       
       // ---- Input/Output  ---------------------------------------
 
       //! Implementation of standard output method
-      friend std::ostream & operator <<(std::ostream &,const real &) throw();
+      friend std::ostream & operator <<(std::ostream &,const real &);
       //! Implementation of standard input method
-      friend std::istream & operator >>(std::istream &,real &)       throw();
+      friend std::istream & operator >>(std::istream &,real &)      ;
       //! Implementation of standard output method
-      friend std::string &  operator <<(std::string &,const real &)  throw();
+      friend std::string &  operator <<(std::string &,const real &) ;
       //! Implementation of standard input method
-      friend std::string &  operator >>(std::string &,real &)        throw();
+      friend std::string &  operator >>(std::string &,real &)       ;
       //! Implementation of standard output method
-      friend void           operator >>(const char *,real &)         throw();
+      friend void           operator >>(const char *,real &)        ;
       //! Implementation of standard input method
-      friend void           operator >>(const std::string &,real &)  throw();
+      friend void           operator >>(const std::string &,real &) ;
 
       // ---- Std.Operators ---------------------------------------
       // As the real-arithmetic should be as fast as double all
       // operators are inlined.                
 
       //! Implementation of standard algebraic negative sign operation
-      friend inline real operator -(const real &) throw ();
+      friend inline real operator -(const real &);
       //! Implementation of standard algebraic positive sign operation
-      friend inline real operator +(const real &) throw ();
+      friend inline real operator +(const real &);
 
       //! Implementation of standard algebraic addition operation
-      friend inline real operator +(const real &,const real &) throw();
+      friend inline real operator +(const real &,const real &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline real operator -(const real &,const real &) throw();
+      friend inline real operator -(const real &,const real &);
       //! Implementation of standard algebraic multiplication operation
-      friend inline real operator *(const real &,const real &) throw();
+      friend inline real operator *(const real &,const real &);
       //! Implementation of standard algebraic division operation
-      friend inline real operator /(const real &,const real &) throw();
+      friend inline real operator /(const real &,const real &);
 
       //! Implementation of standard algebraic addition and allocation operation
-      friend inline real& operator +=(real &, const real &) throw();
+      friend inline real& operator +=(real &, const real &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend inline real& operator -=(real &, const real &) throw();
+      friend inline real& operator -=(real &, const real &);
       //! Implementation of standard algebraic multiplication and allocation operation
-      friend inline real& operator *=(real &, const real &) throw();
+      friend inline real& operator *=(real &, const real &);
       //! Implementation of standard algebraic division and allocation operation
-      friend inline real& operator /=(real &, const real &) throw();
+      friend inline real& operator /=(real &, const real &);
 
       // ---- Comp.Operat.  ---------------------------------------
 
       //! Implementation of standard negation operation
-      friend inline bool operator!  (const real& a)                throw();
+      friend inline bool operator!  (const real& a)               ;
       //! Implementation of standard equality operation
-      friend inline bool operator== (const real& a, const real& b) throw();
+      friend inline bool operator== (const real& a, const real& b);
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const real& a, const real& b) throw();
+      friend inline bool operator!= (const real& a, const real& b);
       //! Implementation of standard less-than operation
-      friend inline bool operator<  (const real& a, const real& b) throw();
+      friend inline bool operator<  (const real& a, const real& b);
       //! Implementation of standard less-or-equal-than operation
-      friend inline bool operator<= (const real& a, const real& b) throw();
+      friend inline bool operator<= (const real& a, const real& b);
       //! Implementation of standard greater-or-equal-than operation
-      friend inline bool operator>= (const real& a, const real& b) throw();
+      friend inline bool operator>= (const real& a, const real& b);
       //! Implementation of standard greater-than operation
-      friend inline bool operator>  (const real& a, const real& b) throw();
+      friend inline bool operator>  (const real& a, const real& b);
 
       //! Implementation of standard equality operation
-      friend inline bool operator== (const real& a, const int & b) throw();
+      friend inline bool operator== (const real& a, const int & b);
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const real& a, const int & b) throw();
+      friend inline bool operator!= (const real& a, const int & b);
       //! Implementation of standard equality operation
-      friend inline bool operator== (const int & a, const real& b) throw();
+      friend inline bool operator== (const int & a, const real& b);
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const int & a, const real& b) throw();
+      friend inline bool operator!= (const int & a, const real& b);
       //! Implementation of standard equality operation
-      friend inline bool operator== (const real& a, const long & b) throw();
+      friend inline bool operator== (const real& a, const long & b);
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const real& a, const long & b) throw();
+      friend inline bool operator!= (const real& a, const long & b);
       //! Implementation of standard equality operation
-      friend inline bool operator== (const long & a, const real& b) throw();
+      friend inline bool operator== (const long & a, const real& b);
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const long & a, const real& b) throw();
+      friend inline bool operator!= (const long & a, const real& b);
       //! Implementation of standard equality operation
-      friend inline bool operator== (const real& a, const float & b) throw();
+      friend inline bool operator== (const real& a, const float & b);
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const real& a, const float & b) throw();
+      friend inline bool operator!= (const real& a, const float & b);
       //! Implementation of standard equality operation
-      friend inline bool operator== (const float & a, const real& b) throw();
+      friend inline bool operator== (const float & a, const real& b);
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const float & a, const real& b) throw();
+      friend inline bool operator!= (const float & a, const real& b);
       //! Implementation of standard equality operation
-      friend inline bool operator== (const real& a, const double & b) throw();
+      friend inline bool operator== (const real& a, const double & b);
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const real& a, const double & b) throw();
+      friend inline bool operator!= (const real& a, const double & b);
       //! Implementation of standard equality operation
-      friend inline bool operator== (const double & a, const real& b) throw();
+      friend inline bool operator== (const double & a, const real& b);
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const double & a, const real& b) throw();
+      friend inline bool operator!= (const double & a, const real& b);
    
       // ---- Rounding Operators ---------------------------------
 
@@ -338,26 +338,26 @@ class real
       // ---- Others   -------------------------------------------
 
       //! The absolute value of a real value
-      friend inline real abs(const real &a) throw();
+      friend inline real abs(const real &a);
       //! The sign of a real value
-      friend inline int  sign(const real &) throw();
+      friend inline int  sign(const real &);
       
       //! The predecessor of a real value
-      friend inline real pred(const real &) throw();
+      friend inline real pred(const real &);
       //! The successor of a real value
-      friend inline real succ(const real &) throw();
+      friend inline real succ(const real &);
       //! The exponent of a real value
-      friend inline a_intg expo(const real &) throw();
+      friend inline a_intg expo(const real &);
       //! Composes an IEEE floating point value out of an given mantissa and exponent
-      friend inline real comp(const real &,a_intg) throw();
+      friend inline real comp(const real &,a_intg);
       //! The mantissa of a real value
-      friend inline real mant(const real &) throw();
+      friend inline real mant(const real &);
 		
-      real & operator = (const lx_real&) throw();  // Blomquist, 12.11.2008;
-      real & operator = (const l_real&)  throw();  // Blomquist, 12.11.2008;
+      real & operator = (const lx_real&);  // Blomquist, 12.11.2008;
+      real & operator = (const l_real&) ;  // Blomquist, 12.11.2008;
 }; // end of class real
 
-inline real comp(const real &,a_intg) throw();
+inline real comp(const real &,a_intg);
 
 // ---------------------------------------------------------------------------
 // ----                                                                   ----
@@ -365,12 +365,12 @@ inline real comp(const real &,a_intg) throw();
 // ----                                                                   ----
 // ---------------------------------------------------------------------------
 
-std::ostream & operator <<(std::ostream &,const real &) throw();
-std::istream & operator >>(std::istream &,real &)       throw();
-std::string &  operator <<(std::string &,const real &)  throw();
-std::string &  operator >>(std::string &,real &)        throw();
-void           operator >>(const char *,real &)         throw();
-void           operator >>(const std::string &,real &)  throw();
+std::ostream & operator <<(std::ostream &,const real &);
+std::istream & operator >>(std::istream &,real &)      ;
+std::string &  operator <<(std::string &,const real &) ;
+std::string &  operator >>(std::string &,real &)       ;
+void           operator >>(const char *,real &)        ;
+void           operator >>(const std::string &,real &) ;
 
 // ---------------------------------------------------------------------------
 // ----                                                                   ----
@@ -406,7 +406,7 @@ inline bool IsSignalingNaN(const real &a);
 inline void times2pown(real& r,const int n); // Blomquist 1.10.02. {real.inl}
 
 //! Returns the value of \f$ 2^n \f$
-inline real pow2n(const int n) throw(); // returns 2^n; 
+inline real pow2n(const int n); // returns 2^n; 
 
 //!Returns a real number in hexadecimal format as string
 string realToHex(const real& a);

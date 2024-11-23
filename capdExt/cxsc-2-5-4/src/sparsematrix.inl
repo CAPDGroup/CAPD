@@ -71,9 +71,9 @@ template<> inline bool isComplex<sparse_cdot>() {
 template<class TA, class Tx, class Tres, class TDot, class TElement>
 inline Tres spsl_mv_mult(const TA& A, const Tx& v) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -137,9 +137,9 @@ inline Tres spsl_mv_mult(const TA& A, const Tx& v)
 template<class TA, class Tx, class Tres, class TDot, class TElement>
 inline Tres spsp_mv_mult(const TA& A, const Tx& v) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -201,9 +201,9 @@ inline Tres spsp_mv_mult(const TA& A, const Tx& v)
 template<class TA, class Tx, class Tres, class TDot>
 inline Tres spf_mv_mult(const TA& A, const Tx& r) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -257,9 +257,9 @@ inline Tres spf_mv_mult(const TA& A, const Tx& r)
 template<class TA, class Tx, class Tres, class TDot>
 inline Tres fsp_mv_mult(const TA& A, const Tx& v) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -296,9 +296,9 @@ inline Tres fsp_mv_mult(const TA& A, const Tx& v)
 template<class TA, class Tx, class Tres, class TDot>
 inline Tres fsl_mv_mult(const TA& A, const Tx& v) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -359,9 +359,9 @@ inline void fp_multadd<complex,complex,complex>(const complex& x, const complex&
 template<class TA, class TB, class Tres, class TDot, class TElement>
 inline Tres spsp_mm_mult(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {  
 #if(CXSC_INDEX_CHECK)
@@ -506,9 +506,9 @@ inline Tres spsp_mm_mult(const TA& A, const TB& B)
 template<class TA, class TB, class Tres, class TDot>
 inline Tres fsp_mm_mult(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -556,9 +556,9 @@ inline Tres fsp_mm_mult(const TA& A, const TB& B)
 template<class TA, class TB, class Tres, class TDot>
 inline Tres spf_mm_mult(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -655,9 +655,9 @@ inline Tres sp_sm_mult(const Ts& s, const TA& A) {
 template<class TA, class TB, class Tres, class TElement>
 inline Tres spsp_mm_add(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -714,9 +714,9 @@ inline Tres spsp_mm_add(const TA& A, const TB& B)
 template<class TA, class TB, class Tres>
 inline Tres spf_mm_add(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -741,9 +741,9 @@ inline Tres spf_mm_add(const TA& A, const TB& B)
 template<class TA, class TB, class Tres>
 inline Tres fsp_mm_add(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -771,9 +771,9 @@ inline Tres fsp_mm_add(const TA& A, const TB& B)
 template<class TA, class TB, class Tres, class TElement>
 inline Tres spsp_mm_sub(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -830,9 +830,9 @@ inline Tres spsp_mm_sub(const TA& A, const TB& B)
 template<class TA, class TB, class Tres>
 inline Tres spf_mm_sub(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -857,9 +857,9 @@ inline Tres spf_mm_sub(const TA& A, const TB& B)
 template<class TA, class TB, class Tres>
 inline Tres fsp_mm_sub(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -886,9 +886,9 @@ inline Tres fsp_mm_sub(const TA& A, const TB& B)
 template<class TA, class TB, class Tres, class TElement>
 inline Tres spsp_mm_hull(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -945,9 +945,9 @@ inline Tres spsp_mm_hull(const TA& A, const TB& B)
 template<class TA, class TB, class Tres>
 inline Tres spf_mm_hull(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -972,9 +972,9 @@ inline Tres spf_mm_hull(const TA& A, const TB& B)
 template<class TA, class TB, class Tres>
 inline Tres fsp_mm_hull(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -1001,9 +1001,9 @@ inline Tres fsp_mm_hull(const TA& A, const TB& B)
 template<class TA, class TB, class Tres, class TElement>
 inline Tres spsp_mm_intersect(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -1061,9 +1061,9 @@ inline Tres spsp_mm_intersect(const TA& A, const TB& B)
 template<class TA, class TB, class Tres>
 inline Tres spf_mm_intersect(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -1088,9 +1088,9 @@ inline Tres spf_mm_intersect(const TA& A, const TB& B)
 template<class TA, class TB, class Tres>
 inline Tres fsp_mm_intersect(const TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2031,9 +2031,9 @@ inline std::istream& sp_m_input(std::istream& is, TA& A) {
 template<class TA, class TB, class TElement>
 inline TA& slsp_mm_assign(TA& A, const TB& C) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2100,9 +2100,9 @@ inline TA& slsp_mm_assign(TA& A, const TB& C)
 template<class TA, class TB, class TElement, class TType>
 inline TA& slf_mm_assign(TA& A, const TB& C) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2280,9 +2280,9 @@ inline TA& sp_ms_multassign(TA& A, const Ts& r) {
 template<class TA, class TB, class TDot, class TElement>
 inline TA& spsp_mm_multassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2429,9 +2429,9 @@ inline TA& spsp_mm_multassign(TA& A, const TB& B)
 template<class TA, class TB, class TDot, class TFull>
 inline TA& spf_mm_multassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2483,9 +2483,9 @@ inline TA& spf_mm_multassign(TA& A, const TB& B)
 template<class TA, class TB, class TDot, class TFull>
 inline TA& fsp_mm_multassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2538,9 +2538,9 @@ inline TA& fsp_mm_multassign(TA& A, const TB& B)
 template<class TA, class TB, class TFull>
 inline TA& spf_mm_addassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2562,9 +2562,9 @@ inline TA& spf_mm_addassign(TA& A, const TB& B)
 template<class TA, class TB, class TElement>
 inline TA& spsp_mm_addassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2625,9 +2625,9 @@ inline TA& spsp_mm_addassign(TA& A, const TB& B)
 template<class TA, class TB>
 inline TA& fsp_mm_addassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2649,9 +2649,9 @@ inline TA& fsp_mm_addassign(TA& A, const TB& B)
 template<class TA, class TB, class TFull>
 inline TA& spf_mm_subassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2673,9 +2673,9 @@ inline TA& spf_mm_subassign(TA& A, const TB& B)
 template<class TA, class TB, class TElement>
 inline TA& spsp_mm_subassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2734,9 +2734,9 @@ inline TA& spsp_mm_subassign(TA& A, const TB& B)
 template<class TA, class TB>
 inline TA& fsp_mm_subassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2760,9 +2760,9 @@ inline TA& fsp_mm_subassign(TA& A, const TB& B)
 template<class TA, class TB, class TFull>
 inline TA& spf_mm_hullassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2784,9 +2784,9 @@ inline TA& spf_mm_hullassign(TA& A, const TB& B)
 template<class TA, class TB, class TElement>
 inline TA& spsp_mm_hullassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2845,9 +2845,9 @@ inline TA& spsp_mm_hullassign(TA& A, const TB& B)
 template<class TA, class TB>
 inline TA& fsp_mm_hullassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2871,9 +2871,9 @@ inline TA& fsp_mm_hullassign(TA& A, const TB& B)
 template<class TA, class TB, class TFull>
 inline TA& spf_mm_intersectassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2895,9 +2895,9 @@ inline TA& spf_mm_intersectassign(TA& A, const TB& B)
 template<class TA, class TB, class TElement>
 inline TA& spsp_mm_intersectassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2957,9 +2957,9 @@ inline TA& spsp_mm_intersectassign(TA& A, const TB& B)
 template<class TA, class TB>
 inline TA& fsp_mm_intersectassign(TA& A, const TB& B) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -2983,9 +2983,9 @@ inline TA& fsp_mm_intersectassign(TA& A, const TB& B)
 template<class Tx, class Ty>
 inline Tx& svsp_vv_assign(Tx& x, const Ty& y) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -3004,9 +3004,9 @@ inline Tx& svsp_vv_assign(Tx& x, const Ty& y)
 template<class Tx, class Ty>
 inline Tx& svsl_vv_assign(Tx& x, const Ty& y) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -3025,9 +3025,9 @@ inline Tx& svsl_vv_assign(Tx& x, const Ty& y)
 template<class Tx, class Ty>
 inline Tx& svf_vv_assign(Tx& x, const Ty& y) 
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -3081,7 +3081,7 @@ inline bool sv_v_not(const Tx& x) {
 //-------------------------------------------------------------------
 
 template <class TA>
-inline void sp_m_resize(TA& A) throw() {
+inline void sp_m_resize(TA& A) {
     A.p.clear();
     A.ind.clear();
     A.x.clear();
@@ -3093,9 +3093,9 @@ inline void sp_m_resize(TA& A) throw() {
 template <class TA>
 inline void sp_m_resize(TA &A,const int &m, const int &n)
 #if(CXSC_INDEX_CHECK)
-    throw(WRONG_BOUNDARIES)
+   
 #else
-    throw()
+   
 #endif
 {
 #if(CXSC_INDEX_CHECK)
@@ -3124,9 +3124,9 @@ inline void sp_m_resize(TA &A,const int &m, const int &n)
 template<class TA>
 inline void sp_m_resize(TA &A,const int &m1, const int &m2,const int &n1,const int &n2)
 #if(CXSC_INDEX_CHECK)
-    throw(WRONG_BOUNDARIES)
+   
 #else
-    throw()
+   
 #endif
 {
 #if(CXSC_INDEX_CHECK)

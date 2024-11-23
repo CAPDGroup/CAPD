@@ -97,9 +97,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(idotprecision &dp, const imatrix_subv & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -110,9 +110,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(idotprecision &dp, const ivector & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -123,9 +123,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(idotprecision &dp, const imatrix_subv & rv1, const ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -137,9 +137,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(idotprecision &dp, const ivector_slice & sl1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -150,9 +150,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(idotprecision &dp, const imatrix_subv & rv1, const ivector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -163,9 +163,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(cidotprecision &dp, const imatrix_subv & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -179,9 +179,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(cidotprecision &dp, const ivector & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -195,9 +195,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(cidotprecision &dp, const imatrix_subv & rv1, const ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -211,9 +211,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(cidotprecision &dp, const ivector_slice & sl1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -227,9 +227,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(cidotprecision &dp, const imatrix_subv & rv1, const ivector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -243,9 +243,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(idotprecision &dp, const rmatrix_subv & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -256,9 +256,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(idotprecision &dp, const rvector & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -269,9 +269,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(idotprecision &dp, const rvector_slice & sl1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -282,9 +282,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(idotprecision &dp, const imatrix_subv & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -295,9 +295,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(idotprecision &dp, const imatrix_subv & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -308,9 +308,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(idotprecision &dp, const imatrix_subv & rv1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -321,9 +321,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(cidotprecision &dp, const rmatrix_subv & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -337,9 +337,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(cidotprecision &dp, const rvector & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -353,9 +353,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(cidotprecision &dp, const rvector_slice & sl1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -369,9 +369,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(cidotprecision &dp, const imatrix_subv & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -385,9 +385,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(cidotprecision &dp, const imatrix_subv & rv1, const rvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -401,9 +401,9 @@ void DoubleSize ( imatrix& A )
 
 	 void accumulate(cidotprecision &dp, const imatrix_subv & rv1, const rvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -417,9 +417,9 @@ void DoubleSize ( imatrix& A )
 
 	void accumulate(idotprecision &dp, const rmatrix_subv & rv1, const ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -430,9 +430,9 @@ void DoubleSize ( imatrix& A )
 
 	void accumulate(idotprecision &dp, const ivector & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -443,9 +443,9 @@ void DoubleSize ( imatrix& A )
 
 	void accumulate(cidotprecision &dp, const rmatrix_subv & rv1, const ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -459,9 +459,9 @@ void DoubleSize ( imatrix& A )
 
 	void accumulate(cidotprecision &dp, const ivector & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -475,9 +475,9 @@ void DoubleSize ( imatrix& A )
 
 	void accumulate(idotprecision &dp, const rmatrix_subv & rv1, const ivector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -488,9 +488,9 @@ void DoubleSize ( imatrix& A )
 
 	void accumulate(idotprecision &dp, const ivector_slice & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -501,9 +501,9 @@ void DoubleSize ( imatrix& A )
 
 	void accumulate(cidotprecision &dp, const rmatrix_subv & rv1, const ivector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)
@@ -517,9 +517,9 @@ void DoubleSize ( imatrix& A )
 
 	void accumulate(cidotprecision &dp, const ivector_slice & rv1, const rmatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM)
+	
 #else
-	throw()
+	
 #endif
 	{ 
 #if(CXSC_INDEX_CHECK)

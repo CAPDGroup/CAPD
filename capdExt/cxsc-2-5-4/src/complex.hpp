@@ -56,201 +56,201 @@ class complex
    public:
       // ---- Constructors  ---------------------------------------
       //! Constructor of class complex
-      complex(void)  throw ()           {}
+      complex(void)            {}
       //! Constructor of class complex
-      complex(const real & a,const real & b) throw () : re(a), im(b) { }
+      complex(const real & a,const real & b) : re(a), im(b) { }
       
       //! Implementation of standard assigning operator
-      inline complex & operator= (const real & r) throw();
+      inline complex & operator= (const real & r);
 
       // ---- Type-Casts    ---------------------------------------
 
       //! Constructor of class complex
-      explicit inline complex(const real &r) throw() : re(r),im(0.0)     { }
+      explicit inline complex(const real &r) : re(r),im(0.0)     { }
 
 
-//     friend inline complex _complex(const real &a) throw ()             { return complex(a,0.0); }
-//     friend inline complex _complex(const real &a,const real &b) throw(){ return complex(a,b); }
+//     friend inline complex _complex(const real &a)             { return complex(a,0.0); }
+//     friend inline complex _complex(const real &a,const real &b){ return complex(a,b); }
 
 
       // The following are defined in the specific vector, matrix-files
 #if(CXSC_INDEX_CHECK) 
       //! Constructor of class complex
-      explicit INLINE complex(const cvector &)       throw (ERROR_CVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_CVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE complex(const cvector &)      ;
       //! Constructor of class complex
-      explicit INLINE complex(const cvector_slice &) throw (ERROR_CVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_CVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE complex(const cvector_slice &);
       //! Constructor of class complex
-      explicit INLINE complex(const cmatrix &)       throw (ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_CMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE complex(const cmatrix &)      ;
       //! Constructor of class complex
-      explicit INLINE complex(const cmatrix_slice &) throw (ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_CMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE complex(const cmatrix_slice &);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::complex::complex(const cvector &)
       */
-      friend INLINE complex _complex(const cvector &)       throw (ERROR_CVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_CVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE complex _complex(const cvector &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::complex::complex(const cvector_slice &)
       */
-      friend INLINE complex _complex(const cvector_slice &) throw (ERROR_CVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_CVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE complex _complex(const cvector_slice &);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::complex::complex(const cmatrix &)
       */
-      friend INLINE complex _complex(const cmatrix &)       throw (ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_CMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE complex _complex(const cmatrix &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::complex::complex(const cmatrix_slice &)
       */
-      friend INLINE complex _complex(const cmatrix_slice &) throw (ERROR_CMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_CMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE complex _complex(const cmatrix_slice &);
 #else
       //! Constructor of class complex
-      explicit INLINE complex(const cvector &)       throw ();
+      explicit INLINE complex(const cvector &)      ;
       //! Constructor of class complex
-      explicit INLINE complex(const cvector_slice &) throw ();
+      explicit INLINE complex(const cvector_slice &);
       //! Constructor of class complex
-      explicit INLINE complex(const cmatrix &)       throw ();
+      explicit INLINE complex(const cmatrix &)      ;
       //! Constructor of class complex
-      explicit INLINE complex(const cmatrix_slice &) throw ();
+      explicit INLINE complex(const cmatrix_slice &);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::complex::complex(const cvector &)
       */
-      friend INLINE complex _complex(const cvector &)       throw ();
+      friend INLINE complex _complex(const cvector &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::complex::complex(const cvector_slice &)
       */
-      friend INLINE complex _complex(const cvector_slice &) throw ();
+      friend INLINE complex _complex(const cvector_slice &);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::complex::complex(const cmatrix &)
       */
-      friend INLINE complex _complex(const cmatrix &)       throw ();
+      friend INLINE complex _complex(const cmatrix &)      ;
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::complex::complex(const cmatrix_slice &)
       */
-      friend INLINE complex _complex(const cmatrix_slice &) throw ();
+      friend INLINE complex _complex(const cmatrix_slice &);
 #endif
       //! Constructor of class complex
-      explicit        complex(const cdotprecision &) throw();
+      explicit        complex(const cdotprecision &);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa cxsc::complex::complex(const cdotprecision &)
       */
-      friend inline complex _complex(const cdotprecision &a) throw() { return complex(a); }
+      friend inline complex _complex(const cdotprecision &a) { return complex(a); }
       
       //! Implementation of standard assigning operator
-      complex & operator =(const cdotprecision &) throw();
+      complex & operator =(const cdotprecision &);
 
       // ---- Input/Output  ---------------------------------------
       //! Implementation of standard output method
-      friend std::ostream & operator <<(std::ostream &,const complex &) throw();
+      friend std::ostream & operator <<(std::ostream &,const complex &);
       //! Implementation of standard input method
-      friend std::istream & operator >>(std::istream &,complex &)       throw();
+      friend std::istream & operator >>(std::istream &,complex &)      ;
       //! Implementation of standard output method
-      friend std::string &  operator <<(std::string &,const complex &)  throw();
+      friend std::string &  operator <<(std::string &,const complex &) ;
       //! Implementation of standard input method
-      friend std::string &  operator >>(std::string &,complex &)        throw();
+      friend std::string &  operator >>(std::string &,complex &)       ;
       //! Implementation of standard input method
-      friend void           operator >>(const char *,complex &)         throw();
+      friend void           operator >>(const char *,complex &)        ;
       //! Implementation of standard input method
-      friend void           operator >>(const std::string &,complex &)  throw();
+      friend void           operator >>(const std::string &,complex &) ;
 
       // ---- Std.Operators ---------------------------------------
       //! Implementation of standard algebraic negative sign operation
-      friend inline complex operator -(const complex &) throw ();
+      friend inline complex operator -(const complex &);
       //! Implementation of standard algebraic positive sign operation
-      friend inline complex operator +(const complex &) throw ();
+      friend inline complex operator +(const complex &);
 
       //! Implementation of standard algebraic addition operation
-      friend inline complex operator +(const complex &,const complex &) throw();
+      friend inline complex operator +(const complex &,const complex &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline complex operator -(const complex &,const complex &) throw();
+      friend inline complex operator -(const complex &,const complex &);
       //! Implementation of standard algebraic multiplication operation
-      friend complex operator *(const complex &,const complex &) throw();
+      friend complex operator *(const complex &,const complex &);
       //! Implementation of standard algebraic division operation
-      friend complex operator /(const complex &,const complex &) throw();
+      friend complex operator /(const complex &,const complex &);
 
       //! Implementation of standard algebraic addition and allocation operation
-      friend inline complex & operator +=(complex &, const complex &) throw();
+      friend inline complex & operator +=(complex &, const complex &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend inline complex & operator -=(complex &, const complex &) throw();
+      friend inline complex & operator -=(complex &, const complex &);
       //! Implementation of standard algebraic multiplication and allocation operation
-      friend inline complex & operator *=(complex &, const complex &) throw();
+      friend inline complex & operator *=(complex &, const complex &);
       //! Implementation of standard algebraic division and allocation operation
-      friend inline complex & operator /=(complex &, const complex &) throw();
+      friend inline complex & operator /=(complex &, const complex &);
 
       //! Implementation of standard algebraic addition operation
-      friend inline complex operator +(const complex &,const real &) throw();
+      friend inline complex operator +(const complex &,const real &);
       //! Implementation of standard algebraic addition operation
-      friend inline complex operator +(const real &,const complex &) throw();
+      friend inline complex operator +(const real &,const complex &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline complex operator -(const complex &,const real &) throw();
+      friend inline complex operator -(const complex &,const real &);
       //! Implementation of standard algebraic subtraction operation
-      friend inline complex operator -(const real &,const complex &) throw();
+      friend inline complex operator -(const real &,const complex &);
       //! Implementation of standard algebraic multiplication operation
-      friend inline complex operator *(const complex &,const real &) throw();
+      friend inline complex operator *(const complex &,const real &);
       //! Implementation of standard algebraic multiplication operation
-      friend inline complex operator *(const real &,const complex &) throw();
+      friend inline complex operator *(const real &,const complex &);
       //! Implementation of standard algebraic division operation
-      friend inline complex operator /(const complex &,const real &) throw();
+      friend inline complex operator /(const complex &,const real &);
       //! Implementation of standard algebraic division operation
-      friend inline complex operator /(const real &,const complex &) throw();
+      friend inline complex operator /(const real &,const complex &);
 
       //! Implementation of standard algebraic addition and allocation operation
-      friend inline complex & operator +=(complex &, const real &) throw();
+      friend inline complex & operator +=(complex &, const real &);
       //! Implementation of standard algebraic subtraction and allocation operation
-      friend inline complex & operator -=(complex &, const real &) throw();
+      friend inline complex & operator -=(complex &, const real &);
       //! Implementation of standard algebraic multiplication and allocation operation
-      friend inline complex & operator *=(complex &, const real &) throw();
+      friend inline complex & operator *=(complex &, const real &);
       //! Implementation of standard algebraic division and allocation operation
-      friend inline complex & operator /=(complex &, const real &) throw();
+      friend inline complex & operator /=(complex &, const real &);
 
       // ---- Comp.Operat.  ---------------------------------------
-//             inline       operator void *() const throw() { if(re) return (void *)1; if(im) return (void *)1; else return 0; }
+//             inline       operator void *() const { if(re) return (void *)1; if(im) return (void *)1; else return 0; }
       //! Implementation of standard negation operation
-      friend inline bool operator!  (const complex & a)                    throw();
+      friend inline bool operator!  (const complex & a)                   ;
       //! Implementation of standard equality operation
-      friend inline bool operator== (const complex & a, const complex & b) throw();
+      friend inline bool operator== (const complex & a, const complex & b);
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const complex & a, const complex & b) throw();
+      friend inline bool operator!= (const complex & a, const complex & b);
       //! Implementation of standard equality operation
-      friend inline bool operator== (const complex & a, const real & b)    throw();
+      friend inline bool operator== (const complex & a, const real & b)   ;
       //! Implementation of standard equality operation
-      friend inline bool operator== (const real & a, const complex & b)    throw();
+      friend inline bool operator== (const real & a, const complex & b)   ;
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const complex & a, const real & b)    throw();
+      friend inline bool operator!= (const complex & a, const real & b)   ;
       //! Implementation of standard negated equality operation
-      friend inline bool operator!= (const real & a, const complex & b)    throw();
+      friend inline bool operator!= (const real & a, const complex & b)   ;
       
       //! Implementation of standard equality operation
-      friend        bool operator== (const complex & a, const dotprecision & b)    throw();
+      friend        bool operator== (const complex & a, const dotprecision & b)   ;
       //! Implementation of standard equality operation
-      friend        bool operator== (const dotprecision & a, const complex & b)    throw();
+      friend        bool operator== (const dotprecision & a, const complex & b)   ;
       //! Implementation of standard negated equality operation
-      friend        bool operator!= (const complex & a, const dotprecision & b)    throw();
+      friend        bool operator!= (const complex & a, const dotprecision & b)   ;
       //! Implementation of standard negated equality operation
-      friend        bool operator!= (const dotprecision & a, const complex & b)    throw();
+      friend        bool operator!= (const dotprecision & a, const complex & b)   ;
 
       // ---- Others   -------------------------------------------
       //! Returns the real part of the complex value
@@ -268,11 +268,11 @@ class complex
       friend inline complex & SetIm(complex & a,const real & b); // { a.im=b; return a; } 
 
       //! Returns the absolute value of a complex value
-      friend        real abs(complex) throw();
+      friend        real abs(complex);
       //! Returns the absolute value of a complex value
-      friend        real abs2(const complex &) throw();
+      friend        real abs2(const complex &);
       //! Returns the conjugated complex value
-      friend inline complex conj(const complex &) throw();
+      friend inline complex conj(const complex &);
 
 // -------------- Directed rounding, Blomquist 07.11.02 --------------------
 
@@ -283,59 +283,59 @@ class complex
     //! Returns the upward rounded result of the  operation
     friend complex divu (const complex &, const complex &);
     //! Returns the downward rounded result of the division operation
-    friend inline complex divd(const complex &, const real &) throw();
+    friend inline complex divd(const complex &, const real &);
     //! Returns the upward rounded result of the division operation
-    friend inline complex divu(const complex &, const real &) throw();
+    friend inline complex divu(const complex &, const real &);
     //! Returns the downward rounded result of the division operation
-    friend inline complex divd(const real &, const complex &) throw();
+    friend inline complex divd(const real &, const complex &);
     //! Returns the upward rounded result of the division operation
-    friend inline complex divu(const real &, const complex &) throw();
+    friend inline complex divu(const real &, const complex &);
 
     //! Returns the downward rounded result of the multiplication operation
-    friend complex muld (const complex &, const complex &) throw();
+    friend complex muld (const complex &, const complex &);
     //! Returns the upward rounded result of the multiplication operation
-    friend complex mulu (const complex &, const complex &) throw();
+    friend complex mulu (const complex &, const complex &);
     //! Returns the downward rounded result of the multiplication operation
-    friend inline complex muld(const complex &, const real &) throw();
+    friend inline complex muld(const complex &, const real &);
     //! Returns the upward rounded result of the multiplication operation
-    friend inline complex mulu(const complex &, const real &) throw();
+    friend inline complex mulu(const complex &, const real &);
     //! Returns the downward rounded result of the multiplication operation
-    friend inline complex muld(const real &, const complex &) throw();
+    friend inline complex muld(const real &, const complex &);
     //! Returns the upward rounded result of the multiplication operation
-    friend inline complex mulu(const real &, const complex &) throw();
+    friend inline complex mulu(const real &, const complex &);
 
 
     //! Returns the downward rounded result of the addition operation
-    friend inline complex addd(const complex &, const complex &) throw();
+    friend inline complex addd(const complex &, const complex &);
     //! Returns the upward rounded result of the addition operation
-    friend inline complex addu(const complex &, const complex &) throw();
+    friend inline complex addu(const complex &, const complex &);
     //! Returns the downward rounded result of the addition operation
-    friend inline complex addd(const complex &, const real &) throw();
+    friend inline complex addd(const complex &, const real &);
     //! Returns the upward rounded result of the addition operation
-    friend inline complex addu(const complex &, const real &) throw();
+    friend inline complex addu(const complex &, const real &);
     //! Returns the downward rounded result of the addition operation
-    friend inline complex addd(const real &, const complex &) throw();
+    friend inline complex addd(const real &, const complex &);
     //! Returns the upward rounded result of the addition operation
-    friend inline complex addu(const real &, const complex &) throw();
+    friend inline complex addu(const real &, const complex &);
 
 
     //! Returns the downward rounded result of the subtraction operation
-    friend inline complex subd(const complex &, const complex &) throw();
+    friend inline complex subd(const complex &, const complex &);
     //! Returns the upward rounded result of the subtraction operation
-    friend inline complex subu(const complex &, const complex &) throw();
+    friend inline complex subu(const complex &, const complex &);
     //! Returns the downward rounded result of the subtraction operation
-    friend inline complex subd(const complex &, const real &) throw();
+    friend inline complex subd(const complex &, const real &);
     //! Returns the upward rounded result of the subtraction operation
-    friend inline complex subu(const complex &, const real &) throw();
+    friend inline complex subu(const complex &, const real &);
     //! Returns the downward rounded result of the subtraction operation
-    friend inline complex subd(const real &, const complex &) throw();
+    friend inline complex subd(const real &, const complex &);
     //! Returns the upward rounded result of the subtraction operation
-    friend inline complex subu(const real &, const complex &) throw();
+    friend inline complex subu(const real &, const complex &);
 	 
     //! Assigning lx_complex to complex
-    complex & operator = (const lx_complex&) throw(); // Blomquist, 12.11.2008;
+    complex & operator = (const lx_complex&); // Blomquist, 12.11.2008;
     //! Assigning l_complex to complex
-    complex & operator = (const l_complex&)  throw(); // Blomquist, 12.11.2008;
+    complex & operator = (const l_complex&) ; // Blomquist, 12.11.2008;
 }; // end class complex
 
 
@@ -348,8 +348,8 @@ class complex
 complex divn (const complex &, const complex &);
 complex divd (const complex &, const complex &);
 complex divu (const complex &, const complex &);
-complex muld (const complex &, const complex &) throw();
-complex mulu (const complex &, const complex &) throw();
+complex muld (const complex &, const complex &);
+complex mulu (const complex &, const complex &);
 
 // ---------------------------------------------------------------------------
 // ----                                                                   ----
@@ -363,14 +363,14 @@ complex mulu (const complex &, const complex &) throw();
 
 \sa cxsc::complex::complex(const real &r)
 */
-inline complex _complex(const real &a) throw ()             { return complex(a,0.0); }
+inline complex _complex(const real &a)             { return complex(a,0.0); }
 //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
 /*!
 \deprecated use standard contructors for typecasting
 
 \sa cxsc::complex::complex(const real & a,const real & b)
 */
-inline complex _complex(const real &a,const real &b) throw(){ return complex(a,b); }
+inline complex _complex(const real &a,const real &b){ return complex(a,b); }
 
 //! Returns the real part of a variable z of type complex
 inline real & Re(complex & z) { return z.re; }
@@ -387,84 +387,84 @@ inline complex & SetRe(complex & z,const real & b) { z.re=b; return z; }
 inline complex & SetIm(complex & z,const real & b) { z.im=b; return z; } 
 
 //! Calculates an approximation of \f$ z^2 \f$
-inline complex sqr (const complex&) throw();
+inline complex sqr (const complex&);
 //! Calculates an approximation of \f$ \sqrt(z) \f$
-complex sqrt(const complex&) throw();
+complex sqrt(const complex&);
 //! Calculates an approximation of \f$ \sqrt(1+z)-1 \f$
-complex sqrtp1m1(const complex&) throw();
+complex sqrtp1m1(const complex&);
 //! Calculates an approximation of \f$ \sqrt(1+z^2) \f$
-complex sqrt1px2(const complex&) throw();
+complex sqrt1px2(const complex&);
 //! Calculates an approximation of \f$ \sqrt(z^2-1) \f$
-complex sqrtx2m1(const complex&) throw();
+complex sqrtx2m1(const complex&);
 //! Calculates an approximation of \f$ \sqrt(1-z^2) \f$
-complex sqrt1mx2(const complex&) throw();
+complex sqrt1mx2(const complex&);
 
 //! Calculates an approximation of \f$ \exp(z) \f$
-complex exp(const complex&) throw();
+complex exp(const complex&);
 //! Calculates an approximation of \f$ \exp(z)-1 \f$
-complex expm1(const complex&) throw();
+complex expm1(const complex&);
 //! Calculates an approximation of \f$ 2^z \f$
-complex exp2(const complex&) throw();
+complex exp2(const complex&);
 //! Calculates an approximation of \f$ 10^z \f$
-complex exp10(const complex&) throw();
+complex exp10(const complex&);
 //! Calculates an approximation of \f$ \sin(z) \f$
-complex sin(const complex&) throw();
+complex sin(const complex&);
 //! Calculates an approximation of \f$ \cos(z) \f$
-complex cos(const complex&) throw();
+complex cos(const complex&);
 //! Calculates an approximation of \f$ \tan(z) \f$
-complex tan(const complex&) throw();
+complex tan(const complex&);
 //! Calculates an approximation of \f$ \cot(z) \f$
-complex cot(const complex&) throw();
+complex cot(const complex&);
 //! Calculates an approximation of \f$ \arcsin(z) \f$
-complex asin(const complex&) throw();
+complex asin(const complex&);
 //! Calculates an approximation of \f$ \arccos(z) \f$
-complex acos(const complex&) throw();
+complex acos(const complex&);
 //! Calculates an approximation of \f$ \arctan(z) \f$
-complex atan(const complex&) throw();
+complex atan(const complex&);
 //! Calculates an approximation of \f$ \mbox{arccot}(z) \f$
-complex acot(const complex&) throw();
+complex acot(const complex&);
 //! Calculates an approximation of \f$ \sinh(z) \f$
-complex sinh(const complex&) throw();
+complex sinh(const complex&);
 //! Calculates an approximation of \f$ \cosh(z) \f$
-complex cosh(const complex&) throw();
+complex cosh(const complex&);
 //! Calculates an approximation of \f$ \tanh(z) \f$
-complex tanh(const complex&) throw();
+complex tanh(const complex&);
 //! Calculates an approximation of \f$ \coth(z) \f$
-complex coth(const complex&) throw();
+complex coth(const complex&);
 //! Calculates an approximation of \f$ \mbox{arcsinh}(z) \f$
-complex asinh(const complex&) throw();
+complex asinh(const complex&);
 //! Calculates an approximation of \f$ \mbox{arccosh}(z) \f$
-complex acosh(const complex&) throw();
+complex acosh(const complex&);
 //! Calculates an approximation of \f$ \mbox{arctanh}(z) \f$
-complex atanh(const complex&) throw();
+complex atanh(const complex&);
 //! Calculates an approximation of \f$ \mbox{arccoth}(z) \f$
-complex acoth(const complex&) throw();
+complex acoth(const complex&);
 //! Calculates an approximation of \f$ \sqrt{z}  \f$ and returns all possible solutions
 std::list<complex>sqrt_all(const complex&);
 //! Calculates an approximation of \f$ \sqrt[n]{z} \f$
-complex sqrt(const complex&, int) throw();
+complex sqrt(const complex&, int);
 //! Calculates an approximation of \f$ \mbox{arg}(z) \f$
-real arg(const complex&) throw();
+real arg(const complex&);
 //! Calculates an approximation of \f$ \mbox{arg}(z) \f$
-real Arg(const complex&) throw();
+real Arg(const complex&);
 //! Calculates an approximation of \f$ \sqrt[n]{z} \f$ and returns all possible solutions
 std::list<complex>sqrt_all(const complex&, int);
 //! Calculates an approximation of \f$ \ln(z) \f$
-complex ln(const complex&) throw();
+complex ln(const complex&);
 //! Calculates an approximation of \f$ \ln(1+z) \f$
-complex lnp1(const complex&) throw();
+complex lnp1(const complex&);
 //! Calculates an approximation of \f$ \mbox{log2}(z) \f$
-complex log2(const complex&) throw();
+complex log2(const complex&);
 //! Calculates an approximation of \f$ \mbox{log10}(z) \f$
-complex log10(const complex&) throw();
+complex log10(const complex&);
 //! Calculates an approximation of \f$ z^n \f$
-complex power(const complex&,int) throw();
+complex power(const complex&,int);
 //! Calculates an approximation of \f$ z^n \f$
-complex power_fast(const complex&, int) throw();
+complex power_fast(const complex&, int);
 //! Calculates an approximation of \f$ z^y \f$
-complex pow(const complex&, const real&) throw();
+complex pow(const complex&, const real&);
 //! Calculates an approximation of \f$ z_1^{z_2} \f$
-complex pow(const complex&, const complex&) throw();
+complex pow(const complex&, const complex&);
 
 } // namespace cxsc 
 

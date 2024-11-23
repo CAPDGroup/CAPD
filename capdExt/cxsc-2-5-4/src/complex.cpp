@@ -36,26 +36,26 @@
 
 namespace cxsc {
 
-complex::complex(const cdotprecision & a) throw()
+complex::complex(const cdotprecision & a)
 {
    *this=rnd(a);
 }
 
-complex & complex::operator =(const cdotprecision & a) throw()
+complex & complex::operator =(const cdotprecision & a)
 {
    return *this=rnd(a);
 }
 
-bool operator== (const complex & a, const dotprecision & b)    throw() { return !a.im && a.re==b; }
-bool operator== (const dotprecision & a, const complex & b)    throw() { return !b.im && a==b.re; }
-bool operator!= (const complex & a, const dotprecision & b)    throw() { return !!a.im || a.re!=b; }
-bool operator!= (const dotprecision & a, const complex & b)    throw() { return !!b.im || a!=b.re; }
+bool operator== (const complex & a, const dotprecision & b)    { return !a.im && a.re==b; }
+bool operator== (const dotprecision & a, const complex & b)    { return !b.im && a==b.re; }
+bool operator!= (const complex & a, const dotprecision & b)    { return !!a.im || a.re!=b; }
+bool operator!= (const dotprecision & a, const complex & b)    { return !!b.im || a!=b.re; }
 
 
 
 // ---- Ausgabefunkt. ---------------------------------------
 
-std::ostream & operator << (std::ostream &s, const complex& a) throw()
+std::ostream & operator << (std::ostream &s, const complex& a)
 {
    s << '('          
      << a.re << ','  
@@ -63,7 +63,7 @@ std::ostream & operator << (std::ostream &s, const complex& a) throw()
      << ')';
    return s;
 }
-std::string & operator << (std::string &s, const complex &a) throw()
+std::string & operator << (std::string &s, const complex &a)
 {
    s+='(';
    s << a.re;
@@ -73,7 +73,7 @@ std::string & operator << (std::string &s, const complex &a) throw()
    return s;
 }
 
-std::istream & operator >> (std::istream &s, complex &a) throw()
+std::istream & operator >> (std::istream &s, complex &a)
 {
    char c;
 
@@ -104,7 +104,7 @@ std::istream & operator >> (std::istream &s, complex &a) throw()
    return s;
 }
 
-std::string & operator >> (std::string &s, complex &a) throw()
+std::string & operator >> (std::string &s, complex &a)
 {
    s = skipwhitespacessinglechar (s, '(');
    s >> SaveOpt >> RndDown >> a.re;
@@ -121,47 +121,47 @@ std::string & operator >> (std::string &s, complex &a) throw()
    return s;
 }
 
-void operator >>(const std::string &s,complex &a) throw()
+void operator >>(const std::string &s,complex &a)
 {
    std::string r(s);
    r>>a;
 }
-void operator >>(const char *s,complex &a) throw()
+void operator >>(const char *s,complex &a)
 {
    std::string r(s);
    r>>a;
 }
 
-complex exp(const complex& x) throw() { return mid(exp(cinterval(x))); }
-complex expm1(const complex& x) throw() { return mid(expm1(cinterval(x))); }
-complex exp2(const complex& x) throw() { return mid(exp2(cinterval(x))); }
-complex exp10(const complex& x) throw() { return mid(exp10(cinterval(x))); }
-complex cos(const complex& x) throw() { return mid(cos(cinterval(x))); }
-complex sin(const complex& x) throw() { return mid(sin(cinterval(x))); }
-complex cosh(const complex& x) throw() { return mid(cosh(cinterval(x))); }
-complex sinh(const complex& x) throw() { return mid(sinh(cinterval(x))); }
+complex exp(const complex& x) { return mid(exp(cinterval(x))); }
+complex expm1(const complex& x) { return mid(expm1(cinterval(x))); }
+complex exp2(const complex& x) { return mid(exp2(cinterval(x))); }
+complex exp10(const complex& x) { return mid(exp10(cinterval(x))); }
+complex cos(const complex& x) { return mid(cos(cinterval(x))); }
+complex sin(const complex& x) { return mid(sin(cinterval(x))); }
+complex cosh(const complex& x) { return mid(cosh(cinterval(x))); }
+complex sinh(const complex& x) { return mid(sinh(cinterval(x))); }
 
-complex tan(const complex& x) throw() { return mid(tan(cinterval(x))); }
-complex cot(const complex& x) throw() { return mid(cot(cinterval(x))); }
-complex tanh(const complex& x) throw() { return mid(tanh(cinterval(x))); }
-complex coth(const complex& x) throw() { return mid(coth(cinterval(x))); }
+complex tan(const complex& x) { return mid(tan(cinterval(x))); }
+complex cot(const complex& x) { return mid(cot(cinterval(x))); }
+complex tanh(const complex& x) { return mid(tanh(cinterval(x))); }
+complex coth(const complex& x) { return mid(coth(cinterval(x))); }
 
-real arg(const complex& x) throw() { return mid(arg(cinterval(x))); }
-real Arg(const complex& x) throw() { return mid(Arg(cinterval(x))); }
+real arg(const complex& x) { return mid(arg(cinterval(x))); }
+real Arg(const complex& x) { return mid(Arg(cinterval(x))); }
 
-complex ln(const complex& x) throw() { return mid(ln(cinterval(x))); }
-complex lnp1(const complex& x) throw() { return mid(lnp1(cinterval(x))); }
-complex log2(const complex& x) throw() { return mid(log2(cinterval(x))); }
-complex log10(const complex& x) throw() { return mid(log10(cinterval(x))); }
+complex ln(const complex& x) { return mid(ln(cinterval(x))); }
+complex lnp1(const complex& x) { return mid(lnp1(cinterval(x))); }
+complex log2(const complex& x) { return mid(log2(cinterval(x))); }
+complex log10(const complex& x) { return mid(log10(cinterval(x))); }
 
-complex sqr(const complex& x) throw() { return mid(sqr(cinterval(x))); }
+complex sqr(const complex& x) { return mid(sqr(cinterval(x))); }
 
-complex sqrt(const complex& x) throw() { return mid(sqrt(cinterval(x))); }
-complex sqrtp1m1(const complex& x) throw() { return mid(sqrtp1m1(cinterval(x))); }
-complex sqrt1px2(const complex& x) throw() { return mid(sqrt1px2(cinterval(x))); }
-complex sqrtx2m1(const complex& x) throw() { return mid(sqrtx2m1(cinterval(x))); }
-complex sqrt1mx2(const complex& x) throw() { return mid(sqrt1mx2(cinterval(x))); }
-complex sqrt(const complex& x, int d) throw() 
+complex sqrt(const complex& x) { return mid(sqrt(cinterval(x))); }
+complex sqrtp1m1(const complex& x) { return mid(sqrtp1m1(cinterval(x))); }
+complex sqrt1px2(const complex& x) { return mid(sqrt1px2(cinterval(x))); }
+complex sqrtx2m1(const complex& x) { return mid(sqrtx2m1(cinterval(x))); }
+complex sqrt1mx2(const complex& x) { return mid(sqrt1mx2(cinterval(x))); }
+complex sqrt(const complex& x, int d) 
 { return mid(sqrt(cinterval(x),d)); }
 
 std::list<complex> sqrt_all( const complex& c )
@@ -217,23 +217,23 @@ std::list<complex> sqrt_all( const complex& z, int n )
 //-- end sqrt_all -------------------------------------------------------------
 	
 
-complex power_fast(const complex& x,int d) throw() 
+complex power_fast(const complex& x,int d) 
 { return mid(power_fast(cinterval(x),d)); }
-complex power(const complex& x,int d) throw() 
+complex power(const complex& x,int d) 
 { return mid(power(cinterval(x),d)); }
-complex pow(const complex& x, const real& r) throw() 
+complex pow(const complex& x, const real& r) 
 { return mid(pow(cinterval(x),interval(r))); }
-complex pow(const complex& x, const complex& y) throw() 
+complex pow(const complex& x, const complex& y) 
 { return mid(pow(cinterval(x),cinterval(y))); }
 
-complex asin(const complex& x) throw() { return mid(asin(cinterval(x))); }
-complex acos(const complex& x) throw() { return mid(acos(cinterval(x))); }
-complex asinh(const complex& x) throw() { return mid(asinh(cinterval(x))); }
-complex acosh(const complex& x) throw() { return mid(acosh(cinterval(x))); }
-complex atan(const complex& x) throw() { return mid(atan(cinterval(x))); }
-complex acot(const complex& x) throw() { return mid(acot(cinterval(x))); }
-complex atanh(const complex& x) throw() { return mid(atanh(cinterval(x))); }
-complex acoth(const complex& x) throw() { return mid(acoth(cinterval(x))); }
+complex asin(const complex& x) { return mid(asin(cinterval(x))); }
+complex acos(const complex& x) { return mid(acos(cinterval(x))); }
+complex asinh(const complex& x) { return mid(asinh(cinterval(x))); }
+complex acosh(const complex& x) { return mid(acosh(cinterval(x))); }
+complex atan(const complex& x) { return mid(atan(cinterval(x))); }
+complex acot(const complex& x) { return mid(acot(cinterval(x))); }
+complex atanh(const complex& x) { return mid(atanh(cinterval(x))); }
+complex acoth(const complex& x) { return mid(acoth(cinterval(x))); }
 
 } // namespace cxsc
 

@@ -27,21 +27,21 @@ namespace cxsc {
 
 // ---- Konstruktoren ----
 
-inline interval::interval(const real &a,const real &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL)
+inline interval::interval(const real &a,const real &b)
                                                        : inf(a), sup(b)
 {
    if (a > b) 
       cxscthrow(ERROR_INTERVAL_EMPTY_INTERVAL("inline interval::interval(const real &a,const real &b)"));
 }
 
-/*inline interval::interval(int a,int b) throw(ERROR_INTERVAL_EMPTY_INTERVAL)
+/*inline interval::interval(int a,int b)
                                       : inf(a), sup(b)
 {
    if (a > b) 
       cxscthrow(ERROR_INTERVAL_EMPTY_INTERVAL("inline interval::interval(int a,int b)"));
 }
 
-inline interval::interval(const double & a,const double & b) throw(ERROR_INTERVAL_EMPTY_INTERVAL)
+inline interval::interval(const double & a,const double & b)
                                                              : inf(a), sup(b)
 {
    if (a > b) 
@@ -74,66 +74,66 @@ inline interval _unchecked_interval(const real& a, const real& b)
 
 // ---- Standardfunkt ---- (arithmetische Operatoren)
 
-inline interval operator-(const interval &a) throw() { return interval (-a.sup, -a.inf); }
-inline interval operator+(const interval &a) throw() { return a; }
+inline interval operator-(const interval &a) { return interval (-a.sup, -a.inf); }
+inline interval operator+(const interval &a) { return a; }
 
-inline interval & operator +=(interval &a,const interval &b) throw() { return a=a+b; }
-inline interval & operator +=(interval &a,const real &b)     throw() { return a=a+b; }
-inline interval & operator -=(interval &a,const interval &b) throw() { return a=a-b; }
-inline interval & operator -=(interval &a,const real &b)     throw() { return a=a-b; }
-inline interval & operator *=(interval &a,const interval &b) throw() { return a=a*b; }
-inline interval & operator *=(interval &a,const real &b)     throw() { return a=a*b; }
-inline interval & operator /=(interval &a,const interval &b) throw() { return a=a/b; }
-inline interval & operator /=(interval &a,const real &b)     throw() { return a=a/b; }
+inline interval & operator +=(interval &a,const interval &b) { return a=a+b; }
+inline interval & operator +=(interval &a,const real &b)     { return a=a+b; }
+inline interval & operator -=(interval &a,const interval &b) { return a=a-b; }
+inline interval & operator -=(interval &a,const real &b)     { return a=a-b; }
+inline interval & operator *=(interval &a,const interval &b) { return a=a*b; }
+inline interval & operator *=(interval &a,const real &b)     { return a=a*b; }
+inline interval & operator /=(interval &a,const interval &b) { return a=a/b; }
+inline interval & operator /=(interval &a,const real &b)     { return a=a/b; }
 
 
-inline interval operator |(const interval &a,const interval &b) throw() 
+inline interval operator |(const interval &a,const interval &b) 
 {
    return interval((a.inf<b.inf)?a.inf:b.inf,(a.sup>b.sup)?a.sup:b.sup);
 }
-inline interval operator &(const interval &a,const interval &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) 
+inline interval operator &(const interval &a,const interval &b) 
 {
    return interval((a.inf>b.inf)?a.inf:b.inf,(a.sup<b.sup)?a.sup:b.sup);
 }
-inline interval operator |(const real &a,const interval &b) throw() 
+inline interval operator |(const real &a,const interval &b) 
 {
    return interval((a<b.inf)?a:b.inf,(a>b.sup)?a:b.sup);
 }
-inline interval operator &(const real &a,const interval &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) 
+inline interval operator &(const real &a,const interval &b) 
 {
    return interval((a>b.inf)?a:b.inf,(a<b.sup)?a:b.sup);
 }
-inline interval operator |(const interval &a,const real &b) throw() 
+inline interval operator |(const interval &a,const real &b) 
 {
    return interval((a.inf<b)?a.inf:b,(a.sup>b)?a.sup:b);
 }
-inline interval operator |(const real &a,const real &b) throw()
+inline interval operator |(const real &a,const real &b)
 {
    if(a>b) return interval(b,a);
    else    return interval(a,b);
 }
-inline interval operator &(const interval &a,const real &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) 
+inline interval operator &(const interval &a,const real &b) 
 {
    return interval((a.inf>b)?a.inf:b,(a.sup<b)?a.sup:b);
 }
-inline interval & operator |=(interval &a,const interval &b) throw() 
+inline interval & operator |=(interval &a,const interval &b) 
 {
    a.inf=(a.inf<b.inf)?a.inf:b.inf,a.sup=(a.sup>b.sup)?a.sup:b.sup;
    return a;
 }
-inline interval & operator &=(interval &a,const interval &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) 
+inline interval & operator &=(interval &a,const interval &b) 
 {
    a.inf=(a.inf>b.inf)?a.inf:b.inf,a.sup=(a.sup<b.sup)?a.sup:b.sup;
    if(a.inf>a.sup)
       cxscthrow(ERROR_INTERVAL_EMPTY_INTERVAL("inline interval & operator &=(interval &a,const interval &b)"));
    return a;
 }
-inline interval & operator |=(interval &a,const real &b) throw() 
+inline interval & operator |=(interval &a,const real &b) 
 {
    a.inf=(a.inf<b)?a.inf:b,a.sup=(a.sup>b)?a.sup:b;
    return a;
 }
-inline interval & operator &=(interval &a,const real &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) 
+inline interval & operator &=(interval &a,const real &b) 
 {
    a.inf=(a.inf>b)?a.inf:b,a.sup=(a.sup<b)?a.sup:b;
    if(a.inf>a.sup)
@@ -142,88 +142,88 @@ inline interval & operator &=(interval &a,const real &b) throw(ERROR_INTERVAL_EM
 }
 
 // --- Vergleichsoperationen ----
-inline bool operator ==(const interval &a,const interval &b) throw() {   return(a.inf==b.inf && a.sup==b.sup); }
-inline bool operator !=(const interval &a,const interval &b) throw() {   return(a.inf!=b.inf || a.sup!=b.sup); }
-inline bool operator ==(const real &r,const interval &a)     throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const real &r,const interval &a)     throw() {   return(r!=a.inf || r!=a.sup); }
-inline bool operator ==(const interval &a,const real &r)     throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const interval &a,const real &r)     throw() {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const interval &a,const interval &b) {   return(a.inf==b.inf && a.sup==b.sup); }
+inline bool operator !=(const interval &a,const interval &b) {   return(a.inf!=b.inf || a.sup!=b.sup); }
+inline bool operator ==(const real &r,const interval &a)     {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const real &r,const interval &a)     {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const interval &a,const real &r)     {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const interval &a,const real &r)     {   return(r!=a.inf || r!=a.sup); }
 
-inline bool operator ==(const int &r,const interval &a)     throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const int &r,const interval &a)     throw() {   return(r!=a.inf || r!=a.sup); }
-inline bool operator ==(const interval &a,const int &r)     throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const interval &a,const int &r)     throw() {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const int &r,const interval &a)     {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const int &r,const interval &a)     {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const interval &a,const int &r)     {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const interval &a,const int &r)     {   return(r!=a.inf || r!=a.sup); }
 
-inline bool operator ==(const long &r,const interval &a)    throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const long &r,const interval &a)    throw() {   return(r!=a.inf || r!=a.sup); }
-inline bool operator ==(const interval &a,const long &r)    throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const interval &a,const long &r)    throw() {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const long &r,const interval &a)    {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const long &r,const interval &a)    {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const interval &a,const long &r)    {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const interval &a,const long &r)    {   return(r!=a.inf || r!=a.sup); }
 
-inline bool operator ==(const double &r,const interval &a)  throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const double &r,const interval &a)  throw() {   return(r!=a.inf || r!=a.sup); }
-inline bool operator ==(const interval &a,const double &r)  throw() {   return(r==a.inf && r==a.sup); }
-inline bool operator !=(const interval &a,const double &r)  throw() {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const double &r,const interval &a)  {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const double &r,const interval &a)  {   return(r!=a.inf || r!=a.sup); }
+inline bool operator ==(const interval &a,const double &r)  {   return(r==a.inf && r==a.sup); }
+inline bool operator !=(const interval &a,const double &r)  {   return(r!=a.inf || r!=a.sup); }
 
 // --- Mengenvergleiche ---
 // <,>,...
-inline bool operator <=(const interval &a,const interval &b) throw()
+inline bool operator <=(const interval &a,const interval &b)
 {
    return(a.inf>=b.inf && a.sup<=b.sup);   
 }
-inline bool operator >=(const interval &a,const interval &b) throw()
+inline bool operator >=(const interval &a,const interval &b)
 {
    return(a.inf<=b.inf && a.sup>=b.sup);   
 }
-inline bool operator <(const interval &a,const interval &b) throw()
+inline bool operator <(const interval &a,const interval &b)
 {
    return(a.inf>b.inf && a.sup<b.sup);   
 }
-inline bool operator >(const interval &a,const interval &b) throw()
+inline bool operator >(const interval &a,const interval &b)
 {
    return(a.inf<b.inf && a.sup>b.sup);   
 }
 
-inline bool operator <=(const real &a,const interval &b) throw()
+inline bool operator <=(const real &a,const interval &b)
 {
    return(a>=b.inf && a<=b.sup);   
 }
-inline bool operator >=(const real &a,const interval &b) throw()
+inline bool operator >=(const real &a,const interval &b)
 {
    return(a<=b.inf && a>=b.sup);   
 }
-inline bool operator <(const real &a,const interval &b) throw()
+inline bool operator <(const real &a,const interval &b)
 {
    return(a>b.inf && a<b.sup);   
 }
 
-inline bool operator <=(const interval &a,const real &b) throw()
+inline bool operator <=(const interval &a,const real &b)
 {
    return(a.inf>=b && a.sup<=b);   
 }
-inline bool operator >=(const interval &a,const real &b) throw()
+inline bool operator >=(const interval &a,const real &b)
 {
    return(a.inf<=b && a.sup>=b);   
 }
-inline bool operator >(const interval &a,const real &b) throw()
+inline bool operator >(const interval &a,const real &b)
 {
    return(a.inf<b && a.sup>b);   
 }
 
-inline bool operator !(const interval &a) throw() { return (a.inf <= 0.0 && a.sup >= 0.0); }  
+inline bool operator !(const interval &a) { return (a.inf <= 0.0 && a.sup >= 0.0); }  
 
-inline       real & Inf (interval& a)       throw() { return a.inf; }
-inline const real & Inf (const interval &a) throw() { return a.inf; }
-inline       real & Sup (interval& a)       throw() { return a.sup; }
-inline const real & Sup (const interval &a) throw() { return a.sup; }
+inline       real & Inf (interval& a)       { return a.inf; }
+inline const real & Inf (const interval &a) { return a.inf; }
+inline       real & Sup (interval& a)       { return a.sup; }
+inline const real & Sup (const interval &a) { return a.sup; }
 
-inline interval& SetInf (interval& a, const real& b)  throw() {a.inf=b; return a;}
-inline interval& SetSup (interval& a, const real& b) throw()  {a.sup=b; return a;}
-inline interval& UncheckedSetInf (interval& a, const real& b) throw() { a.inf=b; return a;}
-inline interval& UncheckedSetSup (interval& a, const real& b) throw() { a.sup=b; return a;}
+inline interval& SetInf (interval& a, const real& b)  {a.inf=b; return a;}
+inline interval& SetSup (interval& a, const real& b)  {a.sup=b; return a;}
+inline interval& UncheckedSetInf (interval& a, const real& b) { a.inf=b; return a;}
+inline interval& UncheckedSetSup (interval& a, const real& b) { a.sup=b; return a;}
 
-inline bool IsEmpty(const interval &a) throw() { return (a.inf>a.sup); }
+inline bool IsEmpty(const interval &a) { return (a.inf>a.sup); }
 
-inline interval abs(const interval &a) throw()
+inline interval abs(const interval &a)
 {
    real h1  = abs(a.inf);
    real h2  = abs(a.sup);
@@ -237,17 +237,17 @@ inline interval abs(const interval &a) throw()
    return interval(h1, h2); 
 }
 
-inline real diam(const interval & a) throw()
+inline real diam(const interval & a)
 {
    return subup(a.sup,a.inf); 
 }
 
-inline real Mid(const interval & a) throw()
+inline real Mid(const interval & a)
 {
    return addd( a.inf, subd(0.5*a.sup,0.5*a.inf) );
 }
 
-inline void times2pown(interval& x, const int& n) throw()
+inline void times2pown(interval& x, const int& n)
 {
     real r1,r2;
     int j;
@@ -280,18 +280,18 @@ inline void times2pown(interval& x, const int& n) throw()
     x = _interval(r1,r2);
 } // times2pown(...)
 
-interval operator+ (const interval& a, const interval& b) throw()
+interval operator+ (const interval& a, const interval& b)
   { return interval (adddown(a.inf,b.inf),addup(a.sup,b.sup)); }
-interval operator+ (const interval& a, const real& b) throw() 
+interval operator+ (const interval& a, const real& b) 
   { return interval (adddown(a.inf,b),addup(a.sup,b)); }
-interval operator+ (const real& a, const interval& b) throw() 
+interval operator+ (const real& a, const interval& b) 
   { return interval (adddown(a,b.inf),addup(a,b.sup)); }
 
-interval operator-  (const interval& a, const interval& b) throw() 
+interval operator-  (const interval& a, const interval& b) 
   { return interval ( subdown(a.inf,b.sup), subup(a.sup,b.inf)); }
-interval operator-  (const interval& a, const real& b) throw() 
+interval operator-  (const interval& a, const real& b) 
   { return interval ( subdown(a.inf,b), subup(a.sup,b)); }
-interval operator-  (const real& a, const interval& b) throw() 
+interval operator-  (const real& a, const interval& b) 
   { return interval ( subdown(a,b.sup), subup(a,b.inf)); }
 
   //------------------------------------------------------------------------
@@ -308,7 +308,7 @@ interval operator-  (const real& a, const interval& b) throw()
   //
   //  .... :  min(ai*bs, as*bi), max(ai*ai, as*as)
   //
-interval operator *(const interval& a, const interval& b) throw()
+interval operator *(const interval& a, const interval& b)
 {
    interval tmp;
 
@@ -384,7 +384,7 @@ interval operator *(const interval& a, const interval& b) throw()
   // ai,as < 0       I   ai/bi, as/bs   I   as/bi, ai/bs
   // ----------------+------------------+------------------
   //
-interval operator/  (const interval& a, const interval& b) throw(DIV_BY_ZERO)
+interval operator/  (const interval& a, const interval& b)
 {
    interval tmp;
 
@@ -429,7 +429,7 @@ interval operator/  (const interval& a, const interval& b) throw(DIV_BY_ZERO)
    return tmp;
 }
 
-interval operator*  (const real& a, const interval& b) throw()
+interval operator*  (const real& a, const interval& b)
 {
    interval tmp;
    if (sign(a) == 0) 
@@ -448,7 +448,7 @@ interval operator*  (const real& a, const interval& b) throw()
    return tmp;
 }
 
-interval operator*  (const interval& a, const real& b) throw()
+interval operator*  (const interval& a, const real& b)
 {
    interval tmp;
    if (sign(b) == 0) 
@@ -467,8 +467,8 @@ interval operator*  (const interval& a, const real& b) throw()
    return tmp;
 }
 
-interval operator/  (const real& a, const interval& b)  throw() { return (interval(a) / b); }
-interval operator/  (const interval& a, const real& b)  throw() { return (a / interval(b)); }
+interval operator/  (const real& a, const interval& b)  { return (interval(a) / b); }
+interval operator/  (const interval& a, const real& b)  { return (a / interval(b)); }
 
 
 } // namespace cxsc

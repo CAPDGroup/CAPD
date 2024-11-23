@@ -28,98 +28,98 @@
 namespace cxsc {
 // ---- Constructors ----------------------------------------------
 
-inline complex & complex::operator= (const real & r) throw()
+inline complex & complex::operator= (const real & r)
 {
    re=r;im=0;
    return *this;
 }
 
       // ---- Std.Operators ---------------------------------------
-inline complex operator -(const complex &a) throw () 
+inline complex operator -(const complex &a) 
 {
    return complex(-a.re,-a.im);
 }
 
-inline complex operator +(const complex &a) throw ()
+inline complex operator +(const complex &a)
 {
    return a;
 }
 
-inline complex operator +(const complex &a,const complex &b) throw()
+inline complex operator +(const complex &a,const complex &b)
 {
    return complex(a.re+b.re,a.im+b.im);
 }
 
-inline complex operator -(const complex &a,const complex &b) throw()
+inline complex operator -(const complex &a,const complex &b)
 {
    return complex(a.re-b.re,a.im-b.im);
 }
 
-inline complex & operator +=(complex &a, const complex &b) throw() { return a=a+b; }
-inline complex & operator -=(complex &a, const complex &b) throw() { return a=a-b; }
-inline complex & operator *=(complex &a, const complex &b) throw() { return a=a*b; }
-inline complex & operator /=(complex &a, const complex &b) throw() { return a=a/b; }
+inline complex & operator +=(complex &a, const complex &b) { return a=a+b; }
+inline complex & operator -=(complex &a, const complex &b) { return a=a-b; }
+inline complex & operator *=(complex &a, const complex &b) { return a=a*b; }
+inline complex & operator /=(complex &a, const complex &b) { return a=a/b; }
 
-inline complex operator +(const complex & a,const real & b) throw() 
+inline complex operator +(const complex & a,const real & b) 
 { 
    return complex(a.re+b,a.im);
 }
 
-inline complex operator +(const real & a,const complex & b) throw()
+inline complex operator +(const real & a,const complex & b)
 {
    return complex(a+b.re,b.im);
 }
 
-inline complex operator -(const complex & a,const real & b) throw()
+inline complex operator -(const complex & a,const real & b)
 {
    return complex(a.re-b,a.im);
 }
 
-inline complex operator -(const real & a,const complex & b) throw()
+inline complex operator -(const real & a,const complex & b)
 {
    return complex(a-b.re,-b.im);
 }
 
-inline complex operator *(const complex & a,const real & b) throw()
+inline complex operator *(const complex & a,const real & b)
 {
 //   return a*_complex(b);
      return complex(a.re*b,a.im*b);  // Blomquist, 07.11.02;
 }
 
-inline complex operator *(const real & a,const complex & b) throw()
+inline complex operator *(const real & a,const complex & b)
 {
 //   return _complex(a)*b;
      return complex(a*b.re, a*b.im);  // Blomquist, 07.11.02;
 }
 
-inline complex operator /(const complex & a,const real & b) throw()
+inline complex operator /(const complex & a,const real & b)
 {
 //   return a/_complex(b);
      return complex(a.re/b, a.im/b);  // Blomquist, 07.11.02;
 }
 
-inline complex operator /(const real & a,const complex & b) throw()
+inline complex operator /(const real & a,const complex & b)
 {
    return _complex(a)/b;
 }
 
-inline complex & operator +=(complex & a, const real & b) throw() { return a=a+b; }
-inline complex & operator -=(complex & a, const real & b) throw() { return a=a-b; }
-inline complex & operator *=(complex & a, const real & b) throw() { return a=a*b; }
-inline complex & operator /=(complex & a, const real & b) throw() { return a=a/b; }
+inline complex & operator +=(complex & a, const real & b) { return a=a+b; }
+inline complex & operator -=(complex & a, const real & b) { return a=a-b; }
+inline complex & operator *=(complex & a, const real & b) { return a=a*b; }
+inline complex & operator /=(complex & a, const real & b) { return a=a/b; }
 
       // ---- Comp.Operat.  ---------------------------------------
-inline bool operator!  (const complex & a)                    throw() { return !a.re && !a.im; }
-inline bool operator== (const complex & a, const complex & b) throw() { return a.re==b.re && a.im==b.im; }
-inline bool operator!= (const complex & a, const complex & b) throw() { return a.re!=b.re || a.im!=b.im; }
-inline bool operator== (const complex & a, const real & b)    throw() { return !a.im && a.re==b; }
-inline bool operator== (const real & a, const complex & b)    throw() { return !b.im && a==b.re; }
-inline bool operator!= (const complex & a, const real & b)    throw() { return !!a.im || a.re!=b; }
-inline bool operator!= (const real & a, const complex & b)    throw() { return !!b.im || a!=b.re; }
+inline bool operator!  (const complex & a)                    { return !a.re && !a.im; }
+inline bool operator== (const complex & a, const complex & b) { return a.re==b.re && a.im==b.im; }
+inline bool operator!= (const complex & a, const complex & b) { return a.re!=b.re || a.im!=b.im; }
+inline bool operator== (const complex & a, const real & b)    { return !a.im && a.re==b; }
+inline bool operator== (const real & a, const complex & b)    { return !b.im && a==b.re; }
+inline bool operator!= (const complex & a, const real & b)    { return !!a.im || a.re!=b; }
+inline bool operator!= (const real & a, const complex & b)    { return !!b.im || a!=b.re; }
 
       // ---- Others   -------------------------------------------
 
-inline complex conj(const complex & a) throw() { return complex(a.re,-a.im); }
+inline complex conj(const complex & a) { return complex(a.re,-a.im); }
 
 
 // ----------- Directed Rounding, Blomquist -------------------------------
@@ -127,72 +127,72 @@ inline complex conj(const complex & a) throw() { return complex(a.re,-a.im); }
 
    // -------------------- addition --------------------------------
 
-inline complex addd(const complex& a, const complex& b) throw()
+inline complex addd(const complex& a, const complex& b)
 { return complex(addd(a.re,b.re), addd(a.im,b.im)); }
 
-inline complex addu(const complex& a, const complex& b) throw()
+inline complex addu(const complex& a, const complex& b)
 { return complex(addu(a.re,b.re), addu(a.im,b.im)); }
 
-inline complex addd(const complex& a, const real& b) throw()
+inline complex addd(const complex& a, const real& b)
 { return complex(addd(a.re,b), a.im); }
 
-inline complex addu(const complex& a, const real& b) throw()
+inline complex addu(const complex& a, const real& b)
 { return complex(addu(a.re,b), a.im); }
 
-inline complex addd(const real& a, const complex& b) throw()
+inline complex addd(const real& a, const complex& b)
 { return complex(addd(a,b.re), b.im); }
 
-inline complex addu(const real& a, const complex& b) throw()
+inline complex addu(const real& a, const complex& b)
 { return complex(addu(a,b.re), b.im); }
    // ----------------- subtraction: ----------------------------
 
-inline complex subd(const complex& a, const complex& b) throw()
+inline complex subd(const complex& a, const complex& b)
 { return complex(subd(a.re,b.re), subd(a.im,b.im)); }
 
-inline complex subu(const complex& a, const complex& b) throw()
+inline complex subu(const complex& a, const complex& b)
 { return complex(subu(a.re,b.re), subu(a.im,b.im)); }
 
-inline complex subd(const complex& a, const real& b) throw()
+inline complex subd(const complex& a, const real& b)
 { return complex(subd(a.re,b), a.im); }
 
-inline complex subu(const complex& a, const real& b) throw()
+inline complex subu(const complex& a, const real& b)
 { return complex(subu(a.re,b), a.im); }
 
-inline complex subd(const real& a, const complex& b) throw()
+inline complex subd(const real& a, const complex& b)
 { return complex(subd(a,b.re), -b.im); }
 
-inline complex subu(const real& a, const complex& b) throw()
+inline complex subu(const real& a, const complex& b)
 { return complex(subu(a,b.re), -b.im); }
 
    // --------------- multiplikation ------------------------
 
-inline complex muld(const complex &a, const real &b) throw()
+inline complex muld(const complex &a, const real &b)
 { return complex( muld(a.re,b), muld(a.im,b) ); }
 
-inline complex mulu(const complex &a, const real &b) throw()
+inline complex mulu(const complex &a, const real &b)
 { return complex( mulu(a.re,b), mulu(a.im,b) ); }
 
-inline complex muld(const real &a, const complex &b) throw()
+inline complex muld(const real &a, const complex &b)
 { return complex( muld(a,b.re), muld(a,b.im) ); }
 
-inline complex mulu(const real &a, const complex &b) throw()
+inline complex mulu(const real &a, const complex &b)
 { return complex( mulu(a,b.re), mulu(a,b.im) ); }
 
    // -------------- division ---------------------------------
 
-inline complex divd(const complex &a, const real &b) throw()
+inline complex divd(const complex &a, const real &b)
 { return complex( divd(a.re,b), divd(a.im,b) ); }
 
-inline complex divu(const complex &a, const real &b) throw()
+inline complex divu(const complex &a, const real &b)
 { return complex( divu(a.re,b), divu(a.im,b) ); }
 
-inline complex divd(const real &a, const complex &b) throw()
+inline complex divd(const real &a, const complex &b)
 { return divd(_complex(a),b); }
 
-inline complex divu(const real &a, const complex &b) throw()
+inline complex divu(const real &a, const complex &b)
 { return divu(_complex(a),b); }
 
-inline complex operator *(const complex &a,const complex &b) throw()
+inline complex operator *(const complex &a,const complex &b)
 {
 #ifdef CXSC_FAST_COMPLEX_OPERATIONS
    return complex(Re(a)*Re(b)-Im(a)*Im(b), Re(a)*Im(b)+Im(a)*Re(b));
@@ -213,7 +213,7 @@ inline complex operator *(const complex &a,const complex &b) throw()
 #endif
 }
 
-inline complex muld(const complex &a, const complex &b) throw()
+inline complex muld(const complex &a, const complex &b)
 {  // Blomquist 07.11.02;
    complex tmp;
    dotprecision dot(0.0);
@@ -230,7 +230,7 @@ inline complex muld(const complex &a, const complex &b) throw()
    return tmp;
 }
 
-inline complex mulu(const complex &a, const complex &b) throw()
+inline complex mulu(const complex &a, const complex &b)
 {  // Blomquist 07.11.02;
    complex tmp;
    dotprecision dot(0.0);
@@ -479,7 +479,7 @@ inline real quotient (real z1, interval z2, real n1,
    return q1;
 } // end of quotient
 
-inline complex _c_division(complex a, complex b, int round) throw(DIV_BY_ZERO)
+inline complex _c_division(complex a, complex b, int round)
 {
     if (0.0 == (sqr(Re(b))+sqr(Im(b)))) {
       cxscthrow(DIV_BY_ZERO("complex operator / (const complex&,const complex&)"));
@@ -513,7 +513,7 @@ inline complex divu (const complex & a, const complex & b)
    return _c_division(a, b, RND_UP);
 }
 
-inline complex operator / (const complex &a,const complex &b) throw()
+inline complex operator / (const complex &a,const complex &b)
 {
 #ifdef CXSC_FAST_COMPLEX_OPERATIONS
    real q = Re(b)*Re(b) + Im(b)*Im(b);
@@ -523,7 +523,7 @@ inline complex operator / (const complex &a,const complex &b) throw()
 #endif
 }
 
-inline real abs2(const complex &a) throw()
+inline real abs2(const complex &a)
 {
    dotprecision dot(0.0);
    accumulate(dot,a.re,a.re);
@@ -531,7 +531,7 @@ inline real abs2(const complex &a) throw()
    return rnd(dot);
 }
 
-inline real abs (complex z) throw()
+inline real abs (complex z)
 {   //  calculation of |z|; Blomquist 06.12.02;
 #ifdef CXSC_FAST_COMPLEX_OPERATIONS
     return sqrt(Re(z)*Re(z)+Im(z)*Im(z));

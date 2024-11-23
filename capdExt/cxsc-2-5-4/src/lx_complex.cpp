@@ -35,14 +35,14 @@ namespace cxsc {
 // ----- Functions and operators related to type lx_complex -------------------
 // ----------------------------------------------------------------------------
 
-	l_complex & l_complex::operator = (const lx_complex& a) throw()
+	l_complex & l_complex::operator = (const lx_complex& a)
 {
 	l_real u,v;
 	u = Re(a);  v = Im(a);
 	return *this = l_complex(u,v);
 }
 	
-	complex & complex::operator = (const lx_complex& a) throw()
+	complex & complex::operator = (const lx_complex& a)
 {
 	l_complex x;
 	complex y;
@@ -52,7 +52,7 @@ namespace cxsc {
 	return *this = y;
 }
 
-	std::string & operator >> (std::string& s, lx_complex& a) throw()
+	std::string & operator >> (std::string& s, lx_complex& a)
 // Writes string s to variable a of type lx_complex;
 // and returns an empty string s;
 // Example:  s = "({2,3} , {4,5})" delivers a value a
@@ -78,90 +78,90 @@ namespace cxsc {
 	return s;
 }
 	
-	void operator >> (const std::string &s, lx_complex &a) throw()
+	void operator >> (const std::string &s, lx_complex &a)
 {
    // Writes string s to variable a of type lx_real;
 	std::string r(s);
 	r >> a;
 }
 	
-	void operator >> (const char *s, lx_complex& a) throw()
+	void operator >> (const char *s, lx_complex& a)
 {
 	std::string r(s);
 	r >> a;
 }	
 	
-	lx_real abs  (const lx_complex& a) throw()
+	lx_real abs  (const lx_complex& a)
 { return sqrtx2y2(a.re,a.im); }
-	lx_real abs2 (const lx_complex& a) throw()
+	lx_real abs2 (const lx_complex& a)
 	{ return a.re*a.re + a.im*a.im; }
 
 // -----------------------------------------------------------------------------
 // --------- Elementary functions related to type lx_complex -------------------
 // -----------------------------------------------------------------------------
 
-lx_complex sqr(const lx_complex& z) throw() { return (z*z); }
-lx_complex sqrt(const lx_complex& z) throw()
+lx_complex sqr(const lx_complex& z) { return (z*z); }
+lx_complex sqrt(const lx_complex& z)
 { return mid(sqrt(lx_cinterval(z))); }
 	
-lx_complex sqrt(const lx_complex& z,int n) throw()
+lx_complex sqrt(const lx_complex& z,int n)
 { return mid( sqrt(lx_cinterval(z),n) ); }
 	
-lx_complex exp(const lx_complex& z) throw()
+lx_complex exp(const lx_complex& z)
 { return mid(exp(lx_cinterval(z))); }
 	
-lx_complex exp2(const lx_complex& z) throw()
+lx_complex exp2(const lx_complex& z)
 { return mid(exp2(lx_cinterval(z))); }
 
-lx_complex exp10(const lx_complex& z) throw()
+lx_complex exp10(const lx_complex& z)
 { return mid(exp10(lx_cinterval(z))); }
 
-lx_complex sin(const lx_complex& z) throw()
+lx_complex sin(const lx_complex& z)
 { return mid(sin(lx_cinterval(z))); }
 
-lx_complex cos(const lx_complex& z) throw()
+lx_complex cos(const lx_complex& z)
 { return mid(cos(lx_cinterval(z))); }
 
-lx_complex tan(const lx_complex& z) throw()
+lx_complex tan(const lx_complex& z)
 { return mid(tan(lx_cinterval(z))); }
 
-lx_complex cot(const lx_complex& z) throw()
+lx_complex cot(const lx_complex& z)
 { return mid(cot(lx_cinterval(z))); }	
 
-lx_complex asin(const lx_complex& z) throw()
+lx_complex asin(const lx_complex& z)
 { return mid(asin(lx_cinterval(z))); }
 
-lx_complex acos(const lx_complex& z) throw()
+lx_complex acos(const lx_complex& z)
 { return mid(acos(lx_cinterval(z))); }
 
-lx_complex atan(const lx_complex& z) throw()
+lx_complex atan(const lx_complex& z)
 { return mid(atan(lx_cinterval(z))); }
 
-lx_complex acot(const lx_complex& z) throw()
+lx_complex acot(const lx_complex& z)
 { return mid(acot(lx_cinterval(z))); }
 
-lx_complex sinh(const lx_complex& z) throw()
+lx_complex sinh(const lx_complex& z)
 { return mid(sinh(lx_cinterval(z))); }
 
-lx_complex cosh(const lx_complex& z) throw()
+lx_complex cosh(const lx_complex& z)
 { return mid(cosh(lx_cinterval(z))); }
 
-lx_complex tanh(const lx_complex& z) throw()
+lx_complex tanh(const lx_complex& z)
 { return mid(tanh(lx_cinterval(z))); }
 
-lx_complex coth(const lx_complex& z) throw()
+lx_complex coth(const lx_complex& z)
 { return mid(coth(lx_cinterval(z))); }
 
-lx_complex asinh(const lx_complex& z) throw()
+lx_complex asinh(const lx_complex& z)
 { return mid(asinh(lx_cinterval(z))); }
 
-lx_complex acosh(const lx_complex& z) throw()
+lx_complex acosh(const lx_complex& z)
 { return mid(acosh(lx_cinterval(z))); }
 
-lx_complex atanh(const lx_complex& z) throw()
+lx_complex atanh(const lx_complex& z)
 { return mid(atanh(lx_cinterval(z))); }
 
-lx_complex acoth(const lx_complex& z) throw()
+lx_complex acoth(const lx_complex& z)
 { return mid(acoth(lx_cinterval(z))); }
 
 // sqrt_all(c) computes a list of 2 values for all square roots of c
@@ -177,10 +177,10 @@ std::list<lx_complex> sqrt_all( const lx_complex& c )
 	return res;
 } 	// end sqrt_all
 	
-lx_real arg(const lx_complex& z) throw()
+lx_real arg(const lx_complex& z)
 { return mid(arg(lx_cinterval(z))); }
 
-lx_real Arg(const lx_complex& z) throw()
+lx_real Arg(const lx_complex& z)
 { return mid(Arg(lx_cinterval(z))); }
 
 std::list<lx_complex> sqrt_all( const lx_complex& z, int n )
@@ -223,15 +223,15 @@ std::list<lx_complex> sqrt_all( const lx_complex& z, int n )
 												//
 //-- end sqrt_all -------------------------------------------------------------
 
-lx_complex ln(const lx_complex& z) throw()
+lx_complex ln(const lx_complex& z)
 { return mid(ln(lx_cinterval(z))); }
 
-lx_complex log2(const lx_complex& z) throw()
+lx_complex log2(const lx_complex& z)
 { return mid(log2(lx_cinterval(z))); }
-lx_complex log10(const lx_complex& z) throw()
+lx_complex log10(const lx_complex& z)
 { return mid(log10(lx_cinterval(z))); }
 
-lx_complex power_fast(const lx_complex& z, const real& n) throw()
+lx_complex power_fast(const lx_complex& z, const real& n)
 {
 	if( n == 0 )
 		return lx_complex(l_real(1),l_real(0));
@@ -261,7 +261,7 @@ lx_complex power_fast(const lx_complex& z, const real& n) throw()
 				}
 } // End: power_fast
 
-lx_complex power(const lx_complex& x, const real& n) throw()
+lx_complex power(const lx_complex& x, const real& n)
 {
 	if( !(Is_Integer(n)) )
 	//  n is not an integer
@@ -309,28 +309,28 @@ lx_complex power(const lx_complex& x, const real& n) throw()
 	return y;
 } // end power(z,n)
 
-lx_complex pow(const lx_complex& z, const lx_real& p) throw()
+lx_complex pow(const lx_complex& z, const lx_real& p)
 { return mid( pow( lx_cinterval(z) , lx_interval(p) ) ); }
 
-lx_complex pow(const lx_complex& z, const lx_complex& p) throw()	
+lx_complex pow(const lx_complex& z, const lx_complex& p)	
 { return mid( pow( lx_cinterval(z) , lx_cinterval(p) ) ); }
 
-lx_complex sqrt1px2(const lx_complex& z) throw()
+lx_complex sqrt1px2(const lx_complex& z)
 { return mid(sqrt1px2(lx_cinterval(z))); }
 
-lx_complex sqrt1mx2(const lx_complex& z) throw()
+lx_complex sqrt1mx2(const lx_complex& z)
 { return mid(sqrt1mx2(lx_cinterval(z))); }
 
-lx_complex sqrtx2m1(const lx_complex& z) throw()
+lx_complex sqrtx2m1(const lx_complex& z)
 { return mid(sqrtx2m1(lx_cinterval(z))); }
 
-lx_complex sqrtp1m1(const lx_complex& z) throw()
+lx_complex sqrtp1m1(const lx_complex& z)
 { return mid(sqrtp1m1(lx_cinterval(z))); }
 
-lx_complex expm1(const lx_complex& z) throw()
+lx_complex expm1(const lx_complex& z)
 { return mid(expm1(lx_cinterval(z))); }
 
-lx_complex lnp1(const lx_complex& z) throw()
+lx_complex lnp1(const lx_complex& z)
 { return mid(lnp1(lx_cinterval(z))); }
 
 } // namespace cxsc

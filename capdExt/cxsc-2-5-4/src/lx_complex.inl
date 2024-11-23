@@ -38,19 +38,19 @@ inline lx_real Re(const lx_complex &a)
 inline lx_real Im(const lx_complex &a)
 { return a.im; }
 
-inline int StagPrec(const lx_complex &a) throw() 
+inline int StagPrec(const lx_complex &a) 
 { return StagPrec(a.re); }
 
-inline real expoRe(const lx_complex &a) throw()
+inline real expoRe(const lx_complex &a)
 { return expo(a.re); }
 
-inline real expoIm(const lx_complex &a) throw()
+inline real expoIm(const lx_complex &a)
 { return expo(a.im); }
 
-inline l_real lr_partRe(const lx_complex &a) throw()
+inline l_real lr_partRe(const lx_complex &a)
 { return lr_part(a.re); }
 
-inline l_real lr_partIm(const lx_complex &a) throw()
+inline l_real lr_partIm(const lx_complex &a)
 { return lr_part(a.im); }
 
 inline lx_complex & SetRe(lx_complex &a, const lx_real &b)
@@ -67,143 +67,143 @@ inline lx_complex & SetIm(lx_complex &a, const l_real &b)
 inline lx_complex & SetIm(lx_complex &a, const real &b)
 { a.im = b; return a; } // The imaginary part of a is substituted by b.
 
-inline lx_complex conj(const lx_complex& a) throw()
+inline lx_complex conj(const lx_complex& a)
 { return lx_complex(a.re, -a.im); }
 
-inline bool operator ! (const lx_complex& a) throw()
+inline bool operator ! (const lx_complex& a)
 { return !a.re && !a.im; }
 
 inline bool operator == (const lx_complex &a, const lx_complex &b) 
-		throw() { return (a.re == b.re && a.im == b.im); }
+		 { return (a.re == b.re && a.im == b.im); }
 
 inline bool operator == (const lx_complex &a, const l_complex &b) 
-		throw() { return (a.re == Re(b) && a.im == Im(b)); }
+		 { return (a.re == Re(b) && a.im == Im(b)); }
 inline bool operator == (const lx_complex &a, const complex &b) 
-		throw() { return (a.re == Re(b) && a.im == Im(b)); }
+		 { return (a.re == Re(b) && a.im == Im(b)); }
 inline bool operator == (const l_complex &a, const lx_complex &b) 
-		throw() { return b == a; }
+		 { return b == a; }
 inline bool operator == (const complex &a, const lx_complex &b) 
-		throw() { return (b == a); }
+		 { return (b == a); }
 
-inline bool operator == (const lx_complex &a, const lx_real &b) throw()
+inline bool operator == (const lx_complex &a, const lx_real &b)
 { return a.re == b && a.im == 0.0; }
-inline bool operator == (const lx_complex &a, const l_real &b) throw()
+inline bool operator == (const lx_complex &a, const l_real &b)
 { return a.re == b && a.im == 0.0; }
-inline bool operator == (const lx_complex &a, const real &b) throw()
+inline bool operator == (const lx_complex &a, const real &b)
 { return a.re == b && a.im == 0.0; }
 
-inline bool operator == (const lx_real &a, const lx_complex &b) throw()
+inline bool operator == (const lx_real &a, const lx_complex &b)
 { return a == b.re && b.im == 0.0; }
-inline bool operator == (const l_real &a, const lx_complex &b) throw()
+inline bool operator == (const l_real &a, const lx_complex &b)
 { return a == b.re && b.im == 0.0; }
-inline bool operator == (const real &a,   const lx_complex &b) throw()
+inline bool operator == (const real &a,   const lx_complex &b)
 { return a == b.re && b.im == 0.0; }
 
-inline bool operator != (const lx_complex &a, const lx_complex &b) throw()
+inline bool operator != (const lx_complex &a, const lx_complex &b)
 { return !(a == b); }
 
-inline bool operator != (const lx_complex &a, const l_complex &b) throw()
+inline bool operator != (const lx_complex &a, const l_complex &b)
 { return !(a == b); }
-inline bool operator != (const lx_complex &a, const complex   &b) throw()
+inline bool operator != (const lx_complex &a, const complex   &b)
 { return !(a == b); }
-inline bool operator != (const l_complex &a, const lx_complex &b) throw()
+inline bool operator != (const l_complex &a, const lx_complex &b)
 { return !(a == b); }
-inline bool operator != (const complex   &a, const lx_complex &b) throw()
-{ return !(a == b); }
-
-inline bool operator != (const lx_complex &a, const lx_real &b) throw()
-{ return !(a == b); }
-inline bool operator != (const lx_complex &a, const l_real &b) throw()
-{ return !(a == b); }
-inline bool operator != (const lx_complex &a, const real &b)   throw()
-{ return !(a == b); }
-inline bool operator != (const lx_real &a, const lx_complex &b) throw()
-{ return !(a == b); }
-inline bool operator != (const l_real &a, const lx_complex &b) throw()
-{ return !(a == b); }
-inline bool operator != (const real &a,   const lx_complex &b) throw()
+inline bool operator != (const complex   &a, const lx_complex &b)
 { return !(a == b); }
 
-inline lx_complex operator + (const lx_complex &a) throw()
+inline bool operator != (const lx_complex &a, const lx_real &b)
+{ return !(a == b); }
+inline bool operator != (const lx_complex &a, const l_real &b)
+{ return !(a == b); }
+inline bool operator != (const lx_complex &a, const real &b)  
+{ return !(a == b); }
+inline bool operator != (const lx_real &a, const lx_complex &b)
+{ return !(a == b); }
+inline bool operator != (const l_real &a, const lx_complex &b)
+{ return !(a == b); }
+inline bool operator != (const real &a,   const lx_complex &b)
+{ return !(a == b); }
+
+inline lx_complex operator + (const lx_complex &a)
 { return a; }
-inline lx_complex operator - (const lx_complex &a) throw()
+inline lx_complex operator - (const lx_complex &a)
 { return lx_complex(-a.re,-a.im); }
 
-inline lx_complex operator + (const lx_complex& a, const lx_complex& b) throw()
+inline lx_complex operator + (const lx_complex& a, const lx_complex& b)
 { return lx_complex(a.re+b.re,a.im+b.im); }
 
-inline lx_complex operator + (const lx_complex& a, const l_complex& b) throw()
+inline lx_complex operator + (const lx_complex& a, const l_complex& b)
 { return a + lx_complex(b); }
-inline lx_complex operator + (const lx_complex& a, const complex& b) throw()
+inline lx_complex operator + (const lx_complex& a, const complex& b)
 { return a + lx_complex(b); }
-inline lx_complex operator + (const l_complex& a, const lx_complex& b) throw()
+inline lx_complex operator + (const l_complex& a, const lx_complex& b)
 { return lx_complex(a) + b; }
-inline lx_complex operator + (const complex& a, const lx_complex& b) throw()
+inline lx_complex operator + (const complex& a, const lx_complex& b)
 { return lx_complex(a) + b; }
-inline lx_complex operator + (const lx_complex& a, const lx_real& b) throw()
+inline lx_complex operator + (const lx_complex& a, const lx_real& b)
 { return lx_complex(a.re + b, Im(a)); }
-inline lx_complex operator + (const lx_real& a, const lx_complex& b) throw()
+inline lx_complex operator + (const lx_real& a, const lx_complex& b)
 { return lx_complex(b.re + a, Im(b)); }
-inline lx_complex operator + (const lx_complex& a, const l_real& b) throw()
+inline lx_complex operator + (const lx_complex& a, const l_real& b)
 { return lx_complex(a.re + b, Im(a)); }
-inline lx_complex operator + (const l_real& a, const lx_complex& b) throw()
+inline lx_complex operator + (const l_real& a, const lx_complex& b)
 { return lx_complex(b.re + a, Im(b)); }
-inline lx_complex operator + (const lx_complex& a, const real& b) throw()
+inline lx_complex operator + (const lx_complex& a, const real& b)
 { return lx_complex(a.re + b, Im(a)); }
-inline lx_complex operator + (const real& a, const lx_complex& b) throw()
+inline lx_complex operator + (const real& a, const lx_complex& b)
 { return lx_complex(b.re + a, Im(b)); }
 
-inline lx_complex & operator +=(lx_complex& a, const lx_complex& b) throw()
+inline lx_complex & operator +=(lx_complex& a, const lx_complex& b)
 { return a = a+b; }
-inline lx_complex & operator +=(lx_complex& a, const l_complex& b) throw()
+inline lx_complex & operator +=(lx_complex& a, const l_complex& b)
 { return a = a+b; }
-inline lx_complex & operator +=(lx_complex& a, const complex& b) throw()
+inline lx_complex & operator +=(lx_complex& a, const complex& b)
 { return a = a+b; }
-inline lx_complex & operator +=(lx_complex& a, const lx_real& b) throw()
+inline lx_complex & operator +=(lx_complex& a, const lx_real& b)
 { return a = a+b; }
-inline lx_complex & operator +=(lx_complex& a, const l_real& b) throw()
+inline lx_complex & operator +=(lx_complex& a, const l_real& b)
 { return a = a+b; }
-inline lx_complex & operator +=(lx_complex& a, const real& b) throw()
+inline lx_complex & operator +=(lx_complex& a, const real& b)
 { return a = a+b; }
 
-inline lx_complex operator - (const lx_complex& a, const lx_complex& b) throw()
+inline lx_complex operator - (const lx_complex& a, const lx_complex& b)
 { return a + (-b); }
-inline lx_complex operator - (const lx_complex& a, const l_complex& b) throw()
+inline lx_complex operator - (const lx_complex& a, const l_complex& b)
 { return a + (-b); }
-inline lx_complex operator - (const lx_complex& a, const complex& b) throw()
+inline lx_complex operator - (const lx_complex& a, const complex& b)
 { return a + (-b); }
-inline lx_complex operator - (const l_complex& a, const lx_complex& b) throw()
+inline lx_complex operator - (const l_complex& a, const lx_complex& b)
 { return a + (-b); }
-inline lx_complex operator - (const complex& a, const lx_complex& b) throw()
+inline lx_complex operator - (const complex& a, const lx_complex& b)
 { return a + (-b); }
-inline lx_complex operator - (const lx_complex& a, const lx_real& b) throw()
+inline lx_complex operator - (const lx_complex& a, const lx_real& b)
 { return a + (-b); }
-inline lx_complex operator - (const lx_complex& a, const l_real& b) throw()
+inline lx_complex operator - (const lx_complex& a, const l_real& b)
 { return a + (-b); }
-inline lx_complex operator - (const lx_complex& a, const real& b) throw()
+inline lx_complex operator - (const lx_complex& a, const real& b)
 { return a + (-b); }
-inline lx_complex operator - (const lx_real& a, const lx_complex& b) throw()
+inline lx_complex operator - (const lx_real& a, const lx_complex& b)
 { return a + (-b); }
-inline lx_complex operator - (const l_real& a, const lx_complex& b) throw()
+inline lx_complex operator - (const l_real& a, const lx_complex& b)
 { return a + (-b); }
-inline lx_complex operator - (const real& a, const lx_complex& b) throw()
+inline lx_complex operator - (const real& a, const lx_complex& b)
 { return a + (-b); }
 
-inline lx_complex & operator -=(lx_complex& a, const lx_complex& b) throw()
+inline lx_complex & operator -=(lx_complex& a, const lx_complex& b)
 { return a = a-b; }
-inline lx_complex & operator -=(lx_complex& a, const l_complex& b) throw()
+inline lx_complex & operator -=(lx_complex& a, const l_complex& b)
 { return a = a-b; }
-inline lx_complex & operator -=(lx_complex& a, const complex& b) throw()
+inline lx_complex & operator -=(lx_complex& a, const complex& b)
 { return a = a-b; }
-inline lx_complex & operator -=(lx_complex& a, const lx_real& b) throw()
+inline lx_complex & operator -=(lx_complex& a, const lx_real& b)
 { return a = a-b; }
-inline lx_complex & operator -=(lx_complex& a, const l_real& b) throw()
+inline lx_complex & operator -=(lx_complex& a, const l_real& b)
 { return a = a-b; }
-inline lx_complex & operator -=(lx_complex& a, const real& b) throw()
+inline lx_complex & operator -=(lx_complex& a, const real& b)
 { return a = a-b; }
 
 
-inline lx_complex operator * (const lx_complex& a, const lx_complex& b) throw()
+inline lx_complex operator * (const lx_complex& a, const lx_complex& b)
 {
 	lx_real x,y;
 	
@@ -212,42 +212,42 @@ inline lx_complex operator * (const lx_complex& a, const lx_complex& b) throw()
 	
 	return lx_complex(x,y);
 }
-inline lx_complex operator * (const lx_complex& a, const l_complex& b) throw()
+inline lx_complex operator * (const lx_complex& a, const l_complex& b)
 { return a*lx_complex(b); }
-inline lx_complex operator * (const lx_complex& a, const complex& b) throw()
+inline lx_complex operator * (const lx_complex& a, const complex& b)
 { return a*lx_complex(b); }
-inline lx_complex operator * (const l_complex& a, const lx_complex& b) throw()
+inline lx_complex operator * (const l_complex& a, const lx_complex& b)
 { return lx_complex(a)*b; }
-inline lx_complex operator * (const complex& a, const lx_complex& b) throw()
+inline lx_complex operator * (const complex& a, const lx_complex& b)
 { return lx_complex(a)*b; }
-inline lx_complex operator * (const lx_complex& a, const lx_real& b) throw()
+inline lx_complex operator * (const lx_complex& a, const lx_real& b)
 { return a*lx_complex(b); }
-inline lx_complex operator * (const lx_complex& a, const l_real& b) throw()
+inline lx_complex operator * (const lx_complex& a, const l_real& b)
 { return a*lx_complex(b); }
-inline lx_complex operator * (const lx_complex& a, const real& b) throw()
+inline lx_complex operator * (const lx_complex& a, const real& b)
 { return a*lx_complex(b); }
-inline lx_complex operator * (const lx_real& a, const lx_complex& b) throw()
+inline lx_complex operator * (const lx_real& a, const lx_complex& b)
 { return lx_complex(a)*b; }
-inline lx_complex operator * (const l_real& a, const lx_complex& b) throw()
+inline lx_complex operator * (const l_real& a, const lx_complex& b)
 { return lx_complex(a)*b; }
-inline lx_complex operator * (const real& a, const lx_complex& b) throw()
+inline lx_complex operator * (const real& a, const lx_complex& b)
 { return lx_complex(a)*b; }
 
-inline lx_complex & operator *=(lx_complex& a, const lx_complex& b) throw()
+inline lx_complex & operator *=(lx_complex& a, const lx_complex& b)
 { return a = a*b; }
-inline lx_complex & operator *=(lx_complex& a, const l_complex& b) throw()
+inline lx_complex & operator *=(lx_complex& a, const l_complex& b)
 { return a = a*b; }
-inline lx_complex & operator *=(lx_complex& a, const complex& b) throw()
+inline lx_complex & operator *=(lx_complex& a, const complex& b)
 { return a = a*b; }
-inline lx_complex & operator *=(lx_complex& a, const lx_real& b) throw()
+inline lx_complex & operator *=(lx_complex& a, const lx_real& b)
 { return a = a*b; }
-inline lx_complex & operator *=(lx_complex& a, const l_real& b) throw()
+inline lx_complex & operator *=(lx_complex& a, const l_real& b)
 { return a = a*b; }
-inline lx_complex & operator *=(lx_complex& a, const real& b) throw()
+inline lx_complex & operator *=(lx_complex& a, const real& b)
 { return a = a*b; }
 
 
-inline lx_complex operator / (const lx_complex& a, const lx_complex& b) throw()
+inline lx_complex operator / (const lx_complex& a, const lx_complex& b)
 {
 	lx_real x,y,Ne;
 		
@@ -256,44 +256,44 @@ inline lx_complex operator / (const lx_complex& a, const lx_complex& b) throw()
 	y = (a.im*b.re - a.re*b.im) / Ne;
 	return lx_complex(x,y);
 }
-inline lx_complex operator / (const lx_complex& a, const l_complex& b) throw()
+inline lx_complex operator / (const lx_complex& a, const l_complex& b)
 { return a/lx_complex(b); }
-inline lx_complex operator / (const lx_complex& a, const complex& b) throw()
+inline lx_complex operator / (const lx_complex& a, const complex& b)
 { return a/lx_complex(b); }
-inline lx_complex operator / (const l_complex& a, const lx_complex& b) throw()
+inline lx_complex operator / (const l_complex& a, const lx_complex& b)
 { return lx_complex(a)/b; }
-inline lx_complex operator / (const complex& a, const lx_complex& b) throw()
+inline lx_complex operator / (const complex& a, const lx_complex& b)
 { return lx_complex(a)/b; }
-inline lx_complex operator / (const lx_complex& a, const lx_real& b) throw()
+inline lx_complex operator / (const lx_complex& a, const lx_real& b)
 { return a/lx_complex(b); }
-inline lx_complex operator / (const lx_complex& a, const l_real& b) throw()
+inline lx_complex operator / (const lx_complex& a, const l_real& b)
 { return a/lx_complex(b); }
-inline lx_complex operator / (const lx_complex& a, const real& b) throw()
+inline lx_complex operator / (const lx_complex& a, const real& b)
 { return a/lx_complex(b); }
-inline lx_complex operator / (const lx_real& a, const lx_complex& b) throw()
+inline lx_complex operator / (const lx_real& a, const lx_complex& b)
 { return lx_complex(a)/b; }
-inline lx_complex operator / (const l_real& a, const lx_complex& b) throw()
+inline lx_complex operator / (const l_real& a, const lx_complex& b)
 { return lx_complex(a)/b; }
-inline lx_complex operator / (const real& a, const lx_complex& b) throw()
+inline lx_complex operator / (const real& a, const lx_complex& b)
 { return lx_complex(a)/b; }
 
-inline lx_complex & operator /=(lx_complex& a, const lx_complex& b) throw()
+inline lx_complex & operator /=(lx_complex& a, const lx_complex& b)
 { return a = a/b; }
-inline lx_complex & operator /=(lx_complex& a, const l_complex& b) throw()
+inline lx_complex & operator /=(lx_complex& a, const l_complex& b)
 { return a = a/b; }
-inline lx_complex & operator /=(lx_complex& a, const complex& b) throw()
+inline lx_complex & operator /=(lx_complex& a, const complex& b)
 { return a = a/b; }
-inline lx_complex & operator /=(lx_complex& a, const lx_real& b) throw()
+inline lx_complex & operator /=(lx_complex& a, const lx_real& b)
 { return a = a/b; }
-inline lx_complex & operator /=(lx_complex& a, const l_real& b) throw()
+inline lx_complex & operator /=(lx_complex& a, const l_real& b)
 { return a = a/b; }
-inline lx_complex & operator /=(lx_complex& a, const real& b) throw()
+inline lx_complex & operator /=(lx_complex& a, const real& b)
 { return a = a/b; }
 
 // --------------------------- Output ---------------------------------
 
 inline std::ostream& operator << (std::ostream& s, const lx_complex& a) 
-		throw()
+		
 // A value a of type lx_complex is written to the output channel.
 // The output has the form:  { ? , ? }
 {     
@@ -305,7 +305,7 @@ inline std::ostream& operator << (std::ostream& s, const lx_complex& a)
 	return s;
 }
 
-inline std::string & operator << (std::string &s, const lx_complex& a) throw()
+inline std::string & operator << (std::string &s, const lx_complex& a)
 // The value of a variable a of type lx_complex is copied to a string s.
 // s has the form:  ({2**(...)*...} , {2**(...)*...})
 {

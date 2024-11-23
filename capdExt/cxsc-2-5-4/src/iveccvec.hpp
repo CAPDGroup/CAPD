@@ -33,116 +33,116 @@ namespace cxsc {
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector & rv1, const ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const ivector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector_slice & sl, const ivector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp,const ivector_slice &sl,const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector &rv, const ivector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp,const ivector &rv,const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const ivector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 	//! The accurate scalar product of the last two arguments added to the value of the first argument
 	void accumulate(cidotprecision &dp, const cvector_slice & sl1, const ivector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	;
 #else
-	throw();
+	;
 #endif
 
         //! Implementation of standard algebraic multiplication operation
 	INLINE cinterval operator *(const cvector & rv1, const ivector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>);
+	;
 #else
-	throw();
+	;
 #endif
         //! Implementation of standard algebraic multiplication operation
 	INLINE cinterval operator *(const cvector_slice &sl, const ivector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>);
+	;
 #else
-	throw();
+	;
 #endif
         //! Implementation of standard algebraic multiplication operation
 	INLINE cinterval operator *(const cvector &rv, const ivector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>);
+	;
 #else
-	throw();
+	;
 #endif
         //! Implementation of standard algebraic multiplication operation
 	INLINE cinterval operator *(const cvector_slice & sl1, const ivector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>);
+	;
 #else
-	throw();
+	;
 #endif
 	
         //! Implementation of standard algebraic multiplication operation
 	INLINE cinterval operator *(const ivector & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>);
+	;
 #else
-	throw();
+	;
 #endif
         //! Implementation of standard algebraic multiplication operation
 	INLINE cinterval operator *(const ivector_slice &sl, const cvector &rv)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>);
+	;
 #else
-	throw();
+	;
 #endif
         //! Implementation of standard algebraic multiplication operation
 	INLINE cinterval operator *(const ivector &rv, const cvector_slice &sl)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>);
+	;
 #else
-	throw();
+	;
 #endif
         //! Implementation of standard algebraic multiplication operation
 	INLINE cinterval operator *(const ivector_slice & sl1, const cvector_slice &sl2)
 #if(CXSC_INDEX_CHECK)
-	throw(ERROR__OP_WITH_WRONG_DIM<civector>);
+	;
 #else
-	throw();
+	;
 #endif
 	
 } // namespace cxsc 

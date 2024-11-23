@@ -28,28 +28,28 @@
 
 namespace cxsc {
 
-inline l_real sqr(const l_real &x) throw() 
+inline l_real sqr(const l_real &x) 
    { return (x*x); }
 inline l_real sqrt(const l_real & x,int n) 
    { return mid(sqrt(_l_interval(x),n)); }
-inline l_real sqrtp1m1(const l_real & x) throw()
+inline l_real sqrtp1m1(const l_real & x)
    { return mid(sqrtp1m1(_l_interval(x))); }
-inline l_real sqrtx2m1(const l_real & x) throw() 
+inline l_real sqrtx2m1(const l_real & x) 
    { return mid(sqrtx2m1(_l_interval(x))); } // sqrt(x^2-1);
-inline l_real sqrt1mx2(const l_real& x) throw() 
+inline l_real sqrt1mx2(const l_real& x) 
    { return mid(sqrt1mx2(_l_interval(x)));}
-inline l_real ln_sqrtx2y2(const l_real& x, const l_real& y) throw()
+inline l_real ln_sqrtx2y2(const l_real& x, const l_real& y)
    { return mid(ln_sqrtx2y2(_l_interval(x),_l_interval(y)));}
 inline l_real acoshp1(const l_real& x)
    { return mid(acoshp1(l_interval(x)));}
 
-inline l_real sin(const l_real & x) throw() 
+inline l_real sin(const l_real & x) 
    { return mid(sin(_l_interval(x))); }
-inline l_real cos(const l_real & x) throw() 
+inline l_real cos(const l_real & x) 
    { return mid(cos(_l_interval(x))); }
-inline l_real tan(const l_real & x) throw() 
+inline l_real tan(const l_real & x) 
    { return mid(tan(_l_interval(x))); }
-inline l_real cot(const l_real & x) throw() 
+inline l_real cot(const l_real & x) 
    { return mid(cot(_l_interval(x))); }
 
 inline l_real asin(const l_real & x) 
@@ -61,15 +61,15 @@ inline l_real atan(const l_real & x)
 inline l_real acot(const l_real & x)
    { return mid(acot(_l_interval(x))); }
 
-inline l_real exp(const l_real & x) throw() 
+inline l_real exp(const l_real & x) 
    { return mid(exp(_l_interval(x))); }
-inline l_real exp2(const l_real & x) throw() 
+inline l_real exp2(const l_real & x) 
 { return mid(exp2(_l_interval(x))); }
-inline l_real exp10(const l_real & x) throw() 
+inline l_real exp10(const l_real & x) 
 { return mid(exp10(_l_interval(x))); }
-inline l_real expm1(const l_real &x) throw()
+inline l_real expm1(const l_real &x)
    { return mid(expm1(l_interval(x))); }
-inline l_real expmx2(const l_real& x) throw() 
+inline l_real expmx2(const l_real& x) 
    { return mid(expmx2(l_interval(x)));}
 
 inline l_real ln(const l_real & x)
@@ -79,13 +79,13 @@ inline l_real log2(const l_real & x)
 inline l_real log10(const l_real & x)
 { return mid(log10(_l_interval(x))); }
 
-inline l_real sinh(const l_real & x) throw() 
+inline l_real sinh(const l_real & x) 
    { return mid(sinh(_l_interval(x))); }
-inline l_real cosh(const l_real & x) throw() 
+inline l_real cosh(const l_real & x) 
    { return mid(cosh(_l_interval(x))); }
-inline l_real tanh(const l_real & x) throw() 
+inline l_real tanh(const l_real & x) 
    { return mid(tanh(_l_interval(x))); }
-inline l_real coth(const l_real & x) throw() 
+inline l_real coth(const l_real & x) 
    { return mid(coth(_l_interval(x))); }
 
 inline l_real asinh(const l_real & x)

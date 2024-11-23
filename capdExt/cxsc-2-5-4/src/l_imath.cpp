@@ -34,7 +34,7 @@ namespace cxsc {
 #define  CXSC_Zero      0.
 #define  CXSC_MinusOne  -1.
 
-l_interval pow(const l_interval & x, const l_interval & e) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)
+l_interval pow(const l_interval & x, const l_interval & e)
 {
    int         stagsave = stagprec,
                stagmax = 19,
@@ -174,7 +174,7 @@ l_interval sqr(const l_interval & x)              // Sqr(x)
 }
 
 l_interval sqrt(const l_interval & x) 
-                         throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF) // Sqrt(x)
+                         // Sqrt(x)
 {  // Blomquist: scaling with 2^ex is necessary if expo(Sup(dx)) is too small!
    int         stagsave = stagprec,
                stagmax = 30,
@@ -230,7 +230,7 @@ l_interval sqrt(const l_interval & x)
 }
 
 l_interval sqrt(const l_interval &x, int n) 
-                throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF) // Sqrt(x,n)
+                // Sqrt(x,n)
 // -1073741822 <= n <= +1073741823, sonst autom. Programm-Abbruch
 // sqrt(x,n) jetzt mit Skalierung --> Hohe Genauigkeit in allen Bereichen!
 // Blomquist, 28.12.03;
@@ -307,7 +307,7 @@ l_interval sqrt(const l_interval &x, int n)
     return y;
 } // sqrt(x,n)
 
-l_interval sqrt1px2(const l_interval& x) throw()
+l_interval sqrt1px2(const l_interval& x)
 // Calculation of an optimal inclusion of sqrt(1+x^2); Blomquist, 13.12.02;
 // With stagmax=19 we get about 16*19=304 exact decimal digits.
 {   // First step: Calculation of sqrt(1+x*x) in simple type interval:
@@ -340,7 +340,7 @@ l_interval sqrt1px2(const l_interval& x) throw()
     return y;
 } // sqrt1px2(...)
 
-l_interval sqrtx2y2(const l_interval& x, const l_interval& y) throw()
+l_interval sqrtx2y2(const l_interval& x, const l_interval& y)
 // Inclusion of sqrt(x^2+y^2); Blomquist, 14.12.02;
 {
     interval ia = abs(interval(x)), ib = abs(interval(y)), einfach;
@@ -373,7 +373,7 @@ l_interval sqrtx2y2(const l_interval& x, const l_interval& y) throw()
     return r;
 } // sqrtx2y2
 
-l_interval sqrtp1m1(const l_interval& x) throw(STD_FKT_OUT_OF_DEF)
+l_interval sqrtp1m1(const l_interval& x)
 // sqrtp1m1(x) calculates an inclusion of sqrt(x+1)-1;
 // Blomquist, 05.08.03;
 {
@@ -394,7 +394,7 @@ l_interval sqrtp1m1(const l_interval& x) throw(STD_FKT_OUT_OF_DEF)
 } // sqrtp1m1
 
 
-l_interval sin(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)    // Sin(x)
+l_interval sin(const l_interval & x)    // Sin(x)
 {
    int         stagsave = stagprec,
                stagmax = 19;
@@ -438,7 +438,7 @@ l_interval sin(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)    // S
    return y;
 }
 
-l_interval cos(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)   // Cos(x)
+l_interval cos(const l_interval & x)   // Cos(x)
 {
    long int    mm = 6;
    int         stagsave = stagprec,
@@ -610,7 +610,7 @@ l_interval cos(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)   // Co
    return y;
 }
 
-l_interval tan(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)   // Tan(x)
+l_interval tan(const l_interval & x)   // Tan(x)
 {
    interval    dx = interval(x),
                einfachgenau;
@@ -654,7 +654,7 @@ l_interval tan(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LI
    return y;
 }
 
-l_interval cot(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)   // Cot(x)
+l_interval cot(const l_interval & x)   // Cot(x)
 {
    interval    dx = interval(x),
                einfachgenau;
@@ -702,7 +702,7 @@ l_interval cot(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LI
    return y;
 }
 
-l_interval asin(const l_interval & x) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)  // ASin(x)
+l_interval asin(const l_interval & x)  // ASin(x)
 {
    l_interval  t, ta, u, pihalbe,
                y;
@@ -764,7 +764,7 @@ l_interval asin(const l_interval & x) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF) 
    return y;
 }
 
-l_interval acos(const l_interval & x) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)   // ACos(x)
+l_interval acos(const l_interval & x)   // ACos(x)
 {
    bool        neg=false;
    l_interval  pi, s, y;
@@ -850,8 +850,8 @@ l_interval acos(const l_interval & x) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF) 
 static real CXSC_ln2[21]; // CXSC_ln2[0], ... CXSC_ln2[20] 
 static bool CXSC_ln2_initialized = false;
 
-// l_interval li_ln2() throw()
-l_interval Ln2_l_interval() throw()
+// l_interval li_ln2()
+l_interval Ln2_l_interval()
 // Inclusion of ln(2), Blomquist, 04.12.03;
 {
    l_interval y;
@@ -921,8 +921,8 @@ l_interval Ln2_l_interval() throw()
 static real CXSC_ln10[21]; // CXSC_ln10[0], ... CXSC_ln10[20] 
 static bool CXSC_ln10_initialized = false;
 
-// l_interval li_ln10() throw()
-l_interval Ln10_l_interval() throw()
+// l_interval li_ln10()
+l_interval Ln10_l_interval()
 {
    l_interval y;
    int stagsave = stagprec,
@@ -991,8 +991,8 @@ l_interval Ln10_l_interval() throw()
 static real CXSC_Rln10[21]; // CXSC_Rln10[0], ... CXSC_Rln10[20] 
 static bool CXSC_Rln10_initialized = false;
 
-// l_interval li_Rln10() throw()
-l_interval Ln10r_l_interval() throw()
+// l_interval li_Rln10()
+l_interval Ln10r_l_interval()
 {
    l_interval y;
    int stagsave = stagprec,
@@ -1061,8 +1061,8 @@ l_interval Ln10r_l_interval() throw()
 static real    CXSC_pi4[21];
 static bool    CXSC_pi4_initialized = false;
 
-// l_interval li_pi4() throw()
-l_interval Pid4_l_interval() throw()
+// l_interval li_pi4()
+l_interval Pid4_l_interval()
 {
    l_interval y;
    int stagsave = stagprec,
@@ -1131,8 +1131,8 @@ l_interval Pid4_l_interval() throw()
 static real    CXSC_sqrt2[21];
 static bool    CXSC_sqrt2_initialized = false;
 
-// l_interval li_sqrt2() throw()
-l_interval Sqrt2_l_interval() throw()
+// l_interval li_sqrt2()
+l_interval Sqrt2_l_interval()
 {
    l_interval y;
    int stagsave = stagprec,
@@ -1201,7 +1201,7 @@ l_interval Sqrt2_l_interval() throw()
 static real CXSC_sqrt5[21]; // CXSC_sqrt5[0], ... CXSC_sqrt5[20] 
 static bool CXSC_sqrt5_initialized = false;
 
-l_interval Sqrt5_l_interval() throw()
+l_interval Sqrt5_l_interval()
 // Inclusion of sqrt(5), Blomquist, 30.11.2008;
 {
 	l_interval y;
@@ -1273,7 +1273,7 @@ l_interval Sqrt5_l_interval() throw()
 static real CXSC_sqrt7[21]; // CXSC_sqrt7[0], ... CXSC_sqrt7[20] 
 static bool CXSC_sqrt7_initialized = false;
 
-l_interval Sqrt7_l_interval() throw()
+l_interval Sqrt7_l_interval()
 // Inclusion of sqrt(7), Blomquist, 30.11.2008;
 {
 	l_interval y;
@@ -1346,7 +1346,7 @@ l_interval Sqrt7_l_interval() throw()
 static real CXSC_ln2r[21]; // CXSC_ln2r[0], ... CXSC_ln2r[20] 
 static bool CXSC_ln2r_initialized = false;
 
-l_interval Ln2r_l_interval() throw()
+l_interval Ln2r_l_interval()
 // Inclusion of 1/ln(2), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -1420,7 +1420,7 @@ l_interval Ln2r_l_interval() throw()
 static real CXSC_Pi[21]; // CXSC_Pi[0], ... CXSC_Pi[20] 
 static bool CXSC_Pi_initialized = false;
 
-l_interval Pi_l_interval() throw()
+l_interval Pi_l_interval()
 // Inclusion of Pi, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -1493,7 +1493,7 @@ l_interval Pi_l_interval() throw()
 static real CXSC_Pid2[21]; // CXSC_Pid2[0], ... CXSC_Pid2[20] 
 static bool CXSC_Pid2_initialized = false;
 
-l_interval Pid2_l_interval() throw()
+l_interval Pid2_l_interval()
 // Inclusion of Pi/2, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -1566,7 +1566,7 @@ l_interval Pid2_l_interval() throw()
 static real CXSC_Pi2[21];  // CXSC_Pi2[0], ... CXSC_Pi2[20] 
 static bool CXSC_Pi2_initialized = false;
 
-l_interval Pi2_l_interval() throw()
+l_interval Pi2_l_interval()
 // Inclusion of 2*Pi, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -1639,7 +1639,7 @@ l_interval Pi2_l_interval() throw()
 static real CXSC_Pid3[21]; // CXSC_Pid3[0], ... CXSC_Pid3[20] 
 static bool CXSC_Pid3_initialized = false;
 
-l_interval Pid3_l_interval() throw()
+l_interval Pid3_l_interval()
 // Inclusion of Pi/3, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -1713,7 +1713,7 @@ l_interval Pid3_l_interval() throw()
 static real CXSC_Pir[21]; // CXSC_Pir[0], ... CXSC_Pir[20] 
 static bool CXSC_Pir_initialized = false;
 
-l_interval Pir_l_interval() throw()
+l_interval Pir_l_interval()
 // Inclusion of 1/Pi, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -1786,7 +1786,7 @@ l_interval Pir_l_interval() throw()
 static real CXSC_Pi2r[21]; // CXSC_Pi2r[0], ... CXSC_Pi2r[20] 
 static bool CXSC_Pi2r_initialized = false;
 
-l_interval Pi2r_l_interval() throw()
+l_interval Pi2r_l_interval()
 // Inclusion of 1/(2*Pi), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -1860,7 +1860,7 @@ l_interval Pi2r_l_interval() throw()
 static real CXSC_SqrtPi[21]; // CXSC_SqrtPi[0], ... CXSC_SqrtPi[20] 
 static bool CXSC_SqrtPi_initialized = false;
 
-l_interval SqrtPi_l_interval() throw()
+l_interval SqrtPi_l_interval()
 // Inclusion of Sqrt(Pi), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -1934,7 +1934,7 @@ l_interval SqrtPi_l_interval() throw()
 static real CXSC_Sqrt2Pi[21]; // CXSC_Sqrt2Pi[0], ... CXSC_Sqrt2Pi[20] 
 static bool CXSC_Sqrt2Pi_initialized = false;
 
-l_interval Sqrt2Pi_l_interval() throw()
+l_interval Sqrt2Pi_l_interval()
 // Inclusion of sqrt(2*Pi), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2008,7 +2008,7 @@ l_interval Sqrt2Pi_l_interval() throw()
 static real CXSC_SqrtPir[21]; // CXSC_SqrtPir[0], ... CXSC_SqrtPir[20] 
 static bool CXSC_SqrtPir_initialized = false;
 
-l_interval SqrtPir_l_interval() throw()
+l_interval SqrtPir_l_interval()
 // Inclusion of 1/sqrt(Pi), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2082,7 +2082,7 @@ l_interval SqrtPir_l_interval() throw()
 static real CXSC_Sqrt2Pir[21]; // CXSC_Sqrt2Pir[0], ... CXSC_Sqrt2Pir[20] 
 static bool CXSC_Sqrt2Pir_initialized = false;
 
-l_interval Sqrt2Pir_l_interval() throw()
+l_interval Sqrt2Pir_l_interval()
 // Inclusion of 1/sqrt(2*Pi), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2156,7 +2156,7 @@ l_interval Sqrt2Pir_l_interval() throw()
 static real CXSC_Pip2[21]; // CXSC_Pip2[0], ... CXSC_Pip2[20] 
 static bool CXSC_Pip2_initialized = false;
 
-l_interval Pip2_l_interval() throw()
+l_interval Pip2_l_interval()
 // Inclusion of Pi^2, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2230,7 +2230,7 @@ l_interval Pip2_l_interval() throw()
 static real CXSC_Sqrt2r[21]; // CXSC_Sqrt2r[0], ... CXSC_Sqrt2r[20] 
 static bool CXSC_Sqrt2r_initialized = false;
 
-l_interval Sqrt2r_l_interval() throw()
+l_interval Sqrt2r_l_interval()
 // Inclusion of 1/sqrt(2), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2304,7 +2304,7 @@ l_interval Sqrt2r_l_interval() throw()
 static real CXSC_Sqrt3[21]; // CXSC_Sqrt3[0], ... CXSC_Sqrt3[20] 
 static bool CXSC_Sqrt3_initialized = false;
 
-l_interval Sqrt3_l_interval() throw()
+l_interval Sqrt3_l_interval()
 // Inclusion of sqrt(3), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2378,7 +2378,7 @@ l_interval Sqrt3_l_interval() throw()
 static real CXSC_Sqrt3d2[21]; // CXSC_Sqrt3d2[0], ... CXSC_Sqrt3d2[20] 
 static bool CXSC_Sqrt3d2_initialized = false;
 
-l_interval Sqrt3d2_l_interval() throw()
+l_interval Sqrt3d2_l_interval()
 // Inclusion of Sqrt(3)/2, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2452,7 +2452,7 @@ l_interval Sqrt3d2_l_interval() throw()
 static real CXSC_Sqrt3r[21]; // CXSC_Sqrt3r[0], ... CXSC_Sqrt3r[20] 
 static bool CXSC_Sqrt3r_initialized = false;
 
-l_interval Sqrt3r_l_interval() throw()
+l_interval Sqrt3r_l_interval()
 // Inclusion of 1/Sqrt(3), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2526,7 +2526,7 @@ l_interval Sqrt3r_l_interval() throw()
 static real CXSC_LnPi[21]; // CXSC_LnPi[0], ... CXSC_LnPi[20] 
 static bool CXSC_LnPi_initialized = false;
 
-l_interval LnPi_l_interval() throw()
+l_interval LnPi_l_interval()
 // Inclusion of ln(Pi), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2600,7 +2600,7 @@ l_interval LnPi_l_interval() throw()
 static real CXSC_Ln2Pi[21]; // CXSC_Ln2Pi[0], ... CXSC_Ln2Pi[20] 
 static bool CXSC_Ln2Pi_initialized = false;
 
-l_interval Ln2Pi_l_interval() throw()
+l_interval Ln2Pi_l_interval()
 // Inclusion of ln(2*Pi), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2674,7 +2674,7 @@ l_interval Ln2Pi_l_interval() throw()
 static real CXSC_E[21]; // CXSC_E[0], ... CXSC_E[20] 
 static bool CXSC_E_initialized = false;
 
-l_interval E_l_interval() throw()
+l_interval E_l_interval()
 // Inclusion of e=exp(1), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2748,7 +2748,7 @@ l_interval E_l_interval() throw()
 static real CXSC_Er[21]; // CXSC_Er[0], ... CXSC_Er[20] 
 static bool CXSC_Er_initialized = false;
 
-l_interval Er_l_interval() throw()
+l_interval Er_l_interval()
 // Inclusion of 1/e, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2822,7 +2822,7 @@ l_interval Er_l_interval() throw()
 static real CXSC_Ep2[21]; // CXSC_Ep2[0], ... CXSC_Ep2[20] 
 static bool CXSC_Ep2_initialized = false;
 
-l_interval Ep2_l_interval() throw()
+l_interval Ep2_l_interval()
 // Inclusion of e^2, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2896,7 +2896,7 @@ l_interval Ep2_l_interval() throw()
 static real CXSC_Ep2r[21]; // CXSC_Ep2r[0], ... CXSC_Ep2r[20] 
 static bool CXSC_Ep2r_initialized = false;
 
-l_interval Ep2r_l_interval() throw()
+l_interval Ep2r_l_interval()
 // Inclusion of 1/e^2, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -2970,7 +2970,7 @@ l_interval Ep2r_l_interval() throw()
 static real CXSC_EpPi[21]; // CXSC_EpPi[0], ... CXSC_EpPi[20] 
 static bool CXSC_EpPi_initialized = false;
 
-l_interval EpPi_l_interval() throw()
+l_interval EpPi_l_interval()
 // Inclusion of e^(Pi), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -3044,7 +3044,7 @@ l_interval EpPi_l_interval() throw()
 static real CXSC_Ep2Pi[21]; // CXSC_Ep2Pi[0], ... CXSC_Ep2Pi[20] 
 static bool CXSC_Ep2Pi_initialized = false;
 
-l_interval Ep2Pi_l_interval() throw()
+l_interval Ep2Pi_l_interval()
 // Inclusion of e^(2*Pi), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -3118,7 +3118,7 @@ l_interval Ep2Pi_l_interval() throw()
 static real CXSC_EpPid2[21]; // CXSC_EpPid2[0], ... CXSC_EpPid2[20] 
 static bool CXSC_EpPid2_initialized = false;
 
-l_interval EpPid2_l_interval() throw()
+l_interval EpPid2_l_interval()
 // Inclusion of e^(Pi/2), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -3192,7 +3192,7 @@ l_interval EpPid2_l_interval() throw()
 static real CXSC_EpPid4[21]; // CXSC_EpPid4[0], ... CXSC_EpPid4[20] 
 static bool CXSC_EpPid4_initialized = false;
 
-l_interval EpPid4_l_interval() throw()
+l_interval EpPid4_l_interval()
 // Inclusion of e^(Pi/4), Blomquist, 12.09.06;
 {
    l_interval y;
@@ -3266,7 +3266,7 @@ l_interval EpPid4_l_interval() throw()
 static real CXSC_EulerGa[21]; // CXSC_EulerGa[0], ... CXSC_EulerGa[20] 
 static bool CXSC_EulerGa_initialized = false;
 
-l_interval EulerGa_l_interval() throw()
+l_interval EulerGa_l_interval()
 // Inclusion of EulerGamma, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -3340,7 +3340,7 @@ l_interval EulerGa_l_interval() throw()
 static real CXSC_Catalan[21]; // CXSC_Catalan[0], ... CXSC_Catalan[20] 
 static bool CXSC_Catalan_initialized = false;
 
-l_interval Catalan_l_interval() throw()
+l_interval Catalan_l_interval()
 // Inclusion of Catalan-Constant, Blomquist, 12.09.06;
 {
    l_interval y;
@@ -3409,7 +3409,7 @@ l_interval Catalan_l_interval() throw()
 }
 
 
-l_interval atan(const l_interval & x) throw()  // aTan(x)
+l_interval atan(const l_interval & x)  // aTan(x)
 {
    int         stagsave = stagprec,
                stagmax = 19,
@@ -3507,7 +3507,7 @@ l_interval atan(const l_interval & x) throw()  // aTan(x)
    return y;
 }
 
-l_interval acot(const l_interval &x) throw()  // ACot(x)
+l_interval acot(const l_interval &x)  // ACot(x)
 {
    l_interval  pihalbe, y;
    interval    dx = interval(x),
@@ -3535,7 +3535,7 @@ l_interval acot(const l_interval &x) throw()  // ACot(x)
    return y;
 }
 
-l_interval exp(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW) // exp(x)
+l_interval exp(const l_interval & x) // exp(x)
 {
    long int    n = 2;
    int         stagsave = stagprec,
@@ -3669,7 +3669,7 @@ l_interval exp10(const l_interval & x) // 10^x
    return y;
 }
 
-l_interval expm1(const l_interval & x) throw()
+l_interval expm1(const l_interval & x)
 // exp(x)-1;            
 {
     l_interval y(0.0);
@@ -3755,9 +3755,9 @@ l_interval expmx2(const l_interval& x)
 
 
 
-int cxsc_zweihoch(int) throw();
+int cxsc_zweihoch(int);
 
-l_interval ln(const l_interval & x) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)    // Ln(x)
+l_interval ln(const l_interval & x)    // Ln(x)
 { 
    int         stagsave = stagprec,
                stagmax = 19,
@@ -3907,7 +3907,7 @@ l_interval ln(const l_interval & x) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)   
    return y;
 }
 
-int cxsc_zweihoch(int n) throw()
+int cxsc_zweihoch(int n)
 { 
    // liefert 2^n
 
@@ -3973,7 +3973,7 @@ l_interval log10(const l_interval & x) // log10(x)
 	return y;
 }
 
-l_interval sinh(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)   // Sinh(x)
+l_interval sinh(const l_interval & x)   // Sinh(x)
 {
    long int    n = 1;
    int         stagsave = stagprec,
@@ -4108,7 +4108,7 @@ l_interval sinh(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)   // S
    return y;
 }
 
-l_interval cosh(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)   // Cosh(x)
+l_interval cosh(const l_interval & x)   // Cosh(x)
 {
    int         stagsave = stagprec,
                stagmax = 19;
@@ -4158,7 +4158,7 @@ int  ex_tanh[8] = { 1,-1,-2,-4,-5,-6,-8,-9 };
 int  c_tanhN[8] = { 1,-1,2,-17,62,-1382,21844,-929569 };
 int  c_tanhD[8] = { 1,3,15,315,2835,155925,6081075,638512875 }; 
 
-l_interval tanh(const l_interval & x) throw()
+l_interval tanh(const l_interval & x)
 // tanh(x) with Taylor-series and x --> MaxReal; Blomquist 24.05.04;           
 {
     l_interval s,t,y;
@@ -4231,7 +4231,7 @@ real c_cothD[8] = { 1,15,315,1575,31185,212837625,
                     6081075,54273594375.0 }; // components exactly stored!
 // ************************************************************************
 
-l_interval coth(const l_interval & x) throw()
+l_interval coth(const l_interval & x)
 // coth(x); Blomquist 17.04.04;           
 {
     l_interval t,s,c,y;
@@ -4292,7 +4292,7 @@ l_interval coth(const l_interval & x) throw()
 } // coth
 
 
-l_interval acosh(const l_interval & x) throw()  
+l_interval acosh(const l_interval & x)  
 // acosh(x); Blomquist 14.04.04;
 {
     int         stagsave = stagprec,ex1,ex2,
@@ -4330,7 +4330,7 @@ l_interval acosh(const l_interval & x) throw()
 }
 
 l_interval asinh(const l_interval & x) 
-    throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW) 
+    
 // ASinh(x) hier ohne zeitaufwendiges Newton-Verfahren, da die Funktion 
 // sqrt1px2(x) = sqrt(1+x*x) zur Verfuegung steht, die Overflow vermeidet!
 // Blomquist, 28.12.03;
@@ -4389,7 +4389,7 @@ l_interval asinh(const l_interval & x)
 } // asinh(x)
 
 l_interval atanh(const l_interval & x) 
-   throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW) 
+   
 // ATanh(x), Blomquist 29.12.03;
 {
    int         stagsave = stagprec,
@@ -4430,7 +4430,7 @@ l_interval atanh(const l_interval & x)
 } // atanh
 
 l_interval acoth(const l_interval & x) 
-    throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW)
+   
 // Acoth(x) hier ohne das langsame Newtonverfahren; Fue grosse x gilt:
 // Acoth = 0.5*ln(1+2/(x-1));  Blomquist, 28.12.03;
 {
@@ -4472,7 +4472,7 @@ l_interval acoth(const l_interval & x)
    return y;
 } // acoth
 
-l_interval lnp1(const l_interval& x) throw()
+l_interval lnp1(const l_interval& x)
 // ln(1+x) = zeta * P(zeta);  zeta := x/(2+x);
 // P(zeta) := 2 + (2/3)zeta^2 + (2/5)zeta^4 + ...
 // Approximation of P(zeta) with P_N(zeta), defined by
@@ -4608,7 +4608,7 @@ l_interval sqrt1mx2(const l_interval& x)
 } // sqrt1mx2
 
 
-l_interval ln_sqrtx2y2(const l_interval& x, const l_interval& y) throw()
+l_interval ln_sqrtx2y2(const l_interval& x, const l_interval& y)
 { // Inclusion of ln(sqrt{x^2+y^2}) in staggered arithmetic
     int stagsave = stagprec;
 //	stagmax = 19;  

@@ -61,7 +61,7 @@ inline real t_std_fct_call(int (fct)(const ExtReal *,const ExtReal *,ExtReal *),
    return erg;
 }
 
-inline real sqr(const real &arg) throw() { return (arg*arg); }
+inline real sqr(const real &arg) { return (arg*arg); }
 inline real sqrt(const real & arg)       { return q_sqrt(*(double *)&arg); } 
 // { return t_std_fct_call(t_sqte,arg); }
 inline real sqrt(const real & arg,int n) { return pow(arg,1.0/n); }
@@ -78,28 +78,28 @@ inline real sqrtm1(const real & arg) {
    return erg;
 }
 
-inline real sin(const real & arg) throw() { return q_sin(*(double*)&arg); } // { return t_std_fct_call(t_sine,arg); }
-inline real cos(const real & arg) throw() { return q_cos(*(double*)&arg); } // { return t_std_fct_call(t_cose,arg); }
-inline real tan(const real & arg) throw() { return q_tan(*(double*)&arg); } //{ return t_std_fct_call(t_tane,arg); }
-inline real cot(const real & arg) throw() { return q_cot(*(double*)&arg); } //{ return t_std_fct_call(t_cote,arg); }
+inline real sin(const real & arg) { return q_sin(*(double*)&arg); } // { return t_std_fct_call(t_sine,arg); }
+inline real cos(const real & arg) { return q_cos(*(double*)&arg); } // { return t_std_fct_call(t_cose,arg); }
+inline real tan(const real & arg) { return q_tan(*(double*)&arg); } //{ return t_std_fct_call(t_tane,arg); }
+inline real cot(const real & arg) { return q_cot(*(double*)&arg); } //{ return t_std_fct_call(t_cote,arg); }
 
 inline real asin(const real & arg)       { return q_asin(*(double*)&arg); } // { return t_std_fct_call(t_asne,arg); }
 inline real acos(const real & arg)       { return q_acos(*(double*)&arg); } // { return t_std_fct_call(t_acse,arg); }
 inline real atan(const real & arg)       { return q_atan(*(double*)&arg); } // { return t_std_fct_call(t_atne,arg); }
 inline real acot(const real & arg)       { return q_acot(*(double*)&arg); } // { return t_std_fct_call(t_acte,arg); }
 
-inline real expm1(const real & arg)throw() { return q_expm(*(double*)&arg); } // { return t_std_fct_call(t_exme,arg); }
+inline real expm1(const real & arg) { return q_expm(*(double*)&arg); } // { return t_std_fct_call(t_exme,arg); }
 inline real lnp1(const real & arg)       { return q_lg1p(*(double*)&arg); } // { return t_std_fct_call(t_lnpe,arg); }
 
-inline real exp(const real & arg) throw() { return q_exp(*(double*)&arg); } // { return t_std_fct_call(t_expe,arg); }
+inline real exp(const real & arg) { return q_exp(*(double*)&arg); } // { return t_std_fct_call(t_expe,arg); }
 inline real ln(const real & arg)         { return q_log(*(double*)&arg); } // { return t_std_fct_call(t_lnee,arg); }
 inline real log2(const real & arg)       { return q_log2(*(double*)&arg); } // { return t_std_fct_call(t_lnee,arg); }
 inline real log10(const real & arg)      { return q_lg10(*(double*)&arg); } // { return t_std_fct_call(t_lnee,arg); }
 
-inline real sinh(const real & arg) throw() { return q_sinh(*(double*)&arg); } // { return t_std_fct_call(t_snhe,arg); }
-inline real cosh(const real & arg) throw() { return q_cosh(*(double*)&arg); } // { return t_std_fct_call(t_cshe,arg); }
-inline real tanh(const real & arg) throw() { return q_tanh(*(double*)&arg); } // { return t_std_fct_call(t_tnhe,arg); }
-inline real coth(const real & arg) throw() { return q_coth(*(double*)&arg); } // { return t_std_fct_call(t_cthe,arg); }
+inline real sinh(const real & arg) { return q_sinh(*(double*)&arg); } // { return t_std_fct_call(t_snhe,arg); }
+inline real cosh(const real & arg) { return q_cosh(*(double*)&arg); } // { return t_std_fct_call(t_cshe,arg); }
+inline real tanh(const real & arg) { return q_tanh(*(double*)&arg); } // { return t_std_fct_call(t_tnhe,arg); }
+inline real coth(const real & arg) { return q_coth(*(double*)&arg); } // { return t_std_fct_call(t_cthe,arg); }
 
 inline real asinh(const real & arg) { return q_asnh(*(double*)&arg); } // { return t_std_fct_call(t_ashe,arg); }
 inline real acosh(const real & arg) { return q_acsh(*(double*)&arg); } // { return t_std_fct_call(t_ache,arg); }

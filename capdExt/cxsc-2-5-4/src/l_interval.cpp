@@ -32,7 +32,7 @@ namespace cxsc {
 
 #define CXSC_Zero 0.
 
-l_interval & l_interval::operator= (const l_interval & a)    throw()
+l_interval & l_interval::operator= (const l_interval & a)   
 {
    real *newdata=new real[a.prec+1];
    int i;
@@ -46,14 +46,14 @@ l_interval & l_interval::operator= (const l_interval & a)    throw()
 
 // ---- Typwandlungen ----
 
-interval::interval(const l_interval & a) throw()
+interval::interval(const l_interval & a)
 {
    idotprecision idot(0.0);
    a._akku_add(idot);
    *this=rnd(idot);
 }
 
-interval & interval::operator =(const l_interval & a) throw()
+interval & interval::operator =(const l_interval & a)
 {
    idotprecision idot(0.0);
    a._akku_add(idot);
@@ -61,7 +61,7 @@ interval & interval::operator =(const l_interval & a) throw()
 }
 
 
-interval _interval(const l_interval & a) throw()
+interval _interval(const l_interval & a)
 {
    idotprecision idot(0.0);
    a._akku_add(idot);
@@ -70,9 +70,9 @@ interval _interval(const l_interval & a) throw()
 
 l_interval::l_interval(const dotprecision & a)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+  
 #else
-   throw()
+  
 #endif
 {
    _allo(stagprec);
@@ -82,9 +82,9 @@ l_interval::l_interval(const dotprecision & a)
 
 l_interval::l_interval(const dotprecision & a,const dotprecision & b)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL)
+  
 #else
-   throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+  
 #endif
 {
    if(a>b)
@@ -98,9 +98,9 @@ l_interval::l_interval(const dotprecision & a,const dotprecision & b)
 
 l_interval & l_interval::operator =(const dotprecision & a)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+  
 #else
-   throw()
+  
 #endif
 {
    if(stagprec!=prec)
@@ -115,9 +115,9 @@ l_interval & l_interval::operator =(const dotprecision & a)
 
 l_interval::l_interval(const idotprecision & a)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+  
 #else
-   throw()
+  
 #endif
 {
    _allo(stagprec);
@@ -127,9 +127,9 @@ l_interval::l_interval(const idotprecision & a)
 
 l_interval & l_interval::operator =(const idotprecision & a)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+  
 #else
-   throw()
+  
 #endif
 {
    if(stagprec!=prec)
@@ -144,9 +144,9 @@ l_interval & l_interval::operator =(const idotprecision & a)
 
 l_interval::l_interval(const l_real &a, const l_real &b) 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL)
+  
 #else
-   throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+  
 #endif
 {
    _allo(stagprec);
@@ -161,9 +161,9 @@ l_interval::l_interval(const l_real &a, const l_real &b)
 
 l_interval::l_interval(const real &a, const l_real &b) 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL)
+  
 #else
-   throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+  
 #endif
 {
    _allo(stagprec);
@@ -177,7 +177,7 @@ l_interval::l_interval(const real &a, const l_real &b)
 }
 
 void l_realz2l_interval(const l_real& lr, const interval& z,
-			                        l_interval& li) throw()
+			                        l_interval& li)
 {  // converts lr+z to li of type l_interval; Blomquist, 12.10.06;
    // lr+z is included by li.
    // prec(lr) <= prec(li)  must be realized!
@@ -204,9 +204,9 @@ void l_realz2l_interval(const l_real& lr, const interval& z,
 
 l_interval::l_interval(const l_real &a, const real &b) 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL)
+  
 #else
-   throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+  
 #endif
 {
    _allo(stagprec);
@@ -221,7 +221,7 @@ l_interval::l_interval(const l_real &a, const real &b)
 
 
 /*
-l_interval _l_interval(const l_real & a, const l_real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+l_interval _l_interval(const l_real & a, const l_real & b)
 {
    if(a>b)
       cxscthrow(ERROR_LINTERVAL_EMPTY_INTERVAL("l_interval _l_interval(const l_real & a, const l_real & b)"));
@@ -238,7 +238,7 @@ l_interval _l_interval(const l_real & a, const l_real & b) throw(ERROR_LINTERVAL
 */
 
 /*
-l_interval _unchecked_l_interval(const l_real & lr1, const l_real & lr2) throw()
+l_interval _unchecked_l_interval(const l_real & lr1, const l_real & lr2)
 {
    real inf, sup, tmp;          // fuer Naeherungen, entspricht Interval z
    int i=1;
@@ -266,7 +266,7 @@ l_interval _unchecked_l_interval(const l_real & lr1, const l_real & lr2) throw()
 }
 */
 
-l_interval _unchecked_l_interval(const l_real & lr1, const l_real & lr2) throw()
+l_interval _unchecked_l_interval(const l_real & lr1, const l_real & lr2)
 {
    dotprecision dot1, dot2;
    dot1 = lr1;
@@ -278,18 +278,18 @@ l_interval _unchecked_l_interval(const l_real & lr1, const l_real & lr2) throw()
 }
 
 
-idotprecision _idotprecision(const l_interval & a) throw()
+idotprecision _idotprecision(const l_interval & a)
 {
    return idotprecision(a);
 }
 
-idotprecision::idotprecision(const l_interval & a) throw() : inf(0),
+idotprecision::idotprecision(const l_interval & a) : inf(0),
                                                              sup(0)
 { 
    a._akku_add(*this);
 }
 
-idotprecision & idotprecision::operator =(const l_interval & a) throw()
+idotprecision & idotprecision::operator =(const l_interval & a)
 {
    *this=0;
    a._akku_add(*this);
@@ -298,7 +298,7 @@ idotprecision & idotprecision::operator =(const l_interval & a) throw()
 
 // ---- Standardfunkt ---- (arithmetische Operatoren)
 
-l_interval operator-(const l_interval & a) throw()
+l_interval operator-(const l_interval & a)
 {
    int precsave=stagprec;
    stagprec=a.prec;
@@ -319,7 +319,7 @@ l_interval operator-(const l_interval & a) throw()
 
 // LI-LI
 
-l_interval operator+(const l_interval & li1, const l_interval & li2) throw()
+l_interval operator+(const l_interval & li1, const l_interval & li2)
 {
    l_interval li3;
    idotprecision idot(0.0);
@@ -329,7 +329,7 @@ l_interval operator+(const l_interval & li1, const l_interval & li2) throw()
    return li3;
 }
 
-l_interval operator-(const l_interval & li1, const l_interval & li2) throw()
+l_interval operator-(const l_interval & li1, const l_interval & li2)
 {
    l_interval li3;
    idotprecision idot(0.0);
@@ -339,7 +339,7 @@ l_interval operator-(const l_interval & li1, const l_interval & li2) throw()
    return li3;
 } 
  
-/* l_interval operator*(const l_interval & li1, const l_interval & li2) throw()
+/* l_interval operator*(const l_interval & li1, const l_interval & li2)
 {
    l_interval li3;
    interval stdmul;
@@ -359,7 +359,7 @@ l_interval operator-(const l_interval & li1, const l_interval & li2) throw()
    return li3;
 }  */
 
-l_interval operator * (const l_interval& li1, const l_interval& li2) throw()
+l_interval operator * (const l_interval& li1, const l_interval& li2)
 {  // Blomquist, Neue Version, 21.11.02;
     l_interval li3;
     interval stdmul;
@@ -373,7 +373,7 @@ l_interval operator * (const l_interval& li1, const l_interval& li2) throw()
     return li3;
 }    
 
-l_interval operator/(const l_interval & li1, const l_interval & li2) throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+l_interval operator/(const l_interval & li1, const l_interval & li2)
 { 
 // ge�ndert am 29.07.92 von Frederic Toussaint
 // 13.5.93 AW: neuer Algorithmus nach der Beschreibung von W. Kraemer
@@ -446,21 +446,21 @@ l_interval operator/(const l_interval & li1, const l_interval & li2) throw(ERROR
 }
 
 // ---- Vergleichsop. ----
-bool operator!(const l_interval & li) throw()
+bool operator!(const l_interval & li)
 {
    idotprecision idot(0.0);
    li._akku_add(idot);
    return (!idot);
 }
 
-/*l_interval::operator void *(void) throw()
+/*l_interval::operator void *(void)
 {
    idotakku[0]=0.0;
    _akku_add(idotakku[0]);
    return (idotakku[0]);
 }*/
 
-bool operator==(const l_interval & li1, const l_interval & li2) throw()
+bool operator==(const l_interval & li1, const l_interval & li2)
 {
    idotprecision idot1(0.0);
    idotprecision idot2(0.0);
@@ -471,7 +471,7 @@ bool operator==(const l_interval & li1, const l_interval & li2) throw()
 
 // ---- Mengenvergleiche ----
 
-bool operator<(const l_interval & li1, const l_interval & li2) throw()
+bool operator<(const l_interval & li1, const l_interval & li2)
 {
    idotprecision idot1(0.0);
    idotprecision idot2(0.0);
@@ -480,7 +480,7 @@ bool operator<(const l_interval & li1, const l_interval & li2) throw()
    return (idot1<idot2);
 } 
 
-bool operator>(const l_interval & li1, const l_interval & li2) throw()
+bool operator>(const l_interval & li1, const l_interval & li2)
 {
    idotprecision idot1(0.0);
    idotprecision idot2(0.0);
@@ -489,7 +489,7 @@ bool operator>(const l_interval & li1, const l_interval & li2) throw()
    return (idot1>idot2);
 } 
 
-bool operator<=(const l_interval & li1, const l_interval & li2) throw()
+bool operator<=(const l_interval & li1, const l_interval & li2)
 {
    idotprecision idot1(0.0);
    idotprecision idot2(0.0);
@@ -498,7 +498,7 @@ bool operator<=(const l_interval & li1, const l_interval & li2) throw()
    return (idot1<=idot2);
 } 
 
-bool operator>=(const l_interval & li1, const l_interval & li2) throw()
+bool operator>=(const l_interval & li1, const l_interval & li2)
 { 
    idotprecision idot1(0.0);
    idotprecision idot2(0.0);
@@ -507,7 +507,7 @@ bool operator>=(const l_interval & li1, const l_interval & li2) throw()
    return (idot1>=idot2);
 }
 
-void ConvexHull(const l_interval & li1, const l_interval & li2, l_interval & li3, l_interval & li4) throw()
+void ConvexHull(const l_interval & li1, const l_interval & li2, l_interval & li3, l_interval & li4)
 {
    if(li1<=li2) 
    {                                      // Trivialfall 1
@@ -533,7 +533,7 @@ void ConvexHull(const l_interval & li1, const l_interval & li2, l_interval & li3
    }
 }
 
-void Intersection(const l_interval & li1, const l_interval & li2, l_interval & li3, l_interval & li4) throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+void Intersection(const l_interval & li1, const l_interval & li2, l_interval & li3, l_interval & li4)
 {
    if(li1<=li2) 
    {                                      // Trivialfall 1
@@ -565,7 +565,7 @@ void Intersection(const l_interval & li1, const l_interval & li2, l_interval & l
    }
 }
 
-l_real     mid  (const l_interval & li) throw()
+l_real     mid  (const l_interval & li)
 {
    l_real lr;
 
@@ -607,7 +607,7 @@ l_real     mid  (const l_interval & li) throw()
    return lr;
 }
  
-/* void accumulate(idotprecision & d, const l_interval & li1, const l_interval & li2) throw()
+/* void accumulate(idotprecision & d, const l_interval & li1, const l_interval & li2)
 {
    // �nderungen am 24.9.92 von F. Toussaint wegen Underflow-Fehlern
 
@@ -654,7 +654,7 @@ l_real     mid  (const l_interval & li) throw()
 } */
 
 void accumulate(idotprecision & d, const l_interval & li1, 
-                                   const l_interval & li2) throw()
+                                   const l_interval & li2)
 {   // Blomquist, Neue Version vom 21.11.02;
     // Die �nderungen von Toussaint wurden r�ckg�ngig gemacht.
    int  i,j;
@@ -679,7 +679,7 @@ void accumulate(idotprecision & d, const l_interval & li1,
 }
 
 
-/* void l_interval::_akku_out() throw()
+/* void l_interval::_akku_out()
 {  
    // ein im idotakku[0] liegendes Zwischenergebnis
    // wird in der entsprechenden Praezision in das aufrufende l_interval
@@ -748,7 +748,7 @@ void accumulate(idotprecision & d, const l_interval & li1,
    }
 }  */
 
-void l_interval::_akku_out(idotprecision& idot) throw()
+void l_interval::_akku_out(idotprecision& idot)
 {  
    // ein im idotakku[0] liegendes Zwischenergebnis
    // wird in der entsprechenden Praezision in das aufrufende l_interval
@@ -776,7 +776,7 @@ void l_interval::_akku_out(idotprecision& idot) throw()
    this->elem(prec+1) = Sup(z);    // schreiben
 } // _akku_out()
 
-void l_interval::_akku_out_inn(idotprecision& idot) throw()
+void l_interval::_akku_out_inn(idotprecision& idot)
 { 
    // ein im idotakku[0] liegendes Zwischenergebnis
    // wird in der entsprechenden Praezision in die aufrufende l_interval Zahl
@@ -805,7 +805,7 @@ void l_interval::_akku_out_inn(idotprecision& idot) throw()
    this->elem(prec+1)=sup;         // schreiben
 }
 
-/* void l_interval::_akku_add(idotprecision& d) const throw()
+/* void l_interval::_akku_add(idotprecision& d) const
 { 
    // addiert aufrufenden l_interval auf iakku d.
    // �nderung am 23.9.92 von F. Toussaint, da Fehler im Unterlaufbereich
@@ -849,7 +849,7 @@ void l_interval::_akku_out_inn(idotprecision& idot) throw()
    }
 } */
 
-void l_interval::_akku_add(idotprecision& d) const throw()
+void l_interval::_akku_add(idotprecision& d) const
 { 
     // Addiert aufrufendes Intervall vom Typ l_interval auf d.
     // Meine neue Version; Blomquist, 20.11.02;
@@ -866,7 +866,7 @@ void l_interval::_akku_add(idotprecision& d) const throw()
       d += _interval(r, s);
 }
 
-/* void l_interval::_akku_sub(idotprecision& d) const throw()
+/* void l_interval::_akku_sub(idotprecision& d) const
 { 
    // Subtrahiert aufrufendes Intervall vom Typ l_interval von d.
    // Intervallsubtraktion!!
@@ -911,7 +911,7 @@ void l_interval::_akku_add(idotprecision& d) const throw()
    }
 } */
 
-void l_interval::_akku_sub(idotprecision& d) const throw()
+void l_interval::_akku_sub(idotprecision& d) const
 { 
     // Subtrahiert aufrufendes Intervall vom Typ l_interval von d.
     // Meine neue Version; Blomquist, 20.11.02;
@@ -931,14 +931,14 @@ void l_interval::_akku_sub(idotprecision& d) const throw()
 
 // ---- Ausgabefunkt. ---------------------------------------
 
-std::ostream & operator << (std::ostream &s, const l_interval & a) throw()
+std::ostream & operator << (std::ostream &s, const l_interval & a)
 {
    idotprecision idot(0.0);
    a._akku_add(idot);
    s << idot;
    return s;
 }
-std::string & operator << (std::string &s, const l_interval & a) throw()
+std::string & operator << (std::string &s, const l_interval & a)
 {
    idotprecision idot(0.0);
    a._akku_add(idot);
@@ -946,7 +946,7 @@ std::string & operator << (std::string &s, const l_interval & a) throw()
    return s;
 }
 
-std::istream & operator >> (std::istream &s, l_interval & a) throw()
+std::istream & operator >> (std::istream &s, l_interval & a)
 {
    idotprecision idot;
    s >> idot;
@@ -954,7 +954,7 @@ std::istream & operator >> (std::istream &s, l_interval & a) throw()
    return s;
 }
 
-std::string & operator >> (std::string &s, l_interval & a) throw()
+std::string & operator >> (std::string &s, l_interval & a)
 {
    idotprecision idot;
    s >> idot;
@@ -963,14 +963,14 @@ std::string & operator >> (std::string &s, l_interval & a) throw()
 
 }
 
-void operator >>(const std::string &s,l_interval & a) throw()
+void operator >>(const std::string &s,l_interval & a)
 {
    std::string r(s);
    idotprecision idot;
    r >> idot;
    a._akku_out(idot);
 }
-void operator >>(const char *s,l_interval & a) throw()
+void operator >>(const char *s,l_interval & a)
 {
    std::string r(s);
    idotprecision idot;
@@ -1047,7 +1047,7 @@ l_real RelDiam ( const l_interval x )                     // Relative diameter
     return( Sup( l_interval(diam(x)) / l_interval(AbsMin(x)) ) );
 }
 
-inline void times2pown(l_interval& x, int n) throw()
+inline void times2pown(l_interval& x, int n)
 { // x = x * 2^n;  Blomquist, 28.11.02;
     real mt,t;
     interval z;
@@ -1077,7 +1077,7 @@ inline void times2pown(l_interval& x, int n) throw()
 } // times2pown(...)
 
 
-void Times2pown(l_interval& a, const real& p) throw()
+void Times2pown(l_interval& a, const real& p)
 // The first parameter delivers an inclusion of a * 2^p;
 // For p in [-2100,+2100] p must be an integer value.
 // This condition is NOT tested in this function!

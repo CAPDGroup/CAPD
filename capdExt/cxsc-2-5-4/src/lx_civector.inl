@@ -26,7 +26,7 @@ namespace cxsc {
 	/*!
 	Creation of a variable of type lx_civector with length \f$ n = 1 \f$ and index bounds \f$ lb = ub = 1 \f$. The value of the element is undefined.
 	 */
-	inline lx_civector::lx_civector () throw():dat(NULL),l(1),u(0),size(0)
+	inline lx_civector::lx_civector ():dat(NULL),l(1),u(0),size(0)
 	{ }
 	
 	/*!
@@ -34,7 +34,7 @@ namespace cxsc {
 
 	Creation of a variable of type lx_civector with length \f$ n = i \f$ and index bounds \f$ lb = 1 \f$, and \f$ ub = i \f$. The values of the elements are undefined.
 	*/
-	inline lx_civector::lx_civector(int i) throw():l(1),u(i),size(i)
+	inline lx_civector::lx_civector(int i):l(1),u(i),size(i)
 	{
 		dat=new lx_cinterval[i];
 	}
@@ -47,10 +47,10 @@ namespace cxsc {
 		 */
 	inline lx_civector::lx_civector(int i1, int i2)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_IVECTOR_WRONG_BOUNDARIES,ERROR_IVECTOR_NO_MORE_MEMORY):
+		:
 			                                            l(i1),u(i2),size(i2-i1+1)
 #else
-		throw():l(i1),u(i2),size(i2-i1+1)
+		:l(i1),u(i2),size(i2-i1+1)
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -60,87 +60,87 @@ namespace cxsc {
 		dat=new lx_cinterval[size];
 	}
 			
-	inline lx_civector::lx_civector(const lx_cinterval &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const lx_cinterval &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}
 
-	inline lx_civector::lx_civector(const l_cinterval &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const l_cinterval &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}
 	
-	inline lx_civector::lx_civector(const cinterval &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const cinterval &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}
 	
-	inline lx_civector::lx_civector(const lx_complex &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const lx_complex &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}
 
-	inline lx_civector::lx_civector(const l_complex &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const l_complex &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}
 	
-	inline lx_civector::lx_civector(const complex &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const complex &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}
 	
-	inline lx_civector::lx_civector(const lx_interval &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const lx_interval &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}
 	
-	inline lx_civector::lx_civector(const l_interval &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const l_interval &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}	
 	
-	inline lx_civector::lx_civector(const interval &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const interval &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}
 		
-	inline lx_civector::lx_civector(const lx_real &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const lx_real &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}
 		
-	inline lx_civector::lx_civector(const l_real &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const l_real &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}
 		
-	inline lx_civector::lx_civector(const real &r) throw():l(1),u(1),size(1)
+	inline lx_civector::lx_civector(const real &r):l(1),u(1),size(1)
 	{
 		dat=new lx_cinterval[1];
 		*dat=r;
 	}	
 
 	inline lx_civector::lx_civector(const lx_civector &v)
-			                                   throw():l(v.l),u(v.u),size(v.size)
+			                                  :l(v.l),u(v.u),size(v.size)
 	{
 		dat=new lx_cinterval[size];
 		for (int i=0;i<size;i++)
 			dat[i]=v.dat[i];
 	}
 	
-	inline lx_civector &lx_civector::operator =(const lx_civector &rv) throw()
+	inline lx_civector &lx_civector::operator =(const lx_civector &rv)
 	{ 
 		l = rv.l; u = rv.u; size = rv.size;
 		dat=new lx_cinterval[size];
@@ -149,7 +149,7 @@ namespace cxsc {
 		return *this;
 	}
 	
-	inline lx_civector &lx_civector::operator =(const lx_cinterval &r) throw()
+	inline lx_civector &lx_civector::operator =(const lx_cinterval &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -159,7 +159,7 @@ namespace cxsc {
 		return *this;
 	}
 	
-	inline lx_civector &lx_civector::operator =(const l_cinterval &r) throw()
+	inline lx_civector &lx_civector::operator =(const l_cinterval &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -169,7 +169,7 @@ namespace cxsc {
 		return *this;
 	}
 	
-	inline lx_civector &lx_civector::operator =(const cinterval &r) throw()
+	inline lx_civector &lx_civector::operator =(const cinterval &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -179,7 +179,7 @@ namespace cxsc {
 		return *this;
 	}
 	
-	inline lx_civector &lx_civector::operator =(const lx_complex &r) throw()
+	inline lx_civector &lx_civector::operator =(const lx_complex &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -189,7 +189,7 @@ namespace cxsc {
 		return *this;
 	}
 	
-	inline lx_civector &lx_civector::operator =(const l_complex &r) throw()
+	inline lx_civector &lx_civector::operator =(const l_complex &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -199,7 +199,7 @@ namespace cxsc {
 		return *this;
 	}
 	
-	inline lx_civector &lx_civector::operator =(const complex &r) throw()
+	inline lx_civector &lx_civector::operator =(const complex &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -209,7 +209,7 @@ namespace cxsc {
 		return *this;
 	}
 
-	inline lx_civector &lx_civector::operator =(const lx_interval &r) throw()
+	inline lx_civector &lx_civector::operator =(const lx_interval &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -219,7 +219,7 @@ namespace cxsc {
 		return *this;
 	}
 	
-	inline lx_civector &lx_civector::operator =(const l_interval &r) throw()
+	inline lx_civector &lx_civector::operator =(const l_interval &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -229,7 +229,7 @@ namespace cxsc {
 		return *this;
 	}
 	
-	inline lx_civector &lx_civector::operator =(const interval &r) throw()
+	inline lx_civector &lx_civector::operator =(const interval &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -239,7 +239,7 @@ namespace cxsc {
 		return *this;
 	}
 	
-	inline lx_civector &lx_civector::operator =(const lx_real &r) throw()
+	inline lx_civector &lx_civector::operator =(const lx_real &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -249,7 +249,7 @@ namespace cxsc {
 		return *this;
 	}
 	
-	inline lx_civector &lx_civector::operator =(const l_real &r) throw()
+	inline lx_civector &lx_civector::operator =(const l_real &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -259,7 +259,7 @@ namespace cxsc {
 		return *this;
 	}
 	
-	inline lx_civector &lx_civector::operator =(const real &r) throw()
+	inline lx_civector &lx_civector::operator =(const real &r)
 	{
 		lx_cinterval *newdat = new lx_cinterval[size];
 		for (int i=0;i<size;i++)
@@ -271,9 +271,9 @@ namespace cxsc {
 	
 	inline lx_cinterval & lx_civector::operator [](const int &i)
 #if(CXSC_INDEX_CHECK)
-		throw(ERROR_IVECTOR_ELEMENT_NOT_IN_VEC)
+		
 #else
-		throw()
+		
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -285,9 +285,9 @@ namespace cxsc {
 		
 	inline const lx_cinterval & lx_civector::operator [](const int &i) const
 #if(CXSC_INDEX_CHECK)
-			throw(ERROR_IVECTOR_ELEMENT_NOT_IN_VEC)
+			
 #else
-			throw()
+			
 #endif
 	{
 #if(CXSC_INDEX_CHECK)
@@ -299,9 +299,9 @@ namespace cxsc {
 
 inline void Resize(lx_civector &rv, int len)
 #if(CXSC_INDEX_CHECK)
-			throw(ERROR__WRONG_BOUNDARIES<lx_civector>);
+			;
 #else
-	throw()
+	
 #endif
 	{
 		if (rv.size == len)
@@ -328,9 +328,9 @@ inline void Resize(lx_civector &rv, int len)
 	
 inline void Resize(lx_civector &rv, int lb, int ub)
 #if(CXSC_INDEX_CHECK)
-			throw(ERROR__WRONG_BOUNDARIES<lx_civector>)
+			
 #else
-			throw()
+			
 #endif
 { 
 	if (rv.size == ub-lb+1)
@@ -358,7 +358,7 @@ inline void Resize(lx_civector &rv, int lb, int ub)
 	}
 }
 
-inline void DoubleSize(lx_civector& x) throw()
+inline void DoubleSize(lx_civector& x)
 {
 	int n = Lb(x);
 	Resize(x,n,2*Ub(x)-n+1);

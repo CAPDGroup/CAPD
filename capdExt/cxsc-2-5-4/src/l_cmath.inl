@@ -27,6 +27,6 @@
 
 namespace cxsc {
 
-inline l_complex sqr(const l_complex& z) throw() { return (z*z); }
+inline l_complex sqr(const l_complex& z) { return (z*z); }
 
 } // namespace cxsc

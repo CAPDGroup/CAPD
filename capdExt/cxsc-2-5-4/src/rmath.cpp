@@ -85,9 +85,9 @@ int uint_trail(const unsigned int& n)
 } // uint_trail
 
 void sqr2uv(const real& x, real& u, real& v)
-// Liefert u,v für: x2 = u + v; EXAKTE Darstellung, falls kein overflow 
+// Liefert u,v fï¿½r: x2 = u + v; EXAKTE Darstellung, falls kein overflow 
 // auftritt und v im normalisierten Bereich liegt. u > |v|
-// Vorsicht: Funktioniert zunächst nur auf INTEL-Systemen!!!
+// Vorsicht: Funktioniert zunï¿½chst nur auf INTEL-Systemen!!!
 {
     real a,b,t,y1,y2;
     a = Cut26(x);
@@ -121,7 +121,7 @@ const real expmx2_x0 = 7491658466053896.0 / 281474976710656.0;
 // Die relative Fehlerschranke e(f) := 4.618919E-16 gilt fuer
 // alle |x| <= expmx2_x0 = 26.61571750925.... 
 
-real expmx2(const real& x) throw()
+real expmx2(const real& x)
 // e^(-x^2);  rel. Fehlerschranke:  eps = 4.618919E-16 = e(f) gilt
 // fuer alle |x| <= expmx2_x0 = 26.61571750925....
 // Fuer |x| > expmx2_x0 --> expmx2(x) = 0;
@@ -227,7 +227,7 @@ real expx2m1(const real& x)
 
 //------------------------------------------------------------------
 
-real sqrt1px2(const real& x) throw()
+real sqrt1px2(const real& x)
 // sqrt(1+x^2); Blomquist 13.12.02;
 {
     if (expo(x) > 33) return abs(x);
@@ -235,10 +235,10 @@ real sqrt1px2(const real& x) throw()
 }
 
 // Folgende Konstante sqrtp1m1_s wird gebraucht in 
-// real sqrtp1m1(const real& x) throw();  Blomquist, 05.08.03
+// real sqrtp1m1(const real& x);  Blomquist, 05.08.03
 const real sqrtp1m1_s = 9007199254740984.0 / 1125899906842624.0;
 
-real sqrtp1m1(const real& x) throw()
+real sqrtp1m1(const real& x)
 // sqrtp1m1(x) = sqrt(x+1)-1;
 // Blomquist, 05.08.03; 
 {
@@ -255,7 +255,7 @@ real sqrtp1m1(const real& x) throw()
 
 //------------------------------------------------------------------
 
-real sqrtx2y2(const real& x, const real& y) throw()
+real sqrtx2y2(const real& x, const real& y)
 // calculating sqrt(x^2 + y^2) in high accuracy. Blomquist 01.12.02
 {
     real a,b,r;
@@ -310,7 +310,7 @@ real sqrtx2m1(const real& x)
 	x1 = Cut26(arg);  x2 = arg - x1;  // arg = x = x1 + x2;
 	ep2 = x2*(arg+x1);  // ep2 ist fehlerbehaftet
 	x2 = x1*x1;  ep = x2-1;
-	res = sqrt(ep+ep2); // res ist Startwert für Newton-Verfahren
+	res = sqrt(ep+ep2); // res ist Startwert fï¿½r Newton-Verfahren
 	s1 = Cut26(res);  s2 = res - s1;  // Startwert = s1 + s2;
 	ep2 = ep2 - s2 * (res+s1); // ep2 = [x2*(x+x1)-s2*(y0+s1)]
 	if (arg<c3) ep -= s1*s1;   // ep = (x1^2-1) - s1^2;
@@ -332,7 +332,7 @@ real sqrtx2m1(const real& x)
 
 //------------------------------------------------------------------
 
-real sqrt1mx2(const real& x) throw(STD_FKT_OUT_OF_DEF)
+real sqrt1mx2(const real& x)
 // sqrt(1-x2);  rel. Fehlerschranke:  eps = 3.700747E-16 = e(f)
 // Blomquist, 19.06.04;
 { 
@@ -379,7 +379,7 @@ int Interval_Nr(int* v, const int& n, const int& ex)
 //------------------------------------------------------------------
 
 real ln_sqrtx2y2(const real& x, const real& y) 
-                                throw(STD_FKT_OUT_OF_DEF)
+                               
 // ln( sqrt(x^2+y^2) ) == 0.5*ln(x^2+y^2); Blomquist, 21.11.03;
 // Relative error bound: 5.160563E-016;
 // Absolute error bound: 2.225075E-308; if x=1 and 0<=y<=b0;
@@ -487,7 +487,7 @@ typedef union { double f; char intern[8]; } help_real;
 
 real Cut24(const real& x){
     // y = Cut24(x) liefert ein y, das mit den ersten 24 Mantissenbits
-    // von x übereinstimmt, das hidden bit ist dabei mitgezählt!
+    // von x ï¿½bereinstimmt, das hidden bit ist dabei mitgezï¿½hlt!
     // Die restlichen 53-24=29 Mantissenbits werden auf Null gesetzt.
   help_real y;
   y.f = _double(x);
@@ -503,7 +503,7 @@ real Cut24(const real& x){
 
 real Cut25(const real& x){
     // y = Cut25(x) liefert ein y, das mit den ersten 25 Mantissenbits
-    // von x übereinstimmt, das hidden bit ist dabei mitgezählt!
+    // von x ï¿½bereinstimmt, das hidden bit ist dabei mitgezï¿½hlt!
     // Die restlichen 53-25=28 Mantissenbits werden auf Null gesetzt.
   help_real y;
   y.f = _double(x);
@@ -519,7 +519,7 @@ real Cut25(const real& x){
 
 real Cut26(const real& x){
     // y = Cut26(x) liefert ein y, das mit den ersten 26 Mantissenbits
-    // von x übereinstimmt, das hidden bit ist dabei mitgezählt!
+    // von x ï¿½bereinstimmt, das hidden bit ist dabei mitgezï¿½hlt!
     // Die restlichen 53-26=27 Mantissenbits werden auf Null gesetzt.
   help_real y;
   y.f = _double(x);
@@ -533,7 +533,7 @@ real Cut26(const real& x){
   return real(y.f);
 }
 
-int Round(const real& x) throw()
+int Round(const real& x)
 // y = Round(x) delivers the rounded value y of x.
 // For |x| < 2147483647.5 the assignment  y = Round(x)  delivers
 // the next integer value y.
@@ -555,7 +555,7 @@ int Round(const real& x) throw()
 	return dbl<0 ? int(dbl-0.5) : int(dbl+0.5);
 }
 
-int ceil(const real& x) throw()
+int ceil(const real& x)
 {
 	real y(x); 
 	bool neg(y<0);
@@ -567,7 +567,7 @@ int ceil(const real& x) throw()
 	return res;
 }
 
-int ifloor(const real& x) throw()
+int ifloor(const real& x)
 {
 	real y(x); 
 	bool neg(y<0);
@@ -595,7 +595,7 @@ static const real c_ln2_B = 6243314768165359.0 / 9007199254740992.0;
 // c_ln2_B < ln(2) is the nearest machine number for ln(2) with an
 // absolute error < 2.3190469E-17;
 
-real acoshp1(const real& x) throw()
+real acoshp1(const real& x)
 // acoshp1(x) = acosh(1+x);  rel. error: eps = 7.792706E-16 = e(f)
 // Ausfuehrlich getestet;  Blomquist, 27.03.05;
 { 

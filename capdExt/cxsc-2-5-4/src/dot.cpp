@@ -59,20 +59,20 @@ unsigned int opdotprec = 0;
 //  dotakku[4]    wird in den skalaren Paketen intern verwendet
 //dotprecision dotakku[MAXDOTAKKU];
 
-dotprecision::dotprecision(void) throw() : akku(new a_btyp[A_LENGTH]), err(0.0), k(0)
+dotprecision::dotprecision(void) : akku(new a_btyp[A_LENGTH]), err(0.0), k(0)
 {
    memset(akku,0,BUFFERSIZE); // d_clr(&akku);
    // d_clr(&akku); // Da d_init calloc verwendet, nicht noetig!?!?
    // d_clr  ist definiert in p88rts.h, also RtsTyp.h
 }
 
-dotprecision::dotprecision(const dotprecision &from) throw()
+dotprecision::dotprecision(const dotprecision &from)
                                  : akku(new a_btyp[A_LENGTH]), err(from.err), k(from.k)
 {
    memcpy((void *)akku,(void *)from.akku,BUFFERSIZE);
 }
 
-dotprecision::dotprecision(const real &r) throw()
+dotprecision::dotprecision(const real &r)
                                           : akku(new a_btyp[A_LENGTH]), err(0.0), k(0)
 {
    real dummy(r);
@@ -81,7 +81,7 @@ dotprecision::dotprecision(const real &r) throw()
    d_radd(&akku,*((a_real *)&dummy));   
 }
 
-dotprecision & dotprecision::operator =(const dotprecision &from) throw()
+dotprecision & dotprecision::operator =(const dotprecision &from)
 {
    if(&from==this) // Handle self-assignment
       return *this; // Hier kein new, bzw delete, deswegen diese Methode
@@ -93,7 +93,7 @@ dotprecision & dotprecision::operator =(const dotprecision &from) throw()
    return *this;
 }
 
-dotprecision & dotprecision::operator =(const real &r) throw()
+dotprecision & dotprecision::operator =(const real &r)
 {
    real dummy(r);
    memset(akku,0,BUFFERSIZE); 
@@ -107,7 +107,7 @@ dotprecision::~dotprecision()
    delete [] akku;
 }
 
-dotprecision operator +(const dotprecision &a,const dotprecision &b) throw()
+dotprecision operator +(const dotprecision &a,const dotprecision &b)
 {
    dotprecision tmp(a); 
    d_dadd(&(tmp.akku),(Dotprecision)b.akku);
@@ -116,7 +116,7 @@ dotprecision operator +(const dotprecision &a,const dotprecision &b) throw()
    return tmp;
 }
 
-dotprecision operator -(const dotprecision &a,const dotprecision &b) throw()
+dotprecision operator -(const dotprecision &a,const dotprecision &b)
 {
    dotprecision tmp(b);
    tmp.negdot();
@@ -126,28 +126,28 @@ dotprecision operator -(const dotprecision &a,const dotprecision &b) throw()
    return tmp;
 }
 
-dotprecision operator +(const dotprecision &d,const real &r) throw()
+dotprecision operator +(const dotprecision &d,const real &r)
 {
    dotprecision erg(d);
    d_radd(&(erg.akku),*((a_real *)&r));
    return erg;
 }
 
-dotprecision operator +(const real &r,const dotprecision &d) throw()
+dotprecision operator +(const real &r,const dotprecision &d)
 {
    dotprecision erg(d);
    d_radd(&(erg.akku),*((a_real *)&r));
    return erg;
 }
 
-dotprecision operator -(const dotprecision &d,const real &r) throw()
+dotprecision operator -(const dotprecision &d,const real &r)
 {
    dotprecision erg(d);
    d_radd(&(erg.akku),-*((a_real *)&r));
    return erg;
 }
 
-dotprecision operator -(const real &r,const dotprecision &d) throw()
+dotprecision operator -(const real &r,const dotprecision &d)
 {
    dotprecision erg(d);
    erg.negdot();
@@ -155,26 +155,26 @@ dotprecision operator -(const real &r,const dotprecision &d) throw()
    return erg;
 }
 
-dotprecision & operator +=(dotprecision &d,const real &r) throw()
+dotprecision & operator +=(dotprecision &d,const real &r)
 {
    d_radd(&d.akku,*((a_real *)&r));
    return d;
 }
 
-dotprecision & operator +=(dotprecision &d,const dotprecision &d2) throw()
+dotprecision & operator +=(dotprecision &d,const dotprecision &d2)
 {
    d_dadd(&(d.akku),(Dotprecision)(d2.akku));
    d.err = addu(d.err,d2.err);
    return d;
 }
 
-dotprecision & operator -=(dotprecision &d,const real &r) throw()
+dotprecision & operator -=(dotprecision &d,const real &r)
 {
    d_radd(&d.akku,-*((a_real *)&r));
    return d;
 }
 
-dotprecision & operator -=(dotprecision &d,const dotprecision &d2) throw()
+dotprecision & operator -=(dotprecision &d,const dotprecision &d2)
 {
    dotprecision tmp(d2);
    tmp.negdot();
@@ -183,14 +183,14 @@ dotprecision & operator -=(dotprecision &d,const dotprecision &d2) throw()
    return d;
 }
 
-dotprecision operator -(const dotprecision &a) throw()
+dotprecision operator -(const dotprecision &a)
 {
    dotprecision tmp(a);
    tmp.negdot();
    return tmp;
 }
 
-dotprecision operator +(const dotprecision &a) throw()
+dotprecision operator +(const dotprecision &a)
 {
    return a;
 }
@@ -198,7 +198,7 @@ dotprecision operator +(const dotprecision &a) throw()
 // ---------------------------------------------------------------------------
 // Alle Vergleichsoperatoren werden auf die folgenden zwei (==, <=) zurueckgefuehrt!
 
-bool operator ==(const dotprecision &a,const dotprecision &b)  throw()  // Uebernommen aus dot.cpp "testequal"
+bool operator ==(const dotprecision &a,const dotprecision &b)   // Uebernommen aus dot.cpp "testequal"
 {
    int res = true;
 
@@ -238,7 +238,7 @@ bool operator ==(const dotprecision &a,const dotprecision &b)  throw()  // Ueber
    return res && (a.err == b.err);
 }
 
-bool operator <=(const dotprecision &x,const dotprecision &y) throw()   // Uebernommen aus dot.cpp "testlessequal"
+bool operator <=(const dotprecision &x,const dotprecision &y)   // Uebernommen aus dot.cpp "testlessequal"
 {
    int res = true, cont;
    // Dotprecision dotakku = ((dotprecision*) &dot)->akku; b.akku
@@ -330,29 +330,29 @@ bool operator <=(const dotprecision &x,const dotprecision &y) throw()   // Ueber
    return res;
 }
 
-bool operator !=(const dotprecision &a,const dotprecision &b) throw() { return !(a==b); }
-bool operator  <(const dotprecision &a,const dotprecision &b) throw() { return !(b<=a); }
-bool operator  >(const dotprecision &a,const dotprecision &b) throw() { return !(a<=b); }
-bool operator >=(const dotprecision &a,const dotprecision &b) throw() { return (b<=a);  }
+bool operator !=(const dotprecision &a,const dotprecision &b) { return !(a==b); }
+bool operator  <(const dotprecision &a,const dotprecision &b) { return !(b<=a); }
+bool operator  >(const dotprecision &a,const dotprecision &b) { return !(a<=b); }
+bool operator >=(const dotprecision &a,const dotprecision &b) { return (b<=a);  }
 
-bool operator ==(const real &r,const dotprecision &d) throw() { return dotprecision(r)==d; }
-bool operator !=(const real &r,const dotprecision &d) throw() { return dotprecision(r)!=d; }
-bool operator  <(const real &r,const dotprecision &d) throw() { return dotprecision(r)<d;  }  
-bool operator  >(const real &r,const dotprecision &d) throw() { return dotprecision(r)>d;  }
-bool operator <=(const real &r,const dotprecision &d) throw() { return dotprecision(r)<=d; }
-bool operator >=(const real &r,const dotprecision &d) throw() { return dotprecision(r)>=d; }
+bool operator ==(const real &r,const dotprecision &d) { return dotprecision(r)==d; }
+bool operator !=(const real &r,const dotprecision &d) { return dotprecision(r)!=d; }
+bool operator  <(const real &r,const dotprecision &d) { return dotprecision(r)<d;  }  
+bool operator  >(const real &r,const dotprecision &d) { return dotprecision(r)>d;  }
+bool operator <=(const real &r,const dotprecision &d) { return dotprecision(r)<=d; }
+bool operator >=(const real &r,const dotprecision &d) { return dotprecision(r)>=d; }
 
-bool operator ==(const dotprecision &d,const real &r) throw() { return d==dotprecision(r); }
-bool operator !=(const dotprecision &d,const real &r) throw() { return d!=dotprecision(r); }
-bool operator  <(const dotprecision &d,const real &r) throw() { return d<dotprecision(r);  }
-bool operator  >(const dotprecision &d,const real &r) throw() { return d>dotprecision(r);  }
-bool operator <=(const dotprecision &d,const real &r) throw() { return d<=dotprecision(r); }
-bool operator >=(const dotprecision &d,const real &r) throw() { return d>=dotprecision(r); }
+bool operator ==(const dotprecision &d,const real &r) { return d==dotprecision(r); }
+bool operator !=(const dotprecision &d,const real &r) { return d!=dotprecision(r); }
+bool operator  <(const dotprecision &d,const real &r) { return d<dotprecision(r);  }
+bool operator  >(const dotprecision &d,const real &r) { return d>dotprecision(r);  }
+bool operator <=(const dotprecision &d,const real &r) { return d<=dotprecision(r); }
+bool operator >=(const dotprecision &d,const real &r) { return d>=dotprecision(r); }
 
-bool operator  !(const dotprecision &a) throw()               { return sign(a)==0; }
+bool operator  !(const dotprecision &a)               { return sign(a)==0; }
 
 
-void rnd (const dotprecision& d, real& r, rndtype type) throw() 
+void rnd (const dotprecision& d, real& r, rndtype type) 
 {
    if(type==RND_NEXT) {
       *((a_real *)(&r))=d_stan((Dotprecision)d.akku);
@@ -365,7 +365,7 @@ void rnd (const dotprecision& d, real& r, rndtype type) throw()
    }
 }
 
-void rnd (const dotprecision& d, real& l, real& u) throw() 
+void rnd (const dotprecision& d, real& l, real& u) 
 {
    *((a_real *)(&l))=d_stad(d.akku);
    *((a_real *)(&u))=d_stau(d.akku);
@@ -374,14 +374,14 @@ void rnd (const dotprecision& d, real& l, real& u) throw()
    u = addu(u,d.err);
 }
 
-void rnd (const dotprecision& d, interval& x) throw() 
+void rnd (const dotprecision& d, interval& x) 
 {
     real a,b;
     rnd(d,a,b);
     x = interval(a,b);
 }
 
-real rnd (const dotprecision& d, rndtype type) throw() 
+real rnd (const dotprecision& d, rndtype type) 
 {
     real r;
    if(type==RND_NEXT) {
@@ -396,7 +396,7 @@ real rnd (const dotprecision& d, rndtype type) throw()
    return r;
 }
 
-/*std::string  & operator << (std::string  & s, const dotprecision & d) throw() 
+/*std::string  & operator << (std::string  & s, const dotprecision & d) 
 {
    //std::ostringstream o(s);
    
@@ -468,7 +468,7 @@ real rnd (const dotprecision& d, rndtype type) throw()
 }
 
 
-std::ostream & operator << (std::ostream & o, const dotprecision & d) throw() 
+std::ostream & operator << (std::ostream & o, const dotprecision & d) 
 {
    std::string buffer;
    buffer << d;
@@ -485,7 +485,7 @@ std::ostream & operator << (std::ostream & o, const dotprecision & d) throw()
 * /
 }
 
-std::istream & operator >> (std::istream & i,dotprecision & d) throw() 
+std::istream & operator >> (std::istream & i,dotprecision & d) 
 {
    // Dies ist noch _schlecht_!
    double b;
@@ -494,20 +494,20 @@ std::istream & operator >> (std::istream & i,dotprecision & d) throw()
    return i;
 }
 */
-dotprecision & dotprecision::negdot(void) throw() 
+dotprecision & dotprecision::negdot(void) 
 {
    this->akku[A_SIGN] = 1 - this->akku[A_SIGN];
    return *this;
 }
 
-int sign(const dotprecision &a) throw() 
+int sign(const dotprecision &a) 
 {
    if(a.akku[A_BEGIN]==ZERO)
       return 0;
    return (a.akku[A_SIGN] ? -1 : 1);
 }
 
-dotprecision abs(const dotprecision &a) throw() 
+dotprecision abs(const dotprecision &a) 
 {
    if(sign(a)>=0)
       return a;
@@ -516,7 +516,7 @@ dotprecision abs(const dotprecision &a) throw()
    return tmp;
 }
 
-dotprecision & accumulate (dotprecision& dot, const real& a, const real& b) throw() 
+dotprecision & accumulate (dotprecision& dot, const real& a, const real& b) 
 {
    // nur dann accumulieren, wenn noetig
    if (!!a && !!b)

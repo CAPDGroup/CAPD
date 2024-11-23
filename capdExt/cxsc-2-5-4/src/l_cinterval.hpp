@@ -60,557 +60,557 @@ class l_cinterval
    public:
       // ---- implicit constructors  ------------------------------
       //! Constructor of class l_cinterval
-      inline l_cinterval(void)  throw ()           {}
+      inline l_cinterval(void)            {}
       //! Constructor of class l_cinterval
-      inline l_cinterval(const interval & a,const interval &b) throw();
+      inline l_cinterval(const interval & a,const interval &b);
       //! Constructor of class l_cinterval
-      inline l_cinterval(const l_interval & a,const l_interval &b) throw(); 
+      inline l_cinterval(const l_interval & a,const l_interval &b); 
       //! Constructor of class l_cinterval
       inline l_cinterval(const complex & a, const complex & b) 
-                                     throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                    ;
       //! Constructor of class l_cinterval
       inline l_cinterval(const l_complex & a, const l_complex & b) 
-                                     throw(ERROR_CINTERVAL_EMPTY_INTERVAL); 
+                                    ; 
 
-      friend cinterval::cinterval(const l_cinterval &) throw();
+      friend cinterval::cinterval(const l_cinterval &);
 
       // ---- explicit constructors -------------------------------
 
       //! Constructor of class l_cinterval
-      explicit inline l_cinterval(const real       & a)  throw();
+      explicit inline l_cinterval(const real       & a) ;
       //! Constructor of class l_cinterval
-      explicit inline l_cinterval(const l_real     & a)  throw();
+      explicit inline l_cinterval(const l_real     & a) ;
       //! Constructor of class l_cinterval
-      explicit inline l_cinterval(const interval   & a)  throw();
+      explicit inline l_cinterval(const interval   & a) ;
       //! Constructor of class l_cinterval
-      explicit inline l_cinterval(const l_interval & a)  throw();
+      explicit inline l_cinterval(const l_interval & a) ;
       //! Constructor of class l_cinterval
-      explicit inline l_cinterval(const complex    & a)  throw();
+      explicit inline l_cinterval(const complex    & a) ;
       //! Constructor of class l_cinterval
-      explicit inline l_cinterval(const l_complex  & a)  throw();
+      explicit inline l_cinterval(const l_complex  & a) ;
       //! Constructor of class l_cinterval
-      explicit inline l_cinterval(const cinterval  & a)  throw();  
+      explicit inline l_cinterval(const cinterval  & a) ;  
 
       //! Constructor of class l_cinterval
-      explicit        l_cinterval(const dotprecision &)   throw();
+      explicit        l_cinterval(const dotprecision &)  ;
       //! Constructor of class l_cinterval
-      explicit        l_cinterval(const cdotprecision &)  throw();
+      explicit        l_cinterval(const cdotprecision &) ;
       //! Constructor of class l_cinterval
-      explicit        l_cinterval(const idotprecision &)  throw();
+      explicit        l_cinterval(const idotprecision &) ;
       //! Constructor of class l_cinterval
-      explicit        l_cinterval(const cidotprecision &) throw();
+      explicit        l_cinterval(const cidotprecision &);
 
       // ---- assignments -----------------------------------------
 
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const real        &) throw();
+      inline l_cinterval & operator =(const real        &);
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const l_real      &) throw();
+      inline l_cinterval & operator =(const l_real      &);
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const interval    &) throw();
+      inline l_cinterval & operator =(const interval    &);
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const l_interval  &) throw();
+      inline l_cinterval & operator =(const l_interval  &);
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const complex     &) throw();
+      inline l_cinterval & operator =(const complex     &);
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const l_complex   &) throw();
+      inline l_cinterval & operator =(const l_complex   &);
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const cinterval   &) throw();
+      inline l_cinterval & operator =(const cinterval   &);
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const l_cinterval &) throw();
+      inline l_cinterval & operator =(const l_cinterval &);
       //! Implementation of standard assigning operator
-             l_cinterval & operator =(const lx_cinterval &) throw();
+             l_cinterval & operator =(const lx_cinterval &);
       
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const dotprecision   &) throw();
+      inline l_cinterval & operator =(const dotprecision   &);
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const idotprecision  &) throw();
+      inline l_cinterval & operator =(const idotprecision  &);
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const cdotprecision  &) throw();
+      inline l_cinterval & operator =(const cdotprecision  &);
       //! Implementation of standard assigning operator
-      inline l_cinterval & operator =(const cidotprecision &) throw();
+      inline l_cinterval & operator =(const cidotprecision &);
 
-    friend cinterval & cinterval::operator = (const l_cinterval &) throw();
+    friend cinterval & cinterval::operator = (const l_cinterval &);
 
       // ---- Input/Output  ---------------------------------------
 
       //! Implementation of standard output method
       friend std::ostream & operator << (std::ostream &,const l_cinterval &) 
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard output method
       friend std::string &  operator << (std::string &, const l_cinterval &)  
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard input method
       friend std::string &  operator >> (std::string &, l_cinterval &)
-                                                      throw(EMPTY_INTERVAL);
+                                                     ;
       //! Implementation of standard input method
       friend std::istream & operator >>(std::istream &, l_cinterval &) 
-                                                      throw(EMPTY_INTERVAL);
+                                                     ;
       //! Implementation of standard input method
       friend void operator >> (const char *, l_cinterval &) 
-                                                      throw(EMPTY_INTERVAL);
+                                                     ;
       //! Implementation of standard input method
       friend void operator >> (const std::string &, l_cinterval &)  
-                                                      throw(EMPTY_INTERVAL);
+                                                     ;
 
 
 // ----------------------------- Std.Operators ------------------------------
 
       //! Implementation of standard algebraic negative sign operation
-      friend inline l_cinterval operator -(const l_cinterval &) throw ();
+      friend inline l_cinterval operator -(const l_cinterval &);
       //! Implementation of standard algebraic positive sign operation
-      friend inline l_cinterval operator +(const l_cinterval &) throw ();
+      friend inline l_cinterval operator +(const l_cinterval &);
       //! Implementation of standard negation operation
-      friend inline bool operator! (const l_cinterval & a)      throw ();
+      friend inline bool operator! (const l_cinterval & a)     ;
 
 // LCI <--> LCI
 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_cinterval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_cinterval &, 
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic multiplication operation
       friend        l_cinterval operator *(const l_cinterval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic division operation
       friend        l_cinterval operator /(const l_cinterval &,
                                            const l_cinterval &) 
-                                                     throw(DIV_BY_ZERO);
+                                                    ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_cinterval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_cinterval &,
                                            const l_cinterval &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                 ;
       
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_cinterval & operator +=(l_cinterval &, 
-                                              const l_cinterval &) throw();
+                                              const l_cinterval &);
       //! Implementation of standard algebraic subtraction and allocation operation
       friend inline l_cinterval & operator -=(l_cinterval &, 
-                                              const l_cinterval &) throw();
+                                              const l_cinterval &);
       //! Implementation of standard algebraic multiplication and allocation operation
       friend inline l_cinterval & operator *=(l_cinterval &, 
-                                              const l_cinterval &) throw();
+                                              const l_cinterval &);
       //! Implementation of standard algebraic division and allocation operation
       friend inline l_cinterval & operator /=(l_cinterval &, 
-                                              const l_cinterval &) throw();
+                                              const l_cinterval &);
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_cinterval & operator |=(l_cinterval &, 
-                                              const l_cinterval &) throw();
+                                              const l_cinterval &);
       //! Allocates the intersection of the arguments to the first argument
       friend inline l_cinterval & operator &=(l_cinterval &, 
                                               const l_cinterval &) 
-                                     throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                    ;
       
       // LCI <--> R
       
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const real &, const l_cinterval &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const real &, const l_cinterval &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const real &, const l_cinterval &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const real &, const l_cinterval &) 
-                                                                     throw();
+                                                                    ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const real &, const l_cinterval &) 
-                                                                     throw();
+                                                                    ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const real &, const l_cinterval &) 
-                                                                     throw();
+                                                                    ;
       
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_cinterval & operator +=(l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic subtraction and allocation operation
       friend inline l_cinterval & operator -=(l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic multiplication and allocation operation
       friend inline l_cinterval & operator *=(l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic division and allocation operation
       friend inline l_cinterval & operator /=(l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_cinterval & operator |=(l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
       //! Allocates the intersection of the arguments to the first argument
       friend inline l_cinterval & operator &=(l_cinterval &, const real &) 
-                                                                     throw();
+                                                                    ;
 
       // LCI <--> LR
       
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_cinterval &, const l_real &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_real &, const l_cinterval &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_cinterval &, const l_real &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_real &, const l_cinterval &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_cinterval &, const l_real &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_real &, const l_cinterval &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_cinterval &, const l_real &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_real &, const l_cinterval &)
-                                                                       throw();
+                                                                      ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_cinterval &, const l_real &)
-                                                                       throw();
+                                                                      ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_real &, const l_cinterval &)
-                                                                       throw();
+                                                                      ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_cinterval &, const l_real &)
-                                                                       throw();
+                                                                      ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_real &, const l_cinterval &)
-                                                                       throw();
+                                                                      ;
       
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_cinterval & operator +=(l_cinterval &, const l_real &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic subtraction and allocation operation
       friend inline l_cinterval & operator -=(l_cinterval &, const l_real &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic multiplication and allocation operation
       friend inline l_cinterval & operator *=(l_cinterval &, const l_real &) 
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard algebraic division and allocation operation
       friend inline l_cinterval & operator /=(l_cinterval &, const l_real &) 
-                                                                     throw();
+                                                                    ;
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_cinterval & operator |=(l_cinterval &, const l_real &) 
-                                                                     throw();
+                                                                    ;
       //! Allocates the intersection of the arguments to the first argument
       friend inline l_cinterval & operator &=(l_cinterval &, const l_real &) 
-                                                                     throw();
+                                                                    ;
 
       // LCI <--> C
 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_cinterval &,
-                                           const complex &)     throw();
+                                           const complex &)    ;
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_cinterval &,
-                                           const complex &)     throw();
+                                           const complex &)    ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_cinterval &,
-                                           const complex &)     throw();
+                                           const complex &)    ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_cinterval &,
-                                           const complex &)     throw();
+                                           const complex &)    ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_cinterval &,
-                                           const complex &)     throw();
+                                           const complex &)    ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_cinterval &,
-                                           const complex &)     throw();
+                                           const complex &)    ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_cinterval & operator +=(l_cinterval &, const complex &) 
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard algebraic subtraction and allocation operation
       friend inline l_cinterval & operator -=(l_cinterval &, const complex &) 
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard algebraic multiplication and allocation operation
       friend inline l_cinterval & operator *=(l_cinterval &, const complex &)
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard algebraic division and allocation operation
       friend inline l_cinterval & operator /=(l_cinterval &, const complex &) 
-                                                                      throw();
+                                                                     ;
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_cinterval & operator |=(l_cinterval &, const complex &) 
-                                                                      throw();
+                                                                     ;
       //! Allocates the intersection of the arguments to the first argument
       friend inline l_cinterval & operator &=(l_cinterval &, const complex &) 
-                                                                      throw();
+                                                                     ;
 
       // LCI <--> LC
 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_cinterval &,
-                                           const l_complex &)   throw();
+                                           const l_complex &)  ;
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_cinterval &,
-                                           const l_complex &)   throw();
+                                           const l_complex &)  ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_cinterval &,
-                                           const l_complex &)   throw();
+                                           const l_complex &)  ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_cinterval &,
-                                           const l_complex &)   throw();
+                                           const l_complex &)  ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_cinterval &,
-                                           const l_complex &)   throw();
+                                           const l_complex &)  ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_cinterval &,
-                                           const l_complex &)   throw();
+                                           const l_complex &)  ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_complex &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_cinterval & operator +=(l_cinterval &, const l_complex &)
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard algebraic subtraction and allocation operation
       friend inline l_cinterval & operator -=(l_cinterval &, const l_complex &)
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard algebraic multiplication and allocation operation
       friend inline l_cinterval & operator *=(l_cinterval &, const l_complex &)
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard algebraic division and allocation operation
       friend inline l_cinterval & operator /=(l_cinterval &, const l_complex &)
-                                                                      throw();
+                                                                     ;
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_cinterval & operator |=(l_cinterval &, const l_complex &)
-                                                                      throw();
+                                                                     ;
       //! Allocates the intersection of the arguments to the first argument
       friend inline l_cinterval & operator &=(l_cinterval &, const l_complex &)
-                                                                      throw();
+                                                                     ;
       
       // LCI <--> I
 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_cinterval &,
-                                           const interval &)    throw(); 
+                                           const interval &)   ; 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_cinterval &,
-                                           const interval &)    throw();
+                                           const interval &)   ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_cinterval &,
-                                           const interval &)    throw();
+                                           const interval &)   ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_cinterval &,
-                                           const interval &)    throw();
+                                           const interval &)   ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_cinterval &,
-                                           const interval &)    throw();
+                                           const interval &)   ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_cinterval &,
-                                           const interval &)    throw();
+                                           const interval &)   ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_cinterval & operator +=(l_cinterval &, 
-                                              const interval &) throw();
+                                              const interval &);
       //! Implementation of standard algebraic subtraction and allocation operation
       friend inline l_cinterval & operator -=(l_cinterval &, 
-                                              const interval &) throw();
+                                              const interval &);
       //! Implementation of standard algebraic multiplication and allocation operation
       friend inline l_cinterval & operator *=(l_cinterval &, 
-                                              const interval &) throw();
+                                              const interval &);
       //! Implementation of standard algebraic division and allocation operation
       friend inline l_cinterval & operator /=(l_cinterval &, 
-                                              const interval &) throw();
+                                              const interval &);
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_cinterval & operator |=(l_cinterval &, 
-                                              const interval &) throw();
+                                              const interval &);
       //! Allocates the intersection of the arguments to the first argument
       friend inline l_cinterval & operator &=(l_cinterval &, 
-                                              const interval &) throw();
+                                              const interval &);
 
       // LCI <--> LI
 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_cinterval &,
-                                           const l_interval &)  throw(); 
+                                           const l_interval &) ; 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_cinterval &,
-                                           const l_interval &)  throw();
+                                           const l_interval &) ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_cinterval &,
-                                           const l_interval &)  throw();
+                                           const l_interval &) ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_cinterval &,
-                                           const l_interval &)  throw();
+                                           const l_interval &) ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_cinterval &,
-                                           const l_interval &)  throw();
+                                           const l_interval &) ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_cinterval &,
-                                           const l_interval &)  throw();
+                                           const l_interval &) ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_interval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_cinterval & operator +=(l_cinterval &, 
-                                              const l_interval &) throw();
+                                              const l_interval &);
       //! Implementation of standard algebraic subtraction and allocation operation
       friend inline l_cinterval & operator -=(l_cinterval &, 
-                                              const l_interval &) throw();
+                                              const l_interval &);
       //! Implementation of standard algebraic multiplication and allocation operation
       friend inline l_cinterval & operator *=(l_cinterval &, 
-                                              const l_interval &) throw();
+                                              const l_interval &);
       //! Implementation of standard algebraic division and allocation operation
       friend inline l_cinterval & operator /=(l_cinterval &, 
-                                              const l_interval &) throw();
+                                              const l_interval &);
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_cinterval & operator |=(l_cinterval &, 
-                                              const l_interval &) throw();
+                                              const l_interval &);
       //! Allocates the intersection of the arguments to the first argument
       friend inline l_cinterval & operator &=(l_cinterval &, 
-                                              const l_interval &) throw();
+                                              const l_interval &);
 
     // LCI <--> CI
 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_cinterval &,
-                                           const cinterval &)   throw(); 
+                                           const cinterval &)  ; 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const cinterval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_cinterval &,
-                                           const cinterval &)   throw();
+                                           const cinterval &)  ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const cinterval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_cinterval &,
-                                           const cinterval &)   throw();
+                                           const cinterval &)  ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const cinterval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_cinterval &,
-                                           const cinterval &)   throw();
+                                           const cinterval &)  ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const cinterval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_cinterval &,
-                                           const cinterval &)   throw();
+                                           const cinterval &)  ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const cinterval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_cinterval &,
-                                           const cinterval &)   throw();
+                                           const cinterval &)  ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const cinterval &,
-                                           const l_cinterval &) throw();
+                                           const l_cinterval &);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_cinterval & operator +=(l_cinterval &, 
-                                              const cinterval &) throw();
+                                              const cinterval &);
       //! Implementation of standard algebraic subtraction and allocation operation
       friend inline l_cinterval & operator -=(l_cinterval &, 
-                                              const cinterval &) throw();
+                                              const cinterval &);
       //! Implementation of standard algebraic multiplication and allocation operation
       friend inline l_cinterval & operator *=(l_cinterval &, 
-                                              const cinterval &) throw();
+                                              const cinterval &);
       //! Implementation of standard algebraic division and allocation operation
       friend inline l_cinterval & operator /=(l_cinterval &, 
-                                              const cinterval &) throw();
+                                              const cinterval &);
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_cinterval & operator |=(l_cinterval &, 
-                                              const cinterval &) throw();
+                                              const cinterval &);
       //! Allocates the intersection of the arguments to the first argument
       friend inline l_cinterval & operator &=(l_cinterval &, 
-                                              const cinterval &) throw();
+                                              const cinterval &);
 
 
 
@@ -618,558 +618,558 @@ class l_cinterval
 
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_complex &, const real &) 
-                                                                   throw();
+                                                                  ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const real &, const l_complex &) 
-                                                                   throw();
+                                                                  ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const complex &, const l_real &) 
-                                                                   throw();
+                                                                  ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_real &, const complex &) 
-                                                                   throw();
+                                                                  ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_complex &, const l_real &) 
-                                                                     throw();
+                                                                    ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_real &, const l_complex &) 
-                                                                     throw();
+                                                                    ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const cinterval &, const l_real &) 
-                                                                     throw();
+                                                                    ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_real &, const cinterval &) 
-                                                                     throw();
+                                                                    ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const cinterval &, 
-                                           const l_complex &) throw();
+                                           const l_complex &);
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_complex &, 
-                                           const cinterval &) throw();
+                                           const cinterval &);
 
       // LC <--> I
 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_complex &, const interval &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const interval &, const l_complex &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_complex &, const interval &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const interval &, const l_complex &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_complex &, const interval &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const interval &, const l_complex &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_complex &, const interval &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const interval &, const l_complex &)
-                                                                       throw();
+                                                                      ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_complex &, const interval &)
-                                                                       throw();
+                                                                      ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const interval &, const l_complex &)
-                                                                       throw();
+                                                                      ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_complex &, const interval &)
-                                                                       throw();
+                                                                      ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const interval &, const l_complex &)
-                                                                       throw();
+                                                                      ;
       
       // C <--> LI
 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const complex &, const l_interval &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_interval &, const complex &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const complex &, const l_interval &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_interval &, const complex &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const complex &, const l_interval &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_interval &, const complex &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const complex &, const l_interval &)
-                                                                       throw();
+                                                                      ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_interval &, const complex &)
-                                                                       throw();
+                                                                      ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const complex &, const l_interval &)
-                                                                       throw();
+                                                                      ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_interval &, const complex &)
-                                                                       throw();
+                                                                      ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const complex &, const l_interval &)
-                                                                       throw();
+                                                                      ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_interval &, const complex &)
-                                                                       throw();
+                                                                      ;
       
       // LC <--> LI
 
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_complex &, 
-                                           const l_interval &) throw();
+                                           const l_interval &);
       //! Implementation of standard algebraic addition operation
       friend inline l_cinterval operator +(const l_interval &, 
-                                           const l_complex &)  throw();
+                                           const l_complex &) ;
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_complex &, 
-                                           const l_interval &) throw();
+                                           const l_interval &);
       //! Implementation of standard algebraic subtraction operation
       friend inline l_cinterval operator -(const l_interval &, 
-                                           const l_complex &)  throw();
+                                           const l_complex &) ;
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_complex &, 
-                                           const l_interval &) throw();
+                                           const l_interval &);
       //! Implementation of standard algebraic multiplication operation
       friend inline l_cinterval operator *(const l_interval &, 
-                                           const l_complex &)  throw();
+                                           const l_complex &) ;
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_complex &, 
-                                           const l_interval &) throw();
+                                           const l_interval &);
       //! Implementation of standard algebraic division operation
       friend inline l_cinterval operator /(const l_interval &, 
-                                           const l_complex &)  throw();
+                                           const l_complex &) ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_complex &, 
-                                           const l_interval &) throw();
+                                           const l_interval &);
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_interval &, 
-                                           const l_complex &)  throw();
+                                           const l_complex &) ;
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_complex &, 
-                                           const l_interval &) throw();
+                                           const l_interval &);
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_interval &, 
-                                           const l_complex &)  throw();
+                                           const l_complex &) ;
       
 
       // LC <--> C; LC <--> LC;  
 
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_complex &, const complex &) 
-                                                                      throw();
+                                                                     ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const complex &, const l_complex &) 
-                                                                      throw();
+                                                                     ;
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_complex &, 
-                                           const l_complex &) throw();
+                                           const l_complex &);
 
 // --------------------- Comp.Operat.  ---------------------------------------
       // LCI <--> LCI      
       //! Implementation of standard equality operation
       friend inline bool operator== (const l_cinterval & a, 
-                                     const l_cinterval & b) throw();
+                                     const l_cinterval & b);
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const l_cinterval & a, 
-                                     const l_cinterval & b) throw();
+                                     const l_cinterval & b);
    
       // LCI <--> R
       
       //! Implementation of standard equality operation
       friend inline bool operator== (const l_cinterval & a, const real & b)
-                                                                   throw();
+                                                                  ;
       //! Implementation of standard equality operation
       friend inline bool operator== (const real & a, const l_cinterval & b)
-                                                                   throw();
+                                                                  ;
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const l_cinterval & a, const real & b)
-                                                                   throw();
+                                                                  ;
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const real & a, const l_cinterval & b)
-                                                                   throw();
+                                                                  ;
 
       // LCI <--> LR
       
       //! Implementation of standard equality operation
       friend inline bool operator== (const l_cinterval & a, const l_real & b)
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard equality operation
       friend inline bool operator== (const l_real & a, const l_cinterval & b)
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const l_cinterval & a, const l_real & b)
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const l_real & a, const l_cinterval & b)
-                                                                     throw();
+                                                                    ;
 
       // LCI <--> I
       
       //! Implementation of standard equality operation
       friend inline bool operator== (const l_cinterval & a, 
-                                     const interval & b)    throw();
+                                     const interval & b)   ;
       //! Implementation of standard equality operation
       friend inline bool operator== (const interval & a, 
-                                     const l_cinterval & b) throw();
+                                     const l_cinterval & b);
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const l_cinterval & a, 
-                                     const interval & b)    throw();
+                                     const interval & b)   ;
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const interval & a, 
-                                     const l_cinterval & b) throw();
+                                     const l_cinterval & b);
 
       // LCI <--> LI
       
       //! Implementation of standard equality operation
       friend inline bool operator== (const l_cinterval & a, 
-                                     const l_interval & b)  throw();
+                                     const l_interval & b) ;
       //! Implementation of standard equality operation
       friend inline bool operator== (const l_interval & a, 
-                                     const l_cinterval & b) throw();
+                                     const l_cinterval & b);
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const l_cinterval & a, 
-                                     const l_interval & b)  throw();
+                                     const l_interval & b) ;
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const l_interval & a, 
-                                     const l_cinterval & b) throw();
+                                     const l_cinterval & b);
 
       // LCI <--> C
       
       //! Implementation of standard equality operation
       friend inline bool operator== (const l_cinterval & a, const complex & b)
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard equality operation
       friend inline bool operator== (const complex & a, const l_cinterval & b)
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const l_cinterval & a, const complex & b)
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const complex & a, const l_cinterval & b)
-                                                                      throw();
+                                                                     ;
 
       // LCI <--> LC
       
       //! Implementation of standard equality operation
       friend inline bool operator== (const l_cinterval & a, 
-                                     const l_complex & b)   throw();
+                                     const l_complex & b)  ;
       //! Implementation of standard equality operation
       friend inline bool operator== (const l_complex & a, 
-                                     const l_cinterval & b) throw();
+                                     const l_cinterval & b);
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const l_cinterval & a, 
-                                     const l_complex & b)   throw();
+                                     const l_complex & b)  ;
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const l_complex & a, 
-                                     const l_cinterval & b) throw();
+                                     const l_cinterval & b);
 
       // LCI <--> CI
       
       //! Implementation of standard equality operation
       friend inline bool operator== (const l_cinterval & a, 
-                                     const cinterval & b)   throw();
+                                     const cinterval & b)  ;
       //! Implementation of standard equality operation
       friend inline bool operator== (const cinterval & a, 
-                                     const l_cinterval & b) throw();
+                                     const l_cinterval & b);
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const l_cinterval & a, 
-                                     const cinterval & b)   throw();
+                                     const cinterval & b)  ;
       //! Implementation of standard negated equality operation
       friend inline bool operator!= (const cinterval & a, 
-                                     const l_cinterval & b) throw();
+                                     const l_cinterval & b);
 
       // ---- Set Operators ----
       
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const l_cinterval &, const l_cinterval &)
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const l_cinterval &, const l_cinterval &)
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const l_cinterval &, const l_cinterval &)
-                                                                      throw();
+                                                                     ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const l_cinterval &, const l_cinterval &)
-                                                                      throw();
+                                                                     ;
       // LCI <--> R
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const real &, const l_cinterval &)
-                                                               throw();
+                                                              ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const real &, const l_cinterval &)
-                                                               throw();
+                                                              ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const real &, const l_cinterval &)
-                                                               throw();
+                                                              ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const real &, const l_cinterval &) 
-                                                               throw();
+                                                              ;
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const l_cinterval &, const real &)
-                                                               throw();
+                                                              ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const l_cinterval &, const real &)
-                                                               throw();
+                                                              ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const l_cinterval &, const real &)
-                                                               throw();
+                                                              ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const l_cinterval &, const real &)
-                                                               throw();
+                                                              ;
 
       // LCI <--> LR
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const l_real &, const l_cinterval &)
-                                                                 throw();
+                                                                ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const l_real &, const l_cinterval &)
-                                                                 throw();
+                                                                ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const l_real &, const l_cinterval &)
-                                                                 throw();
+                                                                ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const l_real &, const l_cinterval &) 
-                                                                 throw();
+                                                                ;
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const l_cinterval &, const l_real &)
-                                                                 throw();
+                                                                ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const l_cinterval &, const l_real &)
-                                                                 throw();
+                                                                ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const l_cinterval &, const l_real &)
-                                                                 throw();
+                                                                ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const l_cinterval &, const l_real &)
-                                                                 throw();
+                                                                ;
 
       // LCI <--> I
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const interval &, const l_cinterval &)
-                                                                   throw();
+                                                                  ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const interval &, const l_cinterval &)
-                                                                   throw();
+                                                                  ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const interval &, const l_cinterval &)
-                                                                   throw();
+                                                                  ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const interval &, const l_cinterval &)
-                                                                   throw();
+                                                                  ;
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const l_cinterval &, const interval &)
-                                                                   throw();
+                                                                  ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const l_cinterval &, const interval &)
-                                                                   throw();
+                                                                  ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const l_cinterval &, const interval &)
-                                                                   throw();
+                                                                  ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const l_cinterval &, const interval &)
-                                                                   throw();
+                                                                  ;
 
       // LCI <--> LI
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const l_interval &, const l_cinterval &)
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const l_interval &, const l_cinterval &)
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const l_interval &, const l_cinterval &)
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const l_interval &, const l_cinterval &)
-                                                                     throw();
+                                                                    ;
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const l_cinterval &, const l_interval &)
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const l_cinterval &, const l_interval &)
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const l_cinterval &, const l_interval &)
-                                                                     throw();
+                                                                    ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const l_cinterval &, const l_interval &)
-                                                                     throw();
+                                                                    ;
 
       // LCI <--> C
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const complex &, const l_cinterval &)
-                                                                  throw();
+                                                                 ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const complex &, const l_cinterval &)
-                                                                  throw();
+                                                                 ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const complex &, const l_cinterval &)
-                                                                  throw();
+                                                                 ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const complex &, const l_cinterval &)
-                                                                  throw();
+                                                                 ;
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const l_cinterval &, const complex &)
-                                                                  throw();
+                                                                 ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const l_cinterval &, const complex &)
-                                                                  throw();
+                                                                 ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const l_cinterval &, const complex &)
-                                                                  throw();
+                                                                 ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const l_cinterval &, const complex &)
-                                                                  throw();
+                                                                 ;
 
       // LCI <--> LC
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const l_complex &, const l_cinterval &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const l_complex &, const l_cinterval &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const l_complex &, const l_cinterval &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const l_complex &, const l_cinterval &)
-                                                                    throw();
+                                                                   ;
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const l_cinterval &, const l_complex &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const l_cinterval &, const l_complex &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const l_cinterval &, const l_complex &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const l_cinterval &, const l_complex &)
-                                                                    throw();
+                                                                   ;
 
       // LCI <--> CI
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const cinterval &, const l_cinterval &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const cinterval &, const l_cinterval &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const cinterval &, const l_cinterval &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const cinterval &, const l_cinterval &)
-                                                                    throw();
+                                                                   ;
 
       //! Implementation of standard less-than operation
       friend inline bool operator  <(const l_cinterval &, const cinterval &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard greater-than operation
       friend inline bool operator  >(const l_cinterval &, const cinterval &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard less-or-equal-than operation
       friend inline bool operator <=(const l_cinterval &, const cinterval &)
-                                                                    throw();
+                                                                   ;
       //! Implementation of standard greater-or-equal-than operation
       friend inline bool operator >=(const l_cinterval &, const cinterval &)
-                                                                    throw();
+                                                                   ;
 
       // ---- Others   -------------------------------------------
 
       //! Returns the infimum of an interval
-      friend inline l_complex    Inf(const l_cinterval &) throw();
+      friend inline l_complex    Inf(const l_cinterval &);
       //! Returns the supremum of an interval
-      friend inline l_complex    Sup(const l_cinterval &) throw();
+      friend inline l_complex    Sup(const l_cinterval &);
       
       //! Returns the interval with the new given infimum value
       friend inline l_cinterval & SetInf(l_cinterval &, const complex &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                 ;
       //! Returns the interval with the new given supremum value
       friend inline l_cinterval & SetSup(l_cinterval &, const complex &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                 ;
       //! Returns the interval with the new given infimum value
       friend inline l_cinterval & SetInf(l_cinterval &, const l_complex &) 
-                                    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                   ;
       //! Returns the interval with the new given supremum value
       friend inline l_cinterval & SetSup(l_cinterval &, const l_complex &) 
-                                    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                   ;
 
       //! Returns the interval with the new given infimum value
       friend inline l_cinterval & SetInf(l_cinterval &, const real &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                 ;
 
       //! Returns the interval with the new given supremum value
       friend inline l_cinterval & SetSup(l_cinterval &, const real &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                 ;
       //! Returns the interval with the new given infimum value
       friend inline l_cinterval & SetInf(l_cinterval &, const l_real &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                 ;
 
       //! Returns the interval with the new given supremum value
       friend inline l_cinterval & SetSup(l_cinterval &, const l_real &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                 ;
 
       //! Returns the interval with the unchecked new given infimum value
       friend inline l_cinterval & UncheckedSetInf(l_cinterval &, 
-                                                  const complex &) throw();
+                                                  const complex &);
       //! Returns the interval with the unchecked new given infimum value
       friend inline l_cinterval & UncheckedSetInf(l_cinterval &, 
-                                                  const real &)    throw();
+                                                  const real &)   ;
       //! Returns the interval with the unchecked new given supremum value
       friend inline l_cinterval & UncheckedSetSup(l_cinterval &, 
-                                                  const complex &) throw();
+                                                  const complex &);
       //! Returns the interval with the unchecked new given supremum value
       friend inline l_cinterval & UncheckedSetSup(l_cinterval &, 
-                                                  const real &)    throw();
+                                                  const real &)   ;
 
       //! Returns the interval with the unchecked new given infimum value
       friend inline l_cinterval & UncheckedSetInf(l_cinterval &, 
-                                                  const l_complex &) throw();
+                                                  const l_complex &);
       //! Returns the interval with the unchecked new given infimum value
       friend inline l_cinterval & UncheckedSetInf(l_cinterval &, 
-                                                  const l_real &)    throw();
+                                                  const l_real &)   ;
       //! Returns the interval with the unchecked new given supremum value
       friend inline l_cinterval & UncheckedSetSup(l_cinterval &, 
-                                                  const l_complex &) throw();
+                                                  const l_complex &);
       //! Returns the interval with the unchecked new given supremum value
       friend inline l_cinterval & UncheckedSetSup(l_cinterval &, 
-                                                  const l_real &)    throw();
+                                                  const l_real &)   ;
      
       //! Returns the real part of the complex interval
-      friend l_interval & Re(l_cinterval & a)       throw() { return a.re; }
+      friend l_interval & Re(l_cinterval & a)       { return a.re; }
       //! Returns the real part of the complex interval
-      friend l_interval   Re(const l_cinterval & a) throw() { return a.re; }
+      friend l_interval   Re(const l_cinterval & a) { return a.re; }
       //! Returns the imaginary part of the complex interval
-      friend l_interval & Im(l_cinterval & a)       throw() { return a.im; }
+      friend l_interval & Im(l_cinterval & a)       { return a.im; }
       //! Returns the imaginary part of the complex interval
-      friend l_interval   Im(const l_cinterval & a) throw() { return a.im; }
+      friend l_interval   Im(const l_cinterval & a) { return a.im; }
       
       //! Sets the real part of a complex interval
       friend l_cinterval & SetRe(l_cinterval & a, const interval & b) 
@@ -1198,36 +1198,36 @@ class l_cinterval
                                                        { a.im=b; return a; } 
 
       //! Returns the infimum of the real interval of the complex interval
-      friend inline l_real InfRe(const l_cinterval &a) throw() 
+      friend inline l_real InfRe(const l_cinterval &a) 
                                                      { return Inf(a.re); }
       //! Returns the infimum of the imaginary interval of the complex interval
-      friend inline l_real InfIm(const l_cinterval &a) throw() 
+      friend inline l_real InfIm(const l_cinterval &a) 
                                                      { return Inf(a.im); }
       //! Returns the supremum of the real interval of the complex interval
-      friend inline l_real SupRe(const l_cinterval &a) throw() 
+      friend inline l_real SupRe(const l_cinterval &a) 
                                                      { return Sup(a.re); }
       //! Returns the supremum of the imaginary interval of the complex interval
-      friend inline l_real SupIm(const l_cinterval &a) throw() 
+      friend inline l_real SupIm(const l_cinterval &a) 
                                                      { return Sup(a.im); }
     //! Multiplication of interval with \f$ 2^n \f$
     friend inline void times2pown(l_cinterval& x, 
-                              const int& n) throw(); 
+                              const int& n); 
     //! Multiplication of interval with \f$ 2^n \f$
     friend inline void Times2pown(l_cinterval& x, 
-                              const int& n) throw(); 
+                              const int& n); 
 
      
     //! Returns the absolute value of the complex interval
-    friend        l_interval  abs (const l_cinterval &) throw();
+    friend        l_interval  abs (const l_cinterval &);
     //! Returns the conjugated complex interval
-    friend inline l_cinterval conj(const l_cinterval &) throw();
+    friend inline l_cinterval conj(const l_cinterval &);
     //! Returns the rounded middle of the complex interval
-    friend inline l_complex   mid (const l_cinterval &) throw();
+    friend inline l_complex   mid (const l_cinterval &);
     //! Returns the rounded diameter of the complex interval
-    friend inline l_complex   diam(const l_cinterval &) throw();
+    friend inline l_complex   diam(const l_cinterval &);
 
     //! Sets the precision of a specific long datatype value
-    friend inline l_cinterval adjust(const l_cinterval &) throw();
+    friend inline l_cinterval adjust(const l_cinterval &);
 
 };
 
