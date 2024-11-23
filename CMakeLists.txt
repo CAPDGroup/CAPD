@@ -61,10 +61,11 @@ add_subdirectory(capdExt)
 add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys)
-add_subdirectory(capdMake/libcapd)
-add_subdirectory(capdMake/bin)
 
-if (${FALSE})
+if (${CAPD_INTERVAL_TYPE} STREQUAL "FILIB") # installation supported for filib interval type only
+
+    add_subdirectory(capdMake/libcapd)
+    add_subdirectory(capdMake/bin)
 
     install(TARGETS
             ${PROJECT_NAME} filib
