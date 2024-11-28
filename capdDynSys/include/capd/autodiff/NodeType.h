@@ -14,6 +14,7 @@
 #define _CAPD_AUTODIFF_NODETYPE_H_
 
 #include <vector>
+#include "capd/basicalg/Math.h"
 #include "capd/autodiff/DagIndexer.h"
 #include "capd/vectalg/Multiindex.h"
 

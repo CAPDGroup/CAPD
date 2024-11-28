@@ -27,20 +27,21 @@ namespace Exp
   template<class T, class R>
   inline void evalC0(const T* left, const T* /* right*/, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo)
     {
       result[coeffNo] = TypeTraits<T>::zero();
       for(unsigned j=1;j<=coeffNo;++j)
-        result[coeffNo] += double(j) * result[coeffNo-j]*left[j];
-      result[coeffNo] /= typename TypeTraits<T>::Real(coeffNo);
+        result[coeffNo] += Real(j) * result[coeffNo-j]*left[j];
+      result[coeffNo] /= Real(coeffNo);
     }else
-      *result = exp(*left);
+      *result = Math<T>::_exp(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = exp(*left);
+    *result = Math<T>::_exp(*left);
   }
 
   template<class T, class R>
@@ -62,6 +63,7 @@ namespace Exp
   template<class T, class R>
   void evalMultiindex(const T* left, R result, DagIndexer<T>* dag, const MultiindexData* i, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(getMask(result,i->index))
     {
       T t = capd::TypeTraits<T>::zero();
@@ -69,9 +71,9 @@ namespace Exp
 
       for(int q=0;q<h;++q){
         const MultiindexData::IndexPair p = i->getConvolutionPairsFromEpToK(coeffNo)[q];
-        t += ((double)dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p])*left[p.first]*result[p.second];
+        t += Real(dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p])*left[p.first]*result[p.second];
       }
-      result[i->index+coeffNo] = t/(double)i->k[i->p];
+      result[i->index+coeffNo] = t/Real(i->k[i->p]);
     }
   }
 
@@ -121,7 +123,7 @@ namespace ExpFunTime
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = exp(*left);
+    *result = Math<T>::_exp(*left);
   }
 
   template<class T, class R>
@@ -140,16 +142,17 @@ namespace ExpTime
   template<class T, class R>
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo)
-      result[coeffNo] = result[coeffNo-1]/(double)coeffNo;
+      result[coeffNo] = result[coeffNo-1]/Real(coeffNo);
     else
-      *result = exp(*left);
+      *result = Math<T>::_exp(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = exp(*left);
+    *result = Math<T>::_exp(*left);
   }
 
   template<class T, class R>
@@ -169,13 +172,13 @@ namespace ExpConst
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
     if(coeffNo==0)
-      *result = exp(*left);
+      *result = Math<T>::_exp(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = exp(*left);
+    *result = Math<T>::_exp(*left);
   }
 
   template<class T, class R>

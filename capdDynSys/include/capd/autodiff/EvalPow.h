@@ -27,15 +27,16 @@ namespace Pow
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     const T c = *right;
     if(coeffNo)
     {
-      if(!((*left)>capd::TypeTraits<T>::zero()))
-      	throw std::runtime_error("Map evaluation error: negative argument in x^c, where c is not an integer.");
+      if(capd::TypeTraits<T>::isSingular(*left))
+      	throw std::runtime_error("Map evaluation error: x=0 in x^c, where c is not an integer.");
       T temp = capd::TypeTraits<T>::zero();
       for(int j=0;j<(int)coeffNo;++j)
-        temp += (c*((int)coeffNo-j)-j) * result[j] *left[coeffNo-j];
-      result[coeffNo] = temp/((double)coeffNo * (*left));
+        temp += (c*Real((int)coeffNo-j)-Real(j)) * result[j] *left[coeffNo-j];
+      result[coeffNo] = temp/(Real(coeffNo) * (*left));
     }
     else
       *result = exp(c * log(*left));
@@ -44,8 +45,8 @@ namespace Pow
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
   {
-    if(!((*left)>capd::TypeTraits<T>::zero()))
-    	throw std::runtime_error("Map evaluation error: negative argument in x^c, where c is not an integer.");
+      if(capd::TypeTraits<T>::isSingular(*left))
+      	throw std::runtime_error("Map evaluation error: x=0 in x^c, where c is not an integer.");
     *result = exp((*right) * log(*left));
   }
 
@@ -72,6 +73,7 @@ namespace Pow
   template<class T, class R>
   inline void evalC2HomogenousPolynomial(const T* left, const  T exponent, R result, const unsigned dim, const unsigned order, const unsigned coeffNo)
   {
+    typedef typename capd::TypeTraits<T>::Real Real;
     const unsigned s = dim*order;
     // begin of C^1
     const T* leftDer = left+order;
@@ -93,7 +95,7 @@ namespace Pow
           temp2 += resultDer[j] * leftDer[coeffNo-j];
           temp3 += resultHess[j] * left[coeffNo-j];
         }
-        resultHess[coeffNo] = (exponent*temp1+0.5*(exponent-1.)*temp2-temp3)/(*left);
+        resultHess[coeffNo] = (exponent*temp1+Real(0.5)*(exponent-Real(1.))*temp2-temp3)/(*left);
       }
 
       leftHess += order;
@@ -121,6 +123,7 @@ namespace Pow
   template<class T, class R>
   inline void evalC3HomogenousPolynomial(const T* left, const T exponent, R result, const unsigned dim, const unsigned order, const unsigned coeffNo)
   {
+    typedef typename capd::TypeTraits<T>::Real Real;
     unsigned i1 = order;
     for(unsigned derNo=0;derNo<dim;++derNo,i1+=order)
     {
@@ -139,7 +142,7 @@ namespace Pow
           temp3 += result[i11+i]*left[i1+j];
           temp4 += result[i111+i]*left[j];
         }
-        result[i111+coeffNo] = (exponent*temp1 + (2.*exponent-1.)*temp2/3. + (exponent-2.)*temp3/3. - temp4)/(*left);
+        result[i111+coeffNo] = (exponent*temp1 + (Real(2.)*exponent-Real(1.))*temp2/Real(3.) + (exponent-Real(2.))*temp3/Real(3.) - temp4)/(*left);
       }
 
       // cases dxdxdy and dxdydy, assume that x<y
@@ -197,9 +200,10 @@ namespace Pow
   template<class T, class R>
   void evalMultiindex(const T* left, const T exponent, R result, const MultiindexData* i, DagIndexer<T>* dag, const unsigned coeffNo)
   {
+    typedef typename capd::TypeTraits<T>::Real Real;
     if(getMask(result,i->index))
     {
-      const double k = (double)i->k[i->p];
+      const int k = i->k[i->p];
       T t = capd::TypeTraits<T>::zero();
       int h = i->getConvolutionPairs(coeffNo).size();
       int q=1;
@@ -207,14 +211,14 @@ namespace Pow
         const MultiindexData::IndexPair p = i->getConvolutionPairs(coeffNo)[q];
         unsigned v1 = dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p];
         unsigned v2 = dag->getIndexArray()[p.second/(dag->getOrder()+1)].k[i->p];
-        t += (exponent*(k-v1)-v1)*result[p.first]*left[p.second] + (exponent*(k-v2)-v2)*result[p.second]*left[p.first];
+        t += (exponent*Real(k-v1)-Real(v1))*result[p.first]*left[p.second] + (exponent*Real(k-v2)-Real(v2))*result[p.second]*left[p.first];
       }
       if (h & 1){
         const MultiindexData::IndexPair p = i->getConvolutionPairs(coeffNo)[q];
         unsigned v = dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p];
-        t += (exponent*(k-v)-v)*result[p.first]*left[p.second];
+        t += (exponent*Real(k-v)-Real(v))*result[p.first]*left[p.second];
       }
-      result[i->index+coeffNo] = (exponent*k*left[i->index+coeffNo]*(*result) + t)/(*left*k);
+      result[i->index+coeffNo] = (exponent*Real(k)*left[i->index+coeffNo]*(*result) + t)/(*left*Real(k));
     }
   }
 
@@ -307,8 +311,9 @@ namespace PowTime
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo)
-      result[coeffNo] = ((*right)-(coeffNo-1)) * result[coeffNo-1]/((double)coeffNo * (*left));
+      result[coeffNo] = ((*right)-Real(coeffNo-1)) * result[coeffNo-1]/(Real(coeffNo) * (*left));
     else
       *result = exp((*right) * log((*left)));
   }

@@ -54,6 +54,8 @@ public:
   static constexpr inline T one() noexcept{
 	return static_cast<T>(1.0);
   }
+  static constexpr inline int _int(Real x) noexcept{	return static_cast<int>(x);  }
+
   static constexpr T max(T a, T b) noexcept;
   static constexpr T min(T a, T b) noexcept;
 /* Expected interface
@@ -69,7 +71,8 @@ public:
   }
   /// this flag is true for all interval types
   static const bool isInterval = false;
-
+  /// this flag is true for all complex-number types
+  static const bool isComplex = false;
   static constexpr T max(T a, T b) noexcept;
   static constexpr T min(T a, T b) noexcept;
   static constexpr T abs(T a) noexcept;
@@ -122,7 +125,8 @@ class IntegralTypeTraits {
   }
   /// this flag is true for all interval types
   static const bool isInterval = false;
-
+  static const bool isComplex = false;
+  
   static constexpr T max(T a, T b) noexcept{
 	return std::max(a, b);
   }
@@ -135,6 +139,10 @@ class IntegralTypeTraits {
 
   static bool isSingular(T a){
 	return a == TypeTraits<T>::zero();
+  }
+  
+  static constexpr int _int(T a) noexcept{
+    return static_cast<int>(a);
   }
 };
 
@@ -162,12 +170,17 @@ struct FloatingTypeTraits : public IntegralTypeTraits<T>{
 
   using IntegralTypeTraits<T>::convert;
   using IntegralTypeTraits<T>::isInterval;
+  using IntegralTypeTraits<T>::isComplex;
 
   static constexpr bool isInf(T a) noexcept{
 	return std::isinf(a);
   }
   static constexpr bool isNaN(T a) noexcept{
 	return std::isnan(a);
+  }
+
+  static constexpr double _double(T a) noexcept{
+    return static_cast<double>(a);
   }
 };
 

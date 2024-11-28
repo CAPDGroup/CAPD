@@ -27,6 +27,7 @@ namespace intervals {
 /// @deprecated
 template<typename T>
 using IComplex = capd::fields::Complex<T>;
-}}
+}
 
+}
 #endif // _CAPD_INTERVAL_ICOMPLEX_H_

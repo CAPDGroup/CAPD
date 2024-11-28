@@ -30,8 +30,8 @@ namespace NegIntPow
     if(coeffNo){
       T temp = capd::TypeTraits<T>::zero();
       for(int j=0;j<(int)coeffNo;++j)
-        temp += (c*((int)coeffNo-j)-j) * result[j]* left[coeffNo-j];
-      result[coeffNo] = temp/((double)coeffNo * (*left));
+        temp += typename capd::TypeTraits<T>::Real(c*((int)coeffNo-j)-j) * result[j]* left[coeffNo-j];
+      result[coeffNo] = temp/(typename capd::TypeTraits<T>::Real(coeffNo) * (*left));
     }
     else
       *result = power(*left,c);
@@ -40,13 +40,13 @@ namespace NegIntPow
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
-    evalC0IntPow(left,toInt(leftBound(*right)),result,coeffNo);
+    evalC0IntPow(left,TypeTraits<T>::_int(*right),result,coeffNo);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
   {
-    *result = power(*left, toInt(leftBound(*right)));
+    *result = power(*left, TypeTraits<T>::_int(*right));
   }
 
   template<class T, class R>
@@ -77,7 +77,7 @@ namespace NegIntPowFunTime
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
   {
-    *result = power(*left, toInt(leftBound(*right)));
+    *result = power(*left, TypeTraits<T>::_int(*right));
   }
 
   template<class T, class R>
@@ -99,9 +99,10 @@ namespace NegIntPowTime
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
-    const int c = toInt(leftBound(*right));
+    typedef typename TypeTraits<T>::Real Real;
+    const int c = TypeTraits<T>::_int(*right);
     if(coeffNo)
-      result[coeffNo] = (c-((int)coeffNo-1)) * result[coeffNo-1]/((double)coeffNo * (*left));
+      result[coeffNo] = Real(c-((int)coeffNo-1)) * result[coeffNo-1]/(Real(coeffNo) * (*left));
     else
       *result = power(*left,c);
   }
@@ -109,7 +110,7 @@ namespace NegIntPowTime
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
   {
-    *result = power(*left, toInt(leftBound(*right)));
+    *result = power(*left, TypeTraits<T>::_int(*right));
   }
 
   template<class T, class R>
@@ -132,13 +133,13 @@ namespace NegIntPowConst
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
     if(coeffNo==0)
-      *result = power(*left,toInt(leftBound(*right)));
+      *result = power(*left,TypeTraits<T>::_int(*right));
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
   {
-    *result = power(*left, toInt(leftBound(*right)));
+    *result = power(*left, TypeTraits<T>::_int(*right));
   }
 
   template<class T, class R>

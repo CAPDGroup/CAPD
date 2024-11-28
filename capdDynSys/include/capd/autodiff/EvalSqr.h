@@ -27,23 +27,25 @@ namespace Sqr{
   template<class T>
   inline T sqrProduct(const T* x, const unsigned n)
   {
+    typedef typename TypeTraits<T>::Real Real;
     T temp = TypeTraits<T>::zero();
     const unsigned p = n/2;
     for(unsigned j=0;j<p;++j)
       temp += x[j] * x[n-j];
-    return temp + ( (n%2) ? x[p]*x[n-p] : 0.5*sqr(x[p]) );
+    return temp + ( (n%2) ? x[p]*x[n-p] : Real(0.5)*Math<T>::_sqr(x[p]) );
   }
 
   template<class T, class R>
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
-    result[coeffNo] = 2.*sqrProduct(left,coeffNo);
+    typedef typename TypeTraits<T>::Real Real;
+    result[coeffNo] = Real(2.)*sqrProduct(left,coeffNo);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    (*result) = sqr(*left);
+    (*result) = capd::Math<T>::_sqr(*left);
   }
 
   template<class T, class R>
@@ -171,6 +173,7 @@ namespace Sqr{
   template<class T, class R>
   void evalMultiindex(const T* left, R result, const MultiindexData* i, const unsigned coeffNo, typename TypeTraits<T>::Real const c=2.)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(getMask(result,i->index))
     {
       T t = capd::TypeTraits<T>::zero();
@@ -184,7 +187,7 @@ namespace Sqr{
       if(h & 1)
       {
         const MultiindexData::IndexPair p = i->getConvolutionPairs(coeffNo)[q];
-        t += 0.5*sqr(left[p.first]);
+        t += Real(0.5)*Math<T>::_sqr(left[p.first]);
       }
       result[i->index+coeffNo] = c*t;
     }
@@ -258,7 +261,7 @@ namespace SqrFunTime
  template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = sqr(*left);
+    *result = Math<T>::_sqr(*left);
   }
 
   template<class T, class R>
@@ -279,18 +282,19 @@ namespace SqrTime
   template<class T, class R>
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     switch(coeffNo)
     {
-      case 2: result[2] = 1.; break;
-      case 1: result[1] = 2.*(*left); break;
-      case 0: *result = sqr(*left);
+      case 2: result[2] = TypeTraits<T>::one(); break;
+      case 1: result[1] = Real(2.)*(*left); break;
+      case 0: *result = Math<T>::_sqr(*left);
     }
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = sqr(*left);
+    *result = Math<T>::_sqr(*left);
   }
 
   template<class T, class R>
@@ -314,13 +318,13 @@ namespace SqrConst
     if(coeffNo)
     {}
     else
-      *result = sqr(*left);
+      *result = Math<T>::_sqr(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = sqr(*left);
+    *result = Math<T>::_sqr(*left);
   }
 
   template<class T, class R>
