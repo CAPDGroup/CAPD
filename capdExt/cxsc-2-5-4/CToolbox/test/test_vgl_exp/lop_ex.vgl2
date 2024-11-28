@@ -1,0 +1,22 @@
+Enter dimensions of linear optimization problem (m and n): 
+
+Enter objective function (c[1]..c[n]): 
+
+Enter matrix of constraints (A[1,1]..A[m,n]): 
+
+Enter right-hand side (b[1]..b[m]): 
+
+Results of approximation:
+Optimal value :   2.500000000000000E+003
+
+Initial basic index set : 1 4 2 
+
+Initial optimal solution : 
+ 1.400000000000000E+001
+ 2.000000000000000E+002
+ 0.000000000000000E+000
+ 3.600000000000000E+001
+ 0.000000000000000E+000
+ 0.000000000000000E+000
+
+Error: Initial basic index set not optimal (i.e. B_start not in V_opt)!

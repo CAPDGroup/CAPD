@@ -1,0 +1,18 @@
+Program: nlfz_ex
+Purpose: Sample program for the use of module nlfzero for solving non-linear
+         equations
+
+File list:
+   nlfz_ex.txt   -  This file
+   nlfz_ex.cpp   -  Program source
+   nlfz_ex.in    -  Sample input file
+   toolbox.a     -  Toolbox library
+   real_ari.a    -  C-XSC real library
+
+Related object files:
+   i_util.o  
+   mv_util.o  
+   mvi_util.o  
+   xi_ari.o  
+   ddf_ari.o  
+   nlfzero.o  

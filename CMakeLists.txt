@@ -12,11 +12,27 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 add_library(${PROJECT_NAME})
-add_dependencies(${PROJECT_NAME} filib)
-target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
 
-target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
-target_link_libraries(${PROJECT_NAME} PUBLIC filib)
+if (${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
+
+    add_dependencies(${PROJECT_NAME} filib)
+    target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
+
+    target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
+    target_link_libraries(${PROJECT_NAME} PUBLIC filib)
+
+elseif(${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
+
+    target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_CXSC__)
+
+    target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
+    target_link_libraries(${PROJECT_NAME} PUBLIC cxsc)
+
+else()
+
+    message(FATAL_ERROR "Unsupported CAPD_INTERVAL_TYPE")
+
+endif()
 
 enable_testing()
 
@@ -47,23 +63,29 @@ add_subdirectory(capdExt)
 add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys)
-add_subdirectory(capdMake/libcapd)
-add_subdirectory(capdMake/bin)
 
-install(TARGETS
-        ${PROJECT_NAME} filib
-    EXPORT capd-config
-    LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
-    INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
-)
+if (${CAPD_INTERVAL_TYPE} STREQUAL "FILIB") # installation supported for filib interval type only
 
-export(TARGETS
-        ${PROJECT_NAME} filib
-    NAMESPACE capd::
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
-)
-install(EXPORT
+    add_subdirectory(capdMake/libcapd)
+    add_subdirectory(capdMake/bin)
+
+    install(TARGETS
+            ${PROJECT_NAME} filib
+        EXPORT capd-config
+        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
+    )
+
+    export(TARGETS
+            ${PROJECT_NAME} filib
+        NAMESPACE capd::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
+    )
+
+    install(EXPORT
         capd-config
-    DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
-    NAMESPACE capd::
-)
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
+        NAMESPACE capd::
+    )
+
+endif()

@@ -1,0 +1,94 @@
+C-XSC is a C++ library for eXtended Scientific Computing
+Copyright (C) 1990-2000 Institut fuer Angewandte
+Mathematik, Universitaet Karlsruhe, Germany
+
+(C) 2000-2010 Wiss. Rechnen/Softwaretechnologie
+Universitaet Wuppertal, Germany
+
+
+Windows Installation Manual
+
+Authors: Michael Zimmer <zimmer@math.uni-wuppertal.de>, Boris Hoeffgen <hoeffgen@uni-wuppertal.de>
+
+
+Compiling from source:
+======================
+
+1. Download C-CXSC source code package from http://www.xsc.de
+2. Download and install "Visual C++ 2010 Express Edition" from Microsoft
+   (or use Visual Studio Professional if available) 
+3. Unpack Source-Code to directory "C:\cxsc-src"
+   (if you want to use a different directory, you have to alter all paths
+    in the project files manually. For the rest of this document, we assume
+    you used the default path)
+4. Download and install "nsis" from http://nsis.sourceforge.net/
+5. Start Visual Studio and open the Project File "cxsc.sln" in the directory "cxsc-src"
+6. From the Toolbar, select "Release" configuration to compile a final Version, otherwise select 
+   "Debug" to compile a developer Version
+   (Alter the configuration according to your needs)
+7. Build Solution (Press F7)
+8. Close Visual Studio and create the installer in the following way:
+   -Goto the win32\nsis\ folder in cxsc-src
+   -Right click on cxsc_debug.nsi or cxsc_release.nsi (depending on what configuration you build)
+    and compile with nsis
+   -Double click on "Setup.exe" to install C-XSC
+
+
+Installing Binary Releases:
+===========================
+
+1. Download "Setup.exe" from http://www.xsc.de
+2. Install C-XSC by starting "Setup.exe" and following the installer
+   (The example project (see below) assumes that you install C-XSC to C:\cxsc)
+3. Select "Run C-XSC" at the end of the install wizard to test the library
+
+
+Using C-XSC in you VS project:
+===========================
+1. Select Tools->Options->Project and Solutions->V++
+   Directories from the menu
+2. Select "Library Files" from the "Show Directory"
+   Selectbox and add the C-XSC Library Path, e.g.
+   C:\cxsc\lib
+3. Select "Include Files" from the "Show Directory"
+   Selectbox and add the C-XSC Include Path, e.g.
+   C:\cxsc\include
+
+
+Creating your own Projects:
+===========================
+
+1. Start Visual Studio, press "Create Project"
+2. Select Win32->"Win32 Console Application" and enter a
+   Name.
+3. Press Ok. The Application Wizard will start.
+4. Press Next
+5. Select "Console Application", "Empty Project" and
+   deselect "Precompiled header"
+6. Edit the Project Properties by right clicking on your
+   Project Name in the Solution Explorer
+7. Add new/existing source or header files by right clicking
+   on Source or Header Files (Add->New Item or Add->Existing Item)
+8. Add the C-XSC Library on the same way to your project
+9. Change Configuration Properties by right clicking on the
+   project name (click Properties). Change C/C++->"Code
+   Generation"->"Runtime Library" to Multi-threaded(/MT)
+   or Multi-threaded Debug (for C-XSC Debug Version)
+10. Select "Release", otherwise "Debug" (depends on the
+    Library Version) from the Toolbar
+11. Build solution by pressing F7
+
+
+Opening the example Project:
+============================
+
+1. Start "Visual C++", press "Create Project"
+2. Open Project "myexample" from the subdirectory
+   example\project\myexample in the C-XSC install folder
+3. Press F7 to build the solution
+4. Execute the Binary by startin the command prompt (cmd.exe)
+5. Go into the Release or Debug folder and execute myexample.exe
+   
+
+
+If you have any trouble or questions, please mail us: xsc@math.uni-wuppertal.de
