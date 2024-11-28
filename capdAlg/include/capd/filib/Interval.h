@@ -21,6 +21,7 @@
 #include "capd/intervals/intra/interval_atan2.h"
 #include "capd/basicalg/minmax.h"
 #include "capd/basicalg/TypeTraits.h"
+#include "capd/basicalg/Math.h"
 
 
 // #define __FILIB_DEPRECATED__
@@ -886,6 +887,10 @@ public:
   static inline bool isSingular(const IntervalType& x) {
     return ( x.leftBound() <= 0.0 && x.rightBound()>=0.0);
   }
+
+  static inline int _int(const IntervalType& z) noexcept { return TypeTraits<T>::_int(z.leftBound()); } 
+  static inline double _double(const IntervalType& z) noexcept { return TypeTraits<T>::_double(z.leftBound()); } 
+
  private:
   static const  IntervalType S_zero ;// = ::capd::filib::Interval<T,R>(T(0.0));
   static const  IntervalType S_one ;
@@ -901,6 +906,21 @@ const ::capd::filib::Interval<T, R, M> TypeTraits< ::capd::filib::Interval<T, R,
     TypeTraits<T>::one()
 );
 
+template <typename T, filib::RoundingStrategy R, filib::IntervalMode M>
+class Math < filib::Interval<T, R, M> > {
+public:
+  typedef filib::Interval<T, R, M> Interval;
+  static inline Interval _sqr(const Interval& z) { return sqr(z);  }
+  static inline Interval _log(const Interval& x) {	return log(x);  }
+  static inline Interval _pow(const Interval& x, int c) {	return power(x,c);  }
+  static inline Interval _sqrt(const Interval& z) { return sqrt(z);  }
+  static inline Interval _exp(const Interval& x) {	return exp(x);  }
+  static inline Interval _sin(const Interval& x) {	return sin(x);  }
+  static inline Interval _cos(const Interval& x) {	return cos(x);  }
+  static inline Interval _atan(const Interval& x) {	return atan(x);  }
+  static inline Interval _asin(const Interval& x) {	return asin(x);  }
+  static inline Interval _acos(const Interval& x) {	return acos(x);  }
+};
 
 
 //////////////////////////////////////////////////////////////////////////

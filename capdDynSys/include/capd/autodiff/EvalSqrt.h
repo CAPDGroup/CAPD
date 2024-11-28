@@ -26,26 +26,28 @@ namespace Sqrt
   template<class T, class R>
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo)
     {
       const int n = coeffNo;
       T temp = capd::TypeTraits<T>::zero();
       for(int j=0;j<n;++j)
-        temp += (n-3*j) * result[j] * left[n-j];
-      result[n] = 0.5*temp/((double)n * (*left));
+        temp += Real(n-3*j) * result[j] * left[n-j];
+      result[n] = temp/(Real(2.*n) * (*left));
     }else
-      *result = sqrt(*left);
+      *result = Math<T>::_sqrt(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = sqrt(*left);
+    *result = Math<T>::_sqrt(*left);
   }
 
   template<class T, class R>
   inline void evalC1HomogenousPolynomial(const T* left, R result, const unsigned dim, const unsigned order, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     const T* leftDer = left + order;
     R resultDer = result + order;
     for(unsigned derNo=0;derNo<dim;++derNo,leftDer+=order,resultDer+=order)
@@ -59,7 +61,7 @@ namespace Sqrt
           temp1 += result[j] * leftDer[coeffNo-j];
           temp2 += resultDer[j] * left[coeffNo-j];
         }
-        resultDer[coeffNo] = (temp1*0.5-temp2)/(*left);
+        resultDer[coeffNo] = (temp1*Real(0.5)-temp2)/(*left);
 //        DW: the following formula is correct, much faster (only half multiplications)
 //            but introduces huge cancellation - BasicCnTaylorTest fails.
 //        T temp1 = 0.5*(*leftDer);
@@ -73,6 +75,7 @@ namespace Sqrt
   template<class T, class R>
   inline void evalC2HomogenousPolynomial(const T* left, R result, const unsigned dim, const unsigned order, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     const T* leftDer = left+order;
     R resultDer = result + order;
     const unsigned s = dim*order;
@@ -92,7 +95,7 @@ namespace Sqrt
           temp2 += resultDer[j] * leftDer[coeffNo-j];
           temp3 += resultHess[j] * left[coeffNo-j];
         }
-        resultHess[coeffNo] = (0.5*temp1-0.25*temp2-temp3)/(*left);
+        resultHess[coeffNo] = (Real(0.5)*temp1-Real(0.25)*temp2-temp3)/(*left);
       }
 
       leftHess += order;
@@ -111,7 +114,7 @@ namespace Sqrt
             temp1 += result[j] * leftHess[coeffNo-j] + resultDer[j] * leftDer2[coeffNo-j];
             temp2 += resultDer2[j] * leftDer[coeffNo-j] + resultHess[j]*left[coeffNo-j];
           }
-          resultHess[coeffNo] = (0.5*temp1-temp2)/(*left);
+          resultHess[coeffNo] = (Real(0.5)*temp1-temp2)/(*left);
         }
       }
     }
@@ -120,6 +123,7 @@ namespace Sqrt
   template<class T, class R>
   inline void evalC3HomogenousPolynomial(const T* left, R result, const unsigned dim, const unsigned order, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     unsigned i1 = order;
     for(unsigned derNo=0;derNo<dim;++derNo,i1+=order)
     {
@@ -134,7 +138,7 @@ namespace Sqrt
           temp1 += result[i]*left[i111+j] - result[i11+i]*left[i1+j];
           temp2 += result[i111+i]*left[j];
         }
-        result[i111+coeffNo] = (0.5*temp1-temp2)/(*left);
+        result[i111+coeffNo] = (Real(0.5)*temp1-temp2)/(*left);
       }
 
       // cases dxdxdy and dxdydy, assume that x<y
@@ -153,7 +157,7 @@ namespace Sqrt
             temp1 += result[i]* left[i112+j] + result[i1+i]*left[i12+j] + result[i11+i]*left[i2+j];
             temp2 += result[i12+i]  * left[i1+j] + result[i2+i]* left[i11+j] + result[i112+i]*left[j];
           }
-          result[i112+coeffNo] = (0.5*temp1-temp2)/(*left);
+          result[i112+coeffNo] = (Real(0.5)*temp1-temp2)/(*left);
         }
 
         if(getMask(result,i122)){
@@ -164,7 +168,7 @@ namespace Sqrt
             temp3 += result[i]* left[i122+j] + result[i2+i]*left[i12+j] + result[i22+i]*left[i1+j];
             temp4 += result[i12+i]  * left[i2+j] + result[i1+i]* left[i22+j] + result[i122+i]*left[j];
           }
-          result[i122+coeffNo] = (0.5*temp3-temp4)/(*left);
+          result[i122+coeffNo] = (Real(0.5)*temp3-temp4)/(*left);
         }
 
         // case dxdydz, assume x<y<z
@@ -182,7 +186,7 @@ namespace Sqrt
               temp1 += result[i12+i]*left[i3+j] + result[i2+i]*left[i13+j] + result[i1+i]*left[i23+j] + result[i]*left[i123+j];
               temp2 += result[i13+i]*left[i2+j] + result[i23+i]*left[i1+j] + result[i3+i]*left[i12+j] + result[i123+i]*left[j];
             }
-            result[i123+coeffNo] = (0.5*temp1-temp2)/(*left);
+            result[i123+coeffNo] = (Real(0.5)*temp1-temp2)/(*left);
           }
         }
       }
@@ -192,6 +196,7 @@ namespace Sqrt
   template<class T, class R>
   void evalMultiindex(const T* left, R result, DagIndexer<T>* dag, const MultiindexData* i, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(getMask(result,i->index))
     {
       T t = capd::TypeTraits<T>::zero();
@@ -199,10 +204,10 @@ namespace Sqrt
 
       for(int q=0;q<h-1;++q){
         const MultiindexData::IndexPair p = i->getConvolutionPairsFromEpToK(coeffNo)[q];
-        t += dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p]*result[p.first]*result[p.second];
+        t += Real(dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p])*result[p.first]*result[p.second];
       }
-      t= t/(double)i->k[i->p];
-      result[i->index+coeffNo] = (0.5*left[i->index+coeffNo]-t)/(*result);
+      t= t/Real(i->k[i->p]);
+      result[i->index+coeffNo] = (Real(0.5)*left[i->index+coeffNo]-t)/(*result);
     }
   }
 
@@ -273,7 +278,7 @@ namespace SqrtFunTime
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = sqrt(*left);
+    *result = Math<T>::_sqrt(*left);
   }
 
   template<class T, class R>
@@ -294,16 +299,17 @@ namespace SqrtTime
   template<class T, class R>
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo)
-      result[coeffNo] = (1.5-coeffNo) * result[coeffNo-1]/((double)coeffNo * (*left));
+      result[coeffNo] = Real(1.5-coeffNo) * result[coeffNo-1]/(Real(coeffNo) * (*left));
     else
-      *result = sqrt(*left);
+      *result = Math<T>::_sqrt(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = sqrt(*left);
+    *result = Math<T>::_sqrt(*left);
   }
 
   template<class T, class R>
@@ -325,13 +331,13 @@ namespace SqrtConst
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
     if(coeffNo==0)
-      *result = sqrt(*left);
+      *result = Math<T>::_sqrt(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = sqrt(*left);
+    *result = Math<T>::_sqrt(*left);
   }
 
   template<class T, class R>

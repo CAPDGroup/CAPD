@@ -27,30 +27,31 @@ namespace Sin
   template<class T, class R>
   inline void evalC0(const T* left, T* right, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo)
     {
       T tempSin = capd::TypeTraits<T>::zero();
       T tempCos = capd::TypeTraits<T>::zero();
       for(unsigned j=1;j<=coeffNo;++j)
       {
-        tempSin += double(j) * right[coeffNo-j] * left[j];
-        tempCos -= double(j) * result[coeffNo-j] * left[j];
+        tempSin += Real(j) * right[coeffNo-j] * left[j];
+        tempCos -= Real(j) * result[coeffNo-j] * left[j];
       }
-      result[coeffNo] = tempSin/(double)coeffNo;
-      right[coeffNo] = tempCos/(double)coeffNo;
+      result[coeffNo] = tempSin/Real(coeffNo);
+      right[coeffNo] = tempCos/Real(coeffNo);
     }
     else
     {
-      (*result) = sin(*left);
-      (*right) = cos(*left);
+      (*result) = Math<T>::_sin(*left);
+      (*right) = Math<T>::_cos(*left);
     }
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, T* right, R result)
   {
-    (*result) = sin(*left);
-    (*right) = cos(*left);
+    (*result) = Math<T>::_sin(*left);
+    (*right) = Math<T>::_cos(*left);
   }
 
   template<class T, class R>
@@ -78,6 +79,7 @@ namespace Sin
   template<class T, class R>
   inline void evalC2HomogenousPolynomial(const T* left, T* right, R result, const unsigned dim, const unsigned order, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     const unsigned s = dim*order;
     const T* leftDer = left + order;
     T* rightDer = right + order;
@@ -101,8 +103,8 @@ namespace Sin
           tempCos1 -= leftDer[i]*resultDer[j];
           tempCos2 -= leftHess[i]*result[j];
         }
-        resultHess[coeffNo] = 0.5*tempSin1 + tempSin2;
-        rightHess[coeffNo]  = 0.5*tempCos1 + tempCos2;
+        resultHess[coeffNo] = Real(0.5)*tempSin1 + tempSin2;
+        rightHess[coeffNo]  = Real(0.5)*tempCos1 + tempCos2;
       }
 
       leftHess += order;
@@ -135,6 +137,7 @@ namespace Sin
   template<class T, class R>
   inline void evalC3HomogenousPolynomial(const T* left, T* right, R result, const unsigned dim, const unsigned order, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     unsigned i1 = order;
     for(unsigned derNo=0;derNo<dim;++derNo,i1+=order)
     {
@@ -158,8 +161,8 @@ namespace Sin
           tempCos2 -= left[i11+i] * result[i1+j];
           tempCos3 -= left[i111+i]* result[j];
         }
-        result[i111+coeffNo] = (tempSin1+2.*tempSin2)/3. + tempSin3;
-        right[i111+coeffNo] = (tempCos1+2.*tempCos2)/3. + tempCos3;
+        result[i111+coeffNo] = (tempSin1+Real(2.)*tempSin2)/Real(3.) + tempSin3;
+        right[i111+coeffNo] = (tempCos1+Real(2.)*tempCos2)/Real(3.) + tempCos3;
       }
 
       // cases dxdxdy and dxdydy, assume that x<y
@@ -231,6 +234,7 @@ namespace Sin
   template<class T, class R>
   void evalMultiindex(const T* left, T* right, R result, DagIndexer<T>* dag, const MultiindexData* i, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(getMask(result,i->index))
     {
       T ts = capd::TypeTraits<T>::zero();
@@ -239,11 +243,11 @@ namespace Sin
 
       for(int q=0;q<h;++q){
         const MultiindexData::IndexPair p = i->getConvolutionPairsFromEpToK(coeffNo)[q];
-        ts += ((double)dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p])*left[p.first]*right[p.second];
-        tc -= ((double)dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p])*left[p.first]*result[p.second];
+        ts += Real(dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p])*left[p.first]*right[p.second];
+        tc -= Real(dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p])*left[p.first]*result[p.second];
       }
-      right[i->index+coeffNo] = tc/(double)i->k[i->p];
-      result[i->index+coeffNo] = ts/(double)i->k[i->p];
+      right[i->index+coeffNo] = tc/Real(i->k[i->p]);
+      result[i->index+coeffNo] = ts/Real(i->k[i->p]);
     }
   }
 
@@ -309,16 +313,16 @@ namespace SinConst{
   {
     if(coeffNo==0)
     {
-      *result = sin(*left);
-      *right = cos(*left);
+      *result = Math<T>::_sin(*left);
+      *right = Math<T>::_cos(*left);
     }
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, T* right, R result)
   {
-    *result = sin(*left);
-    *right = cos(*left);
+    *result = Math<T>::_sin(*left);
+    *right = Math<T>::_cos(*left);
   }
 
   template<class T, class R>
@@ -337,23 +341,24 @@ namespace SinTime{
   template<class T, class R>
   inline void evalC0(const T* left, T* right, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo)
     {
-      result[coeffNo] = right[coeffNo-1]/(double)coeffNo;
-      right[coeffNo] = -result[coeffNo-1]/(double)coeffNo;
+      result[coeffNo] = right[coeffNo-1]/Real(coeffNo);
+      right[coeffNo] = -result[coeffNo-1]/Real(coeffNo);
     }
     else
     {
-      (*result) = sin(*left);
-      (*right) = cos(*left);
+      (*result) = Math<T>::_sin(*left);
+      (*right) = Math<T>::_cos(*left);
     }
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, T* right, R result)
   {
-    *result = sin(*left);
-    *right = cos(*left);
+    *result = Math<T>::_sin(*left);
+    *right = Math<T>::_cos(*left);
   }
 
   template<class T, class R>
@@ -378,8 +383,8 @@ namespace SinFunTime{
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, T* right, R result)
   {
-    *result = sin(*left);
-    *right = cos(*left);
+    *result = Math<T>::_sin(*left);
+    *right = Math<T>::_cos(*left);
   }
 
   template<class T, class R>

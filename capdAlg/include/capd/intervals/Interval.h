@@ -22,6 +22,7 @@
 #include "capd/intervals/IntervalSettings.h"
 #include "capd/intervals/IntervalError.h"
 #include "capd/basicalg/TypeTraits.h"
+#include "capd/basicalg/Math.h"
 #include "capd/rounding/RoundingTraits.h"
 #include "capd/intervals/IntervalTraits.h"
 #include "capd/basicalg/doubleFun.h"
@@ -495,6 +496,9 @@ public:
     return ( x.leftBound() <= zero() && x.rightBound()>=zero());
   }
 
+  static inline int _int(const IntervalType& z) noexcept { return TypeTraits<T>::_int(z.leftBound()); } 
+  static inline double _double(const IntervalType& z) noexcept { return TypeTraits<T>::_double(z.leftBound()); } 
+
  private:
   static const  ::capd::intervals::Interval<T,RT> S_zero ;// = capd::intervals::Interval<T,R>(T(0.0));
   static const  ::capd::intervals::Interval<T,RT> S_one ;
@@ -510,6 +514,21 @@ const ::capd::intervals::Interval<T,RT> TypeTraits< ::capd::intervals::Interval<
     TypeTraits<T>::one()
 );
 
+template <typename T, typename RT>
+class Math < ::capd::intervals::Interval<T,RT> > {
+public:
+  typedef typename ::capd::intervals::Interval<T,RT> Interval;
+  static constexpr inline Interval _sqr(const Interval& z) { return capd::intervals::sqr(z); }
+  static constexpr inline Interval _log(const Interval& x) {	return log(x);  }
+  static constexpr inline Interval _pow(const Interval& x, int c) {	return power(x,c);  }
+  static constexpr inline Interval _sqrt(const Interval& z) { return sqrt(z); }
+  static constexpr inline Interval _exp(const Interval& x) {	return exp(x);  }
+  static constexpr inline Interval _sin(const Interval& x) {	return sin(x);  }
+  static constexpr inline Interval _cos(const Interval& x) {	return cos(x);  }
+  static constexpr inline Interval _atan(const Interval& x) {	return atan(x);  }
+  static constexpr inline Interval _asin(const Interval& x) {	return asin(x);  }
+  static constexpr inline Interval _acos(const Interval& x) {	return acos(x);  }
+};
 
 } // namespace capd
 

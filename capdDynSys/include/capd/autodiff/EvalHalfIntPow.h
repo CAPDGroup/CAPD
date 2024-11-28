@@ -28,22 +28,24 @@ namespace HalfIntPow
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
-    double c = toDouble(leftBound(*right));
+    typedef typename TypeTraits<T>::Real Real;
+    double c = TypeTraits<T>::_double(*right);
     if(coeffNo){
       T temp = capd::TypeTraits<T>::zero();
       for(int j=0;j<(int)coeffNo;++j)
-        temp += (c*((int)coeffNo-j)-j) * result[j] *left[coeffNo-j];
-      result[coeffNo] = temp/((double)coeffNo * (*left));
+        temp += Real(c*((int)coeffNo-j)-j) * result[j] *left[coeffNo-j];
+      result[coeffNo] = temp/(Real(coeffNo) * (*left));
     }
     else
-      *result = power(sqrt(*left),(int)(2*c));
+      *result = Math<T>::_pow(Math<T>::_sqrt(*left),(int)(2*c));
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
   {
-    const int c = toInt(2.*leftBound(*right));
-    *result = power(sqrt(*left),c);
+    typedef typename TypeTraits<T>::Real Real;
+    const int c = TypeTraits<T>::_int(Real(2.)*(*right));
+    *result = Math<T>::_pow(Math<T>::_sqrt(*left),c);
   }
 
   template<class T, class R>
@@ -68,22 +70,25 @@ namespace HalfIntPowFunTime
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
-    const double c = toDouble(leftBound(*right));
+    typedef typename TypeTraits<T>::Real Real;
+    const double c = TypeTraits<T>::_double(*right);
+    
     if(coeffNo){
       T temp = capd::TypeTraits<T>::zero();
       for(int j=0;j<(int)coeffNo;++j)
-        temp += (c*((int)coeffNo-j)-j) * result[j] *left[coeffNo-j];
-      result[coeffNo] = temp/((double)coeffNo * (*left));
+        temp += Real(c*((int)coeffNo-j)-j) * result[j] *left[coeffNo-j];
+      result[coeffNo] = temp/(Real(coeffNo) * (*left));
     }
     else
-      *result = power(sqrt(*left),(int)(2*c));
+      *result = Math<T>::_pow(Math<T>::_sqrt(*left),static_cast<int>(2*c));
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
   {
-    const int c = toInt(2.*leftBound(*right));
-    *result = power(sqrt(*left),c);
+    typedef typename TypeTraits<T>::Real Real;
+    const int c = capd::TypeTraits<T>::_int(Real(2.)*(*right));
+    *result = Math<T>::_pow(Math<T>::_sqrt(*left),c);
   }
 
   template<class T, class R>
@@ -105,22 +110,24 @@ namespace HalfIntPowTime
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
-    const double c = toDouble(leftBound(*right));
+    typedef typename TypeTraits<T>::Real Real;
+    const double c = TypeTraits<T>::_double(*right);
     if(coeffNo){
       T temp = capd::TypeTraits<T>::zero();
       for(int j=0;j<(int)coeffNo;++j)
-        temp += (c*((int)coeffNo-j)-j) * result[j] *left[coeffNo-j];
-      result[coeffNo] = temp/((double)coeffNo * (*left));
+        temp += Real(c*((int)coeffNo-j)-j) * result[j] *left[coeffNo-j];
+      result[coeffNo] = temp/(Real(coeffNo) * (*left));
     }
     else
-      *result = power(sqrt(*left),(int)(2*c));
+      *result = Math<T>::_pow(Math<T>::_sqrt(*left),static_cast<int>(2*c));
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
   {
-    int c = toInt(2.*leftBound(*right));
-    *result = power(sqrt(*left),c);
+    typedef typename TypeTraits<T>::Real Real;
+    const int c = TypeTraits<T>::_int(Real(2.)*(*right));
+    *result = Math<T>::_pow(Math<T>::_sqrt(*left),c);
   }
 
   template<class T, class R>
@@ -142,17 +149,19 @@ namespace HalfIntPowConst
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo==0){
-      const int c = toInt(2.*leftBound(*right));
-      *result = power(sqrt(*left),c);
+      const int c = TypeTraits<T>::_int(Real(2.)*(*right));
+      *result = Math<T>::_pow(Math<T>::_sqrt(*left),c);
     }
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
   {
-    const int c = toInt(2.*leftBound(*right));
-    *result = power(sqrt(*left),c);
+    typedef typename TypeTraits<T>::Real Real;
+    const int c = TypeTraits<T>::_int(Real(2.)*(*right));
+    *result = Math<T>::_pow(Math<T>::_sqrt(*left),c);
   }
 
   template<class T, class R>
