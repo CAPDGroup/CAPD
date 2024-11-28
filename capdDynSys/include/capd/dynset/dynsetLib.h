@@ -132,7 +132,7 @@ typedef capd::dynset::CnRect2<IMatrixMD> CnRect2MD;
 
 #endif
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
   typedef capd::dynset::C0Set<MpIMatrix> MpC0Set;
   typedef capd::dynset::BallSet<MpIMatrix> MpBallSet;

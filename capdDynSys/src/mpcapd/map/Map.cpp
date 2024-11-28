@@ -14,7 +14,7 @@
 #include "capd/map/Map.hpp"
 
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 namespace capd{
 namespace map{
   template class Map<MpMatrix>;

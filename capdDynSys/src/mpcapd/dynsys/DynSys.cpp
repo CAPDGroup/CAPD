@@ -16,7 +16,7 @@
 #include "capd/dynsys/DynSys.hpp"
 #include "capd/vectalg/mplib.h"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
   template class capd::dynsys::DynSys<capd::MpIMatrix>;
 

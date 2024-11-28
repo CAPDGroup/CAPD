@@ -16,7 +16,7 @@
 #include "capd/dynsys/CnOdeSolver.hpp"
 #include "capd/map/Map.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 /*
   template class capd::dynsys::BasicCnSolver<capd::MpMap, capd::dynsys::MpLastTermsStepControl<capd::MpFloat> >;
 

@@ -10,7 +10,7 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 #ifndef _CAPD_INTERVAL_MPINTERVAL_H_ 
 #define _CAPD_INTERVAL_MPINTERVAL_H_ 

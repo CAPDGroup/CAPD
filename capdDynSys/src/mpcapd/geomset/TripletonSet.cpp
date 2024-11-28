@@ -15,7 +15,7 @@
 #include "capd/vectalg/mplib.h"
 #include "capd/geomset/CenteredTripletonSet.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 namespace capd{
 namespace geomset{
   template class CenteredTripletonSet<capd::MpIMatrix >;

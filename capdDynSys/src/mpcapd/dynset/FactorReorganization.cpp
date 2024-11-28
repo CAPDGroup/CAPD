@@ -18,7 +18,7 @@
 #include "capd/geomset/DoubletonSet.h"
 #include "capd/dynset/reorganization/FactorReorganization.h"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
   template class capd::dynset::FactorReorganization< >;
 #endif
 

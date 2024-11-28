@@ -16,7 +16,7 @@
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.hpp"
 #include "capd/vectalg/Matrix_Interval.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
   using namespace capd;
   template void capd::matrixAlgorithms::orthonormalize<MpMatrix>(MpMatrix&);
   template void capd::matrixAlgorithms::QR_decompose<MpMatrix>(const MpMatrix&,MpMatrix&,MpMatrix&);

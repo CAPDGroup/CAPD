@@ -27,7 +27,7 @@
 #include "capd/poincare/CoordinateSection.h"
 #include "capd/poincare/NonlinearSection.h"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 namespace capd{
 

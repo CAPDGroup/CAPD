@@ -22,7 +22,8 @@
 #include <iostream>
 #include <cassert>
 #include "capd/intervals/lib.h"
-#ifdef __USE_FILIB__
+
+#if __USE_FILIB__
 #include "capd/filib/Interval.h"
 #endif
 
@@ -221,7 +222,7 @@ TexWriter & operator<< (TexWriter & o, const capd::intervals::Interval<T, R> & x
   return o;
 }
 
-#ifdef __USE_FILIB__
+#if __USE_FILIB__
 template <typename T, filib::RoundingStrategy R, filib::IntervalMode M>
 TexWriter & operator<< (TexWriter & o, const capd::filib::Interval<T, R, M> & x){
   o.writeInterval(x);

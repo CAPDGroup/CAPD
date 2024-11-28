@@ -14,7 +14,7 @@
 #include "capd/vectalg/mplib.h"
 #include "capd/map/Function.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 template class capd::map::BasicFunction<capd::MpFloat>;
 template class capd::map::BasicFunction<capd::MpInterval>;
 template class capd::map::Function<capd::MpVector>;

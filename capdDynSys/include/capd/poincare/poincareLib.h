@@ -59,7 +59,7 @@ typedef capd::poincare::TimeMap<TaylorMD> ITimeMapMD;
 typedef capd::poincare::TimeMap<C2TaylorMD> IC2TimeMapMD;
 typedef capd::poincare::TimeMap<CnTaylorMD> ICnTimeMapMD;
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
   typedef capd::poincare::BasicPoincareMap<MpBasicTaylor> MpBasicPoincareMap;
   typedef capd::poincare::BasicPoincareMap<MpBasicC2Taylor> MpBasicC2PoincareMap;

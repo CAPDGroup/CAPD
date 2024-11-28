@@ -16,7 +16,7 @@
 #include "capd/dynsys/OdeSolver.hpp"
 #include "capd/vectalg/Matrix.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
   template class capd::dynsys::OdeSolver<capd::MpIMap, capd::dynsys::ILastTermsStepControl>;
   template class capd::dynsys::OdeSolver<capd::MpIMap, capd::dynsys::IEncFoundStepControl>;

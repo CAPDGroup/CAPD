@@ -10,7 +10,7 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 //#include "capd/mpcapdlib.h"
 #include "capd/vectalg/mplib.h"

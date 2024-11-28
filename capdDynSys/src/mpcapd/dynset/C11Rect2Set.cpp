@@ -15,7 +15,7 @@
 #include "capd/dynset/C11Rect2Set.hpp"
 
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
   template class capd::dynset::C11Rect2Set<capd::MpIMatrix >;
 #endif
 

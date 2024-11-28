@@ -25,7 +25,7 @@ class NaNException : public std::exception {
   }
 };
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 namespace capd {
 namespace intervals {

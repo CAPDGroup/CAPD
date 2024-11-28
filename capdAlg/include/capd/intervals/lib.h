@@ -33,7 +33,7 @@ typedef ::capd::cxsc::Interval  DInterval;
 }
 
 #else
-#ifndef __USE_FILIB__
+#if __USE_FILIB__ == 0
 
 using std::log;
 #include "capd/intervals/Interval.h"

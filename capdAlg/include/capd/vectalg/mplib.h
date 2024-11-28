@@ -28,7 +28,7 @@
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.h"
 #include "capd/matrixAlgorithms/intMatrixAlgorithms.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 namespace capd{
 

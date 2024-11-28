@@ -15,7 +15,7 @@
 #include "capd/dynset/mplib.h"
 #include "capd/dynset/C0DoubletonSet.hpp"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 template class capd::dynset::C0DoubletonSet< capd::MpIMatrix, capd::C0Intv2Policies >;
 template class capd::dynset::C0DoubletonSet< capd::MpIMatrix, capd::C0Pped2Policies >;
 template class capd::dynset::C0DoubletonSet< capd::MpIMatrix, capd::C0Rect2Policies >;

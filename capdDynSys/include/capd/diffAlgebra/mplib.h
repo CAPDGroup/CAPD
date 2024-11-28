@@ -23,7 +23,7 @@
 #include "capd/diffAlgebra/C2TimeJet.h"
 #include "capd/diffAlgebra/CnTimeJet.h"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 namespace capd{
 

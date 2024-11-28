@@ -18,7 +18,7 @@
 
 using namespace capd;
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
   typedef dynsys::LorenzFadMap<MpFloat,0> MpLorenz;
   typedef dynsys::LorenzFadMap<MpInterval,0> IMpLorenz;
 

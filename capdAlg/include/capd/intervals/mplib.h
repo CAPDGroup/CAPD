@@ -18,7 +18,7 @@
 #include "capd/multiPrec/mplib.h"
 #include "capd/intervals/MpInterval.h"
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
 namespace capd{
  typedef capd::intervals::MpInterval MpInterval;

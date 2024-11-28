@@ -22,7 +22,7 @@
 
 using namespace capd;
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 
   template class diffAlgebra::BasicCurve<MpMatrix>;
   template class diffAlgebra::BasicCurve<MpIMatrix>;

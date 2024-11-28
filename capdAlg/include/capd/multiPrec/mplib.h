@@ -18,7 +18,7 @@
 #ifndef _CAPD_MULTIPREC_MPLIB_H_
 #define _CAPD_MULTIPREC_MPLIB_H_
 
-#ifdef __HAVE_MPFR__
+#if __HAVE_MPFR__
 #include "capd/multiPrec/MpReal.h"
 #include "capd/multiPrec/MpInt.h"
 
