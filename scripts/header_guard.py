@@ -68,7 +68,7 @@ def process(path : str) -> HeaderFile:
                 while True:
                     line = ifs.readline()
 
-                    line = header_file.process_line(line)
+                    # line = header_file.process_line(line)
 
                     if line == '':
                         break
