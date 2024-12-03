@@ -1,6 +1,7 @@
 import os
 import argparse
 import logging
+import re
 from typing import List
 from enum import Enum
 
@@ -23,18 +24,51 @@ class State(Enum):
     ERROR = -1
 
 
-def process(file : str):
-    trace.info(f'Processing {file}')
+class HeaderFile:
+    def __init__(self, path):
+        self.path = path
+        self.header_guard = ''
+        self.state = State.PREAMBLE
 
-    file_tmp = file + '.tmp'
-    with open(file, 'r') as ifs:
+    def process_line(self, line : str) -> str:
+
+        if self.state == State.PREAMBLE:
+            result = re.match(r'#ifndef ([A-Z_]*)', line)
+            if result:
+                self.header_guard = result.group(1)
+                trace.info(self.header_guard)
+                self.state = State.INCLUSION_GUARD_IFNDEF
+        
+        elif self.state == State.INCLUSION_GUARD_IFNDEF:
+            if line == f'#define {self.header_guard}':
+                self.state = State.INCLUSION_GUARD_DEFINE
+        
+        elif self.state == State.INCLUSION_GUARD_DEFINE:
+            return line
+        
+        elif self.state == State.INCLUSION_GUARD_ENDIF:
+            return line
+        
+        else:
+            self.state = State.ERROR
+
+        return line
+
+
+def process(path : str) -> HeaderFile:
+    trace.info(f'Processing {path}')
+
+    header_file = HeaderFile(path)
+
+    file_tmp = path + '.tmp'
+    with open(path, 'r') as ifs:
         with open(file_tmp, 'w') as ofs:
 
             try:
-                state = State.PREAMBLE
-
                 while True:
                     line = ifs.readline()
+
+                    line = header_file.process_line(line)
 
                     if line == '':
                         break
@@ -42,13 +76,16 @@ def process(file : str):
                     ofs.write(line)
                 
             except:
-                return None
+                return header_file
             finally:
                 pass
     
-    os.remove(file)
-    os.rename(file_tmp, file)
-    os.chmod(file, 0o755)
+    status = os.stat(path)
+    permissions = status.st_mode & 0o777
+    os.remove(path)
+    os.rename(file_tmp, path)
+    os.chmod(path, permissions)
+    return header_file
 
 
 if __name__ == "__main__":
@@ -60,9 +97,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if os.path.isdir(args.directory):
-        header_files = find_header_files(args.directory)
-        for file in header_files:
-            process(file)
+        header_file_paths = find_header_files(args.directory)
+        for path in header_file_paths:
+            header_file = process(path)
+            print(header_file.state)
     else:
         print("Invalid directory")
         
