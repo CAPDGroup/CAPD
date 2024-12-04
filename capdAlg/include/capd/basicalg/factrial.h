@@ -1,4 +1,3 @@
-
 /////////////////////////////////////////////////////////////////////////////
 /// @file factrial.h
 ///
@@ -10,10 +9,12 @@
 // This file constitutes a part of the CAPD library, 
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
-#include <vector>
 #ifndef _CAPD_CAPD_FACTRIAL_H_ 
 #define _CAPD_CAPD_FACTRIAL_H_ 
+
+#include <vector>
 #include <stdexcept>
+
 namespace capd{
 
 class Newton{

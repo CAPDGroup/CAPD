@@ -10,6 +10,9 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
+#ifndef CAPD_RANDOM_H
+#define CAPD_RANDOM_H
+
 #include <cstdlib>
 #include <ctime>
 
@@ -32,3 +35,5 @@ inline void randomStart(int n=0){
 }
 
 /// @}
+
+#endif // CAPD_RANDOM_H
