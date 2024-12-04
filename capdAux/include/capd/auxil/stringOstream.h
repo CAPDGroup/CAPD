@@ -13,10 +13,11 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#include <sstream>
-
 #ifndef _STRINGOSTREAM_H_
 #define _STRINGOSTREAM_H_
+
+#include <sstream>
+
 template<typename T>
 std::string& operator<<(std::string& s,const T& t){
   std::ostringstream is;
@@ -24,6 +25,7 @@ std::string& operator<<(std::string& s,const T& t){
   s+=is.str();
   return s;
 }
+
 #endif //_STRINGOSTREAM_H_
 
 /// @}
