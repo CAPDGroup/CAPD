@@ -24,6 +24,14 @@ class State(Enum):
     ERROR = -1
 
 
+def match_ifndef(line : str):
+    result = re.match(r'#ifndef ([A-Z_]*)', line)
+    if result:
+        return True, result.group(1)
+    else:
+        return False, ''
+
+
 class HeaderFile:
     def __init__(self, path):
         self.path = path
@@ -33,11 +41,14 @@ class HeaderFile:
     def process_line(self, line : str) -> str:
 
         if self.state == State.PREAMBLE:
-            result = re.match(r'#ifndef ([A-Z_]*)', line)
-            if result:
-                self.header_guard = result.group(1)
-                trace.info(self.header_guard)
+            if self.__match_ifndef(line):
                 self.state = State.INCLUSION_GUARD_IFNDEF
+            elif self.__match_online_multiline_comment(line):
+                pass
+            elif self.__match_comment_or_empty_line(line):
+                pass
+            else:
+                self.state = State.ERROR
         
         elif self.state == State.INCLUSION_GUARD_IFNDEF:
             if line == f'#define {self.header_guard}':
@@ -55,6 +66,23 @@ class HeaderFile:
         return line
 
 
+    def __match_ifndef(self, line : str) -> bool:
+        result = re.match(r'#ifndef ([A-Z_]*)', line)
+        if result:
+            self.header_guard = result.group(1)
+            trace.info(self.header_guard)
+            return True
+        else:
+            return False
+
+
+    def __match_comment_or_empty_line(self, line : str) -> bool:
+        return re.match(r'^\s*(//.*)?$', line)
+    
+    def __match_online_multiline_comment(self, line : str) -> bool:
+        return re.match(r'^\s*/\*.*\*/\s*$', line)
+
+
 def process(path : str) -> HeaderFile:
     trace.info(f'Processing {path}')
 
@@ -68,14 +96,15 @@ def process(path : str) -> HeaderFile:
                 while True:
                     line = ifs.readline()
 
-                    # line = header_file.process_line(line)
+                    line = header_file.process_line(line)
 
                     if line == '':
                         break
 
                     ofs.write(line)
                 
-            except:
+            except Exception as e:
+                trace.error(e)
                 return header_file
             finally:
                 pass
@@ -98,9 +127,12 @@ if __name__ == "__main__":
 
     if os.path.isdir(args.directory):
         header_file_paths = find_header_files(args.directory)
-        for path in header_file_paths:
-            header_file = process(path)
-            print(header_file.state)
+        header_files = [process(path) for path in header_file_paths]
+
+        trace.info(f'Files analyzed: {len(header_files)}')
+        trace.info(f'Files with err: {sum([header_file.state == State.ERROR for header_file in header_files])}')
+
+        
     else:
         print("Invalid directory")
         
