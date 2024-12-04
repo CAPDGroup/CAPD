@@ -13,10 +13,10 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#include <string>
-
 #ifndef _CAPD_VECTALG_NORM_H_ 
 #define _CAPD_VECTALG_NORM_H_ 
+
+#include <string>
 
 namespace capd{
 namespace vectalg{

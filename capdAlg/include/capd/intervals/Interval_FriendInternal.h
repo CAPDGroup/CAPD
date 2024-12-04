@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-
-
+#ifndef CAPD_INTERVAL_FRIEND_INTERVAL_H
+#define CAPD_INTERVAL_FRIEND_INTERVAL_H
 
 //////////////////////////////////////////////////////////////////////////
 //  RELATIONS between interval and types which can be converted to BoundType 
@@ -168,3 +168,5 @@ friend inline Interval operator/(const Interval& A_iVal,
 {
   return divide (A_iVal, A_x);
 }
+
+#endif // CAPD_INTERVAL_FRIEND_INTERVAL_H
