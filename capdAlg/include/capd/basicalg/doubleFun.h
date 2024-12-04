@@ -11,11 +11,10 @@
 
 // Copyright (C) Tomasz Kapela 2006
 
-#include <cmath>
-
 #ifndef _CAPD_CAPD_DOUBLEFUN_H_
 #define _CAPD_CAPD_DOUBLEFUN_H_
 
+#include <cmath>
 
 inline int toInt(long double d)
 {

@@ -1,4 +1,4 @@
-#if !defined(_RATIONALNUMBER_H_)
+#ifndef _RATIONALNUMBER_H_
 #define _RATIONALNUMBER_H_
 /*
   //########################### rationalNumber class ################################//

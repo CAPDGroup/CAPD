@@ -10,7 +10,7 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#if !defined(_POWERTHREE_H_)
+#ifndef _POWERTHREE_H_
 #define _POWERTHREE_H_
 
 #include <iostream>

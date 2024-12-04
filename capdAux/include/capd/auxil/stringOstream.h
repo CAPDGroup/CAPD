@@ -15,7 +15,7 @@
 
 #include <sstream>
 
-#if !defined(_STRINGOSTREAM_H_)
+#ifndef _STRINGOSTREAM_H_
 #define _STRINGOSTREAM_H_
 template<typename T>
 std::string& operator<<(std::string& s,const T& t){

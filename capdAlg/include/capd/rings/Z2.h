@@ -13,7 +13,7 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#if !defined(_Z2_H_)
+#ifndef _Z2_H_
 #define _Z2_H_
 
 #include "capd/basicalg/TypeTraits.h"

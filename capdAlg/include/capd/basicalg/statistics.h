@@ -10,7 +10,7 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#if !defined(_STATISTICS_H_)
+#ifndef _STATISTICS_H_
 #define _STATISTICS_H_
 
 #include <iterator>
