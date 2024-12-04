@@ -13,7 +13,7 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#if !defined(_FUNCTOR_H_)
+#ifndef _FUNCTOR_H_
 #define _FUNCTOR_H_
 
 namespace capd {

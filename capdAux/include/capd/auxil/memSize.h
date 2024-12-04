@@ -13,7 +13,7 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#if !defined(_MEMSIZE_H_)
+#ifndef _MEMSIZE_H_
 #define _MEMSIZE_H_
 
 unsigned long int memSize();
