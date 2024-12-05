@@ -45,12 +45,9 @@ class HeaderFile:
         elif self.state == State.INCLUSION_GUARD_IFNDEF:
             if line == f'#define {self.header_guard}':
                 self.state = State.INCLUSION_GUARD_DEFINE
-        
+
         elif self.state == State.INCLUSION_GUARD_DEFINE:
-            return line
-        
-        elif self.state == State.INCLUSION_GUARD_ENDIF:
-            return line
+            pass
         
         else:
             self.state = State.ERROR
@@ -81,8 +78,8 @@ def process(path : str) -> HeaderFile:
     header_file = HeaderFile(path)
 
     file_tmp = path + '.tmp'
-    with open(path, 'r') as ifs:
-        with open(file_tmp, 'w') as ofs:
+    with open(path, 'r', newline='') as ifs:
+        with open(file_tmp, 'w', newline='') as ofs:
 
             try:
                 while True:
