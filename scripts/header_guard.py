@@ -30,6 +30,7 @@ class HeaderFile:
         self.header_guard = ''
         self.state = State.PREAMBLE
 
+
     def process_line(self, line : str) -> str:
 
         if self.state == State.PREAMBLE:
@@ -45,7 +46,7 @@ class HeaderFile:
         elif self.state == State.INCLUSION_GUARD_IFNDEF:
             if line == f'#define {self.header_guard}':
                 self.state = State.INCLUSION_GUARD_DEFINE
-
+        
         elif self.state == State.INCLUSION_GUARD_DEFINE:
             pass
         
@@ -59,7 +60,7 @@ class HeaderFile:
         result = re.match(r'#ifndef\s+([A-Z0-9_]*)', line)
         if result:
             self.header_guard = result.group(1)
-            trace.info(self.header_guard)
+            trace.debug(self.header_guard)
             return True
         else:
             return False
@@ -68,12 +69,13 @@ class HeaderFile:
     def __match_comment_or_empty_line(self, line : str) -> bool:
         return re.match(r'^\s*(//.*)?$', line)
     
+    
     def __match_online_multiline_comment(self, line : str) -> bool:
         return re.match(r'^\s*/\*.*\*/\s*$', line)
 
 
 def process(path : str) -> HeaderFile:
-    trace.info(f'Processing {path}')
+    trace.debug(f'Processing {path}')
 
     header_file = HeaderFile(path)
 
@@ -108,14 +110,15 @@ def process(path : str) -> HeaderFile:
 
 if __name__ == "__main__":
 
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.DEBUG)
 
     parser = argparse.ArgumentParser(description="Find .h and .hpp files in a directory")
-    parser.add_argument("directory", type=str, help="Directory to search")
+    parser.add_argument('dirs', nargs='+', help="Directory/Directories to search")
     args = parser.parse_args()
 
-    if os.path.isdir(args.directory):
-        header_file_paths = find_header_files(args.directory)
+    if all( [os.path.isdir(dir) for dir in args.dirs] ):
+
+        header_file_paths = sum([find_header_files(dir) for dir in args.dirs], [])
         header_files = [process(path) for path in header_file_paths]
 
         trace.info(f'Files analyzed: {len(header_files)}')
@@ -125,7 +128,6 @@ if __name__ == "__main__":
             if header_file.state == State.ERROR:
                 trace.info(header_file.path)
 
-        
     else:
         print("Invalid directory")
         
