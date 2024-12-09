@@ -1,5 +1,5 @@
-#ifndef CAPD_DYNSYS_BASIC_SOLVER_MASK_TEST_DATA_H
-#define CAPD_DYNSYS_BASIC_SOLVER_MASK_TEST_DATA_H
+#ifndef CAPD_DYNSYS_BASIC_SOLVER_MASK_TEST_COMPARE_H
+#define CAPD_DYNSYS_BASIC_SOLVER_MASK_TEST_COMPARE_H
 
 #include <boost/test/unit_test.hpp>
 #include "capd/capdlib.h"
@@ -31,5 +31,5 @@ inline void check(const BHessian& mask, const DHessian& h){
 }
 
 
-#endif /* CAPD_DYNSYS_BASIC_SOLVER_MASK_TEST_DATA_H */
+#endif /* CAPD_DYNSYS_BASIC_SOLVER_MASK_TEST_COMPARE_H */
 
