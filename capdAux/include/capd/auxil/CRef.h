@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_AUXIL_CREF_H_
-#define _CAPD_AUXIL_CREF_H_
+#ifndef CAPD_AUXIL_CREF_H
+#define CAPD_AUXIL_CREF_H
 
 #include <stdexcept>
 #include <iostream>
@@ -82,6 +82,6 @@ class CRef{
       return out;
     }
 };
-#endif // _CAPD_AUXIL_CREF_H_
+#endif // CAPD_AUXIL_CREF_H
 
 /// @}

@@ -17,8 +17,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_MATRIXCONTAINER_H_
-#define _CAPD_VECTALG_MATRIXCONTAINER_H_
+#ifndef CAPD_VECTALG_MATRIXCONTAINER_H
+#define CAPD_VECTALG_MATRIXCONTAINER_H
 
 #include "capd/vectalg/Container.h"
 #include <utility>
@@ -175,6 +175,6 @@ protected:
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_MATRIXCONTAINER_H_
+#endif // CAPD_VECTALG_MATRIXCONTAINER_H
 
 /// @}

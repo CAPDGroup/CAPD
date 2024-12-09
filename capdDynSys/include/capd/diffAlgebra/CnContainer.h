@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_CNCONTAINER_H_
-#define _CAPD_DIFFALGEBRA_CNCONTAINER_H_
+#ifndef CAPD_DIFFALGEBRA_CNCONTAINER_H
+#define CAPD_DIFFALGEBRA_CNCONTAINER_H
 
 #include <stdexcept>
 #include "capd/basicalg/factrial.h"
@@ -517,6 +517,6 @@ bool operator == (const CnContainer<Object,M,N,D> & c1, const CnContainer<Object
 
 }} //namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_CNCONTAINER_H_
+#endif // CAPD_DIFFALGEBRA_CNCONTAINER_H
 
 /// @}

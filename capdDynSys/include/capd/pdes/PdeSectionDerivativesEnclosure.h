@@ -9,8 +9,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_PDES_PDE_SECTION_DERIVATIVES_ENCLOSURE_H_
-#define _CAPD_PDES_PDE_SECTION_DERIVATIVES_ENCLOSURE_H_
+#ifndef CAPD_PDES_PDE_SECTION_DERIVATIVES_ENCLOSURE_H
+#define CAPD_PDES_PDE_SECTION_DERIVATIVES_ENCLOSURE_H
 
 
 namespace capd{
@@ -126,4 +126,4 @@ struct PdeSectionDerivativesEnclosure{
 
 /// @}
 }} // namespace capd::pdes
-#endif
+#endif // CAPD_PDES_PDE_SECTION_DERIVATIVES_ENCLOSURE_H

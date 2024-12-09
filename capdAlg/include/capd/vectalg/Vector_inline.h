@@ -13,8 +13,8 @@
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
 
-#ifndef _CAPD_VECTALG_VECTOR_INLINE_H_ 
-#define _CAPD_VECTALG_VECTOR_INLINE_H_ 
+#ifndef CAPD_VECTALG_VECTOR_INLINE_H
+#define CAPD_VECTALG_VECTOR_INLINE_H
 
 #include "capd/vectalg/Vector.h"
 #include "capd/vectalg/algebraicOperations.h"
@@ -211,5 +211,5 @@ inline Vector<Scalar,dim>::Vector(const Vector<S,dim>& v) : ContainerType(v.dime
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_VECTOR_INLINE_H_ 
+#endif // CAPD_VECTALG_VECTOR_INLINE_H
 

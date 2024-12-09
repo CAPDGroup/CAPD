@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_C1TIMEJET_H_
-#define _CAPD_DIFFALGEBRA_C1TIMEJET_H_
+#ifndef CAPD_DIFFALGEBRA_C1TIMEJET_H
+#define CAPD_DIFFALGEBRA_C1TIMEJET_H
 
 #include "capd/diffAlgebra/C0TimeJet.h"
 
@@ -93,4 +93,4 @@ struct CoeffTraits<C1TimeJet<MatrixT> >{
 
 }} // end of namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_C1TIMEJET_H_
+#endif // CAPD_DIFFALGEBRA_C1TIMEJET_H

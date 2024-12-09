@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_MATRIXALGORITHMS_INTMATRIXALGORITHMS_HPP_
-#define _CAPD_MATRIXALGORITHMS_INTMATRIXALGORITHMS_HPP_
+#ifndef CAPD_MATRIXALGORITHMS_INTMATRIXALGORITHMS_HPP
+#define CAPD_MATRIXALGORITHMS_INTMATRIXALGORITHMS_HPP
 
 #include <capd/auxil/Logger.h>
 
@@ -166,6 +166,6 @@ void spaceIntersection(const matrix &A,const matrix &B,matrix &C){ // input: bas
   } // end of namespace matrixAlgorithms
 
 } // end of namespace capd;
-#endif // _CAPD_MATRIXALGORITHMS_INTMATRIXALGORITHMS_HPP_
+#endif // CAPD_MATRIXALGORITHMS_INTMATRIXALGORITHMS_HPP
 
 /// @}

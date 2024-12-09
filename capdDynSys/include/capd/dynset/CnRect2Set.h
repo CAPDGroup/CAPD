@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_CNRECT2SET_H_
-#define _CAPD_DYNSET_CNRECT2SET_H_
+#ifndef CAPD_DYNSET_CNRECT2SET_H
+#define CAPD_DYNSET_CNRECT2SET_H
 
 #include <stdexcept>
 #include "capd/dynset/CnSet.h"
@@ -201,4 +201,4 @@ void CnRect2Set<MatrixType,Policies,DEGREE>::move(DynSysT& cndynsys, CnRect2Set&
 /// @}
 }} // the end of the namespace capd::dynset
 
-#endif // _CAPD_DYNSET_CNRECT2SET_H_
+#endif // CAPD_DYNSET_CNRECT2SET_H

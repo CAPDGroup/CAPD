@@ -12,8 +12,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_PDES_OneDimKSSineVectorField_H_
-#define _CAPD_PDES_OneDimKSSineVectorField_H_
+#ifndef CAPD_PDES_ONEDIMKSSINEVECTORFIELD_H
+#define CAPD_PDES_ONEDIMKSSINEVECTORFIELD_H
 
 #include <vector>
 #include <iostream>
@@ -658,7 +658,7 @@ void OneDimKSSineVectorField::dxxNorm(const VectorType& a, MatrixType& result) c
 
 }} // namespace capd::pdes
 
-#endif // _CAPD_PDES_OneDimKSSineVectorField_H_
+#endif // CAPD_PDES_ONEDIMKSSINEVECTORFIELD_H
 
 
 /// @}

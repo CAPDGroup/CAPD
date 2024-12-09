@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_ODETRAITS_HPP_
-#define _CAPD_DYNSYS_ODETRAITS_HPP_
+#ifndef CAPD_DYNSYS_ODETRAITS_H
+#define CAPD_DYNSYS_ODETRAITS_H
 #include "capd/dynsys/enclosure.hpp"
 namespace capd{
 namespace dynsys{
@@ -68,4 +68,4 @@ public:
 
 }} // end of namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_ODETRAITS_HPP_
+#endif // CAPD_DYNSYS_ODETRAITS_H

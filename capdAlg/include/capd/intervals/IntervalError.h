@@ -14,8 +14,8 @@
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
 
-#ifndef _CAPD_INTERVAL_INTERVALERROR_H_
-#define _CAPD_INTERVAL_INTERVALERROR_H_
+#ifndef CAPD_INTERVAL_INTERVALERROR_H
+#define CAPD_INTERVAL_INTERVALERROR_H
 
 #include <stdexcept>
 #include <sstream>
@@ -96,4 +96,4 @@ inline void checkInterval( const char * A_msg,
 
 }} // namespace capd::intervals
 
-#endif // _CAPD_INTERVAL_INTERVALERROR_H_
+#endif // CAPD_INTERVAL_INTERVALERROR_H

@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_COVREL_TRIPLESET_H_
-#define _CAPD_COVREL_TRIPLESET_H_
+#ifndef CAPD_COVREL_TRIPLESET_H
+#define CAPD_COVREL_TRIPLESET_H
 
 #include <vector>
 #include "capd/intervals/lib.h"
@@ -378,5 +378,5 @@ GridSet<IMatrix>& TripleSet::gridSet(GridSet<IMatrix>& G, size_type grid1, size_
 /// @}
 }} //namespace capd::covrel
 
-#endif // _CAPD_COVREL_TRIPLESET_H_
+#endif // CAPD_COVREL_TRIPLESET_H
 

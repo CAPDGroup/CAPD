@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_SWAPREORGANIZATION_H_
-#define _CAPD_DYNSYS_SWAPREORGANIZATION_H_
+#ifndef CAPD_DYNSYS_SWAPREORGANIZATION_H
+#define CAPD_DYNSYS_SWAPREORGANIZATION_H
 
 #include "capd/dynset/reorganization/FactorPolicy.h"
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.hpp"
@@ -66,4 +66,4 @@ public:
 /// @}
 }} // end of capd::dynset
 
-#endif /* _CAPD_SWAPREORGANIZATION_H_ */
+#endif // CAPD_DYNSYS_SWAPREORGANIZATION_H

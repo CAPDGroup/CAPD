@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_ENCLOSUREHOLDER_H_
-#define _CAPD_DYNSET_ENCLOSUREHOLDER_H_
+#ifndef CAPD_DYNSET_ENCLOSUREHOLDER_H
+#define CAPD_DYNSET_ENCLOSUREHOLDER_H
 
 #include "capd/diffAlgebra/Hessian.h"
 #include "capd/dynset/AbstractSet.h"
@@ -115,4 +115,4 @@ protected:
 /// @}
 }} //namespace capd::dynset
 
-#endif // _CAPD_DYNSET_ENCLOSUREHOLDER_H_
+#endif // CAPD_DYNSET_ENCLOSUREHOLDER_H

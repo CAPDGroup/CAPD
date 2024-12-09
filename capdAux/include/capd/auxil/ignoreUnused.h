@@ -6,7 +6,7 @@
 //
 
 #ifndef CAPD_AUXIL_IGNOREUNUSED_H
-#define	CAPD_AUXIL_IGNOREUNUSED_H
+#define CAPD_AUXIL_IGNOREUNUSED_H
 
 // @todo Why not just (void)arg; ?
 
@@ -32,4 +32,4 @@ namespace capd{
   }
 }
 
-#endif	/* CAPD_AUXIL_IGNOREUNUSED_H */
+#endif // CAPD_AUXIL_IGNOREUNUSED_H

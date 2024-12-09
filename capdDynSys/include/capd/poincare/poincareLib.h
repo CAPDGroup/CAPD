@@ -12,8 +12,8 @@
 
 /* Author: Daniel Wilczak 2008 */
 
-#ifndef _CAPD_POINCARE_POINCARELIB_H_ 
-#define _CAPD_POINCARE_POINCARELIB_H_ 
+#ifndef CAPD_POINCARE_POINCARELIB_H
+#define CAPD_POINCARE_POINCARELIB_H
 
 #include "capd/poincare/PoincareMap.h"
 #include "capd/poincare/TimeMap.h"
@@ -99,5 +99,5 @@ typedef capd::poincare::TimeMap<CnTaylorMD> ICnTimeMapMD;
 
 #endif
 
-#endif // _CAPD_POINCARE_POINCARELIB_H_ 
+#endif // CAPD_POINCARE_POINCARELIB_H
 

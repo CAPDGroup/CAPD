@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_INTERVALS_INTERVALTRAITS_H_
-#define _CAPD_INTERVALS_INTERVALTRAITS_H_
+#ifndef CAPD_INTERVALS_INTERVALTRAITS_H
+#define CAPD_INTERVALS_INTERVALTRAITS_H
 #include <iostream>
 #include "capd/basicalg/ieeePrimitive.h"
 
@@ -147,4 +147,4 @@ public:
 /// @} 
 }} // end of namespace capd::intervals
 
-#endif /* _CAPD_INTERVALS_INTERVALTRAITS_H_ */
+#endif // CAPD_INTERVALS_INTERVALTRAITS_H

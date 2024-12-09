@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_INTERVAL_LIB_H_
-#define _CAPD_INTERVAL_LIB_H_
+#ifndef CAPD_INTERVAL_LIB_H
+#define CAPD_INTERVAL_LIB_H
 
 #include "minmax_interval.h"
 
@@ -67,4 +67,4 @@ namespace capd{
 
 
 
-#endif // _CAPD_INTERVAL_LIB_H_
+#endif // CAPD_INTERVAL_LIB_H

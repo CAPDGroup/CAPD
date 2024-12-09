@@ -12,8 +12,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_PDES_DISSIPATIVEVECTORFIELD_H_
-#define _CAPD_PDES_DISSIPATIVEVECTORFIELD_H_
+#ifndef CAPD_PDES_DISSIPATIVEVECTORFIELD_H
+#define CAPD_PDES_DISSIPATIVEVECTORFIELD_H
 
 #include <vector>
 #include "capd/intervals/lib.h"
@@ -84,6 +84,6 @@ public:
 }} // namespace capd::pdes
 
 
-#endif // _CAPD_PDES_DISSIPATIVEVECTORFIELD_H_
+#endif // CAPD_PDES_DISSIPATIVEVECTORFIELD_H
 
 /// @}

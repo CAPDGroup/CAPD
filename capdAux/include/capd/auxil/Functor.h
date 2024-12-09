@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _FUNCTOR_H_
-#define _FUNCTOR_H_
+#ifndef CAPD_FUNCTOR_H
+#define CAPD_FUNCTOR_H
 
 namespace capd {
   namespace auxil {
@@ -56,6 +56,6 @@ class Functor{
 }
 }
 
-#endif //_FUNCTOR_H_
+#endif // CAPD_FUNCTOR_H
 /// @}
 

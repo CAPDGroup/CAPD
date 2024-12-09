@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _STRINGOSTREAM_H_
-#define _STRINGOSTREAM_H_
+#ifndef CAPD_STRINGOSTREAM_H
+#define CAPD_STRINGOSTREAM_H
 
 #include <sstream>
 
@@ -26,6 +26,6 @@ std::string& operator<<(std::string& s,const T& t){
   return s;
 }
 
-#endif //_STRINGOSTREAM_H_
+#endif // CAPD_STRINGOSTREAM_H
 
 /// @}

@@ -31,5 +31,5 @@ inline void check(const BHessian& mask, const DHessian& h){
 }
 
 
-#endif /* CAPD_DYNSYS_BASIC_SOLVER_MASK_TEST_COMPARE_H */
+#endif // CAPD_DYNSYS_BASIC_SOLVER_MASK_TEST_COMPARE_H
 

@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_CANONICALREORGANIZATION_H_
-#define _CAPD_DYNSET_CANONICALREORGANIZATION_H_
+#ifndef CAPD_DYNSET_CANONICALREORGANIZATION_H
+#define CAPD_DYNSET_CANONICALREORGANIZATION_H
 
 
 #include "capd/dynset/reorganization/FactorPolicy.h"
@@ -70,4 +70,4 @@ public:
 /// @}
 }} // capd::dynset
 
-#endif // _CAPD_DYNSET_CANONICALREORGANIZATION_H_
+#endif // CAPD_DYNSET_CANONICALREORGANIZATION_H

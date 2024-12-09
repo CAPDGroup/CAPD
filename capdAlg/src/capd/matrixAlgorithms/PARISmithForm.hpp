@@ -85,4 +85,4 @@ namespace capd
   }
 }
 
-#endif // CAPD_FILE_PARISMITHFORM_H
+#endif // CAPD_FILE_PARISMITHFORM_HPP

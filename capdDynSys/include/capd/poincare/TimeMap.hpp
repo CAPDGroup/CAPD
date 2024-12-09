@@ -9,8 +9,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_POINCARE_TIME_MAP_HPP_
-#define _CAPD_POINCARE_TIME_MAP_HPP_
+#ifndef CAPD_POINCARE_TIME_MAP_HPP
+#define CAPD_POINCARE_TIME_MAP_HPP
 
 #include "capd/poincare/TimeMap.h"
 #include "capd/diffAlgebra/C2TimeJet.h"
@@ -306,5 +306,5 @@ TimeMap<SolverT>::operator()(ScalarType Time, const JetType& v, JetType& result,
 }} // namespace capd::poincare
 
 
-#endif // #define _CAPD_POINCARE_TIME_MAP_HPP_
+#endif // CAPD_POINCARE_TIME_MAP_HPP
 

@@ -24,8 +24,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MPCAPD_H_
-#define _CAPD_MPCAPD_H_
+#ifndef CAPD_MPCAPD_H
+#define CAPD_MPCAPD_H
 
 #include "capd/multiPrec/mplib.h"
 #include "capd/intervals/mplib.h"
@@ -38,4 +38,4 @@
 
 #include "capd/matrixAlgorithms/lib.h"
 
-#endif // _CAPD_MPCAPD_H_
+#endif // CAPD_MPCAPD_H

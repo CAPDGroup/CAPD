@@ -13,8 +13,8 @@
 // This file constitutes a part of the CAPD library,
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
-#ifndef CENTEREDAFFINESETSPECYFIC_HPP_
-#define CENTEREDAFFINESETSPECYFIC_HPP_
+#ifndef CAPD_CENTEREDAFFINESETSPECYFIC_HPP
+#define CAPD_CENTEREDAFFINESETSPECYFIC_HPP
 
 BOOST_AUTO_TEST_CASE(test_constructor_x_r){
   SetType::VectorType x(2);
@@ -29,5 +29,5 @@ BOOST_AUTO_TEST_CASE(test_constructor_x_r){
   r[1]= SetType::ScalarType(-1,1);
   BOOST_CHECK_EQUAL(r,T.get_r());
 }
-#endif
+#endif // CAPD_CENTEREDAFFINESETSPECYFIC_HPP
 /// @}

@@ -36,8 +36,8 @@
 // Started in 2002. Last revision: January 25, 2010.
 
 
-#ifndef _CAPD_AUXIL_CONFIG_H_
-#define _CAPD_AUXIL_CONFIG_H_
+#ifndef CAPD_AUXIL_CONFIG_H
+#define CAPD_AUXIL_CONFIG_H
 
 
 #if (defined (ppUNIX) || defined (ppDOS))
@@ -61,5 +61,5 @@
 
 
 
-#endif // _CAPD_HOMOLOGY_CONFIG_H_ 
+#endif // CAPD_AUXIL_CONFIG_H
 

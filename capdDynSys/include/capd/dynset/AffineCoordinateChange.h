@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_AFFINECOORDINATECHANGE_H_
-#define _CAPD_DYNSET_AFFINECOORDINATECHANGE_H_
+#ifndef CAPD_DYNSET_AFFINECOORDINATECHANGE_H
+#define CAPD_DYNSET_AFFINECOORDINATECHANGE_H
 
 namespace capd{
 namespace dynset{
@@ -52,7 +52,7 @@ private:
 
 }} // namespace capd::dynset
 
-#endif //
+#endif // CAPD_DYNSET_AFFINECOORDINATECHANGE_H
 
 
 

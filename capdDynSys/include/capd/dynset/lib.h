@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_LIB_H_
-#define _CAPD_DYNSET_LIB_H_
+#ifndef CAPD_DYNSET_LIB_H
+#define CAPD_DYNSET_LIB_H
 
 #include "capd/vectalg/lib.h"
 #include "capd/dynset/reorganization/InvBByCFactorReorganization.h"
@@ -46,4 +46,4 @@
 
 
 
-#endif // _CAPD_DYNSET_LIB_H_
+#endif // CAPD_DYNSET_LIB_H

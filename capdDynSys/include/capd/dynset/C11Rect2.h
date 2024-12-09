@@ -12,8 +12,8 @@
 
 /* Author: Daniel Wilczak, 2006 */
 
-#ifndef _CAPD_DYNSET_C11RECT2_H_ 
-#define _CAPD_DYNSET_C11RECT2_H_ 
+#ifndef CAPD_DYNSET_C11RECT2_H
+#define CAPD_DYNSET_C11RECT2_H
 
 #include "capd/dynset/C1Set.h"
 #include "capd/vectalg/Norm.h"
@@ -126,5 +126,5 @@ inline double C11Rect2<MatrixType,QRPolicy>::getFactor() // returns size factor
 
 }} // the end of the namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C11RECT2_H_ 
+#endif // CAPD_DYNSET_C11RECT2_H
 

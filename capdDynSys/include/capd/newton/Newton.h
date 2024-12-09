@@ -11,8 +11,8 @@
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
 
-#ifndef _CAPD_NEWTON_NEWTON_H_
-#define _CAPD_NEWTON_NEWTON_H_
+#ifndef CAPD_NEWTON_NEWTON_H
+#define CAPD_NEWTON_NEWTON_H
 
 #include <string>
 #include <sstream>
@@ -113,4 +113,4 @@ typename MapType::VectorType NewtonOperator ( const typename MapType::VectorType
 
 #include "capd/newton/Newton.hpp"
 
-#endif // _CAPD_NEWTON_NEWTON_H_
+#endif // CAPD_NEWTON_NEWTON_H

@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _LOGTWO_H_
-#define _LOGTWO_H_
+#ifndef CAPD_LOGTWO_H
+#define CAPD_LOGTWO_H
 
 #include <iostream>
 
@@ -31,4 +31,4 @@ template<>
 struct logtwo<0>{
   static const int value=0;
 };
-#endif //_LOGTWO_H_
+#endif // CAPD_LOGTWO_H

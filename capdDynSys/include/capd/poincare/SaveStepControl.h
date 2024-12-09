@@ -10,8 +10,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_SAVE_STEP_CONTROL_MAP_H_
-#define _CAPD_SAVE_STEP_CONTROL_MAP_H_
+#ifndef CAPD_SAVE_STEP_CONTROL_MAP_H
+#define CAPD_SAVE_STEP_CONTROL_MAP_H
 
 namespace capd{
 namespace poincare{
@@ -52,5 +52,5 @@ protected:
 
 
 
-#endif  // _CAPD_SAVE_STEP_CONTROL_MAP_H_
+#endif // CAPD_SAVE_STEP_CONTROL_MAP_H
 

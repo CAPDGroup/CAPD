@@ -13,8 +13,8 @@
 
 // @todo This file seems to be a duplicate of another -> investigate
 
-#ifndef _CAPD_MAP_EVAL_THIRD_POW_H_
-#define _CAPD_MAP_EVAL_THIRD_POW_H_
+#ifndef CAPD_MAP_EVAL_THIRD_POW_H
+#define CAPD_MAP_EVAL_THIRD_POW_H
 
 #include "capd/autodiff/NodeType.h"
 #include "capd/autodiff/EvalMul.h"
@@ -192,4 +192,4 @@ CAPD_MAKE_DAG_NODE(CubeConst);
 /// @}
 }} // namespace capd::autodiff
 
-#endif //_CAPD_MAP_EVAL_THIRD_POW_H_
+#endif // CAPD_MAP_EVAL_THIRD_POW_H

@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_COVREL_QUADRATICFORM_H_
-#define _CAPD_COVREL_QUADRATICFORM_H_
+#ifndef CAPD_COVREL_QUADRATICFORM_H
+#define CAPD_COVREL_QUADRATICFORM_H
 
 namespace capd {
 namespace covrel {
@@ -58,4 +58,4 @@ protected:
 
 /// @}
 }} // namespace capd::covrel
-#endif
+#endif // CAPD_COVREL_QUADRATICFORM_H

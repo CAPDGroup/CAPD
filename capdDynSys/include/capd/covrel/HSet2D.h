@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_COVREL_HSET2D_H_
-#define _CAPD_COVREL_HSET2D_H_
+#ifndef CAPD_COVREL_HSET2D_H
+#define CAPD_COVREL_HSET2D_H
 
 #include <vector>
 #include <stdexcept>
@@ -217,6 +217,6 @@ bool checkCoveringRelation2D(
 /// @}
 }} // namespace capd::covrel
 
-#endif // _CAPD_COVREL_HSET2D_H_
+#endif // CAPD_COVREL_HSET2D_H
 
 

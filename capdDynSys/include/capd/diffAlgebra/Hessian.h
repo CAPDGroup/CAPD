@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_HESSIAN_H_
-#define _CAPD_DIFFALGEBRA_HESSIAN_H_
+#ifndef CAPD_DIFFALGEBRA_HESSIAN_H
+#define CAPD_DIFFALGEBRA_HESSIAN_H
 
 #include "capd/vectalg/Container.h"
 #include "capd/vectalg/Matrix.h"
@@ -200,6 +200,6 @@ std::ostream & operator << (std::ostream & str, const Hessian<T,M,D> & h){
 
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_C2COEFF_H_
+#endif // CAPD_DIFFALGEBRA_HESSIAN_H
 
 /// @}

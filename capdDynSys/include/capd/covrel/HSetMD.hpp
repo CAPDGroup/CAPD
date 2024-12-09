@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_COVREL_HSETMD_HPP_
-#define _CAPD_COVREL_HSETMD_HPP_
+#ifndef CAPD_COVREL_HSETMD_HPP
+#define CAPD_COVREL_HSETMD_HPP
 
 #include <stdexcept>
 #include "capd/basicalg/minmax.h"
@@ -371,7 +371,7 @@ std::string  HSetMD<MatrixType, IMatrixType>::showInfo(void) const
 }
 }} //namespace capd::covrel
 
-#endif // _CAPD_COVREL_HSETMD_HPP_
+#endif // CAPD_COVREL_HSETMD_HPP
 
 /// @}
 

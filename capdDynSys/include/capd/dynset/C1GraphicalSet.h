@@ -11,8 +11,8 @@
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
 
-#ifndef _CAPD_DYNSET_C1GraphicalSet_H_
-#define _CAPD_DYNSET_C1GraphicalSet_H_
+#ifndef CAPD_DYNSET_C1GRAPHICALSET_H
+#define CAPD_DYNSET_C1GRAPHICALSET_H
 
 #include "capd/dynset/C1Set.h"
 #include "capd/vectalg/Norm.h"
@@ -130,4 +130,4 @@ protected:
 /// @}
 }} // the end of the namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C1GraphicalSet_H_
+#endif // CAPD_DYNSET_C1GRAPHICALSET_H

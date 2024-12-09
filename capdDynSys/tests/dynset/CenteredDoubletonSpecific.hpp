@@ -14,8 +14,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_CENTEREDDOUBLETONSECiFIC_HPP_
-#define _CAPD_CENTEREDDOUBLETONSECiFIC_HPP_
+#ifndef CAPD_CENTEREDDOUBLETONSECIFIC_HPP
+#define CAPD_CENTEREDDOUBLETONSECIFIC_HPP
 BOOST_AUTO_TEST_CASE(test_constructor_x_r0){
   SetType::VectorType x(2);
   x[0] = SetType::ScalarType(-1,1); x[1] = SetType::ScalarType(-2,-2);
@@ -30,6 +30,6 @@ BOOST_AUTO_TEST_CASE(test_constructor_x_r0){
   BOOST_CHECK_EQUAL(r0,T.get_r0());
 }
 
-#endif // _CAPD_CENTEREDDOUBLETONSECiFIC_HPP_
+#endif // CAPD_CENTEREDDOUBLETONSECIFIC_HPP
 
 /// @}

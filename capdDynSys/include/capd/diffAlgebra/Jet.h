@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_JET_H_
-#define _CAPD_DIFFALGEBRA_JET_H_
+#ifndef CAPD_DIFFALGEBRA_JET_H
+#define CAPD_DIFFALGEBRA_JET_H
 
 #include "capd/basicalg/factrial.h"
 #include <vector>
@@ -271,6 +271,6 @@ Jet inverseSeriesCloseToIdentity(const Jet& c);
 template<class Jet>
 Jet inversePowerSeries(const Jet& c, const typename Jet::MatrixType& J);
 
-#endif // _CAPD_DIFFALGEBRA_JET_H_
+#endif // CAPD_DIFFALGEBRA_JET_H
 
 

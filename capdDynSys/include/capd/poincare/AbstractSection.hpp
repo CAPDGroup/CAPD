@@ -11,8 +11,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_POINCARE_ABSTRACT_SECTION_HPP_
-#define _CAPD_POINCARE_ABSTRACT_SECTION_HPP_
+#ifndef CAPD_POINCARE_ABSTRACT_SECTION_HPP
+#define CAPD_POINCARE_ABSTRACT_SECTION_HPP
 
 #include "capd/poincare/AbstractSection.h"
 #include "capd/vectalg/algebraicOperations.hpp"
@@ -132,6 +132,6 @@ void AbstractSection<MatrixT>::computeDP(
 /// @}
 }} // namespace capd::poincare
 
-#endif  /* _CAPD_POINCARE_ABSTRACT_SECTION_HPP_ */
+#endif // CAPD_POINCARE_ABSTRACT_SECTION_HPP
 
 

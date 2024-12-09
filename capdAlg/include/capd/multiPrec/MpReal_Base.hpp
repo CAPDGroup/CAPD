@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MULTIPREC_MPREAL_BASE_HPP_
-#define _CAPD_MULTIPREC_MPREAL_BASE_HPP_
+#ifndef CAPD_MULTIPREC_MPREAL_BASE_HPP
+#define CAPD_MULTIPREC_MPREAL_BASE_HPP
 
 namespace capd {
 namespace multiPrec {
@@ -188,4 +188,4 @@ inline MpReal MpReal::negativeInfinity(PrecisionType prec) {
 }
 } // end of namespace capd::multiPrec
 
-#endif // _CAPD_MULTIPREC_MPREAL_BASE_HPP_
+#endif // CAPD_MULTIPREC_MPREAL_BASE_HPP

@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_VECTALG_MATRIXITERATOR_H_ 
-#define _CAPD_VECTALG_MATRIXITERATOR_H_ 
+#ifndef CAPD_VECTALG_MATRIXITERATOR_H
+#define CAPD_VECTALG_MATRIXITERATOR_H
 
 #include <utility>
 #include <iostream>
@@ -123,6 +123,6 @@ public:
   }
 };
 
-#endif // _CAPD_VECTALG_MATRIXITERATOR_H_ 
+#endif // CAPD_VECTALG_MATRIXITERATOR_H
 
 /// @}

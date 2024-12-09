@@ -47,4 +47,4 @@
 // #endif
 // #endif
 
-#endif  // CAPD_FILE_CAPDAUX_AUXIL_DLL_H
+#endif // CAPD_FILE_CAPDAUX_AUXIL_DLL_H

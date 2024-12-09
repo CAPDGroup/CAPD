@@ -5,8 +5,8 @@
 //      Author: iikapela
 //
 
-#ifndef _UNITTESTS_GTESTHEADER_H_
-#define _UNITTESTS_GTESTHEADER_H_
+#ifndef CAPD_UNITTESTS_GTESTHEADER_H
+#define CAPD_UNITTESTS_GTESTHEADER_H
 #include "gtest/gtest.h"
 
-#endif // _UNITTESTS_GTESTHEADER_H_
+#endif // CAPD_UNITTESTS_GTESTHEADER_H

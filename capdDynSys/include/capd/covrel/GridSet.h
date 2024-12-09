@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_COVREL_GRIDSET_H_
-#define _CAPD_COVREL_GRIDSET_H_
+#ifndef CAPD_COVREL_GRIDSET_H
+#define CAPD_COVREL_GRIDSET_H
 
 #include <vector>
 
@@ -129,6 +129,6 @@ bool moveGridAndCheckCondition(DynSysType & dynsys, const GridSet & grid,
 
 }} // namespace capd::covrel
 
-#endif // _CAPD_COVREL_GRIDSET_H_
+#endif // CAPD_COVREL_GRIDSET_H
 
 /// @}

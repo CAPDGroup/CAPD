@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_QRPOLICY_H_
-#define _CAPD_DYNSET_QRPOLICY_H_
+#ifndef CAPD_DYNSET_QRPOLICY_H
+#define CAPD_DYNSET_QRPOLICY_H
 
 #include "capd/vectalg/iobject.hpp"
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.hpp"
@@ -233,7 +233,7 @@ public:
 
 
 
-#endif // _CAPD_DYNSET_QRPOLICY_H_
+#endif // CAPD_DYNSET_QRPOLICY_H
 
 
 

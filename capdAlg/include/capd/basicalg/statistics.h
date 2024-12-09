@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _STATISTICS_H_
-#define _STATISTICS_H_
+#ifndef CAPD_STATISTICS_H
+#define CAPD_STATISTICS_H
 
 #include <iterator>
 #include <functional>
@@ -58,5 +58,5 @@ std::pair<Scalar,Scalar> powerRegression(const std::vector<Scalar>& x,const std:
   return result;
 }
 /// @}
-#endif //_STATISTICS_H_
+#endif // CAPD_STATISTICS_H
 

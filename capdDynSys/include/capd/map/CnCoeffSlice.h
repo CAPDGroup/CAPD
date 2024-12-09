@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MAP_CNCOEFFSLICE_H_
-#define _CAPD_MAP_CNCOEFFSLICE_H_
+#ifndef CAPD_MAP_CNCOEFFSLICE_H
+#define CAPD_MAP_CNCOEFFSLICE_H
 #include "capd/diffAlgebra/CnCoeff.hpp"
 
 namespace capd {
@@ -229,4 +229,4 @@ protected:
 
 }} // end of namespace capd::map
 
-#endif // _CAPD_MAP_CNCOEFFSLICE_H_
+#endif // CAPD_MAP_CNCOEFFSLICE_H

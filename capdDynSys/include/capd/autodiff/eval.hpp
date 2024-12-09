@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_EVAL_HPP_
-#define _CAPD_AUTODIFF_EVAL_HPP_
+#ifndef CAPD_AUTODIFF_EVAL_HPP
+#define CAPD_AUTODIFF_EVAL_HPP
 
 #define CAPD_MAKE_NODE(NodeName,ClassName) case NodeName : { p = new ClassName##Node<T>;  break; }
 
@@ -199,4 +199,4 @@ void Int4ToAbstractNode(const std::vector<MyNode>& node, std::vector<AbstractNod
 ///@}
 }} // namespace capd::autodiff
 
-#endif
+#endif // CAPD_AUTODIFF_EVAL_HPP

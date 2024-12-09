@@ -21,8 +21,8 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 // MA 02111-1307, USA.
 
-#ifndef _CAPD_POINCARE_TIME_MAP_INLINE_H_
-#define _CAPD_POINCARE_TIME_MAP_INLINE_H_
+#ifndef CAPD_POINCARE_TIME_MAP_INLINE_H
+#define CAPD_POINCARE_TIME_MAP_INLINE_H
 
 #include "capd/poincare/TimeMap.h"
 
@@ -125,4 +125,4 @@ inline const typename SolverT::ScalarType& TimeMap<SolverT>::getCurrentTime() co
 /// @}
 }} // namespace capd::poincare
 
-#endif
+#endif // CAPD_POINCARE_TIME_MAP_INLINE_H

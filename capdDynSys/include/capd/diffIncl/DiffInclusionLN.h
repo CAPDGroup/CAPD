@@ -15,8 +15,8 @@
 
 /* Author: Tomasz Kapela, 2007 */
 
-#ifndef _CAPD_DIFFINCL_DIFFINCLUSIONLN_H_
-#define _CAPD_DIFFINCL_DIFFINCLUSIONLN_H_
+#ifndef CAPD_DIFFINCL_DIFFINCLUSIONLN_H
+#define CAPD_DIFFINCL_DIFFINCLUSIONLN_H
 
 #include "capd/diffIncl/DiffInclusion.h"
 
@@ -98,6 +98,6 @@ protected:
 
 }} // namespace capd::diffIncl
 
-#endif // _CAPD_DIFFINCL_DIFFINCLUSIONLN_H_
+#endif // CAPD_DIFFINCL_DIFFINCLUSIONLN_H
 
 /// @}

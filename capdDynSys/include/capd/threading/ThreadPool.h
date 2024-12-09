@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef __CAPD_THREADING_THREADPOOL_H__
-#define __CAPD_THREADING_THREADPOOL_H__
+#ifndef CAPD_THREADING_THREADPOOL_H
+#define CAPD_THREADING_THREADPOOL_H
 
 #include <vector>
 #include <list>
@@ -194,4 +194,4 @@ private:
 /// @}
 }} // namespace capd::threading
 
-#endif
+#endif // CAPD_THREADING_THREADPOOL_H

@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_HPP_
-#define _CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_HPP_
+#ifndef CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_HPP
+#define CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_HPP
 
 #include <sstream>
 #include <string>
@@ -183,6 +183,6 @@ typename MapType::ScalarType FirstOrderEnclosure::c2Enclosure(
 /// @}
 }} //namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_HPP_
+#endif // CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_HPP
 
 

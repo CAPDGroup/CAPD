@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_DAGINDEXER_HPP_
-#define _CAPD_AUTODIFF_DAGINDEXER_HPP_
+#ifndef CAPD_AUTODIFF_DAGINDEXER_HPP
+#define CAPD_AUTODIFF_DAGINDEXER_HPP
 
 #include <algorithm>
 #include "capd/autodiff/DagIndexer.h"
@@ -186,4 +186,4 @@ void DagIndexer<Scalar>::resetMask(){
 
 }}
 
-#endif
+#endif // CAPD_AUTODIFF_DAGINDEXER_HPP

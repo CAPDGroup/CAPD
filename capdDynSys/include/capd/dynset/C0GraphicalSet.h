@@ -11,8 +11,8 @@
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
 
-#ifndef _CAPD_DYNSET_C0GRAPHICALSET_H_
-#define _CAPD_DYNSET_C0GRAPHICALSET_H_
+#ifndef CAPD_DYNSET_C0GRAPHICALSET_H
+#define CAPD_DYNSET_C0GRAPHICALSET_H
 
 #include "capd/dynset/C0Set.h"
 #include "capd/dynsys/DynSys.h"
@@ -110,5 +110,5 @@ protected:
 
 }} // the end of the namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C0GRAPHICALSET_H_
+#endif // CAPD_DYNSET_C0GRAPHICALSET_H
 

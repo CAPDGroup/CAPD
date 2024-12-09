@@ -12,8 +12,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_PDES_POLYNOMIALBOUND_H_ 
-#define _CAPD_PDES_POLYNOMIALBOUND_H_ 
+#ifndef CAPD_PDES_POLYNOMIALBOUND_H
+#define CAPD_PDES_POLYNOMIALBOUND_H
 
 #include <map>
 #include <iostream>
@@ -293,7 +293,7 @@ inline PolynomialBound<Scalar, Exponent, M>::PolynomialBound(int A_dimension, bo
 } // namespace capd::pdes
 
 
-#endif // _CAPD_PDES_POLYNOMIALBOUND_H_ 
+#endif // CAPD_PDES_POLYNOMIALBOUND_H
 
 
 /// @}

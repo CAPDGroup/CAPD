@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details. 
 
-#ifndef _CAPD_DYNSET_C2DOUBLETONSET_H_
-#define _CAPD_DYNSET_C2DOUBLETONSET_H_
+#ifndef CAPD_DYNSET_C2DOUBLETONSET_H
+#define CAPD_DYNSET_C2DOUBLETONSET_H
 
 #include "capd/dynset/C2Set.h"
 #include "capd/dynsys/C2DynSys.h"
@@ -98,4 +98,4 @@ inline void C2DoubletonSet<MatrixType,Policies>::move(DynSysType& c2dynsys)
 
 }} // the end of the namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C2DOUBLETONSET_H_
+#endif // CAPD_DYNSET_C2DOUBLETONSET_H

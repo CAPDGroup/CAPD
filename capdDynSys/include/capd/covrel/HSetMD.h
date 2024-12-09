@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_COVREL_HSETMD_H_
-#define _CAPD_COVREL_HSETMD_H_
+#ifndef CAPD_COVREL_HSETMD_H
+#define CAPD_COVREL_HSETMD_H
 
 #include <vector>
 #include <stdexcept>
@@ -333,4 +333,4 @@ GridSet<IMatrix>& HSetMD<MatrixType,IMatrixType>::gridFace(
 /// @}
 }} // namespace capd::covrel
 
-#endif // _CAPD_COVREL_HSETMD_H_
+#endif // CAPD_COVREL_HSETMD_H

@@ -12,8 +12,8 @@
 
 /* Author: Daniel Wilczak 2006-2020 */
 
-#ifndef _CAPD_DYNSET_CNSET_H_
-#define _CAPD_DYNSET_CNSET_H_
+#ifndef CAPD_DYNSET_CNSET_H
+#define CAPD_DYNSET_CNSET_H
 
 #include "capd/diffAlgebra/TimeRange.h"
 #include "capd/diffAlgebra/Jet.h"
@@ -127,4 +127,4 @@ struct SetTraits< CnSet<MatrixT,DEGREE> >{
 /// @}
 }} // the end of the namespace capd::dynset
 
-#endif // _CAPD_DYNSET_CNSET_H_
+#endif // CAPD_DYNSET_CNSET_H

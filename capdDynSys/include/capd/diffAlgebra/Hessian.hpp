@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_HESSIAN_HPP_
-#define _CAPD_DIFFALGEBRA_HESSIAN_HPP_
+#ifndef CAPD_DIFFALGEBRA_HESSIAN_HPP
+#define CAPD_DIFFALGEBRA_HESSIAN_HPP
 
 #include "capd/vectalg/Matrix.hpp"
 #include "capd/diffAlgebra/Hessian.h"
@@ -121,6 +121,6 @@ Hessian<ScalarType,D,D> operator*(ScalarType c, const Hessian<ScalarType,D,D>& H
 
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_C2COEFF_HPP_
+#endif // CAPD_DIFFALGEBRA_HESSIAN_HPP
 
 /// @}

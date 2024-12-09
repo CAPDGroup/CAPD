@@ -14,13 +14,13 @@
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
 
-#ifndef _CAPD_MATRIXALGORITHMS_MATRIXALGORITHMSLIB_H_ 
-#define _CAPD_MATRIXALGORITHMS_MATRIXALGORITHMSLIB_H_ 
+#ifndef CAPD_MATRIXALGORITHMS_MATRIXALGORITHMSLIB_H
+#define CAPD_MATRIXALGORITHMS_MATRIXALGORITHMSLIB_H
 
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.h"
 #include "capd/matrixAlgorithms/intMatrixAlgorithms.hpp"
 
 
-#endif // _CAPD_MATRIXALGORITHMS_MATRIXALGORITHMSLIB_H_ 
+#endif // CAPD_MATRIXALGORITHMS_MATRIXALGORITHMSLIB_H
 
 /// @}

@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_HPP_
-#define _CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_HPP_
+#ifndef CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_HPP
+#define CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_HPP
 
 #include <vector>
 #include <stdexcept>
@@ -814,6 +814,6 @@ MatrixType matrixExp(const MatrixType& M, typename MatrixType::ScalarType tolera
 
 }} // namespace capd::matrixAlgorithms
 
-#endif // _CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_HPP_
+#endif // CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_HPP
 
 /// @}

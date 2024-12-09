@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_ROUNDING_DOUBLEROUNDING_H_ 
-#define _CAPD_ROUNDING_DOUBLEROUNDING_H_ 
+#ifndef CAPD_ROUNDING_DOUBLEROUNDING_H
+#define CAPD_ROUNDING_DOUBLEROUNDING_H
 
 // This allows automatic detection of operating system and compiler
 #include "capd/settings/archSetting.h"
@@ -81,5 +81,5 @@ inline void DoubleRounding::roundCut(){
 
 extern capd::rounding::DoubleRounding initRounding;
 
-#endif // _CAPD_ROUNDING_DOUBLEROUNDING_H_ 
+#endif // CAPD_ROUNDING_DOUBLEROUNDING_H
 

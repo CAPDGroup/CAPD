@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MAP_DEFAULTORDER_H_
-#define _CAPD_MAP_DEFAULTORDER_H_
+#ifndef CAPD_MAP_DEFAULTORDER_H
+#define CAPD_MAP_DEFAULTORDER_H
 
 #ifndef ORDER
 //  default order for Cn classes
@@ -24,4 +24,4 @@
 #define CN_DEFAULT_ORDER 3
 #endif
 
-#endif // _CAPD_MAP_DEFAULTORDER_H_
+#endif // CAPD_MAP_DEFAULTORDER_H

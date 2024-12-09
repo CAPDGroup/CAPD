@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_EVAL_ACOS_H_
-#define _CAPD_AUTODIFF_EVAL_ACOS_H_
+#ifndef CAPD_AUTODIFF_EVAL_ACOS_H
+#define CAPD_AUTODIFF_EVAL_ACOS_H
 
 #include "capd/autodiff/NodeType.h"
 
@@ -203,4 +203,4 @@ CAPD_MAKE_DAG_NODE(AcosFunTime);
 /// @}
 }} // namespace capd::autodiff
 
-#endif
+#endif // CAPD_AUTODIFF_EVAL_ACOS_H

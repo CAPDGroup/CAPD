@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_NORMALFORMS_PLANARMAPS_HPP_ 
-#define _CAPD_NORMALFORMS_PLANARMAPS_HPP_ 
+#ifndef CAPD_NORMALFORMS_PLANARMAPS_HPP
+#define CAPD_NORMALFORMS_PLANARMAPS_HPP
 
 #include <cmath>
 #include "capd/intervals/Interval.h"
@@ -630,6 +630,6 @@ computePlanarEllipticNormalForm(capd::diffAlgebra::Jet< capd::vectalg::Matrix<Sc
 
 }} // namespace capd::normalForms
 
-#endif // _CAPD_NORMALFORMS_PLANARMAPS_HPP_ 
+#endif // CAPD_NORMALFORMS_PLANARMAPS_HPP
 
 /// @}

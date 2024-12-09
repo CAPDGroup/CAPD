@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_GEOMSET_MATRIXAFFINESET_H_
-#define _CAPD_GEOMSET_MATRIXAFFINESET_H_
+#ifndef CAPD_GEOMSET_MATRIXAFFINESET_H
+#define CAPD_GEOMSET_MATRIXAFFINESET_H
 
 
 namespace capd {
@@ -121,5 +121,5 @@ inline MatrixAffineSet<MatrixT>::operator typename MatrixAffineSet<MatrixT>::Mat
 /// @}
 }} //end of namespace capd::geomset
 
-#endif // _CAPD_GEOMSET_MATRIXAFFINESET_H_
+#endif // CAPD_GEOMSET_MATRIXAFFINESET_H
 

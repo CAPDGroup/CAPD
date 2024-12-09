@@ -13,8 +13,8 @@
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
 
-#ifndef _CAPD_INTERVAL_INTERVALDEPRECATED_H_ 
-#define _CAPD_INTERVAL_INTERVALDEPRECATED_H_ 
+#ifndef CAPD_INTERVAL_INTERVALDEPRECATED_H
+#define CAPD_INTERVAL_INTERVALDEPRECATED_H
 
 #ifdef __INTERVAL_DEPRECATED__
 
@@ -127,5 +127,5 @@ inline Interval< T_Bound, T_Rnd> solve_affine_inclusion(
 
 #endif // __INTERVAL_DEPRECATED__
 
-#endif // _CAPD_INTERVAL_INTERVALDEPRECATED_H_ 
+#endif // CAPD_INTERVAL_INTERVALDEPRECATED_H
 

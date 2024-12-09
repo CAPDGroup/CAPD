@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details. 
 
-#ifndef _CAPD_COVREL_HSETND_HPP_ 
-#define _CAPD_COVREL_HSETND_HPP_ 
+#ifndef CAPD_COVREL_HSETND_HPP
+#define CAPD_COVREL_HSETND_HPP
 
 #include <stdexcept>
 #include "capd/basicalg/minmax.h"
@@ -336,7 +336,7 @@ bool HSetND<VectorType,IVectorType,MatrixType,IMatrixType>::checkMapaway(const I
 
 }} //namespace capd::covrel
 
-#endif // _CAPD_COVREL_HSETND_HPP_ 
+#endif // CAPD_COVREL_HSETND_HPP
 
 /// @}
 

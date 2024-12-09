@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_AUXIL_OFSTREAMCOUT_H_
-#define _CAPD_AUXIL_OFSTREAMCOUT_H_
+#ifndef CAPD_AUXIL_OFSTREAMCOUT_H
+#define CAPD_AUXIL_OFSTREAMCOUT_H
 #include <iostream>
 #include <fstream>
 class ofstreamcout : public std::ofstream{
@@ -43,5 +43,5 @@ class ofstreamcout : public std::ofstream{
     streaming=false;
   }
 };
-#endif // _CAPD_AUXIL_OFSTREAMCOUT_H_
+#endif // CAPD_AUXIL_OFSTREAMCOUT_H
 /// @}

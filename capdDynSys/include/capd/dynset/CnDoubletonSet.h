@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_CNDOUBLETONSET_H_
-#define _CAPD_DYNSET_CNDOUBLETONSET_H_
+#ifndef CAPD_DYNSET_CNDOUBLETONSET_H
+#define CAPD_DYNSET_CNDOUBLETONSET_H
 
 #include <stdexcept>
 #include <vector>
@@ -199,4 +199,4 @@ void CnDoubletonSet<MatrixT,Policies,DEGREE>::move(DynSysT& cndynsys, CnDoubleto
 /// @}
 }} // the end of the namespace capd::dynset
 
-#endif // _CAPD_DYNSET_CNDOUBLETONSET_H_
+#endif // CAPD_DYNSET_CNDOUBLETONSET_H

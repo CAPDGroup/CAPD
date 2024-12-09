@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_VECTOR_HPP_
-#define _CAPD_VECTALG_VECTOR_HPP_
+#ifndef CAPD_VECTALG_VECTOR_HPP
+#define CAPD_VECTALG_VECTOR_HPP
 
 #include <cmath>
 #include <stack>
@@ -226,4 +226,4 @@ std::string cppReprezentation(const Vector<Scalar,dim> & A, const std::string& v
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_VECTOR_HPP_
+#endif // CAPD_VECTALG_VECTOR_HPP

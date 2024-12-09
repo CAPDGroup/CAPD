@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _Z2_H_
-#define _Z2_H_
+#ifndef CAPD_Z2_H
+#define CAPD_Z2_H
 
 #include "capd/basicalg/TypeTraits.h"
 
@@ -182,5 +182,5 @@ inline long convertToLong(const Z2& x)
 
 } // end of namespace capd
 
-#endif //
+#endif // CAPD_Z2_H
 /// @}

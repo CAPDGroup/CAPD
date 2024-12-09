@@ -5,8 +5,8 @@
 //      Author: kapela
 //
 
-#ifndef AFFINESETSPECYFIC_HPP_
-#define AFFINESETSPECYFIC_HPP_
+#ifndef CAPD_AFFINESETSPECYFIC_HPP
+#define CAPD_AFFINESETSPECYFIC_HPP
 
 
 BOOST_AUTO_TEST_CASE(test_constructors1){
@@ -20,4 +20,4 @@ BOOST_AUTO_TEST_CASE(test_constructors1){
   BOOST_CHECK_EQUAL(v,T.get_r());
 }
 
-#endif // AFFINESETSPECYFIC_HPP_
+#endif // CAPD_AFFINESETSPECYFIC_HPP

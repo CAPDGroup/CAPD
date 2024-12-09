@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_CAPD_MATH_H_
-#define _CAPD_CAPD_MATH_H_
+#ifndef CAPD_MATH_H
+#define CAPD_MATH_H
 
 #include <cmath>
 #include "capd/basicalg/doubleFun.h"
@@ -58,4 +58,4 @@ class Math<long double> : public PrimitiveFloatMath<long double>{};
 
 } // end of namespace capd
 
-#endif // _CAPD_CAPD_MATH_H_
+#endif // CAPD_MATH_H

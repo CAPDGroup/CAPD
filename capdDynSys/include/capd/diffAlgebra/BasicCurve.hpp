@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_BASICCURVE_HPP_
-#define _CAPD_DIFFALGEBRA_BASICCURVE_HPP_
+#ifndef CAPD_DIFFALGEBRA_BASICCURVE_HPP
+#define CAPD_DIFFALGEBRA_BASICCURVE_HPP
 
 #include <stdexcept>
 #include "capd/diffAlgebra/BasicCurve.h"
@@ -115,4 +115,4 @@ void BasicCurve<MatrixT>::copyData(const BasicCurve& c){
 ///@}
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_BASICCURVE_HPP_
+#endif // CAPD_DIFFALGEBRA_BASICCURVE_HPP

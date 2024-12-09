@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_COEFFTRAITS_H_
-#define _CAPD_DIFFALGEBRA_COEFFTRAITS_H_
+#ifndef CAPD_DIFFALGEBRA_COEFFTRAITS_H
+#define CAPD_DIFFALGEBRA_COEFFTRAITS_H
 
 
 namespace capd{
@@ -34,7 +34,7 @@ struct CoeffTraits{
 /// @}
 }}
 
-#endif
+#endif // CAPD_DIFFALGEBRA_COEFFTRAITS_H
 
 
 

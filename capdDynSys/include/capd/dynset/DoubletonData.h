@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_DOUBLETONDATA_H_
-#define _CAPD_DYNSET_DOUBLETONDATA_H_
+#ifndef CAPD_DYNSET_DOUBLETONDATA_H
+#define CAPD_DYNSET_DOUBLETONDATA_H
 
 #include "capd/basicalg/factrial.h"
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.h"
@@ -81,5 +81,5 @@ struct C1DoubletonData : public DoubletonData<MatrixT>{
 /// @}
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_DOUBLETONSET_H_
+#endif // CAPD_DYNSET_DOUBLETONDATA_H
 

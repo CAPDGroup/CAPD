@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_INTERVAL_LONGDOUBLEINTERVAL_H_ 
-#define _CAPD_INTERVAL_LONGDOUBLEINTERVAL_H_ 
+#ifndef CAPD_INTERVAL_LONGDOUBLEINTERVAL_H
+#define CAPD_INTERVAL_LONGDOUBLEINTERVAL_H
 
 #include <cmath>
 
@@ -35,4 +35,4 @@ namespace capd{
 
 #endif // check of architecture
 
-#endif // _CAPD_INTERVAL_LONGDOUBLEINTERVAL_H_ 
+#endif // CAPD_INTERVAL_LONGDOUBLEINTERVAL_H

@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_FIELDS_COMPLEX_H_
-#define _CAPD_FIELDS_COMPLEX_H_
+#ifndef CAPD_FIELDS_COMPLEX_H
+#define CAPD_FIELDS_COMPLEX_H
 #include <stdexcept>
 #include <complex>
 #include <cmath>
@@ -340,4 +340,4 @@ namespace vectalg {
 
 
 
-#endif // _CAPD_FIELDS_COMPLEX_H_
+#endif // CAPD_FIELDS_COMPLEX_H

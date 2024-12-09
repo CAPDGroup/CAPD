@@ -5,8 +5,8 @@
 //      Author: iikapela
 //
 
-#ifndef _UNITTESTS_INTERVALS_COMMONTESTS_HPP_
-#define _UNITTESTS_INTERVALS_COMMONTESTS_HPP_
+#ifndef CAPD_UNITTESTS_INTERVALS_COMMONTESTS_HPP
+#define CAPD_UNITTESTS_INTERVALS_COMMONTESTS_HPP
 
 #include "../gtestHeader.h"
 
@@ -1380,4 +1380,4 @@ TEST_F(FIXTURE_NAME, sin) {
 	EXPECT_GE(expectedError, compute_sin_error(6.0));
 	EXPECT_GE(expectedError, compute_sin_error(1.0));
 }
-#endif
+#endif // CAPD_UNITTESTS_INTERVALS_COMMONTESTS_HPP

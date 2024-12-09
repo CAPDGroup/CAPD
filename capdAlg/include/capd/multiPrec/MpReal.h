@@ -18,8 +18,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MULTIPREC_MPREAL_H_
-#define _CAPD_MULTIPREC_MPREAL_H_
+#ifndef CAPD_MULTIPREC_MPREAL_H
+#define CAPD_MULTIPREC_MPREAL_H
 
 // Protects against compilations in systems without mpfr and gmp package
 #ifdef __HAVE_MPFR__
@@ -387,6 +387,6 @@ public:
 
 #endif // _CAPD_MULTIPREC_MPREAL_H_
 
-#endif   // __HAVE_MPFR__
+#endif // CAPD_MULTIPREC_MPREAL_H
 
 

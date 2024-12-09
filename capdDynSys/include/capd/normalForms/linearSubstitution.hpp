@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_NORMALFORMS_LINEARSUBSTITUTION_HPP_
-#define _CAPD_NORMALFORMS_LINEARSUBSTITUTION_HPP_
+#ifndef CAPD_NORMALFORMS_LINEARSUBSTITUTION_HPP
+#define CAPD_NORMALFORMS_LINEARSUBSTITUTION_HPP
 
 #include "capd/diffAlgebra/Jet.h"
 #include "capd/normalForms/normalForms.h"
@@ -93,6 +93,6 @@ capd::diffAlgebra::Jet<MatrixType,DEGREE> linearSubstitutionPowerSeries(
 
 }} // namespace capd::normalForms
 
-#endif // _CAPD_NORMALFORMS_LINEARSUBSTITUTION_HPP_
+#endif // CAPD_NORMALFORMS_LINEARSUBSTITUTION_HPP
 
 /// @}

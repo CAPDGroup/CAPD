@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_IOBJECT_HPP_
-#define _CAPD_VECTALG_IOBJECT_HPP_
+#ifndef CAPD_VECTALG_IOBJECT_HPP
+#define CAPD_VECTALG_IOBJECT_HPP
 
 #include <stdexcept>
 #include <algorithm>
@@ -346,6 +346,6 @@ VectorType conjVector(const VectorType & v){
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_IOBJECT_HPP_
+#endif // CAPD_VECTALG_IOBJECT_HPP
 
 /// @}

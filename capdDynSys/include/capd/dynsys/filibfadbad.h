@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_FILIBFADBAD_H_
-#define _CAPD_DYNSYS_FILIBFADBAD_H_
+#ifndef CAPD_DYNSYS_FILIBFADBAD_H
+#define CAPD_DYNSYS_FILIBFADBAD_H
 #include "capd/filib/Interval.h"
 #include "capd/fadbad/fadbad.h"
 
@@ -61,4 +61,4 @@ namespace fadbad{
   };
 } // end of namespace fadbad
 
-#endif // _CAPD_FILIB_FILIBFADBAD_H_
+#endif // CAPD_DYNSYS_FILIBFADBAD_H

@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_INTERVAL_INTERVAL_H_ 
-#define _CAPD_INTERVAL_INTERVAL_H_ 
+#ifndef CAPD_INTERVAL_INTERVAL_HPP
+#define CAPD_INTERVAL_INTERVAL_HPP
 
 // functions defined for templates to work also with double instead of intervals
 #include "capd/basicalg/doubleFun.h"
@@ -40,4 +40,4 @@
 
 #endif //__INTERVAL_DEPRECATED__
 
-#endif // _CAPD_INTERVAL_INTERVAL_H_ 
+#endif // CAPD_INTERVAL_INTERVAL_HPP

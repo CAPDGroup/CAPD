@@ -15,8 +15,8 @@
 
 // @todo Remove it or add test coverage
 
-#ifndef _CAPD_AUXIL_STOPWATCH_H_ 
-#define _CAPD_AUXIL_STOPWATCH_H_ 
+#ifndef CAPD_AUXIL_STOPWATCH_H
+#define CAPD_AUXIL_STOPWATCH_H
 
 #include "capd/auxil/clock.h"
 
@@ -47,6 +47,6 @@ class Stopwatch{
 };
 
 
-#endif // _CAPD_AUXIL_STOPWATCH_H_ 
+#endif // CAPD_AUXIL_STOPWATCH_H
 /// @}
 

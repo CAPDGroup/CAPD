@@ -12,8 +12,8 @@
 
 // Author: Daniel Wilczak 2001-2017
 
-#ifndef _CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H_
-#define _CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H_
+#ifndef CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H
+#define CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H
 
 #include "capd/diffAlgebra/C1TimeJet.h"
 #include "capd/diffAlgebra/C2TimeJet.h"
@@ -144,6 +144,6 @@ inline static void computeEnclosureAndRemainder(DS& ds, const typename DS::Scala
 /// @}
 }} //namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H_
+#endif // CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H
 
 

@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_CAPD_POWER_H_ 
-#define _CAPD_CAPD_POWER_H_ 
+#ifndef CAPD_POWER_H
+#define CAPD_POWER_H
 
 #include <cmath>
 #include <math.h> // required by the Borland compiler
@@ -56,4 +56,4 @@ inline long double sqr(long double x)
 
 /// @}
 
-#endif // _CAPD_CAPD_POWER_H_ 
+#endif // CAPD_POWER_H

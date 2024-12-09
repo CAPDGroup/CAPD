@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_NEWTON_NEWTON_HPP_
-#define _CAPD_NEWTON_NEWTON_HPP_
+#ifndef CAPD_NEWTON_NEWTON_HPP
+#define CAPD_NEWTON_NEWTON_HPP
 
 #include <stdexcept>
 
@@ -150,4 +150,4 @@ typename MapType::VectorType NewtonOperator (const typename MapType::VectorType&
 
 }} // end namespace capd::newton
 
-#endif // _CAPD_NEWTON_NEWTON_HPP_
+#endif // CAPD_NEWTON_NEWTON_HPP

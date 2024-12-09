@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MATRIXAFFINESET_HPP_
-#define _CAPD_MATRIXAFFINESET_HPP_
+#ifndef CAPD_MATRIXAFFINESET_HPP
+#define CAPD_MATRIXAFFINESET_HPP
 
 
 //#include "capd/vectalg/iobject.hpp"
@@ -89,4 +89,4 @@ typename MatrixAffineSet<MatrixType>::MatrixType MatrixAffineSet<MatrixType>::af
 /// @}
 }} // namespace capd::dynset
 
-#endif // _CAPD_MATRIXAFFINESET_HPP_
+#endif // CAPD_MATRIXAFFINESET_HPP

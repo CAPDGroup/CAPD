@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MULTIPREC_MPLIB_H_
-#define _CAPD_MULTIPREC_MPLIB_H_
+#ifndef CAPD_MULTIPREC_MPLIB_H
+#define CAPD_MULTIPREC_MPLIB_H
 
 #ifdef __HAVE_MPFR__
 #include "capd/multiPrec/MpReal.h"
@@ -29,4 +29,4 @@ namespace capd{
 
 #endif //__HAVE_MPFR__
 
-#endif // _CAPD_MULTIPREC_MPLIB_H_
+#endif // CAPD_MULTIPREC_MPLIB_H

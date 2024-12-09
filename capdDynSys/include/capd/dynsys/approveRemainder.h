@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_APPROVEREMAINDER_H_
-#define _CAPD_DYNSYS_APPROVEREMAINDER_H_
+#ifndef CAPD_DYNSYS_APPROVEREMAINDER_H
+#define CAPD_DYNSYS_APPROVEREMAINDER_H
 
 #include "capd/poincare/SaveStepControl.h"
 
@@ -60,4 +60,4 @@ void computeAndApproveRemainder(
 /// @}
 }} // namespace capd::dynsys
 
-#endif
+#endif // CAPD_DYNSYS_APPROVEREMAINDER_H

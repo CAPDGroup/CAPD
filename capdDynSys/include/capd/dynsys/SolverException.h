@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_SOLVEREXCEPTION_H_ 
-#define _CAPD_DYNSYS_SOLVEREXCEPTION_H_ 
+#ifndef CAPD_DYNSYS_SOLVEREXCEPTION_H
+#define CAPD_DYNSYS_SOLVEREXCEPTION_H
 
 #include <string>
 #include <sstream>
@@ -55,6 +55,6 @@ public:
 
 }} // namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_SOLVEREXCEPTION_H_ 
+#endif // CAPD_DYNSYS_SOLVEREXCEPTION_H
 
 

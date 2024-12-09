@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_DEFAULT_POLICY_H_
-#define _CAPD_DYNSET_DEFAULT_POLICY_H_
+#ifndef CAPD_DYNSET_DEFAULT_POLICY_H
+#define CAPD_DYNSET_DEFAULT_POLICY_H
 
 #include "capd/dynset/reorganization/NoReorganization.h"
 
@@ -47,5 +47,5 @@ class DefaultPolicy : public IdQRPolicy, public NoReorganization{
 /// @}
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_DEFAULT_POLICY_H_
+#endif // CAPD_DYNSET_DEFAULT_POLICY_H
 

@@ -13,8 +13,8 @@
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
 
-#ifndef _CAPD_GEOMSET_DOUBLETONSET_HPP_
-#define _CAPD_GEOMSET_DOUBLETONSET_HPP_
+#ifndef CAPD_GEOMSET_DOUBLETONSET_HPP
+#define CAPD_GEOMSET_DOUBLETONSET_HPP
 #include "capd/geomset/DoubletonSet.h"
 #include "capd/geomset/AffineSet.hpp"
 #include <sstream>
@@ -134,5 +134,5 @@ DoubletonSet<MatrixType>::evalAffineFunctional(const VectorType& gradient, const
 /// @}
 }} // namespace capd::geomset
 
-#endif // _CAPD_GEOMSET_DOUBLETONSET_HPP_
+#endif // CAPD_GEOMSET_DOUBLETONSET_HPP
 

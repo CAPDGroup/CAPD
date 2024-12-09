@@ -14,8 +14,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_INTERVAL_INTERVALINTF_H_
-#define _CAPD_INTERVAL_INTERVALINTF_H_
+#ifndef CAPD_INTERVAL_INTERVALINTF_H
+#define CAPD_INTERVAL_INTERVALINTF_H
 
 #include <iostream>
 #include "capd/basicalg/minmax.h"
@@ -553,4 +553,4 @@ inline bool isInf(const capd::intervals::Interval< T_Bound, T_Rnd >& r) {
 }
 
 
-#endif // _CAPD_INTERVAL_INTERVALINTF_H_
+#endif // CAPD_INTERVAL_INTERVALINTF_H

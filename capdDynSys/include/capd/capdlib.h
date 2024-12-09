@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_CAPDLIB_H_
-#define _CAPD_CAPDLIB_H_
+#ifndef CAPD_CAPDLIB_H
+#define CAPD_CAPDLIB_H
 
 
 #include "capd/intervals/lib.h"
@@ -31,4 +31,4 @@
 
 #include "capd/matrixAlgorithms/lib.h"
 #undef CAPD_DEFAULT_DIMENSION
-#endif // _CAPD_CAPDLIB_H_
+#endif // CAPD_CAPDLIB_H

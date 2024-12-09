@@ -1,7 +1,7 @@
 // @todo this file seems unused
 
-#ifndef _HANDLE_UNEXPECTED_TERMINATE_
-#define _HANDLE_UNEXPECTED_TERMINATE_
+#ifndef CAPD_HANDLE_UNEXPECTED_TERMINATE_H
+#define CAPD_HANDLE_UNEXPECTED_TERMINATE_H
 
 #include <iostream>
 #include <cstdlib>
@@ -19,6 +19,6 @@ void handle_terminate() {
   exit(1);
 }
 
-#endif //_HANDLE_UNEXPECTED_TERMINATE_
+#endif // CAPD_HANDLE_UNEXPECTED_TERMINATE_H
 
 

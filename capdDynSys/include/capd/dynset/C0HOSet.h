@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_C0HOSET_H_
-#define _CAPD_DYNSET_C0HOSET_H_
+#ifndef CAPD_DYNSET_C0HOSET_H
+#define CAPD_DYNSET_C0HOSET_H
 
 #include "capd/basicalg/factrial.h"
 #include "capd/dynset/AbstractSet.h"
@@ -171,5 +171,5 @@ void C0HOSet<BaseSetT>::move(Solver& solver, C0HOSet& result) const
 /// @}
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C0HOSET_H_
+#endif // CAPD_DYNSET_C0HOSET_H
 
