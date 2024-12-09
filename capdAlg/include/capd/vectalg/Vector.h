@@ -19,8 +19,8 @@
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
 
-#ifndef _CAPD_VECTALG_VECTOR_H_
-#define _CAPD_VECTALG_VECTOR_H_
+#ifndef CAPD_VECTALG_VECTOR_H
+#define CAPD_VECTALG_VECTOR_H
 
 #include <iostream>
 #include <cstdlib>
@@ -146,4 +146,4 @@ std::string cppReprezentation(const Vector<Scalar,dim> & A, const std::string& v
 
 #include "capd/vectalg/Vector_inline.h"
 
-#endif // _CAPD_VECTALG_VECTOR_H_
+#endif // CAPD_VECTALG_VECTOR_H

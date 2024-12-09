@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MAP_MAP_HPP_
-#define _CAPD_MAP_MAP_HPP_
+#ifndef CAPD_MAP_MAP_HPP
+#define CAPD_MAP_MAP_HPP
 
 #include <algorithm>
 #include <sstream>
@@ -511,6 +511,6 @@ void Map<MatrixT>::setDegree(size_type degree)
 
 }} // namespace capd::map
 
-#endif // _CAPD_MAP_MAP_HPP_
+#endif // CAPD_MAP_MAP_HPP
 
 /// @}

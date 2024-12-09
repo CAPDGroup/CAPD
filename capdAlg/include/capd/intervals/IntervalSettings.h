@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_INTERVAL_INTERVALSETTINGS_H_
-#define _CAPD_INTERVAL_INTERVALSETTINGS_H_
+#ifndef CAPD_INTERVAL_INTERVALSETTINGS_H
+#define CAPD_INTERVAL_INTERVALSETTINGS_H
 
 //////////////////////////////////////////////////////////////////////////////////
 // INTERVAL SETTINGS
@@ -42,4 +42,4 @@
 #define __INLINE__
 #endif
 
-#endif // _CAPD_INTERVAL_INTERVALSETTINGS_H_
+#endif // CAPD_INTERVAL_INTERVALSETTINGS_H

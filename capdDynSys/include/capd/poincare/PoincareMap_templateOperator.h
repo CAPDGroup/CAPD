@@ -10,8 +10,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_POINCARE_POINCARE_MAP_TEMPLATE_OPERATOR_H_
-#define _CAPD_POINCARE_POINCARE_MAP_TEMPLATE_OPERATOR_H_
+#ifndef CAPD_POINCARE_POINCARE_MAP_TEMPLATE_OPERATOR_H
+#define CAPD_POINCARE_POINCARE_MAP_TEMPLATE_OPERATOR_H
 
 #include <cassert>
 #include "capd/poincare/PoincareMap.h"
@@ -218,5 +218,5 @@ PoincareMap<DS,FunT>::operator()(T& originalSet, typename T::JetType& result, in
 /// @}
 }} // namespace capd::poincare
 
-#endif // _CAPD_POINCARE_POINCARE_MAP_TEMPLATE_OPERATOR_H_
+#endif // CAPD_POINCARE_POINCARE_MAP_TEMPLATE_OPERATOR_H
 

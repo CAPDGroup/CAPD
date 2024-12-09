@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MULTIPREC_MPREAL_OP_HPP_
-#define _CAPD_MULTIPREC_MPREAL_OP_HPP_
+#ifndef CAPD_MULTIPREC_MPREAL_OP_HPP
+#define CAPD_MULTIPREC_MPREAL_OP_HPP
 
 namespace capd {
 namespace multiPrec {
@@ -572,4 +572,4 @@ inline std::istream& operator >>(std::istream& i, MpReal& r) {
 }
 } // end of namespace capd::multiPrec
 
-#endif // _CAPD_MULTIPREC_MPREAL_OP_HPP_
+#endif // CAPD_MULTIPREC_MPREAL_OP_HPP

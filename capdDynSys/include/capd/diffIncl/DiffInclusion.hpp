@@ -15,8 +15,8 @@
 
 /* Author: Tomasz Kapela, 2007 */
 
-#ifndef _CAPD_DIFFINCL_DIFFINCLUSION_HPP_ 
-#define _CAPD_DIFFINCL_DIFFINCLUSION_HPP_ 
+#ifndef CAPD_DIFFINCL_DIFFINCLUSION_HPP
+#define CAPD_DIFFINCL_DIFFINCLUSION_HPP
 
 #include <sstream>
 #include <string>
@@ -49,6 +49,6 @@ DiffInclusion<MapT, DynSysT>::~DiffInclusion(){
   
 }} //namespace capd::diffIncl`
 
-#endif // _CAPD_DIFFINCL_DIFFINCLUSION_HPP_ 
+#endif // CAPD_DIFFINCL_DIFFINCLUSION_HPP
 
 /// @}

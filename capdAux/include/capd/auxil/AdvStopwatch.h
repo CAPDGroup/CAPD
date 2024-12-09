@@ -13,8 +13,10 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_AUXIL_ADVSTOPWATCH_H_
-#define _CAPD_AUXIL_ADVSTOPWATCH_H_
+// @todo Remove it or add test coverage
+
+#ifndef CAPD_AUXIL_ADVSTOPWATCH_H
+#define CAPD_AUXIL_ADVSTOPWATCH_H
 
 #include "capd/auxil/clock.h"
 
@@ -71,6 +73,6 @@ class AdvStopwatch{
 };
 
 
-#endif // _CAPD_AUXIL_ADVSTOPWATCH_H_
+#endif // CAPD_AUXIL_ADVSTOPWATCH_H
 /// @}
 

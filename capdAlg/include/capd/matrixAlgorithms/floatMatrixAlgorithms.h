@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_H_
-#define _CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_H_
+#ifndef CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_H
+#define CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_H
 
 #include <vector>
 #include <stdexcept>
@@ -119,6 +119,6 @@ MatrixType gaussInverseMatrix(const MatrixType& A);
 
 }} // namespace capd::matrixAlgorithms
 
-#endif // _CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_H_
+#endif // CAPD_MATRIXALGORITHMS_FLOATMATRIXALGORITHMS_H
 
 /// @}

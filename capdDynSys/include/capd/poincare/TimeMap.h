@@ -9,8 +9,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_POINCARE_TIME_MAP_H_
-#define _CAPD_POINCARE_TIME_MAP_H_
+#ifndef CAPD_POINCARE_TIME_MAP_H
+#define CAPD_POINCARE_TIME_MAP_H
 
 #include <string>
 #include "capd/dynset/C1Set.h"
@@ -175,7 +175,7 @@ protected:
 #include "capd/poincare/TimeMap_inline.h"
 #include "capd/poincare/TimeMap_template.h"
 
-#endif // _CAPD_POINCARE_TIME_MAP_H_
+#endif // CAPD_POINCARE_TIME_MAP_H
 
 
 

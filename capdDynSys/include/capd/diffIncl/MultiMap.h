@@ -15,8 +15,8 @@
 
 /* Author: Tomasz Kapela, 2007 */
 
-#ifndef _CAPD_DIFFINCL_MULTIMAP_H_ 
-#define _CAPD_DIFFINCL_MULTIMAP_H_ 
+#ifndef CAPD_DIFFINCL_MULTIMAP_H
+#define CAPD_DIFFINCL_MULTIMAP_H
 
 #include <string>
 #include <map>
@@ -141,6 +141,6 @@ protected:
 
 }} // namespace capd::diffIncl
 
-#endif // _CAPD_DIFFINCL_MULTIMAP_H_ 
+#endif // CAPD_DIFFINCL_MULTIMAP_H
 
 /// @}

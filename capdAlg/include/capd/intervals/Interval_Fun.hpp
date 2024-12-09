@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_INTERVAL_INTERVALFUN_HPP_
-#define _CAPD_INTERVAL_INTERVALFUN_HPP_
+#ifndef CAPD_INTERVAL_INTERVALFUN_HPP
+#define CAPD_INTERVAL_INTERVALFUN_HPP
 
 #include <iostream>
 #include <cmath>
@@ -1041,4 +1041,4 @@ Interval< T_Bound, T_Rnd> solveAffineInclusion(const Interval< T_Bound, T_Rnd> &
 
 }} // namespace capd::intervals
 
-#endif // _CAPD_INTERVAL_INTERVALFUN_HPP_
+#endif // CAPD_INTERVAL_INTERVALFUN_HPP

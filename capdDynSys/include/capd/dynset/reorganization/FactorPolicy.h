@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_FACTORPOLICY_H_
-#define _CAPD_FACTORPOLICY_H_
+#ifndef CAPD_FACTORPOLICY_H
+#define CAPD_FACTORPOLICY_H
 
 #include <sstream>
 #include "capd/dynset/DefaultPolicy.h"
@@ -138,4 +138,4 @@ protected:
 };
 
 }}
-#endif // _CAPD_FACTORPOLICY_H_
+#endif // CAPD_FACTORPOLICY_H

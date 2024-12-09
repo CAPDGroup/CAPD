@@ -13,8 +13,10 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_AUXIL_CLOCK_H_ 
-#define _CAPD_AUXIL_CLOCK_H_ 
+// @todo can be replaced with chrono
+
+#ifndef CAPD_AUXIL_CLOCK_H
+#define CAPD_AUXIL_CLOCK_H
 #include "capd/settings/operatingSystemSetting.h"
   #if defined (LINUX) || defined (SUN_OS)
   // ************************************************ //
@@ -71,7 +73,7 @@
     return (double)clock()/CLOCKS_PER_SEC;
   }
 
-#endif // _CAPD_AUXIL_CLOCK_H_ 
+#endif // CAPD_AUXIL_CLOCK_H
 
 
 /// @}

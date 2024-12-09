@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details. 
 
-#ifndef _CAPD_COVREL_HSETND_H_ 
-#define _CAPD_COVREL_HSETND_H_ 
+#ifndef CAPD_COVREL_HSETND_H
+#define CAPD_COVREL_HSETND_H
 
 #include <vector>
 #include <stdexcept>
@@ -280,6 +280,6 @@ GridSet<IMatrix>& HSetND<VectorType,IVectorType,MatrixType,IMatrixType>::gridWal
 
 }} // namespace capd::covrel
 
-#endif // _CAPD_COVREL_HSETND_H_ 
+#endif // CAPD_COVREL_HSETND_H
 
 /// @}

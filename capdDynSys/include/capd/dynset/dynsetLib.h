@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details. 
 
-#ifndef _CAPD_DYNSET_DYNSETLIB_H_ 
-#define _CAPD_DYNSET_DYNSETLIB_H_ 
+#ifndef CAPD_DYNSET_DYNSETLIB_H
+#define CAPD_DYNSET_DYNSETLIB_H
 
 #include "capd/intervals/DoubleInterval.h"
 #include "capd/intervals/LongDoubleInterval.h"
@@ -183,4 +183,4 @@ typedef capd::dynset::CnRect2<IMatrixMD> CnRect2MD;
 
 #endif
 
-#endif // _CAPD_DYNSET_DYNSETLIB_H_ 
+#endif // CAPD_DYNSET_DYNSETLIB_H

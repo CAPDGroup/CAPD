@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_ROUNDING_INTROUNDING_H_ 
-#define _CAPD_ROUNDING_INTROUNDING_H_ 
+#ifndef CAPD_ROUNDING_INTROUNDING_H
+#define CAPD_ROUNDING_INTROUNDING_H
 
 namespace capd{
 namespace rounding{
@@ -46,5 +46,5 @@ public:
 /// @}
 }} // namespace capd::rounding
 
-#endif // _CAPD_ROUNDING_INTROUNDING_H_ 
+#endif // CAPD_ROUNDING_INTROUNDING_H
 

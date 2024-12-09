@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFINCL_INCLRECT2SET_H_ 
-#define _CAPD_DIFFINCL_INCLRECT2SET_H_ 
+#ifndef CAPD_DIFFINCL_INCLRECT2SET_H
+#define CAPD_DIFFINCL_INCLRECT2SET_H
 
 #include "capd/dynset/lib.h"
 #include "capd/dynset/C0DoubletonSet.h"
@@ -170,6 +170,6 @@ void InclRect2Set<MatrixType>::move(DiffIncl & diffIncl, InclRect2Set<MatrixType
 
 }} // namespace capd::diffIncl
 
-#endif // _CAPD_DIFFINCL_INCLRECT2SET_H_ 
+#endif // CAPD_DIFFINCL_INCLRECT2SET_H
 
 /// @}

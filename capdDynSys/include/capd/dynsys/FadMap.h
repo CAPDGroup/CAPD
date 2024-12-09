@@ -11,8 +11,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_FAD_MAP_H_
-#define _CAPD_DYNSYS_FAD_MAP_H_
+#ifndef CAPD_DYNSYS_FAD_MAP_H
+#define CAPD_DYNSYS_FAD_MAP_H
 
 #include "capd/fadbad/fadiff.h"
 #include "capd/fadbad/tadiff.h"
@@ -226,6 +226,6 @@ public:
 /// @}
 }} // the end of the namespace capd::dynsys
 
-#endif //define _CAPD_DYNSYS_FAD_MAP_H_
+#endif // CAPD_DYNSYS_FAD_MAP_H
 
 

@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_BASICALG_TEXWRITER_H_
-#define _CAPD_BASICALG_TEXWRITER_H_
+#ifndef CAPD_BASICALG_TEXWRITER_H
+#define CAPD_BASICALG_TEXWRITER_H
 
 #include "capd/intervals/Interval.h"
 #include "capd/rounding/RoundingTraits.h"
@@ -757,4 +757,4 @@ TexWriter & TexWriter::write(const T & x, EquationStyle eqStyle ){
 
 } // end of namespace capd
 
-#endif /* _CAPD_BASICALG_TEXWRITER_H_ */
+#endif // CAPD_BASICALG_TEXWRITER_H

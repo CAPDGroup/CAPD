@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_BASICCNODESOLVER_HPP_
-#define _CAPD_DYNSYS_BASICCNODESOLVER_HPP_
+#ifndef CAPD_DYNSYS_BASICCNODESOLVER_HPP
+#define CAPD_DYNSYS_BASICCNODESOLVER_HPP
 
 #include "capd/basicalg/power.h"
 #include "capd/dynsys/BasicCnOdeSolver.h"
@@ -352,6 +352,6 @@ void BasicCnOdeSolver<MapT, StepControlT,CurveT>::setInitialCondition(const Vect
 /// @}
 }} // the end of the namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_BASICCNODESOLVER_HPP_
+#endif // CAPD_DYNSYS_BASICCNODESOLVER_HPP
 
 

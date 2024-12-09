@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_CNODESOLVER_H_
-#define _CAPD_DYNSYS_CNODESOLVER_H_
+#ifndef CAPD_DYNSYS_CNODESOLVER_H
+#define CAPD_DYNSYS_CNODESOLVER_H
 
 #include <string>
 #include <vector>
@@ -265,6 +265,6 @@ inline void CnOdeSolver<MapT, StepControlPolicy,EnclosurePolicy, CurveT>::comput
 
 #include "capd/dynsys/CnOdeSolver_templateMembers.h"
 
-#endif // _CAPD_DYNSYS_CNODESOLVER_H_
+#endif // CAPD_DYNSYS_CNODESOLVER_H
 
 

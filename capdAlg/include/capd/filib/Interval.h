@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_FILIB_INTERVAL_H_
-#define _CAPD_FILIB_INTERVAL_H_
+#ifndef CAPD_FILIB_INTERVAL_H
+#define CAPD_FILIB_INTERVAL_H
 #include <climits>
 #include <typeinfo>
 #include <interval/interval.hpp>
@@ -943,4 +943,4 @@ inline Interval<T, R, M> Interval<T, R, M>::euler() {
 
 }} // end of namespace capd::filib
 
-#endif // _CAPD_FILIB_INTERVAL_H_
+#endif // CAPD_FILIB_INTERVAL_H

@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_HOMOGENOUS_POLYNOMIAL_H_
-#define _CAPD_DIFFALGEBRA_HOMOGENOUS_POLYNOMIAL_H_
+#ifndef CAPD_DIFFALGEBRA_HOMOGENOUS_POLYNOMIAL_H
+#define CAPD_DIFFALGEBRA_HOMOGENOUS_POLYNOMIAL_H
 
 #include "capd/basicalg/factrial.h"
 #include "capd/vectalg/Multiindex.h"
@@ -70,6 +70,6 @@ protected:
 
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_HOMOGENOUS_POLYNOMIAL_H_
+#endif // CAPD_DIFFALGEBRA_HOMOGENOUS_POLYNOMIAL_H
 
 /// @}

@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_POINCARE_LIB_H_
-#define _CAPD_POINCARE_LIB_H_
+#ifndef CAPD_POINCARE_LIB_H
+#define CAPD_POINCARE_LIB_H
 
 #include "capd/dynsys/lib.h"
 #include "capd/dynset/lib.h"
@@ -31,4 +31,4 @@
 #include "capd/poincare/typedefs.h"
 #undef CAPD_USER_NAMESPACE
 
-#endif // _CAPD_POINCARE_LIB_H_
+#endif // CAPD_POINCARE_LIB_H

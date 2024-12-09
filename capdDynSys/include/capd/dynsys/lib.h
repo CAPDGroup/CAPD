@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_LIB_H_
-#define _CAPD_DYNSYS_LIB_H_
+#ifndef CAPD_DYNSYS_LIB_H
+#define CAPD_DYNSYS_LIB_H
 
 #include "capd/basicalg/factrial.h"
 #include "capd/dynsys/SolverException.h"
@@ -30,4 +30,4 @@
 #include "capd/dynsys/typedefs.h"
 #undef CAPD_USER_NAMESPACE
 
-#endif // _CAPD_DYNSYS_LIB_H_
+#endif // CAPD_DYNSYS_LIB_H

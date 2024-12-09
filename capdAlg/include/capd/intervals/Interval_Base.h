@@ -13,8 +13,8 @@
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
 
-#ifndef _CAPD_INTERVAL_INTERVALBASE_H_ 
-#define _CAPD_INTERVAL_INTERVALBASE_H_ 
+#ifndef CAPD_INTERVAL_INTERVALBASE_H
+#define CAPD_INTERVAL_INTERVALBASE_H
 
 namespace capd{
 namespace intervals{
@@ -242,4 +242,4 @@ inline Interval<T_Bound, T_Rnd> Interval<T_Bound, T_Rnd>::euler()
 
 }} // namespace capd::intervals 
 
-#endif // _CAPD_INTERVAL_INTERVALBASE_H_ 
+#endif // CAPD_INTERVAL_INTERVALBASE_H

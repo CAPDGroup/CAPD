@@ -24,8 +24,8 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 // MA 02111-1307, USA.
 
-#ifndef _CAPD_DYNSYS_LINEAR3D_H_ 
-#define _CAPD_DYNSYS_LINEAR3D_H_ 
+#ifndef CAPD_DYNSYS_LINEAR3D_H
+#define CAPD_DYNSYS_LINEAR3D_H
 
 #include "capd/dynsys/DynSys.h"
 
@@ -102,6 +102,6 @@ MatrixType Linear3d<MatrixType>::JacPhi(const VectorType &) const
 
 }} // namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_LINEAR3D_H_ 
+#endif // CAPD_DYNSYS_LINEAR3D_H
 
 /// @}

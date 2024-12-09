@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_CXSC_INTERVAL_H_
-#define _CAPD_CXSC_INTERVAL_H_
+#ifndef CAPD_CXSC_INTERVAL_H
+#define CAPD_CXSC_INTERVAL_H
 #include <interval.hpp>
 #include <except.hpp>
 #undef ZERO
@@ -923,4 +923,4 @@ inline Interval Interval::euler() {
 
 }} // end of namespace capd::cxsc
 
-#endif // _CAPD_FILIB_INTERVAL_H_
+#endif // CAPD_CXSC_INTERVAL_H

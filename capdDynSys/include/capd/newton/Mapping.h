@@ -10,8 +10,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_NEWTON_MAPPING_H_
-#define _CAPD_NEWTON_MAPPING_H_
+#ifndef CAPD_NEWTON_MAPPING_H
+#define CAPD_NEWTON_MAPPING_H
 
 namespace capd{
 namespace newton{
@@ -42,4 +42,4 @@ class Mapping{
 }} //end of namespace capd::newton
 
 
-#endif // _CAPD_NEWTON_MAPPING_H_
+#endif // CAPD_NEWTON_MAPPING_H

@@ -1,5 +1,5 @@
-#ifndef _EXAMPLE_H
-#define _EXAMPLE_H 1
+#ifndef CAPD_EXAMPLE_H
+#define CAPD_EXAMPLE_H
 
 #include "capd/auxil/Logger.h"
 
@@ -46,4 +46,4 @@ void globalFunction()
   CAPD_FATAL("msg: FATAL");
 }
 
-#endif /* _EXAMPLE_H */
+#endif // CAPD_EXAMPLE_H

@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_C2CURVE_H_
-#define _CAPD_DIFFALGEBRA_C2CURVE_H_
+#ifndef CAPD_DIFFALGEBRA_C2CURVE_H
+#define CAPD_DIFFALGEBRA_C2CURVE_H
 
 #include <stdexcept>
 #include "capd/diffAlgebra/Curve.h"
@@ -76,4 +76,4 @@ protected:
 ///@}
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_C2CURVE_H_
+#endif // CAPD_DIFFALGEBRA_C2CURVE_H

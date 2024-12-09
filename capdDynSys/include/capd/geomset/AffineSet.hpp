@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_GEOMSET_AFFINESET_HPP_
-#define _CAPD_GEOMSET_AFFINESET_HPP_
+#ifndef CAPD_GEOMSET_AFFINESET_HPP
+#define CAPD_GEOMSET_AFFINESET_HPP
 
 #include "capd/vectalg/Vector_Interval.hpp"
 #include "capd/vectalg/algebraicOperations.hpp"
@@ -95,4 +95,4 @@ AffineSet<MatrixType>::evalAffineFunctional(const VectorType& gradient, const Ve
 }
 } // namespace capd::dynset
 
-#endif // _CAPD_GEOMSET_AFFINESET_HPP_
+#endif // CAPD_GEOMSET_AFFINESET_HPP

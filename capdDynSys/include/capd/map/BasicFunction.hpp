@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MAP_BASICFUNCTION_HPP_
-#define _CAPD_MAP_BASICFUNCTION_HPP_
+#ifndef CAPD_MAP_BASICFUNCTION_HPP
+#define CAPD_MAP_BASICFUNCTION_HPP
 
 #include <sstream>
 #include <stdexcept>
@@ -319,6 +319,6 @@ void BasicFunction<Scalar>::applyC1Mask() const
 }
 }} // namespace capd::map
 
-#endif // _CAPD_MAP_BASICFUNCTION_HPP_
+#endif // CAPD_MAP_BASICFUNCTION_HPP
 
 /// @}

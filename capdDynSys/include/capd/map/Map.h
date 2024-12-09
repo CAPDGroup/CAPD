@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MAP_MAP_H_
-#define _CAPD_MAP_MAP_H_
+#ifndef CAPD_MAP_MAP_H
+#define CAPD_MAP_MAP_H
 
 #include <string>
 #include <stdexcept>
@@ -478,6 +478,6 @@ void Map<MatrixT>::homogenousPolynomial(JetT& x, size_type degree) const
 
 }} // the end of the namespace capd::map
 
-#endif // _CAPD_MAP_MAP_H_
+#endif // CAPD_MAP_MAP_H
 
 /// @}

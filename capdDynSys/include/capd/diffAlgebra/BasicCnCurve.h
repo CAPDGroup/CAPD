@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_BASICCNCURVE_H_
-#define _CAPD_DIFFALGEBRA_BASICCNCURVE_H_
+#ifndef CAPD_DIFFALGEBRA_BASICCNCURVE_H
+#define CAPD_DIFFALGEBRA_BASICCNCURVE_H
 
 #include <stdexcept>
 #include "capd/basicalg/TypeTraits.h"
@@ -277,4 +277,4 @@ typename BasicCnCurve<MatrixT>::ScalarType& BasicCnCurve<MatrixT>::remainderCoef
 ///@}
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_BASICCNCURVE_H_
+#endif // CAPD_DIFFALGEBRA_BASICCNCURVE_H

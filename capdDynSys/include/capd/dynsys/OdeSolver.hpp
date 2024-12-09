@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_ODESOLVER_HPP_
-#define _CAPD_DYNSYS_ODESOLVER_HPP_
+#ifndef CAPD_DYNSYS_ODESOLVER_HPP
+#define CAPD_DYNSYS_ODESOLVER_HPP
 
 #include <sstream>
 #include <string>
@@ -168,6 +168,6 @@ OdeSolver<MapType, StepControlPolicy,EnclosurePolicy,CurveType>::getCoeffNorm(si
 
 }} //namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_ODESOLVER_HPP_
+#endif // CAPD_DYNSYS_ODESOLVER_HPP
 
 /// @}

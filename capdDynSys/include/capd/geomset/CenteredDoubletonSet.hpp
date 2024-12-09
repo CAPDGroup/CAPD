@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_GEOMSET_CENTEREDDOUBLETONSET_HPP_
-#define _CAPD_GEOMSET_CENTEREDDOUBLETONSET_HPP_
+#ifndef CAPD_GEOMSET_CENTEREDDOUBLETONSET_HPP
+#define CAPD_GEOMSET_CENTEREDDOUBLETONSET_HPP
 
 #include "capd/geomset/DoubletonSet.hpp"
 #include "capd/geomset/CenteredDoubletonSet.h"
@@ -95,6 +95,6 @@ CenteredDoubletonSet<MatrixType>::CenteredDoubletonSet(
 /// @}
 }} //capd::geomset
 
-#endif // _CAPD_GEOMSET_CENTEREDDOUBLETONSET_HPP_
+#endif // CAPD_GEOMSET_CENTEREDDOUBLETONSET_HPP
 
 

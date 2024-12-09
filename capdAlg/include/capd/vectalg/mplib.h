@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_MPVECTALGLIB_H_
-#define _CAPD_VECTALG_MPVECTALGLIB_H_
+#ifndef CAPD_VECTALG_MPVECTALGLIB_H
+#define CAPD_VECTALG_MPVECTALGLIB_H
 
 #include "capd/multiPrec/mplib.h"
 #include "capd/intervals/mplib.h"
@@ -61,5 +61,5 @@ namespace capd{
 
 #endif // __HAVE_MPFR__
 
-#endif // _CAPD_VECTALG_MPVECTALGLIB_H_
+#endif // CAPD_VECTALG_MPVECTALGLIB_H
 

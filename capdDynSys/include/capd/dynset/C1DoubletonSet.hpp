@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_C1DOUBLETONSET_HPP_
-#define _CAPD_DYNSET_C1DOUBLETONSET_HPP_
+#ifndef CAPD_DYNSET_C1DOUBLETONSET_HPP
+#define CAPD_DYNSET_C1DOUBLETONSET_HPP
 
 #include <stdexcept>
 #include "capd/vectalg/iobject.hpp"
@@ -195,5 +195,5 @@ std::string C1DoubletonSet<MatrixType, Policies>::show(void) const {
 
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C1DOUBLETONSET_HPP_
+#endif // CAPD_DYNSET_C1DOUBLETONSET_HPP
 

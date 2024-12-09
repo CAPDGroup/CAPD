@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_FIELDS_LIB_H_
-#define _CAPD_FIELDS_LIB_H_
+#ifndef CAPD_FIELDS_LIB_H
+#define CAPD_FIELDS_LIB_H
 
 #include "capd/fields/Complex.h"
 #include "capd/intervals/lib.h"
@@ -26,4 +26,4 @@ namespace capd{
 }
 
 
-#endif // CAPD_FIELDS_LIB_H_
+#endif // CAPD_FIELDS_LIB_H

@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_MOVE_H_
-#define _CAPD_DYNSYS_MOVE_H_
+#ifndef CAPD_DYNSYS_MOVE_H
+#define CAPD_DYNSYS_MOVE_H
 
 #include "capd/vectalg/Norm.h"
 #include "capd/basicalg/TypeTraits.h"
@@ -147,6 +147,6 @@ struct CnJetMove<T,JetT,false>{
 
 }} // namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_DYNSYS_H_
+#endif // CAPD_DYNSYS_MOVE_H
 
 /// @}

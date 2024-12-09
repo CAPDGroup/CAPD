@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUXIL_COUNTER_H_
-#define _CAPD_AUXIL_COUNTER_H_
+#ifndef CAPD_AUXIL_COUNTER_H
+#define CAPD_AUXIL_COUNTER_H
 #include "capd/auxil/logger.h"
 #include <set>
 
@@ -97,4 +97,4 @@ template <typename T>
 std::string Counter<T>::name = "";
 }} // end of namespace capd::auxil
 
-#endif // _CAPD_AUXIL_COUNTER_H_
+#endif // CAPD_AUXIL_COUNTER_H

@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_EVAL_SQR_H_
-#define _CAPD_AUTODIFF_EVAL_SQR_H_
+#ifndef CAPD_AUTODIFF_EVAL_SQR_H
+#define CAPD_AUTODIFF_EVAL_SQR_H
 
 #include "capd/autodiff/NodeType.h"
 
@@ -349,4 +349,4 @@ CAPD_MAKE_DAG_NODE(SqrConst);
 /// @}
 }} // namespace capd::autodiff
 
-#endif
+#endif // CAPD_AUTODIFF_EVAL_SQR_H

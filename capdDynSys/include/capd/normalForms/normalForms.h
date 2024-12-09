@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_NORMALFORMS_NORMALFORMS_H_
-#define _CAPD_NORMALFORMS_NORMALFORMS_H_
+#ifndef CAPD_NORMALFORMS_NORMALFORMS_H
+#define CAPD_NORMALFORMS_NORMALFORMS_H
 
 #include <complex>
 #include <stdexcept>
@@ -64,6 +64,6 @@ void seriesToDerivatives(capd::diffAlgebra::Jet<MatrixType,DEGREE>& s)
 #include "capd/normalForms/linearSubstitution.hpp"
 #include "capd/normalForms/planarMaps.hpp"
 
-#endif // _CAPD_NORMALFORMS_NORMALFORMS_H_
+#endif // CAPD_NORMALFORMS_NORMALFORMS_H
 
 /// @}

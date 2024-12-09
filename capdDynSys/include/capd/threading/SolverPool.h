@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef __CAPD_THREADING_SOLVERPOOL_H__
-#define __CAPD_THREADING_SOLVERPOOL_H__
+#ifndef CAPD_THREADING_SOLVERPOOL_H
+#define CAPD_THREADING_SOLVERPOOL_H
 
 #include "capd/threading/SolverFactory.h"
 
@@ -46,4 +46,4 @@ struct SolverPool{
 /// @}
 }} // namespace capd::threading
 
-#endif
+#endif // CAPD_THREADING_SOLVERPOOL_H

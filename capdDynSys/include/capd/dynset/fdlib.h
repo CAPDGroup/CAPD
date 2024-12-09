@@ -13,6 +13,9 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef CAPD_DYNSET_FDLIB_H
+#define CAPD_DYNSET_FDLIB_H
+
 #include "capd/dynset/reorganization/InvBByCFactorReorganization.h"
 #include "capd/dynset/reorganization/FactorReorganization.h"
 #include "capd/dynset/reorganization/QRReorganization.h"
@@ -38,5 +41,6 @@
 
 #include "capd/dynset/typedefs.h"
 
+#endif // CAPD_DYNSET_FDLIB_H
 
 

@@ -9,8 +9,8 @@
 // This file constitutes a part of the CAPD library,
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
-#ifndef _CAPD_VECTALG_EMPTYINTERSECTIONEXCEPTION_H_
-#define _CAPD_VECTALG_EMPTYINTERSECTIONEXCEPTION_H_
+#ifndef CAPD_VECTALG_EMPTYINTERSECTIONEXCEPTION_H
+#define CAPD_VECTALG_EMPTYINTERSECTIONEXCEPTION_H
 
 #include <stdexcept>
 
@@ -25,4 +25,4 @@ public:
 
 /// @}
 
-#endif /* _CAPD_VECTALG_EMPTYINTERSECTIONEXCEPTION_H_ */
+#endif // CAPD_VECTALG_EMPTYINTERSECTIONEXCEPTION_H

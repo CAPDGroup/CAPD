@@ -1,5 +1,5 @@
-#ifndef __CAPD_TEST_COMPARE_H_
-#define __CAPD_TEST_COMPARE_H_
+#ifndef CAPD_TEST_COMPARE_H
+#define CAPD_TEST_COMPARE_H
 
 #include "capd/map/lib.h"
 #define BOOST_TEST_DYN_LINK
@@ -34,4 +34,4 @@ inline double ArcTan(double x) { return atan(x); }
 inline double Sqrt(double x) { return sqrt(x); }
 inline double Log(double x) { return log(x); }
 
-#endif
+#endif // CAPD_TEST_COMPARE_H

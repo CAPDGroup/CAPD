@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_C2SOLVER_H_
-#define _CAPD_DYNSYS_C2SOLVER_H_
+#ifndef CAPD_DYNSYS_C2SOLVER_H
+#define CAPD_DYNSYS_C2SOLVER_H
 
 #include <string>
 #include <vector>
@@ -143,6 +143,6 @@ inline void C2OdeSolver<MapType,StepControlPolicy,EnclosurePolicy,CurveT>::compu
 /// @}
 }} // the end of the namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_C2ODESOLVER_H_
+#endif // CAPD_DYNSYS_C2SOLVER_H
 
 

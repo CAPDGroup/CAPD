@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_CONTAINER_HPP_
-#define _CAPD_VECTALG_CONTAINER_HPP_
+#ifndef CAPD_VECTALG_CONTAINER_HPP
+#define CAPD_VECTALG_CONTAINER_HPP
 
 #include <algorithm>
 #include "capd/vectalg/Container.h"
@@ -130,6 +130,6 @@ void Container<Scalar,0>::resize(size_type A_newCapacity)
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_CONTAINER_HPP_
+#endif // CAPD_VECTALG_CONTAINER_HPP
 
 /// @}

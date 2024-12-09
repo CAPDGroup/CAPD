@@ -58,8 +58,8 @@
 // Started on March 3, 2002. Last revision: March 9, 2007.
 
 
-#ifndef _CAPD_AUXIL_ARG_H_
-#define _CAPD_AUXIL_ARG_H_
+#ifndef CAPD_AUXIL_ARG_H
+#define CAPD_AUXIL_ARG_H
 
 //#include "capd/homology/config.h"
 
@@ -872,5 +872,5 @@ capd::slog << "Start time: " << currenttime () << '\n';
 } // namespace auxil
 } // namespace capd
 
-#endif // _CAPD_AUXIL_ARG_H_
+#endif // CAPD_AUXIL_ARG_H
 

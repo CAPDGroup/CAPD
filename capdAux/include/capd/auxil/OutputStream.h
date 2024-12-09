@@ -18,8 +18,8 @@
 
 // Started in July 1997. Last revision: September 5, 2009.
 
-#ifndef _CAPD_AUXIL_OUTPUTSTREAM_H_
-#define _CAPD_AUXIL_OUTPUTSTREAM_H_
+#ifndef CAPD_AUXIL_OUTPUTSTREAM_H
+#define CAPD_AUXIL_OUTPUTSTREAM_H
 #include <iostream>
 #include <fstream>
 
@@ -227,4 +227,4 @@ inline OutputStream &operator <<(OutputStream &out,
 } // end of namespace capd::auxil
 
 
-#endif /* OUTPUTSTREAM_H_ */
+#endif // CAPD_AUXIL_OUTPUTSTREAM_H

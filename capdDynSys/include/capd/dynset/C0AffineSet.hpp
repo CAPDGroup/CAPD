@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_C0AFFINETSET_HPP_
-#define _CAPD_DYNSET_C0AFFINETSET_HPP_
+#ifndef CAPD_DYNSET_C0AFFINETSET_HPP
+#define CAPD_DYNSET_C0AFFINETSET_HPP
 
 #include <stdexcept>
 #include "capd/vectalg/iobject.hpp"
@@ -90,5 +90,5 @@ std::string C0AffineSet<MatrixType, Policies>::show(void) const {
 
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C0AFFINETONSET_HPP_
+#endif // CAPD_DYNSET_C0AFFINETSET_HPP
 

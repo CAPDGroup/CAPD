@@ -1,6 +1,3 @@
-
-#include "QRPolicy.h"
-
 //////////////////////////////////////////////////////////////////////////////
 //   Package:          CAPD
 
@@ -15,6 +12,11 @@
 // This file constitutes a part of the CAPD library,
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
+
+#ifndef CAPD_DYNSET_TYPEDEFS_H
+#define CAPD_DYNSET_TYPEDEFS_H
+
+#include "QRPolicy.h" // @todo Why is that needed?
 
 namespace CAPD_USER_NAMESPACE{
 
@@ -70,3 +72,5 @@ typedef capd::dynset::CnDoubletonSet<CAPD_USER_NAMESPACE::IMatrix,C2Rect2Policie
 
 /// @}
 } // end of namespace
+
+#endif // CAPD_DYNSET_TYPEDEFS_H

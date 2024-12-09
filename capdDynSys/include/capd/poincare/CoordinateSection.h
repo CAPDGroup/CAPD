@@ -9,8 +9,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_POINCARE_COORDINATE_SECTION_H_
-#define _CAPD_POINCARE_COORDINATE_SECTION_H_
+#ifndef CAPD_POINCARE_COORDINATE_SECTION_H
+#define CAPD_POINCARE_COORDINATE_SECTION_H
 
 #include <string>
 #include <algorithm>
@@ -131,5 +131,5 @@ private:
 /// @}
 }} // namespace capd::poincare
 
-#endif // _CAPD_POINCARE_COORDINATE_SECTION_H_
+#endif // CAPD_POINCARE_COORDINATE_SECTION_H
 

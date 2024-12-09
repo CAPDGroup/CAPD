@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFINCL_LIB_H_
-#define _CAPD_DIFFINCL_LIB_H_
+#ifndef CAPD_DIFFINCL_LIB_H
+#define CAPD_DIFFINCL_LIB_H
 #include "capd/map/lib.h"
 #include "capd/poincare/lib.h"
 #include "capd/diffIncl/MultiMap.h"
@@ -32,4 +32,4 @@ typedef capd::poincare::TimeMap<CWDiffInclSolver> CWTimeMap;
 typedef capd::poincare::TimeMap<LNDiffInclSolver> LNTimeMap;
 } // end of namespace capd
 
-#endif // _CAPD_DIFFINCL_LIB_H_
+#endif // CAPD_DIFFINCL_LIB_H

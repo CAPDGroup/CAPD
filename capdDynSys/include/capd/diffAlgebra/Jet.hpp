@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_JET_HPP_
-#define _CAPD_DIFFALGEBRA_JET_HPP_
+#ifndef CAPD_DIFFALGEBRA_JET_HPP
+#define CAPD_DIFFALGEBRA_JET_HPP
 
 #include "capd/basicalg/factrial.h"
 #include <algorithm>
@@ -556,6 +556,6 @@ Jet inversePowerSeries(const Jet& c, const typename Jet::MatrixType& J){
   return result;
 }
 
-#endif // _CAPD_DIFFALGEBRA_JET_HPP_
+#endif // CAPD_DIFFALGEBRA_JET_HPP
 
 /// @}

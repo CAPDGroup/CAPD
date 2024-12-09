@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_CNODESOLVER_REMAINDER_HPP_
-#define _CAPD_DYNSYS_CNODESOLVER_REMAINDER_HPP_
+#ifndef CAPD_DYNSYS_CNODESOLVER_REMAINDER_HPP
+#define CAPD_DYNSYS_CNODESOLVER_REMAINDER_HPP
 
 namespace capd{
 namespace dynsys{
@@ -132,6 +132,6 @@ void CnOdeSolver<MapType, StepControlPolicy,EnclosurePolicy,CurveType>::computeR
 /// @}
 }} // namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_CNODESOLVER_REMAINDER_HPP_
+#endif // CAPD_DYNSYS_CNODESOLVER_REMAINDER_HPP
 
 

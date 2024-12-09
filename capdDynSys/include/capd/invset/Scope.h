@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_INVSET_SCOPE_H_
-#define _CAPD_INVSET_SCOPE_H_
+#ifndef CAPD_INVSET_SCOPE_H
+#define CAPD_INVSET_SCOPE_H
 
 namespace capd{
 namespace invset{
@@ -59,5 +59,5 @@ public:
 
 }} // end of namespace capd::invset
 
-#endif // _CAPD_INVSET_SCOPE_H_
+#endif // CAPD_INVSET_SCOPE_H
 

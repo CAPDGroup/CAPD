@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_EVAL_NATURALPOW_H_
-#define _CAPD_AUTODIFF_EVAL_NATURALPOW_H_
+#ifndef CAPD_AUTODIFF_EVAL_NATURALPOW_H
+#define CAPD_AUTODIFF_EVAL_NATURALPOW_H
 
 #include <algorithm>
 #include "capd/autodiff/EvalPow.h"
@@ -360,4 +360,4 @@ CAPD_MAKE_NAT_POW_NODE(NaturalPowFunTime);
 /// @}
 }} // namespace capd::autodiff
 
-#endif
+#endif // CAPD_AUTODIFF_EVAL_NATURALPOW_H

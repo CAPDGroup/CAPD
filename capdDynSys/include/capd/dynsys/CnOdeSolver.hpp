@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_CNODESOLVER_HPP_
-#define _CAPD_DYNSYS_CNODESOLVER_HPP_
+#ifndef CAPD_DYNSYS_CNODESOLVER_HPP
+#define CAPD_DYNSYS_CNODESOLVER_HPP
 
 #include "capd/dynsys/DynSys.hpp"
 #include "capd/dynsys/BasicCnOdeSolver.hpp"
@@ -211,6 +211,6 @@ CnOdeSolver<MapT,StepControlPolicy,EnclosurePolicy,CurveT>::getCoeffNorm(size_ty
 /// @}
 }}
 
-#endif // _CAPD_DYNSYS_CNODESOLVER_HPP_
+#endif // CAPD_DYNSYS_CNODESOLVER_HPP
 
 

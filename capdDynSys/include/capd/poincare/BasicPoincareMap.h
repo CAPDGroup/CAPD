@@ -10,8 +10,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_POINCARE_BASIC_POINCARE_MAP_H_
-#define _CAPD_POINCARE_BASIC_POINCARE_MAP_H_
+#ifndef CAPD_POINCARE_BASIC_POINCARE_MAP_H
+#define CAPD_POINCARE_BASIC_POINCARE_MAP_H
 
 #include <string>
 #include "capd/basicalg/factrial.h"
@@ -302,5 +302,5 @@ protected:
 #include "capd/poincare/BasicPoincareMap_template.h"
 
 
-#endif  /* _BasicPoincareMap_H */
+#endif // CAPD_POINCARE_BASIC_POINCARE_MAP_H
 

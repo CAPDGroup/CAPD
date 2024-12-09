@@ -11,12 +11,12 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_INTERVAL_INTERVALOLD_H_ 
-#define _CAPD_INTERVAL_INTERVALOLD_H_ 
+#ifndef CAPD_INTERVAL_INTERVALOLD_H
+#define CAPD_INTERVAL_INTERVALOLD_H
 
 #define __INTERVAL_DEPRECATED__
 
 #include "capd/intervals/DoubleInterval.h"
 
 
-#endif // _CAPD_INTERVAL_INTERVALOLD_H_ 
+#endif // CAPD_INTERVAL_INTERVALOLD_H

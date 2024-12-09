@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MAP_FUNCTION_HPP_
-#define _CAPD_MAP_FUNCTION_HPP_
+#ifndef CAPD_MAP_FUNCTION_HPP
+#define CAPD_MAP_FUNCTION_HPP
 
 #include <algorithm>
 #include <sstream>
@@ -174,6 +174,6 @@ void Function<VectorType>::check(const std::string& s)
 
 }} // namespace capd::map
 
-#endif // _CAPD_MAP_FUNCTION_HPP_
+#endif // CAPD_MAP_FUNCTION_HPP
 
 /// @}

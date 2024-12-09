@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_MPLIB_H_
-#define _CAPD_DYNSET_MPLIB_H_
+#ifndef CAPD_DYNSET_MPLIB_H
+#define CAPD_DYNSET_MPLIB_H
 
 #include "capd/vectalg/mplib.h"
 
@@ -94,4 +94,4 @@ typedef capd::dynset::C0HOSet<MpC0TripletonSet> MpC0HOTripletonSet;
 
 #endif //__HAVE_MPFR__
 
-#endif // _CAPD_DYNSET_MPLIB_H_
+#endif // CAPD_DYNSET_MPLIB_H

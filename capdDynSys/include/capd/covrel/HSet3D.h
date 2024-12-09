@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details. 
 
-#ifndef _CAPD_COVREL_HSET3D_H_ 
-#define _CAPD_COVREL_HSET3D_H_ 
+#ifndef CAPD_COVREL_HSET3D_H
+#define CAPD_COVREL_HSET3D_H
 
 #include "capd/intervals/lib.h"
 #include "capd/vectalg/Vector.hpp"
@@ -230,6 +230,6 @@ GridSet<IMatrix>& HSet3D::gridSet( GridSet<IMatrix>& G,
 
 }} // namespace capd::covrel
 
-#endif // _CAPD_COVREL_HSET3D_H_ 
+#endif // CAPD_COVREL_HSET3D_H
 
 /// @}

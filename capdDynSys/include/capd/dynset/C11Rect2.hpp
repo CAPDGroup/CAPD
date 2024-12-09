@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details. 
 
-#ifndef _CAPD_DYNSET_C11RECT2_HPP_ 
-#define _CAPD_DYNSET_C11RECT2_HPP_ 
+#ifndef CAPD_DYNSET_C11RECT2_HPP
+#define CAPD_DYNSET_C11RECT2_HPP
 
 #include <sstream>
 #include "capd/basicalg/minmax.h"
@@ -267,4 +267,4 @@ C11Rect2<MatrixType,QRPolicy>& C11Rect2<MatrixType,QRPolicy>::operator=(const C1
 
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C11RECT2_HPP_ 
+#endif // CAPD_DYNSET_C11RECT2_HPP

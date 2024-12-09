@@ -19,8 +19,8 @@
 
 // Started in July 1997. Last revision: September 5, 2009.
 
-#ifndef _CAPD_AUXIL_SOUTPUTS_H_
-#define _CAPD_AUXIL_SOUTPUTS_H_
+#ifndef CAPD_AUXIL_SOUTPUTS_H
+#define CAPD_AUXIL_SOUTPUTS_H
 
 #include "capd/auxil/OutputStream.h"
 
@@ -99,5 +99,5 @@ inline void setLogLevel(LogLevel level ){
 
 } // namespace capd
 
-#endif // _CAPD_AUXIL_SOUTPUTS_H_
+#endif // CAPD_AUXIL_SOUTPUTS_H
 

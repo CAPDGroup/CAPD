@@ -27,8 +27,8 @@
 // Free Software Foundation, Inc., 59
 
 
-#ifndef _CAPD_VECTALG_MATRIXSLICE_H_ 
-#define _CAPD_VECTALG_MATRIXSLICE_H_ 
+#ifndef CAPD_VECTALG_MATRIXSLICE_H
+#define CAPD_VECTALG_MATRIXSLICE_H
 
 #include "capd/vectalg/MatrixIterator.h"
 
@@ -164,6 +164,6 @@ inline const_MatrixIterator< MatrixSlice<matrix> > MatrixSlice<matrix>::endOfCol
   return const_MatrixIterator< MatrixSlice<matrix> >(*this,at(numberOfRows(),j+1));
 }
 
-#endif // _CAPD_VECTALG_MATRIXSLICE_H_ 
+#endif // CAPD_VECTALG_MATRIXSLICE_H
 
 /// @}

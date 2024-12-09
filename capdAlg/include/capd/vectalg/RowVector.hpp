@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_ROWVECTOR_HPP_ 
-#define _CAPD_VECTALG_ROWVECTOR_HPP_ 
+#ifndef CAPD_VECTALG_ROWVECTOR_HPP
+#define CAPD_VECTALG_ROWVECTOR_HPP
 
 #include <stdexcept>
 #include "capd/vectalg/RowVector.h"
@@ -57,6 +57,6 @@ Vector<Scalar, cols> diam(const RowVector<Scalar, cols> & v)
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_ROWVECTOR_HPP_ 
+#endif // CAPD_VECTALG_ROWVECTOR_HPP
 
 /// @} 

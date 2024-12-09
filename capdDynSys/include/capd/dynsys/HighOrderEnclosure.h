@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_HIGH_ORDER_ENCLOSURE_CLASS_H_
-#define _CAPD_DYNSYS_HIGH_ORDER_ENCLOSURE_CLASS_H_
+#ifndef CAPD_DYNSYS_HIGH_ORDER_ENCLOSURE_CLASS_H
+#define CAPD_DYNSYS_HIGH_ORDER_ENCLOSURE_CLASS_H
 #include "capd/intervals/Interval.hpp"
 #include "capd/diffAlgebra/C1TimeJet.h"
 #include "capd/diffAlgebra/C2TimeJet.h"
@@ -417,5 +417,5 @@ public:
 /// @}
 }} // namespace capd::dynsys
 
-#endif /* _CAPD_DYNSYS_HIGH_ORDER_ENCLOSURE_H_ */
+#endif // CAPD_DYNSYS_HIGH_ORDER_ENCLOSURE_CLASS_H
 

@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_GEOMSET_CENTEREDTRIPLETONSET_HPP_
-#define _CAPD_GEOMSET_CENTEREDTRIPLETONSET_HPP_
+#ifndef CAPD_GEOMSET_CENTEREDTRIPLETONSET_HPP
+#define CAPD_GEOMSET_CENTEREDTRIPLETONSET_HPP
 
 #include <stdexcept>
 #include <sstream>
@@ -149,5 +149,5 @@ CenteredTripletonSet<MatrixType>::evalAffineFunctional(const VectorType& gradien
 /// @}
 }} // namespace capd::geomset
 
-#endif // _CAPD_GEOMSET_CENTEREDTRIPLETONSET_HPP_
+#endif // CAPD_GEOMSET_CENTEREDTRIPLETONSET_HPP
 

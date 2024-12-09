@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details. 
 
-#ifndef _CAPD_DYNSET_C11RECT2SET_HPP_
-#define _CAPD_DYNSET_C11RECT2SET_HPP_
+#ifndef CAPD_DYNSET_C11RECT2SET_HPP
+#define CAPD_DYNSET_C11RECT2SET_HPP
 
 #include <sstream>
 #include "capd/basicalg/minmax.h"
@@ -102,4 +102,4 @@ void C11Rect2Set<MatrixType>::move(DynSysType& dynsys, C11Rect2Set& result) cons
 
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C11RECT2SET_HPP_
+#endif // CAPD_DYNSET_C11RECT2SET_HPP

@@ -11,8 +11,10 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_EVAL_THIRD_POW_H_
-#define _CAPD_AUTODIFF_EVAL_THIRD_POW_H_
+// @todo This file seems to be a duplicate of another -> investigate
+
+#ifndef CAPD_MAP_EVAL_THIRD_POW_H
+#define CAPD_MAP_EVAL_THIRD_POW_H
 
 #include "capd/autodiff/NodeType.h"
 #include "capd/autodiff/EvalMul.h"
@@ -190,4 +192,4 @@ CAPD_MAKE_DAG_NODE(CubeConst);
 /// @}
 }} // namespace capd::autodiff
 
-#endif
+#endif // CAPD_MAP_EVAL_THIRD_POW_H

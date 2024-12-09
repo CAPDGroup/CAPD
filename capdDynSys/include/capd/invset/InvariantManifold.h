@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_INVSET_INVARIANTMANIFOLD_H_
-#define _CAPD_INVSET_INVARIANTMANIFOLD_H_
+#ifndef CAPD_INVSET_INVARIANTMANIFOLD_H
+#define CAPD_INVSET_INVARIANTMANIFOLD_H
 
 #include <stdexcept>
 #include <vector>
@@ -117,6 +117,6 @@ void oneDimInvariantManifold(Map& f, typename Map::VectorType& x, Jet& jet, int 
 }
 
 }}
-#endif // _CAPD_INVSET_INVARIANTMANIFOLD_H_
+#endif // CAPD_INVSET_INVARIANTMANIFOLD_H
 
 /// @}

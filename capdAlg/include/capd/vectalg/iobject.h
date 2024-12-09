@@ -11,8 +11,8 @@
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
 
-#ifndef _CAPD_VECTALG_IOBJECT_H_
-#define _CAPD_VECTALG_IOBJECT_H_
+#ifndef CAPD_VECTALG_IOBJECT_H
+#define CAPD_VECTALG_IOBJECT_H
 
 #include "capd/basicalg/TypeTraits.h"
 
@@ -213,4 +213,4 @@ VectorType conjVector(const VectorType & v);
 
 
 
-#endif /* _CAPD_VECTALG_IOBJECT_H_ */
+#endif // CAPD_VECTALG_IOBJECT_H

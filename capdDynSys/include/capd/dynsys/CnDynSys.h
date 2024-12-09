@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_CNDYNSYS_H_
-#define _CAPD_DYNSYS_CNDYNSYS_H_
+#ifndef CAPD_DYNSYS_CNDYNSYS_H
+#define CAPD_DYNSYS_CNDYNSYS_H
 
 #include "capd/dynsys/C2DynSys.h"
 #include "capd/diffAlgebra/Jet.h"
@@ -60,6 +60,6 @@ public:
 /// @}
 }} // namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_CNDYNSYS_H_
+#endif // CAPD_DYNSYS_CNDYNSYS_H
 
 

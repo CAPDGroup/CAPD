@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_CNCURVE_HPP_
-#define _CAPD_DIFFALGEBRA_CNCURVE_HPP_
+#ifndef CAPD_DIFFALGEBRA_CNCURVE_HPP
+#define CAPD_DIFFALGEBRA_CNCURVE_HPP
 
 #include <stdexcept>
 #include "capd/diffAlgebra/CnCurve.h"
@@ -142,4 +142,4 @@ typename CnCurve<BaseCurveT,true>::JetType CnCurve<BaseCurveT,true>::jet(const S
 ///@}
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_CNCURVE_H_
+#endif // CAPD_DIFFALGEBRA_CNCURVE_HPP

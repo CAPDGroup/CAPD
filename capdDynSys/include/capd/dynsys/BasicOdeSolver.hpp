@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_BASICODESOLVER_HPP_
-#define _CAPD_DYNSYS_BASICODESOLVER_HPP_
+#ifndef CAPD_DYNSYS_BASICODESOLVER_HPP
+#define CAPD_DYNSYS_BASICODESOLVER_HPP
 
 #include <sstream>
 #include <string>
@@ -166,4 +166,4 @@ BasicOdeSolver<MapType, StepControlType, CurveT>::getCoeffNorm(size_type r, size
 /// @}
 }} //namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_BASICODESOLVER_HPP_
+#endif // CAPD_DYNSYS_BASICODESOLVER_HPP

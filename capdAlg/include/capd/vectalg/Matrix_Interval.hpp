@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_IMATRIX_HPP_
-#define _CAPD_VECTALG_IMATRIX_HPP_
+#ifndef CAPD_VECTALG_IMATRIX_HPP
+#define CAPD_VECTALG_IMATRIX_HPP
 
 #include "capd/vectalg/iobject.hpp"
 #include "capd/vectalg/Vector_Interval.hpp"
@@ -59,6 +59,6 @@ MatrixType krawczykInverse(const MatrixType& A)
 
 }
 }
-#endif // _CAPD_VECTALG_IMATRIX_HPP_
+#endif // CAPD_VECTALG_IMATRIX_HPP
 
 /// @}

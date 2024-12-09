@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details. 
 
-#ifndef _CAPD_DYNSET_NOREORGANIZATION_H_
-#define _CAPD_DYNSET_NOREORGANIZATION_H_
+#ifndef CAPD_DYNSET_NOREORGANIZATION_H
+#define CAPD_DYNSET_NOREORGANIZATION_H
 
 namespace capd{
 namespace dynset{
@@ -59,4 +59,4 @@ public:
 
 }}
 
-#endif /* _CAPD_DYNSET_NOREORGANIZATION_H_ */
+#endif // CAPD_DYNSET_NOREORGANIZATION_H

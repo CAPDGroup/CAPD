@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_NODETYPE_H_
-#define _CAPD_AUTODIFF_NODETYPE_H_
+#ifndef CAPD_AUTODIFF_NODETYPE_H
+#define CAPD_AUTODIFF_NODETYPE_H
 
 #include <vector>
 #include "capd/basicalg/Math.h"
@@ -308,4 +308,4 @@ capd::autodiff::Node atan(const capd::autodiff::Node&);
 capd::autodiff::Node asin(const capd::autodiff::Node&);
 capd::autodiff::Node acos(const capd::autodiff::Node&);
 
-#endif
+#endif // CAPD_AUTODIFF_NODETYPE_H

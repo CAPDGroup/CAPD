@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_QRREORGANIZATION_H_
-#define _CAPD_QRREORGANIZATION_H_
+#ifndef CAPD_QRREORGANIZATION_H
+#define CAPD_QRREORGANIZATION_H
 
 #include "capd/dynset/reorganization/FactorPolicy.h"
 #include "capd/dynset/DefaultPolicy.h"
@@ -137,4 +137,4 @@ public:
 
 /// @}
 }} // capd::dynset
-#endif // _CAPD_QRREORGANIZATION_H_
+#endif // CAPD_QRREORGANIZATION_H

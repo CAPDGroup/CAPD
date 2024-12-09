@@ -1,5 +1,5 @@
-#ifndef _CAPD_ALGLIB_CAPD2ALGLIB_H_
-#define _CAPD_ALGLIB_CAPD2ALGLIB_H_
+#ifndef CAPD_ALGLIB_CAPD2ALGLIB_H
+#define CAPD_ALGLIB_CAPD2ALGLIB_H
 
 #include <stdexcept>
 #include <sstream>
@@ -199,4 +199,4 @@ std::string eigenvectorsToString(const MatrixType &re, const MatrixType &im,
 /// @}
 }} // namespace capd::alglib
 
-#endif /*_CAPD_ALGLIB_CAPD2ALGLIB_H_*/
+#endif // CAPD_ALGLIB_CAPD2ALGLIB_H

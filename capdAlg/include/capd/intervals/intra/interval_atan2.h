@@ -1,6 +1,6 @@
 
-#ifndef _CAPD_INTERVALS_INTRA_INTERVAL_ATAN2_H_
-#define _CAPD_INTERVALS_INTRA_INTERVAL_ATAN2_H_
+#ifndef CAPD_INTERVALS_INTRA_INTERVAL_ATAN2_H
+#define CAPD_INTERVALS_INTRA_INTERVAL_ATAN2_H
 
 #include <iostream>
 #include "capd/intervals/IntervalError.h"
@@ -115,4 +115,4 @@ template <typename interval>
     }
   }
 }
-#endif //_CAPD_INTERVALS_INTRA_INTERVAL_ATAN2_H_
+#endif // CAPD_INTERVALS_INTRA_INTERVAL_ATAN2_H

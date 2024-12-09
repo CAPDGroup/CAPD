@@ -15,8 +15,8 @@
 
 /* Author: Daniel Wilczak 2005 */
 
-#ifndef _CAPD_DYNSYS_DYNSYSLIB_H_ 
-#define _CAPD_DYNSYS_DYNSYSLIB_H_ 
+#ifndef CAPD_DYNSYS_DYNSYSLIB_H
+#define CAPD_DYNSYS_DYNSYSLIB_H
 
 #include "capd/basicalg/factrial.h"
 #include "capd/map/Map.h"
@@ -147,6 +147,6 @@ typedef capd::dynsys::BasicCnSolver<LDCnMapMD> LDCnTaylorMD;
 
 #endif
 
-#endif // _CAPD_DYNSYS_DYNSYSLIB_H_ 
+#endif // CAPD_DYNSYS_DYNSYSLIB_H
 
 /// @}

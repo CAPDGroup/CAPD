@@ -14,8 +14,8 @@
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
 
-#ifndef _CAPD_MAP_PARSER_H_
-#define _CAPD_MAP_PARSER_H_
+#ifndef CAPD_MAP_PARSER_H
+#define CAPD_MAP_PARSER_H
 
 #include <string>
 #include <vector>
@@ -47,6 +47,6 @@ void removeWhiteSpaces(std::string & text);
 void optimizeDAG(std::vector<capd::autodiff::Node>& dag, std::vector<int>& pos);
 }} // namespace capd::map
 
-#endif // _CAPD_MAP_PARSER_H_
+#endif // CAPD_MAP_PARSER_H
 
 /// @}

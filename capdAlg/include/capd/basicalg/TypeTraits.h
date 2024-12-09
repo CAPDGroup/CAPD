@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_CAPD_TYPETRAITS_H_
-#define _CAPD_CAPD_TYPETRAITS_H_
+#ifndef CAPD_TYPETRAITS_H
+#define CAPD_TYPETRAITS_H
 
 //#include "capd/interval/Interval.h"
 //#include "capd/vectalg/Z2.h"
@@ -266,4 +266,4 @@ public:
 
 } // end of namespace capd
 
-#endif // _CAPD_CAPD_TYPETRAITS_H_
+#endif // CAPD_TYPETRAITS_H
