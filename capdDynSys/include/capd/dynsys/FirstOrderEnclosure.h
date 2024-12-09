@@ -1,5 +1,3 @@
-
-
 /////////////////////////////////////////////////////////////////////////////
 /// @file FirstOrderEnclosure.h
 ///
@@ -12,13 +10,13 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-/* Author: Daniel Wilczak 2001-2017 */
-
-#include "capd/diffAlgebra/C1TimeJet.h"
-#include "capd/diffAlgebra/C2TimeJet.h"
+// Author: Daniel Wilczak 2001-2017
 
 #ifndef _CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H_
 #define _CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H_
+
+#include "capd/diffAlgebra/C1TimeJet.h"
+#include "capd/diffAlgebra/C2TimeJet.h"
 
 namespace capd{
 namespace dynsys{

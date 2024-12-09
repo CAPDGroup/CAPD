@@ -13,6 +13,9 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef CAPD_VECTALG_FDLIB_H
+#define CAPD_VECTALG_FDLIB_H
+
 double power(int val,int ile);
 
 #include "capd/intervals/lib.h"
@@ -25,3 +28,5 @@ double power(int val,int ile);
 #include "capd/vectalg/Multiindex.h"
 
 #include "capd/vectalg/typedefs.h"
+
+#endif // CAPD_VECTALG_FDLIB_H

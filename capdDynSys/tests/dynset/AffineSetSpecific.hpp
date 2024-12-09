@@ -1,9 +1,9 @@
-/*
- * AffineSetSpecific.hpp
- *
- *  Created on: Oct 17, 2009
- *      Author: kapela
- */
+//
+// AffineSetSpecific.hpp
+//
+//  Created on: Oct 17, 2009
+//      Author: kapela
+//
 
 #ifndef AFFINESETSPECYFIC_HPP_
 #define AFFINESETSPECYFIC_HPP_
@@ -20,6 +20,4 @@ BOOST_AUTO_TEST_CASE(test_constructors1){
   BOOST_CHECK_EQUAL(v,T.get_r());
 }
 
-
-
-#endif /* AFFINESETSPECYFIC_HPP_ */
+#endif // AFFINESETSPECYFIC_HPP_

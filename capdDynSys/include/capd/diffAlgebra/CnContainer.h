@@ -13,13 +13,13 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef _CAPD_DIFFALGEBRA_CNCONTAINER_H_
+#define _CAPD_DIFFALGEBRA_CNCONTAINER_H_
+
 #include <stdexcept>
 #include "capd/basicalg/factrial.h"
 #include "capd/vectalg/Multiindex.h"
 #include "capd/vectalg/Container.h"
-
-#ifndef _CAPD_DIFFALGEBRA_CNCONTAINER_H_
-#define _CAPD_DIFFALGEBRA_CNCONTAINER_H_
 
 namespace capd{
 namespace diffAlgebra{

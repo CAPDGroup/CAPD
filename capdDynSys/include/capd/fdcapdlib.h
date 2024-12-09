@@ -13,6 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef CAPD_FDCAPDLIB_H
+#define CAPD_FDCAPDLIB_H
 
 #include "capd/intervals/lib.h"
 #include "capd/vectalg/fdlib.h"
@@ -23,3 +25,5 @@
 #include "capd/poincare/fdlib.h"
 
 #include "capd/matrixAlgorithms/lib.h"
+
+#endif // CAPD_FDCAPDLIB_H

@@ -1,9 +1,10 @@
-/*
- * commonTests.hpp
- *
- *  Created on: 2009-09-02
- *      Author: iikapela
- */
+//
+// commonTests.hpp
+//
+//  Created on: 2009-09-02
+//      Author: iikapela
+//
+
 #ifndef _UNITTESTS_INTERVALS_COMMONTESTS_HPP_
 #define _UNITTESTS_INTERVALS_COMMONTESTS_HPP_
 

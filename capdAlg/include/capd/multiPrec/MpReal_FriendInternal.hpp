@@ -15,7 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-
+#ifndef CAPD_MP_REAL_FRIEND_INTERNAL_HPP
+#define CAPD_MP_REAL_FRIEND_INTERNAL_HPP
 
 inline friend MpReal agm(const MpReal& r1, const MpReal& r2, MpReal::RoundingMode rnd= MpReal::getDefaultRndMode()) {
   MpReal res;
@@ -251,3 +252,5 @@ inline friend MpReal nextToward(const MpReal& r, const MpReal& dir) {
   mpfr_nexttoward(res.mpfr_rep, dir.mpfr_rep);
   return res;
 }
+
+#endif // CAPD_MP_REAL_FRIEND_INTERNAL_HPP

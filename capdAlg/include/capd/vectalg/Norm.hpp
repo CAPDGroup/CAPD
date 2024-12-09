@@ -13,13 +13,13 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef _CAPD_VECTALG_NORM_HPP_ 
+#define _CAPD_VECTALG_NORM_HPP_ 
+
 #include <sstream>
 #include "capd/vectalg/Norm.h"
 #include "capd/basicalg/minmax.h"
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.hpp"
-
-#ifndef _CAPD_VECTALG_NORM_HPP_ 
-#define _CAPD_VECTALG_NORM_HPP_ 
 
 namespace capd{
 namespace vectalg{

@@ -1,9 +1,9 @@
-/*
- * SetTypeCommonTest.cpp
- *
- *  Created on: Oct 16, 2009
- *      Author: kapela
- */
+//
+// SetTypeCommonTest.cpp
+//
+//  Created on: Oct 16, 2009
+//      Author: kapela
+//
 
 #ifndef AFFINESETCOMMONTEST_CPP_
 #define AFFINESETCOMMONTEST_CPP_

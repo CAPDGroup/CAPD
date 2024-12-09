@@ -18,11 +18,11 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-// Protects against compilations in systems without mpfr and gmp package
-#ifdef __HAVE_MPFR__
-
 #ifndef _CAPD_MULTIPREC_MPINT_H_
 #define _CAPD_MULTIPREC_MPINT_H_
+
+// Protects against compilations in systems without mpfr and gmp package
+#ifdef __HAVE_MPFR__
 
 #include <cstddef>
 #include <gmpxx.h>

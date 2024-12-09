@@ -13,6 +13,9 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef CAPD_POINCARE_TYPEDEFS_H
+#define CAPD_POINCARE_TYPEDEFS_H
+
 namespace CAPD_USER_NAMESPACE{
 
 // classes for nonrigorous computations
@@ -59,3 +62,5 @@ typedef capd::poincare::TimeMap<CAPD_USER_NAMESPACE::IC2OdeSolver> IC2TimeMap;
 typedef capd::poincare::TimeMap<CAPD_USER_NAMESPACE::ICnOdeSolver> ICnTimeMap;
 
 } // end of namespace capd
+
+#endif // CAPD_POINCARE_TYPEDEFS_H

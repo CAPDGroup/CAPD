@@ -12,12 +12,11 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef _CAPD_PDES_GeometricBound_HPP_
+#define _CAPD_PDES_GeometricBound_HPP_
 
 #include "capd/pdes/GeometricBound.h"
 #include "capd/vectalg/Vector.hpp"
-
-#ifndef _CAPD_PDES_GeometricBound_HPP_
-#define _CAPD_PDES_GeometricBound_HPP_
 
 namespace capd {
 namespace pdes {
@@ -187,5 +186,3 @@ GeometricBound<ScalarT> intersection(const GeometricBound<ScalarT>& x, const Geo
 #endif // _CAPD_PDES_GeometricBound_HPP_
 
 /// @}
-
-

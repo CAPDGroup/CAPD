@@ -13,6 +13,9 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef CAPD_VECTALG_TYPEDEFS_H
+#define CAPD_VECTALG_TYPEDEFS_H
+
 #ifndef CAPD_DEFAULT_DIMENSION
 #error "Define macro CAPD_DEFAULT_DIMENSION before including capd/vectalg/typedefs.h"
 #endif
@@ -61,3 +64,5 @@ typedef capd::vectalg::Multiindex Multiindex;
 typedef capd::vectalg::Multipointer Multipointer;
 
 } // end of the namespace
+
+#endif // CAPD_VECTALG_TYPEDEFS_H

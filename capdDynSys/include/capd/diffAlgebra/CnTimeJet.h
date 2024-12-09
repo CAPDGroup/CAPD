@@ -13,13 +13,13 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef _CAPD_DIFFALGEBRA_CNTIMEJET_H_
+#define _CAPD_DIFFALGEBRA_CNTIMEJET_H_
+
 #include <vector>
 #include "capd/diffAlgebra/TimeRange.h"
 #include "capd/diffAlgebra/Jet.h"
 #include "capd/diffAlgebra/CoeffTraits.h"
-
-#ifndef _CAPD_DIFFALGEBRA_CNTIMEJET_H_
-#define _CAPD_DIFFALGEBRA_CNTIMEJET_H_
 
 namespace capd{
 namespace diffAlgebra{
