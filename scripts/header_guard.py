@@ -57,7 +57,7 @@ class HeaderFile:
 
 
     def __match_ifndef(self, line : str) -> bool:
-        result = re.match(r'#ifndef\s+([A-Z0-9_]*)', line)
+        result = re.match(r'#ifndef\s+([A-Za-z0-9_]*)', line)
         if result:
             self.header_guard = result.group(1)
             trace.debug(self.header_guard)
