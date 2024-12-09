@@ -13,7 +13,7 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#if !defined(_CAPD_COMMANDLINEARGS_H_)
+#ifndef _CAPD_COMMANDLINEARGS_H_
 #define _CAPD_COMMANDLINEARGS_H_
 #include <map>
 #include "capd/auxil/stringOstream.h"
