@@ -24,14 +24,6 @@ class State(Enum):
     ERROR = -1
 
 
-def match_ifndef(line : str):
-    result = re.match(r'#ifndef ([A-Z_]*)', line)
-    if result:
-        return True, result.group(1)
-    else:
-        return False, ''
-
-
 class HeaderFile:
     def __init__(self, path):
         self.path = path
@@ -67,7 +59,7 @@ class HeaderFile:
 
 
     def __match_ifndef(self, line : str) -> bool:
-        result = re.match(r'#ifndef ([A-Z_]*)', line)
+        result = re.match(r'#ifndef\s+([A-Z0-9_]*)', line)
         if result:
             self.header_guard = result.group(1)
             trace.info(self.header_guard)
@@ -131,6 +123,10 @@ if __name__ == "__main__":
 
         trace.info(f'Files analyzed: {len(header_files)}')
         trace.info(f'Files with err: {sum([header_file.state == State.ERROR for header_file in header_files])}')
+
+        for header_file in header_files:
+            if header_file.state == State.ERROR:
+                trace.info(header_file.path)
 
         
     else:
