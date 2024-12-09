@@ -108,6 +108,16 @@ def process(path : str) -> HeaderFile:
     return header_file
 
 
+def check_unique_header_guard_names(header_files : List[HeaderFile]):
+
+    header_guards = []
+    for h in header_files:
+        if h.header_guard in header_guards:
+            trace.warning(f'Duplicate header guard label: {h.header_guard} in {h.path}')
+        else:
+            header_guards.append(h.header_guard)
+
+
 if __name__ == "__main__":
 
     logging.basicConfig(level=logging.DEBUG)
@@ -126,7 +136,10 @@ if __name__ == "__main__":
 
         for header_file in header_files:
             if header_file.state == State.ERROR:
-                trace.info(header_file.path)
+                trace.warning(header_file.path)
+
+        check_unique_header_guard_names(header_files)
+        
 
     else:
         print("Invalid directory")
