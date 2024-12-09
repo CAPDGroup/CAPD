@@ -13,9 +13,6 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef CAPD_POINCARE_FDLIB_H
-#define CAPD_POINCARE_FDLIB_H
-
 #include "capd/poincare/PoincareMap.hpp"
 #include "capd/poincare/TimeMap.hpp"
 #include "capd/poincare/AffineSection.h"
@@ -23,5 +20,3 @@
 #include "capd/poincare/NonlinearSection.h"
 #include "capd/poincare/AbstractSection.hpp"
 #include "capd/poincare/typedefs.h"
-
-#endif // CAPD_POINCARE_FDLIB_H

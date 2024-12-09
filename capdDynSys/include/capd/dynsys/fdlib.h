@@ -13,9 +13,6 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef CAPD_DYNSYS_FDLIB_H
-#define CAPD_DYNSYS_FDLIB_H
-
 #include "capd/basicalg/factrial.h"
 #include "capd/dynsys/SolverException.h"
 #include "capd/dynsys/OdeSolver.hpp"
@@ -23,5 +20,3 @@
 #include "capd/dynsys/CnOdeSolver.hpp"
 
 #include "capd/dynsys/typedefs.h"
-
-#endif // CAPD_DYNSYS_FDLIB_H
