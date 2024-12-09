@@ -90,7 +90,7 @@ class HeaderFile:
 
 
     def __match_define(self, line : str) -> bool:
-        return re.match(r'^#define\s+' + self.header_guard, line)
+        return re.match(r'^#define\s+' + self.header_guard + '$', line)
     
 
     def __match_if_or_ifdef(self, line : str) -> bool:
@@ -164,8 +164,6 @@ def process(path : str) -> HeaderFile:
             finally:
                 pass
     
-    trace.debug(header_file.state)
-
     status = os.stat(path)
     permissions = status.st_mode & 0o777
     os.remove(path)
