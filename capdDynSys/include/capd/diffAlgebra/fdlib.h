@@ -14,9 +14,6 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef CAPD_DIFFALGEBRA_FDLIB_H
-#define CAPD_DIFFALGEBRA_FDLIB_H
-
 #include "capd/diffAlgebra/C0TimeJet.h"
 #include "capd/diffAlgebra/C1TimeJet.h"
 #include "capd/diffAlgebra/C2TimeJet.h"
@@ -49,6 +46,4 @@ typedef capd::diffAlgebra::Jet<CAPD_USER_NAMESPACE::LDMatrix,0> LDJet;
 typedef capd::diffAlgebra::Jet<CAPD_USER_NAMESPACE::IMatrix,0> IJet;
 
 } // end of namespace CAPD_USER_NAMESPACE
-
-#endif // CAPD_DIFFALGEBRA_FDLIB_H
 

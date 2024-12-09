@@ -13,9 +13,6 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef CAPD_DYNSYS_TYPEDEFS_H
-#define CAPD_DYNSYS_TYPEDEFS_H
-
 namespace CAPD_USER_NAMESPACE{
 
 typedef capd::dynsys::DynSys<CAPD_USER_NAMESPACE::IMatrix> IDynSys;
@@ -52,5 +49,3 @@ typedef capd::dynsys::BasicC2OdeSolver<CAPD_USER_NAMESPACE::LDMap> LDC2Taylor;
 typedef capd::dynsys::BasicCnOdeSolver<CAPD_USER_NAMESPACE::LDMap> LDCnTaylor;
 
 } // end of namespace capd
-
-#endif // CAPD_DYNSYS_TYPEDEFS_H
