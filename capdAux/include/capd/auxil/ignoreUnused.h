@@ -7,6 +7,9 @@
 
 #ifndef CAPD_AUXIL_IGNOREUNUSED_H
 #define	CAPD_AUXIL_IGNOREUNUSED_H
+
+// @todo Why not just (void)arg; ?
+
 namespace capd{
   namespace auxil{
 
