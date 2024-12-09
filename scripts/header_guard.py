@@ -30,6 +30,7 @@ class HeaderFile:
         self.header_guard = ''
         self.header_guard_new = ''
         self.state = State.PREAMBLE
+        self.endif_counter = 0
 
 
     def process_line(self, line : str) -> str:
@@ -37,6 +38,7 @@ class HeaderFile:
         if self.state == State.PREAMBLE:
             if self.__match_ifndef(line):
                 self.state = State.INCLUSION_GUARD_IFNDEF
+                self.endif_counter += 1
                 # line = f'#ifndef {self.header_guard_new}'
             elif self.__match_online_multiline_comment(line):
                 pass
@@ -51,8 +53,22 @@ class HeaderFile:
                 # line = f'#define {self.header_guard_new}'
         
         elif self.state == State.INCLUSION_GUARD_DEFINE:
-            pass
+            if self.__match_if_or_ifdef(line):
+                self.endif_counter += 1
+            elif self.__match_endif(line):
+                self.endif_counter -= 1
+
+            if self.endif_counter == 0:
+                self.state = State.INCLUSION_GUARD_ENDIF
+                # line = f'#endif // {self.header_guard_new}'
         
+        elif self.state == State.INCLUSION_GUARD_ENDIF:
+            if self.__match_comment_or_empty_line(line):
+                pass
+            else:
+                print(line)
+                self.state = State.ERROR
+
         else:
             self.state = State.ERROR
 
@@ -74,7 +90,15 @@ class HeaderFile:
 
 
     def __match_define(self, line : str) -> bool:
-        return re.match(r'^#define\s+' + self.header_guard + '', line)
+        return re.match(r'^#define\s+' + self.header_guard, line)
+    
+
+    def __match_if_or_ifdef(self, line : str) -> bool:
+        return re.match(r'^\s*#if\(?\s+', line) or re.match(r'^\s*#ifdef\s+', line) or re.match(r'^\s*#ifndef\s+', line)
+    
+
+    def __match_endif(self, line : str) -> bool:
+        return re.match(r'^\s*#endif\s*', line)
 
 
     def __match_comment_or_empty_line(self, line : str) -> bool:
@@ -90,8 +114,8 @@ class HeaderFile:
         # remove underscores
         header_guard = header_guard.strip('_')
 
-        assert not header_guard.startswith('_')
-        assert not header_guard.endswith('_')
+        # set to uppercase
+        header_guard = header_guard.upper()
 
         # ensure start with single CAPD_
         if header_guard.startswith('CAPD_CAPD_'):
@@ -174,10 +198,10 @@ if __name__ == "__main__":
         header_files = [process(path) for path in header_file_paths]
 
         trace.info(f'Files analyzed: {len(header_files)}')
-        trace.info(f'Files with err: {sum([header_file.state != State.INCLUSION_GUARD_DEFINE for header_file in header_files])}')
+        trace.info(f'Files with err: {sum([header_file.state != State.INCLUSION_GUARD_ENDIF for header_file in header_files])}')
 
         for header_file in header_files:
-            if header_file.state != State.INCLUSION_GUARD_DEFINE:
+            if header_file.state != State.INCLUSION_GUARD_ENDIF:
                 trace.warning(header_file.path)
 
         check_unique_header_guard_names(header_files)
