@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_ODESOLVER_H_
-#define _CAPD_DYNSYS_ODESOLVER_H_
+#ifndef CAPD_DYNSYS_ODESOLVER_H
+#define CAPD_DYNSYS_ODESOLVER_H
 
 #include <string>
 #include <stdexcept>
@@ -254,6 +254,6 @@ inline void OdeSolver<MapType,StepControlPolicy,EnclosurePolicy,CurveType>::comp
 
 }} // namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_ODESOLVER_H_
+#endif // CAPD_DYNSYS_ODESOLVER_H
 
 /// @}

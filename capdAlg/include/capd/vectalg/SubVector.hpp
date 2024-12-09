@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_SUBVECTOR_HPP_
-#define _CAPD_VECTALG_SUBVECTOR_HPP_
+#ifndef CAPD_VECTALG_SUBVECTOR_HPP
+#define CAPD_VECTALG_SUBVECTOR_HPP
 
 #include "capd/vectalg/SubVector.h"
 
@@ -93,6 +93,6 @@ void copyFromSubmatrix(const MatrixType1 & src,
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_SUBVECTOR_HPP_
+#endif // CAPD_VECTALG_SUBVECTOR_HPP
 
 /// @}

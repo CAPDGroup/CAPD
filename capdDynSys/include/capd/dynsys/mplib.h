@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_MPLIB_H_
-#define _CAPD_DYNSYS_MPLIB_H_
+#ifndef CAPD_DYNSYS_MPLIB_H
+#define CAPD_DYNSYS_MPLIB_H
 
 
 #include "capd/basicalg/factrial.h"
@@ -59,4 +59,4 @@ namespace capd{
 
 #endif //__HAVE_MPFR__
 
-#endif // _CAPD_DYNSYS_MPLIB_H_
+#endif // CAPD_DYNSYS_MPLIB_H

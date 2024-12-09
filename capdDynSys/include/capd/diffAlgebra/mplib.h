@@ -14,8 +14,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_MPLIB_H_
-#define _CAPD_DIFFALGEBRA_MPLIB_H_
+#ifndef CAPD_DIFFALGEBRA_MPLIB_H
+#define CAPD_DIFFALGEBRA_MPLIB_H
 
 #include "capd/vectalg/mplib.h"
 #include "capd/diffAlgebra/C0TimeJet.h"
@@ -49,4 +49,4 @@ typedef capd::diffAlgebra::Jet<capd::MpIMatrix,0> MpIJet;
 
 #endif //__HAVE_MPFR__
 
-#endif // _CAPD_DIFFALGEBRA_MPLIB_H_
+#endif // CAPD_DIFFALGEBRA_MPLIB_H

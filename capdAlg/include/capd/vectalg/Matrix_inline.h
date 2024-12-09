@@ -23,8 +23,8 @@
 // with this software; see the file "license.txt".  If not, write to the
 // Free Software Foundation, Inc., 59
 
-#ifndef _CAPD_VECTALG_MATRIX_INLINE_H_
-#define _CAPD_VECTALG_MATRIX_INLINE_H_
+#ifndef CAPD_VECTALG_MATRIX_INLINE_H
+#define CAPD_VECTALG_MATRIX_INLINE_H
 
 #include "capd/vectalg/Matrix.h"
 #include "capd/basicalg/TypeTraits.h"
@@ -420,6 +420,6 @@ typename Matrix<Scalar,cols,rows>::ScalarType secondTrace(const Matrix<Scalar,co
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_MATRIX_INLINE_H_
+#endif // CAPD_VECTALG_MATRIX_INLINE_H
 
 /// @}

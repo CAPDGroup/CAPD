@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_PARAMETRICCURVE_H_
-#define _CAPD_DIFFALGEBRA_PARAMETRICCURVE_H_
+#ifndef CAPD_DIFFALGEBRA_PARAMETRICCURVE_H
+#define CAPD_DIFFALGEBRA_PARAMETRICCURVE_H
 
 #include <stdexcept>
 #include <vector>
@@ -99,4 +99,4 @@ typename ParametricCurve<MatrixT,VectorT>::Real ParametricCurve<MatrixT,VectorT>
 
 }} // namespace capd::diffAlgebra
 
-#endif
+#endif // CAPD_DIFFALGEBRA_PARAMETRICCURVE_H

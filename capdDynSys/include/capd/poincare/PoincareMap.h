@@ -9,8 +9,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_POINCARE_POINCARE_MAP_H_
-#define _CAPD_POINCARE_POINCARE_MAP_H_
+#ifndef CAPD_POINCARE_POINCARE_MAP_H
+#define CAPD_POINCARE_POINCARE_MAP_H
 
 #include <string>
 #include "capd/dynset/AffineCoordinateChange.h"
@@ -226,5 +226,5 @@ protected:
 #include "capd/poincare/PoincareMap_templateMembers.h"
 #include "capd/poincare/PoincareMap_templateOperator.h"
 
-#endif  /* _POINCAREMAP_H */
+#endif // CAPD_POINCARE_POINCARE_MAP_H
 

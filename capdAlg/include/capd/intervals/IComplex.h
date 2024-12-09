@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_INTERVAL_ICOMPLEX_H_
-#define _CAPD_INTERVAL_ICOMPLEX_H_
+#ifndef CAPD_INTERVAL_ICOMPLEX_H
+#define CAPD_INTERVAL_ICOMPLEX_H
 
 #include "capd/fields/Complex.h"
 
@@ -27,6 +27,7 @@ namespace intervals {
 /// @deprecated
 template<typename T>
 using IComplex = capd::fields::Complex<T>;
-}}
+}
 
-#endif // _CAPD_INTERVAL_ICOMPLEX_H_
+}
+#endif // CAPD_INTERVAL_ICOMPLEX_H

@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_C0HODOUBLETONSET_HPP_
-#define _CAPD_DYNSET_C0HODOUBLETONSET_HPP_
+#ifndef CAPD_DYNSET_C0HODOUBLETONSET_HPP
+#define CAPD_DYNSET_C0HODOUBLETONSET_HPP
 
 #include "capd/dynset/C0HODoubletonSet.h"
 #include "capd/dynset/C0DoubletonSet.hpp"
@@ -65,5 +65,5 @@ C0HODoubletonSet<MatrixT,Policies>::C0HODoubletonSet(const VectorType& x, const 
 /// @}
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C0HODOUBLETONSET_HPP_
+#endif // CAPD_DYNSET_C0HODOUBLETONSET_HPP
 

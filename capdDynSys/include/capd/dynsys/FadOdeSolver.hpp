@@ -11,8 +11,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_FADODESOLVER_HPP_
-#define _CAPD_DYNSYS_FADODESOLVER_HPP_
+#ifndef CAPD_DYNSYS_FADODESOLVER_HPP
+#define CAPD_DYNSYS_FADODESOLVER_HPP
 
 #include "capd/basicalg/power.h"
 #include "capd/dynsys/FadOdeSolver.h"
@@ -210,6 +210,6 @@ FadOdeSolver<FadMapT,StepControlT>::getCoeffNorm(size_type r, size_type degree) 
 /// @}
 }} // the end of the namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_FADODESOLVER_HPP_
+#endif // CAPD_DYNSYS_FADODESOLVER_HPP
 
 

@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_DYNSYS_HPP_
-#define _CAPD_DYNSYS_DYNSYS_HPP_
+#ifndef CAPD_DYNSYS_DYNSYS_HPP
+#define CAPD_DYNSYS_DYNSYS_HPP
 
 #include "capd/dynsys/DynSys.h"
 #include "capd/vectalg/Norm.hpp"
@@ -33,6 +33,6 @@ DynSys<MatrixType>::Lipschitz(const ScalarType& t, const VectorType &iv, NormTyp
 /// @}
 }} // namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_DYNSYS_HPP_
+#endif // CAPD_DYNSYS_DYNSYS_HPP
 
 

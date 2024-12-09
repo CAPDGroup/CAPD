@@ -13,12 +13,13 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_INTERVAL_INTERVALFUN_HPP_
-#define _CAPD_INTERVAL_INTERVALFUN_HPP_
+#ifndef CAPD_INTERVAL_INTERVALFUN_HPP
+#define CAPD_INTERVAL_INTERVALFUN_HPP
 
 #include <iostream>
 #include <cmath>
 #include <limits>
+#include "capd/intervals/intra/interval_atan2.h"
 
 using std::sqrt;
 using std::log;
@@ -574,6 +575,14 @@ Interval< T_Bound, T_Rnd> atan (const Interval< T_Bound, T_Rnd> &x)
 
 } // atan
 
+/// atan2(x,y) return an angle in polar coordinates of a point (x,y)
+/// angle is in [-pi, pi+ pi/2]  (special case for negative half line OX)
+template < typename T_Bound, typename T_Rnd>
+Interval< T_Bound, T_Rnd> atan2 (const Interval< T_Bound, T_Rnd> &x, const Interval< T_Bound, T_Rnd> &y){
+  return ::capd::intervals::intra::atan2(x, y);
+
+}// atan2
+
 //////////////////////////////////////////////////////////////////////////
 //   scaledAsin1
 ///
@@ -1032,4 +1041,4 @@ Interval< T_Bound, T_Rnd> solveAffineInclusion(const Interval< T_Bound, T_Rnd> &
 
 }} // namespace capd::intervals
 
-#endif // _CAPD_INTERVAL_INTERVALFUN_HPP_
+#endif // CAPD_INTERVAL_INTERVALFUN_HPP

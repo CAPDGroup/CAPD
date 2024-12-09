@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_NEWTON_NEWTONRESULT_H_
-#define _CAPD_NEWTON_NEWTONRESULT_H_
+#ifndef CAPD_NEWTON_NEWTONRESULT_H
+#define CAPD_NEWTON_NEWTONRESULT_H
 
 namespace capd{
 namespace newton{
@@ -39,4 +39,4 @@ inline std::string resultToText(NewtonResult code)
 
 }} // namespace capd::newton
 
-#endif // _CAPD_NEWTON_NEWTONRESULT_H_
+#endif // CAPD_NEWTON_NEWTONRESULT_H

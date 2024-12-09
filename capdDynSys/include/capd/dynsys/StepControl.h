@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_STEP_CONTROL_H_
-#define _CAPD_DYNSYS_STEP_CONTROL_H_
+#ifndef CAPD_DYNSYS_STEP_CONTROL_H
+#define CAPD_DYNSYS_STEP_CONTROL_H
 
 #include <cmath>
 #include "capd/basicalg/minmax.h"
@@ -442,5 +442,5 @@ public:
 }} // namespace capd::dynsys
 
 
-#endif // #define _CAPD_POINCARE_STEP_CONTROL_H_
+#endif // CAPD_DYNSYS_STEP_CONTROL_H
 /// @}

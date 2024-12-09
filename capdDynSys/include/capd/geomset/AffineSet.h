@@ -14,8 +14,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_GEOMSET_AFFINESET_H_
-#define _CAPD_GEOMSET_AFFINESET_H_
+#ifndef CAPD_GEOMSET_AFFINESET_H
+#define CAPD_GEOMSET_AFFINESET_H
 
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.h"
 
@@ -128,5 +128,5 @@ inline AffineSet<MatrixT>::operator typename AffineSet<MatrixT>::VectorType(void
 }
 
 }} //end of namespace capd::geomset
-#endif
+#endif // CAPD_GEOMSET_AFFINESET_H
 

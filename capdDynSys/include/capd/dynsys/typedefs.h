@@ -49,4 +49,3 @@ typedef capd::dynsys::BasicC2OdeSolver<CAPD_USER_NAMESPACE::LDMap> LDC2Taylor;
 typedef capd::dynsys::BasicCnOdeSolver<CAPD_USER_NAMESPACE::LDMap> LDCnTaylor;
 
 } // end of namespace capd
-

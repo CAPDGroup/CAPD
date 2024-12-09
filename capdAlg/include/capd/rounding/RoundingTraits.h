@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_ROUNDING_ROUNDINGTRAITS_H_
-#define _CAPD_ROUNDING_ROUNDINGTRAITS_H_
+#ifndef CAPD_ROUNDING_ROUNDINGTRAITS_H
+#define CAPD_ROUNDING_ROUNDINGTRAITS_H
 
 #include "capd/rounding/DoubleRounding.h"
 #include "capd/rounding/IntRounding.h"
@@ -77,4 +77,4 @@ void setRounding(const capd::rounding::RoundingMode & rounding){
 
 }} // end of namespace capd::rounding
 
-#endif /* _CAPD_ROUNDING_ROUNDINGTRAITS_H_ */
+#endif // CAPD_ROUNDING_ROUNDINGTRAITS_H

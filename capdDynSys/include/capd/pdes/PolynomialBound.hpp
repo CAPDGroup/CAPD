@@ -13,8 +13,8 @@
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
 
-#ifndef _CAPD_PDES_POLYNOMIALBOUND_HPP_ 
-#define _CAPD_PDES_POLYNOMIALBOUND_HPP_ 
+#ifndef CAPD_PDES_POLYNOMIALBOUND_HPP
+#define CAPD_PDES_POLYNOMIALBOUND_HPP
 
 #include "capd/pdes/PolynomialBound.h"
 namespace capd {
@@ -302,7 +302,7 @@ std::ostream& operator << (std::ostream& s, const PolynomialBound<Scalar, Expone
 } // end of namespace pdes
 } // end of namespace capd
 
-#endif // _CAPD_PDES_POLYNOMIALBOUND_HPP_ 
+#endif // CAPD_PDES_POLYNOMIALBOUND_HPP
 
 /// @}
 

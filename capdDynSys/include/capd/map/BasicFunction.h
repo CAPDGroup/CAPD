@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MAP_BASICFUNCTION_H_
-#define _CAPD_MAP_BASICFUNCTION_H_
+#ifndef CAPD_MAP_BASICFUNCTION_H
+#define CAPD_MAP_BASICFUNCTION_H
 
 #include <string>
 #include <map>
@@ -259,6 +259,6 @@ void BasicFunction<Scalar>::setArgument(const V& v) const
 }
 }} // the end of the namespace capd::map
 
-#endif // _CAPD_MAP_BASICFUNCTION_H_
+#endif // CAPD_MAP_BASICFUNCTION_H
 
 /// @}

@@ -11,8 +11,8 @@
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
 
-#ifndef _CAPD_INTERVAL_MPINTERVAL_FUN_H_
-#define _CAPD_INTERVAL_MPINTERVAL_FUN_H_
+#ifndef CAPD_INTERVAL_MPINTERVAL_FUN_HPP
+#define CAPD_INTERVAL_MPINTERVAL_FUN_HPP
 
 #include <exception>
 #include "capd/intervals/MpInterval.h"
@@ -107,5 +107,5 @@ int modulo4(MpReal x);
 }} // end of namespace capd::intervals
 
 #endif  // __HAVE_MPFR__
-#endif // _CAPD_INTERVAL_MPINTERVALFUN_H_ 
+#endif // CAPD_INTERVAL_MPINTERVAL_FUN_HPP
 

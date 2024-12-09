@@ -11,8 +11,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_FADODESOLVER_H_
-#define _CAPD_DYNSYS_FADODESOLVER_H_
+#ifndef CAPD_DYNSYS_FADODESOLVER_H
+#define CAPD_DYNSYS_FADODESOLVER_H
 
 #include "capd/vectalg/Norm.h"
 #include "capd/dynsys/C1DynSys.h"
@@ -179,6 +179,6 @@ inline void FadOdeSolver<FadMapT,StepControlT>::computeRemainderCoefficients(Sca
 /// @}
 }} // the end of the namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_FADODESOLVER_H_
+#endif // CAPD_DYNSYS_FADODESOLVER_H
 
 

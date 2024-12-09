@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFINCL_INCLRECT2SET_HPP_ 
-#define _CAPD_DIFFINCL_INCLRECT2SET_HPP_ 
+#ifndef CAPD_DIFFINCL_INCLRECT2SET_HPP
+#define CAPD_DIFFINCL_INCLRECT2SET_HPP
 
 #include "capd/diffIncl/InclRect2Set.h"
 #include "capd/dynset/C0DoubletonSet.hpp"
@@ -58,6 +58,6 @@ namespace capd{
     
   }} // namespace capd::diffIncl
 
-#endif // _CAPD_DIFFINCL_INCLRECT2SET_HPP_ 
+#endif // CAPD_DIFFINCL_INCLRECT2SET_HPP
 
 /// @}

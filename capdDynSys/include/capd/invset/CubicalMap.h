@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_INVSET_CUBICALMAP_H_
-#define _CAPD_INVSET_CUBICALMAP_H_
+#ifndef CAPD_INVSET_CUBICALMAP_H
+#define CAPD_INVSET_CUBICALMAP_H
 #include <iostream>
 #include <list>
 #include <vector>
@@ -549,4 +549,4 @@ private:
 }
 } // end of namespace capd::invset
 
-#endif // _CAPD_INVSET_CUBICALMAP_H_
+#endif // CAPD_INVSET_CUBICALMAP_H

@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_C1AFFINESET_H_
-#define _CAPD_DYNSET_C1AFFINESET_H_
+#ifndef CAPD_DYNSET_C1AFFINESET_H
+#define CAPD_DYNSET_C1AFFINESET_H
 
 #include "capd/dynset/C1Set.h"
 #include "capd/geomset/CenteredAffineSet.h"
@@ -118,4 +118,4 @@ s*/
 
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C1AFFINESET_H_
+#endif // CAPD_DYNSET_C1AFFINESET_H

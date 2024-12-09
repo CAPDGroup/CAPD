@@ -6,8 +6,8 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-#ifndef _CAPD_AUXIL_CONFIG_FILE_READER_H_
-#define _CAPD_AUXIL_CONFIG_FILE_READER_H_
+#ifndef CAPD_AUXIL_CONFIG_FILE_READER_H
+#define CAPD_AUXIL_CONFIG_FILE_READER_H
 
 #include <iostream>
 #include <map>
@@ -268,4 +268,4 @@ inline std::ostream& operator <<(std::ostream& outs, const ConfigFileReader& d) 
 #undef  CAPD_WARN
 #undef  CAPD_TRACE
 #undef  CAPD_CLASS_LOGGER 
-#endif //_CAPD_AUXIL_CONFIG_FILE_READER_H_
+#endif // CAPD_AUXIL_CONFIG_FILE_READER_H

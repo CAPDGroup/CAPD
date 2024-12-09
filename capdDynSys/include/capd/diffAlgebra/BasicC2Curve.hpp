@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_BASICC2CURVE_HPP_
-#define _CAPD_DIFFALGEBRA_BASICC2CURVE_HPP_
+#ifndef CAPD_DIFFALGEBRA_BASICC2CURVE_HPP
+#define CAPD_DIFFALGEBRA_BASICC2CURVE_HPP
 
 #include <stdexcept>
 #include "capd/diffAlgebra/Hessian.hpp"
@@ -107,4 +107,4 @@ void BasicC2Curve<MatrixT>::copyData(const BasicC2Curve& c){
 ///@}
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_BASICC2CURVE_HPP_
+#endif // CAPD_DIFFALGEBRA_BASICC2CURVE_HPP

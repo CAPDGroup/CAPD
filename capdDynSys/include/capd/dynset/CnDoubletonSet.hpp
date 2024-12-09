@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details. 
 
-#ifndef _CAPD_DYNSET_CNDOUBLETON_HPP_
-#define _CAPD_DYNSET_CNDOUBLETON_HPP_
+#ifndef CAPD_DYNSET_CNDOUBLETON_HPP
+#define CAPD_DYNSET_CNDOUBLETON_HPP
 
 #include "capd/dynset/CnDoubletonSet.h"
 #include "capd/vectalg/iobject.hpp"
@@ -165,4 +165,4 @@ CnDoubletonSet<MatrixT,Policies,DEGREE>::CnDoubletonSet(const JetType& x, Scalar
 
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_CNDOUBLETON_HPP_
+#endif // CAPD_DYNSET_CNDOUBLETON_HPP

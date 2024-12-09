@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_C0HODOUBLETONSET_H_
-#define _CAPD_DYNSET_C0HODOUBLETONSET_H_
+#ifndef CAPD_DYNSET_C0HODOUBLETONSET_H
+#define CAPD_DYNSET_C0HODOUBLETONSET_H
 
 #include "capd/dynset/C0DoubletonSet.h"
 #include "capd/geomset/CenteredDoubletonSet.h"
@@ -196,5 +196,5 @@ void C0HODoubletonSet<MatrixT,Policies>::move(Solver& solver, C0HODoubletonSet& 
 /// @}
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C0HODOUBLETONSET_H_
+#endif // CAPD_DYNSET_C0HODOUBLETONSET_H
 

@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_FADCURVE_HPP_
-#define _CAPD_DIFFALGEBRA_FADCURVE_HPP_
+#ifndef CAPD_DIFFALGEBRA_FADCURVE_HPP
+#define CAPD_DIFFALGEBRA_FADCURVE_HPP
 
 #include "capd/diffAlgebra/FadCurve.h"
 
@@ -60,5 +60,5 @@ void FadCurve<MatrixT>::clearCoefficients()
 ///@}
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_CURVE_HPP_
+#endif // CAPD_DIFFALGEBRA_FADCURVE_HPP
 

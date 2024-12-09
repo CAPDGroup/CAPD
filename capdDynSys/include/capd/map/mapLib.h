@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_MAP_MAPLIB_H_ 
-#define _CAPD_MAP_MAPLIB_H_ 
+#ifndef CAPD_MAP_MAPLIB_H
+#define CAPD_MAP_MAPLIB_H
 
 #include "capd/vectalg/vectalgLib.h"
 #include "capd/map/Function.h"
@@ -50,6 +50,6 @@ typedef capd::map::Map<LDMatrixMD> LDMapMD;
 
 
 
-#endif // _CAPD_MAP_MAPLIB_H_ 
+#endif // CAPD_MAP_MAPLIB_H
 
 /// @}

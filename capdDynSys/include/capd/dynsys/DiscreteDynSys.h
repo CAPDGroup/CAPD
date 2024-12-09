@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef  _CAPD_DYNSYS_DISCRETEDYNSYS_H_
-#define  _CAPD_DYNSYS_DISCRETEDYNSYS_H_
+#ifndef CAPD_DYNSYS_DISCRETEDYNSYS_H
+#define CAPD_DYNSYS_DISCRETEDYNSYS_H
 #include "capd/dynsys/DynSys.hpp"
 
 namespace capd{
@@ -131,7 +131,7 @@ DiscreteDynSys<MapType> makeDiscreteDynSys(const MapType & map){
 /// @}
 }} // namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_DISCRETEDYNSYS_H_
+#endif // CAPD_DYNSYS_DISCRETEDYNSYS_H
 
 
 

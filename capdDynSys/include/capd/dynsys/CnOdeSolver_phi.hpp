@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_CNODESOLVER_PHI_HPP_
-#define _CAPD_DYNSYS_CNODESOLVER_PHI_HPP_
+#ifndef CAPD_DYNSYS_CNODESOLVER_PHI_HPP
+#define CAPD_DYNSYS_CNODESOLVER_PHI_HPP
 
 #include "capd/dynsys/CnOdeSolver.h"
 
@@ -52,5 +52,5 @@ CnOdeSolver<MapT,StepControlPolicy,EnclosurePolicy,CurveT>::JacPhi(const ScalarT
 /// @}
 }} // namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_CNODESOLVER_PHI_HPP_
+#endif // CAPD_DYNSYS_CNODESOLVER_PHI_HPP
 

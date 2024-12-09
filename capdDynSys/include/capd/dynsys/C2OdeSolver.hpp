@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_C2ODESOLVER_HPP_
-#define _CAPD_DYNSYS_C2ODESOLVER_HPP_
+#ifndef CAPD_DYNSYS_C2ODESOLVER_HPP
+#define CAPD_DYNSYS_C2ODESOLVER_HPP
 
 #include <string>
 #include <stdexcept>
@@ -97,6 +97,6 @@ void C2OdeSolver<MapType,StepControlPolicy,EnclosurePolicy,CurveT>::computeRemai
 /// @}
 }} // namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_C2ODESOLVER_HPP_
+#endif // CAPD_DYNSYS_C2ODESOLVER_HPP
 
 

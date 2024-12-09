@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_C0HOSET_HPP_
-#define _CAPD_DYNSET_C0HOSET_HPP_
+#ifndef CAPD_DYNSET_C0HOSET_HPP
+#define CAPD_DYNSET_C0HOSET_HPP
 
 #include "capd/dynset/C0HOSet.h"
 
@@ -71,5 +71,5 @@ C0HOSet<BaseSetT>::C0HOSet(const VectorType& x, const MatrixType& C,
 /// @}
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C0HOSET_HPP_
+#endif // CAPD_DYNSET_C0HOSET_HPP
 

@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_PDES_C0DOUBLETONSETGEOMETRICTAIL_H_
-#define _CAPD_PDES_C0DOUBLETONSETGEOMETRICTAIL_H_
+#ifndef CAPD_PDES_C0DOUBLETONSETGEOMETRICTAIL_H
+#define CAPD_PDES_C0DOUBLETONSETGEOMETRICTAIL_H
 
 #include "capd/dynset/C0DoubletonSet.hpp"
 #include "capd/dynset/C0TripletonSet.hpp"
@@ -183,4 +183,4 @@ inline void C0DoubletonSetGeometricTail<BaseT>::move(DynSysType & dynsys, C0Doub
 /// @}
 }} // namespace capd::dynset
 
-#endif // _CAPD_PDES_C0DOUBLETONSETGEOMETRICTAIL_H_
+#endif // CAPD_PDES_C0DOUBLETONSETGEOMETRICTAIL_H

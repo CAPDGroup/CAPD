@@ -14,8 +14,8 @@
 
 /* min, max and abs definitions */
 
-#ifndef _CAPD_BASICALG_MINMAX_H_
-#define _CAPD_BASICALG_MINMAX_H_
+#ifndef CAPD_BASICALG_MINMAX_H
+#define CAPD_BASICALG_MINMAX_H
 
 #include "capd/basicalg/TypeTraits.h"
 
@@ -69,5 +69,5 @@ namespace capd {
 
 /// @}
 }
-#endif // _CAPD_BASICALG_MINMAX_H_
+#endif // CAPD_BASICALG_MINMAX_H
 

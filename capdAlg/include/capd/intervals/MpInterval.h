@@ -10,10 +10,11 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifdef __HAVE_MPFR__
 
-#ifndef _CAPD_INTERVAL_MPINTERVAL_H_ 
-#define _CAPD_INTERVAL_MPINTERVAL_H_ 
+#ifndef CAPD_INTERVAL_MPINTERVAL_H
+#define CAPD_INTERVAL_MPINTERVAL_H
+
+#ifdef __HAVE_MPFR__
 
 #include "capd/intervals/Interval.hpp"
 #include "capd/intervals/IntervalTraits.h"
@@ -105,6 +106,6 @@ public:
 
 #endif // _CAPD_INTERVAL_MPINTERVAL_H_
 
-#endif
+#endif // CAPD_INTERVAL_MPINTERVAL_H
 
 

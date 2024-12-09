@@ -10,8 +10,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_POINCARE_POINCARE_MAP_HPP_
-#define _CAPD_POINCARE_POINCARE_MAP_HPP_
+#ifndef CAPD_POINCARE_POINCARE_MAP_HPP
+#define CAPD_POINCARE_POINCARE_MAP_HPP
 
 #include <cassert>
 #include <exception>
@@ -87,5 +87,5 @@ PoincareMap<SolverT,SectionT>::operator()(const VectorType& x, MatrixType& D, Sc
 /// @}
 }} // namespace capd::poincare
 
-#endif // _CAPD_POINCARE_POINCARE_MAP_HPP_
+#endif // CAPD_POINCARE_POINCARE_MAP_HPP
 

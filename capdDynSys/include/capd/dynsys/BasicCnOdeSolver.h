@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_BASICCNODESOLVER_H_
-#define _CAPD_DYNSYS_BASICCNODESOLVER_H_
+#ifndef CAPD_DYNSYS_BASICCNODESOLVER_H
+#define CAPD_DYNSYS_BASICCNODESOLVER_H
 
 #include <utility>
 #include <algorithm>
@@ -353,6 +353,6 @@ inline void BasicCnOdeSolver<MapT, StepControlT,CurveT>::computeCoefficients(Sca
 /// @}
 }} // the end of the namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_BASICCNODESOLVER_H_
+#endif // CAPD_DYNSYS_BASICCNODESOLVER_H
 
 

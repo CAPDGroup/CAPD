@@ -11,8 +11,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_FACTORREORGANIZATION_H_
-#define _CAPD_DYNSET_FACTORREORGANIZATION_H_
+#ifndef CAPD_DYNSET_FACTORREORGANIZATION_H
+#define CAPD_DYNSET_FACTORREORGANIZATION_H
 
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.hpp"
 #include "capd/dynset/reorganization/FactorPolicy.h"
@@ -117,4 +117,4 @@ public:
 
 }} // capd::dynset
 
-#endif /* FACTORREORGANIZE_H_ */
+#endif // CAPD_DYNSET_FACTORREORGANIZATION_H

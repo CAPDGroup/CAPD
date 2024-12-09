@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_INTERVAL_DOUBLEINTERVAL_H_ 
-#define _CAPD_INTERVAL_DOUBLEINTERVAL_H_ 
+#ifndef CAPD_INTERVAL_DOUBLEINTERVAL_H
+#define CAPD_INTERVAL_DOUBLEINTERVAL_H
 
 #include <cmath>
 
@@ -83,4 +83,4 @@ inline int rounding_test()
 
 #endif //__INTERVAL_DEPRECATED__
 
-#endif // _CAPD_INTERVAL_DOUBLEINTERVAL_H_ 
+#endif // CAPD_INTERVAL_DOUBLEINTERVAL_H

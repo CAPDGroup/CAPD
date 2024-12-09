@@ -13,13 +13,15 @@
 
 /* min, max and abs definitions */
 
-#ifndef _CAPD_CAPD_MINMAX_H_
-#define _CAPD_CAPD_MINMAX_H_
+#ifndef CAPD_MINMAX_H
+#define CAPD_MINMAX_H
+
+// @todo Why not remove it since its deprecated?
 
 #include "capd/basicalg/minmax.h"
 
 #undef max
 #undef min
 
-#endif // _CAPD_CAPD_MINMAX_H_
+#endif // CAPD_MINMAX_H
 

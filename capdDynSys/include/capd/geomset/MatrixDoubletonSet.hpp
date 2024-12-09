@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_GEOMSET_MATRIXDOUBLETONSET_HPP_
-#define _CAPD_GEOMSET_MATRIXDOUBLETONSET_HPP_
+#ifndef CAPD_GEOMSET_MATRIXDOUBLETONSET_HPP
+#define CAPD_GEOMSET_MATRIXDOUBLETONSET_HPP
 
 #include "capd/geomset/MatrixDoubletonSet.h"
 #include "capd/geomset/MatrixAffineSet.hpp"
@@ -128,4 +128,4 @@ typename MatrixDoubletonSet<MatrixType>::MatrixType MatrixDoubletonSet<MatrixTyp
 /// @}
 }} // namespace capd::geomset
 
-#endif // _CAPD_GEOMSET_MATRIXDOUBLETONSET_HPP_
+#endif // CAPD_GEOMSET_MATRIXDOUBLETONSET_HPP

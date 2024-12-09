@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_EVAL_NATURALPOW_H_
-#define _CAPD_AUTODIFF_EVAL_NATURALPOW_H_
+#ifndef CAPD_AUTODIFF_EVAL_NATURALPOW_H
+#define CAPD_AUTODIFF_EVAL_NATURALPOW_H
 
 #include <algorithm>
 #include "capd/autodiff/EvalPow.h"
@@ -36,7 +36,7 @@ namespace SingularNaturalPow{
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
-    int c = toInt(leftBound(*right));
+    int c = TypeTraits<T>::_int(*right);
     unsigned int jetSize = dag->timeJetSize();
     const T* y = nullptr;
     const T* x = left;
@@ -73,7 +73,7 @@ namespace SingularNaturalPow{
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result, DagIndexer<T>* dag)
   {
-    int c = toInt(leftBound(*right));
+    int c = TypeTraits<T>::_int(*right);
     unsigned int jetSize = dag->timeJetSize();
     const T* y = nullptr;
     const T* x = left;
@@ -110,7 +110,7 @@ namespace SingularNaturalPow{
   template<class T, class R>
   void eval(const unsigned degree, const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
-    int c = toInt(leftBound(*right));
+    int c = TypeTraits<T>::_int(*right);
     unsigned int jetSize = dag->timeJetSize();
     const T* y = nullptr;
     const T* x = left;
@@ -147,7 +147,7 @@ namespace SingularNaturalPow{
   template<class T, class R>
   void evalHomogenousPolynomial(const unsigned degree, const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
-    int c = toInt(leftBound(*right));
+    int c = TypeTraits<T>::_int(*right);
     unsigned int jetSize = dag->timeJetSize();
     const T* y = nullptr;
     const T* x = left;
@@ -187,8 +187,8 @@ namespace NaturalPow
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
-    if(!(isSingular(*left)))
-      NegIntPow::evalC0IntPow(left,toInt(leftBound(*right)),result,coeffNo);
+    if(!(TypeTraits<T>::isSingular(*left)))
+      NegIntPow::evalC0IntPow(left,TypeTraits<T>::_int(*right),result,coeffNo);
     else 
       SingularNaturalPow::evalC0(left,right,result,dag,coeffNo);
   }
@@ -196,8 +196,8 @@ namespace NaturalPow
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result, DagIndexer<T>* dag)
   {
-    if(!(isSingular(*left)))
-      *result = power(*left, toInt(leftBound(*right)));
+    if(!(TypeTraits<T>::isSingular(*left)))
+      *result = power(*left, TypeTraits<T>::_int(*right));
     else
       SingularNaturalPow::evalC0HomogenousPolynomial(left,right,result,dag);
   }
@@ -205,8 +205,8 @@ namespace NaturalPow
   template<class T, class R>
   void eval(const unsigned degree, const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
-    if(!(isSingular(*left))){
-      NegIntPow::evalC0IntPow(left,toInt(leftBound(*right)),result,coeffNo);
+    if(!(TypeTraits<T>::isSingular(*left))){
+      NegIntPow::evalC0IntPow(left,TypeTraits<T>::_int(*right),result,coeffNo);
       if(degree)
         Pow::evalJetWithoutC0(degree,left,*right,result,dag,coeffNo);
     } else {
@@ -217,7 +217,7 @@ namespace NaturalPow
   template<class T, class R>
   void evalHomogenousPolynomial(const unsigned degree, const T* left, const T* right, R result, DagIndexer<T>* dag, const unsigned coeffNo)
   {
-    if(!(isSingular(*left)))
+    if(!(TypeTraits<T>::isSingular(*left)))
       Pow::evalHomogenousPolynomial(degree,left,right,result,dag,coeffNo);
     else
       SingularNaturalPow::evalHomogenousPolynomial(degree,left,right,result,dag,coeffNo);
@@ -258,12 +258,12 @@ namespace NaturalPowTime
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
-    if(!isSingular(*left)){
+    if(!TypeTraits<T>::isSingular(*left)){
       NegIntPowTime::evalC0(left,right,result,coeffNo);
     } else {
-      int c = toInt(leftBound(*right));
+      int c = TypeTraits<T>::_int(*right);
       if(coeffNo<=c){
-        result[coeffNo] = power(*left,c-coeffNo);
+        result[coeffNo] = Math<T>::_pow(*left,c-coeffNo);
         for(int i=0;i<coeffNo;++i){
           result[coeffNo] *= typename capd::TypeTraits<T>::Real(c-i);
           result[coeffNo] /= typename capd::TypeTraits<T>::Real(i+1);
@@ -277,7 +277,7 @@ namespace NaturalPowTime
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
   {
-    *result = power(*left, toInt(leftBound(*right)));
+    *result = Math<T>::_pow(*left, TypeTraits<T>::_int(*right));
   }
 
   template<class T, class R>
@@ -299,13 +299,13 @@ namespace NaturalPowConst
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
     if(coeffNo==0)
-      *result = power(*left, toInt(leftBound(*right)));
+      *result = Math<T>::_pow(*left, TypeTraits<T>::_int(*right));
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* right, R result)
   {
-    *result = power(*left, toInt(leftBound(*right)));
+    *result = Math<T>::_pow(*left, TypeTraits<T>::_int(*right));
   }
 
   template<class T, class R>
@@ -360,4 +360,4 @@ CAPD_MAKE_NAT_POW_NODE(NaturalPowFunTime);
 /// @}
 }} // namespace capd::autodiff
 
-#endif
+#endif // CAPD_AUTODIFF_EVAL_NATURALPOW_H

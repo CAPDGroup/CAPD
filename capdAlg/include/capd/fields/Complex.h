@@ -15,12 +15,14 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_FIELDS_COMPLEX_H_
-#define _CAPD_FIELDS_COMPLEX_H_
+#ifndef CAPD_FIELDS_COMPLEX_H
+#define CAPD_FIELDS_COMPLEX_H
 #include <stdexcept>
 #include <complex>
+#include <cmath>
 #include "capd/basicalg/power.h"
 #include "capd/basicalg/TypeTraits.h"
+#include "capd/basicalg/Math.h"
 #include "capd/basicalg/doubleFun.h"
 #include "capd/basicalg/minmax.h"
 namespace capd{
@@ -191,34 +193,44 @@ class Complex<long double> : public std::complex<long double> {
     }
     /// returns the imaginary component
     template< class T >
-    T imag( const Complex<T>& z ){
+    inline T imag( const Complex<T>& z ){
         return z.imag();
-    }
-    ///  returns the magnitude of a complex number
-    template< class T >
-    T abs( const Complex<T>& z ){
-        return sqrt(z.real()*z.real() + z.imag()*z.imag());
     }
     /// returns the phase angle
     template< class T >
-    T arg( const Complex<T>& z ){
-        //TODO
-        throw std::runtime_error("arg(Complex) not implemented!");
+    inline T arg( const Complex<T>& z ){
+
+        return atan2(z.real(), z.imag());
     }
     /// returns the squared magnitude
     template< class T >
-    T norm( const Complex<T>& z ){
-        return (z.real()*z.real() + z.imag()*z.imag());
+    inline T norm( const Complex<T>& z ){
+        return (Math<T>::_sqr(z.real()) + Math<T>::_sqr(z.imag()));
+    }
+    ///  returns the magnitude of a complex number
+    template< class T >
+    inline T abs( const Complex<T>& z ){
+        return sqrt(Math<T>::_sqr(z.real()) + Math<T>::_sqr(z.imag()));
     }
     /// returns the complex conjugate
     template< class T >
-    Complex<T> conj( const Complex<T>& z ){
+    inline Complex<T> conj( const Complex<T>& z ){
         return Complex<T>(z.real(), -z.imag());
     }
     /// constructs a complex number from magnitude r and phase angle theta
     template< class T >
-    Complex<T> polar( const T& r, const T& theta = T()){
+    inline Complex<T> polar( const T& r, const T& theta = T()){
         return Complex<T>(r*cos(theta), r*sin(theta));
+    }
+    ///  returns complex logarithm
+    template< class T >
+    inline Complex<T> log( const Complex<T>& z ){
+        return Complex<T>(Math<T>::_log(abs(z)),arg(z));
+    }
+    ///  returns complex exponent
+    template< class T >
+    inline Complex<T> exp( const Complex<T>& z ){
+        return polar(Math<T>::_exp(z.real()),z.imag());
     }
 
     template< typename T>
@@ -283,17 +295,39 @@ public:
   }
   /// this flag is true for all interval types
   static const bool isInterval = RealTraits::isInterval;
-
+  static const bool isComplex = true;
 
   static inline T abs(const fields::Complex<T> & x){
 	return  sqrt(sqr(capd::abs(x.real()))+sqr(capd::abs(x.imag())));
   }
 
   static inline bool isSingular(const fields::Complex<T> & x) {
-	return ( TypeTraits<T>::isSingular(x.real())) && (TypeTraits<T>::isSingular(x.imag()));
+	return ( RealTraits::isSingular(x.real())) && (RealTraits::isSingular(x.imag()));
   }
+
+  static inline int _int(const Type& z) noexcept { return RealTraits::_int(z.real()); } 
+  static inline double _double(const Type& z) noexcept { return RealTraits::_double(z.real()); } 
 };
 
+template<class T>
+class Math< fields::Complex<T> >{
+public:
+  typedef fields::Complex<T> Complex;
+  
+  // x^2-y^2 or (x-y)*(x+y) or intersection?
+  static constexpr inline Complex _sqr(const Complex& z) noexcept{
+    return Complex(Math<T>::_sqr(z.real())-Math<T>::_sqr(z.imag()),2.*z.real()*z.imag());
+  }
+  static constexpr inline Complex _log(const Complex& x) {	return log(x);  }
+  static constexpr inline Complex _pow(const Complex& x, int c) {	return power(x,c);  }
+  static constexpr inline Complex _sqrt(const Complex& z) { throw "Math<Complex>::sqrt TODO\n"; }
+  static constexpr inline Complex _exp(const Complex& z) { throw "Math<Complex>::exp TODO\n"; }
+  static constexpr inline Complex _sin(const Complex& z) { throw "Math<Complex>::sin TODO\n"; }
+  static constexpr inline Complex _cos(const Complex& z) { throw "Math<Complex>::cos TODO\n"; }
+  static constexpr inline Complex _atan(const Complex& z) { throw "Math<Complex>::atan TODO\n"; }
+  static constexpr inline Complex _asin(const Complex& z) { throw "Math<Complex>::asin TODO\n"; }
+  static constexpr inline Complex _acos(const Complex& z) { throw "Math<Complex>::acos TODO\n"; }
+};
 
 namespace vectalg {
 // Computes euclidean norm of a complex number
@@ -306,4 +340,4 @@ namespace vectalg {
 
 
 
-#endif // _CAPD_FIELDS_COMPLEX_H_
+#endif // CAPD_FIELDS_COMPLEX_H

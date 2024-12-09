@@ -22,8 +22,8 @@
 // in your case, you may want to modify some specific options.
 
 
-#ifndef _CAPD_CAPD_COMPILERSETTING_H_
-#define _CAPD_CAPD_COMPILERSETTING_H_
+#ifndef CAPD_COMPILERSETTING_H
+#define CAPD_COMPILERSETTING_H
 
 
 // ################# Manual compiler selection for MS-Windows ############
@@ -67,6 +67,6 @@
 #endif
 
 
-#endif // _CAPD_CAPD_COMPILERSETTING_H_
+#endif // CAPD_COMPILERSETTING_H
 
 /// @}

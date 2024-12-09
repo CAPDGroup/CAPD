@@ -12,9 +12,9 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_GEOMSET_CENTEREDAFFINESET_HPP_
-#define _CAPD_GEOMSET_CENTEREDAFFINESET_HPP_
+#ifndef CAPD_GEOMSET_CENTEREDAFFINESET_HPP
+#define CAPD_GEOMSET_CENTEREDAFFINESET_HPP
 #include "capd/geomset/CenteredAffineSet.h"
 #include "capd/geomset/AffineSet.hpp"
 
-#endif // _CAPD_GEOMSET_CENTEREDAFFINESET_HPP_
+#endif // CAPD_GEOMSET_CENTEREDAFFINESET_HPP

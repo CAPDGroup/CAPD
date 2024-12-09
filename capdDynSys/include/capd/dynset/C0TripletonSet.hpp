@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_C0TRIPLETONSET_HPP_
-#define _CAPD_DYNSET_C0TRIPLETONSET_HPP_
+#ifndef CAPD_DYNSET_C0TRIPLETONSET_HPP
+#define CAPD_DYNSET_C0TRIPLETONSET_HPP
 
 #include <stdexcept>
 #include <sstream>
@@ -193,4 +193,4 @@ std::string C0TripletonSet<MatrixType, Policies>::show(void) const {
 
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C0TRIPLETONSET_HPP_
+#endif // CAPD_DYNSET_C0TRIPLETONSET_HPP

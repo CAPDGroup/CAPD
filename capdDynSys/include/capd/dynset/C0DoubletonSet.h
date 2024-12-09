@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_C0DOUBLETONSET_H_
-#define _CAPD_DYNSET_C0DOUBLETONSET_H_
+#ifndef CAPD_DYNSET_C0DOUBLETONSET_H
+#define CAPD_DYNSET_C0DOUBLETONSET_H
 
 #include "capd/dynset/C0Set.h"
 #include "capd/geomset/CenteredDoubletonSet.h"
@@ -111,4 +111,4 @@ protected:
 
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C0DOUBLETONSET_H_
+#endif // CAPD_DYNSET_C0DOUBLETONSET_H

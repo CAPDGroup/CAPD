@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_INTERVAL_INTERVALFRIEND_H_ 
-#define _CAPD_INTERVAL_INTERVALFRIEND_H_ 
+#ifndef CAPD_INTERVAL_INTERVALFRIEND_H
+#define CAPD_INTERVAL_INTERVALFRIEND_H
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -271,4 +271,4 @@ Interval< T_Bound, T_Rnd> divide(const T_Bound& A_x,
 
 
 
-#endif // _CAPD_INTERVAL_INTERVALFRIEND_H_ 
+#endif // CAPD_INTERVAL_INTERVALFRIEND_H

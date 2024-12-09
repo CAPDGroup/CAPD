@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_C0SET_H_
-#define _CAPD_DYNSET_C0SET_H_
+#ifndef CAPD_DYNSET_C0SET_H
+#define CAPD_DYNSET_C0SET_H
 
 #include <string>
 #include <sstream>
@@ -111,4 +111,4 @@ void computePsi(DS& ds, int p, int q, const typename DS::ScalarType& h, V& psi, 
 /// @}
 }} //namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C0SET_H_
+#endif // CAPD_DYNSET_C0SET_H

@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_CONTAINER_HPP_
-#define _CAPD_VECTALG_CONTAINER_HPP_
+#ifndef CAPD_VECTALG_CONTAINER_HPP
+#define CAPD_VECTALG_CONTAINER_HPP
 
 #include <algorithm>
 #include "capd/vectalg/Container.h"
@@ -43,12 +43,18 @@ Container<Scalar,0>& Container<Scalar,0>::operator=(Container&& a_c) noexcept{
 
 template<typename Scalar, __size_type capacity>
 void Container<Scalar,capacity>::clear(){
-  std::fill(begin(), end(), TypeTraits<ScalarType>::zero());
+  for(auto it=begin(); it!= end(); ++it){
+    *it = TypeTraits<ScalarType>::zero();
+  }
+  // Do not change to : std::fill(begin(), end(), TypeTraits<ScalarType>::zero());
 }
 
 template<typename Scalar>
 void Container<Scalar,0>::clear(){
-  std::fill(begin(), end(), TypeTraits<ScalarType>::zero());
+  for(auto it=begin(); it!= end(); ++it){
+    *it = TypeTraits<ScalarType>::zero();
+  }
+//  Do not change to : std::fill(begin(), end(), TypeTraits<ScalarType>::zero()); as it does not work with fadbad
 }
 
 template<typename Scalar, __size_type capacity>
@@ -124,6 +130,6 @@ void Container<Scalar,0>::resize(size_type A_newCapacity)
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_CONTAINER_HPP_
+#endif // CAPD_VECTALG_CONTAINER_HPP
 
 /// @}

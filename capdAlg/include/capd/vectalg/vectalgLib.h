@@ -12,8 +12,8 @@
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
 
-#ifndef _CAPD_VECTALG_VECTALGLIB_H_ 
-#define _CAPD_VECTALG_VECTALGLIB_H_ 
+#ifndef CAPD_VECTALG_VECTALGLIB_H
+#define CAPD_VECTALG_VECTALGLIB_H
 
 double power(int val,int ile);
 // necessary for the Borland compiler
@@ -131,4 +131,4 @@ typedef capd::vectalg::SumLNorm<IVectorMD,IMatrixMD> ISumLNormMD;
 
 #endif // CAPD_CPU_ARCH==CAPD_CPU_ARCH_X86
 
-#endif // _CAPD_VECTALG_VECTALGLIB_H_ 
+#endif // CAPD_VECTALG_VECTALGLIB_H

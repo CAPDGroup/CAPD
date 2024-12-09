@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#if !defined(_POWERTHREE_H_)
-#define _POWERTHREE_H_
+#ifndef CAPD_POWERTHREE_H
+#define CAPD_POWERTHREE_H
 
 #include <iostream>
 
@@ -28,4 +28,4 @@ struct powerThree<0>{
   static const int value=1;
 };
 
-#endif //_POWERTHREE_H_
+#endif // CAPD_POWERTHREE_H

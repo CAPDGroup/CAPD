@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_HODATA_H_
-#define _CAPD_DYNSET_HODATA_H_
+#ifndef CAPD_DYNSET_HODATA_H
+#define CAPD_DYNSET_HODATA_H
 
 #include "capd/basicalg/factrial.h"
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.h"
@@ -83,5 +83,5 @@ struct HOData : public BaseData {
 /// @}
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_HOBASESET_H_
+#endif // CAPD_DYNSET_HODATA_H
 

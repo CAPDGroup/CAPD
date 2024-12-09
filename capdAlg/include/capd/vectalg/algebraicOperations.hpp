@@ -24,8 +24,8 @@
 
 
 
-#ifndef _CAPD_VECTALG_ALGEBRAICOPERATIONS_HPP_
-#define _CAPD_VECTALG_ALGEBRAICOPERATIONS_HPP_
+#ifndef CAPD_VECTALG_ALGEBRAICOPERATIONS_HPP
+#define CAPD_VECTALG_ALGEBRAICOPERATIONS_HPP
 
 #include <stdexcept>
 #include "capd/basicalg/minmax.h"
@@ -661,6 +661,6 @@ bool equal (const T1& v1, const T2& v2)
 
 }} // end of namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_ALGEBRAICOPERATIONS_HPP_
+#endif // CAPD_VECTALG_ALGEBRAICOPERATIONS_HPP
 
 /// @}

@@ -13,8 +13,8 @@
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
 
-#ifndef _CAPD_INTERVAL_INTERVALBASE_H_ 
-#define _CAPD_INTERVAL_INTERVALBASE_H_ 
+#ifndef CAPD_INTERVAL_INTERVALBASE_H
+#define CAPD_INTERVAL_INTERVALBASE_H
 
 namespace capd{
 namespace intervals{
@@ -31,11 +31,6 @@ inline Interval<T_Bound, T_Rnd>::Interval()
 #endif
 {}
 
-/// copying constructor
-template < typename T_Bound, typename T_Rnd>
-inline Interval < T_Bound, T_Rnd >::Interval( const Interval & A_iv )
-               : m_left( A_iv.m_left ), m_right( A_iv.m_right )
-{}
 
 /// constructor from any class that can be coverted to BoundType
 template < typename T_Bound, typename T_Rnd> 
@@ -247,4 +242,4 @@ inline Interval<T_Bound, T_Rnd> Interval<T_Bound, T_Rnd>::euler()
 
 }} // namespace capd::intervals 
 
-#endif // _CAPD_INTERVAL_INTERVALBASE_H_ 
+#endif // CAPD_INTERVAL_INTERVALBASE_H

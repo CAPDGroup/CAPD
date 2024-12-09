@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef __CAPD_THREADING_SOLVERFACTORY_H__
-#define __CAPD_THREADING_SOLVERFACTORY_H__
+#ifndef CAPD_THREADING_SOLVERFACTORY_H
+#define CAPD_THREADING_SOLVERFACTORY_H
 #include <string>
 
 namespace capd{
@@ -133,4 +133,4 @@ struct TMapFactory : public SolverFactory< TMap<TM> >{
 /// @}
 }} // namespace capd::threading
 
-#endif
+#endif // CAPD_THREADING_SOLVERFACTORY_H

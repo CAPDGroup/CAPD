@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_NEWTON_KRAWCZYK_HPP_
-#define _CAPD_NEWTON_KRAWCZYK_HPP_
+#ifndef CAPD_NEWTON_KRAWCZYK_HPP
+#define CAPD_NEWTON_KRAWCZYK_HPP
 
 #include <stdexcept>
 #include "capd/newton/Krawczyk.h"
@@ -200,4 +200,4 @@ typename MapType::VectorType KrawczykOperator (const typename MapType::VectorTyp
 
 }} // end namespace capd::newton
 
-#endif // _CAPD_NEWTON_KRAWCZYK_HPP_
+#endif // CAPD_NEWTON_KRAWCZYK_HPP

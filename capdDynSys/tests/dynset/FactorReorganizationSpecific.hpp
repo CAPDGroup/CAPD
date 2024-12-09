@@ -14,8 +14,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef __FACTOR_REORGANIZATION_SPECIFIC_HPP_
-#define __FACTOR_REORGANIZATION_SPECIFIC_HPP_
+#ifndef CAPD_FACTOR_REORGANIZATION_SPECIFIC_HPP
+#define CAPD_FACTOR_REORGANIZATION_SPECIFIC_HPP
 
 BOOST_AUTO_TEST_CASE(test_reorganize) {
   typedef SetType::ScalarType Interval;
@@ -71,5 +71,5 @@ BOOST_AUTO_TEST_CASE(test_reorganize2) {
   BOOST_CHECK_EQUAL(C,set.get_C());
 }
 
-#endif //__FACTOR_REORGANIZATION_SPECIFIC_HPP_
+#endif // CAPD_FACTOR_REORGANIZATION_SPECIFIC_HPP
 /// @}

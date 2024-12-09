@@ -1,12 +1,12 @@
-/*
- * SetTypeCommonTest.cpp
- *
- *  Created on: Oct 16, 2009
- *      Author: kapela
- */
+//
+// SetTypeCommonTest.cpp
+//
+//  Created on: Oct 16, 2009
+//      Author: kapela
+//
 
-#ifndef AFFINESETCOMMONTEST_CPP_
-#define AFFINESETCOMMONTEST_CPP_
+#ifndef CAPD_AFFINESETCOMMONTEST_CPP_HPP
+#define CAPD_AFFINESETCOMMONTEST_CPP_HPP
 
 //#define _TESTS_WITHOUT_BOOST_LIB_
 
@@ -109,4 +109,4 @@ BOOST_AUTO_TEST_CASE(test_constructors){
 
 
 
-#endif /* AFFINESETCOMMONTEST_CPP_ */
+#endif // CAPD_AFFINESETCOMMONTEST_CPP_HPP

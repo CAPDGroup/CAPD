@@ -1,3 +1,6 @@
+#ifndef CAPD_MAP_HEADER_TEMPLATE_H
+#define CAPD_MAP_HEADER_TEMPLATE_H
+
 const char cpp_file[] ="\
 #include \"%s.hpp\"\n\
 \n\
@@ -253,3 +256,5 @@ const char evalODEDerEnd[] ="\n\
   }\n\
 }\n\
 ";
+
+#endif // CAPD_MAP_HEADER_TEMPLATE_H

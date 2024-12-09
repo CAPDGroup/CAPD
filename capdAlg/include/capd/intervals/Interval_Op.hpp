@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_INTERVAL_INTERVALOP_HPP_
-#define _CAPD_INTERVAL_INTERVALOP_HPP_
+#ifndef CAPD_INTERVAL_INTERVALOP_HPP
+#define CAPD_INTERVAL_INTERVALOP_HPP
 
 #include "capd/intervals/IntervalError.h"
 #include "capd/intervals/IntervalTraits.h"
@@ -27,19 +27,6 @@ namespace intervals{
 //         ASSIGMENTS
 //////////////////////////////////////////////////////////////////////////
 
-
-//Operator=
-template < typename T_Bound, typename T_Rnd>
-__INLINE__ Interval<T_Bound, T_Rnd> & Interval<T_Bound, T_Rnd>::operator =
-                                     (const Interval<T_Bound, T_Rnd>& A_iv)
-{
-  if(this != &A_iv)
-  {
-    m_left  = A_iv.m_left;
-    m_right = A_iv.m_right;
-  }
-  return *this;
-}
 
 //Operator=
 template < typename T_Bound, typename T_Rnd >
@@ -717,4 +704,4 @@ __INLINE__  Interval< T_Bound, T_Rnd> divide(const T_Bound& A_x,
 }} // namespace capd::intervals
 
 
-#endif // _CAPD_INTERVAL_INTERVALOP_HPP_
+#endif // CAPD_INTERVAL_INTERVALOP_HPP

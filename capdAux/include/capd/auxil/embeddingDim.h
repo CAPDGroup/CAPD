@@ -13,10 +13,12 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#if !defined(EMBEDDING_DIM)
+// @todo This file seems unused
+
+#ifndef CAPD_EMBEDDING_DIM_H
 
 //#define EMBEDDING_DIM 2
-#define EMBEDDING_DIM 3
+#define CAPD_EMBEDDING_DIM_H
 //#define EMBEDDING_DIM 4
 //#define EMBEDDING_DIM 5
 //#define EMBEDDING_DIM 12
@@ -24,6 +26,6 @@
 
 static const int embeddingDim=EMBEDDING_DIM;
 
-#endif //EMBEDDING_DIM
+#endif // CAPD_EMBEDDING_DIM_H
 /// @}
 

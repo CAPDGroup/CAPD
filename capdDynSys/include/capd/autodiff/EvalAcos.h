@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_EVAL_ACOS_H_
-#define _CAPD_AUTODIFF_EVAL_ACOS_H_
+#ifndef CAPD_AUTODIFF_EVAL_ACOS_H
+#define CAPD_AUTODIFF_EVAL_ACOS_H
 
 #include "capd/autodiff/NodeType.h"
 
@@ -27,21 +27,22 @@ namespace Acos
   template<class T, class R>
   inline void evalC0(const T* left, const T* right, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo)
     {
       T temp = TypeTraits<T>::zero();
       for(unsigned j=1;j<coeffNo;++j)
-        temp -= double(j) * result[j]*right[coeffNo-j];
-      result[coeffNo] = (temp/(double)coeffNo - left[coeffNo])/(*right);
+        temp -= Real(j) * result[j]*right[coeffNo-j];
+      result[coeffNo] = (temp/Real(coeffNo) - left[coeffNo])/(*right);
     }else{
-      *result = acos(*left);
+      *result = Math<T>::_acos(*left);
     }
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = acos(*left);
+    *result = Math<T>::_acos(*left);
   }
 
   template<class T, class R>
@@ -64,6 +65,7 @@ namespace Acos
   template<class T, class R>
   void evalMultiindex(const T* left, const T* right, R result, DagIndexer<T>* dag, const MultiindexData* i, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(getMask(result,i->index))
     {
       T t = capd::TypeTraits<T>::zero();
@@ -71,9 +73,9 @@ namespace Acos
 
       for(int q=0;q<h-1;++q){
         const MultiindexData::IndexPair p = i->getConvolutionPairsFromEpToK(coeffNo)[q];
-        t -= dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p]*result[p.first]*right[p.second];
+        t -= Real(dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p])*result[p.first]*right[p.second];
       }
-      t = t/(double)i->k[i->p];
+      t = t/Real(i->k[i->p]);
       result[i->index+coeffNo] = (t-left[i->index+coeffNo])/(*right);
     }
   }
@@ -124,7 +126,7 @@ namespace AcosFunTime
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = acos(*left);
+    *result = Math<T>::_acos(*left);
   }
 
   template<class T, class R>
@@ -150,7 +152,7 @@ namespace AcosTime
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = acos(*left);
+    *result = Math<T>::_acos(*left);
   }
 
   template<class T, class R>
@@ -170,13 +172,13 @@ namespace AcosConst
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
     if(coeffNo==0)
-      *result = acos(*left);
+      *result = Math<T>::_acos(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = acos(*left);
+    *result = Math<T>::_acos(*left);
   }
 
   template<class T, class R>
@@ -201,4 +203,4 @@ CAPD_MAKE_DAG_NODE(AcosFunTime);
 /// @}
 }} // namespace capd::autodiff
 
-#endif
+#endif // CAPD_AUTODIFF_EVAL_ACOS_H

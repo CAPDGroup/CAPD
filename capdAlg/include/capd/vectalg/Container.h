@@ -22,8 +22,8 @@
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
 
-#ifndef _CAPD_VECTALG_CONTAINER_H_
-#define _CAPD_VECTALG_CONTAINER_H_
+#ifndef CAPD_VECTALG_CONTAINER_H
+#define CAPD_VECTALG_CONTAINER_H
 
 #include <stdexcept>
 #include <cstdlib> // for size_t
@@ -322,6 +322,6 @@ inline Container<Scalar,0>::~Container()
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_CONTAINER_H_
+#endif // CAPD_VECTALG_CONTAINER_H
 
 /// @}

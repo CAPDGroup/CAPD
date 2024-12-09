@@ -15,11 +15,12 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_CAPDALGLIB_H_
-#define _CAPD_CAPDALGLIB_H_
+#ifndef CAPD_CAPDALGLIB_H
+#define CAPD_CAPDALGLIB_H
 
 #include "capd/intervals/lib.h"
 #include "capd/vectalg/lib.h"
 #include "capd/matrixAlgorithms/lib.h"
+#include "capd/fields/lib.h"
 
-#endif // _CAPD_CAPDALGLIB_H_
+#endif // CAPD_CAPDALGLIB_H

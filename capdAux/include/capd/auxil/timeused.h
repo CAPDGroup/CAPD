@@ -29,8 +29,8 @@
 // This is in anonymous ns, so you can include the file multiple times.
 
 
-#ifndef _CAPD_AUXIL_TIMEUSED_H_
-#define _CAPD_AUXIL_TIMEUSED_H_
+#ifndef CAPD_AUXIL_TIMEUSED_H
+#define CAPD_AUXIL_TIMEUSED_H
 
 #include "capd/auxil/config.h"
 
@@ -241,7 +241,7 @@ namespace
 }
 #endif // _TIMEUSED_CPP_COMPILATION_UNIT
 
-#endif // _CAPD_AUXIL_TIMEUSED_H_
+#endif // CAPD_AUXIL_TIMEUSED_H
 
 /// @}
 

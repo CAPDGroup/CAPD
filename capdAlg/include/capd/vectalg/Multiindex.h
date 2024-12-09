@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_MULTIINDEX_H_
-#define _CAPD_VECTALG_MULTIINDEX_H_
+#ifndef CAPD_VECTALG_MULTIINDEX_H
+#define CAPD_VECTALG_MULTIINDEX_H
 
 #include <stdexcept>
 #include <vector>
@@ -223,6 +223,6 @@ typename VectorType::ScalarType power(const VectorType& v, const capd::vectalg::
   return result;
 }
 
-#endif // _CAPD_VECTALG_MULTIINDEX_H_
+#endif // CAPD_VECTALG_MULTIINDEX_H
 
 /// @}

@@ -15,8 +15,8 @@
 
 /* Author: Tomasz Kapela, 2007 */
 
-#ifndef _CAPD_DIFFINCL_DIFFINCLUSIONCW_HPP_
-#define _CAPD_DIFFINCL_DIFFINCLUSIONCW_HPP_
+#ifndef CAPD_DIFFINCL_DIFFINCLUSIONCW_HPP
+#define CAPD_DIFFINCL_DIFFINCLUSIONCW_HPP
 
 #include <sstream>
 #include <string>
@@ -110,6 +110,6 @@ typename DiffInclusionCW<MapT, DynSysT>::VectorType DiffInclusionCW<MapT, DynSys
 
 }} //namespace capd::diffIncl
 
-#endif // _CAPD_DIFFINCL_DIFFINCLUSIONCW_HPP_
+#endif // CAPD_DIFFINCL_DIFFINCLUSIONCW_HPP
 
 /// @}

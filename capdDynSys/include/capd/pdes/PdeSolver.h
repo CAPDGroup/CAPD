@@ -12,8 +12,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_PDES_PDESOLVER_H_
-#define _CAPD_PDES_PDESOLVER_H_
+#ifndef CAPD_PDES_PDESOLVER_H
+#define CAPD_PDES_PDESOLVER_H
 
 #include <vector>
 #include <iostream>
@@ -534,7 +534,7 @@ void PdeSolver<SeriesT,StepControlT>::highOrderEnclosure()
 }} // namespace capd::pdes
 
 
-#endif // _CAPD_PDES_PDESOLVER_H_
+#endif // CAPD_PDES_PDESOLVER_H
 
 
 /// @}

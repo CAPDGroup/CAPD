@@ -11,8 +11,8 @@
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
 
-#ifndef _CAPD_NEWTON_KRAWCZYK_H_
-#define _CAPD_NEWTON_KRAWCZYK_H_
+#ifndef CAPD_NEWTON_KRAWCZYK_H
+#define CAPD_NEWTON_KRAWCZYK_H
 
 #include <string>
 #include <sstream>
@@ -141,4 +141,4 @@ typename MapType::VectorType KrawczykOperator (const typename MapType::VectorTyp
 
 #include "capd/newton/Krawczyk.hpp"
 
-#endif // _CAPD_NEWTON_KRAWCZYK_H_
+#endif // CAPD_NEWTON_KRAWCZYK_H

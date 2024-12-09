@@ -20,4 +20,3 @@
 #include "capd/dynsys/CnOdeSolver.hpp"
 
 #include "capd/dynsys/typedefs.h"
-

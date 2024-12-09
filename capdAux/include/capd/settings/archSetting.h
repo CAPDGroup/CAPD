@@ -18,8 +18,8 @@
 // The CAPD_ASM_NOTATION is set to one of 'gnu' or 'intel' depending on the compiler
 
 
-#ifndef _CAPD_CAPD_ARCHSETTING_H_ 
-#define _CAPD_CAPD_ARCHSETTING_H_ 
+#ifndef CAPD_ARCHSETTING_H
+#define CAPD_ARCHSETTING_H
 
 // This files determines the CPU architecture. After including this file, the
 // CAPD_CPU_ARCH will be set to one of the CAPD_CPU_ARCH_* constants
@@ -85,5 +85,5 @@
 #error Couldnt determine the processor architecture. Set it manually in archSetting.h
 #endif
 
-#endif // _CAPD_CAPD_ARCHSETTING_H_ 
+#endif // CAPD_ARCHSETTING_H
 /// @}

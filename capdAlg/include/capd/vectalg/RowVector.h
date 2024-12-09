@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_ROWVECTOR_H_ 
-#define _CAPD_VECTALG_ROWVECTOR_H_ 
+#ifndef CAPD_VECTALG_ROWVECTOR_H
+#define CAPD_VECTALG_ROWVECTOR_H
 
 #include <ostream>
 #include "capd/vectalg/Vector.h"
@@ -286,6 +286,6 @@ inline RowVector<Scalar,cols>& RowVector<Scalar,cols>::operator-=(const Vector<S
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_ROWVECTOR_H_ 
+#endif // CAPD_VECTALG_ROWVECTOR_H
 
 /// @}

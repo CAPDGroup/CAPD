@@ -1,5 +1,5 @@
-#if !defined(_RATIONALNUMBER_H_)
-#define _RATIONALNUMBER_H_
+#ifndef CAPD_RATIONALNUMBER_H
+#define CAPD_RATIONALNUMBER_H
 /*
   //########################### rationalNumber class ################################//
   Autor: Marian Mrozek, Kraków 2003.
@@ -280,7 +280,7 @@ void rationalNumber<intType>::normalize(){
   }
 }
 
-#endif //_RATIONALNUMBER_H_
+#endif // CAPD_RATIONALNUMBER_H
 
 
 

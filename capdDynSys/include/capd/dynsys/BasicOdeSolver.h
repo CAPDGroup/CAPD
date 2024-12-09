@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_BASICSOLVER_H_
-#define _CAPD_DYNSYS_BASICSOLVER_H_
+#ifndef CAPD_DYNSYS_BASICSOLVER_H
+#define CAPD_DYNSYS_BASICSOLVER_H
 
 #include <string>
 #include "capd/dynsys/StepControl.h"
@@ -315,5 +315,5 @@ inline void BasicOdeSolver<MapType,StepControlType,CurveT>::sumTaylorSeries(
 /// @}
 }} // namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_BASICODESOLVER_H_
+#endif // CAPD_DYNSYS_BASICSOLVER_H
 

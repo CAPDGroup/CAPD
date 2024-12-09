@@ -37,6 +37,3 @@
 #include "capd/dynset/CnRect2Set.hpp"
 
 #include "capd/dynset/typedefs.h"
-
-
-

@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_DAGINDEXER_H_
-#define _CAPD_AUTODIFF_DAGINDEXER_H_
+#ifndef CAPD_AUTODIFF_DAGINDEXER_H
+#define CAPD_AUTODIFF_DAGINDEXER_H
 
 #include <vector>
 #include "capd/basicalg/TypeTraits.h"
@@ -437,4 +437,4 @@ void DagIndexer<T>::setMask(Iterator b, Iterator e){
 
 }} // namespace capd::autodiff
 
-#endif
+#endif // CAPD_AUTODIFF_DAGINDEXER_H

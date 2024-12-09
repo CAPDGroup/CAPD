@@ -1,5 +1,5 @@
-#ifndef __CAPD_REVERSIVBLE_TEST_H__
-#define __CAPD_REVERSIVBLE_TEST_H__
+#ifndef CAPD_REVERSIVBLE_TEST_H
+#define CAPD_REVERSIVBLE_TEST_H
 
 #include "capd/capdlib.h"
 using namespace capd;
@@ -134,4 +134,4 @@ void doCntest(TM& tm, IVector x){
   BOOST_REQUIRE_MESSAGE(subset(J,D),"J=" << J.toString() << ", D=" << D.toString());
 }
 
-#endif
+#endif // CAPD_REVERSIVBLE_TEST_H

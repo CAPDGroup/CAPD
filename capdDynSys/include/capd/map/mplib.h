@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MAP_MPLIB_H_
-#define _CAPD_MAP_MPLIB_H_
+#ifndef CAPD_MAP_MPLIB_H
+#define CAPD_MAP_MPLIB_H
 
 #include "capd/vectalg/mplib.h"
 #include "capd/map/Function.h"
@@ -35,4 +35,4 @@ namespace capd{
 
 #endif //__HAVE_MPFR__
 
-#endif // _CAPD_MAP_MPLIB_H_
+#endif // CAPD_MAP_MPLIB_H

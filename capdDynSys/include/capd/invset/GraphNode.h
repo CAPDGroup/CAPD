@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_INVSET_GRAPHNODE_H_
-#define _CAPD_INVSET_GRAPHNODE_H_
+#ifndef CAPD_INVSET_GRAPHNODE_H
+#define CAPD_INVSET_GRAPHNODE_H
 
 namespace capd{
 namespace invset{
@@ -56,4 +56,4 @@ const GraphNode<EdgeSetT, NodeData> GraphNode<EdgeSetT, NodeData>::S_emptyNode =
 
 }} // end of namespace capd::invset
 
-#endif // _CAPD_INVSET_GRAPHNODE_H_
+#endif // CAPD_INVSET_GRAPHNODE_H

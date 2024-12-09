@@ -21,8 +21,8 @@
 // in your case, you may want to modify some specific options.
 
 
-#ifndef _CAPD_CAPD_OPERATINGSYSTEMSETTING_H_ 
-#define _CAPD_CAPD_OPERATINGSYSTEMSETTING_H_ 
+#ifndef CAPD_OPERATINGSYSTEMSETTING_H
+#define CAPD_OPERATINGSYSTEMSETTING_H
 
 // ################ Manual operating system selection #######################
 // Uncomment exactly one of the following defines if the automatic system
@@ -81,6 +81,6 @@ Please edit the configuration file appropriately.
 #endif
 
 
-#endif // _CAPD_CAPD_OPERATINGSYSTEMSETTING_H_ 
+#endif // CAPD_OPERATINGSYSTEMSETTING_H
 
 /// @}

@@ -11,8 +11,8 @@
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
 
-#ifndef _CAPD_POINCARE_BASIC_POINCARE_MAP_HPP_
-#define _CAPD_POINCARE_BASIC_POINCARE_MAP_HPP_
+#ifndef CAPD_POINCARE_BASIC_POINCARE_MAP_HPP
+#define CAPD_POINCARE_BASIC_POINCARE_MAP_HPP
 
 #include <stdexcept>
 #include "capd/poincare/BasicPoincareMap.h"
@@ -100,5 +100,5 @@ void BasicPoincareMap<SolverT, SectionT>::computeDP(
 /// @}
 }} // namespace capd::poincare
 
-#endif // #define _CAPD_POINCARE_BASIC_POINCARE_MAP_HPP_
+#endif // CAPD_POINCARE_BASIC_POINCARE_MAP_HPP
 

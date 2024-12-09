@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_PDES_PDECURVE_H_
-#define _CAPD_PDES_PDECURVE_H_
+#ifndef CAPD_PDES_PDECURVE_H
+#define CAPD_PDES_PDECURVE_H
 
 #include <stdexcept>
 #include <vector>
@@ -281,4 +281,4 @@ void PdeCurve<SeriesT>::sumTaylorSeries(MatrixType& A, const MatrixArray& J, Sca
 ///@}
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_PDES_PDECURVE_H_
+#endif // CAPD_PDES_PDECURVE_H

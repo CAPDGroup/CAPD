@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details. 
 
-#ifndef _CAPD_DYNSET_CNRECT2SET_HPP_
-#define _CAPD_DYNSET_CNRECT2SET_HPP_
+#ifndef CAPD_DYNSET_CNRECT2SET_HPP
+#define CAPD_DYNSET_CNRECT2SET_HPP
 
 #include "capd/dynset/CnRect2Set.h"
 #include "capd/matrixAlgorithms/floatMatrixAlgorithms.hpp"
@@ -258,4 +258,4 @@ CnRect2Set<MatrixType,Policies,DEGREE>& CnRect2Set<MatrixType,Policies,DEGREE>::
 
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_CNRECT2SET_HPP_
+#endif // CAPD_DYNSET_CNRECT2SET_HPP

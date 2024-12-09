@@ -1,4 +1,3 @@
-
 /////////////////////////////////////////////////////////////////////////////
 /// @file factrial.h
 ///
@@ -10,10 +9,12 @@
 // This file constitutes a part of the CAPD library, 
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
+#ifndef CAPD_FACTRIAL_H
+#define CAPD_FACTRIAL_H
+
 #include <vector>
-#ifndef _CAPD_CAPD_FACTRIAL_H_ 
-#define _CAPD_CAPD_FACTRIAL_H_ 
 #include <stdexcept>
+
 namespace capd{
 
 class Newton{
@@ -151,4 +152,4 @@ inline unsigned long long binomial(unsigned n, unsigned k){
   return capd::Newton::getInstance().newton(n,k);
 }
 
-#endif // _CAPD_CAPD_FACTRIAL_H_ 
+#endif // CAPD_FACTRIAL_H

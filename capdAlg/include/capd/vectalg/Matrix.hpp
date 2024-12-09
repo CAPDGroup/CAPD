@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_VECTALG_MATRIX_HPP_
-#define _CAPD_VECTALG_MATRIX_HPP_
+#ifndef CAPD_VECTALG_MATRIX_HPP
+#define CAPD_VECTALG_MATRIX_HPP
 
 #include <vector>
 #include <stack>
@@ -245,6 +245,6 @@ std::string cppReprezentation(const Matrix<Scalar,cols,rows> & A, const std::str
 
 }} // namespace capd::vectalg
 
-#endif // _CAPD_VECTALG_MATRIX_HPP_
+#endif // CAPD_VECTALG_MATRIX_HPP
 
 /// @}

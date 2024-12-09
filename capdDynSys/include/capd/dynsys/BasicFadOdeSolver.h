@@ -11,8 +11,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSYS_BASICFADODESOLVER_H_
-#define _CAPD_DYNSYS_BASICFADODESOLVER_H_
+#ifndef CAPD_DYNSYS_BASICFADODESOLVER_H
+#define CAPD_DYNSYS_BASICFADODESOLVER_H
 
 #include "capd/fadbad/fadiff.h"
 #include "capd/fadbad/differentiate.h"
@@ -287,6 +287,6 @@ inline void BasicFadOdeSolver<FadMapT,StepControlT>::computeCoefficients(ScalarT
 /// @}
 }} // the end of the namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_BASICFADODESOLVER_H_
+#endif // CAPD_DYNSYS_BASICFADODESOLVER_H
 
 

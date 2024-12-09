@@ -10,8 +10,8 @@
 // Distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_POINCARE_BASIC_POINCARE_MAP_OPERATOR_HPP_
-#define _CAPD_POINCARE_BASIC_POINCARE_MAP_OPERATOR_HPP_
+#ifndef CAPD_POINCARE_BASIC_POINCARE_MAP_OPERATOR_HPP
+#define CAPD_POINCARE_BASIC_POINCARE_MAP_OPERATOR_HPP
 
 #include "capd/poincare/BasicPoincareMap.h"
 #include "capd/diffAlgebra/C2TimeJet.h"
@@ -178,5 +178,5 @@ typename BasicPoincareMap<SolverT, SectionT>::VectorType BasicPoincareMap<Solver
 /// @}
 }} // namespace capd::poincare
 
-#endif // #define _CAPD_POINCARE_BASIC_POINCARE_MAP_OPERATOR_HPP_
+#endif // CAPD_POINCARE_BASIC_POINCARE_MAP_OPERATOR_HPP
 

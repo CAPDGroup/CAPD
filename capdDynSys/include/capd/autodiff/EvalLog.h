@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_EVAL_LOG_H_
-#define _CAPD_AUTODIFF_EVAL_LOG_H_
+#ifndef CAPD_AUTODIFF_EVAL_LOG_H
+#define CAPD_AUTODIFF_EVAL_LOG_H
 
 #include "capd/autodiff/NodeType.h"
 
@@ -27,21 +27,22 @@ namespace Log
   template<class T, class R>
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo)
     {
       T temp = TypeTraits<T>::zero();
       for(unsigned j=1;j<coeffNo;++j)
-        temp += T(j) * result[j] * left[coeffNo-j];
-      temp /= (T)coeffNo;
+        temp += Real(j) * result[j] * left[coeffNo-j];
+      temp /= Real(coeffNo);
       result[coeffNo] = (left[coeffNo] - temp)/(*left);
     }else
-      *result = log(*left);
+      *result = Math<T>::_log(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = log(*left);
+    *result = Math<T>::_log(*left);
   }
 
   template<class T, class R>
@@ -64,6 +65,7 @@ namespace Log
   template<class T, class R>
   void evalMultiindex(const T* left, R result, DagIndexer<T>* dag, const MultiindexData* i, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(getMask(result,i->index))
     {
       T t = capd::TypeTraits<T>::zero();
@@ -71,9 +73,9 @@ namespace Log
 
       for(int q=0;q<h-1;++q){
         const MultiindexData::IndexPair p = i->getConvolutionPairsFromEpToK(coeffNo)[q];
-        t += dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p]*result[p.first]*left[p.second];
+        t += Real(dag->getIndexArray()[p.first/(dag->getOrder()+1)].k[i->p])*result[p.first]*left[p.second];
       }
-      t= t/(double)i->k[i->p];
+      t= t/Real(i->k[i->p]);
       result[i->index+coeffNo] = (left[i->index+coeffNo]-t)/(*left);
     }
   }
@@ -124,7 +126,7 @@ namespace LogFunTime
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = log(*left);
+    *result = Math<T>::_log(*left);
   }
 
   template<class T, class R>
@@ -142,20 +144,21 @@ namespace LogTime
 {
   template<class T, class R>
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
-  {
+  {    
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo)
     {
-      T temp = T(coeffNo-1) * result[coeffNo-1];
-      temp /= (T)coeffNo;
+      T temp = Real(coeffNo-1) * result[coeffNo-1];
+      temp /= Real(coeffNo);
       result[coeffNo] = (left[coeffNo] - temp)/(*left);
     }else
-      *result = log(*left);
+      *result = Math<T>::_log(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = log(*left);
+    *result = Math<T>::_log(*left);
   }
 
   template<class T, class R>
@@ -176,13 +179,13 @@ namespace LogConst
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
     if(coeffNo==0)
-      *result = log(*left);
+      *result = Math<T>::_log(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = log(*left);
+    *result = Math<T>::_log(*left);
   }
 
   template<class T, class R>
@@ -207,4 +210,4 @@ CAPD_MAKE_DAG_NODE(LogFunTime);
 /// @}
 }} // namespace capd::autodiff
 
-#endif
+#endif // CAPD_AUTODIFF_EVAL_LOG_H

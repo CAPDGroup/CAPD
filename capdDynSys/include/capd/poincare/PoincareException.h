@@ -21,8 +21,8 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 // MA 02111-1307, USA.
 
-#ifndef _CAPD_POINCARE_POINCARE_EXCEPTION_H_
-#define _CAPD_POINCARE_POINCARE_EXCEPTION_H_
+#ifndef CAPD_POINCARE_POINCARE_EXCEPTION_H
+#define CAPD_POINCARE_POINCARE_EXCEPTION_H
 
 #include <string>
 #include <sstream>
@@ -93,5 +93,5 @@ public:
 /// @}
 }} // namespace capd::poincare
 
-#endif // _CAPD_POINCARE_POINCARE_EXCEPTION_H_
+#endif // CAPD_POINCARE_POINCARE_EXCEPTION_H
 

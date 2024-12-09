@@ -1,5 +1,3 @@
-
-
 /////////////////////////////////////////////////////////////////////////////
 /// @file FirstOrderEnclosure.h
 ///
@@ -12,13 +10,13 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-/* Author: Daniel Wilczak 2001-2017 */
+// Author: Daniel Wilczak 2001-2017
+
+#ifndef CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H
+#define CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H
 
 #include "capd/diffAlgebra/C1TimeJet.h"
 #include "capd/diffAlgebra/C2TimeJet.h"
-
-#ifndef _CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H_
-#define _CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H_
 
 namespace capd{
 namespace dynsys{
@@ -146,6 +144,6 @@ inline static void computeEnclosureAndRemainder(DS& ds, const typename DS::Scala
 /// @}
 }} //namespace capd::dynsys
 
-#endif // _CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H_
+#endif // CAPD_DYNSYS_FIRST_ORDER_ENCLOSURE_H
 
 

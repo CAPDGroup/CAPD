@@ -14,14 +14,15 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _CAPD_INTERVAL_INTERVALINTF_H_
-#define _CAPD_INTERVAL_INTERVALINTF_H_
+#ifndef CAPD_INTERVAL_INTERVALINTF_H
+#define CAPD_INTERVAL_INTERVALINTF_H
 
 #include <iostream>
 #include "capd/basicalg/minmax.h"
 #include "capd/intervals/IntervalSettings.h"
 #include "capd/intervals/IntervalError.h"
 #include "capd/basicalg/TypeTraits.h"
+#include "capd/basicalg/Math.h"
 #include "capd/rounding/RoundingTraits.h"
 #include "capd/intervals/IntervalTraits.h"
 #include "capd/basicalg/doubleFun.h"
@@ -93,22 +94,11 @@ class Interval {
 
   Interval();
 
-  /// copying constructor
-  Interval(const Interval &A_iv);
-
   /// constructor from any class that can be coverted to BoundType
-  // template < typename T_Scalar >
-  // Interval( const T_Scalar & A_scalar );
   Interval(const BoundType &A_scalar);
-  //Interval(BoundType A_scalar);
-
-  //Interval(const volatile BoundType & A_scalar);
 
   /// constructor from any class that can be coverted to BoundType
-  //template < typename T_Scalar1, typename T_Scalar2 >
-  //Interval( const T_Scalar1 & A_left, const T_Scalar2 & A_right );
   Interval(const BoundType &A_left, const BoundType &A_right);
-  //Interval( const volatile BoundType & A_left, const volatile BoundType & A_right );
 
   Interval(const char left[], const char right[]);
 
@@ -148,7 +138,6 @@ class Interval {
 
   //================ definitions in intervalOp.hpp ============================
 
-  Interval &operator=(const Interval &A_iv);
   Interval &operator=(const BoundType &A_x);
   Interval &operator+=(const Interval &A_iv);
   Interval &operator-=(const Interval &A_iv);
@@ -305,6 +294,10 @@ Interval<T_Bound, T_Rnd> cot(const Interval<T_Bound, T_Rnd> &x);
 template<typename T_Bound, typename T_Rnd>
 Interval<T_Bound, T_Rnd> atan(const Interval<T_Bound, T_Rnd> &x);
 
+/// atan2 (x,y) = alpha such that x = r * cos(alpha), y = r * sin(alpha) where alpha in [-pi, pi+eps], for some r
+template<typename T_Bound, typename T_Rnd>
+Interval<T_Bound, T_Rnd> atan2(const Interval<T_Bound, T_Rnd> &x, const Interval<T_Bound, T_Rnd> &y);
+
 // asin x
 template<typename T_Bound, typename T_Rnd>
 Interval<T_Bound, T_Rnd> asin(const Interval<T_Bound, T_Rnd> &x);
@@ -432,7 +425,7 @@ inline bool isinf(const Interval< T_Bound, T_Rnd >& r) {
 ///  returns true if any of endpoints is a NaN
 template < typename T_Bound, typename T_Rnd>
 inline bool isnan(const capd::intervals::Interval< T_Bound, T_Rnd >& r) {
-  return (isnan(r.leftBound()) or isnan(r.rightBound()));
+  return (isnan(r.leftBound()) || isnan(r.rightBound()));
 }
 /// returns interval containing copysign(a, b) for each a in x and b in y
 template < typename T_Bound, typename T_Rnd>
@@ -484,24 +477,27 @@ public:
   }
 
 /// an absolute value
-  static inline constexpr IntervalType abs (const IntervalType & ix) noexcept {
+  static constexpr IntervalType abs (const IntervalType & ix) noexcept {
 	return ::capd::intervals::iabs(ix);
   } // abs
 
 
 ///maximum
-  static inline constexpr IntervalType max ( const IntervalType & ix, const IntervalType & iy) noexcept {
+  static constexpr IntervalType max ( const IntervalType & ix, const IntervalType & iy) noexcept {
 	return ::capd::intervals::imax(ix, iy);
   }
 
 ///minimum
-  static inline constexpr IntervalType min ( const IntervalType& ix, const IntervalType& iy){
+  static constexpr IntervalType min ( const IntervalType& ix, const IntervalType& iy){
 	return ::capd::intervals::imin(ix, iy);
   }
 
   static inline bool isSingular(const IntervalType& x) {
     return ( x.leftBound() <= zero() && x.rightBound()>=zero());
   }
+
+  static inline int _int(const IntervalType& z) noexcept { return TypeTraits<T>::_int(z.leftBound()); } 
+  static inline double _double(const IntervalType& z) noexcept { return TypeTraits<T>::_double(z.leftBound()); } 
 
  private:
   static const  ::capd::intervals::Interval<T,RT> S_zero ;// = capd::intervals::Interval<T,R>(T(0.0));
@@ -518,6 +514,21 @@ const ::capd::intervals::Interval<T,RT> TypeTraits< ::capd::intervals::Interval<
     TypeTraits<T>::one()
 );
 
+template <typename T, typename RT>
+class Math < ::capd::intervals::Interval<T,RT> > {
+public:
+  typedef typename ::capd::intervals::Interval<T,RT> Interval;
+  static constexpr inline Interval _sqr(const Interval& z) { return capd::intervals::sqr(z); }
+  static constexpr inline Interval _log(const Interval& x) {	return log(x);  }
+  static constexpr inline Interval _pow(const Interval& x, int c) {	return power(x,c);  }
+  static constexpr inline Interval _sqrt(const Interval& z) { return sqrt(z); }
+  static constexpr inline Interval _exp(const Interval& x) {	return exp(x);  }
+  static constexpr inline Interval _sin(const Interval& x) {	return sin(x);  }
+  static constexpr inline Interval _cos(const Interval& x) {	return cos(x);  }
+  static constexpr inline Interval _atan(const Interval& x) {	return atan(x);  }
+  static constexpr inline Interval _asin(const Interval& x) {	return asin(x);  }
+  static constexpr inline Interval _acos(const Interval& x) {	return acos(x);  }
+};
 
 } // namespace capd
 
@@ -542,4 +553,4 @@ inline bool isInf(const capd::intervals::Interval< T_Bound, T_Rnd >& r) {
 }
 
 
-#endif // _CAPD_INTERVAL_INTERVALINTF_H_
+#endif // CAPD_INTERVAL_INTERVALINTF_H

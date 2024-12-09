@@ -1,6 +1,3 @@
-
-#include "QRPolicy.h"
-
 //////////////////////////////////////////////////////////////////////////////
 //   Package:          CAPD
 
@@ -15,6 +12,8 @@
 // This file constitutes a part of the CAPD library,
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
+
+#include "QRPolicy.h" // @todo Why is that needed?
 
 namespace CAPD_USER_NAMESPACE{
 

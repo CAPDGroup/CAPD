@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#if !defined(_SKIP_COMMENTS_ISTREAM_H_)
-#define _SKIP_COMMENTS_ISTREAM_H_
+#ifndef CAPD_SKIP_COMMENTS_ISTREAM_H
+#define CAPD_SKIP_COMMENTS_ISTREAM_H
 
 #include <istream>
 
@@ -59,6 +59,6 @@ SkipCommentsIstream& operator>>(SkipCommentsIstream& A_in,T& A_t){
 
 
 
-#endif //_SKIP_COMMENTS_ISTREAM_H_
+#endif // CAPD_SKIP_COMMENTS_ISTREAM_H
 
 /// @}

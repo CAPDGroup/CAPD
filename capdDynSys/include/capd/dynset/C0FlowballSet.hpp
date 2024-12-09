@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_C0FLOWBALLSET_HPP_
-#define _CAPD_DYNSET_C0FLOWBALLSET_HPP_
+#ifndef CAPD_DYNSET_C0FLOWBALLSET_HPP
+#define CAPD_DYNSET_C0FLOWBALLSET_HPP
 
 #include <stdexcept>
 #include "capd/dynset/C0FlowballSet.h"
@@ -70,4 +70,4 @@ typename C0FlowballSet<MatrixType>::VectorType C0FlowballSet<MatrixType>::affine
 
 }} // namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C0FLOWBALLSET_HPP_
+#endif // CAPD_DYNSET_C0FLOWBALLSET_HPP

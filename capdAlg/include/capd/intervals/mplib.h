@@ -12,8 +12,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_INTERVAL_MPLIB_H_
-#define _CAPD_INTERVAL_MPLIB_H_
+#ifndef CAPD_INTERVAL_MPLIB_H
+#define CAPD_INTERVAL_MPLIB_H
 
 #include "capd/multiPrec/mplib.h"
 #include "capd/intervals/MpInterval.h"
@@ -26,4 +26,4 @@ namespace capd{
 
 #endif //__HAVE_MPFR__
 
-#endif // _CAPD_INTERVAL_MPLIB_H_
+#endif // CAPD_INTERVAL_MPLIB_H

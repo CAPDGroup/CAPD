@@ -18,11 +18,11 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef CAPD_MULTIPREC_MPREAL_H
+#define CAPD_MULTIPREC_MPREAL_H
+
 // Protects against compilations in systems without mpfr and gmp package
 #ifdef __HAVE_MPFR__
-
-#ifndef _CAPD_MULTIPREC_MPREAL_H_
-#define _CAPD_MULTIPREC_MPREAL_H_
 
 
 #include <cstdio>
@@ -34,6 +34,7 @@
 #include <gmp.h>
 #include <mpfr.h>
 #include "capd/basicalg/TypeTraits.h"
+#include "capd/basicalg/Math.h"
 #include "capd/basicalg/minmax.h"
 #include "capd/auxil/ignoreUnused.h"
 
@@ -357,15 +358,35 @@ public:
   static inline Real max(const Real& a, const Real& b){
     return std::max(a,b);
   }
+
+  static inline int _int(const Real& z) noexcept { return toInt(z); } 
+  static inline double _double(const Real& z) noexcept { return toDouble(z); } 
+
   static inline bool isSingular(const Real& x) {
     return ( x==zero());
   }
+};
+
+template <>
+class Math<capd::multiPrec::MpReal>{
+public:
+  typedef capd::multiPrec::MpReal Real;
+  static inline Real _sqr(const Real& z) noexcept{ return sqr(z);  }
+  static inline Real _log(const Real& x) noexcept{	return log(x);  }
+  static inline Real _pow(const Real& x, int c) noexcept{	return power(x,c);  }
+  static inline Real _sqrt(const Real& x) noexcept{	return sqrt(x);  }
+  static inline Real _exp(const Real& x) noexcept{	return exp(x);  }
+  static inline Real _sin(const Real& x) noexcept{	return sin(x);  }
+  static inline Real _cos(const Real& x) noexcept{	return cos(x);  }
+  static inline Real _atan(const Real& x) noexcept{	return atan(x);  }
+  static inline Real _asin(const Real& x) noexcept{	return asin(x);  }
+  static inline Real _acos(const Real& x) noexcept{	return acos(x);  }
 };
 
 }
 
 #endif // _CAPD_MULTIPREC_MPREAL_H_
 
-#endif   // __HAVE_MPFR__
+#endif // CAPD_MULTIPREC_MPREAL_H
 
 

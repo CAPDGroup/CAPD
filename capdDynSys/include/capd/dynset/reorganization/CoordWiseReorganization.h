@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DYNSET_COORDWISEREORGANIZATION_H_
-#define _CAPD_DYNSET_COORDWISEREORGANIZATION_H_
+#ifndef CAPD_DYNSET_COORDWISEREORGANIZATION_H
+#define CAPD_DYNSET_COORDWISEREORGANIZATION_H
 
 #include "capd/dynset/reorganization/FactorPolicy.h"
 #include "capd/dynset/DefaultPolicy.h"
@@ -147,4 +147,4 @@ protected :
 /// @}
 }} // end of capd::dynset
 
-#endif //_CAPD_DYNSET_COORDWISEREORGANIZATION_H_
+#endif // CAPD_DYNSET_COORDWISEREORGANIZATION_H

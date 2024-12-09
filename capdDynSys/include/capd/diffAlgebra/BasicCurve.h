@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_BASICCURVE_H_
-#define _CAPD_DIFFALGEBRA_BASICCURVE_H_
+#ifndef CAPD_DIFFALGEBRA_BASICCURVE_H
+#define CAPD_DIFFALGEBRA_BASICCURVE_H
 
 #include <stdexcept>
 #include "capd/diffAlgebra/CurveInterface.h"
@@ -280,4 +280,4 @@ typename BasicCurve<MatrixT>::ScalarType& BasicCurve<MatrixT>::remainderCoeffici
 ///@}
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_BASICCURVE_H_
+#endif // CAPD_DIFFALGEBRA_BASICCURVE_H

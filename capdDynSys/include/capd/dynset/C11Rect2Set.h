@@ -12,8 +12,8 @@
 
 /* Author: Daniel Wilczak, 2006 */
 
-#ifndef _CAPD_DYNSET_C11RECT2SET_H_
-#define _CAPD_DYNSET_C11RECT2SET_H_
+#ifndef CAPD_DYNSET_C11RECT2SET_H
+#define CAPD_DYNSET_C11RECT2SET_H
 
 #include "capd/dynset/C1DoubletonSet.h"
 #include "capd/dynset/reorganization/FactorReorganization.h"
@@ -61,5 +61,5 @@ public:
 
 }} // the end of the namespace capd::dynset
 
-#endif // _CAPD_DYNSET_C11RECT2SET_H_
+#endif // CAPD_DYNSET_C11RECT2SET_H
 

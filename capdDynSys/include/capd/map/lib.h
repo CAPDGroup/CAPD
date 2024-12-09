@@ -15,8 +15,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MAP_LIB_H_
-#define _CAPD_MAP_LIB_H_
+#ifndef CAPD_MAP_LIB_H
+#define CAPD_MAP_LIB_H
 #include "capd/vectalg/lib.h"
 #include "capd/map/Function.h"
 #include "capd/map/Map.h"
@@ -34,4 +34,4 @@ typedef capd::map::Map<LDMatrix> LDMap;
 
 } // end of namespace capd
 
-#endif // _CAPD_MAP_LIB_H_
+#endif // CAPD_MAP_LIB_H

@@ -1,3 +1,6 @@
+#ifndef CAPD_CHECK_GET_STEP_H
+#define CAPD_CHECK_GET_STEP_H
+
 #include <boost/test/unit_test.hpp>
 
 #include "capd/capdlib.h"
@@ -67,3 +70,5 @@ void checkFixedTime(TM& tm, V& x, double fixedTimeStep){
   BOOST_REQUIRE(tm.getSolver().getStep()>0);
   BOOST_REQUIRE(tm.getSolver().getStep()<fixedTimeStep);
 }
+
+#endif // CAPD_CHECK_GET_STEP_H

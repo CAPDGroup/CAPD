@@ -13,13 +13,13 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef CAPD_DIFFALGEBRA_CNTIMEJET_H
+#define CAPD_DIFFALGEBRA_CNTIMEJET_H
+
 #include <vector>
 #include "capd/diffAlgebra/TimeRange.h"
 #include "capd/diffAlgebra/Jet.h"
 #include "capd/diffAlgebra/CoeffTraits.h"
-
-#ifndef _CAPD_DIFFALGEBRA_CNTIMEJET_H_
-#define _CAPD_DIFFALGEBRA_CNTIMEJET_H_
 
 namespace capd{
 namespace diffAlgebra{
@@ -92,6 +92,6 @@ struct CoeffTraits<CnTimeJet<MatrixT,DEGREE> >{
 };
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_CNCOEFF_H_
+#endif // CAPD_DIFFALGEBRA_CNTIMEJET_H
 
 /// @}

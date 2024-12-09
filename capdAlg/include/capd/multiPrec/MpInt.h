@@ -18,11 +18,11 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
+#ifndef CAPD_MULTIPREC_MPINT_H
+#define CAPD_MULTIPREC_MPINT_H
+
 // Protects against compilations in systems without mpfr and gmp package
 #ifdef __HAVE_MPFR__
-
-#ifndef _CAPD_MULTIPREC_MPINT_H_
-#define _CAPD_MULTIPREC_MPINT_H_
 
 #include <cstddef>
 #include <gmpxx.h>
@@ -101,4 +101,4 @@ inline long convertToLong(const capd::multiPrec::MpInt& x)
 }
 #endif // _CAPD_MULTIPREC_MPINT_H_
 
-#endif   // __HAVE_MPFR__
+#endif // CAPD_MULTIPREC_MPINT_H

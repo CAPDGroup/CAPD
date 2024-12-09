@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_AUTODIFF_EVAL_ONE_MINUS_SQR_H_
-#define _CAPD_AUTODIFF_EVAL_ONE_MINUS_SQR_H_
+#ifndef CAPD_AUTODIFF_EVAL_ONE_MINUS_SQR_H
+#define CAPD_AUTODIFF_EVAL_ONE_MINUS_SQR_H
 
 #include "capd/autodiff/EvalSqr.h"
 
@@ -27,16 +27,17 @@ namespace OneMinusSqr{
   template<class T, class R>
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     if(coeffNo)
-      result[coeffNo] = -2.*Sqr::sqrProduct(left,coeffNo);
+      result[coeffNo] = Real(-2.)*Sqr::sqrProduct(left,coeffNo);
     else
-      *result = TypeTraits<T>::one() - sqr(*left);
+      *result = TypeTraits<T>::one() - Math<T>::_sqr(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = TypeTraits<T>::one() - sqr(*left);
+    *result = TypeTraits<T>::one() - Math<T>::_sqr(*left);
   }
 
   template<class T, class R>
@@ -106,7 +107,7 @@ namespace OneMinusSqrFunTime
  template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = TypeTraits<T>::one() - sqr(*left);
+    *result = TypeTraits<T>::one() - Math<T>::_sqr(*left);
   }
 
   template<class T, class R>
@@ -127,18 +128,19 @@ namespace OneMinusSqrTime
   template<class T, class R>
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
+    typedef typename TypeTraits<T>::Real Real;
     switch(coeffNo)
     {
-      case 2: result[2] = -1.; break;
-      case 1: result[1] = -2.*(*left); break;
-      case 0: *result = TypeTraits<T>::one()-sqr(*left);
+      case 2: result[2] = T(Real(-1.)); break;
+      case 1: result[1] = Real(-2.)*(*left); break;
+      case 0: *result = TypeTraits<T>::one()-Math<T>::_sqr(*left);
     }
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = TypeTraits<T>::one()-sqr(*left);
+    *result = TypeTraits<T>::one()-Math<T>::_sqr(*left);
   }
 
   template<class T, class R>
@@ -160,13 +162,13 @@ namespace OneMinusSqrConst
   inline void evalC0(const T* left, const T* /*right*/, R result, const unsigned coeffNo)
   {
     if(coeffNo==0)
-      *result = TypeTraits<T>::one()-sqr(*left);
+      *result = TypeTraits<T>::one()-Math<T>::_sqr(*left);
   }
 
   template<class T, class R>
   inline void evalC0HomogenousPolynomial(const T* left, const T* /*right*/, R result)
   {
-    *result = TypeTraits<T>::one()-sqr(*left);
+    *result = TypeTraits<T>::one()-Math<T>::_sqr(*left);
   }
 
   template<class T, class R>
@@ -191,4 +193,4 @@ CAPD_MAKE_DAG_NODE(OneMinusSqrConst);
 /// @}
 }} // namespace capd::autodiff
 
-#endif
+#endif // CAPD_AUTODIFF_EVAL_ONE_MINUS_SQR_H

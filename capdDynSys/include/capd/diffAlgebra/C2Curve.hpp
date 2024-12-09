@@ -10,8 +10,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_DIFFALGEBRA_C2CURVE_HPP_
-#define _CAPD_DIFFALGEBRA_C2CURVE_HPP_
+#ifndef CAPD_DIFFALGEBRA_C2CURVE_HPP
+#define CAPD_DIFFALGEBRA_C2CURVE_HPP
 
 #include <stdexcept>
 #include "capd/vectalg/algebraicOperations.hpp"
@@ -67,4 +67,4 @@ typename C2Curve<BaseCurveT,true>::HessianType C2Curve<BaseCurveT,true>::oneStep
 ///@}
 }} // namespace capd::diffAlgebra
 
-#endif // _CAPD_DIFFALGEBRA_C2CURVE_H_
+#endif // CAPD_DIFFALGEBRA_C2CURVE_HPP

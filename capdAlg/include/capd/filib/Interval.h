@@ -12,14 +12,17 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_FILIB_INTERVAL_H_
-#define _CAPD_FILIB_INTERVAL_H_
+#ifndef CAPD_FILIB_INTERVAL_H
+#define CAPD_FILIB_INTERVAL_H
 #include <climits>
 #include <typeinfo>
 #include <interval/interval.hpp>
 #include "capd/intervals/IntervalError.h"
+#include "capd/intervals/intra/interval_atan2.h"
 #include "capd/basicalg/minmax.h"
 #include "capd/basicalg/TypeTraits.h"
+#include "capd/basicalg/Math.h"
+
 
 // #define __FILIB_DEPRECATED__
 
@@ -59,8 +62,7 @@ inline Interval<T, R, M> diam(const Interval<T, R, M> & ix);
 /// fast interval library
 namespace filib{
 
-//typedef ::filib::interval<double, ::filib::native_directed > T;
-// typedef filib::interval<double> T;
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //  capd::filib::Interval
@@ -627,6 +629,10 @@ friend inline Interval atan (const Interval& x){
   return Interval(atan(x.m_interval));
 }
 
+friend inline Interval atan2( const Interval& x, const Interval& y){
+  return  capd::intervals::intra::atan2(x,y);
+}
+
 // asin x
 
 friend inline Interval asin (const Interval& x){
@@ -881,6 +887,10 @@ public:
   static inline bool isSingular(const IntervalType& x) {
     return ( x.leftBound() <= 0.0 && x.rightBound()>=0.0);
   }
+
+  static inline int _int(const IntervalType& z) noexcept { return TypeTraits<T>::_int(z.leftBound()); } 
+  static inline double _double(const IntervalType& z) noexcept { return TypeTraits<T>::_double(z.leftBound()); } 
+
  private:
   static const  IntervalType S_zero ;// = ::capd::filib::Interval<T,R>(T(0.0));
   static const  IntervalType S_one ;
@@ -896,6 +906,21 @@ const ::capd::filib::Interval<T, R, M> TypeTraits< ::capd::filib::Interval<T, R,
     TypeTraits<T>::one()
 );
 
+template <typename T, filib::RoundingStrategy R, filib::IntervalMode M>
+class Math < filib::Interval<T, R, M> > {
+public:
+  typedef filib::Interval<T, R, M> Interval;
+  static inline Interval _sqr(const Interval& z) { return sqr(z);  }
+  static inline Interval _log(const Interval& x) {	return log(x);  }
+  static inline Interval _pow(const Interval& x, int c) {	return power(x,c);  }
+  static inline Interval _sqrt(const Interval& z) { return sqrt(z);  }
+  static inline Interval _exp(const Interval& x) {	return exp(x);  }
+  static inline Interval _sin(const Interval& x) {	return sin(x);  }
+  static inline Interval _cos(const Interval& x) {	return cos(x);  }
+  static inline Interval _atan(const Interval& x) {	return atan(x);  }
+  static inline Interval _asin(const Interval& x) {	return asin(x);  }
+  static inline Interval _acos(const Interval& x) {	return acos(x);  }
+};
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -918,4 +943,4 @@ inline Interval<T, R, M> Interval<T, R, M>::euler() {
 
 }} // end of namespace capd::filib
 
-#endif // _CAPD_FILIB_INTERVAL_H_
+#endif // CAPD_FILIB_INTERVAL_H

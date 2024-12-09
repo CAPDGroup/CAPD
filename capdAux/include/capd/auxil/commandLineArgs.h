@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#if !defined(_CAPD_COMMANDLINEARGS_H_)
-#define _CAPD_COMMANDLINEARGS_H_
+#ifndef CAPD_COMMANDLINEARGS_H
+#define CAPD_COMMANDLINEARGS_H
 #include <map>
 #include "capd/auxil/stringOstream.h"
 
@@ -123,6 +123,6 @@ inline std::string _CAPD_COMMANDLINEARGS_getFile(int i,OptionMapType& A_m){
       std::cout << "arg[" << it->first <<                      \
       "]=" << it->second << std::endl;
 
-#endif //_CAPD_COMMANDLINEARGS_H_
+#endif // CAPD_COMMANDLINEARGS_H
 
 /// @}

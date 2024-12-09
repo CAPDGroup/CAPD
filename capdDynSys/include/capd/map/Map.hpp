@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MAP_MAP_HPP_
-#define _CAPD_MAP_MAP_HPP_
+#ifndef CAPD_MAP_MAP_HPP
+#define CAPD_MAP_MAP_HPP
 
 #include <algorithm>
 #include <sstream>
@@ -28,7 +28,7 @@
 #include "capd/basicalg/factrial.h"
 #include "capd/diffAlgebra/Hessian.hpp"
 #include "capd/diffAlgebra/Jet.hpp"
-#include "capd/map/Map_codeTranslation.hpp"
+//~ #include "capd/map/Map_codeTranslation.hpp"
 
 namespace capd{
 namespace map{
@@ -307,6 +307,7 @@ void Map<MatrixT>::homogenousPolynomial(const MatrixType& der, HessianType& h) c
 template<typename MatrixT>
 void Map<MatrixT>::computeODECoefficients(VectorType iv[], size_type order) const
 {
+  typedef typename TypeTraits<ScalarType>::Real Real;
   this->checkOrder(order);
 
   using namespace capd::autodiff;
@@ -319,7 +320,7 @@ void Map<MatrixT>::computeODECoefficients(VectorType iv[], size_type order) cons
     this->eval(CoeffNo(k));
     for(i=0;i<(size_type)iv->dimension();++i)
       iv[k+1][i] = this->m_dag(VarNo(i),CoeffNo(k+1))
-                 = this->m_dag(VarNo(this->m_pos[i]),CoeffNo(k))/(k+1);
+                 = this->m_dag(VarNo(this->m_pos[i]),CoeffNo(k))/Real(k+1);
   }
 }
 
@@ -328,6 +329,7 @@ void Map<MatrixT>::computeODECoefficients(VectorType iv[], size_type order) cons
 template<typename MatrixT>
 void Map<MatrixT>::computeODECoefficients(VectorType iv[], MatrixType im[], size_type order) const
 {
+  typedef typename TypeTraits<ScalarType>::Real Real;
   this->checkOrder(order);
   this->checkDegree(1);
 
@@ -353,9 +355,9 @@ void Map<MatrixT>::computeODECoefficients(VectorType iv[], MatrixType im[], size
     this->eval(1,CoeffNo(k));
     for(i=0;i<dim;++i)
     {
-      iv[k+1][i] = this->m_dag(VarNo(i),CoeffNo(k+1)) = this->m_dag(VarNo(this->m_pos[i]),CoeffNo(k))/(k+1);
+      iv[k+1][i] = this->m_dag(VarNo(i),CoeffNo(k+1)) = this->m_dag(VarNo(this->m_pos[i]),CoeffNo(k))/Real(k+1);
       for(j=0;j<dim;++j)
-        im[k+1](i+1,j+1) = this->m_dag(VarNo(i),DerNo(j),CoeffNo(k+1)) = this->m_dag(VarNo(this->m_pos[i]),DerNo(j),CoeffNo(k))/(k+1);
+        im[k+1](i+1,j+1) = this->m_dag(VarNo(i),DerNo(j),CoeffNo(k+1)) = this->m_dag(VarNo(this->m_pos[i]),DerNo(j),CoeffNo(k))/Real(k+1);
     }
   }
 }
@@ -365,6 +367,7 @@ void Map<MatrixT>::computeODECoefficients(VectorType iv[], MatrixType im[], size
 template<typename MatrixT>
 void Map<MatrixT>::computeODECoefficients(VectorType iv[], MatrixType im[], HessianType h[], size_type order) const
 {
+  typedef typename TypeTraits<ScalarType>::Real Real;
   this->checkOrder(order);
   this->checkDegree(2);
   const size_type dim = this->dimension();
@@ -398,17 +401,17 @@ void Map<MatrixT>::computeODECoefficients(VectorType iv[], MatrixType im[], Hess
     for(i=0;i<dim;++i)
     {
       iv[k+1][i] = this->m_dag(VarNo(i),CoeffNo(k+1))
-                 = this->m_dag(VarNo(this->m_pos[i]),CoeffNo(k))/(k+1);
+                 = this->m_dag(VarNo(this->m_pos[i]),CoeffNo(k))/Real(k+1);
 
       for(j=0;j<dim;++j)
       {
         im[k+1](i+1,j+1) = this->m_dag(VarNo(i),DerNo(j),CoeffNo(k+1))
-                         = this->m_dag(VarNo(this->m_pos[i]),DerNo(j),CoeffNo(k))/(k+1);
+                         = this->m_dag(VarNo(this->m_pos[i]),DerNo(j),CoeffNo(k))/Real(k+1);
 
         for(c=j;c<dim;++c)
         {
           h[k+1](i,j,c) = this->m_dag(VarNo(i),DerNo(j),DerNo(c),CoeffNo(k+1))
-                        = this->m_dag(VarNo(this->m_pos[i]),DerNo(j),DerNo(c),CoeffNo(k))/(k+1);
+                        = this->m_dag(VarNo(this->m_pos[i]),DerNo(j),DerNo(c),CoeffNo(k))/Real(k+1);
         }
       }
     }
@@ -420,6 +423,7 @@ void Map<MatrixT>::computeODECoefficients(VectorType iv[], MatrixType im[], Hess
 template<typename MatrixT>
 void Map<MatrixT>::computeODECoefficients(JetType x[], size_type degree, size_type order) const
 {
+  typedef typename TypeTraits<ScalarType>::Real Real;
   this->checkOrder(order);
   this->checkDegree(degree);
 
@@ -457,7 +461,7 @@ void Map<MatrixT>::computeODECoefficients(JetType x[], size_type degree, size_ty
       ScalarType* q = this->m_dag.coefficients() + i*(this->m_dag.timeJetSize())+k+1;
       while(b!=e)
       {
-        *b = *q = (*p)/(k+1);
+        *b = *q = (*p)/Real(k+1);
         b++;
         p += this->getOrder()+1;
         q += this->getOrder()+1;
@@ -507,6 +511,6 @@ void Map<MatrixT>::setDegree(size_type degree)
 
 }} // namespace capd::map
 
-#endif // _CAPD_MAP_MAP_HPP_
+#endif // CAPD_MAP_MAP_HPP
 
 /// @}

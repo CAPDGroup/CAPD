@@ -13,8 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.ii.uj.edu.pl/ for details.
 
-#ifndef _CAPD_MAP_FUNCTION_H_ 
-#define _CAPD_MAP_FUNCTION_H_ 
+#ifndef CAPD_MAP_FUNCTION_H
+#define CAPD_MAP_FUNCTION_H
 
 #include <string>
 #include <vector>
@@ -83,6 +83,6 @@ Function<VectorType>::Function(Functional f, int dimIn, int noParam, size_type /
 
 }} // the end of the namespace capd::map
 
-#endif // _CAPD_MAP_FUNCTION_H_ 
+#endif // CAPD_MAP_FUNCTION_H
 
 /// @}

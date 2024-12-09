@@ -23,8 +23,8 @@
 // with this software; see the file "license.txt".  If not, write to the
 // Free Software Foundation, Inc., 59
 
-#ifndef _CAPD_VECTALG_MATRIX_H_
-#define _CAPD_VECTALG_MATRIX_H_
+#ifndef CAPD_VECTALG_MATRIX_H
+#define CAPD_VECTALG_MATRIX_H
 
 #include <iostream>
 #include "capd/vectalg/Vector.h"
@@ -195,6 +195,6 @@ std::string cppReprezentation(const Matrix<Scalar,cols,rows> & A, const std::str
 
 #include "capd/vectalg/Matrix_inline.h"
 
-#endif // _CAPD_VECTALG_MATRIX_H_
+#endif // CAPD_VECTALG_MATRIX_H
 
 /// @}
