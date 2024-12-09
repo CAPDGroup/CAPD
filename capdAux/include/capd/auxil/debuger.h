@@ -13,14 +13,9 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef CAPD_DEBUGER_H
-#define CAPD_DEBUGER_H
-
 #define TRACE(ARG) std::cout << #ARG << endl; ARG
 #undef OUT
 #define OUT(X) " " << #X << "= " << X
 #define COUT(X) std::cout << #X << "= " << X << std::endl;
-
-#endif // CAPD_DEBUGER_H
 
 /// @}

@@ -10,7 +10,7 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _LOGTWO_H_
+#if !defined(_LOGTWO_H_)
 #define _LOGTWO_H_
 
 #include <iostream>

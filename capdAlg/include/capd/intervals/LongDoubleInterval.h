@@ -10,9 +10,6 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
-#ifndef _CAPD_INTERVAL_LONGDOUBLEINTERVAL_H_ 
-#define _CAPD_INTERVAL_LONGDOUBLEINTERVAL_H_ 
-
 #include <cmath>
 
 using std::log;
@@ -20,6 +17,9 @@ using std::log;
 #include "capd/basicalg/doubleFun.h"
 #include "capd/intervals/Interval.h"
 #include "capd/rounding/DoubleRounding.h"
+
+#ifndef _CAPD_INTERVAL_LONGDOUBLEINTERVAL_H_ 
+#define _CAPD_INTERVAL_LONGDOUBLEINTERVAL_H_ 
 
 #if (CAPD_CPU_ARCH==CAPD_CPU_ARCH_X86)
 

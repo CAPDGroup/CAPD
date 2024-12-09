@@ -13,7 +13,7 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef EMBEDDING_DIM
+#if !defined(EMBEDDING_DIM)
 
 //#define EMBEDDING_DIM 2
 #define EMBEDDING_DIM 3

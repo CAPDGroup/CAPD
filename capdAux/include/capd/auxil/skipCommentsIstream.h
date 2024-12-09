@@ -13,7 +13,7 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
-#ifndef _SKIP_COMMENTS_ISTREAM_H_
+#if !defined(_SKIP_COMMENTS_ISTREAM_H_)
 #define _SKIP_COMMENTS_ISTREAM_H_
 
 #include <istream>

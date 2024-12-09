@@ -1,4 +1,4 @@
-#ifndef _HANDLE_UNEXPECTED_TERMINATE_
+#if !defined(_HANDLE_UNEXPECTED_TERMINATE_)
 #define _HANDLE_UNEXPECTED_TERMINATE_
 
 #include <iostream>
