@@ -39,7 +39,7 @@ class HeaderFile:
             if self.__match_ifndef(line):
                 self.state = State.INCLUSION_GUARD_IFNDEF
                 self.endif_counter += 1
-                # line = f'#ifndef {self.header_guard_new}'
+                line = f'#ifndef {self.header_guard_new}\n'
             elif self.__match_online_multiline_comment(line):
                 pass
             elif self.__match_comment_or_empty_line(line):
@@ -50,7 +50,7 @@ class HeaderFile:
         elif self.state == State.INCLUSION_GUARD_IFNDEF:
             if self.__match_define(line):
                 self.state = State.INCLUSION_GUARD_DEFINE
-                # line = f'#define {self.header_guard_new}'
+                line = f'#define {self.header_guard_new}\n'
         
         elif self.state == State.INCLUSION_GUARD_DEFINE:
             if self.__match_if_or_ifdef(line):
@@ -60,7 +60,7 @@ class HeaderFile:
 
             if self.endif_counter == 0:
                 self.state = State.INCLUSION_GUARD_ENDIF
-                # line = f'#endif // {self.header_guard_new}'
+                line = f'#endif // {self.header_guard_new}\n'
         
         elif self.state == State.INCLUSION_GUARD_ENDIF:
             if self.__match_comment_or_empty_line(line):
