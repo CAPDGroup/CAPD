@@ -24,7 +24,7 @@ namespace capd
   namespace auxil
   {
 
-    // this should be replace by std::remove_cv from C++11
+    // @todo this should be replace by std::remove_cv from C++11
     template<typename T>
     struct RemoveConst
     {

@@ -1,3 +1,5 @@
+// @todo this file seems unused
+
 #ifndef _HANDLE_UNEXPECTED_TERMINATE_
 #define _HANDLE_UNEXPECTED_TERMINATE_
 

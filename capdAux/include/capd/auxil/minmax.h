@@ -16,6 +16,8 @@
 #ifndef _CAPD_CAPD_MINMAX_H_
 #define _CAPD_CAPD_MINMAX_H_
 
+// @todo Why not remove it since its deprecated?
+
 #include "capd/basicalg/minmax.h"
 
 #undef max

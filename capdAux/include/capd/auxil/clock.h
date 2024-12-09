@@ -13,6 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details. 
 
+// @todo can be replaced with chrono
+
 #ifndef _CAPD_AUXIL_CLOCK_H_ 
 #define _CAPD_AUXIL_CLOCK_H_ 
 #include "capd/settings/operatingSystemSetting.h"

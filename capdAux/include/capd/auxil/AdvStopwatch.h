@@ -13,6 +13,8 @@
 // distributed under the terms of the GNU General Public License.
 // Consult  http://capd.wsb-nlu.edu.pl/ for details.
 
+// @todo Remove it or add test coverage
+
 #ifndef _CAPD_AUXIL_ADVSTOPWATCH_H_
 #define _CAPD_AUXIL_ADVSTOPWATCH_H_
 
