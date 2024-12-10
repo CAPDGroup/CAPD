@@ -4,5 +4,10 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 add_subdirectory(include)
 
 add_subdirectory(src/capd/alglib)
-add_subdirectory(filibsrc)
+
+if(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
+
+    add_subdirectory(filibsrc)
+    
+endif()
 

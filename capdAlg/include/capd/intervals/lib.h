@@ -25,15 +25,15 @@
 
 //#define __USE_CXSC__
 
-#ifdef __USE_CXSC__
+#if defined(__USE_CXSC__)
+
 #include "capd/cxsc/Interval.h"
 namespace capd{
 typedef ::capd::cxsc::Interval  DInterval;
 //typedef DInterval Interval;
 }
 
-#else
-#ifndef __USE_FILIB__
+#elif defined(__USE_NATIVE__)
 
 using std::log;
 #include "capd/intervals/Interval.h"
@@ -44,7 +44,7 @@ namespace capd{
 typedef intervals::Interval<double, capd::rounding::DoubleRounding> DInterval;
 } // end of namespace capd
 
-#else
+#elif defined(__USE_FILIB__)
 
 #include "capd/filib/Interval.h"
 namespace capd{
@@ -52,7 +52,10 @@ typedef ::capd::filib::Interval<double, ::filib::native_directed, ::filib::i_mod
 //typedef DInterval Interval;
 } // end of namespace capd
 
-#endif  // __USE_FILIB__
+#else
+
+#error "No interval type selected!"
+
 #endif
 
 #ifndef __CAPD_DEFINE_INTERVAL__

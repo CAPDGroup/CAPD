@@ -16,7 +16,7 @@ target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
 
 if (${CAPD_INTERVAL_TYPE} STREQUAL "NATIVE")
 
-    message(FATAL_ERROR "Unsupported CAPD_INTERVAL_TYPE")
+    target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_NATIVE__)
 
 elseif(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
 
@@ -59,21 +59,46 @@ add_subdirectory(capdExt)
 add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys)
-add_subdirectory(capdMake/libcapd)
-add_subdirectory(capdMake/bin)
+# add_subdirectory(capdMake/libcapd)
+# add_subdirectory(capdMake/bin)
 
-install(TARGETS
-        ${PROJECT_NAME} filib
-    EXPORT capd-config
-    LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
-    INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
-)
+if (${CAPD_INTERVAL_TYPE} STREQUAL "NATIVE")
 
-export(TARGETS
-        ${PROJECT_NAME} filib
-    NAMESPACE capd::
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
-)
+    install(TARGETS
+            ${PROJECT_NAME}
+        EXPORT capd-config
+        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
+    )
+
+    export(TARGETS
+            ${PROJECT_NAME}
+        NAMESPACE capd::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
+    )
+
+
+elseif(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
+
+    install(TARGETS
+            ${PROJECT_NAME} filib
+        EXPORT capd-config
+        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
+    )
+
+    export(TARGETS
+            ${PROJECT_NAME} filib
+        NAMESPACE capd::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
+    )
+
+else()
+
+    message(FATAL_ERROR "Unsupported CAPD_INTERVAL_TYPE")
+
+endif()
+
 install(EXPORT
         capd-config
     DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
