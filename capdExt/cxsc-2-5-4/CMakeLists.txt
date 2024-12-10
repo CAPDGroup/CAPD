@@ -272,7 +272,7 @@ install(FILES
   ${fi_lib_headers}
   ${ctoolbox_headers}
   ${CMAKE_CURRENT_BINARY_DIR}/cxscconf.h
-DESTINATION include)
+DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
 
 # installation of the documentation
 install(FILES changelog README DESTINATION doc)
@@ -301,14 +301,14 @@ SET (CTOOLBOX_VLG_EXP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/CToolbox/test/test_vgl_exp
 target_include_directories(${PROJECT_NAME} PUBLIC
 
   # where cxscconf.h is
-  ${CMAKE_CURRENT_BINARY_DIR}
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
 
   # the C-XSC sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/CToolbox/Modules
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/fi_lib
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/rts
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/asm
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/CToolbox/Modules
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/src
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/src/fi_lib
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/src/rts
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/src/asm
 )
 
 #make test, runs some test programms

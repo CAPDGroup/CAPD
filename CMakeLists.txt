@@ -64,7 +64,7 @@ add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys)
 
-if (${CAPD_INTERVAL_TYPE} STREQUAL "FILIB") # installation supported for filib interval type only
+if (${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
 
     add_subdirectory(capdMake/libcapd)
     add_subdirectory(capdMake/bin)
@@ -78,6 +78,29 @@ if (${CAPD_INTERVAL_TYPE} STREQUAL "FILIB") # installation supported for filib i
 
     export(TARGETS
             ${PROJECT_NAME} filib
+        NAMESPACE capd::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
+    )
+
+    install(EXPORT
+        capd-config
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
+        NAMESPACE capd::
+    )
+
+endif()
+
+if (${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
+
+    install(TARGETS
+            ${PROJECT_NAME} cxsc
+        EXPORT capd-config
+        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
+    )
+
+    export(TARGETS
+            ${PROJECT_NAME} cxsc
         NAMESPACE capd::
         FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
     )
