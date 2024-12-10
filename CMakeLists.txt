@@ -12,11 +12,23 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 add_library(${PROJECT_NAME})
-add_dependencies(${PROJECT_NAME} filib)
-target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
-
 target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
-target_link_libraries(${PROJECT_NAME} PUBLIC filib)
+
+if (${CAPD_INTERVAL_TYPE} STREQUAL "NATIVE")
+
+    message(FATAL_ERROR "Unsupported CAPD_INTERVAL_TYPE")
+
+elseif(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
+
+    add_dependencies(${PROJECT_NAME} filib)
+    target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
+    target_link_libraries(${PROJECT_NAME} PUBLIC filib)
+
+else()
+
+    message(FATAL_ERROR "Unsupported CAPD_INTERVAL_TYPE")
+
+endif()
 
 enable_testing()
 
