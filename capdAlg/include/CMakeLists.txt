@@ -5,6 +5,7 @@ install_headers(
     capd/basicalg/factrial.h
     capd/basicalg/ieeePrimitive.h
     capd/basicalg/logtwo.h
+    capd/basicalg/Math.h
     capd/basicalg/minmax.h
     capd/basicalg/power.h
     capd/basicalg/powerThree.h
