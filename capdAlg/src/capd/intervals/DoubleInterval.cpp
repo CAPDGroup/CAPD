@@ -51,6 +51,7 @@ template DoubleInterval cos <double, DoubleRounding>(const DoubleInterval& x);
 template DoubleInterval tan <double, DoubleRounding>(const DoubleInterval& x);
 template DoubleInterval cot <double, DoubleRounding>(const DoubleInterval& x);
 template DoubleInterval atan <double, DoubleRounding>(const DoubleInterval& x);
+template DoubleInterval atan2 <double, DoubleRounding>(const DoubleInterval& x, const DoubleInterval& y);
 template DoubleInterval asin <double, DoubleRounding>(const DoubleInterval& x);
 template DoubleInterval acos <double, DoubleRounding>(const DoubleInterval& x);
 template DoubleInterval sinh <double, DoubleRounding>(const DoubleInterval& x);
