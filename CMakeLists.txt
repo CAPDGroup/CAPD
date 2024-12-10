@@ -59,8 +59,8 @@ add_subdirectory(capdExt)
 add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys)
-# add_subdirectory(capdMake/libcapd)
-# add_subdirectory(capdMake/bin)
+add_subdirectory(capdMake/libcapd)
+add_subdirectory(capdMake/bin)
 
 if (${CAPD_INTERVAL_TYPE} STREQUAL "NATIVE")
 
