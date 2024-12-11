@@ -1,0 +1,45 @@
+/*
+**   CXSC is a C++ library for eXtended Scientific Computing
+**
+**  Copyright (C) 1990-2000 Institut fuer Angewandte Mathematik,
+**                          Universitaet Karlsruhe, Germany
+**            (C) 2000-2014 Wiss. Rechnen/Softwaretechnologie
+**                          Universitaet Wuppertal, Germany
+**
+**  This library is free software; you can redistribute it and/or
+**  modify it under the terms of the GNU Library General Public
+**  License as published by the Free Software Foundation; either
+**  version 2 of the License, or (at your option) any later version.
+**
+**  This library is distributed in the hope that it will be useful,
+**  but WITHOUT ANY WARRANTY; without even the implied warranty of
+**  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+**  Library General Public License for more details.
+**
+**  You should have received a copy of the GNU Library General Public
+**  License along with this library; if not, write to the Free
+**  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
+
+#ifndef CXSCCONF_H_INCLUDED
+#define CXSCCONF_H_INCLUDED
+
+#cmakedefine IBM_LINUX_C	@IBM_LINUX_C@
+#cmakedefine IBM_RS_6000_C	@IBM_RS_6000_C@
+#cmakedefine SUN4_GNU_C		@SUN4_GNU_C@
+#cmakedefine SUN4_FORTE		@SUN4_FORTE@
+#cmakedefine SUN_STUDIO_10	@SUN_STUDIO_10@
+#cmakedefine DEC_ALPHA_C	@DEC_ALPHA_C@
+#cmakedefine ROUND_C99_SAVE	@ROUND_C99_SAVE@
+#cmakedefine ROUND_C99_QUICK	@ROUND_C99_QUICK@
+#cmakedefine ROUND_C96_SAVE	@ROUND_C96_SAVE@
+#cmakedefine ROUND_C96_QUICK	@ROUND_C96_QUICK@
+#cmakedefine ROUND_ASM	@ROUND_ASM@
+#cmakedefine GNU_X86_64	@GNU_X86_64@
+#cmakedefine CXSC_x86_64	@CXSC_x86_64@
+#cmakedefine CXSC_PPC64	@CXSC_PPC64@
+#cmakedefine WINDOWS_X86_32	@WINDOWS_X86_32@
+#cmakedefine WINDOWS_MINGW	@WINDOWS_MINGW@
+#endif
+
+

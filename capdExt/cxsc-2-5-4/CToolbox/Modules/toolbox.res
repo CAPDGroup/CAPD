@@ -1,0 +1,27 @@
+-+ R_UTIL.OBJ   &
+-+ I_UTIL.OBJ   &
+-+ MV_UTIL.OBJ  &
+-+ MVI_UTIL.OBJ &
+-+ RPOLY.OBJ    &
+-+ RPEVAL.OBJ   &
+-+ DDF_ARI.OBJ  &
+-+ XI_ARI.OBJ   &
+-+ NLFZERO.OBJ  &
+-+ EXPREVAL.OBJ &
+-+ MATINV.OBJ   &
+-+ LINSYS.OBJ   &
+-+ LST1_ARI.OBJ &
+-+ GOP1.OBJ     &
+-+ GRAD_ARI.OBJ &
+-+ HESS_ARI.OBJ &
+-+ NLINSYS.OBJ  &
+-+ LST_ARI.OBJ  &
+-+ GOP.OBJ      &
+-+ REV_SIMP.OBJ &
+-+ SET_ARI.OBJ  &
+-+ LOP_ARI.OBJ  &
+-+ LOP.OBJ      &
+-+ CI_UTIL.OBJ  &
+-+ CPOLY.OBJ    &
+-+ CIPOLY.OBJ   &
+-+ CPZERO.OBJ

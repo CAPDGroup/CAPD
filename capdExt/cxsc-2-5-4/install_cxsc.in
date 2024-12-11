@@ -1,0 +1,2861 @@
+#!/bin/sh
+##
+##  CXSC is a C++ library for eXtended Scientific Computing
+##
+##  Copyright (C) 1990-2000 Institut fuer Angewandte Mathematik,
+##                          Universitaet Karlsruhe, Germany
+##            (C) 2000-2014 Wiss. Rechnen/Softwaretechnologie
+##                          Universitaet Wuppertal, Germany
+##
+##  Author: Boris Hoeffgen, 2004-2005
+##
+##  This library is free software; you can redistribute it and/or
+##  modify it under the terms of the GNU Library General Public
+##  License as published by the Free Software Foundation; either
+##  version 2 of the License, or (at your option) any later version.
+##
+##  This library is distributed in the hope that it will be useful,
+##  but WITHOUT ANY WARRANTY; without even the implied warranty of
+##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+##  Library General Public License for more details.
+##
+##  You should have received a copy of the GNU Library General Public
+##  License along with this library; if not, write to the Free
+##  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+##
+#
+VERSION=2
+PATCHLEVEL=5
+SUBLEVEL=4
+RELEASE=2.5.4
+PKGNAME=BUWcxsc
+#
+#-------------------------------------------------------------------------------
+# Don't edit below!!!
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+#
+# Compiler diagnostics: enable/disable all warnings
+# ICC_WALL="-w1"             # for Intel-Compiler
+# GCC_WALL="-Wall -Winline"  # for GNU-Compiler
+ICC_WALL=""
+GCC_WALL=""
+#
+#
+HCONF=cxscconf.h
+MAKEFILE=Makefile
+MAKEFILETMPL=Makefile.in
+MAKEFILEEXAMPLE=Makefile.example
+MAKEFILEEXAMPLETMPL=Makefile.example.in
+CWD=`pwd`
+SED=`which sed`
+#
+#----------------------------------------------------------------------------------
+#
+clear 2>/dev/null
+cat scripts/upl
+echo "Type 'yes' to accept this license offer."
+echo "Type 'no' to decline this license offer."
+echo
+if echo '\c' | grep '\c' >/dev/null; 
+then
+	echo -n "Do you accept the terms of either license? [no] "
+else
+        echo "Do you accept the terms of either license? [no] \c"
+fi
+read ANSWER
+echo
+case $ANSWER in
+yes)	
+	;;
+*)
+	echo "You are not licensed to use this software."
+        echo
+        exit 0
+	;;
+esac
+echo "---------------------------------------------------------------------------------"
+#
+#-------------------------------------------------------------------------------
+# operating system detection
+#-------------------------------------------------------------------------------
+#
+UNAME_MACHINE=`(uname -m) 2>/dev/null` || UNAME_MACHINE=unknown
+UNAME_RELEASE=`(uname -r) 2>/dev/null` || UNAME_RELEASE=unknown
+UNAME_SYSTEM=`(uname -s) 2>/dev/null`  || UNAME_SYSTEM=unknown
+UNAME_VERSION=`(uname -v) 2>/dev/null` || UNAME_VERSION=unknown
+UNAME_PROCESSOR=`(uname -p) 2>/dev/null` || UNAME_PROCESSOR=unknown
+echo
+echo "checking host system type....$UNAME_MACHINE"
+echo "checking build system type...$UNAME_SYSTEM"
+echo
+UNAME_ORIG_SYSTEM=$UNAME_SYSTEM
+if [ "$UNAME_SYSTEM" = "Darwin" ] &&  [ "$UNAME_PROCESSOR" = "i386" ] 
+then 
+	UNAME_SYSTEM="Darwin_i386"
+elif [ "$UNAME_SYSTEM" = "Darwin" ] &&  [ "$UNAME_PROCESSOR" = "x86_64" ] 
+then 
+	UNAME_SYSTEM="Darwin_i386"
+elif [ "$UNAME_SYSTEM" = "Darwin" ] && [ "$UNAME_PROCESSOR" = "powerpc" ]
+then 
+	UNAME_SYSTEM="Darwin_powerpc"
+elif [ "$UNAME_MACHINE" = "x86_64" ]
+then 
+	UNAME_SYSTEM=$UNAME_MACHINE
+elif [ "$UNAME_MACHINE" = "ia64" ]
+then 
+	UNAME_SYSTEM=$UNAME_MACHINE
+elif [ "$UNAME_PROCESSOR" = "ppc64" ]
+then 
+	UNAME_SYSTEM=$UNAME_PROCESSOR
+elif [ "$UNAME_MACHINE" = "alpha" ]
+then 
+	UNAME_SYSTEM=$UNAME_MACHINE
+fi
+
+
+case $UNAME_SYSTEM in
+########################################################################################
+#----------------------------------Linux------------------------------------------------	
+########################################################################################
+Linux)
+	echo "Configuring for a $UNAME_MACHINE-pc-linux-gnu host."
+	echo
+	echo "Section: Compiler"
+	echo "================="
+	echo "Possible values:    gnu    for the GNU C/C++ Compiler"
+	echo "                    intel  for the INTEL C/C++ Compiler"
+	echo -n "Which C++ compiler? [gnu] "
+	read COMPILER
+	case $COMPILER in
+	intel)
+		echo -n "Would you like to select a special INTEL C/C++ Compiler-Version? [no] "
+		read SPECIALICC
+		if [ "$SPECIALICC" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. icc-10.1, /usr/local/bin/icc, etc.): "
+			read ICC
+		else
+			ICC=icc
+		fi
+		#
+		CC=$ICC
+		CCOPTS="$ICC_WALL -fp-model source -no-ftz"
+		CXX=$ICC
+		CXXOPTS="$ICC_WALL -fp-model source -no-ftz"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEICC
+		if [ "$OPTIMIZEICC" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		SHARED="-shared"
+		FPIC="-fPIC"
+		LINKEROPTDYNLIBNAME="-Wl,-soname,libcxsc.so.2"		
+		LIBS=-lcxsc
+		ICC_VERSION=`$ICC -v 2>&1`
+		if [ "$ICC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using Intel V.$ICC_VERSION Compiler"
+		;;
+	*)				 # Default: gnu
+		COMPILER="gnu"
+		echo -n "Would you like to select a special GNU C/C++ Compiler-Version? [no] "
+		read SPECIALGNU
+		if [ "$SPECIALGNU" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. g++-4.6, /usr/local/bin/g++, etc.): "
+			read GNUGPP
+			gppPATH=`which $GNUGPP | $SED -e s/g++/gcc/`
+			GNUGPP=`which $GNUGPP`
+			GNUGCC=$gppPATH
+			if [ "$GNUGCC" = "" ]
+			then
+				GNUGCC=gcc
+			fi
+		else
+			GNUGCC=gcc
+			GNUGPP=g++
+		fi
+		#
+		CC=$GNUGCC
+		CCOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		CXX=$GNUGPP
+		CXXOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEGNU
+		if [ "$OPTIMIZEGNU" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		SHARED="-shared"
+		FPIC="-fPIC"
+		LINKEROPTDYNLIBNAME="-Wl,-soname,libcxsc.so.2"		
+		LIBS=-lcxsc
+		GCC_VERSION=`$GNUGCC -dumpversion 2>/dev/null`
+		if [ "$GCC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using GNU V.$GCC_VERSION Compiler"
+		;;
+	esac
+	#
+	BIT="32"
+        #
+        # linuxArith
+        echo
+        echo
+        echo "Section: Rounding Operations"
+        echo "============================"
+        echo "Possible values: asm    for hardware support for IEEE 754 arithmetic implemented in Assembler"
+        echo "                 hard   for hardware support for IEEE 754 arithmetic"
+        echo "                 soft   for software emulations for directed rounded floating-point operations"
+        echo -n "Which method? [asm] "
+        read ARITH
+        rm -f $CWD/$HCONF
+        case $ARITH in
+        soft)
+                cat scripts/gpl >> $CWD/$HCONF
+                cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define IBM_RS_6000_C   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       0
+#endif
+EOF
+                ;;
+        hard) # hard
+                echo
+                echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+                echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+                echo "For further information see the README file"
+                echo
+                echo -n "safe or quick? [safe] "
+                read AIEEE
+                case $AIEEE in
+                quick)
+                        cat scripts/gpl >> $CWD/$HCONF
+                        cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 1
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       0
+#endif
+EOF
+                        ;;
+                *) # Default: safe
+                        cat scripts/gpl >> $CWD/$HCONF
+                        cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  1
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       0
+#endif
+EOF
+                        ;;
+                esac
+                ;;
+        *) # Default : Assembler
+#                ASM=1
+                cat scripts/gpl >> $CWD/$HCONF
+                cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       1
+#define CXSC_x86        1
+#endif
+EOF
+                ;;
+        esac
+        ;;
+#
+########################################################################################
+#----------------------------------Linux------------------------------------------------	
+########################################################################################
+ia64)
+	echo "Configuring for a $UNAME_MACHINE-linux-gnu host."
+	echo
+	echo "Section: Compiler"
+	echo "================="
+	echo "Possible values:    gnu    for the GNU C/C++ Compiler"
+	echo "                    intel  for the INTEL C/C++ Compiler"
+	echo -n "Which C++ compiler? [gnu] "
+	read COMPILER
+	case $COMPILER in
+	intel)
+		echo -n "Would you like to select a special INTEL C/C++ Compiler-Version? [no] "
+		read SPECIALICC
+		if [ "$SPECIALICC" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. icc-10.1, /usr/local/bin/icc, etc.): "
+			read ICC
+		else
+			ICC=icc
+		fi
+		#
+		CC=$ICC
+		CCOPTS="$ICC_WALL -fp-model source -no-ftz"
+		CXX=$ICC
+		CXXOPTS="$ICC_WALL -fp-model source -no-ftz"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEICC
+		if [ "$OPTIMIZEICC" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		SHARED="-shared"
+		FPIC="-fPIC"
+		LINKEROPTDYNLIBNAME="-Wl,-soname,libcxsc.so.2"		
+		LIBS=-lcxsc
+		ICC_VERSION=`$ICC -v 2>&1`
+		if [ "$ICC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using Intel V.$ICC_VERSION Compiler"
+		;;
+	*)				 # Default: gnu
+		COMPILER="gnu"
+		echo -n "Would you like to select a special GNU C/C++ Compiler-Version? [no] "
+		read SPECIALGNU
+		if [ "$SPECIALGNU" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. g++-4.6, /usr/local/bin/g++, etc.): "
+			read GNUGPP
+			gppPATH=`which $GNUGPP | $SED -e s/g++/gcc/`
+			GNUGPP=`which $GNUGPP`
+			GNUGCC=$gppPATH
+			if [ "$GNUGCC" = "" ]
+			then
+				GNUGCC=gcc
+			fi
+		else
+			GNUGCC=gcc
+			GNUGPP=g++
+		fi
+		#
+		CC=$GNUGCC
+		CCOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		CXX=$GNUGPP
+		CXXOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEGNU
+		if [ "$OPTIMIZEGNU" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		SHARED="-shared"
+		FPIC="-fPIC"
+		LIBS=-lcxsc
+		LINKEROPTDYNLIBNAME="-Wl,-soname,libcxsc.so.2"		
+		GCC_VERSION=`$GNUGCC -dumpversion 2>/dev/null`
+		if [ "$GCC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using GNU V.$GCC_VERSION Compiler"
+		;;
+	esac
+	#
+	# linuxArith
+	echo
+	echo 
+	echo "Section: Rounding Operations"
+	echo "============================"
+	echo "Possible values: hard   for hardware support for IEEE 754 arithmetic"
+	echo "                 soft   for software emulations for directed rounded floating-point operations"
+	echo -n "Which method? [hard] "
+	read ARITH
+	rm -f $CWD/$HCONF
+	case $ARITH in
+	soft)
+		cat scripts/gpl >> $CWD/$HCONF
+		cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define GNU_X86_64 1
+#endif
+EOF
+		;;
+	*) # Default: hard
+		echo
+		echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+		echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+		echo "For further information see the README file"
+		echo
+		echo -n "safe or quick? [safe] "		
+		read AIEEE
+		case $AIEEE in
+		quick)
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 1
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define GNU_X86_64 1
+#endif
+EOF
+			;;
+		*) # Default: safe
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  1
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define GNU_X86_64 1
+#endif		
+EOF
+			;;
+		esac
+		;;
+	esac
+	;;
+#
+########################################################################################
+#----------------------------------AMD64------------------------------------------------	
+########################################################################################
+x86_64)
+	echo "Configuring for a $UNAME_MACHINE-linux-gnu host."
+	echo
+	echo "Section: Compiler"
+	echo "================="
+	echo "Possible values:    gnu    for the GNU C/C++ Compiler"
+	echo "                    intel  for the INTEL C/C++ Compiler"
+	echo -n "Which C++ compiler? [gnu] "
+	read COMPILER
+	case $COMPILER in
+	intel)
+		echo -n "Would you like to select a special INTEL C/C++ Compiler-Version? [no] "
+		read SPECIALICC
+		if [ "$SPECIALICC" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. icc-10.1, /usr/local/bin/icc, etc.): "
+			read ICC
+		else
+			ICC=icc
+		fi
+		#
+		CC=$ICC
+		CCOPTS="$ICC_WALL -fp-model source -no-ftz"
+		CXX=$ICC
+		CXXOPTS="$ICC_WALL -fp-model source -no-ftz"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEICC
+		if [ "$OPTIMIZEICC" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		SHARED="-shared"
+		FPIC="-fPIC"
+		LINKEROPTDYNLIBNAME="-Wl,-soname,libcxsc.so.2"		
+		LIBS=-lcxsc
+		ICC_VERSION=`$ICC -v 2>&1`
+		if [ "$ICC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using Intel V.$ICC_VERSION Compiler"
+		;;
+	*)				 # Default: gnu
+		COMPILER="gnu"
+		echo -n "Would you like to select a special GNU C/C++ Compiler-Version? [no] "
+		read SPECIALGNU
+		if [ "$SPECIALGNU" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. g++-4.6, /usr/local/bin/g++, etc.): "
+			read GNUGPP
+			gppPATH=`which $GNUGPP | $SED -e s/g++/gcc/`
+			GNUGPP=`which $GNUGPP`
+			GNUGCC=$gppPATH
+			if [ "$GNUGCC" = "" ]
+			then
+				GNUGCC=gcc
+			fi
+		else
+			GNUGCC=gcc
+			GNUGPP=g++
+		fi
+		#
+		CC=$GNUGCC
+		CCOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		CXX=$GNUGPP
+		CXXOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEGNU
+		if [ "$OPTIMIZEGNU" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		LIBS=-lcxsc
+		SHARED="-shared"
+		FPIC="-fPIC"
+		LINKEROPTDYNLIBNAME="-Wl,-soname,libcxsc.so.2"		
+		GCC_VERSION=`$GNUGCC -dumpversion 2>/dev/null`
+		if [ "$GCC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using GNU V.$GCC_VERSION Compiler"
+        esac
+	# 32-/64-Bit
+	echo -n "Would you like to generate 32 or 64 Bit Code? [64] "
+		read BIT
+		if [ "$BIT" = "32" ]
+		then
+			CC=`echo $GNUGCC -m32`
+			CXX=`echo $GNUGPP -m32`
+			BIT="32"
+		else	
+			BIT="64"
+		fi
+	#
+	# linuxArith
+	echo
+	echo 
+	echo "Section: Rounding Operations"
+	echo "============================"
+	echo "Possible values: asm    for hardware support for IEEE 754 arithmetic implemented in Assembler"
+	echo "                 hard   for hardware support for IEEE 754 arithmetic"
+	echo "                 soft   for software emulations for directed rounded floating-point operations"
+	echo -n "Which method? [asm] "
+	read ARITH
+	rm -f $CWD/$HCONF
+	case $ARITH in
+        soft)
+                cat scripts/gpl >> $CWD/$HCONF
+                cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       0
+EOF
+                if [ "$BIT" = "64" ]
+                then
+                cat >> $CWD/$HCONF <<EOF
+#define GNU_X86_64 1
+EOF
+                fi
+                cat >> $CWD/$HCONF <<EOF
+#endif
+EOF
+        ;;
+        hard) # hard
+                echo
+                echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+                echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+                echo "For further information see the README file"
+                echo
+                echo -n "safe or quick? [safe] "
+                read AIEEE
+                case $AIEEE in
+                quick)
+                        cat scripts/gpl >> $CWD/$HCONF
+                        cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 1
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       0
+EOF
+                        if [ "$BIT" = "64" ]
+                        then
+                        cat >> $CWD/$HCONF <<EOF
+#define GNU_X86_64 1
+EOF
+                        fi
+                        cat >> $CWD/$HCONF <<EOF
+#endif
+EOF
+                        ;;
+                *) # Default: safe
+                        cat scripts/gpl >> $CWD/$HCONF
+                        cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  1
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       0
+EOF
+                        if [ "$BIT" = "64" ]
+                        then
+                        cat >> $CWD/$HCONF <<EOF
+#define GNU_X86_64 1
+EOF
+                        fi
+                        cat >> $CWD/$HCONF <<EOF
+#endif
+EOF
+                        ;;
+                esac
+                ;;
+        *) # Default : Assembler
+#                ASM=1
+                cat scripts/gpl >> $CWD/$HCONF
+                cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       1
+EOF
+                if [ "$BIT" = "64" ]
+                then
+                cat >> $CWD/$HCONF <<EOF
+#define GNU_X86_64 1
+#define CXSC_x86_64     1
+EOF
+                else
+                cat >> $CWD/$HCONF <<EOF
+#define CXSC_x86        1
+EOF
+                fi
+                cat >> $CWD/$HCONF <<EOF
+#endif
+EOF
+                ;;
+        esac
+        ;;	
+	
+	
+########################################################################################
+#----------------------------------Alpha------------------------------------------------	
+########################################################################################
+alpha)
+	echo "Configuring for a $UNAME_MACHINE-linux-gnu host."
+	echo
+	echo "Section: Compiler"
+	echo "================="
+	echo "Possible values:    gnu    for the GNU C/C++ Compiler"
+	# Default: gnu
+		COMPILER="gnu"
+		echo -n "Would you like to select a special GNU C/C++ Compiler-Version? [no] "
+		read SPECIALGNU
+		if [ "$SPECIALGNU" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. g++-4.6, /usr/local/bin/g++, etc.): "
+			read GNUGPP
+			gppPATH=`which $GNUGPP | $SED -e s/g++/gcc/`
+			GNUGPP=`which $GNUGPP`
+			GNUGCC=$gppPATH
+			if [ "$GNUGCC" = "" ]
+			then
+				GNUGCC=gcc
+			fi
+		else
+			GNUGCC=gcc
+			GNUGPP=g++
+		fi
+		#
+		CC=$GNUGCC
+		CCOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		CXX=$GNUGPP
+		CXXOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEGNU
+		if [ "$OPTIMIZEGNU" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		SHARED="-shared"
+		FPIC="-fPIC"
+		LINKEROPTDYNLIBNAME="-Wl,-soname,libcxsc.so.2"		
+		LIBS=-lcxsc
+		GCC_VERSION=`$GNUGCC -dumpversion 2>/dev/null`
+		if [ "$GCC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using GNU V.$GCC_VERSION Compiler"
+	#
+	# linuxArith
+	echo
+	echo 
+	echo "Section: Rounding Operations"
+	echo "============================"
+	echo "Possible values: hard   for hardware support for IEEE 754 arithmetic"
+	echo "                 soft   for software emulations for directed rounded floating-point operations"
+	echo -n "Which method? [hard] "
+	read ARITH
+	rm -f $CWD/$HCONF
+	case $ARITH in
+	soft)
+		cat scripts/gpl >> $CWD/$HCONF
+		cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     1
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif
+EOF
+	;;
+	*) # Default: hard
+		echo
+		echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+		echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+		echo "For further information see the README file"
+		echo
+		echo -n "safe or quick? [safe] "		
+		read AIEEE
+		case $AIEEE in
+		quick)
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     1
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 1
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif
+EOF
+			;;
+		*) # Default: safe
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     1
+#define ROUND_C99_SAVE  1
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif  
+EOF
+			;;
+		esac
+		;;
+	esac
+	;;
+########################################################################################
+#----------------------------------CYGWIN------------------------------------------------
+########################################################################################
+CYGWIN_*)
+    CYGWIN=1
+    echo "Configuring for a $UNAME_MACHINE-pc-cygwin host."
+    echo
+    echo "Section: Compiler"
+    echo "================="
+    echo "Possible values:    gnu    for the GNU C/C++ Compiler"
+    echo "                    intel  for the INTEL C/C++ Compiler"
+    echo -n "Which C++ compiler? [gnu] "
+    read COMPILER
+    case $COMPILER in
+    intel)
+        echo -n "Would you like to select a special INTEL C/C++ Compiler-Version? [no] "
+        read SPECIALICC
+        if [ "$SPECIALICC" = "yes" ]
+        then
+            echo -n "C++ Compiler name (e.g. icc-10.1, /usr/local/bin/icc, etc.): "
+            read ICC
+        else
+            ICC=icc
+        fi
+        #
+        CC=$ICC
+        CCOPTS="$ICC_WALL -fp-model source -no-ftz"
+        CXX=$ICC
+        CXXOPTS="$ICC_WALL -fp-model source -no-ftz"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEICC
+		if [ "$OPTIMIZEICC" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		SHARED="-shared"
+		FPIC="-fPIC"
+		LINKEROPTDYNLIBNAME="-Wl,-soname,libcxsc.so.2"		
+        LIBS=-lcxsc
+        ICC_VERSION=`$ICC -v 2>&1`
+        if [ "$ICC_VERSION" = "" ]
+        then
+            echo "Compiler not found!"
+            echo "Abort."
+            exit 0
+        fi
+        echo
+        echo "Using Intel V.$ICC_VERSION Compiler"
+        ;;
+    *)               # Default: gnu
+        COMPILER="gnu"
+        echo -n "Would you like to select a special GNU C/C++ Compiler-Version? [no] "
+        read SPECIALGNU
+        if [ "$SPECIALGNU" = "yes" ]
+        then
+            echo -n "C++ Compiler name (e.g. g++-4.6, /usr/local/bin/g++, etc.): "
+            read GNUGPP
+            gppPATH=`which $GNUGPP | $SED -e s/g++/gcc/`
+            GNUGPP=`which $GNUGPP`
+            GNUGCC=$gppPATH
+            if [ "$GNUGCC" = "" ]
+            then
+                GNUGCC=gcc
+            fi
+        else
+            GNUGCC=gcc
+            GNUGPP=g++
+        fi
+        #
+        CC=$GNUGCC
+        CCOPTS="$GCC_WALL -mfpmath=sse -msse2"
+        CXX=$GNUGPP
+        CXXOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEGNU
+		if [ "$OPTIMIZEGNU" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+        DEPENDOPT=-MM
+        LIBS=-lcxsc
+	SHARED="-shared"
+	FPIC=""
+	LINKEROPTDYNLIBNAME="-Wl,-soname,libcxsc.so.2"		
+        GCC_VERSION=`$GNUGCC -dumpversion 2>/dev/null`
+        if [ "$GCC_VERSION" = "" ]
+        then
+            echo "Compiler not found!"
+            echo "Abort."
+            exit 0
+        fi
+        echo
+        echo "Using GNU V.$GCC_VERSION Compiler"
+        ;;
+    esac
+    #
+    # cygwin - linuxArith
+    echo
+    echo
+    echo "Section: Rounding Operations"
+    echo "============================"
+    echo "Possible values: hard   for hardware support for IEEE 754 arithmetic"
+    echo "                 soft   for software emulations for directed rounded floating-point operations"
+    echo -n "Which method? [soft] "
+    read ARITH
+    rm -f $CWD/$HCONF
+    case $ARITH in
+    hard)
+        echo
+        echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+        echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+        echo "For further information see the README file"
+        echo
+        echo -n "safe or quick? [safe] "
+        read AIEEE
+        case $AIEEE in
+        quick)
+            cat scripts/gpl >> $CWD/$HCONF
+            cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 1
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif
+EOF
+            ;;
+        *) # Default: safe
+            cat scripts/gpl >> $CWD/$HCONF
+            cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  1
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif
+EOF
+            ;;
+        esac
+        ;;
+    *) # Default: soft
+        cat scripts/gpl >> $CWD/$HCONF
+        cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif
+EOF
+        ;;
+    esac
+    ;;
+#
+########################################################################################
+#----------------------------------Solaris------------------------------------------------
+########################################################################################
+#
+SunOS)	
+	TYPE=`echo $MACHTYPE`
+	echo "Configuring for a $TYPE host."
+	echo
+	echo "Section: Compiler"
+	echo "================="
+	echo "Possible values: gnu  for the GNU C/C++ Compiler"
+	echo "                 sun  for the SUN Forte Compiler (OS SUN Solaris)"
+	if echo '\c' | grep '\c' >/dev/null; 
+	then
+		echo -n "Which C++ compiler? [sun] "
+	else
+		echo "Which C++ compiler? [sun] \c"
+	fi
+	read COMPILER
+	echo
+	case $COMPILER in
+	gnu)				# gnu
+		if echo '\c' | grep '\c' >/dev/null; 
+		then
+			echo -n "Would you like to select a special GNU C/C++ Compiler-Version? [no] "
+		else
+			echo "Would you like to select a special GNU C/C++ Compiler-Version? [no] \c"
+		fi
+		read SPECIALGNU
+		if [ "$SPECIALGNU" = "yes" ]
+		then 
+			if echo '\c' | grep '\c' >/dev/null; 
+			then
+				echo -n "C++ Compiler name (e.g. g++-4.6, /opt/local/bin/g++, etc.): "
+			else
+				echo "C++ Compiler name (e.g. g++-4.6, /opt/local/bin/g++, etc.): \c"
+			fi
+			read GNUGPP
+			gppPATH=`which $GNUGPP | $SED -e s/g++/gcc/`
+			GNUGPP=`which $GNUGPP`
+			GNUGCC=$gppPATH
+			if [ "$GNUGCC" = "" ]
+			then
+				GNUGPP=gcc
+			fi
+		else
+			GNUGCC=gcc
+			GNUGPP=g++
+		fi
+		#
+		CC=$GNUGCC
+		CCOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		CXX=$GNUGPP
+		CXXOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEGNU
+		if [ "$OPTIMIZEGNU" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		LIBS=-lcxsc
+		SHARED="-shared"
+		FPIC="-fPIC"
+		LINKEROPTDYNLIBNAME="-h libcxsc.so.2"		
+		GCC_VERSION=`$GNUGCC -dumpversion 2>/dev/null`
+		if [ "$GCC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using GNU V.$GCC_VERSION Compiler"
+		echo 
+		echo "Section: Rounding Operations"
+		echo "============================"
+		echo "Possible values: hard   for hardware support for IEEE 754 arithmetic"
+		echo "                 soft   for software emulations for directed rounded floating-point operations"
+		if echo '\c' | grep '\c' >/dev/null; 
+		then
+			echo -n "Which method? [hard] "
+		else
+			echo "Which method? [hard] \c"
+		fi
+		read ARITH
+		rm -f $CWD/$HCONF
+		case $ARITH in
+		soft)
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      1
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif
+EOF
+		;;
+		*) # Default: hard
+			echo
+			echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+			echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+			echo "For further information see the README file"
+			echo
+			if echo '\c' | grep '\c' >/dev/null; 
+			then
+				echo -n "safe or quick? [safe] "		
+			else
+				echo "safe or quick? [safe] \c"
+			fi
+			read AIEEE
+			case $AIEEE in
+			quick)
+				cat scripts/gpl >> $CWD/$HCONF
+				cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      1
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 1
+#endif
+EOF
+			;;
+			*) # Default: safe
+				cat scripts/gpl >> $CWD/$HCONF
+				cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      1
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  1
+#define ROUND_C96_QUICK 0
+#endif		
+EOF
+			;;
+			esac
+		;;
+		esac
+	;;
+	*)				# Default:sun
+		COMPILER="sun_forte"    # Macro for the Sub-Makefiles
+		if echo '\c' | grep '\c' >/dev/null; 
+		then
+			echo -n "Would you like to select a special SUN C/C++ Compiler-Version? [no] "
+		else
+			echo "Would you like to select a special SUN C/C++ Compiler-Version? [no] \c"
+		fi
+		read SPECIALSUN
+		if [ "$SPECIALSUN" = "yes" ]
+		then 
+			if echo '\c' | grep '\c' >/dev/null; 
+			then
+				echo -n "C++ Compiler name (e.g. CC-7, /opt/local/bin/CC, etc.): "
+			else
+				echo "C++ Compiler name (e.g. CC-7, /opt/local/bin/CC, etc.): \c"
+			fi
+			read SUNCC
+			sunPATH=`which $SUNCC | $SED -e s/CC/cc/`
+			SUNCC=`which $SUNCC`
+			suncc=$sunPATH
+			if [ "$suncc" = "" ]
+			then
+				suncc=cc
+			fi
+
+		else
+			SUNCC=CC
+			suncc=cc
+		fi
+		echo "Your Version: "
+		SUNVERS=`CC -V` 
+		if echo '\c' | grep '\c' >/dev/null; 
+			then
+				echo -n "Sun C++ Compiler Version >= 5.7? [yes]/no"
+			else
+				echo "Sun C++ Compiler Version >= 5.7? [yes]/no \c"
+			fi
+			read SUNFLAG
+		#
+		CC=$suncc
+		CCOPTS=
+		CCOPTIMIZE=
+		CXX=$SUNCC
+		CXXOPTS=
+		CXXOPTIMIZE=
+		DEPENDOPT=-xM1
+		LIBS="-lcxsc -lm9x"
+		M9X=-lm9x
+		#
+		SUNCC=`which $SUNCC`
+		if [ ! -f $SUNCC ]
+		then
+			echo
+			echo "Compiler not found!"
+			echo "Abort"
+			exit 0
+		fi
+		echo
+		echo "Using SUN Forte Compiler"
+		echo
+		echo 
+		echo "Section: Rounding Operations"
+		echo "============================"
+		echo "Possible values: hard   for hardware support for IEEE 754 arithmetic"
+		echo "                 soft   for software emulations for directed rounded floating-point operations"
+		if echo '\c' | grep '\c' >/dev/null; 
+		then
+			echo -n "Which method? [hard] "
+		else
+			echo "Which method? [hard] \c"
+		fi
+		read ARITH
+		rm -f $CWD/$HCONF
+		case $ARITH in
+		soft)
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      1
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif
+EOF
+		;;
+		*) # Default: hard
+			echo
+			echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+			echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+			echo "For further information see the README file"
+			if echo '\c' | grep '\c' >/dev/null; 
+			then
+				echo -n "safe or quick? [safe] "		
+			else
+				echo "safe or quick? [safe] \c"
+			fi
+			read AIEEE
+			case $AIEEE in
+			quick)
+				cat scripts/gpl >> $CWD/$HCONF
+				cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      1
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 1
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+EOF
+				if [ "$SUNFLAG" = "no" ]
+				then
+				cat >> $CWD/$HCONF <<EOF
+#define SUN_STUDIO_10   0
+EOF
+				else
+				cat >> $CWD/$HCONF <<EOF
+#define SUN_STUDIO_10   1
+EOF
+				fi
+				cat >> $CWD/$HCONF <<EOF
+#endif
+EOF
+			;;
+			*) # Default: safe
+				cat scripts/gpl >> $CWD/$HCONF
+				cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      1
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  1
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+EOF
+				if [ "$SUNFLAG" = "no" ]
+				then
+				cat >> $CWD/$HCONF <<EOF
+#define SUN_STUDIO_10   0
+EOF
+				else
+				cat >> $CWD/$HCONF <<EOF
+#define SUN_STUDIO_10   1
+EOF
+				fi
+				cat >> $CWD/$HCONF <<EOF
+#endif		
+EOF
+			;;
+			esac
+		;;
+		esac
+	;;
+	esac
+;;
+########################################################################################
+#---------------------------- Apple Power Macintosh OS X----------------------------------------	
+########################################################################################
+Darwin)
+	echo "Configuring for a $UNAME_MACHINE-OS X host."
+	echo
+	echo "Section: Compiler"
+	echo "================="
+	echo "Possible values:    gnu    for the GNU C/C++ Compiler"
+	echo -n "Which C++ compiler? [gnu] "
+	read COMPILER
+		COMPILER="gnu"
+		echo -n "Would you like to select a special GNU C/C++ Compiler-Version? [no] "
+		read SPECIALGNU
+		if [ "$SPECIALGNU" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. g++-4.6, /usr/local/bin/g++, etc.): "
+			read GNUGPP
+			gppPATH=`which $GNUGPP | $SED -e s/g++/gcc/`
+			GNUGPP=`which $GNUGPP`
+			GNUGCC=$gppPATH
+			if [ "$GNUGCC" = "" ]
+			then
+				GNUGCC=gcc
+			fi
+		else
+			GNUGCC=gcc
+			GNUGPP=g++
+		fi
+		#
+		CC=$GNUGCC
+		CCOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		CXX=$GNUGPP
+		CXXOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEGNU
+		if [ "$OPTIMIZEGNU" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		LIBS=-lcxsc
+		SHARED="-bundle"
+		FPIC="-fPIC"
+		GCC_VERSION=`$GNUGCC -dumpversion 2>/dev/null`
+		if [ "$GCC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using GNU V.$GCC_VERSION Compiler"
+	#
+	# PowerPC Arith
+	echo
+	echo 
+	echo "Section: Rounding Operations"
+	echo "============================"
+	echo "Possible values: hard   for hardware support for IEEE 754 arithmetic"
+	echo "                 soft   for software emulations for directed rounded floating-point operations"
+	echo -n "Which method? [hard] "
+	read ARITH
+	rm -f $CWD/$HCONF
+	case $ARITH in
+	soft)
+		cat scripts/gpl >> $CWD/$HCONF
+		cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      1
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif
+EOF
+		;;
+	*) # Default: hard
+		echo
+		echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+		echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+		echo "For further information see the README file"
+		echo
+		echo -n "safe or quick? [safe] "		
+		read AIEEE
+		case $AIEEE in
+		quick)
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      1
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 1
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif
+EOF
+			;;
+		*) # Default: safe
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      1
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  1
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif		
+EOF
+			;;
+		esac
+		;;
+	esac
+	;;
+#
+########################################################################################
+#---------------------------- Apple Power Macintosh OS X i386 architecture -------------------------------	
+########################################################################################
+Darwin_i386)
+	echo "Configuring for a $UNAME_MACHINE-OS X host."
+	echo
+	echo "Section: Compiler"
+	echo "================="
+	echo "Possible values:    gnu    for the GNU C/C++ Compiler"
+	echo -n "Which C++ compiler? [gnu] "
+	read COMPILER
+		COMPILER="gnu"
+		echo -n "Would you like to select a special GNU C/C++ Compiler-Version? [no] "
+		read SPECIALGNU
+		if [ "$SPECIALGNU" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. g++-4.6, /usr/local/bin/g++, etc.): "
+			read GNUGPP
+			gppPATH=`which $GNUGPP | $SED -e s/g++/gcc/`
+			GNUGPP=`which $GNUGPP`
+			GNUGCC=$gppPATH
+			if [ "$GNUGCC" = "" ]
+			then
+				GNUGCC=gcc
+			fi
+		else
+			GNUGCC=gcc
+			GNUGPP=g++
+		fi
+		#
+		CC=$GNUGCC
+		CCOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		CXX=$GNUGPP
+		CXXOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEGNU
+		if [ "$OPTIMIZEGNU" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		LIBS=-lcxsc
+		SHARED="-dynamiclib -Wl,-single_module"
+		FPIC="-fPIC"
+		GCC_VERSION=`$GNUGCC -dumpversion 2>/dev/null`
+		if [ "$GCC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using GNU V.$GCC_VERSION Compiler"
+	# 32-/64-Bit
+	echo -n "Would you like to generate 32 or 64 Bit Code? [64] "
+		read BIT
+		if [ "$BIT" = "32" ]
+		then
+			CC=`echo $GNUGCC -m32`
+			CXX=`echo $GNUGPP -m32`
+			BIT="32"
+		else	
+			BIT="64"
+		fi
+	#
+	#
+	# PowerPC Arith
+	echo
+	echo 
+	echo "Section: Rounding Operations"
+	echo "============================"
+        echo "Possible values: asm    for hardware support for IEEE 754 arithmetic implemented in Assembler"
+        echo "                 hard   for hardware support for IEEE 754 arithmetic"
+        echo "                 soft   for software emulations for directed rounded floating-point operations"
+        echo -n "Which method? [asm] "
+	read ARITH
+	rm -f $CWD/$HCONF
+	case $ARITH in
+	soft)
+		cat scripts/gpl >> $CWD/$HCONF
+		cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       0
+EOF
+                        if [ "$BIT" = "64" ]
+                        then
+                        cat >> $CWD/$HCONF <<EOF
+#define GNU_X86_64 1
+EOF
+                        fi
+                        cat >> $CWD/$HCONF <<EOF
+#endif
+EOF
+		;;
+	hard) # hard
+		echo
+		echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+		echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+		echo "For further information see the README file"
+		echo
+		echo -n "safe or quick? [safe] "		
+		read AIEEE
+		case $AIEEE in
+		quick)
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 1
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       0
+EOF
+                        if [ "$BIT" = "64" ]
+                        then
+                        cat >> $CWD/$HCONF <<EOF
+#define GNU_X86_64 1
+EOF
+                        fi
+                        cat >> $CWD/$HCONF <<EOF
+#endif
+EOF
+			;;
+		*) # Default: safe
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  1
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+EOF
+                        if [ "$BIT" = "64" ]
+                        then
+                        cat >> $CWD/$HCONF <<EOF
+#define GNU_X86_64 1
+EOF
+                        fi
+                        cat >> $CWD/$HCONF <<EOF
+#endif
+EOF
+			;;
+		esac
+		;;
+        *) # Default : Assembler
+#                ASM=1
+                cat scripts/gpl >> $CWD/$HCONF
+                cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     1
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       1
+EOF
+                if [ "$BIT" = "64" ]
+                then
+                cat >> $CWD/$HCONF <<EOF
+#define GNU_X86_64 1
+#define CXSC_x86_64     1
+EOF
+                else
+                cat >> $CWD/$HCONF <<EOF
+#define CXSC_x86        1
+EOF
+                fi
+                        cat >> $CWD/$HCONF <<EOF
+#endif
+EOF
+                ;;
+	esac
+	;;
+#
+########################################################################################
+#---------------------------- Apple Power Macintosh OS X PowerPc architecture ------------------------	
+########################################################################################
+Darwin_powerpc)
+	echo "Configuring for a $UNAME_MACHINE-OS X host."
+	echo
+	echo "Section: Compiler"
+	echo "================="
+	echo "Possible values:    gnu    for the GNU C/C++ Compiler"
+	echo -n "Which C++ compiler? [gnu] "
+	read COMPILER
+		COMPILER="gnu"
+		echo -n "Would you like to select a special GNU C/C++ Compiler-Version? [no] "
+		read SPECIALGNU
+		if [ "$SPECIALGNU" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. g++-4.6, /usr/local/bin/g++, etc.): "
+			read GNUGPP
+			gppPATH=`which $GNUGPP | $SED -e s/g++/gcc/`
+			GNUGPP=`which $GNUGPP`
+			GNUGCC=$gppPATH
+			if [ "$GNUGCC" = "" ]
+			then
+				GNUGCC=gcc
+			fi
+		else
+			GNUGCC=gcc
+			GNUGPP=g++
+		fi
+		#
+		CC=$GNUGCC
+		CCOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		CXX=$GNUGPP
+		CXXOPTS="$GCC_WALL -mfpmath=sse -msse2"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEGNU
+		if [ "$OPTIMIZEGNU" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		LIBS=-lcxsc
+		SHARED="-dynamiclib -Wl,-single_module"
+		FPIC="-fPIC"
+		GCC_VERSION=`$GNUGCC -dumpversion 2>/dev/null`
+		if [ "$GCC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using GNU V.$GCC_VERSION Compiler"
+	#
+	# PowerPC Arith
+	echo
+	echo 
+	echo "Section: Rounding Operations"
+	echo "============================"
+	echo "Possible values: hard   for hardware support for IEEE 754 arithmetic"
+	echo "                 soft   for software emulations for directed rounded floating-point operations"
+	echo -n "Which method? [hard] "
+	read ARITH
+	rm -f $CWD/$HCONF
+	case $ARITH in
+	soft)
+		cat scripts/gpl >> $CWD/$HCONF
+		cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      1
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif
+EOF
+		;;
+	*) # Default: hard
+		echo
+		echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+		echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+		echo "For further information see the README file"
+		echo
+		echo -n "safe or quick? [safe] "		
+		read AIEEE
+		case $AIEEE in
+		quick)
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      1
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 1
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif
+EOF
+			;;
+		*) # Default: safe
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      1
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  1
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#endif		
+EOF
+			;;
+		esac
+		;;
+	esac
+	;;
+#
+########################################################################################
+#--------------------------- IBM/HP AIX-SYSTEM  with Power PC - Processor --------------	
+########################################################################################
+AIX)
+	echo "Configuring for a $UNAME_SYSTEM host."
+	echo
+	echo "Section: Compiler"
+	echo "================="
+	echo "Possible values:    ibm    for the IBM XL C/C++ Compiler for AIX"
+	echo -n "Which C++ compiler? [ibm] "
+	read COMPILER
+	case $COMPILER in
+	*)				 # Default: IBM
+                COMPILER=ibm
+		echo -n "Would you like to select a special IBM XL C/C++ Compiler-Version? [no] "
+		read SPECIALICC
+		if [ "$SPECIALICC" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. icc-2.95, /usr/local/bin/icc, etc.): "
+			read ICC
+		else
+			ICC=icc
+		fi
+		#
+		CC=xlc
+		CCOPTS=-q64
+		CCOPTIMIZE=
+		CXX=xlC
+		CXXOPTS=-q64
+		CXXOPTIMIZE=
+		DEPENDOPT=-MM
+		LIBS=-lcxsc
+		;;
+	esac
+	#
+	# AIX-Arith
+	echo
+	echo 
+	echo "Section: Rounding Operations"
+	echo "============================"
+	echo "Possible values: hard   for hardware support for IEEE 754 arithmetic"
+	echo "                 soft   for software emulations for directed rounded floating-point operations"
+	echo -n "Which method? [hard] "
+	read ARITH
+	rm -f $CWD/$HCONF
+	case $ARITH in
+	soft)
+		cat scripts/gpl >> $CWD/$HCONF
+		cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   1
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define GNU_X86_64 1
+#endif
+EOF
+		;;
+	*) # Default: hard
+		echo
+		echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+		echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+		echo "For further information see the README file"
+		echo
+		echo -n "safe or quick? [safe] "		
+		read AIEEE
+		case $AIEEE in
+		quick)
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   1
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 1
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define GNU_X86_64 1
+#endif
+EOF
+			;;
+		*) # Default: safe
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      0
+#define IBM_RS_6000_C   1
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  1
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define GNU_X86_64 1
+#endif		
+EOF
+			;;
+		esac
+		;;
+	esac
+	;;
+#
+########################################################################################
+#--------------------------- Linux-SYSTEM  with PowerPC64 - Processor --------------	
+########################################################################################
+ppc64)
+	echo "Configuring for a $UNAME_SYSTEM PowerPC64 linux-host."
+	echo
+	echo "Section: Compiler"
+	echo "================="
+	echo "Possible values:    gnu    for the GNU C/C++ Compiler"
+	echo "                    intel  for the INTEL C/C++ Compiler"
+	echo -n "Which C++ compiler? [gnu] "
+	read COMPILER
+	case $COMPILER in
+	intel)
+		echo -n "Would you like to select a special INTEL C/C++ Compiler-Version? [no] "
+		read SPECIALICC
+		if [ "$SPECIALICC" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. icc-10.1, /usr/local/bin/icc, etc.): "
+			read ICC
+		else
+			ICC=icc
+		fi
+		#
+		CC=$ICC
+		CCOPTS="$ICC_WALL -fp-model source -no-ftz"
+		CXX=$ICC
+		CXXOPTS="$ICC_WALL -fp-model source -no-ftz"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEICC
+		if [ "$OPTIMIZEICC" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+#				OPTIMIZELEVEL="-O1 -finline-functions"
+				OPTIMIZELEVEL="-O3"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		SHARED="-shared"
+		FPIC="-fPIC"
+		LINKEROPTDYNLIBNAME="-Wl,-soname,libcxsc.so.2"		
+		LIBS=-lcxsc
+		ICC_VERSION=`$ICC -v 2>&1`
+		if [ "$ICC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using Intel V.$ICC_VERSION Compiler"
+		;;
+	*)				 # Default: gnu
+		COMPILER="gnu"
+		echo -n "Would you like to select a special GNU C/C++ Compiler-Version? [no] "
+		read SPECIALGNU
+		if [ "$SPECIALGNU" = "yes" ]
+		then 
+			echo -n "C++ Compiler name (e.g. g++-4.6, /usr/local/bin/g++, etc.): "
+			read GNUGPP
+			gppPATH=`which $GNUGPP | $SED -e s/g++/gcc/`
+			GNUGPP=`which $GNUGPP`
+			GNUGCC=$gppPATH
+			if [ "$GNUGCC" = "" ]
+			then
+				GNUGCC=gcc
+			fi
+		else
+			GNUGCC=gcc
+			GNUGPP=g++
+		fi
+		#
+		CC=$GNUGCC
+		CCOPTS="$GCC_WALL"
+		CXX=$GNUGPP
+		CXXOPTS="$GCC_WALL"
+		echo -n "Would you like to use compiler optimization options? [yes] "
+		read OPTIMIZEGNU
+		if [ "$OPTIMIZEGNU" = "no" ]
+		then 
+			CCOPTIMIZE=-O0
+			CXXOPTIMIZE=-O0
+		else
+			echo -n "Which optimization level (e.g. -O1, -O2, ...)? [-O3 -DCXSC_USE_FMA] "
+			read OPTIMIZELEVEL
+			if [ "$OPTIMIZELEVEL" = "" ]
+			then
+				OPTIMIZELEVEL="-O3 -DCXSC_USE_FMA"
+			fi
+			CCOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+			CXXOPTIMIZE="$OPTIMIZELEVEL -fno-strict-aliasing"
+		fi
+		DEPENDOPT=-MM
+		SHARED="-shared"
+		FPIC="-fPIC"
+		LIBS=-lcxsc
+		LINKEROPTDYNLIBNAME="-Wl,-soname,libcxsc.so.2"		
+		GCC_VERSION=`$GNUGCC -dumpversion 2>/dev/null`
+		if [ "$GCC_VERSION" = "" ] 
+		then
+			echo "Compiler not found!"
+			echo "Abort."
+			exit 0 
+		fi
+		echo
+		echo "Using GNU V.$GCC_VERSION Compiler"
+		;;
+	esac
+	#
+	# linuxArith
+        echo
+        echo
+        echo "Section: Rounding Operations"
+        echo "============================"
+        echo "Possible values: asm    for hardware support for IEEE 754 arithmetic implemented in Assembler"
+        echo "                 hard   for hardware support for IEEE 754 arithmetic"
+        echo "                 soft   for software emulations for directed rounded floating-point operations"
+        echo -n "Which method? [asm] "
+	read ARITH
+	rm -f $CWD/$HCONF
+	case $ARITH in
+	soft)
+		cat scripts/gpl >> $CWD/$HCONF
+		cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      1
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define GNU_X86_64 1
+#endif
+EOF
+		;;
+	hard) 
+		echo
+		echo "Possible values: safe   for the slow and uncritical hardware IEEE arithmetic"
+		echo "                 quick  for the fast but critical hardware IEEE arithmetic"
+		echo "For further information see the README file"
+		echo
+		echo -n "safe or quick? [safe] "		
+		read AIEEE
+		case $AIEEE in
+		quick)
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      1
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 1
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define GNU_X86_64 1
+#endif
+EOF
+			;;
+		*) # Default: safe
+			cat scripts/gpl >> $CWD/$HCONF
+			cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      1
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  1
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define GNU_X86_64 1
+#endif		
+EOF
+			;;
+		esac
+		;;
+        *) # Default : Assembler
+#                ASM=1
+                cat scripts/gpl >> $CWD/$HCONF
+                cat >> $CWD/$HCONF <<EOF
+#ifndef _CXSCCONF_H_INCLUDED
+#define _CXSCCONF_H_INCLUDED
+#define IBM_LINUX_C     0
+#define CXSC_PPC64      1
+#define IBM_RS_6000_C   0
+#define SUN4_GNU_C      0
+#define SUN4_FORTE      0
+#define SUN_STUDIO_10   0
+#define DEC_ALPHA_C     0
+#define ROUND_C99_SAVE  0
+#define ROUND_C99_QUICK 0
+#define ROUND_C96_SAVE  0
+#define ROUND_C96_QUICK 0
+#define ROUND_ASM       1
+#define GNU_X86_64      1
+#endif
+EOF
+                ;;
+        esac
+        ;;
+#
+#
+*)	
+	echo "Unknown System Type!"
+	echo "Abort"
+	exit 0
+	;;
+esac
+#
+#-------------------------------------------------------------------------------------
+# All systems
+#-------------------------------------------------------------------------------------
+echo
+echo "$HCONF succesfully created"
+echo
+echo
+echo "Section: Prefix"
+echo "==============="
+echo "(un-)installation prefix"
+echo "e.g. /usr/local/cxsc or local home directory"
+HOMEDIR=`echo $HOME`
+if echo '\c' | grep '\c' >/dev/null; 
+then
+	echo -n "Prefix [$HOMEDIR/cxsc] "
+else
+	echo "Prefix [$HOMEDIR/cxsc] \c"
+fi
+read PREFIX
+if [ "$PREFIX" = "" ]
+then
+	PREFIX=$HOMEDIR/cxsc
+fi
+echo
+echo "CXSC will be installed into $PREFIX"
+echo
+#
+#--------------------------------------------------------------------------------------
+# Makefile
+#--------------------------------------------------------------------------------------
+echo 
+echo "Section: Makefile"
+echo "================="
+rm -f $CWD/$MAKEFILE
+#Sun: ginstall oder install
+if [ "$UNAME_SYSTEM" = "SunOS" ]
+then
+       num=`which ginstall | wc -w`
+       if [ $num -le 1 ]
+       then
+               GINSTALL=`which ginstall`
+       else
+               GINSTALL=`which install`
+       fi
+else
+       GINSTALL=`which install`
+fi
+#
+if echo '\c' | grep '\c' >/dev/null; 
+then
+	echo -n "Creating \"Makefile\" in $CWD ."
+else
+	echo "Creating \"Makefile\" in $CWD .\c"
+fi
+cat >> $CWD/$MAKEFILE <<EOF
+#!/bin/sh
+#
+# This file is the Makefile for the C-XSC library
+# ===============================================
+#
+EOF
+cat scripts/upl >> $CWD/$MAKEFILE
+cat >> $CWD/$MAKEFILE <<EOF
+PREFIX=$PREFIX
+VERSION=$VERSION
+PATCHLEVEL=$PATCHLEVEL
+SUBLEVEL=$SUBLEVEL
+RELEASE=$RELEASE
+PKGNAME=$PKGNAME
+CC=$CC
+CCOPTS=$CCOPTS
+CCOPTIMIZE=$CCOPTIMIZE
+CXX=$CXX
+CXXOPTS=$CXXOPTS
+CXXOPTIMIZE=$CXXOPTIMIZE
+DEPENDOPT=$DEPENDOPT
+LIBS=$LIBS
+COMPILER=$COMPILER
+GINSTALL=$GINSTALL
+SHARED=$SHARED
+FPIC=$FPIC
+UNAME_SYSTEM=$UNAME_SYSTEM
+EOF
+#if [ "$UNAME_SYSTEM" = "Darwin_i386" ] 
+if [ "$UNAME_ORIG_SYSTEM" = "Darwin" ] 
+then 
+cat >> $CWD/$MAKEFILE <<EOF
+LINKERPATH=-L$PREFIX/lib
+BIT=$BIT
+ASM=$ASM
+LINKEROPTDYNLIBNAME=$LINKEROPTDYNLIBNAME
+EOF
+else
+      if [ "$UNAME_SYSTEM" = "AIX" ]
+      then
+cat >> $CWD/$MAKEFILE <<EOF
+LINKERPATH=
+LINKEROPTDYNLIBNAME=
+EOF
+      else
+cat >> $CWD/$MAKEFILE <<EOF
+LINKERPATH=-Wl,-R$PREFIX/lib
+BIT=$BIT
+ASM=$ASM
+LINKEROPTDYNLIBNAME=$LINKEROPTDYNLIBNAME
+EOF
+      fi
+fi
+#
+if [ "$UNAME_SYSTEM" = "AIX" ]
+then 
+cat >> $CWD/$MAKEFILE <<EOF
+AR=ar -X64
+RANLIB=ranlib -X64
+INSTALL=cp
+INSTALLEXE=cp
+STRIP=strip
+INSTDIR=mkdir -p -m755
+EOF
+else	
+cat >> $CWD/$MAKEFILE <<EOF
+AR=ar
+RANLIB=ranlib
+INSTALL=$GINSTALL -m 644
+INSTALLEXE=$GINSTALL -m 755
+STRIP=strip
+INSTDIR=$GINSTALL -d
+EOF
+fi
+#
+
+if echo '\c' | grep '\c' >/dev/null; 
+then
+	echo -n "."
+else
+	echo ".\c"
+fi
+$SED 1,26d $CWD/$MAKEFILETMPL >> $CWD/$MAKEFILE
+if echo '\c' | grep '\c' >/dev/null; 
+then
+	echo -n ". "
+else
+	echo ". \c"
+fi
+echo "Done"
+echo
+#
+#--------------------------------------------------------------------------------------
+# Makefile.example in subdirectory examples
+#--------------------------------------------------------------------------------------
+echo 
+echo "Section: Makefile.example"
+echo "========================="
+rm -f $CWD/examples/$MAKEFILEEXAMPLE
+#
+if echo '\c' | grep '\c' >/dev/null; 
+then
+	echo -n "Creating \"Makefile.example\" in $CWD/examples ."
+else
+	echo "Creating \"Makefile.example\" in $CWD/examples .\c"
+fi
+if  [ "$COMPILER" = "gnu" ]
+then
+	RPATH=-Wl,-R$PREFIX/lib
+else
+	RPATH=#
+fi
+cat >> $CWD/examples/$MAKEFILEEXAMPLE <<EOF
+#!/bin/sh
+#
+# This file is a Makefile.example for programs with the C-XSC library
+# ===================================================================
+#
+
+#======== modify the following values ==================
+PROGRAM=inewton#                program name
+
+#========= the following commands should work on your Unix systems ========
+EOF
+cat >> $CWD/examples/$MAKEFILEEXAMPLE <<EOF
+
+# (un-)installation prefix
+# e.g. /usr/local/cxsc or local home directory
+PREFIX=$PREFIX
+
+CXX=$CXX#  name of the C++ compiler
+CXXOPTS=$CXXOPTS $CXXOPTIMIZE# optional flags to give to the C++ compiler
+CXXINC=-I$PREFIX/include -L$PREFIX/lib#
+                                # additional include path
+CXXFLAGS=$CXXINC $CXXOPTS#  extra flags to give to the C++ compiler
+LIBRARIES=$LIBS#           names of libraries
+RPATH=$RPATH#
+# 
+EOF
+if echo '\c' | grep '\c' >/dev/null; 
+then
+	echo -n "."
+else
+	echo ".\c"
+fi
+$SED 1,16d $CWD/examples/$MAKEFILEEXAMPLETMPL >> $CWD/examples/$MAKEFILEEXAMPLE
+if echo '\c' | grep '\c' >/dev/null; 
+then
+	echo -n ". "
+else
+	echo ". \c"
+fi
+echo "Done"
+echo
+#
+#--------------------------------------------------------------------------------------
+#Checking for the make command
+#--------------------------------------------------------------------------------------
+smake=`which make`
+gmake=`which gmake`
+#if [ "$UNAME_SYSTEM" = "SunOS" ] #&& [ "$COMPILER" != "sun_forte" ]
+if [ "$UNAME_SYSTEM" = "SunOS" ] || [ "$UNAME_SYSTEM" = "AIX" ]
+then
+	MAKE=$gmake -j
+#	CXX=$SUNCC
+else
+	MAKE=$smake
+fi
+#
+#--------------------------------------------------------------------------------------
+#Dynamic/static section
+#--------------------------------------------------------------------------------------
+echo 
+echo "Section: Library"
+echo "================"
+if [ "$COMPILER" = "gnu" ] || [ "$COMPILER" = "intel" ] && [ "$CYGWIN" != "1" ]
+then
+   if [ "$UNAME_SYSTEM" = "Darwin" ] || [ "$UNAME_SYSTEM" = "Darwin_i386" ] || [ "$UNAME_SYSTEM" = "Darwin_powerpc" ]
+   then
+	if echo '\c' | grep '\c' >/dev/null;
+	then
+    		echo -n "Do you want to create a dynamic or static library? [static]/dynamic/both "
+	else
+    		echo "Do you want to create a dynamic or static library? [static]/dynamic/both \c"
+	fi
+	read ANSWER
+	echo
+	case $ANSWER in
+	dynamic)
+    		echo "Create a dynamic library."
+    		echo
+		LIBTYPE=1;
+    	;;
+	static)
+    		echo "Create a static library."
+    		echo
+		LIBTYPE=2;
+    	;;
+	both)
+    		echo "Create a dynamic and static library."
+    		echo
+		LIBTYPE=3;
+    	;;
+	*)
+    		echo "Create a static library."
+    		echo
+		LIBTYPE=2;
+    	;;
+	esac
+   else
+	if echo '\c' | grep '\c' >/dev/null;
+	then
+    		echo -n "Do you want to create a dynamic or static library? [dynamic]/static/both "
+	else
+    		echo "Do you want to create a dynamic or static library? [dynamic]/static/both \c"
+	fi
+	read ANSWER
+	echo
+	case $ANSWER in
+	dynamic)
+    		echo "Create a dynamic library."
+    		echo
+		LIBTYPE=1;
+    	;;
+	static)
+    		echo "Create a static library."
+    		echo
+		LIBTYPE=2;
+    	;;
+	both)
+    		echo "Create a dynamic and static library."
+    		echo
+		LIBTYPE=3;
+    	;;
+	*)
+    		echo "Create a dynamic library."
+    		echo
+		LIBTYPE=1;
+    	;;
+	esac
+   fi
+
+else
+		echo "Create a static library."
+    		echo
+		LIBTYPE=2;
+fi
+
+#
+#--------------------------------------------------------------------------------------
+#Code generation complete
+#--------------------------------------------------------------------------------------
+echo
+echo "Section: Automatic Code Generation"
+echo "=================================="
+if echo '\c' | grep '\c' >/dev/null;
+then
+    echo -n "Proceed with automatic code generation? [yes]/no "
+else
+    echo "Proceed with automatic code generation? [yes]/no \c"
+fi
+read ANSWER
+echo
+case $ANSWER in
+no)
+    echo "CXSC Installer exiting...."
+    echo
+    exit 0
+    ;;
+*)
+    ;;
+esac
+#
+#--------------------------------------------------------------------------------------
+#Building C-XSC library
+#--------------------------------------------------------------------------------------
+echo
+echo "Section: Build CXSC Library"
+echo "==========================="
+
+build=0
+#$MAKE symlinks || build=`expr $build + 1`
+$MAKE cxsc || build=`expr $build + 1`
+case $LIBTYPE in
+1)
+	$MAKE libcxsc.so || build=`expr $build + 1`
+	;;
+3)
+	$MAKE libcxsc || build=`expr $build + 1`
+	;;
+*)
+	$MAKE libcxsc.a || build=`expr $build + 1`
+	;;
+esac
+#
+#--------------------------------------------------------------------------------------
+#Install C-XSC library
+#--------------------------------------------------------------------------------------
+echo
+echo "Section: Install CXSC Library"
+echo "============================="
+installCXSC=0
+case $LIBTYPE in
+1)
+	$MAKE install_dyn || installCXSC=`expr $installCXSC + 1`
+	;;
+3)
+	$MAKE install || installCXSC=`expr $installCXSC + 1`
+	;;
+*)
+	$MAKE install_static || installCXSC=`expr $installCXSC + 1`
+	;;
+esac
+#
+#if [ "$UNAME_SYSTEM" = "Darwin_i386"  ]
+if [ "$UNAME_ORIG_SYSTEM" = "Darwin"  ]
+then 
+	export DYLD_LIBRARY_PATH=$PREFIX/lib
+fi
+#
+#--------------------------------------------------------------------------------------
+#Build C-XSC examples
+#--------------------------------------------------------------------------------------
+echo
+echo "Section: Build CXSC Library Examples"
+echo "===================================="
+example=0
+$MAKE examples || example=`expr $example + 1`
+#--------------------------------------------------------------------------------------
+#Building C-XSC Toolbox Programs
+#--------------------------------------------------------------------------------------
+echo
+echo "Section: Build CXSC Toolbox Programs"
+echo "===================================="
+buildTP=0;
+case $LIBTYPE in
+1)
+	$MAKE toolbox_dyn || buildTP=`expr $buildTP + 1`
+	;;
+3)
+	$MAKE toolbox || buildTP=`expr $buildTP + 1`
+	;;
+*)
+	$MAKE toolbox_static || buildTP=`expr $buildTP + 1`
+	;;
+esac
+#
+#--------------------------------------------------------------------------------------
+#Install C-XSC Toolbox Programs
+#--------------------------------------------------------------------------------------
+echo
+echo "Section: Install CToolbox"
+echo "========================="
+installTP=0
+$MAKE install_examples || installTP=`expr $installTP + 1`
+#cd CToolbox; $MAKE installprog PREFIX=$PREFIX CXX="$CXX" INSTALL=$GINSTALL INSTDIR="$GINSTALL -d" || installTP=`expr $installTP + 1`
+$MAKE installprog || installTP=`expr $installTP + 1`
+#
+#
+#--------------------------------------------------------------------------------------
+#Testing C-XSC Toolbox
+#--------------------------------------------------------------------------------------
+echo
+echo "Section: Test CToolbox"
+echo "============================"
+testTB=0;
+case $LIBTYPE in
+1)
+#	cd CToolbox; $MAKE test PREFIX=$PREFIX CXX="$CXX" M9X=$M9X DYN=1 LIBS="$LIBS" || testTB=`expr $testTB + 1`
+	$MAKE toolboxtest_dyn || testTB=`expr $testTB + 1`
+	;;
+3)
+#	cd CToolbox; $MAKE test PREFIX=$PREFIX CXX="$CXX" M9X=$M9X DYN=1 LIBS="$LIBS" || testTB=`expr $testTB + 1`
+	$MAKE toolboxtest_dyn || testTB=`expr $testTB + 1`
+	;;
+*)
+#	$MAKE test PREFIX=$PREFIX CXX="$CXX" M9X=$M9X LIBS="$LIBS" || testTB=`expr $testTB + 1`
+	$MAKE toolboxtest || testTB=`expr $testTB + 1`
+	;;
+esac
+#
+#--------------------------------------------------------------------------------------
+#Final CXSC
+#--------------------------------------------------------------------------------------
+echo
+echo "Section: CXSC Results"
+echo "====================="
+if [ "$build" != "0"  ]
+then
+	pre1="not "
+fi
+echo "Library "$pre1"successfully created"
+if [ "$example" != "0" ]
+then
+	pre2="not "
+fi
+echo "Examples "$pre2"successfully created"
+if  [ "$installCXSC" != "0" ] && [ "$build" != "0" ] && [ "$example" != "0" ]
+then
+	pre3="not "
+fi
+echo "Library "$pre3"successfully installed"
+echo
+#
+#
+#
+#--------------------------------------------------------------------------------------
+#Final CToolbox
+#--------------------------------------------------------------------------------------
+echo
+echo "Section: CToolbox Results"
+echo "========================="
+if [ "$buildTP" != "0" ] && [ "$installTP" != "0" ]
+then
+	pre3="not "
+fi
+echo "Examples "$pre3"successfully created"
+if  [ "$installTB" != "0" ] && [ "$buildTB" != "0" ] && [ "$testTB" != "0" ]
+then
+	pre4="not "
+fi
+echo "Library and programs "$pre4"successfully installed and tested"
+echo
+#

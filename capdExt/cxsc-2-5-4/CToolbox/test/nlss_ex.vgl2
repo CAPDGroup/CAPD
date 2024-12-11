@@ -1,0 +1,15 @@
+Desired dimension    : 
+Computing all solutions for Hansen's Function in 6 variables
+
+Search interval      : Tolerance (relative) : 
+[ 8.023509103292852E-001, 8.023509103360037E-001]
+[ 8.023509103313217E-001, 8.023509103339674E-001]
+[ 8.023509103321313E-001, 8.023509103331578E-001]
+[ 8.023509103324553E-001, 8.023509103328336E-001]
+[ 8.023509103325909E-001, 8.023509103326981E-001]
+[ 8.023509103326380E-001, 8.023509103326511E-001]
+encloses a locally unique zero!
+
+1 interval enclosure(s)
+
+We have validated that there is a globally unique zero!

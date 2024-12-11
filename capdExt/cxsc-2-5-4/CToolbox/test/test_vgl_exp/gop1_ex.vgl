@@ -1,0 +1,26 @@
+Computing all global minimizers of the function  (x + SIN(x))*EXP(-x^2)
+Search interval      : Tolerance (relative) : 
+[-6.795786600198817E-001,-6.795786600198813E-001]
+encloses a locally unique candidate for a global minimizer!
+
+[-8.242393984760770E-001,-8.242393984760765E-001]
+encloses the global minimum value!
+
+1 interval enclosure(s)
+
+We have validated that there is a unique global optimizer!
+
+
+Computing all global minimizers of the function  -SUM(k*SIN((k+1)*x+k),k,1,5)
+Search interval      : Tolerance (relative) : 
+[ 5.791794470920271E+000, 5.791794470920272E+000]
+encloses a locally unique candidate for a global minimizer!
+[-6.774576143438902E+000,-6.774576143438900E+000]
+encloses a locally unique candidate for a global minimizer!
+[-4.913908362593147E-001,-4.913908362593144E-001]
+encloses a locally unique candidate for a global minimizer!
+
+[-1.203124944216720E+001,-1.203124944216713E+001]
+encloses the global minimum value!
+
+3 interval enclosure(s)

@@ -1,0 +1,52 @@
+#!/bin/sh
+#
+#	Output a simple RPM spec file that uses no fancy features requring
+#	RPM v4. This is intended to work with any RPM distro.
+#
+#
+#  $Id: mkspec,v 1.2 2003/12/17 18:09:14 cxsc Exp $
+#
+# starting to output the spec
+PROVIDES="$PROVIDES cxsc-$VERSION.$PATCHLEVEL.$SUBLEVEL$EXTRAVERSION"
+
+echo "Name:      cxsc"
+echo "Summary:   C++ Class Library for Extended Scientific Computing "
+echo "Version:   "$VERSION.$PATCHLEVEL.$SUBLEVEL$EXTRAVERSION | sed -e "s/-//g"
+echo "Release:   $RELEASE"
+echo "License:   GPL"
+echo "Group:     Development/Libraries"
+echo "Vendor:    Bergische Universitaet Wuppertal"
+echo "URL:       http://www.xsc.de/"
+echo -n "Source:    %{name}-$VERSION.$PATCHLEVEL.$SUBLEVEL"
+echo "$EXTRAVERSION.tar.gz" | sed -e "s/-//g"
+echo "BuildRoot: %{_tmppath}/%{name}-%{version}-build"
+echo "Provides: $PROVIDES"
+echo "Prefix:    $PREFIX"
+echo ""
+echo "%description"
+echo "C-XSC, a C++ class library for extended scientific computing"
+echo ""
+echo "%prep"
+echo "%setup -q"
+echo ""
+echo "%build"
+echo "make all"
+# Back on track
+echo ""
+echo "%install"
+echo 'rm -rf $RPM_BUILD_ROOT'
+echo 'make PREFIX=%{buildroot}%{prefix} install'
+echo ""
+echo "%clean"
+echo 'rm -rf $RPM_BUILD_ROOT'
+echo ""
+echo "%files"
+echo '%defattr (-, root, root)'
+echo "%{prefix}/lib/*"
+echo "%{prefix}/include/*"
+echo ""
+echo "%changelog"
+# Sorry this is only a sample !!!
+echo "* `env LANG=C date +'%a %b %e %Y'` - `echo $USER`"
+echo "- initial release"
+echo ""

@@ -1,0 +1,218 @@
+/*
+**  CXSC is a C++ library for eXtended Scientific Computing (V 2.0)
+**
+**  Copyright (C) 1990-2000 Institut fuer Angewandte Mathematik,
+**                          Universitaet Karlsruhe, Germany
+**            (C) 2000-2004 Wiss. Rechnen/Softwaretechnologie
+**                          Universitaet Wuppertal, Germany   
+**
+**  This library is free software; you can redistribute it and/or
+**  modify it under the terms of the GNU Library General Public
+**  License as published by the Free Software Foundation; either
+**  version 2 of the License, or (at your option) any later version.
+**
+**  This library is distributed in the hope that it will be useful,
+**  but WITHOUT ANY WARRANTY; without even the implied warranty of
+**  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+**  Library General Public License for more details.
+**
+**  You should have received a copy of the GNU Library General Public
+**  License along with this library; if not, write to the Free
+**  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
+The <tt/make/ command produces two libraries: <em/libcxsc_inl.a/ provides all
+scalar functions, but no vector or matrix functions. The user will link with
+<em/libcxsc_inl.a/, if he
+<itemize>
+<item>doesn't need any vector and matrix classes,
+<item>has defined <tt/_CXSC_INLINE/ to compile his application with inlined
+vector and matrix functions.
+</itemize>
+The library <em/libcxsc.a/ has all scalar, vector and matrix functions. Thus
+compiling with <em/libcxsc.a/ may reduce compile time and memory consumption,
+but may result in a larger executable.
+Example <tt/CXXFLAGS/ values (for the C++ compiler) with descriptions are given in <em/Makefile.example/.
+
+<sect>Scalar types
+
+<p>
+There is nothing special about the scalar types. Every data type has a header
+file and a <em/.cpp/ file with the function definitions.
+
+<sect>Vector and matrix data types
+<p>
+These data types are organized in a rather complex structure in many files.
+See also the <tt/imatrix/ class structure sheet (<htmlurl url="imatrix_structure.ps" name="imatrix_structure.ps">).
+
+<sect1>Class structure
+<p>
+The first idea was to build the complex data types (i. e. vectors and matrices) as templates which can be
+instantiated with every scalar type. But some types have more functions,
+e. g. <tt/Re(cmatrix)/, so that these had to be declared separately in the
+corresponding vector/matrix class.
+
+But at that time, the compilers didn't handle friend/member templates correctly,
+so we moved to the following concept.
+
+For each scalar type <tt/T/, there are the files <em/Tvector.hpp/,
+<em/Tvector.inl/, <em/Tvector.cpp/, <em/Tmatrix.hpp/, <em/Tmatrix.inl/,
+<em/Tmatrix.cpp/. In addition, files are needed for operations of <tt/Tmatrix/
+and <tt/Svector/ when <em/Svector.hpp/ has not already been included from
+<em/Tmatrix.hpp/. For
+example, if you use <tt/cmatrix/, then <tt/rmatrix/ and <tt/rvector/ are
+included automatically. But if you don't use <tt/cmatrix/, and multiply
+<tt/rmatrix/ and <tt/cvector/ this operation will be defined in a separate file
+called <em/cvecrmat.[hpp,inl]/.
+
+<sect2>The header files <em/.hpp/, and inline files <em/.inl/
+<p>
+Because of compiler restrictions with template classes,
+each vector/matrix class had to be declared explicitly in a
+separate <em/.hpp/ file. Yet the base vector/matrix functions are defined
+as templates in the files <em/vector.inl/ and <em/matrix.inl/. (See the sheet
+<em/imatrix_structure.ps/ for an example for the internal structure of the
+<em/.hpp/ files.)
+
+The class <em/.inl/
+files contain the definitions of the member and friend functions which in most
+cases just call the template instantiation.
+
+Therefore the template instantiation must be declared as <tt/friend/ in the header
+files of all classes involved. For example, the <tt/rmatrix/ type can be added
+and multiplied to any other matrix type (except <tt/intmatrix/). Since many operations work between
+different classes there have to be many template declarations in each header
+file. To keep the files tidy, these declarations have been ordered by:
+
+<enum>
+<item>second scalar type
+<item>scalar operations, vector operations, matrix operations
+</enum>
+
+Each matrix class has the definition of the corresponding subvector class at the
+top of the header file. Then comes the matrix class, and then the definition of
+the matrix slice class. The vector header files have only vector and vector slice classes defined.
+
+Following the class definitions are the declarations of the friend functions and
+operators for the above classes.
+
+The functions are defined in the <em/.inl/ files. If they will be inlined or not
+depends on the definition of <tt/INLINE/.
+If <tt/_CXSC_INCL_INL/ is defined, the function definitions are
+included into the header file.
+
+For more about the the compile time options see <ref id="sec-compile-options" name="Section: Special files and compile time options">.
+
+<sect2>The <em/.cpp/ files
+<p>
+These files include both the header file and the file with the inline functions,
+but without actually defining the functions as <tt/inline/. This is because we
+want them to be defined in the object file which is then added to the library
+<em/libcxsc.a/.
+
+<sect>Changes to RTS and FI_LIB
+<p>
+The run time system RTS and the fast interval library FI_LIB are part of the
+source distribution. They are each in a separate directory with a modified <em/Makefile/
+to build the object files and archive them in the CXSC++ libraries.
+
+<sect>Special files and compile time options<label id="sec-compile-options">
+
+<sect1>The options <tt/_CXSC_INLINE/, <tt/_CXSC_CPP/ and the file <em/xscclass.hpp/
+<p>
+The user shall be able to decide whether or not he wants to use inlined code. If
+he does, he must set <tt/_CXSC_INLINE/. Then, in the header file, the friend
+templates are declared <tt/inline/ and the <em/.inl/ file is included where the
+functions are declared as <tt/inline/.
+
+The constant <tt/_CXSC_CPP/ is defined in the <em/.cpp/ files of vector and
+matrix types. It is used to force non-inline compilation of the vector and
+matrix functions, so that they can be put into the library <em/libcxsc.a/.
+
+To achieve this, several other variables are set in <em/xscclass.hpp/:
+<descrip>
+<tag><tt/INLINE/</tag> defines whether or not the vector and matrix functions will be
+<tt/inline/.
+<tag><tt/TINLINE/</tag> defines whether or not the friend template declarations in
+the header files will be <tt/inline/.
+<tag><tt/_CXSC_INCL_INL/</tag> causes the <em/.inl/ file to be included into the
+class header file.
+<tag><tt/_CXSC_FRIEND_TPL/</tag> causes the declaration of the friend templates in
+the class definitions.
+</descrip>
+This may seem confusing, but provides the required flexibility.
+
+<sect>The <em/Makefile/ and available targets
+<p>
+The <em/Makefile/ in the development CXSC++ directory is not the same as the one in the
+distribution (which is <em/Makefile.dist/ here). It contains the additional target <tt/dist/ which builds the
+source distribution in various package formats.
+
+The other extraneous targets are for testing purposes only.
+
+To distribute a new version, update the version number in <em/Makefile/ and
+check that all new files are included in the distribution, i. e. they are
+linked into the temporary distribution directory (in the <tt/dist/ target).
+
+If you have added new files, you should also look into <em/Makefile.dist/ in
+the <tt/install/ target and verify that all files are placed at their final
+destination.
+
+<sect>The test system
+<p>
+Included in the distribution is a test system. It is supposed to verify the
+availability and correctness of the functions.
+<sect1>Test files / writing new test cases
+<p>
+The test cases are defined in the files <em/testintv.hpp/, <em/testsklr.hpp/,
+<em/testvect.hpp/, <em/testmatr.hpp/, <em/testdot.hpp/, <em/testcomp.hpp/
+according to the data type.
+
+The file <em/testclss.hpp/ contains the template classes which are the main
+test framework. All specific test classes are derived from <tt/testclass/.
+
+See the files <em/test.hpp/ and <em/test.cpp/ for how the test cases are
+called.
+
+<sect>Hints, ideas, suggestions
+<p>
+The configuration and compilation should be made using the GNU tools 
+<em/autoconf/, <em/automake/, <em/gmake/. They help create a <em/configure/ script which
+can determine the host type and other relevant resources and set the
+appropriate flags in the <em/Makefile/.  <em/automake/ generates the complete
+source code distribution "infrastructure", including <em/README/,
+<em/Changelog/, <em/LICENSE/, default <em/configure.in/. The resulting
+<em/Makefile/ has targets including <em/dist/, <em/install/, <em/uninstall/,
+<em/test/, <em/clean/ and many others.
+
+The current source code uses a Makefile that has been written by hand. Using
+the benefits of the above GNU tools will improve the usability of the library
+and make maintenance easier.
+
+Most Linux/Unix users should be familiar with source distributions using the
+<em/automake/ tools. (You just type <tt>./configure;make;make install</tt> and
+you're done.)
+
+The version control system CVS is already an important part of the project.
+It provides control over the process by logging changes to the files. Old
+versions can easily be checked out for bug fixes.
+
+All of the tools mentioned here are included in any Linux distribution. The
+documentation provided with the packages is usually sufficient (and extensive,
+sometimes). In most cases, in addition to the man pages, the reference is
+available as texinfo pages (e.  g. viewed with <em/info automake/). Parts of
+the standard Linux/Unix and GNU software documentation is available online in
+HTML format at:
+
+<htmlurl url="http://www.cs.tu-bs.de/softech/info/dir.html" name="http://www.cs.tu-bs.de/softech/info/dir.html">
+
+<htmlurl url="http://www.informatik.uni-hamburg.de/RZ/software/" name="http://www.informatik.uni-hamburg.de/RZ/software/">
+
+CVS links:
+
+<htmlurl url="http://www.cyclic.com/" name="http://www.cyclic.com/">
+
+<htmlurl url="http://www.loria.fr/~molli/cvs-index.html" name="http://www.loria.fr/~molli/cvs-index.html">
+
+</article>
+
+

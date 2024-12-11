@@ -1,0 +1,422 @@
+C-XSC Release 2.5.4 Changelog
+-----------------------------
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.5.3 (released 30.07.2012):
+
+- Maintainance Release
+- Adaptation for PowerPC64 including assembler routines
+- C-XSC now works with the CLANG compiler under Mac OS X
+- new configuration files for installation with cmake (beta version)
+  and automake (beta version)
+- Linear system solver FastLss now accepts constant references
+- new function 'CompMat' for Ostrowski's comparison matrix
+- Updated API documentation including sparse data types and 
+  some general hints on the start page
+
+
+C-XSC Release 2.5.3 Changelog
+-----------------------------
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.5.2 (released 03.04.2012):
+
+- Maintainance Release and some buxfixes 
+- Extended interface and functionality for fast linear interval solvers
+  (see cxsc/CToolbox/Modules/fastlss.hpp)
+
+
+C-XSC Release 2.5.2 Changelog
+-----------------------------
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.5.1 (released 09.06.2011):
+
+- Maintainance Release and some buxfixes 
+  (especially concerning the new sparse datatypes)
+
+  Modified files: cxsc_blas.hpp  cxsc_blas.inl
+                  fastlss.hpp    fastlss.inl
+		  matrix.inl     sparcematrix.inl
+		  sparsedot.inl  sparsecdot.inl
+		  sparseidot.inl
+
+
+C-XSC Release 2.5.1 Changelog
+-----------------------------
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.5.0 (released 22.12.2010):
+
+- Maintainance Release due to newer compiler versions
+
+- Some modifications for using C-XSC in multi-threaded environments.
+  For more information see:
+    Zimmer, M.: "Using C-XSC in a Multi-Threaded Environment",
+    Preprint BUW-WRSWT 2011/2, Universitaet Wuppertal, 2011,
+    URL: http://www2.math.uni-wuppertal.de/wrswt/preprints/prep_11_2.pdf
+
+
+C-XSC Release 2.5.0 Changelog
+-----------------------------
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.4.0 (released 18.12.2009):
+
+- one of the the main objectives of the new release are runtime
+  optimizations for single C-XSC operations as well as for 
+  complete algorithms like fastlss
+- Maintainance Release due to newer compiler versions:
+  MS Visual Studio 2010
+  Intel-Compiler 12.0
+- optional use of modified assembler routines for switching the 
+  rounding mode
+- inlining of basic operations provided by the class interval
+- some new functions:
+  log2, log10 for real and interval data types
+  new constructor: idotprecision(const interval&)
+  additional rounding function: void rnd(const cdotprecision&, cinterval&)
+- some bugfixes (especially concerning the new sparse datatypes)
+
+
+C-XSC Release 2.4.0 Changelog
+-----------------------------
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.3.1 (released 20.08.2009):
+
+- New additional header files for the fast verified linear 
+  (interval) system solvers (for ease of use):
+     cxsc/CToolbox/Modules/lss.hpp
+     cxsc/CToolbox/Modules/ilss.hpp
+     cxsc/CToolbox/Modules/clss.hpp
+     cxsc/CToolbox/Modules/cilss.hpp
+     
+- Includes some new classes for sparse vectors and matrices 
+  (alpha release)
+  New classes:
+     srvector, sivector, scvector, scivector
+     srmatrix, simatrix, scmatrix, scimatrix
+  New files in the 'cxsc/src' dirctory:
+     cxsc_blas.hpp cxsc_blas.inl
+     matrix_friend_declarations.inl vector_friend_declarations.inl
+     scimatrix.cpp scimatrix.hpp scivector.cpp scivector.hpp
+     scmatrix.cpp scmatrix.hpp scvector.cpp scvector.hpp
+     simatrix.cpp simatrix.hpp sivector.cpp sivector.hpp
+     sparcecdot.hpp sparcecdot.inl
+     sparcecidot.hpp 
+     sparcedot.hpp sparcedot.inl
+     sparceidot.hpp sparceidot.inl
+     sparcematrix.hpp sparcematrix.inl
+     sparcevector.hpp sparcematrix.inl
+     srmatrix.cpp srmatrix.hpp srvector.cpp srvector.hpp
+     
+- Includes new classes for real and complex staggered (interval) 
+  arithmetics with wide exponent range (prerelease 0.9.2)
+  New classes:
+     lx_real, lx_interval, lx_complex, lx_cinterval,
+     lx_ivector, lx_civector
+  New files in the 'cxsc/src' dirctory:
+     lx_real.hpp lx_real.inl lx_real.cpp
+     lx_interval.hpp lx_interval.inl lx_interval.cpp
+     lx_complex.hpp lx_complex.inl lx_complex.cpp
+     lx_cinterval.hpp lx_cinterval.inl lx_cinterval.cpp
+     lx_ivector.hpp lx_ivector.inl lx_ivector.cpp
+     lx_civector.hpp lx_civector.inl lx_civector.cpp
+
+- Additional mathematical functions: 
+     sinpix_pi = sin(pi*x)/pi for real and interval,
+     Gamma function gamma() for real and interval,
+     Inverse Gamma function gammar() for real and interval
+     
+- Some small bug fixes ('const correctness', complex power function)
+
+C-XSC Release 2.3.1 Changelog
+-----------------------------
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.3.0 (released 12.08.2009):
+
+- Bug fix: Division l_real / l_real
+
+C-XSC Release 2.3.0 Changelog
+-----------------------------
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.2.4 (released 18.12.2008):
+
+- Alternative for the exact scalar dot product (dotprecision):
+  DotK-Algorithm (T. Ogita, S.M. Rump, S. Oishi)
+  The compiler options '-mfpmath=sse -msse2' have to be used.
+- Integration of FastPLSS: "A library of (parallel) verified linear 
+  (interval) system solvers" (V 0.2)
+  New header files:      cxsc/CToolbox/Modules/matinv_aprx.hpp
+                         cxsc/CToolbox/Modules/fastlss.hpp
+  New program example:   cxsc/CToolbox/Programs/fastlss_ex.cpp
+  with input data files: fastlss_ex_real.in
+                         fastlss_ex_interval.in
+			 fastlss_ex_complex.in
+			 fastlss_ex_cinterval.in
+- Better continuous fraction approximation for erf-function.
+- Completion: Functions Row(), Col(), RowLen(), ColLen(), Id(),
+  transp() and DoubleSize() are now available for all matrix classes
+  rmatrix, imatrix, cmatrix, cimatrix, intmatrix, l_rmatrix, l_imatrix			 		    
+- Completion: Functions RowLen(), ColLen()are now available for all 
+  matrix slice classes 
+- Elimination of global arrays of dotprecision variables
+  for easier use of C-XSC in a multi threading environment
+- Macro names for the preprocessor are provided with the prefix
+  '_CXSC' or 'CXSC' to avoid problems with other libraries.
+
+
+C-XSC Release 2.2.4 ChangeLog
+-----------------------------
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.2.3 (released 28.05.2008):
+
+- Maintainance Release due to newer compiler versions
+- Preparation: Additions and modifications for the lx-arithmetic with
+  the new classes lx_real, lx_interval, lx_complex, lx_cinterval.
+  The lx-arithmetic is a modified staggered correction arithmetic 
+  with enhanced accuracy and very wide exponent range. At the moment
+  the lx-arithmetic is available as a prerelease in a separate
+  package. 
+
+C-XSC Release 2.2.3 ChangeLog
+-----------------------------
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.2.2 (released 20.12.2007):
+
+- Maintainance Release due to newer compiler versions
+- C-XSC for IBM-AIX 5.2 systems with Power4+ processor and IBM C/C++ compiler
+- Some modifications of friend functions ("reliance on friend name injection")
+- Code modifications: GCC 4.x now enforces the rule that when allocating an 
+  object array, the class name in the new statement cannot be surrounded by 
+  parenthesis.
+
+C-XSC Release 2.2.2 ChangeLog
+-----------------------------
+
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.2.1 (released 23.05.2007):
+
+- Maintainance Release
+
+C-XSC Release 2.2.1 ChangeLog
+-----------------------------
+
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.2 (released 20.12.2006):
+
+- Maintainance Release
+- Add a beta version of the new class l_cinterval for the new
+  complex interval multiple-precision arithmetic with elementary functions
+  New headerfiles: l_cinterval.hpp, l_cimath.hpp
+- Rename some constants in the following toolbox files:
+    gop.hpp/gop.cpp:          MaxCount  ->  MaxCountGOp
+    gop1.hpp/gop1.cpp:        MaxCount  ->  MaxCountGOp1
+    nlinsys.hpp/nlinsys.cpp:  MaxCount  ->  MaxCountNLSS
+
+C-XSC Release 2.2 ChangeLog
+-----------------------------
+
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.1.1 (released 09.03.2006):
+
+- C-XSC with Gnu C++-Compiler gcc version 4.1.0 for Linux
+  Some modifications of friend functions ("reliance on friend name injection")
+- C-XSC prepared for use with Visual Studio 2005 Compiler (Express Edition)
+  URL: http://msdn.microsoft.com/vstudio/express/visualc/download/ 
+- Porting fi_lib to C++ to reduce problems with different compilers  
+  C-structure "interval" removed
+- Remove symlinks at installation time and
+  rename different files to prepare C-XSC for Windows
+- Additional mathematical functions: 
+  expm1(x) = exp(x)-1 for interval, l_real, l_interval
+  error function erf(...) for real and interval data types (new versions)
+  expx2(x) = exp(x^2) for real, interval
+  expx2m1(x) = exp(x^2)-1 for real, interval
+- Additional mathematical constants  
+  Pi, 2*Pi, 3*Pi, Pi/2, Pi/3, Pi/4, 1/Pi, 1/(2*Pi), Pi^2, sqrt(Pi),
+  sqrt(2Pi), 1/sqrt(Pi), 1/sqrt(2Pi), sqrt(2), 1/sqrt(2), sqrt(3),
+  sqrt(3)/2, 1/sqrt(3), ln(2), 1/ln(2), ln(10), 1/ln(10), ln(Pi),
+  ln(2Pi), e, 1/e, e^2, 1/e^2, e^(Pi), e^(2Pi), e^(Pi/2), e^(Pi/4)
+  for data type real:
+  Pi_real, Pi2_real, Pi3_real, Pid4_real, Pir_real, Pi2r_real, Pip2_real,
+  SqrtPi_real, Sqrt2Pi_real, SqrtPir_real, Sqrt2Pir_real, Sqrt2_real,
+  Sqrt2r_real, Sqrt3_real, Sqrt3d2_real, Sqrt3r_real, Ln2_real, Ln2r_real,
+  Ln10_real, Ln10r_real, LnPi_real, Ln2Pi_real, E_real, Er_real, Ep2_real,
+  Ep2r_real, EpPi_real, Ep2Pi_real, EpPid2_real, EpPid4_real
+  for data type interval:
+  Pi_interval, Pi2_interval, Pi3_interval, Pid2_interval, Pid3_interval,
+  Pid4_interval, Pir_interval, Pi2r_interval, Pip2_interval, SqrtPi_interval,
+  Sqrt2Pi_interval, SqrtPir_interval, Sqrt2Pir_interval, Sqrt2_interval,
+  Sqrt2r_interval, Sqrt3_interval, Sqrt3d2_interval, Sqrt3r_interval,
+  Ln2_interval, Ln2r_interval, Ln10_interval, Ln10r_interval, LnPi_interval,
+  Ln2Pi_interval, E_interval, Er_interval, Ep2_interval, Ep2r_interval,
+  EpPi_interval, Ep2Pi_interval, EpPid2_interval, EpPid4_interval
+- Additional mathematical constants 
+  1/ln(2), Pi, Pi/2, 2*Pi, Pi/3, 1/Pi, 1/(2*Pi), sqrt(Pi), sqrt(2*Pi),
+  1/sqrt(Pi), 1/sqrt(2*Pi), Pi^2, 1/sqrt(2), sqrt(3), sqrt(3)/2,
+  1/sqrt(3), ln(Pi), ln(2*Pi), e = exp(1), 1/e, e^2, 1/e^2, e^Pi,
+  e^(2*Pi), e^(Pi/2), e^(Pi/4), EulerGamma, Catalan
+  for data type l_interval:
+  Ln2r_l_interval(), Pi_l_interval(), Pid2_l_interval(), Pi2_l_interval(),
+  Pid3_l_interval(), Pir_l_interval(), Pi2r_l_interval(), SqrtPi_l_interval(),
+  Sqrt2Pi_l_interval(), SqrtPir_l_interval(), l Sqrt2Pir_l_interval(),
+  Pip2_l_interval(), Sqrt2r_l_interval(),l Sqrt3_l_interval(),
+  Sqrt3d2_l_interval(), Sqrt3r_l_interval(), LnPi_l_interval(),
+  Ln2Pi_l_interval(), E_l_interval(), Er_l_interval(), Ep2_l_interval(),
+  Ep2r_l_interval(), EpPi_l_interval(), Ep2Pi_l_interval(), EpPid2_l_interval(),
+  EpPid4_l_interval(), EulerGa_l_interval(), Catalan_l_interval()
+- Additional functions for data type l_interval:
+  in(...), Blow(...), Disjoint(...), AbsMin(...), AbsMax(...), Rel Diam(...)
+- Additional functions for rounding in l_real.hpp:
+    l_real rnd_up(const dotprecision& a)
+    l_real rnd_down(const dotprecision& a)
+
+  
+C-XSC Release 2.1.1 ChangeLog
+-----------------------------
+
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.1 (released 23.12.2005):
+
+- Maintainance Release
+- Some modifications of the access specifiers in the matrix/vector classes
+  due to newer gcc compilers (protected -> public)
+
+C-XSC Release 2.1 ChangeLog
+---------------------------
+
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.0 (released 21.12.2004):
+
+- Pretty much faster compilation of C-XSC compilation units
+  due to modifications concerning the exception handling templates
+- C-XSC with Gnu C++-Compiler gcc version 4.0.0/4.0.2 for Linux
+- C-XSC with SUN Studio 10 C++ 5.7 for Sun Solaris
+- C-XSC for "ia64" systems (e.g. Intel Itanium) with GNU C++-compiler
+  and Intel-Compiler (64 bit)
+- C-XSC for Mac OS/X systems ("Darwin") with G4 prozessors (32 bit)
+- new install-skript and new Makefile
+- C-XSC routines and CToolbox routines are now in one library: libcxsc.a 
+- dynamic library for use with GNU C++-Compiler
+- New version 1.2 of the sublibrary fi_lib for elementary functions 
+- complex interval elementary functions (based on the COSTLY-library 
+  written by Markus Neher with additional improvements done 
+  by Frithjof Blomquist) 
+- New mathematical functions: 
+  acoshp1 = acosh(1+x) for real, interval, l_real, l_interval data types
+  error function erf(...) for real and interval data types
+  complementary error function erfc(...) for real and interval data types
+- Some minor bug fixes concerning the error handling
+
+C-XSC Release 2.0 ChangeLog (with CToolbox 2.0 included)
+--------------------------------------------------------
+
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.0 Beta3 (released 18.12.2003):
+
+- C-XSC with SUN ONE Studio8 C++ 5.5 and SUN Studio 9 C++ 5.6 for Sun Solaris
+- C-XSC for "x86_64" systems (e.g. AMD Opteron) with GNU C++-compiler
+- C-XSC and CToolbox with GNU C++-Compiler gcc version 3.4 for Linux
+- C-XSC and CToolbox now in one package 
+- Only one installation script for both packages
+- Modified function sqrt(x), sqrt(x,n),
+  exp(), asin(), atan(), asinh(), acosh(), atanh(), acoth(),
+  tanh() for l_interval
+- New function sqrtx2m1() = sqrt( x*x - 1 )
+  for real, interval, l_real, l_interval
+- New function sqrt1mx2() = sqrt( 1 - x*x )
+  for real, interval, l_real, l_interval
+- New function expmx2() = exp( - x*x )
+  for real, interval, l_real, l_interval
+
+C-XSC 2.0 Beta 3 ChangeLog
+--------------------------
+
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.0 Beta2 (released 18.12.2002):
+
+- C-XSC with Gnu C++-Compiler gcc version 3.3 for Linux
+- C-XSC with Gnu C++-Compiler gcc version 3.3/3.3.2 for Sun Solaris
+- C-XSC with Intel C++-Compiler 7.1 for Linux
+- C-XSC with SUN Forte Developer 7 C++ 5.4 for Sun Solaris
+- hardware support for IEEE 759 arithmetic for Linux, 
+  with rounding control conforming to ISO C 99 (using "fenv.h")
+- hardware support for IEEE 759 arithmetic for SUN Forte C++ Compiler 7, 
+  with rounding control conforming to ISO C 9x (using "fenv96.h")
+- New function sqrt1px2() = sqrt( 1 + x*x )
+  for real, interval, l_real, l_interval
+- New function sqrtp1m1() = sqrt( 1 + x) - 1
+  for real, interval, l_real, l_interval
+- New function sqrtx2y2() = sqrt ( x*x + y*y )
+  for real, interval, l_real, l_interval
+- New function lnp1() = ln( x + 1) for interval, l_interval
+- Modified functions sqrt() and atan() for l_interval
+- New function ln_sqrtx2y2() = ln( sqrt( x*x + y*y ) )
+  for real, interval, l_interval
+- Modifications of the Makefile
+- Some minor bug fixes
+- The functions (in(), Blow(), rnd(), Disjoint(), Max(), AbsMin(), AbsMax(),
+  RelDiam(), Pi(), VecLen(), RowLen(), ColLen(), Id(), transp(), ...)
+  from the former header files cu_util.hpp, i_util.hpp, mv_util.hpp, 
+  mvi_util.hpp and r_util.hpp from the CToolbox library are now included 
+  in the C-XSC library itself.
+ 
+CToolbox 2.0 Beta 3 ChangeLog
+-----------------------------
+- Modifications of the Makefile
+- The header files with utilities 
+       ci_util.hpp, 
+       i_util.hpp, 
+       mv_util.hpp,
+       mvi_util.hpp   and
+       r_util.hpp
+  are obsolete. The functions from these header files are now
+  included in the C-XSC library (in the namespace cxsc). 
+  For compatibility additional (empty) header files are included.
+
+
+
+----------------------------------------------------------------------
+
+C-XSC 2.0 Beta 2 ChangeLog
+--------------------------
+
+In the following we summarize the major changes to the C-XSC library
+since release C-XSC 2.0 Beta (released 10.08.2001):
+
+- C-XSC with Gnu C++-Compiler gcc version 3.2 for Linux
+- C-XSC with Gnu C++-Compiler gcc version 3.2 for Sun Solaris
+- Fixes for the use with the linux distribution SuSE 8.1
+- Adding a new supported platform: alpha processor
+- Modifications of the Makefile
+- Bug fix of the complex division of real and interval
+- Modifications of the pow and power function for interval
+- Some changes and new functions for l_real and l_interval
+- Some minor bug fixes (especially of using namespaces)
+- Adding some new examples in the example-directory
+
+CToolbox 2.0 Beta 2 ChangeLog
+-----------------------------
+
+- In ddf_ari.hpp the typedef statement
+     typedef DerivType (*ddf_FctPtr)(DerivType);
+  has been replaced by 
+     typedef DerivType (*ddf_FctPtr)(const DerivType&);
+  and corresponding modifications in the programs ddf_ex.cpp, 
+  gop1_ex.cpp and nlfz_ex.cpp have been done
+
+
+With special thanks to all our beta testers!
+
+
+Questions, Suggestions, Problems, Solutions are welcome
+=======================================================
+Please contact
+
+     Prof. Dr. Walter Kraemer & Dr. Werner Hofschuster
+     Scientific Computing/Software Engineering
+     Department of Mathematics and Computer Science
+     University of Wuppertal
+     Gaussstrasse 20
+     D-42097 Wuppertal (Germany)
+
+e-mail: xsc@math.uni-wuppertal.de
+
+C-XSC-Homepage: http://www.math.uni-wuppertal.de/~xsc/
+             or http://www.xsc.de/

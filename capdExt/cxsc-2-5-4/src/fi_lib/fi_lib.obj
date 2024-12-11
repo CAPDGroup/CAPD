@@ -1,0 +1,11 @@
+OBJECTS = $(FILIB)/j_erf.o \
+          $(FILIB)/j_acos.o $(FILIB)/j_acsh.o $(FILIB)/j_acot.o $(FILIB)/j_acth.o $(FILIB)/j_asin.o $(FILIB)/j_asnh.o $(FILIB)/j_atan.o \
+          $(FILIB)/j_atnh.o $(FILIB)/j_cos.o $(FILIB)/j_cosh.o $(FILIB)/j_cot.o $(FILIB)/j_coth.o $(FILIB)/j_exp.o $(FILIB)/j_ex10.o $(FILIB)/j_exp2.o \
+          $(FILIB)/j_expm.o $(FILIB)/j_log.o $(FILIB)/j_lg10.o $(FILIB)/j_lg1p.o $(FILIB)/j_log2.o $(FILIB)/j_sin.o $(FILIB)/j_sinh.o $(FILIB)/j_sqr.o \
+          $(FILIB)/j_sqrt.o $(FILIB)/j_tan.o $(FILIB)/j_tanh.o \
+	  $(FILIB)/q_erf.o  $(FILIB)/q_acos.o $(FILIB)/q_acsh.o $(FILIB)/q_acot.o $(FILIB)/q_acth.o \
+          $(FILIB)/q_asin.o $(FILIB)/q_asnh.o $(FILIB)/q_atan.o $(FILIB)/q_atnh.o $(FILIB)/q_atn1.o $(FILIB)/q_cos.o $(FILIB)/q_cos1.o \
+          $(FILIB)/q_cosh.o $(FILIB)/q_cot.o $(FILIB)/q_coth.o $(FILIB)/q_ep1.o $(FILIB)/q_epm1.o $(FILIB)/q_exp.o $(FILIB)/q_ex10.o $(FILIB)/q_exp2.o \
+          $(FILIB)/q_expm.o $(FILIB)/q_log.o $(FILIB)/q_glbl.o $(FILIB)/q_log1.o $(FILIB)/q_lg10.o $(FILIB)/q_log2.o $(FILIB)/q_pred.o \
+          $(FILIB)/q_rtrg.o $(FILIB)/q_sin.o $(FILIB)/q_sin1.o $(FILIB)/q_sinh.o $(FILIB)/q_sqr.o $(FILIB)/q_sqrt.o $(FILIB)/q_succ.o $(FILIB)/q_tan.o \
+          $(FILIB)/q_tanh.o $(FILIB)/q_cth1.o $(FILIB)/q_scan.o $(FILIB)/q_prnt.o $(FILIB)/q_ari.o $(FILIB)/q_errm.o $(FILIB)/q_comp.o $(FILIB)/fi_lib_funcs.o

@@ -1,0 +1,208 @@
+# This file is the Makefile Template for the C-XSC library
+# ========================================================
+
+##
+##  CXSC is a C++ library for eXtended Scientific Computing
+##
+##  Copyright (C) 1990-2000 Institut fuer Angewandte Mathematik,
+##                          Universitaet Karlsruhe, Germany
+##            (C) 2000-2014 Wiss. Rechnen/Softwaretechnologie
+##                          Universitaet Wuppertal, Germany
+##
+##  This library is free software; you can redistribute it and/or
+##  modify it under the terms of the GNU Library General Public
+##  License as published by the Free Software Foundation; either
+##  version 2 of the License, or (at your option) any later version.
+##
+##  This library is distributed in the hope that it will be useful,
+##  but WITHOUT ANY WARRANTY; without even the implied warranty of
+##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+##  Library General Public License for more details.
+##
+##  You should have received a copy of the GNU Library General Public
+##  License along with this library; if not, write to the Free
+##  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+##
+
+
+# Settings for all systems -------------------------------------------
+
+CCINC=-I. -I../.. -I../rts -I../asm# 
+                                # additional include path
+CCFLAGS=$(CCINC) $(CCOPTS)#
+			        # further flags forwarded to the C compiler
+
+CXXINC=-I. -I.. -Irts/ -Ifi_lib/ -Iasm/#
+                                # additional include path
+CXXFLAGS=$(CXXINC) $(CXXOPTS)#
+                                # further flags forwarded to the C++ compiler
+ 
+#AR=ar#                   put object file into archive
+#RANLIB=ranlib#           generate index to archive
+LN=ln -sf#                how to create soft links
+
+RM=rm -f#                remove files (forced)
+RMDIR=rm -rf#            remove directory
+
+#INSTALL=$(GINSTALL) -m 644#  copy files
+#INSTALLEXE=$(GINSTALL) -m 755# copy binary file
+#STRIP=#strip -g          strip executables from debug symbols
+#INSTDIR=$(GINSTALL) -d#      create installation directory
+
+VER=2.5.4
+VERSION=2#                      main version number from cxsc
+PATCHLEVEL=5#                   patchlevel number from cxsc
+SUBLEVEL=4#                     not released version
+RELEASE=2.5.4#                  current release
+PKGNAME=BUWcxsc#                sun solaris package name
+
+#========== you shouldn't modify anything below ===========================
+
+TOPDIR=$(shell /bin/pwd)
+ARCH=$(shell uname -m | sed -e s/i.86/i386/ -e s/sun4u/sparc/)
+CXSCRELEASE=$(VERSION).$(PATCHLEVEL).$(SUBLEVEL)
+CXSCPATH=cxsc-$(shell echo $(CXSCRELEASE) | sed -e "s/-//")
+BUILDTMP=/var/spool/pkg
+TMPDIR=$(TOPDIR)/tmp
+
+export PREFIX VERSION PATCHLEVEL SUBLEVEL EXTRAVERSION TOPDIR CC CCOPTS  \
+       CCOPTIMIZE CCINC CCFLAGS CXX CXXOPTS CXXOPTIMIZE CXXINC CXXFLAGS \
+       DEPENDOPT AR RANLIB LN RM RMDIR INSTALL STRIP INSTDIR ARCH \
+       CXSCRELEASE CXSCPATH RELEASE PKGNAME BUILDTMP TMPDIR LIBS COMPILER \
+       INSTDIR INSTALLEXE LINKERPATH SHARED FPIC M9X LINKEROPTDYNLIBNAME \
+       VER UNAME_SYSTEM BIT ASM
+
+ifneq ($(COMPILER),sun_forte)
+	RPATH=$(LINKERPATH)
+endif
+
+.SUFFIXES:
+.SUFFIXES: .cpp .hpp .o
+
+default:
+	@echo
+	@echo "C-XSC - C++ library for eXtended Scientific Computation"
+	@echo
+	@echo "Usage: make all | libs | cxsc | symlinks | install | toolbox | toolboxtest" 
+	@echo "            toolboxinstall | test | uninstall | examples | clean | distclean"
+	@echo
+	@echo "For further information read the file README"
+	@echo
+
+all:
+	@+cd src; $(MAKE) all
+
+rpm:
+	@+cd src; $(MAKE) rpm
+
+sunpkg:
+	@+cd src; $(MAKE) sunpkg
+
+test: 
+	@+cd src; $(MAKE) test
+
+libs: 
+	@+cd src; $(MAKE) libs
+
+cxsc:
+	@+cd src; $(MAKE) cxsc
+
+libcxsc:
+	@+cd src; $(MAKE) libcxsc
+
+libcxsc.so:
+	@+cd src; $(MAKE) libcxsc.so
+
+libcxsc.a:
+	@+cd src; $(MAKE) libcxsc.a
+
+symlinks:
+	@+cd src; $(MAKE) symlinks
+	@+cd examples; $(LN) Makefile.example Makefile
+
+install_dyn:
+	@+cd src; $(MAKE) install_dyn
+
+install_static:
+	@+cd src; $(MAKE) install_static
+
+install:
+	@+cd src; $(MAKE) install
+
+install_examples:
+	$(INSTDIR) $(PREFIX)/examples
+	@+cd examples; $(INSTALLEXE) example lexample io inewton linewton rungekutta trace $(PREFIX)/examples
+	@+cd examples; $(INSTALL) allzeros.cpp example.cpp lexample.cpp io.cpp inewton.cpp linewton.cpp rungekutta.cpp trace.cpp Makefile.example $(PREFIX)/examples
+	$(INSTDIR) $(PREFIX)/docs
+	$(INSTALL) README changelog $(PREFIX)/docs
+
+installprog:
+	@+cd CToolbox; $(MAKE) installprog
+	
+uninstall:
+	@+cd src; $(MAKE) uninstall
+	@+cd CToolbox; $(MAKE) uninstall
+
+examples: example lexample io inewton linewton rungekutta trace benchmark
+
+example: examples/example.cpp 
+	+cd examples; $(CXX) $(CXXOPTS) $(CXXOPTIMIZE) $(RPATH) -I.. -I../src -I../src/rts -I../src/fi_lib -I../src/asm -L../src -o example example.cpp $(LIBS)
+
+lexample: examples/lexample.cpp
+	+cd examples; $(CXX) $(CXXOPTS) $(CXXOPTIMIZE) $(RPATH) -I.. -I../src -I../src/rts -I../src/fi_lib -I../src/asm -L../src -o lexample lexample.cpp $(LIBS)
+
+io: examples/io.cpp
+	+cd examples; $(CXX) $(CXXOPTS) $(CXXOPTIMIZE) $(RPATH) -I.. -I../src -I../src/rts -I../src/fi_lib -I../src/asm -L../src -o io io.cpp $(LIBS)
+
+inewton: examples/inewton.cpp
+	+cd examples; $(CXX) $(CXXOPTS) $(CXXOPTIMIZE) $(RPATH) -I.. -I../src -I../src/rts -I../src/fi_lib -I../src/asm -L../src -o inewton inewton.cpp $(LIBS)
+
+linewton: examples/linewton.cpp
+	+cd examples; $(CXX) $(CXXOPTS) $(CXXOPTIMIZE) $(RPATH) -I.. -I../src -I../src/rts -I../src/fi_lib -I../src/asm -L../src -o linewton linewton.cpp $(LIBS)
+
+rungekutta: examples/rungekutta.cpp
+	+cd examples; $(CXX) $(CXXOPTS) $(CXXOPTIMIZE) $(RPATH) -I.. -I../src -I../src/rts -I../src/fi_lib -I../src/asm -L../src -o rungekutta rungekutta.cpp $(LIBS)
+
+trace: examples/trace.cpp 
+	+cd examples; $(CXX) $(CXXOPTS) $(CXXOPTIMIZE) $(RPATH) -I.. -I../src -I../src/rts -I../src/fi_lib -I../src/asm -L../src -o trace trace.cpp $(LIBS)
+
+depend:
+	+cd src; $(MAKE) depend
+
+clean:
+	@+cd src; $(MAKE) clean
+	@+cd examples; $(RM) example lexample io inewton linewton rungekutta trace
+	@+cd CToolbox; $(MAKE) clean
+
+distclean: clean
+	@rm -f Makefile cxscconf.h install.log
+
+backup:
+	@+cd src; $(MAKE) backup
+
+ari:
+	@+cd src/asm; $(MAKE) ari
+
+toolbox:
+	@+cd CToolbox; $(MAKE) all DYN=1
+
+toolbox_dyn:
+	@+cd CToolbox; $(MAKE) all DYN=1
+
+toolbox_static:
+	@+cd CToolbox; $(MAKE) all
+
+toolboxinstall:
+	@+cd CToolbox; $(MAKE) install
+
+toolboxtest:
+	@+cd CToolbox; $(MAKE) test
+
+toolboxtest_dyn:
+	@+cd CToolbox; $(MAKE) test DYN=1
+
+benchmark: benchmark/benchmark.cpp benchmark/timing.cpp
+	+cd benchmark; $(CXX) $(CXXOPTS) $(CXXOPTIMIZE) $(RPATH) -I.. -I../src -I../src/rts -I../src/fi_lib -I../src/asm -L../src -o benchmark benchmark.cpp $(LIBS)
+	+cd benchmark; $(CXX) $(CXXOPTS) $(CXXOPTIMIZE) $(RPATH) -I.. -I../src -I../src/rts -I../src/fi_lib -I../src/asm -L../src -o timing timing.cpp $(LIBS)
+
+.PHONY: default all test libs symlinks install uninstall clean distclean examples benchmark

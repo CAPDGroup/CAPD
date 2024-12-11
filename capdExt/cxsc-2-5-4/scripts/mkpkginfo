@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+#	Output a simple pkginfo file. 
+#
+#
+#  $Id: mkpkginfo,v 1.1 2003/12/12 08:59:08 cxsc Exp $
+#
+# starting to output the pkginfo
+echo "PKG=BUWcxsc"
+echo "NAME=cxsc"
+echo "ARCH=all"
+echo "VERSION="$VERSION.$PATCHLEVEL.$SUBLEVEL$EXTRAVERSION | sed -e "s/-//g"
+echo "CATEGORY=system"
+echo "DESC=C-XSC, a C++ class library for extended scientific computing"
+echo "VENDOR=Bergische Universitaet Wuppertal"
+echo "EMAIL=xsc@math.uni-wuppertal.de"
+echo "CLASSES=none"
+echo "BASEDIR=$PREFIX"
