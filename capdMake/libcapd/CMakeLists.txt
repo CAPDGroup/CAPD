@@ -14,18 +14,8 @@ string(REPLACE ";" " " CAPD_LIBS "${CAPD_LIBS}")
 string(REPLACE "filib" "-lfilib" CAPD_LIBS "${CAPD_LIBS}")
 
 ###############################################################################################################################
-# Configure
+# Configure (local)
 ###############################################################################################################################
-
-configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/capd-config.in
-    ${CMAKE_CURRENT_BINARY_DIR}/capd-config
-    @ONLY)
-
-configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/capd.pc.in
-    ${CMAKE_CURRENT_BINARY_DIR}/capd.pc
-    @ONLY)
 
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/capd-config.local.in
@@ -38,6 +28,22 @@ configure_file(
     @ONLY)
 
 ###############################################################################################################################
+# Configure (installation)
+###############################################################################################################################
+
+set(PKG_CONFIG_PATH ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
+
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/capd-config.in
+    ${CMAKE_CURRENT_BINARY_DIR}/capd-config
+    @ONLY)
+
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/capd.pc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/capd.pc
+    @ONLY)
+
+###############################################################################################################################
 # Install
 ###############################################################################################################################
 
@@ -46,7 +52,6 @@ install(
     PERMISSIONS OWNER_EXECUTE OWNER_READ WORLD_READ WORLD_EXECUTE
     DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
-set(PKG_CONFIG_PATH ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 install(
   FILES ${CMAKE_CURRENT_BINARY_DIR}/capd.pc
   PERMISSIONS OWNER_READ WORLD_READ
