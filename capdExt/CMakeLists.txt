@@ -13,10 +13,6 @@ elseif(${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
 
     add_subdirectory(cxsc-2-5-4)
 
-else()
-
-    message(FATAL_ERROR "Unsupported CAPD_INTERVAL_TYPE")
-
 endif()
 
 

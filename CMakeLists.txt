@@ -12,20 +12,23 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 add_library(${PROJECT_NAME})
+target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
 
-if (${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
+if (${CAPD_INTERVAL_TYPE} STREQUAL "NATIVE")
+
+    target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_NATIVE__)
+
+elseif(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
 
     add_dependencies(${PROJECT_NAME} filib)
     target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
-
-    target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
     target_link_libraries(${PROJECT_NAME} PUBLIC filib)
+
 
 elseif(${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
 
+    add_dependencies(${PROJECT_NAME} cxsc)
     target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_CXSC__)
-
-    target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
     target_link_libraries(${PROJECT_NAME} PUBLIC cxsc)
 
 else()
@@ -63,11 +66,25 @@ add_subdirectory(capdExt)
 add_subdirectory(capdAux)
 add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys)
+add_subdirectory(capdMake/libcapd)
 
-if (${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
+if (${CAPD_INTERVAL_TYPE} STREQUAL "NATIVE")
 
-    add_subdirectory(capdMake/libcapd)
-    add_subdirectory(capdMake/bin)
+    install(TARGETS
+            ${PROJECT_NAME}
+        EXPORT capd-config
+        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
+    )
+
+    export(TARGETS
+            ${PROJECT_NAME}
+        NAMESPACE capd::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
+    )
+
+
+elseif(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
 
     install(TARGETS
             ${PROJECT_NAME} filib
@@ -82,30 +99,28 @@ if (${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
         FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
     )
 
-    install(EXPORT
-        capd-config
-        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
-        NAMESPACE capd::
+elseif (${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
+
+    install(TARGETS
+            ${PROJECT_NAME} cxsc
+        EXPORT capd-config
+        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
     )
+
+    export(TARGETS
+            ${PROJECT_NAME} cxsc
+        NAMESPACE capd::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
+    )
+
+else()
+
+    message(FATAL_ERROR "Unsupported CAPD_INTERVAL_TYPE")
 
 endif()
 
-if (${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
-
-    install(TARGETS
-            ${PROJECT_NAME} cxsc
-        EXPORT capd-config
-        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
-        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
-    )
-
-    export(TARGETS
-            ${PROJECT_NAME} cxsc
-        NAMESPACE capd::
-        FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
-    )
-
-    install(EXPORT
+install(EXPORT
         capd-config
         DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
         NAMESPACE capd::
