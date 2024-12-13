@@ -12,11 +12,23 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 add_library(${PROJECT_NAME})
-add_dependencies(${PROJECT_NAME} filib)
-target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
-
 target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
-target_link_libraries(${PROJECT_NAME} PUBLIC filib)
+
+if (${CAPD_INTERVAL_TYPE} STREQUAL "NATIVE")
+
+    target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_NATIVE__)
+
+elseif(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
+
+    add_dependencies(${PROJECT_NAME} filib)
+    target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
+    target_link_libraries(${PROJECT_NAME} PUBLIC filib)
+
+else()
+
+    message(FATAL_ERROR "Unsupported CAPD_INTERVAL_TYPE")
+
+endif()
 
 enable_testing()
 
@@ -49,18 +61,43 @@ add_subdirectory(capdAlg)
 add_subdirectory(capdDynSys)
 add_subdirectory(capdMake/libcapd)
 
-install(TARGETS
-        ${PROJECT_NAME} filib
-    EXPORT capd-config
-    LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
-    INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
-)
+if (${CAPD_INTERVAL_TYPE} STREQUAL "NATIVE")
 
-export(TARGETS
-        ${PROJECT_NAME} filib
-    NAMESPACE capd::
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
-)
+    install(TARGETS
+            ${PROJECT_NAME}
+        EXPORT capd-config
+        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
+    )
+
+    export(TARGETS
+            ${PROJECT_NAME}
+        NAMESPACE capd::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
+    )
+
+
+elseif(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
+
+    install(TARGETS
+            ${PROJECT_NAME} filib
+        EXPORT capd-config
+        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
+    )
+
+    export(TARGETS
+            ${PROJECT_NAME} filib
+        NAMESPACE capd::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
+    )
+
+else()
+
+    message(FATAL_ERROR "Unsupported CAPD_INTERVAL_TYPE")
+
+endif()
+
 install(EXPORT
         capd-config
     DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
