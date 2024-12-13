@@ -4,8 +4,6 @@
 
 get_target_property(CAPD_CFLAGS ${PROJECT_NAME} COMPILE_OPTIONS)
 
-message(${CAPD_CFLAGS})
-
 string(REPLACE ";" " " CAPD_CFLAGS "${CAPD_CFLAGS}")
 string(JOIN " " CAPD_CFLAGS "-std=c++${CMAKE_CXX_STANDARD} ${CAPD_CFLAGS}")
 
@@ -21,15 +19,13 @@ endif()
 # Process libs
 ###############################################################################################################################
 
-get_target_property(CAPD_LIBS ${PROJECT_NAME} INTERFACE_LINK_LIBRARIES)
-
 if(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
 
+    get_target_property(CAPD_LIBS ${PROJECT_NAME} INTERFACE_LINK_LIBRARIES)
     string(REPLACE "filib" "-lfilib" CAPD_LIBS "${CAPD_LIBS}")
+    string(REPLACE ";" " " CAPD_LIBS "${CAPD_LIBS}")
 
 endif()
-
-string(REPLACE ";" " " CAPD_LIBS "${CAPD_LIBS}")
 
 ###############################################################################################################################
 # Configure (local)
