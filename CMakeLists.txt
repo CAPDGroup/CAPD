@@ -125,5 +125,3 @@ install(EXPORT
         DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
         NAMESPACE capd::
     )
-
-endif()
