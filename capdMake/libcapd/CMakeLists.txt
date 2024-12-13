@@ -1,3 +1,7 @@
+###############################################################################################################################
+# Set up variables
+###############################################################################################################################
+
 get_target_property(CAPD_CFLAGS ${PROJECT_NAME} COMPILE_OPTIONS)
 get_target_property(CAPD_LIBS ${PROJECT_NAME} INTERFACE_LINK_LIBRARIES)
 get_target_property(FILIB_CFLAGS filib COMPILE_OPTIONS)
@@ -9,22 +13,40 @@ string(JOIN " " CAPD_CFLAGS "-std=c++${CMAKE_CXX_STANDARD} ${CAPD_CFLAGS} ${FILI
 string(REPLACE ";" " " CAPD_LIBS "${CAPD_LIBS}")
 string(REPLACE "filib" "-lfilib" CAPD_LIBS "${CAPD_LIBS}")
 
-set(PKG_CONFIG_PATH ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
+###############################################################################################################################
+# Configure
+###############################################################################################################################
+
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/capd-config.in
     ${CMAKE_CURRENT_BINARY_DIR}/capd-config
     @ONLY)
-
-install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/capd-config
-    PERMISSIONS OWNER_EXECUTE OWNER_READ WORLD_READ WORLD_EXECUTE
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/capd.pc.in
     ${CMAKE_CURRENT_BINARY_DIR}/capd.pc
     @ONLY)
 
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/capd-config.local.in
+    ${CMAKE_BINARY_DIR}/bin/capd-config
+    @ONLY)
+
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/capd.pc.local.in
+    ${CMAKE_BINARY_DIR}/bin/capd.pc
+    @ONLY)
+
+###############################################################################################################################
+# Install
+###############################################################################################################################
+
+install(
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/capd-config
+    PERMISSIONS OWNER_EXECUTE OWNER_READ WORLD_READ WORLD_EXECUTE
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+
+set(PKG_CONFIG_PATH ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 install(
   FILES ${CMAKE_CURRENT_BINARY_DIR}/capd.pc
   PERMISSIONS OWNER_READ WORLD_READ
