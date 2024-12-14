@@ -18,11 +18,11 @@
 #include <except.hpp>
 #undef ZERO
 #include "capd/intervals/IntervalError.h"
+#include "capd/intervals/intra/interval_atan2.h"
 #include "capd/basicalg/minmax.h"
 #include "capd/basicalg/TypeTraits.h"
 #include "capd/intervals/IntervalTraits.h"
-
-
+#include "capd/basicalg/Math.h"
 
 namespace capd{
 namespace cxsc{
@@ -31,17 +31,6 @@ class Interval;
 
 inline Interval diam(const Interval & ix);
 }
-/// absolute values of all elements of a given interval
-template<>
-cxsc::Interval abs (const cxsc::Interval & A_inter);
-
-/// maximum
-template<>
-inline cxsc::Interval max(const cxsc::Interval& A_iv1, const cxsc::Interval& A_iv2);
-
-///minimum
-template<>
-inline cxsc::Interval min (const cxsc::Interval& A_iv1, const cxsc::Interval& A_iv2);
 
 /// fast interval library
 namespace cxsc{
@@ -200,7 +189,7 @@ public:
       { return ::cxsc::abs(m_interval); }
   /// Splits interval into the form  mid + remainder, where mid - is middle point
   void split( Interval & A_rMid, Interval & A_rRemainder ) const {
-    if(std::isfinite(m_interval.inf()) && std::isfinite(m_interval.sup())){
+    if(std::isfinite(this->inf()) && std::isfinite(this->sup())){
       BoundType m = midPoint();
       A_rRemainder.m_interval = m_interval - m;
       A_rMid.m_interval = m;
@@ -210,7 +199,7 @@ public:
     }
   }
   void split( BoundType & A_rMid, Interval & A_rRemainder ) const {
-    if(std::isfinite(m_interval.inf()) && std::isfinite(m_interval.sup())){
+    if(std::isfinite(this->inf()) && std::isfinite(this->sup())){
       A_rMid = midPoint();
       A_rRemainder.m_interval = m_interval - A_rMid;
     } else {
@@ -575,6 +564,10 @@ friend inline Interval atan (const Interval& x){
   return Interval(atan(x.m_interval));
 }
 
+friend inline Interval atan2( const Interval& x, const Interval& y){
+  return  capd::intervals::intra::atan2(x,y);
+}
+
 // asin x
 
 friend inline Interval asin (const Interval& x){
@@ -832,15 +825,13 @@ template<>
 class TypeTraits < capd::cxsc::Interval > {
 public:
   typedef  double Real;
+  typedef Real T;
   typedef capd::cxsc::Interval IntervalType;
-//  static inline const ::capd::cxsc::Interval &zero(){
-//    return S_zero;
-//  }
+
   static inline const ::capd::cxsc::Interval zero(){
     return ::capd::cxsc::Interval(0.0);
   }
-//  static inline const ::capd::cxsc::Interval & one(){
-//    return S_one;
+
   static inline const ::capd::cxsc::Interval one(){
     return ::capd::cxsc::Interval(1.0);
   }
@@ -862,49 +853,57 @@ public:
   
   static const bool isInterval = true;
 
-private:
-  static const  ::capd::cxsc::Interval S_zero ;// = ::capd::cxsc::Interval<T,R>(T(0.0));
-  static const  ::capd::cxsc::Interval S_one ;
+  /// an absolute value
+  static inline cxsc::Interval abs (const cxsc::Interval & A_inter){
+    return cxsc::Interval(A_inter.abs());
+  } // abs
+
+  ///maximum
+  static inline cxsc::Interval max (      
+    const cxsc::Interval & A_iv1,
+    const cxsc::Interval & A_iv2
+  ){
+    return cxsc::Interval(
+            (A_iv1.leftBound()>A_iv2.leftBound() ? A_iv1.leftBound() : A_iv2.leftBound()),
+            (A_iv1.rightBound()>A_iv2.rightBound() ? A_iv1.rightBound() : A_iv2.rightBound())
+    );
+  }
+
+  ///minimum
+  static inline cxsc::Interval min (
+    const cxsc::Interval& A_iv1,
+    const cxsc::Interval& A_iv2)
+  {
+    return cxsc::Interval(
+        (A_iv1.leftBound()<A_iv2.leftBound() ? A_iv1.leftBound() : A_iv2.leftBound()),
+        (A_iv1.rightBound()<A_iv2.rightBound() ? A_iv1.rightBound() : A_iv2.rightBound())
+    );
+  }
+
+  static inline bool isSingular(const IntervalType& x) {
+    return ( x.leftBound() <= 0.0 && x.rightBound()>=0.0);
+  }
+
+  static inline int _int(const IntervalType& z) noexcept { return TypeTraits<T>::_int(z.leftBound()); } 
+  static inline double _double(const IntervalType& z) noexcept { return TypeTraits<T>::_double(z.leftBound()); } 
 };
 
-//const ::capd::cxsc::Interval TypeTraits< ::capd::cxsc::Interval >::S_zero = ::capd::cxsc::Interval(0.0);
-//const ::capd::cxsc::Interval TypeTraits< ::capd::cxsc::Interval >::S_one = ::capd::cxsc::Interval(1.0);
 
-
-/// an absolute value
 template<>
-inline cxsc::Interval abs (const cxsc::Interval & A_inter){
-   return cxsc::Interval(A_inter.abs());
-} // abs
-
-
-///maximum
-template<>
-inline cxsc::Interval max (      
-  const cxsc::Interval & A_iv1,
-  const cxsc::Interval & A_iv2
-){
-   return cxsc::Interval(
-                  (A_iv1.leftBound()>A_iv2.leftBound() ? A_iv1.leftBound() : A_iv2.leftBound()),
-                  (A_iv1.rightBound()>A_iv2.rightBound() ? A_iv1.rightBound() : A_iv2.rightBound())
-          );
-}
-
-///minimum
-template<>
-inline cxsc::Interval min (
-  const cxsc::Interval& A_iv1,
-  const cxsc::Interval& A_iv2)
-{
-   return cxsc::Interval(
-                  min(A_iv1.inf(),A_iv2.inf()),
-                  min(A_iv1.inf(),A_iv2.inf())
-          );
-}
-
-
-
-
+class Math < capd::cxsc::Interval > {
+public:
+  typedef capd::cxsc::Interval Interval;
+  static inline Interval _sqr(const Interval& z) { return sqr(z);  }
+  static inline Interval _log(const Interval& x) {	return log(x);  }
+  static inline Interval _pow(const Interval& x, int c) {	return power(x,c);  }
+  static inline Interval _sqrt(const Interval& z) { return sqrt(z);  }
+  static inline Interval _exp(const Interval& x) {	return exp(x);  }
+  static inline Interval _sin(const Interval& x) {	return sin(x);  }
+  static inline Interval _cos(const Interval& x) {	return cos(x);  }
+  static inline Interval _atan(const Interval& x) {	return atan(x);  }
+  static inline Interval _asin(const Interval& x) {	return asin(x);  }
+  static inline Interval _acos(const Interval& x) {	return acos(x);  }
+};
 
 
 //////////////////////////////////////////////////////////////////////////

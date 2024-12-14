@@ -1,0 +1,18 @@
+Enter the degree of the polynomial (>=0): 
+Enter the coefficients of p in increasing order:
+  x^0 * + x^1 * + x^2 * + x^3 * 
+Enter the argument t for evaluation:
+
+Polynomial:
+   1.000000000000000E+000 * x^0
++ -3.000000000000000E+000 * x^1
++  3.000000000000000E+000 * x^2
++ -1.000000000000000E+000 * x^3
+
+Floating-point evaluation of p(t) using Horner's scheme:
+  1.110223024625157E-016
+
+Verified inclusion of p(t):
+[-1.250000000024568E-016,-1.250000000024566E-016]
+
+Number of iterations needed: 2

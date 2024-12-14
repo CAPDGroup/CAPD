@@ -24,6 +24,13 @@ elseif(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
     target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
     target_link_libraries(${PROJECT_NAME} PUBLIC filib)
 
+
+elseif(${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
+
+    add_dependencies(${PROJECT_NAME} cxsc)
+    target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_CXSC__)
+    target_link_libraries(${PROJECT_NAME} PUBLIC cxsc)
+
 else()
 
     message(FATAL_ERROR "Unsupported CAPD_INTERVAL_TYPE")
@@ -92,6 +99,21 @@ elseif(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
         FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
     )
 
+elseif (${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
+
+    install(TARGETS
+            ${PROJECT_NAME} cxsc
+        EXPORT capd-config
+        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
+    )
+
+    export(TARGETS
+            ${PROJECT_NAME} cxsc
+        NAMESPACE capd::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
+    )
+
 else()
 
     message(FATAL_ERROR "Unsupported CAPD_INTERVAL_TYPE")
@@ -100,6 +122,6 @@ endif()
 
 install(EXPORT
         capd-config
-    DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
-    NAMESPACE capd::
-)
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
+        NAMESPACE capd::
+    )

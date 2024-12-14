@@ -1,0 +1,14 @@
+Program: xev_ex1
+Purpose: Sample program for the use of module expreval for the evaluation of
+         an arithmetic expression
+
+File list:
+   xev_ex1.txt   -  This file
+   xev_ex1.cpp   -  Program source
+   xev_ex1.in    -  Sample input file
+   toolbox.a     -  Toolbox library
+   real_ari.a    -  C-XSC real library
+
+Related object files:
+   i_util.o  
+   expreval.o  

@@ -1,0 +1,38 @@
+#======== modify the following values ==================
+PROGRAM=inewton#                program name
+
+#========= the following commands should work on most Unix systems ========
+
+# (un-)installation prefix
+# e.g. /usr/local/cxsc or local home directory
+PREFIX=/home/user/cxsc
+
+CXX=g++#                        name of the C++ compiler
+CXXOPTS=-Wall -Winline#         optional flags to give to the C++ compiler
+CXXINC=-I$(PREFIX)/include -L$(PREFIX)/lib#
+                                # additional include path
+CXXFLAGS=$(CXXINC) $(CXXOPTS)#  extra flags to give to the C++ compiler
+LIBRARIES=-lcxsc -lm#           names of libraries
+RPATH=-Wl,-R($PREFIX)/lib
+
+#========== you shouldn't modify anything below ===========================
+
+.SUFFIXES:
+.SUFFIXES: .cpp .hpp .o
+
+default:
+	@echo
+	@echo "C-XSC - C++ library for eXtended Scientific Computation"
+	@echo "Example: $(PROGRAM).cpp with Makefile"
+	@echo "Usage: make all | $(PROGRAM)   (use 'gmake' on SUN)"  
+	@echo
+
+all: $(PROGRAM)
+
+$(PROGRAM): $(PROGRAM).cpp
+	$(CXX) -o $(PROGRAM) $(CXXFLAGS) $(CXXINC) $(RPATH) $(PROGRAM).cpp $(LIBRARIES)
+
+	
+.PHONY: default all
+
+

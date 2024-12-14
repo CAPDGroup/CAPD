@@ -1,0 +1,17 @@
+Program: rpe_ex
+Purpose: Sample program for the use of module rpeval for evaluating a real
+         polynomial
+
+File list:
+   rpe_ex.txt    -  This file
+   rpe_ex.cpp    -  Program source
+   rpe_ex.in1    -  Sample input file
+   rpe_ex.in2    -  Sample input file
+   toolbox.a     -  Toolbox library
+   real_ari.a    -  C-XSC real library
+
+Related object files:
+   i_util.o  
+   mvi_util.o  
+   rpoly.o  
+   rpeval.o  

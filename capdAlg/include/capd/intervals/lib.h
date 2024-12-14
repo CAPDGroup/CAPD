@@ -23,14 +23,14 @@
 #include <cmath>
 #include "capd/basicalg/doubleFun.h"
 
-//#define __USE_CXSC__
-
 #if defined(__USE_CXSC__)
 
 #include "capd/cxsc/Interval.h"
-namespace capd{
+namespace capd
+{
+
 typedef ::capd::cxsc::Interval  DInterval;
-//typedef DInterval Interval;
+
 }
 
 #elif defined(__USE_NATIVE__)
@@ -39,18 +39,22 @@ using std::log;
 #include "capd/intervals/Interval.h"
 #include "capd/rounding/DoubleRounding.h"
 
-namespace capd{
-//typedef capd::intervals::DoubleInterval Interval;
+namespace capd
+{
+
 typedef intervals::Interval<double, capd::rounding::DoubleRounding> DInterval;
-} // end of namespace capd
+
+}
 
 #elif defined(__USE_FILIB__)
 
 #include "capd/filib/Interval.h"
-namespace capd{
+namespace capd
+{
+
 typedef ::capd::filib::Interval<double, ::filib::native_directed, ::filib::i_mode_normal >  DInterval;
-//typedef DInterval Interval;
-} // end of namespace capd
+
+}
 
 #else
 
@@ -67,7 +71,5 @@ namespace capd{
 }
 
 #endif //__CAPD_DEFINE_INTERVAL__
-
-
 
 #endif // CAPD_INTERVAL_LIB_H

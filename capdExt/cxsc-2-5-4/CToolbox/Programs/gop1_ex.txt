@@ -1,0 +1,17 @@
+Program: gop1_ex
+Purpose: Sample program for the use of module gop1 for one-dimensional
+         global optimization problems
+
+File list:
+   gop1_ex.txt   -  This file
+   gop1_ex.cpp   -  Program source
+   gop1_ex.in    -  Sample input file
+   toolbox.a     -  Toolbox library
+   real_ari.a    -  C-XSC real library
+
+Related object files:
+   i_util.o  
+   ddf_ari.o  
+   xi_ari.o  
+   lst1_ari.o  
+   gop1.o  

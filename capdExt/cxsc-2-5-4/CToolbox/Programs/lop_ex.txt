@@ -1,0 +1,22 @@
+Program: lop_ex
+Purpose: Sample program for the use of module lop for linear optimization
+         problems
+
+File list:
+   lop_ex.txt    -  This file
+   lop_ex.cpp    -  Program source
+   lop_ex.in1    -  Sample input file
+   lop_ex.in2    -  Sample input file
+   toolbox.a     -  Toolbox library
+   real_ari.a    -  C-XSC real library
+
+Related object files:
+   i_util.o  
+   mv_util.o  
+   mvi_util.o  
+   set_ari.o  
+   lop_ari.o  
+   matinv.o  
+   linsys.o  
+   rev_simp.o  
+   lop.o  

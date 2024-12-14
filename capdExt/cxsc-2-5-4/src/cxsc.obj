@@ -1,0 +1,90 @@
+VSRCS = rvector.cpp cvector.cpp ivector.cpp civector.cpp rmatrix.cpp \
+        cmatrix.cpp imatrix.cpp cimatrix.cpp srvector.cpp sivector.cpp \
+	scvector.cpp scivector.cpp srmatrix.cpp simatrix.cpp scmatrix.cpp \
+	scimatrix.cpp l_rvector.cpp l_ivector.cpp l_rmatrix.cpp l_imatrix.cpp \
+	intmatrix.cpp intvector.cpp lx_ivector.cpp lx_civector.cpp
+
+SRCS  = except.cpp test.cpp real.cpp rmath.cpp l_real.cpp l_rmath.cpp l_complex.cpp \
+        dot.cpp idot.cpp cdot.cpp cidot.cpp interval.cpp imath.cpp \
+	ioflags.cpp dotio.cpp realio.cpp l_interval.cpp l_imath.cpp \
+	l_cinterval.cpp l_cimath.cpp l_cmath.cpp\
+	complex.cpp cinterval.cpp cimath.cpp\
+	lx_real.cpp lx_interval.cpp lx_complex.cpp lx_cinterval.cpp lx_ivector.cpp lx_civector.cpp
+
+ifeq ($(COMPILER),sun_forte)
+OBJ   = dot.o idot.o cdot.o cidot.o real.o rmath.o interval.o imath.o \
+        l_real.o l_rmath.o l_complex.o ioflags.o dotio.o realio.o l_interval.o \
+	l_imath.o l_cinterval.o l_cimath.o l_cmath.o complex.o cinterval.o \
+	rvector.o cvector.o ivector.o civector.o rmatrix.o cmatrix.o imatrix.o cimatrix.o \
+	srvector.o scvector.o sivector.o scivector.o srmatrix.o scmatrix.o simatrix.o scimatrix.o \
+	l_rvector.o l_ivector.o l_rmatrix.o l_imatrix.o intvector.o intmatrix.o cimath.o except.o \
+	lx_real.o lx_interval.ol lx_complex.o lx_cinterval.o lx_ivector.o lx_civector.o
+OBJ_INL=dot.o idot.o cdot.o cidot.o real.o rmath.o interval.o imath.o \
+        l_real.o l_rmath.o l_complex.o ioflags.o dotio.o realio.o l_interval.o \
+	l_imath.o l_cinterval.o l_cimath.o l_cmath.o complex.o cinterval.o cimath.o \
+	except.o lx_real.o lx_interval.o lx_complex.o lx_cinterval.o lx_ivector.o lx_civector.o
+else
+OBJ   = dot.o idot.o cdot.o cidot.o \
+        real.o rmath.o interval.o \
+	imath.o l_real.o l_rmath.o \
+	l_complex.o l_cinterval.o l_cimath.o l_cmath.o ioflags.o dotio.o \
+	realio.o l_interval.o l_imath.o \
+	complex.o cinterval.o rvector.o \
+	cvector.o ivector.o civector.o \
+	srvector.o sivector.o scvector.o scivector.o \
+	rmatrix.o cmatrix.o imatrix.o \
+	cimatrix.o srmatrix.o simatrix.o scmatrix.o \
+	scimatrix.o l_rvector.o l_ivector.o \
+	l_rmatrix.o l_imatrix.o intvector.o \
+	intmatrix.o cimath.o except.o \
+	lx_real.o lx_interval.o lx_complex.o lx_cinterval.o lx_ivector.o lx_civector.o
+OBJ_INL=dot.o idot.o cdot.o \
+        cidot.o real.o rmath.o \
+	interval.o imath.o \
+	l_real.o l_rmath.o \
+	l_complex.o l_cinterval.o l_cimath.o l_cmath.o ioflags.o \
+	dotio.o realio.o l_interval.o \
+	l_imath.o complex.o \
+	cinterval.o cimath.o except.o \
+	lx_real.o lx_interval.o lx_complex.o lx_cinterval.o lx_ivector.o lx_civector.o
+endif
+
+UNINSTALL_OBJ=cxscconf.h cinterval.hpp intmatrixx.hpp intvectorr.hpp l_imatrix.hpp \
+	l_interval.hpp l_ivector.hpp l_rmatrix.hpp l_rvector.hpp xscclass.hpp \
+	RtsFunc.h RtsTyp.h cdot.hpp cdot.inl cidot.hpp cidot.inl cimatrix.hpp \
+	cimath.hpp cimatrix.inl cinterval.hpp cinterval.inl civeccmat.hpp civeccmat.inl \
+	civecimat.hpp civecimat.inl civecrmat.hpp civecrmat.inl civector.hpp \
+	civector.inl cmatimat.hpp cmatimat.inl cmatrix.hpp cmatrix.inl compiler.h \
+	complex.hpp complex.inl cvecimat.hpp cvecimat.inl cvecrmat.hpp \
+	cvecrmat.inl cvector.hpp cvector.inl cxscmatr.hpp cxscvect.hpp dot.hpp \
+	dot_defs.hpp except.hpp fi_lib.h idot.hpp idot.inl imath.hpp imatrix.hpp \
+	imatrix.inl interval.hpp interval.inl intmatrix.hpp intmatrix.inl \
+	intvector.hpp intvector.inl ioflags.hpp iveccmat.hpp iveccmat.inl \
+	iveccvec.hpp iveccvec.inl iveclrmat.hpp iveclrmat.inl ivecrmat.hpp \
+	ivecrmat.inl ivector.hpp ivector.inl l_imath.hpp l_interval.hpp l_interval.inl \
+	l_real.hpp l_rmath.hpp l_rmath.inl l_imatrix.hpp l_imatrix.inl \
+	livecimat.hpp livecimat.inl liveclrmat.hpp liveclrmat.inl livecrmat.hpp \
+	livecrmat.inl l_ivector.hpp l_ivector.inl lrmatimat.hpp lrmatimat.inl \
+	l_rmatrix.hpp l_rmatrix.inl lrvecimat.hpp lrvecimat.inl lrvecivec.hpp \
+	lrvecivec.inl lrvecrmat.hpp lrvecrmat.inl l_rvector.hpp l_rvector.inl \
+	matrix.hpp matrix.inl real.hpp real.inl rmath.hpp rmath.inl rmatrix.hpp \
+	rmatrix.inl a_defs.h a_fcth.h addbody.h b_64bt.h b_defs.h b_fcth.h \
+	b_lari.h b_lpi_.h body.h d_defs.h d_fcth.h divbody.h divtrap.h e_defs.h \
+	e_fcth.h f_fcth.h l_defs.h l_fcth.h mulbody.h o_defs.h o_fcth.h \
+	o_msg1.h o_name.h o_revs.h o_slct.h o_spec.h o_syst.h o_type.h p88rts.h \
+	r_defs.h r_fcth.h s_fcth.h subbody.h t_cnst.h t_cond.h t_ddev.h \
+	t_defs.h t_drea.h t_exc_.h t_fcth.h t_ieee.h t_mach.h t_name.h y_fcth.h \
+	rts_real.hpp rtsrmath.h rvector.hpp rvector.inl test.hpp testclss.hpp \
+	testcomp.hpp testdot.hpp testintv.hpp testmatr.hpp testsklr.hpp \
+	testvect.hpp vector.hpp vector.inl scclass.hpp l_complex.hpp l_complex.inl \
+	l_complex.hpp l_cinterval.hpp l_cinterval.inl l_cimath.hpp l_cmath.hpp l_cmath.inl \
+	srvector.inl srvector.hpp sivector.inl sivector.hpp scvector.inl scvector.hpp \
+	dotk.inl idotk.inl cdotk.inl cidotk.inl sparsedot.hpp sparseidot.hpp sparsecdot.hpp \
+	sparsecidot.hpp sparsedot.inl sparseidot.inl sparsecdot.inl sparsecidot.inl \
+	vector_friend_declarations.inl matrix_friend_declarations.inl sparsevector.inl sparsematrix.inl \
+	scivector.inl scivector.hpp srmatrix.inl srmatrix.hpp simatrix.inl simatrix.hpp \
+	scmatrix.inl scmatrix.hpp scimatrix.inl scimatrix.hpp \
+	lx_real.hpp lx_real.inl lx_interval.hpp lx_interval.inl \
+	lx_complex.hpp lx_complex.inl lx_cinterval.hpp lx_cinterval.inl \
+	lx_ivector.hpp lx_ivector.inl lx_civector.hpp lx_civector.inl
+	
