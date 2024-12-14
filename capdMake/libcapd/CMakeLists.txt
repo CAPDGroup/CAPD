@@ -29,8 +29,6 @@ elseif(${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
 
 endif()
 
-
-
 ###############################################################################################################################
 # Process libs
 ###############################################################################################################################
@@ -40,12 +38,14 @@ if(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
     get_target_property(CAPD_LIBS ${PROJECT_NAME} INTERFACE_LINK_LIBRARIES)
     string(REPLACE "filib" "-lfilib" CAPD_LIBS "${CAPD_LIBS}")
     string(REPLACE ";" " " CAPD_LIBS "${CAPD_LIBS}")
+    set(CAPD_EXT_LIB_DIR "-L${CMAKE_BINARY_DIR}/capdExt/filibsrc")
 
 elseif(${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
 
     get_target_property(CAPD_LIBS ${PROJECT_NAME} INTERFACE_LINK_LIBRARIES)
     string(REPLACE "cxsc" "-lcxsc" CAPD_LIBS "${CAPD_LIBS}")
     string(REPLACE ";" " " CAPD_LIBS "${CAPD_LIBS}")
+    set(CAPD_EXT_LIB_DIR "-L${CMAKE_BINARY_DIR}/capdExt/cxsc-2-5-4")
 
 endif()
 

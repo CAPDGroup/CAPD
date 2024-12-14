@@ -2,5 +2,5 @@ Name: capd
 Description: capd library.
 Requires:
 Version: @CAPD_VERSION@
-Libs: -L@CMAKE_BINARY_DIR@ -L@CMAKE_BINARY_DIR@/capdExt/filibsrc -lcapd @CAPD_LIBS@
+Libs: -L@CMAKE_BINARY_DIR@ @CAPD_EXT_LIB_DIR@ -lcapd @CAPD_LIBS@
 Cflags: -I@PROJECT_SOURCE_DIR@/capdDynSys/include -I@PROJECT_SOURCE_DIR@/capdAlg/include -I@PROJECT_SOURCE_DIR@/capdAux/include -I@PROJECT_SOURCE_DIR@/capdExt/include @CAPD_EXT_INCLUDES@ @CAPD_CFLAGS@
