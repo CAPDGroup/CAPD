@@ -11,6 +11,7 @@ if (${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
 
 elseif(${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
 
+    set(BUILD_SHARED OFF CACHE BOOL "Build the shared version of the library" FORCE)
     add_subdirectory(cxsc-2-5-4)
 
 endif()

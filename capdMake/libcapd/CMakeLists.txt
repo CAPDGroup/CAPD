@@ -13,7 +13,23 @@ if(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
     string(REPLACE ";" " " FILIB_CFLAGS "${FILIB_CFLAGS}")
     string(JOIN " " CAPD_CFLAGS "${CAPD_CFLAGS} ${FILIB_CFLAGS}")
 
+    set(CAPD_EXT_INCLUDES "-I${PROJECT_SOURCE_DIR}/capdExt/filibsrc")
+
+elseif(${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
+
+    set(CAPD_EXT_INCLUDES_LIST
+        "-I${PROJECT_SOURCE_DIR}/capdExt/cxsc-2-5-4/src"
+        "-I${PROJECT_SOURCE_DIR}/capdExt/cxsc-2-5-4/src/fi_lib"
+        "-I${PROJECT_SOURCE_DIR}/capdExt/cxsc-2-5-4/src/rts"
+        "-I${PROJECT_SOURCE_DIR}/capdExt/cxsc-2-5-4/src/asm"
+        "-I${CMAKE_BINARY_DIR}/capdExt/cxsc-2-5-4"
+    )    
+
+    string(REPLACE ";" " " CAPD_EXT_INCLUDES "${CAPD_EXT_INCLUDES_LIST}")
+
 endif()
+
+
 
 ###############################################################################################################################
 # Process libs
@@ -23,6 +39,12 @@ if(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
 
     get_target_property(CAPD_LIBS ${PROJECT_NAME} INTERFACE_LINK_LIBRARIES)
     string(REPLACE "filib" "-lfilib" CAPD_LIBS "${CAPD_LIBS}")
+    string(REPLACE ";" " " CAPD_LIBS "${CAPD_LIBS}")
+
+elseif(${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
+
+    get_target_property(CAPD_LIBS ${PROJECT_NAME} INTERFACE_LINK_LIBRARIES)
+    string(REPLACE "cxsc" "-lcxsc" CAPD_LIBS "${CAPD_LIBS}")
     string(REPLACE ";" " " CAPD_LIBS "${CAPD_LIBS}")
 
 endif()
