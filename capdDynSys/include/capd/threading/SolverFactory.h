@@ -36,6 +36,8 @@ template<class S, class VF>
 struct BaseTPMap{
   VF vectorField;
   S solver;
+  typedef typename VF::ScalarType ScalarType;
+
   BaseTPMap(const VF& vf, int order)
     : vectorField(vf),
       solver(vectorField,order)
@@ -50,11 +52,11 @@ struct BaseTPMap{
   void setRelativeTolerance(double tol){
     solver.setRelativeTolerance(tol);
   }
-  void setParameter(const char* param, typename VF::ScalarType value){
-    solver.setParameter(param,value);
+  void setParameter(const char* param, ScalarType value){
+    vectorField.setParameter(param,value);
   }
-  void setParameter(int n, typename VF::ScalarType value){
-    solver.setParameter(n,value);
+  void setParameter(int n, ScalarType value){
+    vectorField.setParameter(n,value);
   }
 };
 

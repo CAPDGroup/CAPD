@@ -40,10 +40,10 @@ struct SolverPool{
     }
   }
 
-  void setParameter(const char* param, typename VF::ScalarType value){
+  void setParameter(const char* param, typename Solver::ScalarType value){
     for(Solver* s : _solver) s->setParameter(param,value);
   }
-  void setParameter(int n, typename VF::ScalarType value){
+  void setParameter(int n, typename Solver::ScalarType value){
     for(Solver* s : _solver) s->setParameter(n,value);
   }
 
