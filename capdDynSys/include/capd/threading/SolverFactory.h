@@ -50,6 +50,12 @@ struct BaseTPMap{
   void setRelativeTolerance(double tol){
     solver.setRelativeTolerance(tol);
   }
+  void setParameter(const char* param, typename VF::ScalarType value){
+    solver.setParameter(param,value);
+  }
+  void setParameter(int n, typename VF::ScalarType value){
+    solver.setParameter(n,value);
+  }
 };
 
 template<class TM, class VectorFieldType = typename TM::VectorFieldType>

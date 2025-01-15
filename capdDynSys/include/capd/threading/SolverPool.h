@@ -39,6 +39,14 @@ struct SolverPool{
       s->setRelativeTolerance(relTolerance);
     }
   }
+
+  void setParameter(const char* param, typename VF::ScalarType value){
+    for(Solver* s : _solver) s->setParameter(param,value);
+  }
+  void setParameter(int n, typename VF::ScalarType value){
+    for(Solver* s : _solver) s->setParameter(n,value);
+  }
+
   Solver& getSolver(int id) { return *_solver[id]; }
   std::vector<Solver*> _solver;
 };
