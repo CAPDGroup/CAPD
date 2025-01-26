@@ -12,7 +12,7 @@ add_library(${PROJECT_NAME})
 target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
 target_compile_options(${PROJECT_NAME} PRIVATE -DFILIB_EXTENDED)
 
-if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
+if("${CMAKE_HOST_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
     message(STATUS "Processor arch: 64-bit x86 (SSE)")
     target_compile_options(${PROJECT_NAME} PUBLIC -DFILIB_HAVE_SSE)
 else()
