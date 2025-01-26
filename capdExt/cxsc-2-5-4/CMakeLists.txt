@@ -40,7 +40,7 @@ endif ()
 
 # Rounding mode options
 if(NOT WIN32)
-  if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "ppc64")
+  if(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR ${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "x86" OR ${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "ppc64")
     option(ROUNDING_ASM "Use assembler routines for rounding" ON)
     if(NOT ROUNDING_ASM)
       option(ROUNDING_HARD "Use hardware support for IEEE 759 arithmetic" ON)
@@ -48,7 +48,7 @@ if(NOT WIN32)
         option(ROUNDING_QUICK "Use the fast but critical hardware IEEE arithmetic" OFF)
       endif(ROUNDING_HARD)
     endif(NOT ROUNDING_ASM)
-  endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "ppc64")
+  endif(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR ${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "x86" OR ${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "ppc64")
 else(NOT WIN32)
   option(ROUNDING_HARD "Use hardware support for IEEE 759 arithmetic" ON)
   if(ROUNDING_HARD)
@@ -90,34 +90,34 @@ endif(NOT WIN32)
 if(APPLE)
 
   # powerpc
-  if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "powerpc")
+  if(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "powerpc")
     set(SUN4_GNU_C 1)
   # Default (e.g. i386)
-  else(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "powerpc")
+  else(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "powerpc")
     set(IBM_LINUX_C 1)
     set(GNU_X86_64 1)   
     set(CXSC_x86_64 1)
-  endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "powerpc")
+  endif(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "powerpc")
 
 elseif(UNIX)
 
   # Linux systems
   if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     # alpha
-    if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "alpha")
+    if(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "alpha")
       set(DEC_ALPHA_C 1)
     # x86_64
-    elseif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
+    elseif(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "x86_64")
       set(IBM_LINUX_C 1)
       set(GNU_X86_64 1)
       set(CXSC_x86_64 1)
-    elseif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "ppc64")
+    elseif(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "ppc64")
       set(CXSC_PPC64 1)
       set(GNU_X86_64 1)
     # Default (e.g. i386, ia64)
-    else(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "alpha")
+    else(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "alpha")
       set(IBM_LINUX_C 1)
-    endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "alpha")
+    endif(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "alpha")
 
   # AIX
   elseif(${CMAKE_SYSTEM_NAME} STREQUAL "AIX")
@@ -183,7 +183,7 @@ file(GLOB ctoolbox_headers
 )
 
 #Set special options depending on compiler (optimization, error free transformations)
-if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" AND CMAKE_COMPILER_IS_GNUCXX)
+if(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "x86" AND CMAKE_COMPILER_IS_GNUCXX)
   #Compiler is GCC, System is 32 Bit x86
   if(ROUNDING_ASM)
     #Full optimizations, FP computations using SSE
@@ -209,7 +209,7 @@ elseif(USING_INTEL_COMPILER)
   #Intel Compiler: Full optimizations, reduced FP optimzations for correct rounding and error free transformations
   set(CMAKE_CXX_FLAGS "-O3 -fp-model source")
   set(CMAKE_CC_FLAGS "-O3 -fp-model source")
-else(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" AND CMAKE_COMPILER_IS_GNUCXX)
+else(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "x86" AND CMAKE_COMPILER_IS_GNUCXX)
   #Default compiler options
   if(ROUNDING_ASM)
     #With assembler rounding: Full optimizations
@@ -220,7 +220,7 @@ else(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" AND CMAKE_COMPILER_IS_GNUCXX)
     set(CMAKE_CXX_FLAGS "-O1")
     set(CMAKE_CC_FLAGS "-O1")
   endif(ROUNDING_ASM)
-endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" AND CMAKE_COMPILER_IS_GNUCXX)
+endif(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "x86" AND CMAKE_COMPILER_IS_GNUCXX)
 
 
 #Add static or shared library to build
