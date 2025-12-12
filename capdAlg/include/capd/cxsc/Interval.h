@@ -62,13 +62,13 @@ public:
 protected:
   typedef ::cxsc::real Real;
   BaseInterval m_interval;
-  Interval(const Real & A_scalar) : m_interval(A_scalar){
+  Interval(const Real & A_scalar) : m_interval(A_scalar, A_scalar){
   }
   Interval(const Real & left, const Real & right) : m_interval(left, right){
   }
 public:
 
-  inline Interval(){}
+  inline Interval() : m_interval(0.0, 0.0){}
 
   /// copying constructor
   inline Interval( const Interval & A_iv ) : m_interval(A_iv.m_interval){
