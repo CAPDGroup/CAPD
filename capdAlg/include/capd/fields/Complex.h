@@ -156,7 +156,7 @@ public:
 //            }
 //            out << z.im << "i";
 //        }
-       out <<"(" << z.re <<", " << z.im << ")";
+       out <<"(" << z.re <<"," << z.im << ")";
         return out;
     }
 
