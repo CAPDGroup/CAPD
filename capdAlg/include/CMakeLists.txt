@@ -16,6 +16,7 @@ install_headers(
     capd/cxsc/Interval.h
     capd/fields/Complex.h
     capd/fields/rationalNumber.h
+    capd/fields/lib.h
     capd/filib/Interval.h
     capd/intervals/DoubleInterval.h
     capd/intervals/IComplex.h
