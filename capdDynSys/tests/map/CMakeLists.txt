@@ -6,6 +6,7 @@ build_boost_test_executable(mapTest
     cosTest.cpp
     expTest.cpp
     logTest.cpp
+    mittagLeffler12Test.cpp
     sinTest.cpp
     sqrTest.cpp
     cubeTest.cpp

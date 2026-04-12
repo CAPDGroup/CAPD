@@ -381,6 +381,9 @@ public:
   static inline Real _atan(const Real& x) noexcept{	return atan(x);  }
   static inline Real _asin(const Real& x) noexcept{	return asin(x);  }
   static inline Real _acos(const Real& x) noexcept{	return acos(x);  }
+  static inline Real _mittagLeffler12(const Real& x) noexcept{
+    return (x == Real(0)) ? Real(1) : (exp(x) - Real(1)) / x;
+  }
 };
 
 }
