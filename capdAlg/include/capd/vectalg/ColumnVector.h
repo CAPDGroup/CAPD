@@ -83,6 +83,11 @@ public:
     return m_Pointer!=second.m_Pointer;
   }
 
+  inline bool operator==(const ColumnIterator& second)
+  {
+    return m_Pointer==second.m_Pointer;
+  }
+
   inline ScalarType& operator*()
   {
     return *m_Pointer;
