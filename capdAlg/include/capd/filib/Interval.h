@@ -790,8 +790,8 @@ friend Interval solveAffineInclusion(const Interval & a,
 
   } else {
 
-    typename Interval::BoundType t1 = ((c.right() - a.right()) / p.right()).left();
-    typename Interval::BoundType t2 = ((c.left() - a.left()) / p.left()).left();
+    typename Interval::BoundType t1 = ((c.right() - a.right()) / p.right()).leftBound();
+    typename Interval::BoundType t2 = ((c.left() - a.left()) / p.left()).leftBound();
     if( t1 < t2 ){
       dir=1;
       t=Interval(t1);
