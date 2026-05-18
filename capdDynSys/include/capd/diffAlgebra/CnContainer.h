@@ -17,6 +17,7 @@
 #define CAPD_DIFFALGEBRA_CNCONTAINER_H
 
 #include <stdexcept>
+#include <algorithm>
 #include "capd/basicalg/factrial.h"
 #include "capd/vectalg/Multiindex.h"
 #include "capd/vectalg/Container.h"
@@ -504,15 +505,16 @@ inline typename CnContainer<Object,M,N,D>::const_iterator CnContainer<Object,M,N
 /// checks if two CnContainers are exactly the same.
 template<typename Object, __size_type M, __size_type N, __size_type D>
 bool operator == (const CnContainer<Object,M,N,D> & c1, const CnContainer<Object,M,N,D> & c2 ){
-  if((c1.degree()()!=c2.degree()()) || (c1.dimension()!=c2.dimension()))
+  if((c1.degree()!=c2.degree()) || (c1.dimension()!=c2.dimension()))
     return false;
-  typename CnContainer<Object,M,N,D>::const_iterator it_c1 = c1.begin(), it_c2 = c2.begin(), end_c1 = c1.end();
-  while(it_c1!=end_c1){
-    if(*it_c1 != *it_c2)
-       return false;
-    it_c1++; it_c2++;
-  }
-  return true;
+  std::equal(c1.begin(),c1.end(),c2.begin(),[](Object it1, Object it2){return *it1==*it2;});
+  // typename CnContainer<Object,M,N,D>::const_iterator it_c1 = c1.begin(), it_c2 = c2.begin(), end_c1 = c1.end();
+  // while(it_c1!=end_c1){
+  //   if(*it_c1 != *it_c2)
+  //      return false;
+  //   it_c1++; it_c2++;
+  // }
+  // return true;
 }
 
 }} //namespace capd::diffAlgebra
