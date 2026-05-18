@@ -107,7 +107,8 @@ public:
       @param[out] afterSection - on output it contains a point just after first intersection with Poincare section that might be used for further integration.
       @returns P(v) - first intersection of the trajectory of v with Poincare section.
   */
-  VectorType operator()(const VectorType& v, VectorType& afterSection);
+ ///  TODO: REMOVE THIS FUNCTION. IT HAS NO IMPLEMENTATION
+ // VectorType operator()(const VectorType& v, VectorType& afterSection);
 
   /** Computes value of Poincare Map.
       @param[in] v - argument of Poincare map
