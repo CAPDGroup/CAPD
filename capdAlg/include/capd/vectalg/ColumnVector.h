@@ -157,7 +157,7 @@ public:
   {
     return m_Pointer!=second.m_Pointer;
   }
-  inline bool operator==(const ColumnIterator& second)
+  inline bool operator==(const const_ColumnIterator& second)
   {
     return m_Pointer==second.m_Pointer;
   }
