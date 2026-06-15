@@ -3,6 +3,10 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#define BOOST_TEST_MODULE IntervalTest
+#define BOOST_TEST_DYN_LINK
+
+#include <boost/test/unit_test.hpp>
 
 #include "capd/rounding/DoubleRounding.h"
 #include "capd/intervals/DoubleInterval.h"
@@ -10,12 +14,9 @@
 
 using namespace std;
 
+using interval = capd::interval;
 
-namespace capd{
-namespace test{
-
-
-void basicsTest()
+BOOST_AUTO_TEST_CASE(basicsTest)
 {
    interval a,
             b(1.0),
@@ -59,7 +60,7 @@ void basicsTest()
 
 }
  
-void operatorsTest()
+BOOST_AUTO_TEST_CASE(operatorsTest)
 {
   interval a,
             b(1.0), 
@@ -84,7 +85,7 @@ void operatorsTest()
    cout << endl;
 }
 
-void functionsTest()
+BOOST_AUTO_TEST_CASE(functionsTest)
 {
   interval a,
             b(1.0),
@@ -126,7 +127,7 @@ void functionsTest()
    cout << endl;
 }
 
-bool multiplicationTest()
+BOOST_AUTO_TEST_CASE(multiplicationTest)
 {
   interval a(1.0, 2.0);
   
@@ -146,11 +147,9 @@ bool multiplicationTest()
   cout << "\n ?+ a * [1,2] = "  << a * interval(1., 2.);
   cout << "\n ?- a * [-2,-1] = " << a * interval(-2., -1.);
   cout << "\n ?? a * [-3,2] " << a * interval(-3., 2.);
-  
-  return true;
 }
 
-bool multiplicationTest2()
+BOOST_AUTO_TEST_CASE(multiplicationTest2)
 {
   interval a(1.0, 2.0);
   
@@ -177,11 +176,9 @@ bool multiplicationTest2()
   cout << "\n ?- a *= [-2,-1] = " << (a *= interval(-2., -1.));
   a = interval(-1.0, 3.);
   cout << "\n ?? a *= [-3,2] " << (a *= interval(-3., 2.));
-  
-  return true;
 }
 
-bool scalarTest()
+BOOST_AUTO_TEST_CASE(scalarTest)
 {
   interval a(1.0, 2.0);
   
@@ -201,12 +198,9 @@ bool scalarTest()
   cout << "\n  a - 2 = "  << (a - 2.);
   cout << "\n  a - 2 = "  << (a - 2);
   cout << "\n  2 - a = "  << (2. - a);
-
-
-  return true;
 }
 
-bool divisionTest()
+BOOST_AUTO_TEST_CASE(divisionTest)
 {
   interval a(1.0, 2.0);
   
@@ -224,10 +218,9 @@ bool divisionTest()
   cout << "\n ?+ a / [1,2] = "  << a / interval(1., 2.);
   cout << "\n ?- a / [-2,-1] = " << a / interval(-2., -1.);
   cout <<"\n";
-  return true;
 }
 
-bool divisionTest2()
+BOOST_AUTO_TEST_CASE(divisionTest2)
 {
   interval a(1.0, 2.0);
   
@@ -248,9 +241,9 @@ bool divisionTest2()
   a = interval(-1.0, 3.);
   cout << "\n ?- a /= [-2,-1] = " << (a /= interval(-2., -1.));
   cout <<"\n";
-  return true;
 }
 
+/*
 
 
 int main()
@@ -286,3 +279,4 @@ int main()
 {
    return capd::test::main();
 }
+*/
