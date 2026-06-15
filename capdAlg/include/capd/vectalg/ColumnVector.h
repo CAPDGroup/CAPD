@@ -153,12 +153,14 @@ public:
     m_Pointer -= jump*m_pointerStride;
     return *this;
   }
-
   inline bool operator!=(const const_ColumnIterator& second)
   {
     return m_Pointer!=second.m_Pointer;
   }
-
+  inline bool operator==(const ColumnIterator& second)
+  {
+    return m_Pointer==second.m_Pointer;
+  }
   inline const ScalarType& operator*()
   {
     return *m_Pointer;
