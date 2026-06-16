@@ -16,267 +16,332 @@ using namespace std;
 
 using interval = capd::interval;
 
-BOOST_AUTO_TEST_CASE(basicsTest)
+BOOST_AUTO_TEST_CASE(basics)
 {
-   interval a,
-            b(1.0),
-            c(2.0, 3.0),
-            d(c),
-            e(2.5, 3.0);
-            
-   cout <<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Base functions: constructors, acces to interval bounds, inclusions, relations";
-   cout << " a() = " << a << "\n b(1.0) = " << b << " c(2.0,3.0) = " << c 
-        << " d(c) = " << d << " e(2.5,3) = " << e 
-        << "\n\n c.leftBound() = "  << c.leftBound() 
-        << "   c.left() = "   << c.left()
-        << "   left(c) = "  << left(c)
-         << "\n c.rightBound() = "  << c.rightBound()       
-        << "   c.right = "   << c.right()
-        << "   right = "  << right(c)
-        << "\n\n b==c : " << (b==c)  << "  b!=c : " << (b!=c) 
-        << "  b>c : " << (b>c)    << "  b>=c : " << (b>=c) 
-        << "  b<c : " << (b<c)    << "  b<=c : " << (b<=c) 
-        << "\n\n b==1.0 : " << (b==1.0)  << "  b!=1.0 : " << (b!=1.0) 
-        << "  b>1.0 : " << (b>1.0)    << "  b>=1.0 : " << (b>=1.0) 
-        << "  b<1.0 : " << (b<1.0)    << "  b<=1.0 : " << (b<=1.0)
-        << "\n\n " <<  c <<" contains " << e <<" :  " << c.contains(e)
-        << "     "<<c <<" containsInInterior " << e << " : " << c.containsInInterior(e)
-        << "\n "<<c << " contains 2.5 : " << c.contains(2.5)
-        << "\n "<<d << " subset " << c << " : " << d.subset(c)
-        << "   " << d << " subsetInterior " << c << " : " << d.subsetInterior(c)
-         ;
-   std::istringstream myStr("[3.21312312, 4.324324324]");
-   myStr >> a;
-   cout << "\n\n interval read from string \"[3.21312312, 4.324324324]\" = " << a;
+    interval a {};
+    BOOST_CHECK_EQUAL(a, interval(0.0, 0.0));
+    BOOST_CHECK_EQUAL(a.leftBound(), 0.0);
+    BOOST_CHECK_EQUAL(a.rightBound(), 0.0);
+    BOOST_CHECK_EQUAL(a.left(), interval(0.0, 0.0));
+    BOOST_CHECK_EQUAL(a.right(), interval(0.0, 0.0));
+
+    interval b(1.0);
+    BOOST_CHECK_EQUAL(b, interval(1.0, 1.0));
+    BOOST_CHECK_EQUAL(b.leftBound(), 1.0);
+    BOOST_CHECK_EQUAL(b.rightBound(), 1.0);
+    BOOST_CHECK_EQUAL(b.left(), interval(1.0, 1.0));
+    BOOST_CHECK_EQUAL(b.right(), interval(1.0, 1.0));
+
+    interval c(2.0, 3.0);
+    BOOST_CHECK_EQUAL(c, interval(2.0, 3.0));
+    BOOST_CHECK_EQUAL(c.leftBound(), 2.0);
+    BOOST_CHECK_EQUAL(c.rightBound(), 3.0);
+    BOOST_CHECK_EQUAL(c.left(), interval(2.0, 2.0));
+    BOOST_CHECK_EQUAL(c.right(), interval(3.0, 3.0));
+
+    interval d(c);
+    BOOST_CHECK_EQUAL(d, interval(2.0, 3.0));
+    BOOST_CHECK_EQUAL(d.leftBound(), 2.0);
+    BOOST_CHECK_EQUAL(d.rightBound(), 3.0);
+    BOOST_CHECK_EQUAL(d.left(), interval(2.0, 2.0));
+    BOOST_CHECK_EQUAL(d.right(), interval(3.0, 3.0));
+
+    interval e(2.5, 3.0);
+    BOOST_CHECK_EQUAL(e, interval(2.5, 3.0));
+    BOOST_CHECK_EQUAL(e.leftBound(), 2.5);
+    BOOST_CHECK_EQUAL(e.rightBound(), 3.0);
+    BOOST_CHECK_EQUAL(e.left(), interval(2.5, 2.5));
+    BOOST_CHECK_EQUAL(e.right(), interval(3.0, 3.0));
+
+    BOOST_CHECK_EQUAL(left(c), 2.0);
+    BOOST_CHECK_EQUAL(right(c), 3.0);
+
+    BOOST_CHECK(a < b);
+    BOOST_CHECK(a <= b);
+    BOOST_CHECK(!(a > b));
+    BOOST_CHECK(!(a >= b));
+
+    BOOST_CHECK(!(b==c));
+    BOOST_CHECK(b!=c);
+
+    BOOST_CHECK(b < c);
+    BOOST_CHECK(b <= c);
+    BOOST_CHECK(!(b > c));
+    BOOST_CHECK(!(b >= c));
+
+    BOOST_CHECK(b == 1.0);
+    BOOST_CHECK(!(b != 1.0));
+
+    BOOST_CHECK(!(b < 1.0));
+    BOOST_CHECK(b <= 1.0);
+    BOOST_CHECK(!(b > 1.0));
+    BOOST_CHECK(b >= 1.0);
+
+    BOOST_CHECK(c.contains(e));
+    BOOST_CHECK(!(c.containsInInterior(e)));
+    BOOST_CHECK(c.contains(2.5));
+    BOOST_CHECK(d.subset(c));
+    BOOST_CHECK(!(d.subsetInterior(c)));
+
+    c.split(c,b);
+    BOOST_CHECK_EQUAL(c, interval(2.5, 2.5));
+    BOOST_CHECK_EQUAL(b, interval(-0.5, 0.5));
+}
+
+BOOST_AUTO_TEST_CASE(parse_from_sstream)
+{
+    interval a {};
+    std::istringstream myStr("[3.21312312, 4.324324324]");
+    myStr >> a;
+    BOOST_CHECK_SMALL(a.leftBound() - 3.2131312, 8.1e-6);
+    BOOST_CHECK_CLOSE(a.rightBound(), 4.324324324, 0.0);
+}
+ 
+BOOST_AUTO_TEST_CASE(operators)
+{
+    interval c(2.0, 3.0);
+    interval d = c;
+    interval e(-1.0, 4.0);
+    interval f(4.0, 5.0);
+    
+    c += e;
+    BOOST_CHECK_EQUAL(c, interval(1.0, 7.0));
+    
+    c -= e;
+    BOOST_CHECK_EQUAL(c, interval(-3.0, 8.0));
+    
+    c *= e;
+    BOOST_CHECK_EQUAL(c, interval(-12.0, 32.0));
+    
+    c /= f;
+    BOOST_CHECK_EQUAL(c, interval(-3.0, 8.0));
+    
+    interval b(1.0);
+    b = (b*(c+(-d))/f - e);
+    BOOST_CHECK_EQUAL(b, interval(-5.5, 2.5));
+
+    const interval y = interval(-3, -2);
+
+    BOOST_CHECK_EQUAL(y+3, interval(0.0, 1.0));
+    BOOST_CHECK_EQUAL(y-3, interval(-6.0, -5.0));
+    BOOST_CHECK_EQUAL(y*3, interval(-9.0, -6.0));
+    BOOST_CHECK_EQUAL(y/3, interval(-1.0, -2.0/3));
+    BOOST_CHECK_EQUAL(3+y, interval(0.0, 1.0));
+    BOOST_CHECK_EQUAL(3-y, interval(5.0, 6.0));
+    BOOST_CHECK_EQUAL(3*y, interval(-9.0, -6.0));
+    BOOST_CHECK_EQUAL(3/y, interval(-1.5, -1.0));
+}
+
+BOOST_AUTO_TEST_CASE(functions)
+{
+    interval e(-1.0, 4.0);
+
+    constexpr double pi    = 3.14159265358979323;
+    interval interval_pi = interval::pi();
+    BOOST_CHECK(interval_pi.contains(pi));
+    BOOST_CHECK_LE(interval_pi.rightBound() - interval_pi.leftBound(), 5.0e-16);
+
+    constexpr double sqrt2 = 1.41421356237309504;
+    interval interval_sqrt2 = sqrt(interval(2.0));
+    BOOST_CHECK(interval_sqrt2.contains(sqrt2));
+    BOOST_CHECK_LE(interval_sqrt2.rightBound() - interval_sqrt2.leftBound(), 3.0e-16);
+
+    constexpr double sqrt3 = 1.73205080756887729;
+    interval interval_sqrt3 = sqrt(interval(3.0));
+    BOOST_CHECK(interval_sqrt3.contains(sqrt3));
+    BOOST_CHECK_LE(interval_sqrt3.rightBound() - interval_sqrt3.leftBound(), 3.0e-16);
+
+    interval x((interval::pi() / 6).leftBound(),
+                (interval::pi() / 4).rightBound());
+
+    auto sin_x = sin(x);
+    BOOST_CHECK_SMALL(sin_x.leftBound() - 0.5, 4.5e-16);
+    BOOST_CHECK_SMALL(sin_x.rightBound() - sqrt2 / 2, 2.3e-16);
+
+    auto cos_x = cos(x);
+    BOOST_CHECK_SMALL(cos_x.leftBound() - sqrt2 / 2, 3.4e-16);
+    BOOST_CHECK_SMALL(cos_x.rightBound() - sqrt3 / 2, 4.5e-16);
+
+    auto tan_x = tan(x);
+    BOOST_CHECK_SMALL(tan_x.leftBound() - 1 / sqrt3, 8.9e-16);
+    BOOST_CHECK_SMALL(tan_x.rightBound() - 1, 8.9e-16);
+
+    auto cot_x = cot(x);
+    BOOST_CHECK_SMALL(cot_x.leftBound() - 1, 8.9e-16);
+    BOOST_CHECK_SMALL(cot_x.rightBound() - sqrt3, 2.5e-15);
+
+    x = interval(1.0/3, 1.0/2);
+
+    constexpr double atan_1_3 = 0.32175055439664219;
+    constexpr double atan_1_2 = 0.46364760900080612;
+
+    auto atan_x = atan(x);
+    BOOST_CHECK_SMALL(atan_x.leftBound() - atan_1_3, 0.0);
+    BOOST_CHECK_SMALL(atan_x.rightBound() - atan_1_2, 3.4e-16);
+
+    constexpr double asin_1_3 = 0.33983690945412194;
+
+    auto asin_x = asin(x);
+    BOOST_CHECK_SMALL(asin_x.leftBound() - asin_1_3, 5.6e-17);
+    BOOST_CHECK_SMALL(asin_x.rightBound() - pi / 6, 6.7e-16);
+
+    constexpr double acos_1_3 = 1.23095941734077468;
+
+    auto acos_x = acos(x);
+    BOOST_CHECK_SMALL(acos_x.leftBound() - pi / 3, 2.5e-15);
+    BOOST_CHECK_SMALL(acos_x.rightBound() - acos_1_3, 2.3e-15);
    
-   c.split(c,b);
+    interval y(1.0, 2.0);
 
-   cout << "\n\n " << d << " = "  << c << "+" << b;
-   double r;
-   c = d;
-   split(c, r);
-   cout << "\n " << d << " = K(" << c << "," <<  r << ")";
-   cout << endl;
+    constexpr double e_constant = 2.71828182845904523536;
+    auto exp_y = exp(y);
+    BOOST_CHECK_SMALL(exp_y.leftBound() - e_constant, 0.0);
+    BOOST_CHECK_SMALL(exp_y.rightBound() - e_constant * e_constant, 5.4e-15);
 
-}
- 
-BOOST_AUTO_TEST_CASE(operatorsTest)
-{
-  interval a,
-            b(1.0), 
-            c(2.0, 3.0),
-            d(c),
-            e(-1.0, 4.0),
-            f(4.0, 5.0);
-   cout <<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-  
-   cout << " a = " << a << "\n b = " << b << " c = " << c 
-        << " d = " << d << " e = " << e << " f = " << f;
+    constexpr double log_e_2 = 0.6931471805599453094;
+    auto ln_y = log(y);
+    BOOST_CHECK_SMALL(ln_y.leftBound(), 0.0);
+    BOOST_CHECK_SMALL(ln_y.rightBound() - log_e_2, 3.4e-16);
+
+    auto pow_y_2_3 = power(y, interval(2,3));
+    BOOST_CHECK_SMALL(pow_y_2_3.leftBound() - 1.0, 0.0);
+    BOOST_CHECK_SMALL(pow_y_2_3.rightBound() - 8.0, 1.6e-14);
    
-   cout << "\n c += e " << (c += e);
-   cout << "   c -= e " << (c -= e);
-   cout << "\n c *= e " << (c *= e);
-   cout << "   c /= f " << (c /= f);
-   cout << "\n b *(c+(-d)) / f - e = " << (b *(c+(-d))/ f  - e); 
-   interval y = interval(-3, -2);
-   cout << "\n y+3 = " << y+3 << " y-3 = " << y-3 << " y*3 = " << y*3<< " y/3 = " << y/3
-        << "\n 3+y = " << 3+y << " 3-y = " << 3-y << " 3*y = " << y*3<< " 3/y = " << 3/y;
+    y = interval(-3, -2);
 
-   cout << endl;
+    auto sqr_y = y^2;
+    BOOST_CHECK_EQUAL(sqr_y, interval(4, 9));
+
+    auto cube_y = y^3;
+    BOOST_CHECK_EQUAL(cube_y, interval(-27, -8));
+
+    auto sqr_e = e^2;
+    BOOST_CHECK_EQUAL(sqr_e, interval(0, 16));
+
+    y = interval(4, 9);
+    auto pow_y = power(y, interval(-1.5));
+    BOOST_CHECK_SMALL(pow_y.leftBound() - 1.0/27, 1.2e-16);
+    BOOST_CHECK_SMALL(pow_y.rightBound() - 1.0/8, 2.8e-16);
 }
 
-BOOST_AUTO_TEST_CASE(functionsTest)
+BOOST_AUTO_TEST_CASE(multiplication)
 {
-  interval a,
-            b(1.0),
-            c(2.0, 3.0),
-            d(c),
-            e(-1.0, 4.0),
-            f(4.0, 5.0);
+    interval a(1.0, 2.0);
 
-   cout <<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-   cout << " a = " << a << "\n b = " << b << " c = " << c 
-        << " d = " << d << " e = " << e << " f = " << f;
+    BOOST_CHECK_EQUAL(a * interval(1.0, 2.0), interval(1.0, 4.0));
+    BOOST_CHECK_EQUAL(a * interval(-2.0, -1.0), interval(-4.0, -1.0));
+    BOOST_CHECK_EQUAL(a * interval(-3.0, 2.0), interval(-6.0, 4.0));
 
-   double PI = interval::pi().leftBound();
-   interval x(PI/6, PI/4);
-   cout << setprecision(16) << "\n\n x = [pi/6,pi/4] = " << x
-        << "\n sin = " << sin(x)
-        << "\n cos = " << cos(x)
-        << "\n tan = " << tan(x)
-        << "\n cot = " << cot(x);
-   x = interval(1.0/3, 1.0/2);
-   cout << setprecision(16) << "\n\n x = [1/3,1/2] = " << x
-        << "\n atan = " << atan(x)
-        << "\n asin = " << asin(x)
-        << "\n acos = " << acos(x);
-   interval y(1.0, 2.0);
-   cout << setprecision(16) << "\n\n y = " << y
-        << "\n exp = " << exp(y)
-        << "\n log = " << log(y)
-        << "\n y^[2,3] = " << power(y, interval(2,3));
-   y = interval(-3, -2);
-   cout << "\n\n y = " << y
-        << "\n y^3 = " << (y^3)
-        << "\n y^2 = " << (y^2)
-          << "\n e^2 = " << (e^2);
-   y = interval(4, 9);
-   cout << "\n\n y = " << y
-        << "\n y^-1.5 = " << (power(y,interval(-1.5)));
+    a = interval(-2.0, -1.0);
+    BOOST_CHECK_EQUAL(a * interval(1.0, 2.0), interval(-4.0, -1.0));
+    BOOST_CHECK_EQUAL(a * interval(-2.0, -1.0), interval(1.0, 4.0));
+    BOOST_CHECK_EQUAL(a * interval(-3.0, 2.0), interval(-4.0, 6.0));
 
-   cout << endl;
+    a = interval(-1.0, 3.0);
+    BOOST_CHECK_EQUAL(a * interval(1.0, 2.0), interval(-2.0, 6.0));
+    BOOST_CHECK_EQUAL(a * interval(-2.0, -1.0), interval(-6.0, 2.0));
+    BOOST_CHECK_EQUAL(a * interval(-3.0, 2.0), interval(-9.0, 6.0));
 }
 
-BOOST_AUTO_TEST_CASE(multiplicationTest)
+BOOST_AUTO_TEST_CASE(multiplication_with_assignment)
 {
-  interval a(1.0, 2.0);
-  
-  cout << "\n a = " << a;
-  cout << "\n ++ a * [1,2] = "  << a * interval(1., 2.);
-  cout << "\n +- a * [-2,-1] = " << a * interval(-2., -1.);
-  cout << "\n +? a * [-3,2] " << a * interval(-3., 2.);
+    interval a(1.0, 2.0);
 
-   a = interval(-2.0, -1.0);
-  cout << "\n a = " << a;
-  cout << "\n -+ a * [1,2] = "  << a * interval(1., 2.);
-  cout << "\n -- a * [-2,-1] = " << a * interval(-2., -1.);
-  cout << "\n -? a * [-3,2] " << a * interval(-3., 2.);
+    a *= interval(1.0, 2.0);
+    BOOST_CHECK_EQUAL(a, interval(1.0, 4.0));
+
+    a = interval(1.0, 2.0);
+    a *= interval(-2.0, -1.0);
+    BOOST_CHECK_EQUAL(a, interval(-4.0, -1.0));
+
+    a = interval(1.0, 2.0);
+    a *= interval(-3.0, 2.0);
+    BOOST_CHECK_EQUAL(a, interval(-6.0, 4.0));
+
+    a = interval(-2.0, -1.0);
+    a *= interval(1.0, 2.0);
+    BOOST_CHECK_EQUAL(a, interval(-4.0, -1.0));
+
+    a = interval(-2.0, -1.0);
+    a *= interval(-2.0, -1.0);
+    BOOST_CHECK_EQUAL(a, interval(1.0, 4.0));
+
+    a = interval(-2.0, -1.0);
+    a *= interval(-3.0, 2.0);
+    BOOST_CHECK_EQUAL(a, interval(-4.0, 6.0));
+
+    a = interval(-1.0, 3.0);
+    a *= interval(1.0, 2.0);
+    BOOST_CHECK_EQUAL(a, interval(-2.0, 6.0));
+
+    a = interval(-1.0, 3.0);
+    a *= interval(-2.0, -1.0);
+    BOOST_CHECK_EQUAL(a, interval(-6.0, 2.0));
+
+    a = interval(-1.0, 3.0);
+    a *= interval(-3.0, 2.0);
+    BOOST_CHECK_EQUAL(a, interval(-9.0, 6.0));
+}
+
+BOOST_AUTO_TEST_CASE(scalar)
+{
+    interval a(1.0, 2.0);
+
+    BOOST_CHECK_EQUAL(a * 2, interval(2.0, 4.0));
+    BOOST_CHECK_EQUAL(a * 2, interval(2.0, 4.0));
+    BOOST_CHECK_EQUAL(2 * a, interval(2.0, 4.0));
+
+    BOOST_CHECK_EQUAL(a / 2, interval(0.5, 1.0));
+    BOOST_CHECK_EQUAL(a / 2, interval(0.5, 1.0));
+    BOOST_CHECK_EQUAL(2 / a, interval(1.0, 2.0));
+
+    BOOST_CHECK_EQUAL(a + 2, interval(3.0, 4.0));
+    BOOST_CHECK_EQUAL(a + 2, interval(3.0, 4.0));
+    BOOST_CHECK_EQUAL(2 + a, interval(3.0, 4.0));
+
+    BOOST_CHECK_EQUAL(a - 2, interval(-1.0, 0.0));
+    BOOST_CHECK_EQUAL(a - 2, interval(-1.0, 0.0));
+    BOOST_CHECK_EQUAL(2 - a, interval(0.0, 1.0));
+}
+
+BOOST_AUTO_TEST_CASE(division)
+{
+     interval a(1.0, 2.0);
+     BOOST_CHECK_EQUAL(a / interval(1.0, 2.0), interval(0.5, 2.0));
+     BOOST_CHECK_EQUAL(a / interval(-2.0, -1.0), interval(-2.0, -0.5));
+
+     a = interval(-2.0, -1.0);
+     BOOST_CHECK_EQUAL(a / interval(1.0, 2.0), interval(-2.0, -0.5));
+     BOOST_CHECK_EQUAL(a / interval(-2.0, -1.0), interval(0.5, 2.0));
+     
+     a = interval(-1.0, 3.0);
+     BOOST_CHECK_EQUAL(a / interval(1.0, 2.0), interval(-1.0, 3.0));
+     BOOST_CHECK_EQUAL(a / interval(-2.0, -1.0), interval(-3.0, 1.0));
+}
+
+BOOST_AUTO_TEST_CASE(divison_with_assignment)
+{
+     interval a(1.0, 2.0);
+     a /= interval(1.0, 2.0);
+     BOOST_CHECK_EQUAL(a, interval(0.5, 2.0));
+
+     a = interval(1.0, 2.0);
+     a /= interval(-2.0, -1.0);
+     BOOST_CHECK_EQUAL(a, interval(-2.0, -0.5));
+
+     a = interval(-2.0, -1.0);
+     a /= interval(1.0, 2.0);
+     BOOST_CHECK_EQUAL(a, interval(-2.0, -0.5));
+
+     a = interval(-2.0, -1.0);
+     a /= interval(-2.0, -1.0);
+     BOOST_CHECK_EQUAL(a, interval(0.5, 2.0));
  
-  a = interval(-1.0, 3.);
-  cout << "\n a = " << a;
-  cout << "\n ?+ a * [1,2] = "  << a * interval(1., 2.);
-  cout << "\n ?- a * [-2,-1] = " << a * interval(-2., -1.);
-  cout << "\n ?? a * [-3,2] " << a * interval(-3., 2.);
+     a = interval(-1.0, 3.0);
+     a /= interval(1.0, 2.0);
+     BOOST_CHECK_EQUAL(a, interval(-1.0, 3.0));
+
+     a = interval(-1.0, 3.0);
+     a /= interval(-2.0, -1.0);
+     BOOST_CHECK_EQUAL(a, interval(-3.0, 1.0));
 }
-
-BOOST_AUTO_TEST_CASE(multiplicationTest2)
-{
-  interval a(1.0, 2.0);
-  
-  cout << "\n a = " << a;
-  cout << "\n ++ a *= [1,2] = "  << (a *= interval(1., 2.));
-
- a=interval(1.0, 2.0);
-  cout << "\n +- a *= [-2,-1] = " << (a *= interval(-2., -1.));
- a=interval(1.0, 2.0);
-  cout << "\n +? a *= [-3,2] " << (a *= interval(-3., 2.));
-
-   a = interval(-2.0, -1.0);
-  cout << "\n a = " << a;
-  cout << "\n -+ a * [1,2] = "  << (a *= interval(1., 2.));
-   a = interval(-2.0, -1.0);
-  cout << "\n -- a * [-2,-1] = " << (a *= interval(-2., -1.));
-   a = interval(-2.0, -1.0);
-  cout << "\n -? a * [-3,2] " << (a *= interval(-3., 2.));
- 
-  a = interval(-1.0, 3.);
-  cout << "\n a = " << a;
-  cout << "\n ?+ a *= [1,2] = "  << (a *= interval(1., 2.));
-  a = interval(-1.0, 3.);
-  cout << "\n ?- a *= [-2,-1] = " << (a *= interval(-2., -1.));
-  a = interval(-1.0, 3.);
-  cout << "\n ?? a *= [-3,2] " << (a *= interval(-3., 2.));
-}
-
-BOOST_AUTO_TEST_CASE(scalarTest)
-{
-  interval a(1.0, 2.0);
-  
-  cout << "\n a = " << a;
-  cout << "\n  a * 2 = "  << (a * 2.);
-  cout << "\n  a * 2 = "  << (a * 2);
-  cout << "\n  2 * a = "  << (2. * a);
-
-  cout << "\n  a / 2 = "  << (a / 2.);
-  cout << "\n  a / 2 = "  << (a / 2);
-  cout << "\n  2 / a = "  << (2. / a);
-
-  cout << "\n  a + 2 = "  << (a + 2.);
-  cout << "\n  a + 2 = "  << (a + 2);
-  cout << "\n  2 + a = "  << (2. + a);
-
-  cout << "\n  a - 2 = "  << (a - 2.);
-  cout << "\n  a - 2 = "  << (a - 2);
-  cout << "\n  2 - a = "  << (2. - a);
-}
-
-BOOST_AUTO_TEST_CASE(divisionTest)
-{
-  interval a(1.0, 2.0);
-  
-  cout << "\n a = " << a;
-  cout << "\n ++ a / [1,2] = "  << a / interval(1., 2.);
-  cout << "\n +- a / [-2,-1] = " << a / interval(-2., -1.);
-
-   a = interval(-2.0, -1.0);
-  cout << "\n a = " << a;
-  cout << "\n -+ a / [1,2] = "  << a / interval(1., 2.);
-  cout << "\n -- a / [-2,-1] = " << a / interval(-2., -1.);
- 
-  a = interval(-1.0, 3.);
-  cout << "\n a = " << a;
-  cout << "\n ?+ a / [1,2] = "  << a / interval(1., 2.);
-  cout << "\n ?- a / [-2,-1] = " << a / interval(-2., -1.);
-  cout <<"\n";
-}
-
-BOOST_AUTO_TEST_CASE(divisionTest2)
-{
-  interval a(1.0, 2.0);
-  
-  cout << "\n a = " << a;
-  cout << "\n ++ a /= [1,2] = "  << (a /= interval(1., 2.));
-   a = interval(1.0, 2.0);
-  cout << "\n +- a /= [-2,-1] = " << (a /= interval(-2., -1.));
-
-   a = interval(-2.0, -1.0);
-  cout << "\n a = " << a;
-  cout << "\n -+ a /= [1,2] = "  << (a /= interval(1., 2.));
-   a = interval(-2.0, -1.0);
-  cout << "\n -- a /= [-2,-1] = " << (a /= interval(-2., -1.));
- 
-  a = interval(-1.0, 3.);
-  cout << "\n a = " << a;
-  cout << "\n ?+ a /= [1,2] = "  << (a /= interval(1., 2.));
-  a = interval(-1.0, 3.);
-  cout << "\n ?- a /= [-2,-1] = " << (a /= interval(-2., -1.));
-  cout <<"\n";
-}
-
-/*
-
-
-int main()
-{
-  try{
-   basicsTest();
-   operatorsTest();
-   functionsTest();
-   interval a(3, -1);
-   scalarTest();
-   multiplicationTest();
-   multiplicationTest2();
-
-   divisionTest();
-   divisionTest2();
-   } catch(capd::intervals::IntervalError<double> &e)
-   {
-      cout <<" interval Error : " << e.what();
-   }
-
-   catch(std::runtime_error &e)
-   {
-      cout << e.what();
-   }
-
-   return 0;
-}
-
-
-}}// namespace capd::test
-
-int main()
-{
-   return capd::test::main();
-}
-*/
