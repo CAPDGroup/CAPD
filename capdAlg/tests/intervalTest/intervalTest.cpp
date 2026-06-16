@@ -345,3 +345,27 @@ BOOST_AUTO_TEST_CASE(divison_with_assignment)
      a /= interval(-2.0, -1.0);
      BOOST_CHECK_EQUAL(a, interval(-3.0, 1.0));
 }
+
+BOOST_AUTO_TEST_CASE(irrational_division)
+{
+    auto div_1_10 = interval(1.0) / interval(10.0);
+
+    BOOST_CHECK_LT(div_1_10.leftBound(), div_1_10.rightBound());
+    BOOST_CHECK_SMALL(div_1_10.leftBound() - 1.0/10, 1.4e-17);
+    BOOST_CHECK_SMALL(div_1_10.rightBound() - 1.0/10, 0.0);
+}
+
+BOOST_AUTO_TEST_CASE(postive_negative_zero_comparison)
+{
+    interval a = interval(+0.0, +0.0);
+    interval b = interval(-0.0, +0.0);
+    interval c = interval(-0.0, -0.0);
+
+    BOOST_CHECK_EQUAL(a,b);
+    BOOST_CHECK_EQUAL(b,c);
+    BOOST_CHECK_EQUAL(c,a);
+
+    BOOST_CHECK(a == b);
+    BOOST_CHECK(b == c);
+    BOOST_CHECK(c == a);
+}
