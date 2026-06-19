@@ -117,9 +117,12 @@ BOOST_AUTO_TEST_CASE( functionsTest)
 BOOST_AUTO_TEST_CASE( powerTest)
 {
   IComplex a{2.0, 0.0};
+  double expected_real_part = 1.0 / 1024;
   for(int i=-10; i<10; i++){
-  	BOOST_CHECK_EQUAL(power(a,i), IComplex(power(2.0, i), 0.0));
+  	BOOST_CHECK_EQUAL(power(a,i), IComplex(expected_real_part, 0.0));
         std::cout << power(a,i) << std::endl;
+
+      expected_real_part *= 2;
   }
   IComplex b{0.0, 1.0};
   BOOST_CHECK_EQUAL(power(b,2), IComplex(-1.0, 0.0));

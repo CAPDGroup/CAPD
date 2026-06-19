@@ -174,7 +174,7 @@ typename MapType::VectorType KrawczykOperator (const typename MapType::VectorTyp
 
   typename MapType::MatrixType C(dim, dim),        // Matrix C for Krawczyk metod
                                dF_X(dim, dim),     //  derivative of F computed on set X
-                               dF_x0;              //  derivative of F computed in a point x0
+                               dF_x0(dim, dim);    //  derivative of F computed in a point x0
 
   F_x0 = F(x0, dF_x0);
 
