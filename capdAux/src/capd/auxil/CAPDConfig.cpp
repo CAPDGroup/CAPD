@@ -18,7 +18,20 @@
 #include <fstream>
 #include <unistd.h>
 #include <string>
+
+#ifdef _POSIX_VERSION
 #include <pwd.h>
+
+void getHomeDir(std::string &filename) {
+  if (access(filename.c_str(), R_OK) == -1) {
+    const int myuid = getuid();
+    passwd *mypasswd = getpwuid(myuid);
+    filename = mypasswd->pw_dir + std::string("/") + filename;
+  }
+}
+#else
+void getHomeDir(std::string &a) {}
+#endif
 
 using namespace capd::auxil;
 
@@ -27,11 +40,7 @@ CAPDConfig::CAPDConfig():
 {
 
   std::string filename = "capd.ini";
-  if (access(filename.c_str(), R_OK) == -1) {
-    const int myuid = getuid();
-    passwd *mypasswd = getpwuid(myuid);
-    filename = mypasswd->pw_dir + std::string("/") + filename;
-  }
+  getHomeDir(filename);
 
   if (access(filename.c_str(), R_OK) != -1) {
     std::ifstream file(filename.c_str());
