@@ -450,6 +450,16 @@ namespace capd{
     */
 
 
+      if(searchForFunction("mittagLeffler12", expression, params) || searchForFunction("ml12", expression, params))
+      {
+        std::string args = params;
+        int e = createUnaryNode("exp_for_ml12"+args,args,capd::autodiff::NODE_EXP_FOR_ML12,vars,dag,knownNodes);
+        int m = createUnaryNode(expression,params,capd::autodiff::NODE_MITTAG_LEFFLER_12,vars,dag,knownNodes);
+        dag[e].right = m;
+        dag[m].right = e;
+        return m;
+      }
+
       std::string re = "undefined symbol '" + expression + "' in the expression!\nIf this is a numerical constant in scientific notation please replace it by a parameter.";
 
       throw std::runtime_error(re);
@@ -939,7 +949,8 @@ namespace capd{
             dag[i].op==NODE_TIME or
             dag[i].op==NODE_PARAM or
             dag[i].op==NODE_VAR or
-            dag[i].op==NODE_COS
+            dag[i].op==NODE_COS or
+            dag[i].op==NODE_EXP_FOR_ML12
           ) continue;
 
         int left = dag[i].left;
@@ -960,6 +971,7 @@ namespace capd{
         optimizeUnivariateFunction(dag,left,i,NODE_ATAN,NODE_ATAN_CONST,NODE_ATAN_TIME,NODE_ATAN_FUNTIME);
         optimizeUnivariateFunction(dag,left,i,NODE_ASIN,NODE_ASIN_CONST,NODE_ASIN_TIME,NODE_ASIN_FUNTIME);
         optimizeUnivariateFunction(dag,left,i,NODE_ACOS,NODE_ACOS_CONST,NODE_ACOS_TIME,NODE_ACOS_FUNTIME);
+        optimizeUnivariateFunction(dag,left,i,NODE_MITTAG_LEFFLER_12,NODE_MITTAG_LEFFLER_12_CONST,NODE_MITTAG_LEFFLER_12_TIME,NODE_MITTAG_LEFFLER_12_FUNTIME);
       }
     }
 
