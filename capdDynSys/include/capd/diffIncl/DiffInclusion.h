@@ -111,6 +111,10 @@ public:
     m_dynamicalSystem.clearCoefficients();
   }
 
+  void initRemainderCoefficients(ScalarType t, const VectorType& x, unsigned degree){
+    m_dynamicalSystem.initRemainderCoefficients(t,x,degree);
+  }
+
   template <class SetType>
   ScalarType computeNextTimeStep(const SetType& x, const ScalarType& maxStep) {
     return m_dynamicalSystem.computeNextTimeStep(*this,x,maxStep);

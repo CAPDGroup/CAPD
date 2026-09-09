@@ -97,9 +97,8 @@ typename DiffInclusionCW<MapT, DynSysT>::VectorType DiffInclusionCW<MapT, DynSys
   ScalarType remainder = right((*m_norm)(A) * AtNorm / (n  - AtNorm ));
   //std::cout << "\n remainder real   : " << remainder;
 
-  for(i=0; i < J.numberOfRows(); ++i)
-    for(j = 0; j < J.numberOfColumns(); ++j)
-      Sum[i][j] += remainder * ScalarType(-1.0, 1.0);
+  Sum += remainder * ScalarType(-1.0, 1.0);
+
   VectorType D = getStep() * (Sum * C);
   VectorType result(D.dimension());
 

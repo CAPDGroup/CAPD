@@ -20,6 +20,8 @@ using namespace capd;
  *  We use two different method based on component wise estimates and on logarithmic norm
  *  and compare results.
  */
+
+
 void RosslerExample() {
 
   // f is an unperturbed vector field
