@@ -52,8 +52,8 @@ int main(int, char**) {
   DInterval intervals[numberOfIntervals] = { 
     DInterval(1.000000001,1.000000042),
     DInterval(-1.23456789123,-1.23456778912),
-    DInterval(1.23456789123e5,1.23456778912e5),
-    DInterval(1.2345678912345678e12,1.234567789123456e12)
+    DInterval(1.23456789123e5,1.2345688912e5),
+    DInterval(1.2345678912345678e12,1.23456889123456e12)
   };
   for (int k = 0; k < numberOfIntervals; ++k) {
 
