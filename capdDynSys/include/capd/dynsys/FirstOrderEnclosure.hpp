@@ -19,6 +19,7 @@
 #include <string>
 #include <stdexcept>
 
+#include "capd/vectalg/iobject.hpp"
 #include "capd/dynsys/FirstOrderEnclosure.h"
 #include "capd/dynsys/SolverException.h"
 
@@ -94,26 +95,13 @@ typename MapType::MatrixType FirstOrderEnclosure::jacEnclosure(
 
   int dimension = enc.dimension();
   ScalarType h = I*step;
-  MatrixType der = vectorField.derivative(currentTime+h,enc), result(dimension,dimension);
+  MatrixType der = vectorField.derivative(currentTime+h,enc), W(dimension,dimension); // W_3 in paper "C^1 - Lohner algorithm"
 
   ScalarType l = the_norm(der).rightBound(); // computation of lagarithmic norm
-  ScalarType w = ScalarType(-1,1)*exp(h*l);
+  W = ScalarType(-1,1)*exp(h*l);
 
-  MatrixType W(dimension,dimension); // W_3 in paper "C^1 - Lohner algorithm"
-  W = w;
-
-  result = MatrixType::Identity(dimension) + h*der*W;
-
-  int i,j;
-  for(i=1;i<=dimension;++i)
-    for(j=1;j<=dimension;++j)
-    {
-      ScalarType d = result(i,j);
-      typename ScalarType::BoundType
-         l = (w.leftBound() > d.leftBound() ? w.leftBound() : d.leftBound()),
-         r = (w.rightBound() < d.rightBound() ? w.rightBound() : d.rightBound());
-      result(i,j) = ScalarType(l,r);
-    }
+  MatrixType result = MatrixType::Identity(dimension) + h*der*W;
+  capd::vectalg::intersection(W,result,result);
   if(o_logNormOfDerivative)
     *o_logNormOfDerivative = l;
   return result;
@@ -135,43 +123,34 @@ typename MapType::ScalarType FirstOrderEnclosure::c2Enclosure(
   typedef typename MapType::MatrixType MatrixType;
   typedef typename MapType::HessianType HessianType;
 
+  const static ScalarType I(TypeTraits<ScalarType>::zero().leftBound(),TypeTraits<ScalarType>::one().rightBound());
+  ScalarType h = I*step;
+  
   int dimension = enc.dimension();
   vectorField.homogenousPolynomial(jacEnclosure);
   ScalarType logNormOfDerivative = capd::vectalg::EuclLNorm<VectorType,MatrixType>()(jacEnclosure).rightBound(); // computation of lagarithmic norm
-  ScalarType w = ScalarType(-1,1)*exp(step*logNormOfDerivative);
-
   MatrixType W(dimension,dimension); // W_3 in paper "C^1 - Lohner algorithm"
-  W = w;
 
-  jacEnclosure = MatrixType::Identity(dimension) + step*jacEnclosure*W;
+  ScalarType hl = exp(h*logNormOfDerivative);
+  W = ScalarType(-1,1)*hl;
+  jacEnclosure = MatrixType::Identity(dimension) + h*jacEnclosure*W;
+  capd::vectalg::intersection(W,jacEnclosure,jacEnclosure);
 
   int i,j,c;
-  for(i=1;i<=dimension;++i)
-    for(j=1;j<=dimension;++j)
-    {
-      ScalarType d = jacEnclosure(i,j);
-      typename ScalarType::BoundType
-         l = (w.leftBound() > d.leftBound() ? w.leftBound() : d.leftBound()),
-         r = (w.rightBound() < d.rightBound() ? w.rightBound() : d.rightBound());
-      jacEnclosure(i,j) = ScalarType(l,r);
-    }
-
   HessianType temp(dimension);
   vectorField.homogenousPolynomial(jacEnclosure,temp);
 
-  w = (exp(logNormOfDerivative*step)-ScalarType(1.))/logNormOfDerivative;
-  for(j=0;j<dimension;++j)
-    for(c=j;c<dimension;++c)
+  ScalarType w = 
+    logNormOfDerivative.contains(0.0) ? 
+        abs(step).rightBound() : (hl-ScalarType(1.))/logNormOfDerivative;
+  for(int j=0;j<dimension;++j)
+    for(int c=j;c<dimension;++c)
     {
-      VectorType Bjc(dimension);
+      ScalarType delta =TypeTraits<ScalarType>::zero();
       for(i=0;i<dimension;++i)
-          Bjc[i] = temp(i,j,c);
-      ScalarType delta = Bjc.euclNorm().rightBound();
-      typename ScalarType::BoundType size;
-      if(logNormOfDerivative.contains(0.0))
-        size = abs(delta*abs(step).rightBound()).rightBound();
-      else
-        size = (abs(delta * w)).rightBound();
+        delta += sqr(temp(i,j,c));
+      delta = sqrt(nonnegativePart(delta)).rightBound();
+      typename ScalarType::BoundType size = (abs(delta * w)).rightBound();
       for(i=0;i<dimension;++i)
         hessEnclosure(i,j,c) = ScalarType(-size,size);
     } // c - loop
