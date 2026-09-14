@@ -191,7 +191,7 @@ Curve<BaseCurveT,true>::timeDerivative(const ScalarType& h) const
     {
       phi[d] = Real(i)*this->centerCoefficient(d,i);
       rem[d] = Real(i+1) * c * this->remainderCoefficient(d,i+1);
-      deltaX[d] = this->coefficient(d,1) - this->centerCoefficient(d,1);
+      deltaX[d] = this->coefficient(d,0) - this->centerCoefficient(d,0);
       for(size_type k=0;k<this->dimension();++k)
         jacPhi(d+1,k+1) = Real(i)*this->coefficient(d,k,i);
     }
