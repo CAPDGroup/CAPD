@@ -37,6 +37,7 @@ public:
   typedef typename VectorType::size_type size_type;             ///< integral type used to index containers (vectors, matrices, etc)
   typedef capd::dynset::AbstractSet<VectorType> Set;   ///< type of abstract base class for all sets
   typedef typename  AbstractSection<MatrixT>::JetType JetType;
+  typedef typename AbstractSection<MatrixT>::HessianType HessianType;
 
   typedef capd::map::Function<VectorType> BaseFunction;
 
@@ -85,6 +86,23 @@ public:
   {
      throw std::runtime_error("NonlinearSection::computeDT is not implemented for jets");
   }
+  
+  void computeDP(
+        const VectorType& Px,
+        const MatrixType& derivativeOfFlow,
+        const HessianType& hessianOfFlow,
+        const VectorType& fieldOnPx,
+        const VectorType& d2Phidt2,
+        const MatrixType& derOfVectorFieldOnPx,
+        MatrixType& DP,
+        HessianType& D2P,
+        VectorType& dT,
+        MatrixType& d2T
+    ) const override 
+  {
+    throw std::runtime_error("NonlinearSection::computeDP is not implemented for C^2 computation");      
+  }
+
 
 }; // end of template NonlinearSection
 

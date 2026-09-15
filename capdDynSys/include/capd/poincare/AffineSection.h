@@ -35,7 +35,8 @@ public:
   typedef typename MatrixType::ScalarType ScalarType;
   typedef typename VectorType::size_type size_type;             ///< integral type used to index containers (vectors, matrices, etc)
   typedef capd::dynset::AbstractSet<VectorType> Set;   ///< type of abstract base class for all sets
-  typedef typename  AbstractSection<MatrixT>::JetType JetType;
+  typedef typename AbstractSection<MatrixT>::HessianType HessianType;
+  typedef typename AbstractSection<MatrixT>::JetType JetType;
 
   AffineSection(const VectorType& _x, const VectorType& _n) : x(_x), n(_n), c(_n*_x) {}
 
@@ -67,6 +68,22 @@ public:
 
   ScalarType evalAt(const capd::dynset::AbstractSet<VectorType>& s) const{
     return s.evalAt(*this);
+  }
+
+  void computeDP(
+          const VectorType& Px,
+          const MatrixType& derivativeOfFlow,
+          const HessianType& hessianOfFlow,
+          const VectorType& fieldOnPx,
+          const VectorType& d2Phidt2,
+          const MatrixType& derOfVectorFieldOnPx,
+          MatrixType& DP,
+          HessianType& D2P,
+          VectorType& dT,
+          MatrixType& d2T
+      ) const override
+  {
+    this->computeDPForAffineSections(Px,derivativeOfFlow,hessianOfFlow,fieldOnPx,d2Phidt2,derOfVectorFieldOnPx,DP,D2P,dT,d2T);
   }
 
 private:

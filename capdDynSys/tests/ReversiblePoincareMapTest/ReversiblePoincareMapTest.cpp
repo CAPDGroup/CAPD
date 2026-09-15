@@ -159,7 +159,7 @@ BOOST_AUTO_TEST_CASE(C2Test)
 {
   IMap f="par:c;var:x,y,z;fun:y,z,1-y-0.5*x*x;";
   IC2OdeSolver solver(f,10);
-  INonlinearSection section("var:x,y,z;fun:x;");
+  ICoordinateSection section(3,0);
   IC2PoincareMap pm(solver,section);
   IVector x(0.,1.563,0.);
 

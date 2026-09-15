@@ -67,7 +67,7 @@ AbstractSection<MatrixT>::computeDP(
 // -------------------------------------------------------------------
 
 template <class MatrixT>
-void AbstractSection<MatrixT>::computeDP(
+void AbstractSection<MatrixT>::computeDPForAffineSections(
       const VectorType& Px,
       const MatrixType& derivativeOfFlow,
       const HessianType& hessianOfFlow,

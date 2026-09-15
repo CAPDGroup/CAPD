@@ -71,11 +71,11 @@ public:
   virtual ScalarType gradientByVector(const VectorType& x, const VectorType& u) const {
     return this->gradient(x)*u;
   }
-  /** This is very important function.
+  /** This is a very important function.
       If it returns true, class PoincareMap delegates computation of value of section(set) to the section.
-      Otherwise it is assumed that the set has more information to compute value of section(set) in most optimal way.
+      Otherwise it is assumed that the set has more information to compute value of section(set) in a more optimal way.
       This is quite natural as the set knows its own representation.
-      This function returns true for instance if the PoincareSection is given by x_i=c, where x_i is i-th coordinate and c is constant.
+      This function returns true for instance if the PoincareSection is given by x_i=c, where x_i is the i-th coordinate and c is a constant.
   */
   virtual bool isSpecialSection() const{
     return false;
@@ -124,6 +124,32 @@ public:
       @note all input and output parameters are Taylor coefficients, not derivatives!
   */
   virtual void computeDP(
+          const VectorType& Px,
+          const MatrixType& derivativeOfFlow,
+          const HessianType& hessianOfFlow,
+          const VectorType& fieldOnPx,
+          const VectorType& d2Phidt2,
+          const MatrixType& derOfVectorFieldOnPx,
+          MatrixType& DP,
+          HessianType& D2P,
+          VectorType& dT,
+          MatrixType& d2T
+      ) const = 0;
+
+protected:
+  /** Simultaneous computation of first and second Taylor coefficients of return time and Poincare map.
+      @param[in] Px - value of Poincare map
+      @param[in] derivativeOfFlow - solution to first variational equation computed at return time
+      @param[in] hessianOfFlow - solution to first variational equation computed at return time
+      @param[in] fieldOnPx - vector field evaluated at (t(Px),Px)
+      @param[out] DP - computed derivative of Poincare map
+      @param[out] D2P - computed second order Taylor coefficients of Poincare map
+      @param[out] dT - computed gradient of return time
+      @param[out] d2T - computed second order Taylor coefficients of return time
+      @param[in] returnTime - return time to the section
+      @note all input and output parameters are Taylor coefficients, not derivatives!
+  */
+  virtual void computeDPForAffineSections(
           const VectorType& Px,
           const MatrixType& derivativeOfFlow,
           const HessianType& hessianOfFlow,
