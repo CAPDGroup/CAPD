@@ -88,7 +88,7 @@ class BaseSolutionCurve : public ParametricCurve<typename CurveT::MatrixType>
     if(pieces.size()>0){
       return leftBound(domain[domain.size()-1]);
     }else
-      throw std::domain_error("ParametricCurve::getLeftDomain() - domain is empty.");
+      throw std::domain_error("ParametricCurve::getRightDomain() - domain is empty.");
   }
 
   virtual void add(const BaseCurve& c){
@@ -105,19 +105,17 @@ protected:
 private:
   void clearCurveContainer()
   {
-    for(typename CurveContainer::size_type i = 0; i < pieces.size(); ++i)
-    {
-      delete pieces[i];
-      pieces[i] = 0;
-    }
+    for(auto* piece : pieces)
+      delete piece;
+    pieces.clear();
   }
 
   void cloneCurveContainer(const CurveContainer& pieces)
   {
     this->pieces.reserve(pieces.size());
-    for(typename CurveContainer::size_type i = 0; i < pieces.size(); ++i)
+    for(auto* piece : pieces)
     {
-      this->pieces.push_back( new BaseCurve( *(pieces[i]) ) );
+      this->pieces.push_back( new BaseCurve(*piece) );
     }
   }
 };
@@ -238,7 +236,7 @@ public:
     Real left = leftBound(h);
     Real right = rightBound(h);
     if(!(left>=this->getLeftDomain() and right<=this->getRightDomain() and this->pieces.size()>0))
-        throw std::domain_error("SolutionCurve::operator()(ScalarType) - argument is out of the domain.");
+        throw std::domain_error("SolutionCurve::checkAndFind - time argument is out of the domain.");
 
     // TODO
     // try to implement binary search
@@ -248,8 +246,8 @@ public:
     while(this->domain[rightI]<right) rightI++;
   }
 
-  template<class ResultType, class MethodPointer>
-  ResultType eval(const ScalarType& h,MethodPointer p) const {
+  template<class MethodPointer>
+  auto eval(const ScalarType& h,MethodPointer p) const {
     unsigned leftI,rightI;
     checkAndFind(h,leftI,rightI);
 
@@ -261,7 +259,7 @@ public:
 
     // evaluate at first subdomain
     ScalarType t(l,r);
-    ResultType result = (this->pieces[leftI]->*p)(t);
+    auto result = (this->pieces[leftI]->*p)(t);
 
     while(++leftI<rightI){
       r = capd::min(rightBound(right-this->domain[leftI]),this->pieces[leftI]->getRightDomain());
@@ -272,24 +270,24 @@ public:
   }
 
   VectorType timeDerivative(const ScalarType& h) const{
-    return this->eval<VectorType>(h,&BaseCurve::timeDerivative);
+    return this->eval(h,&BaseCurve::timeDerivative);
   }
 
   VectorType operator()(const ScalarType& h) const{
-    return this->eval<VectorType>(h,&BaseCurve::operator());
+    return this->eval(h,&BaseCurve::operator());
   }
 
   /// @deprecated
   MatrixType operator[](const ScalarType& h) const{
-    return this->eval<MatrixType>(h,&BaseCurve::operator[]);
+    return this->eval(h,&BaseCurve::operator[]);
   }
 
   MatrixType derivative(const ScalarType& h) const{
-    return this->eval<MatrixType>(h,&BaseCurve::derivative);
+    return this->eval(h,&BaseCurve::derivative);
   }
 
   HessianType hessian(const ScalarType& h) const{
-    return this->eval<HessianType>(h,&BaseCurve::hessian);
+    return this->eval(h,&BaseCurve::hessian);
   }
 };
 
