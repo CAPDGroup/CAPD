@@ -70,6 +70,7 @@ public:
     return s.evalAt(*this);
   }
 
+  using AbstractSection<MatrixT>::computeDP;
   void computeDP(
           const VectorType& Px,
           const MatrixType& derivativeOfFlow,

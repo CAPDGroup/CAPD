@@ -83,6 +83,7 @@ public:
     return ((VectorType)s)[i]-c;
   }
 
+  using AbstractSection<MatrixT>::computeDP;
   void computeDP(
           const VectorType& Px,
           const MatrixType& derivativeOfFlow,

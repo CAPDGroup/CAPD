@@ -87,6 +87,7 @@ public:
      throw std::runtime_error("NonlinearSection::computeDT is not implemented for jets");
   }
   
+  using AbstractSection<MatrixT>::computeDP;
   void computeDP(
         const VectorType& Px,
         const MatrixType& derivativeOfFlow,
