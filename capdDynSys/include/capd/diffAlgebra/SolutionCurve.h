@@ -68,9 +68,11 @@ class BaseSolutionCurve : public ParametricCurve<typename CurveT::MatrixType>
 
   BaseSolutionCurve& operator= (const BaseSolutionCurve<CurveT>& solution_curve)
   {
-    clearCurveContainer();
-    this->domain = solution_curve.domain;
-    cloneCurveContainer(solution_curve.pieces);
+    if(this != &solution_curve){
+      clearCurveContainer();
+      this->domain = solution_curve.domain;
+      cloneCurveContainer(solution_curve.pieces);
+    }
     return *this;
   }
 
