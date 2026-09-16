@@ -41,13 +41,15 @@ BasicC2Curve<MatrixT>::BasicC2Curve(const BasicC2Curve& c)
 template<class MatrixT>
 BasicC2Curve<MatrixT>& BasicC2Curve<MatrixT>::operator=(const BasicC2Curve& c)
 {
-  if(&c == this)
-    return *this;
-  this->deallocate();
-  this->c2Deallocate();
-  this->allocate();
-  this->c2Allocate();
-  this->copyData(c);
+  if(&c != this){
+    this->deallocate();
+    this->c2Deallocate();
+    this->m_dimension = c.m_dimension;
+    this->m_order = c.m_order;
+    this->allocate();
+    this->c2Allocate();
+    this->copyData(c);
+  }
   return *this;
 }
 
