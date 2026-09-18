@@ -57,7 +57,7 @@ void split(IntervalObject1& v, IntervalObject2& rv)
 template<typename IntervalObject, typename CenterType>
 inline
 void split(const IntervalObject & v, CenterType& center, IntervalObject & diameter) {
-  if((v.dimension()!=center.dimension()) && (v.dimension()!=diameter.dimension()))
+  if((v.dimension()!=center.dimension()) || (v.dimension()!=diameter.dimension()))
     throw std::range_error("Unequal dimensions in function capd::vectalg::split");
   split(v.begin(),v.end(),center.begin(),diameter.begin());
 }
@@ -123,9 +123,7 @@ template<typename IntervalObject1, typename IntervalObject2, typename IntervalOb
 inline
 bool intersection(const IntervalObject1 &v1, const IntervalObject2 &v2, IntervalObject3 &result)
 {
-  if(v1.dimension()!=v2.dimension())
-    throw std::range_error("Unequal dimensions in function capd::vectalg::intersection");
-  if(v1.dimension()!=result.dimension())
+  if(v1.dimension()!=v2.dimension() || v1.dimension()!=result.dimension())
     throw std::range_error("Unequal dimensions in function capd::vectalg::intersection");
 
   return intersection(v1.begin(),v2.begin(),result.begin(),result.end());
