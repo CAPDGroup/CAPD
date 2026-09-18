@@ -82,11 +82,10 @@ template<typename VectorType, typename MatrixType>
 typename MaxNorm<VectorType, MatrixType>::ScalarType
 MaxNorm<VectorType, MatrixType>::operator()(const MatrixType &A) const {
   ScalarType maximum(0.);
-  for(size_type i=0;i<A.numberOfRows();i++) {
-    // Computes sum of absolute values of entries in given row
+  for(size_type i=1;i<=A.numberOfRows();i++) {
     ScalarType rowSum(0.);
-    for(size_type j=0; j<A.numberOfColumns(); ++j){
-      rowSum += capd::abs(A[i][j]);
+    for(size_type j=1; j<=A.numberOfColumns(); ++j){
+      rowSum += capd::abs(A(i,j));
     }
     maximum = capd::max(maximum, rowSum);  
   }
@@ -117,12 +116,15 @@ SumNorm<VectorType, MatrixType>::operator()(const VectorType &x) const {
 template<typename VectorType, typename MatrixType>
 typename SumNorm<VectorType, MatrixType>::ScalarType
 SumNorm<VectorType, MatrixType>::operator()(const MatrixType &A) const {
-  VectorType x(A.numberOfRows());
-  MaxNorm<VectorType, MatrixType> maxNorm;
-  SumNorm<VectorType, MatrixType> sumNorm;
-  for(size_type i=0;i<A.numberOfRows();++i)
-    x[i] = sumNorm(A.column(i));
-  return maxNorm(x);
+  ScalarType maximum(0.);
+  for(size_type j=1;j<=A.numberOfColumns();j++) {
+    ScalarType columnSum(0.);
+    for(size_type i=1; i<=A.numberOfRows(); ++i){
+      columnSum += capd::abs(A(i,j));
+    }
+    maximum = capd::max(maximum, columnSum);  
+  }
+  return maximum;
 }
 
 template<typename VectorType, typename MatrixType>
