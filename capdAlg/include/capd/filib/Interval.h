@@ -568,7 +568,7 @@ public:
      BoundType m = A_iv.m_interval.mid();
      Interval t = A_iv - m;
      A_rMid = Interval(m);
-     A_diam = ( t.leftBound() > t.rightBound()) ? t.leftBound() : t.rightBound();
+     A_diam = ( -t.leftBound() > t.rightBound()) ? -t.leftBound() : t.rightBound();
   }
 
 
@@ -577,7 +577,7 @@ public:
     BoundType m = A_rIv.m_interval.mid();
         Interval t = A_rIv - m;
         A_rIv = Interval(m);
-        A_diam = ( t.leftBound() > t.rightBound()) ? t.leftBound() : t.rightBound();
+        A_diam = ( -t.leftBound() > t.rightBound()) ? -t.leftBound() : t.rightBound();
   }
 
 
