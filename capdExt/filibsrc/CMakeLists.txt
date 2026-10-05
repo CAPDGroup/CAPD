@@ -12,9 +12,12 @@ add_library(${PROJECT_NAME})
 target_compile_options(${PROJECT_NAME} PUBLIC -O2 -frounding-math)
 target_compile_options(${PROJECT_NAME} PRIVATE -DFILIB_EXTENDED)
 
-if("${CMAKE_HOST_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
+if("${CMAKE_HOST_SYSTEM_PROCESSOR}" STREQUAL "x86_64"
+   OR (APPLE AND "${CMAKE_OSX_ARCHITECTURES}" STREQUAL "x86_64"))
     message(STATUS "Processor arch: 64-bit x86 (SSE)")
     target_compile_options(${PROJECT_NAME} PUBLIC -DFILIB_HAVE_SSE)
+elseif(APPLE AND "${CMAKE_HOST_SYSTEM_PROCESSOR}" STREQUAL "arm64")
+    message(FATAL_ERROR "filib needs x86 SSE. On Apple Silicon, configure with -DCMAKE_OSX_ARCHITECTURES=x86_64 (runs under Rosetta 2).")
 else()
     message(FATAL_ERROR "Unknown or unsupported processor architecture.")
 endif()
