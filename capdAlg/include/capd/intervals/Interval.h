@@ -190,6 +190,7 @@ class Interval {
   static T_Bound computeExpError();
   static T_Bound computeSinError();
   static T_Bound computeAtanError();
+  static T_Bound computeMittagLeffler12Error();
 
   /// Taylor series length used in the EXP function
   static const int S_nExpTaylorOrder = 20;
@@ -202,6 +203,9 @@ class Interval {
 
   /// Taylor series length used in the ATAN function, it MUST be an ODD value
   static const int S_nAtanTaylorOrder = 21;
+
+  /// Taylor series length used in the mittagLeffler12 function
+  static const int S_nMittagLeffler12TaylorOrder = 16;
 
   // Definitions of friend functions: relations and arithmetic operators
   //  between interval and BoundType
@@ -329,6 +333,10 @@ Interval<T_Bound, T_Rnd> exp(const Interval<T_Bound, T_Rnd> &x);
 // natural logarithm of x
 template<typename T_Bound, typename T_Rnd>
 Interval<T_Bound, T_Rnd> log(const Interval<T_Bound, T_Rnd> &x);
+
+// Mittag-Leffler function E_{1,2}(x) = (exp(x)-1)/x, with E_{1,2}(0) = 1
+template<typename T_Bound, typename T_Rnd>
+Interval<T_Bound, T_Rnd> mittagLeffler12(const Interval<T_Bound, T_Rnd> &x);
 
 // solves inclusion a+[0,t]*p\subset c for t
 template<typename T_Bound, typename T_Rnd>
@@ -528,6 +536,7 @@ public:
   static constexpr inline Interval _atan(const Interval& x) {	return atan(x);  }
   static constexpr inline Interval _asin(const Interval& x) {	return asin(x);  }
   static constexpr inline Interval _acos(const Interval& x) {	return acos(x);  }
+  static constexpr inline Interval _mittagLeffler12(const Interval& x) {	return mittagLeffler12(x);  }
 };
 
 } // namespace capd

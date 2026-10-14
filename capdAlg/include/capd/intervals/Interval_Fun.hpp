@@ -1039,6 +1039,125 @@ Interval< T_Bound, T_Rnd> solveAffineInclusion(const Interval< T_Bound, T_Rnd> &
   return(t);
 } // solveAffineInclusion(Interval&, Interval&, Interval&, int&)
 
+//////////////////////////////////////////////////////////////////////
+//      the Mittag-Leffler E_{1,2} function
+//      E_{1,2}(x) = (exp(x) - 1) / x,  E_{1,2}(0) = 1
+//      This is an entire, strictly increasing function.
+//////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+//  computeMittagLeffler12Error
+///
+/// Remainder bound for the Taylor series S_N(x) = sum_{k=0}^{N} x^k/(k+1)!
+/// For |x| <= tau < 1:  |R_N(x)| <= tau^{N+1} / ((N+2)! * (1 - tau))
+///////////////////////////////////////////////////////////////////////////////
+template < typename T_Bound, typename T_Rnd>
+T_Bound Interval< T_Bound, T_Rnd>::computeMittagLeffler12Error()
+{
+  const int N = S_nMittagLeffler12TaylorOrder;
+  const T_Bound tau = 0.5;
+
+  // compute (N+2)! with rounding down (we divide by it)
+  T_Rnd::roundDown();
+  T_Bound factorial = 1;
+  for (int i = 2; i <= N + 2; ++i)
+    factorial *= (T_Bound) i;
+
+  // compute tau^{N+1} / ((N+2)! * (1 - tau)) with rounding up
+  T_Rnd::roundUp();
+  T_Bound tauPow = 1;
+  for (int i = 0; i <= N; ++i)
+    tauPow *= tau;
+
+  return tauPow / (factorial * (1 - tau));
+}
+
+//////////////////////////////////////////////////////////////////////
+//   scaledMittagLeffler12
+///
+/// Computes S_N(x) = sum_{k=0}^{N} x^k / (k+1)! via Horner's method:
+///   r_N = 1,  r_i = 1 + r_{i+1} * x / (i+2),  result = r_0 / 1! (which is r_0)
+/// Wait: let's verify. S_N(x) = sum_{k=0}^N x^k/(k+1)!
+///   = 1 + x/2! + x^2/3! + ... + x^N/(N+1)!
+/// Horner: r_N = 1/(N+1)!, r_{N-1} = 1/N! + x * r_N, ...
+/// Actually the simpler Horner from the PDF:
+///   r_N = 1,  r_i = 1 + r_{i+1} * x/(i+2)  for i=N-1,...,0
+///   then S_N(x) = r_0
+///
+/// @remark rounding mode should be set before calling
+//////////////////////////////////////////////////////////////////////
+template <typename T_Bound>
+T_Bound scaledMittagLeffler12(T_Bound x, int taylorOrder)
+{
+  T_Bound r = 1;
+  for (int i = taylorOrder - 1; i >= 0; --i)
+    r = 1 + r * x / (T_Bound)(i + 2);
+  return r;
+}
+
+//////////////////////////////////////////////////////////////////////
+//   mittagLeffler12
+///
+/// returns E_{1,2}(x) = (exp(x)-1)/x for interval x
+/// Uses monotonicity: E_{1,2}([a,b]) = [E_{1,2}(a), E_{1,2}(b)]
+/// Near zero (|t| <= 0.5): Taylor series with rigorous error bound
+/// Away from zero: direct computation (exp(t)-1)/t
+//////////////////////////////////////////////////////////////////////
+template < typename T_Bound, typename T_Rnd>
+Interval< T_Bound, T_Rnd> mittagLeffler12(const Interval< T_Bound, T_Rnd> &x)
+{
+  typedef Interval< T_Bound, T_Rnd> IType;
+  static T_Bound S_ML12Error = IType::computeMittagLeffler12Error();
+  const T_Bound tau = 0.5;
+
+  T_Bound left_x = x.leftBound();
+  T_Bound right_x = x.rightBound();
+  T_Bound left_res, right_res;
+
+  // Compute lower bound: E_{1,2}(left_x) rounded down
+  if(left_x == 0)
+  {
+    left_res = 1;
+  }
+  else if(left_x > -tau && left_x < tau)
+  {
+    // Taylor series with error subtracted
+    T_Rnd::roundDown();
+    left_res = scaledMittagLeffler12(left_x, IType::S_nMittagLeffler12TaylorOrder) - S_ML12Error;
+  }
+  else
+  {
+    // Direct: (exp(t) - 1) / t
+    // For left_x > 0: lower bound of exp is needed, then subtract 1, divide by upper bound of left_x (=left_x)
+    // For left_x < 0: upper bound of exp is needed, then subtract 1 (gives negative), divide by left_x (negative) gives positive...
+    // Simplest correct approach: compute point interval exp, subtract 1, divide
+    IType pt(left_x);
+    IType result = (exp(pt) - IType(1)) / pt;
+    left_res = result.leftBound();
+  }
+
+  // Compute upper bound: E_{1,2}(right_x) rounded up
+  if(right_x == 0)
+  {
+    right_res = 1;
+  }
+  else if(right_x > -tau && right_x < tau)
+  {
+    // Taylor series with error added
+    T_Rnd::roundUp();
+    right_res = scaledMittagLeffler12(right_x, IType::S_nMittagLeffler12TaylorOrder) + S_ML12Error;
+  }
+  else
+  {
+    IType pt(right_x);
+    IType result = (exp(pt) - IType(1)) / pt;
+    right_res = result.rightBound();
+  }
+
+  T_Rnd::roundNearest();
+  return IType(left_res, right_res);
+}
+
 }} // namespace capd::intervals
 
 #endif // CAPD_INTERVAL_INTERVALFUN_HPP
