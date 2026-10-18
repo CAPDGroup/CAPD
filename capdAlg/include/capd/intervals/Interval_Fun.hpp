@@ -444,7 +444,7 @@ Interval< T_Bound, T_Rnd> sin (const Interval< T_Bound, T_Rnd> &x)
   else
   {
     T_Bound temp = (-x.leftBound()) / pi2.rightBound() + 1;
-    if(temp < std::numeric_limits<long>::min())
+    if(temp > std::numeric_limits<long>::max())
       return Interval< T_Bound, T_Rnd> (-1, 1);
     k = - toLongInt(temp);
   }

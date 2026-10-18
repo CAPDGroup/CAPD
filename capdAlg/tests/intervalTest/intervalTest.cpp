@@ -162,6 +162,13 @@ BOOST_AUTO_TEST_CASE(functions)
     BOOST_CHECK_SMALL(cos_x.leftBound() - sqrt2 / 2, 3.4e-16);
     BOOST_CHECK_SMALL(cos_x.rightBound() - sqrt3 / 2, 4.5e-16);
 
+    interval posbigx(+1e20);
+    interval negbigx(-1e20);
+    BOOST_CHECK_EQUAL(sin(posbigx), interval(-1.0, 1.0));
+    BOOST_CHECK_EQUAL(sin(negbigx), interval(-1.0, 1.0));
+    BOOST_CHECK_EQUAL(cos(posbigx), interval(-1.0, 1.0));
+    BOOST_CHECK_EQUAL(cos(negbigx), interval(-1.0, 1.0));
+
     auto tan_x = tan(x);
     BOOST_CHECK_SMALL(tan_x.leftBound() - 1 / sqrt3, 8.9e-16);
     BOOST_CHECK_SMALL(tan_x.rightBound() - 1, 8.9e-16);
