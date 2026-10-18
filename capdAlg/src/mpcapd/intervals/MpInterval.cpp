@@ -57,13 +57,10 @@ MpInterval::BoundType quadrant(const MpInterval::BoundType &x) {
 }
 
 int modulo4(MpReal x) {
-  while(x > 32000)
-    x = x - MpReal(64000);
-  while(x < -32000)
-    x = x + MpReal(64000);
-  //the revised codes by Qingdu Li
-  int ir= toInt(x) % 4;
-  ir = ir<0 ? ir+4 : ir;
+  x /= MpReal(4.0); // exact a power-of-two division, at x's precision
+  x = frac(x) * MpReal(4.0); // the signed remainder in {-3,..,+3}
+  int ir = toInt(x);
+  ir = ir < 0 ? ir + 4 : ir;
   return ir;
 }
 
