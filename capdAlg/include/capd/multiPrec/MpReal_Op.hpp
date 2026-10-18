@@ -510,7 +510,7 @@ inline std::ostream& MpReal::put(std::ostream& o, RoundingMode rnd,
   if(--e) {
     o << "e" << e;
   }
-   o << " ";
+ //  o << " ";
   return o;
 }
 
