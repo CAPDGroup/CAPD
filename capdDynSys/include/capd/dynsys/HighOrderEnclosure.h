@@ -165,7 +165,9 @@ private:
     const static Scalar mulFactor(-2.,2.);
     for( ;phi!=phiEnd;++phi,++remCoeff,++out_enc,++out_remEnc)
     {
-      *out_remEnc = mulFactor*(stepToOrder*(*remCoeff)+epsilon);
+      *out_remEnc = mulFactor*(stepToOrder*(*remCoeff)+epsilon
+        // let the inclusion check pass where all remainder coefficients vanish (e.g. at an equilibrium)
+        +TypeTraits<typename Scalar::BoundType>::epsilon()*capd::abs(*phi).leftBound()/4);
       *out_enc = *phi + *out_remEnc;
     }
   }
