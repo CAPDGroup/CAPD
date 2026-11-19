@@ -258,12 +258,11 @@ computeNextStep(
 
   for(int i = order; (i > order - numberOfTerms) && (i > 0); i--) {
     Real coeffNorm = rightBound(solver.getCoeffNorm(i,degree));
-    capd::rounding::DoubleRounding::roundNearest();
+    capd::rounding::ScopedRounding nearest; // exp and log below are plain double computations; the previous mode is restored at the end of the iteration
     if(isSingular(coeffNorm)) continue;
     Real errorTerm = epsilon/ coeffNorm;
     Real step = exp(log(errorTerm)/i);
     optStep = capd::min(optStep, step);
-    capd::rounding::DoubleRounding::roundDefault();
   }
 
   optStep = capd::max(optStep, minTimeStep);

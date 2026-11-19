@@ -15,6 +15,7 @@
 #define CAPD_ROUNDING_DOUBLEROUNDING_H
 
 // This allows automatic detection of operating system and compiler
+#include <cfenv>
 #include "capd/settings/archSetting.h"
 //#include "capd/operatingSystemSetting.h"
 //#include "capd/compilerSetting.h"
@@ -57,6 +58,54 @@ class DoubleRounding{
     static RoundingMode test();  ///<  Returns the actual rounding mode
     
     static bool isWorking();  ///<  Tests that all rounding modes works correctly. Returns false is they don't
+};
+
+//////////////////////////////////////////////////////////////////////////////
+//   ScopedRounding
+///
+///  RAII guard for the rounding mode of double numbers. The constructor remembers the current
+///  rounding mode of the FPU and switches to the requested one (round to nearest by default),
+///  the destructor restores the remembered mode - also when the scope is left by 'continue',
+///  'return' or an exception. Use it around plain double computations (std::exp, std::log, file I/O, ...)
+///  that must be done with round to nearest, in code that may be called in any rounding mode
+///  (e.g. round up, which is required by TIGHT intervals between their operations):
+///
+///      { capd::rounding::ScopedRounding nearest;   // round to nearest here
+///        double step = std::exp(std::log(x)/n); }  // the previous mode is back here
+//////////////////////////////////////////////////////////////////////////////
+class ScopedRounding{
+  public:
+    explicit ScopedRounding(RoundingMode mode = RoundNearest) : m_saved(current()) {
+      set(mode);
+    }
+    ~ScopedRounding(){
+      set(m_saved);
+    }
+    ScopedRounding(const ScopedRounding&) = delete;
+    ScopedRounding& operator=(const ScopedRounding&) = delete;
+
+    /// the rounding mode currently set in the FPU (RoundUnknown if it is none of the four modes)
+    static RoundingMode current(){
+      switch(std::fegetround()){
+        case FE_TONEAREST:  return RoundNearest;
+        case FE_UPWARD:     return RoundUp;
+        case FE_DOWNWARD:   return RoundDown;
+        case FE_TOWARDZERO: return RoundCut;
+        default:            return RoundUnknown;
+      }
+    }
+    /// sets the given rounding mode (RoundUnknown leaves the FPU unchanged)
+    static void set(RoundingMode mode){
+      switch(mode){
+        case RoundNearest: DoubleRounding::roundNearest(); break;
+        case RoundUp:      DoubleRounding::roundUp();      break;
+        case RoundDown:    DoubleRounding::roundDown();    break;
+        case RoundCut:     DoubleRounding::roundCut();     break;
+        default: ;
+      }
+    }
+  private:
+    RoundingMode m_saved;
 };
 
 #if CAPD_CPU_ARCH==CAPD_CPU_ARCH_SPARC

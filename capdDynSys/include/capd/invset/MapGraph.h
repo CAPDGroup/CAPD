@@ -16,6 +16,7 @@
 #ifndef CAPD_INVSET_MAPGRAPH_H
 #define CAPD_INVSET_MAPGRAPH_H
 #include <limits>
+#include "capd/rounding/DoubleRounding.h"
 #include "capd/vectalg/Vector.hpp"
 #include "capd/invset/CubicalMap.h"
 #include "capd/invset/Graph.h"
@@ -101,7 +102,7 @@ public:
   }
 
   void saveCoordSys(const char* fileName) const {
-      capd::rounding::DoubleRounding::roundNearest();
+      capd::rounding::ScopedRounding nearest; // file output uses plain doubles; the previous mode is restored on return
       std::ofstream file;
       file.open(fileName);
       file.precision(20);
@@ -119,11 +120,10 @@ public:
           file << "\n";
       }
       file.close();
-      capd::rounding::DoubleRounding::roundDefault();
     }
 
     void loadCoordSys(const char* fileName) {
-      capd::rounding::DoubleRounding::roundNearest();
+      capd::rounding::ScopedRounding nearest; // file output uses plain doubles; the previous mode is restored on return
       std::ifstream file;
       file.open(fileName);
       int dim = this->getResolution().dimension();
@@ -140,7 +140,6 @@ public:
         file.get();
       } while(!file.eof());
       file.close();
-      capd::rounding::DoubleRounding::roundDefault();
     }
 };
 
