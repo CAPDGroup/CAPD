@@ -1,0 +1,4 @@
+[submodule "capdExt/tight"]
+	path = capdExt/tight
+	url = https://gitlab.com/minimize-solve/tight.git
+	ignore = untracked
