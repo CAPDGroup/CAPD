@@ -49,6 +49,11 @@ class DoubleRounding{
     
     static void roundCut();      ///<  Sets rounding towards zero mode
 
+    /// Sets the rounding mode in which the selected interval library expects the FPU between its operations:
+    /// round up for TIGHT (__USE_TIGHT__, it relies on the FPU being always in this mode), round to nearest otherwise.
+    /// Code that needs only an approximate double arithmetic should call this function instead of roundNearest().
+    static void roundDefault();
+
     static RoundingMode test();  ///<  Returns the actual rounding mode
     
     static bool isWorking();  ///<  Tests that all rounding modes works correctly. Returns false is they don't

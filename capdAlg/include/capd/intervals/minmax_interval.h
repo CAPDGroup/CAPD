@@ -56,4 +56,15 @@ class Interval;
 } // namespace capd
 #endif // __USE_FILIB__
 
+#ifdef  __USE_TIGHT__
+
+namespace capd{
+namespace tight{
+
+class Interval;
+
+} // end of namespace tight
+} // namespace capd
+#endif // __USE_TIGHT__
+
 #endif // CAPD_FILE_CAPDAUX_AUXIL_MINMAX_INTERVAL_H

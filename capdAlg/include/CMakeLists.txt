@@ -18,6 +18,7 @@ install_headers(
     capd/fields/rationalNumber.h
     capd/fields/lib.h
     capd/filib/Interval.h
+    capd/tight/Interval.h
     capd/intervals/DoubleInterval.h
     capd/intervals/IComplex.h
     capd/intervals/intra/interval_atan2.h

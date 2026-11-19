@@ -56,6 +56,16 @@ typedef ::capd::filib::Interval<double, ::filib::native_directed, ::filib::i_mod
 
 }
 
+#elif defined(__USE_TIGHT__)
+
+#include "capd/tight/Interval.h"
+namespace capd
+{
+
+typedef ::capd::tight::Interval  DInterval;
+
+}
+
 #else
 
 #error "No interval type selected!"

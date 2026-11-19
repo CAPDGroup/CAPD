@@ -188,8 +188,8 @@ void DoubleRounding::initFpUnit()
     #endif
   #endif
 
-  //finally we turn on rounding up, if necessary
-  #ifdef UP_ROUNDING
+  //finally we turn on rounding up, if necessary (TIGHT intervals require it)
+  #if defined(UP_ROUNDING) || defined(__USE_TIGHT__)
     roundUp();
   #else
     roundNearest();          // called to reset other FPU flags on x86/x64
@@ -198,6 +198,15 @@ void DoubleRounding::initFpUnit()
 }
 
  
+void DoubleRounding::roundDefault()
+{
+  #ifdef __USE_TIGHT__
+    roundUp();
+  #else
+    roundNearest();
+  #endif
+}
+
 DoubleRounding::DoubleRounding()
 {
    initFpUnit();

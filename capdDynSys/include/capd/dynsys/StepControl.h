@@ -263,11 +263,13 @@ computeNextStep(
     Real errorTerm = epsilon/ coeffNorm;
     Real step = exp(log(errorTerm)/i);
     optStep = capd::min(optStep, step);
+    capd::rounding::DoubleRounding::roundDefault();
   }
 
   optStep = capd::max(optStep, minTimeStep);
- // if(clearMantissaFlag)
-    optStep = clearMantissaBits(optStep);
+  // if(clearMantissaFlag)
+  optStep = clearMantissaBits(optStep);
+
 
   // note: solver.getMaxStep() might be a desired nondegenerated interval! Do not change it to leftBound.
   return optStep < solver.getMaxStep() ? ScalarType(optStep) :  solver.getMaxStep();

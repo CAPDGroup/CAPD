@@ -25,6 +25,9 @@
 #ifdef __USE_FILIB__
 #include "capd/filib/Interval.h"
 #endif
+#ifdef __USE_TIGHT__
+#include "capd/tight/Interval.h"
+#endif
 
 namespace capd {
 

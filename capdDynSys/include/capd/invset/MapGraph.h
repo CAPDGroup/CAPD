@@ -119,6 +119,7 @@ public:
           file << "\n";
       }
       file.close();
+      capd::rounding::DoubleRounding::roundDefault();
     }
 
     void loadCoordSys(const char* fileName) {
@@ -139,6 +140,7 @@ public:
         file.get();
       } while(!file.eof());
       file.close();
+      capd::rounding::DoubleRounding::roundDefault();
     }
 };
 

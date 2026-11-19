@@ -8,7 +8,11 @@ include(CAPDVersion.txt)
 include(CAPD_options)
 include(CAPD_functions)
 
-set(CMAKE_CXX_STANDARD 17)
+if (${CAPD_INTERVAL_TYPE} STREQUAL "TIGHT")
+    set(CMAKE_CXX_STANDARD 20) # required by the TIGHT library
+else()
+    set(CMAKE_CXX_STANDARD 17)
+endif()
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 add_library(${PROJECT_NAME})
@@ -24,6 +28,21 @@ elseif(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
     target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_FILIB__)
     target_link_libraries(${PROJECT_NAME} PUBLIC filib)
 
+
+elseif(${CAPD_INTERVAL_TYPE} STREQUAL "TIGHT")
+
+    # TIGHT: correctly rounded intervals; it fetches its own dependencies (NFG, CORE-MATH) with CPM
+    if(NOT EXISTS "${CAPD_TIGHT_DIR}/CMakeLists.txt")
+        message(FATAL_ERROR "CAPD_INTERVAL_TYPE=TIGHT requires CAPD_TIGHT_DIR pointing to the TIGHT sources (now: ${CAPD_TIGHT_DIR})")
+    endif()
+    if(NOT DEFINED ENV{CPM_SOURCE_CACHE})
+        set(ENV{CPM_SOURCE_CACHE} "${CAPD_TIGHT_DIR}/.cpm")
+    endif()
+    set(TIGHT_CORE_MATH ON CACHE BOOL "" FORCE)
+    add_subdirectory(${CAPD_TIGHT_DIR} ${CMAKE_BINARY_DIR}/tight EXCLUDE_FROM_ALL)
+    add_dependencies(${PROJECT_NAME} tight)
+    target_compile_options(${PROJECT_NAME} PUBLIC -D__USE_TIGHT__ -DTIGHT_CORE_MATH)
+    target_link_libraries(${PROJECT_NAME} PUBLIC tight::tight)
 
 elseif(${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
 
@@ -99,6 +118,12 @@ elseif(${CAPD_INTERVAL_TYPE} STREQUAL "FILIB")
         FILE "${CMAKE_CURRENT_BINARY_DIR}/capd-config.cmake"
     )
 
+elseif (${CAPD_INTERVAL_TYPE} STREQUAL "TIGHT")
+
+    # TIGHT and its dependencies are built in-tree (static); no CMake package is exported.
+    # Use bin/capd-config (pkg-config) to get flags for user programs.
+    message(STATUS "CAPD with TIGHT: capd-config.cmake is not exported, use bin/capd-config")
+
 elseif (${CAPD_INTERVAL_TYPE} STREQUAL "CXSC")
 
     install(TARGETS
@@ -120,8 +145,10 @@ else()
 
 endif()
 
+if (NOT "${CAPD_INTERVAL_TYPE}" STREQUAL "TIGHT")
 install(EXPORT
         capd-config
         DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/capd"
         NAMESPACE capd::
     )
+endif()
