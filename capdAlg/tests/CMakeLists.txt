@@ -3,6 +3,7 @@ add_subdirectory(complex)
 add_subdirectory(intervalTest)
 add_subdirectory(intvtst)
 add_subdirectory(matrixAlgorithms)
+add_subdirectory(tightSetupTest)
 add_subdirectory(vecttst)
 
 if ( ${CAPD_ENABLE_MULTIPRECISION} )

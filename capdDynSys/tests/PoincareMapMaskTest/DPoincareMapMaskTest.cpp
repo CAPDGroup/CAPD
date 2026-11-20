@@ -174,6 +174,7 @@ void doTest(){
   solver.setStep(1e-2);
   DCoordinateSection section(3,0);
   PM pm(solver,section);
+  capd::rounding::ScopedRounding nearest; // TIGHT leaves the FPU in round up
 
   Test::computePM(pm);
   Test::checkNoMask();
@@ -185,7 +186,10 @@ void doTest(){
 
 // --------------------------------------------------------------
 
-BOOST_AUTO_TEST_SUITE(TestSuite)
+// tests of plain double computations: they need round to nearest, while TIGHT keeps the FPU in round up
+#include "capd/rounding/DoubleRounding.h"
+struct NearestRoundingFixture { capd::rounding::ScopedRounding nearest; };
+BOOST_FIXTURE_TEST_SUITE(TestSuite, NearestRoundingFixture)
 
 BOOST_AUTO_TEST_CASE(xC1Test)
 {
@@ -209,6 +213,7 @@ BOOST_AUTO_TEST_CASE(xCnTest)
 }
 
 void normalFormTest(LDCnPoincareMap& pm){
+  capd::rounding::ScopedRounding nearest; // TIGHT leaves the FPU in round up
   // numerical approximation of an elliptic periodic point
   LDVector x({0.,0.24464743045793616028,0.});
   const int degree = 5;
@@ -239,8 +244,14 @@ void normalFormTest(LDCnPoincareMap& pm){
   // Here we compute normal form coefficients and check if the imaginary part is close to zero.
   capd::vectalg::Vector<std::complex<double>,0> nForm = capd::normalForms::computePlanarEllipticNormalForm(d);
   std::cout << nForm[1] << ", " << nForm[2] << std::endl;
+#ifdef __USE_TIGHT__
+  // TIGHT build: larger rounding noise of plain floating point computations
+  BOOST_CHECK_SMALL(nForm[1].imag(),1e-13);
+  BOOST_CHECK_SMALL(nForm[2].imag(),1e-11);
+#else
   BOOST_CHECK_SMALL(nForm[1].imag(),1e-14);
   BOOST_CHECK_SMALL(nForm[2].imag(),2e-12);
+#endif
 }
 
 BOOST_AUTO_TEST_CASE(xNormalFormTest)

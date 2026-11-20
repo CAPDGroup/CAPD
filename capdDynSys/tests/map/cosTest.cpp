@@ -27,7 +27,7 @@ std::vector<double> computeCosDer(MapType::VectorType & u){
   // W[n_,m_]:=D[Cos[x*y+x],{x,n},{y,m}]/(n!m!)//FullSimplify
   // Table[Table[W[m-n,n]//CForm,{n,0,m}],{m,0,5}]//Flatten
 
-  capd::rounding::DoubleRounding::roundNearest();
+  capd::rounding::ScopedRounding nearest;
   double r[] = {Cos(x*(1 + y)),-((1 + y)*Sin(x*(1 + y))),-(x*Sin(x*(1 + y))),-(Power(1 + y,2)*Cos(x*(1 + y)))/2.,-(x*(1 + y)*Cos(x*(1 + y))) - Sin(x*(1 + y)),-(Power(x,2)*Cos(x*(1 + y)))/2.,(Power(1 + y,3)*Sin(x*(1 + y)))/6.,((1 + y)*(-2*Cos(x*(1 + y)) + x*(1 + y)*Sin(x*(1 + y))))/2.,(x*(-2*Cos(x*(1 + y)) + x*(1 + y)*Sin(x*(1 + y))))/2.,(Power(x,3)*Sin(x*(1 + y)))/6.,(Power(1 + y,4)*Cos(x*(1 + y)))/24.,(Power(1 + y,2)*(x*(1 + y)*Cos(x*(1 + y)) + 3*Sin(x*(1 + y))))/6.,((-2 + Power(x,2)*Power(1 + y,2))*Cos(x*(1 + y)) + 4*x*(1 + y)*Sin(x*(1 + y)))/4.,(Power(x,2)*(x*(1 + y)*Cos(x*(1 + y)) + 3*Sin(x*(1 + y))))/6.,(Power(x,4)*Cos(x*(1 + y)))/24.,-(Power(1 + y,5)*Sin(x*(1 + y)))/120.,(Power(1 + y,3)*(4*Cos(x*(1 + y)) - x*(1 + y)*Sin(x*(1 + y))))/24.,((1 + y)*(6*x*(1 + y)*Cos(x*(1 + y)) - (-6 + Power(x,2)*Power(1 + y,2))*Sin(x*(1 + y))))/12.,-(x*(-6*x*(1 + y)*Cos(x*(1 + y)) + (-6 + Power(x,2)*Power(1 + y,2))*Sin(x*(1 + y))))/12.,-(Power(x,3)*(-4*Cos(x*(1 + y)) + x*(1 + y)*Sin(x*(1 + y))))/24.,-(Power(x,5)*Sin(x*(1 + y)))/120.};
   return std::vector<double> (r,r+sizeof(r)/sizeof(double));
 }

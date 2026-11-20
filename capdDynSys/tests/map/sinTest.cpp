@@ -27,7 +27,7 @@ std::vector<double> computeSinDer(MapType::VectorType & u){
   // W[n_,m_]:=D[Sin[x*y],{x,n},{y,m}]/(n!m!)//FullSimplify
   // Table[Table[W[m-n,n]//CForm,{n,0,m}],{m,0,5}]//Flatten
 
-  capd::rounding::DoubleRounding::roundNearest();
+  capd::rounding::ScopedRounding nearest;
   double r[] = {Sin(x*y),y*Cos(x*y),x*Cos(x*y),-(Power(y,2)*Sin(x*y))/2.,Cos(x*y) - x*y*Sin(x*y),-(Power(x,2)*Sin(x*y))/2.,-(Power(y,3)*Cos(x*y))/6.,-(y*(x*y*Cos(x*y) + 2*Sin(x*y)))/2.,-(x*(x*y*Cos(x*y) + 2*Sin(x*y)))/2.,-(Power(x,3)*Cos(x*y))/6.,(Power(y,4)*Sin(x*y))/24.,(Power(y,2)*(-3*Cos(x*y) + x*y*Sin(x*y)))/6.,-(x*y*Cos(x*y)) + ((-2 + Power(x,2)*Power(y,2))*Sin(x*y))/4.,(Power(x,2)*(-3*Cos(x*y) + x*y*Sin(x*y)))/6.,(Power(x,4)*Sin(x*y))/24.,(Power(y,5)*Cos(x*y))/120.,(Power(y,3)*(x*y*Cos(x*y) + 4*Sin(x*y)))/24.,(y*((-6 + Power(x,2)*Power(y,2))*Cos(x*y) + 6*x*y*Sin(x*y)))/12.,(x*((-6 + Power(x,2)*Power(y,2))*Cos(x*y) + 6*x*y*Sin(x*y)))/12.,(Power(x,3)*(x*y*Cos(x*y) + 4*Sin(x*y)))/24.,(Power(x,5)*Cos(x*y))/120.};
   return std::vector<double> (r,r+sizeof(r)/sizeof(double));
 }

@@ -18,7 +18,15 @@ inline void compareResults(const DVectorT & expected, const IVectorT & result, c
   typename IVectorT::const_iterator it = result.begin();
   typename DVectorT::const_iterator ex = expected.begin();
   for(int i=0; ex != expected.end(); ++ex, ++i, ++it){
+#ifdef __USE_TIGHT__
+    // TIGHT intervals are correctly rounded, hence much narrower than filib ones, while the expected value
+    // is a plain double evaluation of a formula (error of a few ulps). Allow a small relative slack.
+    const double slack = 1e-14 * (1.0 + std::abs(static_cast<double>(*ex)));
+    ScalarType enlarged(it->leftBound() - slack, it->rightBound() + slack);
+    BOOST_CHECK_MESSAGE(subset(*ex, enlarged), msg << "  derivative : " << i << ", " << *ex << ", " << *it);
+#else
     BOOST_CHECK_MESSAGE(subset(*ex,*it), msg << "  derivative : " << i << ", " << *ex << ", " << *it);
+#endif
     BOOST_CHECK_SMALL(it->rightBound()-it->leftBound(), tolerance);
   }
 }

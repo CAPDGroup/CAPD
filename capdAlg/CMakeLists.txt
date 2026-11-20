@@ -21,7 +21,7 @@ endif()
 if ( ${CAPD_BUILD_TESTS} )
 
     add_subdirectory(tests)
-    # add_subdirectory(unitTests/intervals)            # disabled due to build failures
+    add_subdirectory(unitTests/intervals)            # IntervalCompare (the old gtest tests are optional: CAPD_BUILD_LEGACY_INTERVAL_GTESTS)
 
 endif()
 

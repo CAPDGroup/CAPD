@@ -6,7 +6,11 @@
 #include "capd/capdlib.h"
 using namespace capd;
 
+#ifdef __USE_TIGHT__
+constexpr long double tol = 1e-12; // TIGHT build: slightly larger rounding noise of plain floating point computations
+#else
 constexpr long double tol = 1e-13;
+#endif
 
 template<class E, class I>
 void check(I b, I e, E r){
@@ -123,16 +127,20 @@ void makeCnTest(std::string f1, std::string f2, int order, LDVector u){
   TestData td1(f1,order,u,degree);
   TestData td2(f2,order,u,degree);
 
-  td1.f.computeODECoefficients(td1.j,degree,order/2);
-  td2.f.computeODECoefficients(td2.j,degree,order/2);
+  { capd::rounding::ScopedRounding nearest; // TIGHT leaves the FPU in round up, plain floating point computations need round to nearest
+    td1.f.computeODECoefficients(td1.j,degree,order/2);
+    td2.f.computeODECoefficients(td2.j,degree,order/2);
+  }
   
   for(int i=0;i<=order;++i)
   {
     check(td1.j[i].begin(),td1.j[i].end(),td2.j[i].begin());
   }
 
-  td1.f.computeODECoefficients(td1.j,degree,order);
-  td2.f.computeODECoefficients(td2.j,degree,order);
+  { capd::rounding::ScopedRounding nearest; // TIGHT leaves the FPU in round up, plain floating point computations need round to nearest
+    td1.f.computeODECoefficients(td1.j,degree,order);
+    td2.f.computeODECoefficients(td2.j,degree,order);
+  }
   
   for(int i=0;i<=order;++i)
   {
@@ -145,16 +153,20 @@ void makeCnTest(std::string f1, std::string f2, int order, LDVector u){
   td1.setOrder(order);
   td2.setOrder(order);
 
-  td1.f.computeODECoefficients(td1.j,degree,order/2);
-  td2.f.computeODECoefficients(td2.j,degree,order/2);
+  { capd::rounding::ScopedRounding nearest; // TIGHT leaves the FPU in round up, plain floating point computations need round to nearest
+    td1.f.computeODECoefficients(td1.j,degree,order/2);
+    td2.f.computeODECoefficients(td2.j,degree,order/2);
+  }
   
   for(int i=0;i<=order;++i)
   {
     check(td1.j[i].begin(),td1.j[i].end(),td2.j[i].begin());
   }
 
-  td1.f.computeODECoefficients(td1.j,degree,order);
-  td2.f.computeODECoefficients(td2.j,degree,order);
+  { capd::rounding::ScopedRounding nearest; // TIGHT leaves the FPU in round up, plain floating point computations need round to nearest
+    td1.f.computeODECoefficients(td1.j,degree,order);
+    td2.f.computeODECoefficients(td2.j,degree,order);
+  }
   
   for(int i=0;i<=order;++i)
   {
@@ -164,7 +176,10 @@ void makeCnTest(std::string f1, std::string f2, int order, LDVector u){
 }
 // --------------------------------------------------------------
 
-BOOST_AUTO_TEST_SUITE(TestSuite)
+// tests of plain double computations: they need round to nearest, while TIGHT keeps the FPU in round up
+#include "capd/rounding/DoubleRounding.h"
+struct NearestRoundingFixture { capd::rounding::ScopedRounding nearest; };
+BOOST_FIXTURE_TEST_SUITE(TestSuite, NearestRoundingFixture)
 
 BOOST_AUTO_TEST_CASE(xC0TimeTest)
 {

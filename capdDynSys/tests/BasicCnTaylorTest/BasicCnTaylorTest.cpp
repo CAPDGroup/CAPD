@@ -186,7 +186,10 @@ void doTest(std::string vfFormula)
   checkSmall(c,errorTolerance);
 }
 
-BOOST_AUTO_TEST_SUITE(TestSuite)
+// tests of plain double computations: they need round to nearest, while TIGHT keeps the FPU in round up
+#include "capd/rounding/DoubleRounding.h"
+struct NearestRoundingFixture { capd::rounding::ScopedRounding nearest; };
+BOOST_FIXTURE_TEST_SUITE(TestSuite, NearestRoundingFixture)
 
 
 BOOST_AUTO_TEST_CASE(x1VarMulTime)
