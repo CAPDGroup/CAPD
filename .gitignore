@@ -4,3 +4,6 @@ cmake-build*
 .cache
 /capdMake/docs/warning.log
 /capdMake/docs/html/
+/capdExt/tight/*
+/capdAlg/unitTests/intervals/results
+/capdExt/tight/.cpm
