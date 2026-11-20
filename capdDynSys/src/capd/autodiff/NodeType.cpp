@@ -255,6 +255,16 @@ capd::autodiff::Node acos(const capd::autodiff::Node& x){
   return createBinaryNode(x,v,NODE_ACOS);
 }
 
+capd::autodiff::Node mittagLeffler12(const capd::autodiff::Node& x){
+  using namespace capd::autodiff;
+  std::vector<Node>& dag = *Node::dag;
+  Node e = createUnaryNode(x,NODE_EXP_FOR_ML12);
+  Node m = createUnaryNode(x,NODE_MITTAG_LEFFLER_12);
+  dag[e.result].right = m.result;
+  dag[m.result].right = e.result;
+  return m;
+}
+
 /*
 Node pow(const Node&, int);
 Node pow(const Node&, double);

@@ -44,7 +44,8 @@ public:
   static constexpr inline Real _cos(Real x) noexcept{	return std::cos(x);  }  
   static constexpr inline Real _atan(Real x) noexcept{	return std::atan(x);  }  
   static constexpr inline Real _asin(Real x) noexcept{	return std::asin(x);  }  
-  static constexpr inline Real _acos(Real x) noexcept{	return std::acos(x);  }  
+  static constexpr inline Real _acos(Real x) noexcept{	return std::acos(x);  }
+  static constexpr inline Real _mittagLeffler12(Real x) noexcept{	return (x == 0) ? Real(1) : (std::exp(x) - Real(1)) / x;  }
 };
 
 template<>

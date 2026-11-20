@@ -683,6 +683,25 @@ friend inline Interval exp (const Interval & x){
   return Interval(exp(x.m_interval));
 }
 
+// Mittag-Leffler function E_{1,2}(x) = (exp(x)-1)/x, E_{1,2}(0)=1
+// E_{1,2} is strictly increasing, so E_{1,2}([a,b]) = [E_{1,2}(a), E_{1,2}(b)].
+// When x does not contain 0, uses (exp(x)-1)/x directly (filib is rigorous).
+// When x contains 0, uses monotonicity: evaluates at endpoints via point intervals.
+
+friend inline Interval mittagLeffler12(const Interval& x) {
+  const BoundType zero = BoundType(0);
+  if (!x.contains(zero))
+    return (exp(x) - Interval(1)) / x;
+  // x contains 0; use monotonicity of E_{1,2}
+  BoundType a = x.leftBound();
+  BoundType b = x.rightBound();
+  BoundType lo = (a == zero) ? BoundType(1) :
+    ((exp(Interval(a)) - Interval(1)) / Interval(a)).leftBound();
+  BoundType hi = (b == zero) ? BoundType(1) :
+    ((exp(Interval(b)) - Interval(1)) / Interval(b)).rightBound();
+  return Interval(lo, hi);
+}
+
 // natural logarithm of x
 
 friend inline Interval log (const Interval& x){
@@ -920,6 +939,7 @@ public:
   static inline Interval _atan(const Interval& x) {	return atan(x);  }
   static inline Interval _asin(const Interval& x) {	return asin(x);  }
   static inline Interval _acos(const Interval& x) {	return acos(x);  }
+  static inline Interval _mittagLeffler12(const Interval& x) { return mittagLeffler12(x); }
 };
 
 

@@ -174,6 +174,12 @@ enum NodeType {
     NODE_ACOS_CONST,
     NODE_ACOS_TIME,
     NODE_ACOS_FUNTIME,
+//  ------------- MITTAG-LEFFLER E_{1,2} -----------------
+    NODE_MITTAG_LEFFLER_12,
+    NODE_MITTAG_LEFFLER_12_CONST,
+    NODE_MITTAG_LEFFLER_12_TIME,
+    NODE_MITTAG_LEFFLER_12_FUNTIME,
+    NODE_EXP_FOR_ML12,         // companion: stores exp(u) for the ML12 node
 // ---------------------- VARS, PARAMS, CONST and COS ----------------
     NODE_NULL,
     NODE_CONST,
@@ -307,5 +313,6 @@ capd::autodiff::Node cos(const capd::autodiff::Node&);
 capd::autodiff::Node atan(const capd::autodiff::Node&);
 capd::autodiff::Node asin(const capd::autodiff::Node&);
 capd::autodiff::Node acos(const capd::autodiff::Node&);
+capd::autodiff::Node mittagLeffler12(const capd::autodiff::Node&);
 
 #endif // CAPD_AUTODIFF_NODETYPE_H

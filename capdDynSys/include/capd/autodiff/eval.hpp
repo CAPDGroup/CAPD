@@ -38,6 +38,7 @@
 #include "capd/autodiff/EvalSqrt.h"
 #include "capd/autodiff/EvalSub.h"
 #include "capd/autodiff/EvalThirdPow.h"
+#include "capd/autodiff/EvalMittagLeffler12.h"
 #include "capd/autodiff/EvalUnaryMinus.h"
 
 namespace capd{
@@ -183,6 +184,12 @@ void Int4ToAbstractNode(const std::vector<MyNode>& node, std::vector<AbstractNod
     CAPD_MAKE_NODE(NODE_ACOS_CONST,AcosConst);
     CAPD_MAKE_NODE(NODE_ACOS_TIME,AcosTime);
     CAPD_MAKE_NODE(NODE_ACOS_FUNTIME,AcosFunTime);
+
+    CAPD_MAKE_NODE(NODE_MITTAG_LEFFLER_12,MittagLeffler12);
+    CAPD_MAKE_NODE(NODE_MITTAG_LEFFLER_12_CONST,MittagLeffler12Const);
+    CAPD_MAKE_NODE(NODE_MITTAG_LEFFLER_12_TIME,MittagLeffler12Time);
+    CAPD_MAKE_NODE(NODE_MITTAG_LEFFLER_12_FUNTIME,MittagLeffler12FunTime);
+    CAPD_MAKE_NODE(NODE_EXP_FOR_ML12,ExpForML12);
 
     default:
       std::ostringstream out;
